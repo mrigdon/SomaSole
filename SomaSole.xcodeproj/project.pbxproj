@@ -21,6 +21,7 @@
 		621D22E11CB2EA4700FE7581 /* BasicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 621D22DF1CB2EA4700FE7581 /* BasicViewController.xib */; };
 		621D22ED1CB2F64000FE7581 /* RequestTrainerStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621D22EB1CB2F64000FE7581 /* RequestTrainerStatusViewController.swift */; };
 		621D22F31CB3079100FE7581 /* TrainerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621D22F11CB3079100FE7581 /* TrainerDetailViewController.swift */; };
+		621D22F81CB31BE600FE7581 /* TrainerRequestConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621D22F71CB31BE600FE7581 /* TrainerRequestConfirmViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		621D22DF1CB2EA4700FE7581 /* BasicViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BasicViewController.xib; sourceTree = "<group>"; };
 		621D22EB1CB2F64000FE7581 /* RequestTrainerStatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestTrainerStatusViewController.swift; sourceTree = "<group>"; };
 		621D22F11CB3079100FE7581 /* TrainerDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerDetailViewController.swift; sourceTree = "<group>"; };
+		621D22F71CB31BE600FE7581 /* TrainerRequestConfirmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerRequestConfirmViewController.swift; sourceTree = "<group>"; };
 		6DFBD11EA5E8CEC480F43C0B /* Pods-SomaSole.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SomaSole.release.xcconfig"; path = "Pods/Target Support Files/Pods-SomaSole/Pods-SomaSole.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -163,6 +165,7 @@
 				621D22B01CB2DC3E00FE7581 /* ProfileViewController.swift */,
 				621D22EB1CB2F64000FE7581 /* RequestTrainerStatusViewController.swift */,
 				621D22F11CB3079100FE7581 /* TrainerDetailViewController.swift */,
+				621D22F71CB31BE600FE7581 /* TrainerRequestConfirmViewController.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 				621D22AD1CB2DC3E00FE7581 /* AppDelegate.swift in Sources */,
 				621D22F31CB3079100FE7581 /* TrainerDetailViewController.swift in Sources */,
 				621D22ED1CB2F64000FE7581 /* RequestTrainerStatusViewController.swift in Sources */,
+				621D22F81CB31BE600FE7581 /* TrainerRequestConfirmViewController.swift in Sources */,
 				621D22AF1CB2DC3E00FE7581 /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
