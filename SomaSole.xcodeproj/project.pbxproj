@@ -7,14 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2964BECF70D5E766CDDF32FF /* Pods_SomaSole.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10769821E015672B332BE0A5 /* Pods_SomaSole.framework */; };
 		621D22AD1CB2DC3E00FE7581 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621D22AC1CB2DC3E00FE7581 /* AppDelegate.swift */; };
 		621D22AF1CB2DC3E00FE7581 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621D22AE1CB2DC3E00FE7581 /* FirstViewController.swift */; };
-		621D22B11CB2DC3E00FE7581 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621D22B01CB2DC3E00FE7581 /* SecondViewController.swift */; };
+		621D22B11CB2DC3E00FE7581 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621D22B01CB2DC3E00FE7581 /* ProfileViewController.swift */; };
 		621D22B41CB2DC3F00FE7581 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 621D22B21CB2DC3F00FE7581 /* Main.storyboard */; };
 		621D22B61CB2DC3F00FE7581 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 621D22B51CB2DC3F00FE7581 /* Assets.xcassets */; };
 		621D22B91CB2DC3F00FE7581 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 621D22B71CB2DC3F00FE7581 /* LaunchScreen.storyboard */; };
 		621D22C41CB2DC3F00FE7581 /* SomaSoleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621D22C31CB2DC3F00FE7581 /* SomaSoleTests.swift */; };
 		621D22CF1CB2DC3F00FE7581 /* SomaSoleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621D22CE1CB2DC3F00FE7581 /* SomaSoleUITests.swift */; };
+		621D22DD1CB2DC7C00FE7581 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 621D22DC1CB2DC7C00FE7581 /* Podfile */; };
+		621D22E01CB2EA4700FE7581 /* BasicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621D22DE1CB2EA4700FE7581 /* BasicViewController.swift */; };
+		621D22E11CB2EA4700FE7581 /* BasicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 621D22DF1CB2EA4700FE7581 /* BasicViewController.xib */; };
+		621D22ED1CB2F64000FE7581 /* RequestTrainerStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621D22EB1CB2F64000FE7581 /* RequestTrainerStatusViewController.swift */; };
+		621D22F31CB3079100FE7581 /* TrainerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621D22F11CB3079100FE7581 /* TrainerDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,10 +41,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		10769821E015672B332BE0A5 /* Pods_SomaSole.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SomaSole.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		442FE767159F91E46B63C384 /* Pods-SomaSole.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SomaSole.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SomaSole/Pods-SomaSole.debug.xcconfig"; sourceTree = "<group>"; };
 		621D22A91CB2DC3E00FE7581 /* SomaSole.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SomaSole.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		621D22AC1CB2DC3E00FE7581 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		621D22AE1CB2DC3E00FE7581 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		621D22B01CB2DC3E00FE7581 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		621D22B01CB2DC3E00FE7581 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		621D22B31CB2DC3F00FE7581 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		621D22B51CB2DC3F00FE7581 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		621D22B81CB2DC3F00FE7581 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +57,12 @@
 		621D22CA1CB2DC3F00FE7581 /* SomaSoleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SomaSoleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		621D22CE1CB2DC3F00FE7581 /* SomaSoleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomaSoleUITests.swift; sourceTree = "<group>"; };
 		621D22D01CB2DC3F00FE7581 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		621D22DC1CB2DC7C00FE7581 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		621D22DE1CB2EA4700FE7581 /* BasicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicViewController.swift; sourceTree = "<group>"; };
+		621D22DF1CB2EA4700FE7581 /* BasicViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BasicViewController.xib; sourceTree = "<group>"; };
+		621D22EB1CB2F64000FE7581 /* RequestTrainerStatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestTrainerStatusViewController.swift; sourceTree = "<group>"; };
+		621D22F11CB3079100FE7581 /* TrainerDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerDetailViewController.swift; sourceTree = "<group>"; };
+		6DFBD11EA5E8CEC480F43C0B /* Pods-SomaSole.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SomaSole.release.xcconfig"; path = "Pods/Target Support Files/Pods-SomaSole/Pods-SomaSole.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2964BECF70D5E766CDDF32FF /* Pods_SomaSole.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,13 +91,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		13C10297EEBEF1EB32EF22E9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				442FE767159F91E46B63C384 /* Pods-SomaSole.debug.xcconfig */,
+				6DFBD11EA5E8CEC480F43C0B /* Pods-SomaSole.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		621D22A01CB2DC3E00FE7581 = {
 			isa = PBXGroup;
 			children = (
+				621D22DC1CB2DC7C00FE7581 /* Podfile */,
 				621D22AB1CB2DC3E00FE7581 /* SomaSole */,
 				621D22C21CB2DC3F00FE7581 /* SomaSoleTests */,
 				621D22CD1CB2DC3F00FE7581 /* SomaSoleUITests */,
 				621D22AA1CB2DC3E00FE7581 /* Products */,
+				13C10297EEBEF1EB32EF22E9 /* Pods */,
+				9E5172BD2F5AD716C409A3BF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,9 +126,9 @@
 		621D22AB1CB2DC3E00FE7581 /* SomaSole */ = {
 			isa = PBXGroup;
 			children = (
+				621D22EF1CB2F65D00FE7581 /* Profile */,
 				621D22AC1CB2DC3E00FE7581 /* AppDelegate.swift */,
 				621D22AE1CB2DC3E00FE7581 /* FirstViewController.swift */,
-				621D22B01CB2DC3E00FE7581 /* SecondViewController.swift */,
 				621D22B21CB2DC3F00FE7581 /* Main.storyboard */,
 				621D22B51CB2DC3F00FE7581 /* Assets.xcassets */,
 				621D22B71CB2DC3F00FE7581 /* LaunchScreen.storyboard */,
@@ -128,6 +155,34 @@
 			path = SomaSoleUITests;
 			sourceTree = "<group>";
 		};
+		621D22EF1CB2F65D00FE7581 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				621D22F01CB2F75E00FE7581 /* Views */,
+				621D22DE1CB2EA4700FE7581 /* BasicViewController.swift */,
+				621D22B01CB2DC3E00FE7581 /* ProfileViewController.swift */,
+				621D22EB1CB2F64000FE7581 /* RequestTrainerStatusViewController.swift */,
+				621D22F11CB3079100FE7581 /* TrainerDetailViewController.swift */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
+		621D22F01CB2F75E00FE7581 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				621D22DF1CB2EA4700FE7581 /* BasicViewController.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		9E5172BD2F5AD716C409A3BF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				10769821E015672B332BE0A5 /* Pods_SomaSole.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +190,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 621D22D31CB2DC3F00FE7581 /* Build configuration list for PBXNativeTarget "SomaSole" */;
 			buildPhases = (
+				9003D7BCF386D9BCF1AE4A29 /* Check Pods Manifest.lock */,
 				621D22A51CB2DC3E00FE7581 /* Sources */,
 				621D22A61CB2DC3E00FE7581 /* Frameworks */,
 				621D22A71CB2DC3E00FE7581 /* Resources */,
+				8BB12ADCEFBB4472939E71A5 /* Embed Pods Frameworks */,
+				CEB6C797C665E0097DE3EE6B /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -237,7 +295,9 @@
 			files = (
 				621D22B91CB2DC3F00FE7581 /* LaunchScreen.storyboard in Resources */,
 				621D22B61CB2DC3F00FE7581 /* Assets.xcassets in Resources */,
+				621D22DD1CB2DC7C00FE7581 /* Podfile in Resources */,
 				621D22B41CB2DC3F00FE7581 /* Main.storyboard in Resources */,
+				621D22E11CB2EA4700FE7581 /* BasicViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,13 +317,64 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		8BB12ADCEFBB4472939E71A5 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SomaSole/Pods-SomaSole-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9003D7BCF386D9BCF1AE4A29 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CEB6C797C665E0097DE3EE6B /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SomaSole/Pods-SomaSole-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		621D22A51CB2DC3E00FE7581 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				621D22B11CB2DC3E00FE7581 /* SecondViewController.swift in Sources */,
+				621D22B11CB2DC3E00FE7581 /* ProfileViewController.swift in Sources */,
+				621D22E01CB2EA4700FE7581 /* BasicViewController.swift in Sources */,
 				621D22AD1CB2DC3E00FE7581 /* AppDelegate.swift in Sources */,
+				621D22F31CB3079100FE7581 /* TrainerDetailViewController.swift in Sources */,
+				621D22ED1CB2F64000FE7581 /* RequestTrainerStatusViewController.swift in Sources */,
 				621D22AF1CB2DC3E00FE7581 /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -404,6 +515,7 @@
 		};
 		621D22D41CB2DC3F00FE7581 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 442FE767159F91E46B63C384 /* Pods-SomaSole.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SomaSole/Info.plist;
@@ -415,6 +527,7 @@
 		};
 		621D22D51CB2DC3F00FE7581 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6DFBD11EA5E8CEC480F43C0B /* Pods-SomaSole.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SomaSole/Info.plist;
@@ -491,6 +604,7 @@
 				621D22D51CB2DC3F00FE7581 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		621D22D61CB2DC3F00FE7581 /* Build configuration list for PBXNativeTarget "SomaSoleTests" */ = {
 			isa = XCConfigurationList;
@@ -499,6 +613,7 @@
 				621D22D81CB2DC3F00FE7581 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		621D22D91CB2DC3F00FE7581 /* Build configuration list for PBXNativeTarget "SomaSoleUITests" */ = {
 			isa = XCConfigurationList;
@@ -507,6 +622,7 @@
 				621D22DB1CB2DC3F00FE7581 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
