@@ -22,6 +22,9 @@
 		621D22ED1CB2F64000FE7581 /* RequestTrainerStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621D22EB1CB2F64000FE7581 /* RequestTrainerStatusViewController.swift */; };
 		621D22F31CB3079100FE7581 /* TrainerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621D22F11CB3079100FE7581 /* TrainerDetailViewController.swift */; };
 		621D22F81CB31BE600FE7581 /* TrainerRequestConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621D22F71CB31BE600FE7581 /* TrainerRequestConfirmViewController.swift */; };
+		62C9E4081CB4474E005E9F48 /* InformationQuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9E4071CB4474E005E9F48 /* InformationQuestionsViewController.swift */; };
+		62C9E40E1CB44FEF005E9F48 /* PurchasesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9E40D1CB44FEF005E9F48 /* PurchasesViewController.swift */; };
+		62C9E4101CB45DC8005E9F48 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9E40F1CB45DC8005E9F48 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +67,9 @@
 		621D22EB1CB2F64000FE7581 /* RequestTrainerStatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestTrainerStatusViewController.swift; sourceTree = "<group>"; };
 		621D22F11CB3079100FE7581 /* TrainerDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerDetailViewController.swift; sourceTree = "<group>"; };
 		621D22F71CB31BE600FE7581 /* TrainerRequestConfirmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerRequestConfirmViewController.swift; sourceTree = "<group>"; };
+		62C9E4071CB4474E005E9F48 /* InformationQuestionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationQuestionsViewController.swift; sourceTree = "<group>"; };
+		62C9E40D1CB44FEF005E9F48 /* PurchasesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchasesViewController.swift; sourceTree = "<group>"; };
+		62C9E40F1CB45DC8005E9F48 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		6DFBD11EA5E8CEC480F43C0B /* Pods-SomaSole.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SomaSole.release.xcconfig"; path = "Pods/Target Support Files/Pods-SomaSole/Pods-SomaSole.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -162,8 +168,11 @@
 			children = (
 				621D22F01CB2F75E00FE7581 /* Views */,
 				621D22DE1CB2EA4700FE7581 /* BasicViewController.swift */,
+				62C9E4071CB4474E005E9F48 /* InformationQuestionsViewController.swift */,
 				621D22B01CB2DC3E00FE7581 /* ProfileViewController.swift */,
+				62C9E40D1CB44FEF005E9F48 /* PurchasesViewController.swift */,
 				621D22EB1CB2F64000FE7581 /* RequestTrainerStatusViewController.swift */,
+				62C9E40F1CB45DC8005E9F48 /* SettingsViewController.swift */,
 				621D22F11CB3079100FE7581 /* TrainerDetailViewController.swift */,
 				621D22F71CB31BE600FE7581 /* TrainerRequestConfirmViewController.swift */,
 			);
@@ -373,9 +382,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62C9E40E1CB44FEF005E9F48 /* PurchasesViewController.swift in Sources */,
 				621D22B11CB2DC3E00FE7581 /* ProfileViewController.swift in Sources */,
 				621D22E01CB2EA4700FE7581 /* BasicViewController.swift in Sources */,
+				62C9E4101CB45DC8005E9F48 /* SettingsViewController.swift in Sources */,
 				621D22AD1CB2DC3E00FE7581 /* AppDelegate.swift in Sources */,
+				62C9E4081CB4474E005E9F48 /* InformationQuestionsViewController.swift in Sources */,
 				621D22F31CB3079100FE7581 /* TrainerDetailViewController.swift in Sources */,
 				621D22ED1CB2F64000FE7581 /* RequestTrainerStatusViewController.swift in Sources */,
 				621D22F81CB31BE600FE7581 /* TrainerRequestConfirmViewController.swift in Sources */,

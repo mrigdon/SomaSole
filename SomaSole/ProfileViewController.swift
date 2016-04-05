@@ -39,7 +39,12 @@ class ProfileViewController: ButtonBarPagerTabStripViewController {
     }
     
     override func viewControllersForPagerTabStrip(pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
-        return [BasicViewController(), MyEmbeddedViewController()]
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let purchasesViewController = storyboard.instantiateViewControllerWithIdentifier("PurchasesViewController")
+        let settingsViewController = storyboard.instantiateViewControllerWithIdentifier("SettingsViewController")
+        
+        return [BasicViewController(), purchasesViewController, settingsViewController]
     }
 
 
