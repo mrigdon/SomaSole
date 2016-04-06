@@ -31,6 +31,9 @@ class InformationQuestionsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func tappedSubmit(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
 
     /*
     // MARK: - Navigation
