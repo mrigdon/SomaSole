@@ -9,13 +9,6 @@
 import UIKit
 import XLPagerTabStrip
 
-class MyEmbeddedViewController: UITableViewController, IndicatorInfoProvider {
-    
-    func indicatorInfoForPagerTabStrip(pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "My Child title")
-    }
-}
-
 class ProfileViewController: ButtonBarPagerTabStripViewController, UINavigationBarDelegate {
     
     let lightBlueColor: UIColor = UIColor(red: 0.568627451, green: 0.7333333333, blue: 0.968627451, alpha: 1.0)
@@ -30,6 +23,7 @@ class ProfileViewController: ButtonBarPagerTabStripViewController, UINavigationB
         settings.style.selectedBarBackgroundColor = lightBlueColor
         settings.style.buttonBarItemTitleColor = lightBlueColor
         settings.style.buttonBarMinimumLineSpacing = 0.0
+        settings.style.buttonBarItemFont = UIFont.systemFontOfSize(14)
         
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.

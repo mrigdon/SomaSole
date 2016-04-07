@@ -23,7 +23,7 @@ class BasicViewController: UIViewController, IndicatorInfoProvider {
     }
     
     func indicatorInfoForPagerTabStrip(pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "Basic")
+        return IndicatorInfo(title: "BASIC")
     }
 
     @IBAction func tappedRequestTrainerStatus(sender: AnyObject) {

@@ -31,7 +31,7 @@ class SettingsViewController: UITableViewController, IndicatorInfoProvider {
     }
     
     func indicatorInfoForPagerTabStrip(pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "Settings")
+        return IndicatorInfo(title: "SETTINGS")
     }
 
     // MARK: - Table view data source
