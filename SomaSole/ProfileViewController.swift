@@ -9,24 +9,21 @@
 import UIKit
 import XLPagerTabStrip
 
-class MyEmbeddedViewController: UITableViewController, IndicatorInfoProvider {
-    
-    func indicatorInfoForPagerTabStrip(pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "My Child title")
-    }
-}
-
-class ProfileViewController: ButtonBarPagerTabStripViewController {
+class ProfileViewController: ButtonBarPagerTabStripViewController, UINavigationBarDelegate {
     
     let lightBlueColor: UIColor = UIColor(red: 0.568627451, green: 0.7333333333, blue: 0.968627451, alpha: 1.0)
+    let whiteColor = UIColor.whiteColor()
+    
+    @IBOutlet weak var navBar: UINavigationBar!
     
     override func viewDidLoad() {
         // button bar customization
-        settings.style.buttonBarBackgroundColor = lightBlueColor
-        settings.style.buttonBarItemBackgroundColor = lightBlueColor
-        settings.style.selectedBarBackgroundColor = UIColor.whiteColor()
-        settings.style.buttonBarItemTitleColor = UIColor.whiteColor()
+        settings.style.buttonBarBackgroundColor = whiteColor
+        settings.style.buttonBarItemBackgroundColor = whiteColor
+        settings.style.selectedBarBackgroundColor = lightBlueColor
+        settings.style.buttonBarItemTitleColor = lightBlueColor
         settings.style.buttonBarMinimumLineSpacing = 0.0
+        settings.style.buttonBarItemFont = UIFont.systemFontOfSize(14)
         
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -45,6 +42,10 @@ class ProfileViewController: ButtonBarPagerTabStripViewController {
         let settingsViewController = storyboard.instantiateViewControllerWithIdentifier("SettingsViewController")
         
         return [BasicViewController(), purchasesViewController, settingsViewController]
+    }
+    
+    func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
+        return .TopAttached
     }
 
 

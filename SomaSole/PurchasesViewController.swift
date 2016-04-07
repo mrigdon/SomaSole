@@ -36,7 +36,7 @@ class PurchasesViewController: UITableViewController, IndicatorInfoProvider {
     }
     
     func indicatorInfoForPagerTabStrip(pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "Purchases")
+        return IndicatorInfo(title: "PURCHASES")
     }
 
     // MARK: - Table view data source

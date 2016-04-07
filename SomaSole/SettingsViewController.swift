@@ -10,6 +10,10 @@ import UIKit
 import XLPagerTabStrip
 
 class SettingsViewController: UITableViewController, IndicatorInfoProvider {
+    
+    let EMAIL_SETTING :Int = 0
+    let PASSWORD_SETTING :Int = 1
+    let PAYMENT_SETTING :Int = 2
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +31,7 @@ class SettingsViewController: UITableViewController, IndicatorInfoProvider {
     }
     
     func indicatorInfoForPagerTabStrip(pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "Settings")
+        return IndicatorInfo(title: "SETTINGS")
     }
 
     // MARK: - Table view data source
@@ -45,11 +49,11 @@ class SettingsViewController: UITableViewController, IndicatorInfoProvider {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
 
-        if indexPath.row == 0 {
+        if indexPath.row == EMAIL_SETTING {
             cell.textLabel!.text = "Change Email"
             cell.detailTextLabel!.text = "rigdonmr@gmail.com"
         }
-        else if indexPath.row == 1 {
+        else if indexPath.row == PASSWORD_SETTING {
             cell.textLabel!.text = "Change Password"
             cell.detailTextLabel!.text = "XXXXXXXX"
         }
@@ -59,6 +63,17 @@ class SettingsViewController: UITableViewController, IndicatorInfoProvider {
         }
 
         return cell
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // get index path
+        let indexPath = self.tableView.indexPathForSelectedRow
+        
+        // Get the new view controller using segue.destinationViewController.
+        let destVC: ChangeSettingViewController = segue.destinationViewController as! ChangeSettingViewController
+        
+        // Pass the selected setting to the new view controller.
+        destVC.selectedSetting = indexPath!.row
     }
 
     /*
@@ -96,14 +111,6 @@ class SettingsViewController: UITableViewController, IndicatorInfoProvider {
     }
     */
 
-    /*
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
