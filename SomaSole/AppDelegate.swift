@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        IQKeyboardManager.sharedManager().enable = true
+        
+        // try to login user from user defaults
+        let email = NSUserDefaults.standardUserDefaults().stringForKey("email")
+        let password = NSUserDefaults.standardUserDefaults().stringForKey("password")
+        
+        // if not logged in yet, send to login screen
+//        if email == nil {
+            self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            
+            let initialViewController = storyboard.instantiateViewControllerWithIdentifier("LoginViewController")
+            
+            self.window?.rootViewController = initialViewController
+            self.window?.makeKeyAndVisible()
+            
+            return true
+//        }
+        
+        // pass to shared user model
+        User.sharedModel.email = email
+        
         return true
     }
 

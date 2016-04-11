@@ -8,11 +8,13 @@
 
 import UIKit
 import XLPagerTabStrip
+import Firebase
 
 class ProfileViewController: ButtonBarPagerTabStripViewController, UINavigationBarDelegate {
     
     let lightBlueColor: UIColor = UIColor(red: 0.568627451, green: 0.7333333333, blue: 0.968627451, alpha: 1.0)
     let whiteColor = UIColor.whiteColor()
+    var firebase: Firebase?
     
     @IBOutlet weak var navBar: UINavigationBar!
     
@@ -27,6 +29,9 @@ class ProfileViewController: ButtonBarPagerTabStripViewController, UINavigationB
         
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        // init firebase
+        firebase = Firebase(url: "https://somasole.firebaseio.com")
         
     }
 
