@@ -8,24 +8,33 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    func getUserDataAndLogin(uid: String) {
+        let firebase = Firebase(url: "http://somasole.firebaseio.com")
+        firebase?.childByAppendingPath("users").childByAppendingPath(uid).observeEventType(.Value, withBlock: { snapshot in
+            // populate shared model with data
+            let userData: Dictionary<String, AnyObject> = snapshot.value as! Dictionary<String, AnyObject>
+            User.populateFields(userData)
+        })
+    }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
         IQKeyboardManager.sharedManager().enable = true
         
-        // try to login user from user defaults
-        let email = NSUserDefaults.standardUserDefaults().stringForKey("email")
-        let password = NSUserDefaults.standardUserDefaults().stringForKey("password")
+        // try to get logged in user
+        let firebase = Firebase(url: "http://somasole.firebaseio.com")
+        let userData = NSUserDefaults.standardUserDefaults().objectForKey("userData") as? Dictionary<String, AnyObject>
         
         // if not logged in yet, send to login screen
-//        if email == nil {
+        if userData == nil || firebase.authData == nil {
             self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -36,11 +45,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.makeKeyAndVisible()
             
             return true
-//        }
+        }
         
-        // pass to shared user model
-        User.sharedModel.email = email
-        
+        // if is logged in
+        User.populateFields(userData!)
+    
         return true
     }
 

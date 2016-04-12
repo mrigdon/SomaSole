@@ -4,12 +4,22 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>ALCameraViewController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Firebase.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>IQKeyboardManagerSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -37,7 +47,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>120BF898FCCAF08F6DA8EE8AD2E85078</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>1520003FEBEC114D6C84F832AFEDB994</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1EBC1071247978EBA54551FF85282134</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A84E9F2DB354031D30E8812CF7EF155B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -47,22 +72,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BC660946131A7D5D548615C925F8D718</key>
+		<key>CFB1CF8D9776109DFF7D0B03EB5CB6B2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C02533AB14F984A86AD11F10343F27A6</key>
+		<key>E2BD8E56A257B49CFC04DD8B1A9DD7E9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C44107807F6FB013A466EDFAFC758E7B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>ECA70361279AF6EF29F1A309400AF153</key>
+		<key>E61CE3B6DFA1FE6B3E296965C76C0E10</key>
 		<dict>
 			<key>primary</key>
 			<true/>

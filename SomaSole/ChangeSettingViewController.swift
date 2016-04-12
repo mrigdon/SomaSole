@@ -61,7 +61,7 @@ class ChangeSettingViewController: UIViewController, UINavigationBarDelegate, UI
     }
     
     func errorAlert(message: String) {
-        alertController!.message = "Please fill out all fields."
+        alertController!.message = message
         presentViewController(alertController!, animated: true, completion: nil)
     }
     

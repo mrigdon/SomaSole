@@ -9,6 +9,8 @@ target 'SomaSole' do
     pod 'Firebase', '>= 2.5.1'
     pod 'TextFieldEffects'
     pod 'IQKeyboardManagerSwift'
+    pod 'MBProgressHUD', '~> 0.9.2'
+    pod 'ALCameraViewController'
 
 end
 

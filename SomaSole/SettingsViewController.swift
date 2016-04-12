@@ -8,8 +8,11 @@
 
 import UIKit
 import XLPagerTabStrip
+import Firebase
 
 class SettingsViewController: UITableViewController, IndicatorInfoProvider {
+    
+    var firebase: Firebase?
     
     let EMAIL_SETTING :Int = 0
     let PASSWORD_SETTING :Int = 1
@@ -23,6 +26,9 @@ class SettingsViewController: UITableViewController, IndicatorInfoProvider {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        // init firebase
+        firebase = Firebase(url: "http://somasole.firebaseio.com")
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,29 +43,47 @@ class SettingsViewController: UITableViewController, IndicatorInfoProvider {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 2
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.section == 1 {
+            firebase?.unauth()
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let loginViewController = storyboard.instantiateViewControllerWithIdentifier("LoginViewController")
+            presentViewController(loginViewController, animated: true, completion: nil)
+        }
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 3
+        if section == 0 {
+            return 3
+        }
+        else {
+            return 1
+        }
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+        let reuseIdentifier = indexPath.section == 0 ? "cell" : "logout"
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath)
 
-        if indexPath.row == EMAIL_SETTING {
-            cell.textLabel!.text = "Change Email"
-            cell.detailTextLabel!.text = "rigdonmr@gmail.com"
-        }
-        else if indexPath.row == PASSWORD_SETTING {
-            cell.textLabel!.text = "Change Password"
-            cell.detailTextLabel!.text = "XXXXXXXX"
-        }
-        else {
-            cell.textLabel!.text = "Change Payment"
-            cell.detailTextLabel!.text = "XXXX-XXXX-XXXX-6969"
+        if indexPath.section == 0 {
+            if indexPath.row == EMAIL_SETTING {
+                cell.textLabel!.text = "Change Email"
+                cell.detailTextLabel!.text = "rigdonmr@gmail.com"
+            }
+            else if indexPath.row == PASSWORD_SETTING {
+                cell.textLabel!.text = "Change Password"
+                cell.detailTextLabel!.text = "XXXXXXXX"
+            }
+            else {
+                cell.textLabel!.text = "Change Payment"
+                cell.detailTextLabel!.text = "XXXX-XXXX-XXXX-6969"
+            }
         }
 
         return cell

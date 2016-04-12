@@ -84,14 +84,18 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "Pods-SomaSole/ALCameraViewController.framework"
   install_framework "Pods-SomaSole/Firebase.framework"
   install_framework "Pods-SomaSole/IQKeyboardManagerSwift.framework"
+  install_framework "Pods-SomaSole/MBProgressHUD.framework"
   install_framework "Pods-SomaSole/TextFieldEffects.framework"
   install_framework "Pods-SomaSole/XLPagerTabStrip.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "Pods-SomaSole/ALCameraViewController.framework"
   install_framework "Pods-SomaSole/Firebase.framework"
   install_framework "Pods-SomaSole/IQKeyboardManagerSwift.framework"
+  install_framework "Pods-SomaSole/MBProgressHUD.framework"
   install_framework "Pods-SomaSole/TextFieldEffects.framework"
   install_framework "Pods-SomaSole/XLPagerTabStrip.framework"
 fi

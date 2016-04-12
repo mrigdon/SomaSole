@@ -8,26 +8,60 @@
 
 import UIKit
 import Firebase
+import MBProgressHUD
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
-    let EMAIL_TAKEN = -9
     let placeholderColor = UIColor(red: 0.7803921569, green: 0.7803921569, blue: 0.8039215686, alpha: 1.0)
     
+    var alertController: UIAlertController?
+    let firebaseURL = "https://somasole.firebaseio.com"
     var firebase: Firebase?
     var email: String?
     var password: String?
 
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passField: UITextField!
-    @IBOutlet weak var createEmailField: UITextField!
-    @IBOutlet weak var createPassField: UITextField!
+    
+    func stopProgressHud() {
+        dispatch_async(dispatch_get_main_queue(), {
+            MBProgressHUD.hideHUDForView(self.view, animated: true)
+        })
+    }
+    
+    func errorAlert(message: String) {
+        alertController!.message = message
+        presentViewController(alertController!, animated: true, completion: nil)
+    }
+    
+    func anyFieldsEmpty() -> Bool {
+        return emailField.text?.characters.count == 0 || passField.text?.characters.count == 0
+    }
+    
+    func getUserDataAndLogin(uid: String) {
+        firebase?.childByAppendingPath("users").childByAppendingPath(uid).observeEventType(.Value, withBlock: { snapshot in
+            // populate shared model with data
+            let userData: Dictionary<String, AnyObject> = snapshot.value as! Dictionary<String, AnyObject>
+            User.populateFields(userData)
+            
+            // save to user defaults
+            NSUserDefaults.standardUserDefaults().setObject(userData["uid"], forKey: "uid")
+            NSUserDefaults.standardUserDefaults().setObject(userData, forKey: "userData")
+            NSUserDefaults.standardUserDefaults().synchronize()
+            
+            // stop progress hud
+            self.stopProgressHud()
+            
+            // login
+            self.performSegueWithIdentifier("toMain", sender: self)
+        })
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        firebase = Firebase(url: "https://somasole.firebaseio.com")
+        firebase = Firebase(url: firebaseURL)
         
         // customize text fields
         emailField.layer.borderColor = placeholderColor.CGColor
@@ -36,6 +70,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         passField.layer.borderColor = placeholderColor.CGColor
         passField.layer.borderWidth = 1.0
         passField.layer.cornerRadius = 5.0
+        
+        // init alert controller
+        alertController = UIAlertController(title: "Error", message: "Error", preferredStyle: .Alert)
+        let okayAction: UIAlertAction = UIAlertAction(title: "Okay", style: .Default, handler: { value in
+            self.alertController!.dismissViewControllerAnimated(true, completion: nil)
+        })
+        alertController!.addAction(okayAction)
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -50,62 +91,46 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     func loginUser() {
         firebase?.authUser(email, password: password, withCompletionBlock: { error, authData in
+            // if error
             if error != nil {
-                print("Error in trying to login user: \(error)")
+                switch error.code {
+                    case FAuthenticationError.InvalidEmail.rawValue:
+                        self.stopProgressHud()
+                        self.errorAlert("There is no account with the given email.")
+                    case FAuthenticationError.InvalidPassword.rawValue:
+                        self.stopProgressHud()
+                        self.errorAlert("Incorrect password.")
+                default:
+                    break
+                }
             }
+            // success
             else {
-                print(authData.providerData)
-                // save user to database
-//                let newUser = [
-//                    "provider": authData.provider,
-//                    "displayName": authData.providerData["displayName"] as! String
-//                ]
-                
-                // save info to user defaults
-                NSUserDefaults.standardUserDefaults().setObject(self.email, forKey: "email")
-                NSUserDefaults.standardUserDefaults().setObject(self.password, forKey: "password")
-                NSUserDefaults.standardUserDefaults().synchronize()
-                
-                self.performSegueWithIdentifier("toMain", sender: self)
+                // get user and login
+                self.getUserDataAndLogin(authData.uid)
             }
         })
     }
     
     @IBAction func tappedLogin(sender: AnyObject) {
+        // return if any fields are empty
+        if anyFieldsEmpty() {
+            errorAlert("Please fill out all fields.")
+            return
+        }
+        
+        // start progress hud
+        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        
         // get username and password
         email = emailField.text
         password = passField.text
         
-        // return if either is empty
-        if email == "" || password == "" {
-            return
-        }
-        
         loginUser()
     }
     
-    @IBAction func tappedCreateAccount(sender: AnyObject) {
-        // get username and password
-        email = createEmailField.text
-        password = createPassField.text
+    @IBAction func tappedFacebook(sender: AnyObject) {
         
-        // return if either is empty
-        if email == "" || password == "" {
-            return
-        }
-        
-        // create firebase user
-        firebase!.createUser(email, password: password, withValueCompletionBlock: { error, result in
-            if error != nil {
-                if error.code == self.EMAIL_TAKEN {
-                    // handle email taken
-                }
-            }
-            else {
-                // login user
-                self.loginUser()
-            }
-        })
     }
 
     // MARK: - Navigation
