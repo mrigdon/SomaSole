@@ -41,7 +41,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     func getUserDataAndLogin(uid: String) {
         firebase?.childByAppendingPath("users").childByAppendingPath(uid).observeEventType(.Value, withBlock: { snapshot in
             // populate shared model with data
-            let userData: Dictionary<String, AnyObject> = snapshot.value as! Dictionary<String, AnyObject>
+            var userData: Dictionary<String, AnyObject> = snapshot.value as! Dictionary<String, AnyObject>
+            userData["password"] = self.password
             User.populateFields(userData)
             
             // save to user defaults
@@ -93,13 +94,20 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         firebase?.authUser(email, password: password, withCompletionBlock: { error, authData in
             // if error
             if error != nil {
+                print(error)
                 switch error.code {
+                    case FAuthenticationError.UserDoesNotExist.rawValue:
+                        self.stopProgressHud()
+                        self.errorAlert("There is no account with the given email.")
                     case FAuthenticationError.InvalidEmail.rawValue:
                         self.stopProgressHud()
                         self.errorAlert("There is no account with the given email.")
                     case FAuthenticationError.InvalidPassword.rawValue:
                         self.stopProgressHud()
                         self.errorAlert("Incorrect password.")
+                    case FAuthenticationError.NetworkError.rawValue:
+                        self.stopProgressHud()
+                        self.errorAlert("The network is currently unavailable, please try again in a few moments.")
                 default:
                     break
                 }

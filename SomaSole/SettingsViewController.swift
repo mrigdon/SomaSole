@@ -13,10 +13,6 @@ import Firebase
 class SettingsViewController: UITableViewController, IndicatorInfoProvider {
     
     var firebase: Firebase?
-    
-    let EMAIL_SETTING :Int = 0
-    let PASSWORD_SETTING :Int = 1
-    let PAYMENT_SETTING :Int = 2
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +25,10 @@ class SettingsViewController: UITableViewController, IndicatorInfoProvider {
         
         // init firebase
         firebase = Firebase(url: "http://somasole.firebaseio.com")
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -72,17 +72,17 @@ class SettingsViewController: UITableViewController, IndicatorInfoProvider {
         let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath)
 
         if indexPath.section == 0 {
-            if indexPath.row == EMAIL_SETTING {
+            if indexPath.row == Setting.Email.rawValue {
                 cell.textLabel!.text = "Change Email"
-                cell.detailTextLabel!.text = "rigdonmr@gmail.com"
+                cell.detailTextLabel!.text = User.sharedModel.email
             }
-            else if indexPath.row == PASSWORD_SETTING {
+            else if indexPath.row == Setting.Password.rawValue {
                 cell.textLabel!.text = "Change Password"
                 cell.detailTextLabel!.text = "XXXXXXXX"
             }
             else {
                 cell.textLabel!.text = "Change Payment"
-                cell.detailTextLabel!.text = "XXXX-XXXX-XXXX-6969"
+                cell.detailTextLabel!.text = "XXXX-XXXX-XXXX-XXXX"
             }
         }
 
@@ -97,7 +97,7 @@ class SettingsViewController: UITableViewController, IndicatorInfoProvider {
         let destVC: ChangeSettingViewController = segue.destinationViewController as! ChangeSettingViewController
         
         // Pass the selected setting to the new view controller.
-        destVC.selectedSetting = indexPath!.row
+        destVC.selectedSetting = Setting(rawValue: indexPath!.row)!
     }
 
     /*

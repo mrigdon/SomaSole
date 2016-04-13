@@ -17,8 +17,6 @@
 		621D22C41CB2DC3F00FE7581 /* SomaSoleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621D22C31CB2DC3F00FE7581 /* SomaSoleTests.swift */; };
 		621D22CF1CB2DC3F00FE7581 /* SomaSoleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621D22CE1CB2DC3F00FE7581 /* SomaSoleUITests.swift */; };
 		621D22DD1CB2DC7C00FE7581 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 621D22DC1CB2DC7C00FE7581 /* Podfile */; };
-		621D22E01CB2EA4700FE7581 /* BasicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621D22DE1CB2EA4700FE7581 /* BasicViewController.swift */; };
-		621D22E11CB2EA4700FE7581 /* BasicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 621D22DF1CB2EA4700FE7581 /* BasicViewController.xib */; };
 		621D22ED1CB2F64000FE7581 /* RequestTrainerStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621D22EB1CB2F64000FE7581 /* RequestTrainerStatusViewController.swift */; };
 		621D22F31CB3079100FE7581 /* TrainerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621D22F11CB3079100FE7581 /* TrainerDetailViewController.swift */; };
 		621D22F81CB31BE600FE7581 /* TrainerRequestConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621D22F71CB31BE600FE7581 /* TrainerRequestConfirmViewController.swift */; };
@@ -29,6 +27,8 @@
 		6260639A1CBB3E5900B1AF3C /* CreateAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626063991CBB3E5900B1AF3C /* CreateAboutViewController.swift */; };
 		62738D4C1CB57823006BFF9F /* ChangeSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62738D4B1CB57823006BFF9F /* ChangeSettingViewController.swift */; };
 		62926A951CBC33F200960F94 /* CreateLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62926A941CBC33F200960F94 /* CreateLoginViewController.swift */; };
+		62926A971CBC887700960F94 /* BasicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62926A961CBC887700960F94 /* BasicsViewController.swift */; };
+		62926A991CBCA12200960F94 /* BasicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62926A981CBCA12200960F94 /* BasicViewController.swift */; };
 		62C9E4081CB4474E005E9F48 /* InformationQuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9E4071CB4474E005E9F48 /* InformationQuestionsViewController.swift */; };
 		62C9E40E1CB44FEF005E9F48 /* PurchasesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9E40D1CB44FEF005E9F48 /* PurchasesViewController.swift */; };
 		62C9E4101CB45DC8005E9F48 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9E40F1CB45DC8005E9F48 /* SettingsViewController.swift */; };
@@ -69,8 +69,6 @@
 		621D22CE1CB2DC3F00FE7581 /* SomaSoleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomaSoleUITests.swift; sourceTree = "<group>"; };
 		621D22D01CB2DC3F00FE7581 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		621D22DC1CB2DC7C00FE7581 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		621D22DE1CB2EA4700FE7581 /* BasicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicViewController.swift; sourceTree = "<group>"; };
-		621D22DF1CB2EA4700FE7581 /* BasicViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BasicViewController.xib; sourceTree = "<group>"; };
 		621D22EB1CB2F64000FE7581 /* RequestTrainerStatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestTrainerStatusViewController.swift; sourceTree = "<group>"; };
 		621D22F11CB3079100FE7581 /* TrainerDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerDetailViewController.swift; sourceTree = "<group>"; };
 		621D22F71CB31BE600FE7581 /* TrainerRequestConfirmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerRequestConfirmViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +79,8 @@
 		626063991CBB3E5900B1AF3C /* CreateAboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAboutViewController.swift; sourceTree = "<group>"; };
 		62738D4B1CB57823006BFF9F /* ChangeSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeSettingViewController.swift; sourceTree = "<group>"; };
 		62926A941CBC33F200960F94 /* CreateLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateLoginViewController.swift; sourceTree = "<group>"; };
+		62926A961CBC887700960F94 /* BasicsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicsViewController.swift; sourceTree = "<group>"; };
+		62926A981CBCA12200960F94 /* BasicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicViewController.swift; sourceTree = "<group>"; };
 		62C9E4071CB4474E005E9F48 /* InformationQuestionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationQuestionsViewController.swift; sourceTree = "<group>"; };
 		62C9E40D1CB44FEF005E9F48 /* PurchasesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchasesViewController.swift; sourceTree = "<group>"; };
 		62C9E40F1CB45DC8005E9F48 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -182,8 +182,7 @@
 		621D22EF1CB2F65D00FE7581 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				621D22F01CB2F75E00FE7581 /* Views */,
-				621D22DE1CB2EA4700FE7581 /* BasicViewController.swift */,
+				62926A961CBC887700960F94 /* BasicsViewController.swift */,
 				62738D4B1CB57823006BFF9F /* ChangeSettingViewController.swift */,
 				62C9E4071CB4474E005E9F48 /* InformationQuestionsViewController.swift */,
 				621D22B01CB2DC3E00FE7581 /* ProfileViewController.swift */,
@@ -192,16 +191,9 @@
 				62C9E40F1CB45DC8005E9F48 /* SettingsViewController.swift */,
 				621D22F11CB3079100FE7581 /* TrainerDetailViewController.swift */,
 				621D22F71CB31BE600FE7581 /* TrainerRequestConfirmViewController.swift */,
+				62926A981CBCA12200960F94 /* BasicViewController.swift */,
 			);
 			name = Profile;
-			sourceTree = "<group>";
-		};
-		621D22F01CB2F75E00FE7581 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				621D22DF1CB2EA4700FE7581 /* BasicViewController.xib */,
-			);
-			name = Views;
 			sourceTree = "<group>";
 		};
 		626063911CBAC4CB00B1AF3C /* Models */ = {
@@ -346,7 +338,6 @@
 				621D22B61CB2DC3F00FE7581 /* Assets.xcassets in Resources */,
 				621D22DD1CB2DC7C00FE7581 /* Podfile in Resources */,
 				621D22B41CB2DC3F00FE7581 /* Main.storyboard in Resources */,
-				621D22E11CB2EA4700FE7581 /* BasicViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,14 +411,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				626063981CBB01E500B1AF3C /* PillButton.swift in Sources */,
+				62926A991CBCA12200960F94 /* BasicViewController.swift in Sources */,
 				626063931CBAC4EF00B1AF3C /* User.swift in Sources */,
 				624A94E81CB7463E00A8D21A /* LoginViewController.swift in Sources */,
 				626063951CBAEDEF00B1AF3C /* CreateBasicsViewController.swift in Sources */,
 				62C9E40E1CB44FEF005E9F48 /* PurchasesViewController.swift in Sources */,
 				621D22B11CB2DC3E00FE7581 /* ProfileViewController.swift in Sources */,
-				621D22E01CB2EA4700FE7581 /* BasicViewController.swift in Sources */,
 				62C9E4101CB45DC8005E9F48 /* SettingsViewController.swift in Sources */,
 				6260639A1CBB3E5900B1AF3C /* CreateAboutViewController.swift in Sources */,
+				62926A971CBC887700960F94 /* BasicsViewController.swift in Sources */,
 				621D22AD1CB2DC3E00FE7581 /* AppDelegate.swift in Sources */,
 				62C9E4081CB4474E005E9F48 /* InformationQuestionsViewController.swift in Sources */,
 				621D22F31CB3079100FE7581 /* TrainerDetailViewController.swift in Sources */,

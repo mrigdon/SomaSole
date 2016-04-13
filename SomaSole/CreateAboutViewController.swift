@@ -67,7 +67,7 @@ class CreateAboutViewController: UIViewController {
     func saveUserData() {
         let user = User.sharedModel
         
-        let userData: Dictionary<String, AnyObject> = [
+        var userData: Dictionary<String, AnyObject> = [
             "uid": user.uid!,
             "firstName": user.firstName!,
             "lastName": user.lastName!,
@@ -84,7 +84,9 @@ class CreateAboutViewController: UIViewController {
         firebase?.childByAppendingPath("users").childByAppendingPath(user.uid).setValue(userData)
         
         // save uid to nsuserdefaults
+        userData["password"] = User.sharedModel.password
         NSUserDefaults.standardUserDefaults().setObject(user.uid, forKey: "firebaseUID")
+        NSUserDefaults.standardUserDefaults().setObject(userData, forKey: "userData")
         NSUserDefaults.standardUserDefaults().synchronize()
         
         stopProgressHud()

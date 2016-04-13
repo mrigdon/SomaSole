@@ -61,6 +61,7 @@ class User: NSObject {
         user.firstName = data["firstName"] as? String
         user.lastName = data["lastName"] as? String
         user.email = data["email"] as? String
+        user.password = data["password"] as? String
         user.height = data["height"] as? Float
         user.weight = data["weight"] as? Float
         user.male = data["male"] as? Bool
@@ -71,6 +72,29 @@ class User: NSObject {
         let formatter = NSDateFormatter()
         formatter.dateFormat = "MM/dd/yyy"
         user.dateOfBirth = formatter.dateFromString((data["dateOfBirth"] as? String)!)
+    }
+    
+    static func data() -> Dictionary<String, AnyObject> {
+        let user = User.sharedModel
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        
+        let data: Dictionary<String, AnyObject> = [
+                "uid": user.uid!,
+                "firstName": user.firstName!,
+                "lastName": user.lastName!,
+                "email": user.email!,
+                "password": user.password!,
+                "height": user.height!,
+                "weight": user.weight!,
+                "male": user.male!,
+                "dateOfBirth": dateFormatter.stringFromDate(user.dateOfBirth!),
+                "activities": user.activities!,
+                "goals": user.goals!,
+            ]
+        
+        return data
     }
     
     static func printAllFields() {

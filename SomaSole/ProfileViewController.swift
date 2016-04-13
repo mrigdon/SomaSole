@@ -43,10 +43,11 @@ class ProfileViewController: ButtonBarPagerTabStripViewController, UINavigationB
     override func viewControllersForPagerTabStrip(pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
+        let basicsViewController = storyboard.instantiateViewControllerWithIdentifier("BasicsViewController")
         let purchasesViewController = storyboard.instantiateViewControllerWithIdentifier("PurchasesViewController")
         let settingsViewController = storyboard.instantiateViewControllerWithIdentifier("SettingsViewController")
         
-        return [BasicViewController(), purchasesViewController, settingsViewController]
+        return [basicsViewController, purchasesViewController, settingsViewController]
     }
     
     func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
