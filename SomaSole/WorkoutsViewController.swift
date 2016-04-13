@@ -16,10 +16,11 @@ class MyEmbeddedViewController: UITableViewController, IndicatorInfoProvider {
     }
 }
 
-class WorkoutsViewController: ButtonBarPagerTabStripViewController {
+class WorkoutsViewController: ButtonBarPagerTabStripViewController, UISearchControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate {
     
     let whiteColor = UIColor.whiteColor()
     let lightBlueColor: UIColor = UIColor(red: 0.568627451, green: 0.7333333333, blue: 0.968627451, alpha: 1.0)
+    var searchController: UISearchController!
 
     override func viewDidLoad() {
         // button bar customization
@@ -32,8 +33,18 @@ class WorkoutsViewController: ButtonBarPagerTabStripViewController {
         settings.style.buttonBarItemFont = UIFont.systemFontOfSize(14)
         
         super.viewDidLoad()
+        
+        // add search bar to nav bar
+        self.searchController = UISearchController(searchResultsController: nil)
+        self.searchController.searchResultsUpdater = self
+        self.searchController.delegate = self
+        self.searchController.searchBar.delegate = self
+        self.searchController.hidesNavigationBarDuringPresentation = false
+        self.searchController.dimsBackgroundDuringPresentation = true
+        self.navigationItem.titleView = self.searchController.searchBar
+        self.definesPresentationContext = true
+        (UIBarButtonItem.appearanceWhenContainedInInstancesOfClasses([UISearchBar.self])).tintColor = UIColor.whiteColor()
 
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,14 +52,14 @@ class WorkoutsViewController: ButtonBarPagerTabStripViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        print("here")
+    }
+    
     override func viewControllersForPagerTabStrip(pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
-        let basicsViewController = storyboard.instantiateViewControllerWithIdentifier("BasicsViewController")
-        let purchasesViewController = storyboard.instantiateViewControllerWithIdentifier("PurchasesViewController")
-        let settingsViewController = storyboard.instantiateViewControllerWithIdentifier("SettingsViewController")
-        
-        return [basicsViewController, purchasesViewController, settingsViewController]
+        return [MyEmbeddedViewController(), MyEmbeddedViewController(), MyEmbeddedViewController()]
     }
 
     /*
