@@ -5,7 +5,7 @@ use_frameworks!
 
 target 'SomaSole' do
     
-    pod 'XLPagerTabStrip', '~> 4.0.2'
+    pod 'XLPagerTabStrip', '~> 5.0.0'
     pod 'Firebase', '>= 2.5.1'
     pod 'TextFieldEffects'
     pod 'IQKeyboardManagerSwift'
