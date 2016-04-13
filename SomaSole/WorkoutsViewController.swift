@@ -42,7 +42,13 @@ class WorkoutsViewController: ButtonBarPagerTabStripViewController {
     }
     
     override func viewControllersForPagerTabStrip(pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
-        return [MyEmbeddedViewController(), MyEmbeddedViewController()]
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let basicsViewController = storyboard.instantiateViewControllerWithIdentifier("BasicsViewController")
+        let purchasesViewController = storyboard.instantiateViewControllerWithIdentifier("PurchasesViewController")
+        let settingsViewController = storyboard.instantiateViewControllerWithIdentifier("SettingsViewController")
+        
+        return [basicsViewController, purchasesViewController, settingsViewController]
     }
 
     /*
