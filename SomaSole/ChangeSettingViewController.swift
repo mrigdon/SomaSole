@@ -29,7 +29,7 @@ enum Setting: Int {
     case Email, Password, Payment
 }
 
-class ChangeSettingViewController: UIViewController, UINavigationBarDelegate, UITextFieldDelegate {
+class ChangeSettingViewController: UIViewController, UITextFieldDelegate {
     
     var firebase: Firebase?
     let user = User.sharedModel
@@ -46,7 +46,6 @@ class ChangeSettingViewController: UIViewController, UINavigationBarDelegate, UI
     var newEmail: String?
     var newPassword: String?
 
-    @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var settingLabel: UILabel!
     @IBOutlet weak var oldField: UITextField!
     @IBOutlet weak var newField: UITextField!
@@ -189,6 +188,9 @@ class ChangeSettingViewController: UIViewController, UINavigationBarDelegate, UI
         self.newField.placeholder = "New " + setting
         self.verifyField.placeholder = "New " + setting + " Again"
         
+        // white back button
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        
         // secure text entry if password
         self.oldField.secureTextEntry = selectedSetting == .Password
         self.newField.secureTextEntry = selectedSetting == .Password
@@ -211,10 +213,6 @@ class ChangeSettingViewController: UIViewController, UINavigationBarDelegate, UI
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
-        return .TopAttached
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {

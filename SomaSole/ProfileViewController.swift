@@ -10,13 +10,11 @@ import UIKit
 import XLPagerTabStrip
 import Firebase
 
-class ProfileViewController: ButtonBarPagerTabStripViewController, UINavigationBarDelegate {
+class ProfileViewController: ButtonBarPagerTabStripViewController/*, UINavigationBarDelegate*/ {
     
     let lightBlueColor: UIColor = UIColor(red: 0.568627451, green: 0.7333333333, blue: 0.968627451, alpha: 1.0)
     let whiteColor = UIColor.whiteColor()
     var firebase: Firebase?
-    
-    @IBOutlet weak var navBar: UINavigationBar!
     
     override func viewDidLoad() {
         // button bar customization
@@ -49,11 +47,6 @@ class ProfileViewController: ButtonBarPagerTabStripViewController, UINavigationB
         
         return [basicsViewController, purchasesViewController, settingsViewController]
     }
-    
-    func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
-        return .TopAttached
-    }
-
 
 }
 
