@@ -16,6 +16,10 @@ extension WorkoutsViewController: UISearchResultsUpdating {
 
 class WorkoutsViewController: UITableViewController {
     
+    let filterCellSize: CGFloat = 44
+    let workoutCellSize: CGFloat = 100
+    let lightBlueColor: UIColor = UIColor(red: 0.568627451, green: 0.7333333333, blue: 0.968627451, alpha: 1.0)
+    
     let searchController = UISearchController(searchResultsController: nil)
     let workouts = ["Boulder Shoulders", "Tibata", "Abs till you die"]
     
@@ -35,6 +39,9 @@ class WorkoutsViewController: UITableViewController {
         // set up search controller
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.scopeButtonTitles = ["All", "Favorites"]
+        searchController.searchBar.barTintColor = lightBlueColor
+        searchController.searchBar.tintColor = UIColor.whiteColor()
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
         
@@ -75,10 +82,10 @@ class WorkoutsViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if !searchController.active {
-            return 100
+            return workoutCellSize
         }
         
-        return 44
+        return filterCellSize
     }
 
     /*
