@@ -25,10 +25,10 @@
 		626063981CBB01E500B1AF3C /* PillButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626063971CBB01E500B1AF3C /* PillButton.swift */; };
 		6260639A1CBB3E5900B1AF3C /* CreateAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626063991CBB3E5900B1AF3C /* CreateAboutViewController.swift */; };
 		62738D4C1CB57823006BFF9F /* ChangeSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62738D4B1CB57823006BFF9F /* ChangeSettingViewController.swift */; };
-		628DB73B1CBDEB640048F09C /* WorkoutsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628DB73A1CBDEB640048F09C /* WorkoutsViewController.swift */; };
 		62926A951CBC33F200960F94 /* CreateLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62926A941CBC33F200960F94 /* CreateLoginViewController.swift */; };
 		62926A971CBC887700960F94 /* BasicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62926A961CBC887700960F94 /* BasicsViewController.swift */; };
 		62926A991CBCA12200960F94 /* BasicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62926A981CBCA12200960F94 /* BasicViewController.swift */; };
+		62B1AB931CC1D6F3007069E5 /* WorkoutsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B1AB921CC1D6F3007069E5 /* WorkoutsViewController.swift */; };
 		62C9E4081CB4474E005E9F48 /* InformationQuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9E4071CB4474E005E9F48 /* InformationQuestionsViewController.swift */; };
 		62C9E40E1CB44FEF005E9F48 /* PurchasesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9E40D1CB44FEF005E9F48 /* PurchasesViewController.swift */; };
 		62C9E4101CB45DC8005E9F48 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9E40F1CB45DC8005E9F48 /* SettingsViewController.swift */; };
@@ -77,10 +77,10 @@
 		626063971CBB01E500B1AF3C /* PillButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PillButton.swift; sourceTree = "<group>"; };
 		626063991CBB3E5900B1AF3C /* CreateAboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAboutViewController.swift; sourceTree = "<group>"; };
 		62738D4B1CB57823006BFF9F /* ChangeSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeSettingViewController.swift; sourceTree = "<group>"; };
-		628DB73A1CBDEB640048F09C /* WorkoutsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutsViewController.swift; sourceTree = "<group>"; };
 		62926A941CBC33F200960F94 /* CreateLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateLoginViewController.swift; sourceTree = "<group>"; };
 		62926A961CBC887700960F94 /* BasicsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicsViewController.swift; sourceTree = "<group>"; };
 		62926A981CBCA12200960F94 /* BasicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicViewController.swift; sourceTree = "<group>"; };
+		62B1AB921CC1D6F3007069E5 /* WorkoutsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutsViewController.swift; sourceTree = "<group>"; };
 		62C9E4071CB4474E005E9F48 /* InformationQuestionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationQuestionsViewController.swift; sourceTree = "<group>"; };
 		62C9E40D1CB44FEF005E9F48 /* PurchasesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchasesViewController.swift; sourceTree = "<group>"; };
 		62C9E40F1CB45DC8005E9F48 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -148,6 +148,7 @@
 		621D22AB1CB2DC3E00FE7581 /* SomaSole */ = {
 			isa = PBXGroup;
 			children = (
+				627A5B371CC1B58C0081BBFE /* UI */,
 				626063911CBAC4CB00B1AF3C /* Models */,
 				628DB7391CBDE4680048F09C /* Workouts */,
 				621D22EF1CB2F65D00FE7581 /* Profile */,
@@ -209,17 +210,24 @@
 			children = (
 				624A94E71CB7463E00A8D21A /* LoginViewController.swift */,
 				626063941CBAEDEF00B1AF3C /* CreateBasicsViewController.swift */,
-				626063971CBB01E500B1AF3C /* PillButton.swift */,
 				626063991CBB3E5900B1AF3C /* CreateAboutViewController.swift */,
 				62926A941CBC33F200960F94 /* CreateLoginViewController.swift */,
 			);
 			name = Login;
 			sourceTree = "<group>";
 		};
+		627A5B371CC1B58C0081BBFE /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				626063971CBB01E500B1AF3C /* PillButton.swift */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
 		628DB7391CBDE4680048F09C /* Workouts */ = {
 			isa = PBXGroup;
 			children = (
-				628DB73A1CBDEB640048F09C /* WorkoutsViewController.swift */,
+				62B1AB921CC1D6F3007069E5 /* WorkoutsViewController.swift */,
 			);
 			name = Workouts;
 			sourceTree = "<group>";
@@ -426,7 +434,7 @@
 				62C9E40E1CB44FEF005E9F48 /* PurchasesViewController.swift in Sources */,
 				621D22B11CB2DC3E00FE7581 /* ProfileViewController.swift in Sources */,
 				62C9E4101CB45DC8005E9F48 /* SettingsViewController.swift in Sources */,
-				628DB73B1CBDEB640048F09C /* WorkoutsViewController.swift in Sources */,
+				62B1AB931CC1D6F3007069E5 /* WorkoutsViewController.swift in Sources */,
 				6260639A1CBB3E5900B1AF3C /* CreateAboutViewController.swift in Sources */,
 				62926A971CBC887700960F94 /* BasicsViewController.swift in Sources */,
 				621D22AD1CB2DC3E00FE7581 /* AppDelegate.swift in Sources */,

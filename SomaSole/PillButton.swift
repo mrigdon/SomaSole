@@ -11,8 +11,8 @@ import UIKit
 @IBDesignable
 class PillButton: UIButton {
     
-    let opaqueBlackColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
-    let opaqueBlueColor = UIColor(red: 0, green: 0, blue: 1, alpha: 0.5)
+    var blackColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+    var blueColor = UIColor(red: 0, green: 0, blue: 1, alpha: 0.5)
     
     var selectedByUser: Bool = false
     var activity: Activity?
@@ -25,20 +25,27 @@ class PillButton: UIButton {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        self.backgroundColor = opaqueBlackColor
+        self.backgroundColor = blackColor
         self.layer.cornerRadius = 5
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         super.touchesEnded(touches, withEvent: event)
         if !selectedByUser {
-            self.backgroundColor = opaqueBlueColor
+            self.backgroundColor = blueColor
             selectedByUser = true
         }
         else {
-            self.backgroundColor = opaqueBlackColor
+            self.backgroundColor = blackColor
             selectedByUser = false
         }
+    }
+    
+    func makeOpaque() {
+        blackColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+        blueColor = UIColor(red: 0, green: 0, blue: 1, alpha: 1)
+        
+        self.backgroundColor = selectedByUser ? blueColor : blackColor
     }
 
     /*

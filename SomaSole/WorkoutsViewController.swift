@@ -2,65 +2,119 @@
 //  WorkoutsViewController.swift
 //  SomaSole
 //
-//  Created by Matthew Rigdon on 4/12/16.
+//  Created by Matthew Rigdon on 4/15/16.
 //  Copyright © 2016 SomaSole. All rights reserved.
 //
 
 import UIKit
-import XLPagerTabStrip
 
-class MyEmbeddedViewController: UITableViewController, IndicatorInfoProvider {
-    
-    func indicatorInfoForPagerTabStrip(pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "My Child title")
+extension WorkoutsViewController: UISearchResultsUpdating {
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        filterContentForSearchText(searchController.searchBar.text!)
     }
 }
 
-class WorkoutsViewController: ButtonBarPagerTabStripViewController, UISearchControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate {
+class WorkoutsViewController: UITableViewController {
     
-    let whiteColor = UIColor.whiteColor()
-    let lightBlueColor: UIColor = UIColor(red: 0.568627451, green: 0.7333333333, blue: 0.968627451, alpha: 1.0)
-    var searchController: UISearchController!
+    let searchController = UISearchController(searchResultsController: nil)
+    let workouts = ["Boulder Shoulders", "Tibata", "Abs till you die"]
+    
+    func filterContentForSearchText(searchText: String, scope: String = "All") {
+        tableView.reloadData()
+    }
 
     override func viewDidLoad() {
-        // button bar customization
-        settings.style.buttonBarHeight = 40
-        settings.style.buttonBarBackgroundColor = whiteColor
-        settings.style.buttonBarItemBackgroundColor = whiteColor
-        settings.style.selectedBarBackgroundColor = lightBlueColor
-        settings.style.buttonBarItemTitleColor = lightBlueColor
-        settings.style.buttonBarMinimumLineSpacing = 0.0
-        settings.style.buttonBarItemFont = UIFont.systemFontOfSize(14)
-        
         super.viewDidLoad()
-        
-        // add search bar to nav bar
-        self.searchController = UISearchController(searchResultsController: nil)
-        self.searchController.searchResultsUpdater = self
-        self.searchController.delegate = self
-        self.searchController.searchBar.delegate = self
-        self.searchController.hidesNavigationBarDuringPresentation = false
-        self.searchController.dimsBackgroundDuringPresentation = true
-        self.navigationItem.titleView = self.searchController.searchBar
-        self.definesPresentationContext = true
-        (UIBarButtonItem.appearanceWhenContainedInInstancesOfClasses([UISearchBar.self])).tintColor = UIColor.whiteColor()
 
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        // set up search controller
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        tableView.tableHeaderView = searchController.searchBar
+        
+        // no extra cells
+        self.tableView.tableFooterView = UIView(frame: CGRect.zero)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    func updateSearchResultsForSearchController(searchController: UISearchController) {
-        print("here")
+
+    // MARK: - Table view data source
+
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
     }
-    
-    override func viewControllersForPagerTabStrip(pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searchController.active {
+            return 1
+        }
         
-        return [MyEmbeddedViewController(), MyEmbeddedViewController(), MyEmbeddedViewController()]
+        return workouts.count
     }
+
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cellType = searchController.active ? "cell" : "workoutCell"
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellType, forIndexPath: indexPath)
+
+        // Configure the cell...
+        if !searchController.active {
+            cell.textLabel?.text = workouts[indexPath.row]
+        }
+
+        return cell
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if !searchController.active {
+            return 100
+        }
+        
+        return 44
+    }
+
+    /*
+    // Override to support conditional editing of the table view.
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        // Return false if you do not want the specified item to be editable.
+        return true
+    }
+    */
+
+    /*
+    // Override to support editing the table view.
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            // Delete the row from the data source
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        } else if editingStyle == .Insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }    
+    }
+    */
+
+    /*
+    // Override to support rearranging the table view.
+    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
+
+    }
+    */
+
+    /*
+    // Override to support conditional rearranging of the table view.
+    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        // Return false if you do not want the item to be re-orderable.
+        return true
+    }
+    */
 
     /*
     // MARK: - Navigation
