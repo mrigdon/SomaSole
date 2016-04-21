@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2964BECF70D5E766CDDF32FF /* Pods_SomaSole.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10769821E015672B332BE0A5 /* Pods_SomaSole.framework */; };
+		6215F3091CC9704C00E2A995 /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6215F3081CC9704C00E2A995 /* TagCell.swift */; };
+		6215F30B1CC9805900E2A995 /* WorkoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6215F30A1CC9805900E2A995 /* WorkoutCell.swift */; };
 		621D22AD1CB2DC3E00FE7581 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621D22AC1CB2DC3E00FE7581 /* AppDelegate.swift */; };
 		621D22B11CB2DC3E00FE7581 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621D22B01CB2DC3E00FE7581 /* ProfileViewController.swift */; };
 		621D22B41CB2DC3F00FE7581 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 621D22B21CB2DC3F00FE7581 /* Main.storyboard */; };
@@ -29,6 +31,7 @@
 		62926A971CBC887700960F94 /* BasicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62926A961CBC887700960F94 /* BasicsViewController.swift */; };
 		62926A991CBCA12200960F94 /* BasicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62926A981CBCA12200960F94 /* BasicViewController.swift */; };
 		62B1AB931CC1D6F3007069E5 /* WorkoutsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B1AB921CC1D6F3007069E5 /* WorkoutsViewController.swift */; };
+		62C8413E1CC6F5D700468726 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C8413D1CC6F5D700468726 /* FilterViewController.swift */; };
 		62C9E4081CB4474E005E9F48 /* InformationQuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9E4071CB4474E005E9F48 /* InformationQuestionsViewController.swift */; };
 		62C9E40E1CB44FEF005E9F48 /* PurchasesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9E40D1CB44FEF005E9F48 /* PurchasesViewController.swift */; };
 		62C9E4101CB45DC8005E9F48 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9E40F1CB45DC8005E9F48 /* SettingsViewController.swift */; };
@@ -54,6 +57,8 @@
 /* Begin PBXFileReference section */
 		10769821E015672B332BE0A5 /* Pods_SomaSole.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SomaSole.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		442FE767159F91E46B63C384 /* Pods-SomaSole.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SomaSole.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SomaSole/Pods-SomaSole.debug.xcconfig"; sourceTree = "<group>"; };
+		6215F3081CC9704C00E2A995 /* TagCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
+		6215F30A1CC9805900E2A995 /* WorkoutCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutCell.swift; sourceTree = "<group>"; };
 		621D22A91CB2DC3E00FE7581 /* SomaSole.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SomaSole.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		621D22AC1CB2DC3E00FE7581 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		621D22B01CB2DC3E00FE7581 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +86,7 @@
 		62926A961CBC887700960F94 /* BasicsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicsViewController.swift; sourceTree = "<group>"; };
 		62926A981CBCA12200960F94 /* BasicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicViewController.swift; sourceTree = "<group>"; };
 		62B1AB921CC1D6F3007069E5 /* WorkoutsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutsViewController.swift; sourceTree = "<group>"; };
+		62C8413D1CC6F5D700468726 /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		62C9E4071CB4474E005E9F48 /* InformationQuestionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationQuestionsViewController.swift; sourceTree = "<group>"; };
 		62C9E40D1CB44FEF005E9F48 /* PurchasesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchasesViewController.swift; sourceTree = "<group>"; };
 		62C9E40F1CB45DC8005E9F48 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -220,6 +226,8 @@
 			isa = PBXGroup;
 			children = (
 				626063971CBB01E500B1AF3C /* PillButton.swift */,
+				6215F3081CC9704C00E2A995 /* TagCell.swift */,
+				6215F30A1CC9805900E2A995 /* WorkoutCell.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -228,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				62B1AB921CC1D6F3007069E5 /* WorkoutsViewController.swift */,
+				62C8413D1CC6F5D700468726 /* FilterViewController.swift */,
 			);
 			name = Workouts;
 			sourceTree = "<group>";
@@ -438,7 +447,10 @@
 				6260639A1CBB3E5900B1AF3C /* CreateAboutViewController.swift in Sources */,
 				62926A971CBC887700960F94 /* BasicsViewController.swift in Sources */,
 				621D22AD1CB2DC3E00FE7581 /* AppDelegate.swift in Sources */,
+				6215F3091CC9704C00E2A995 /* TagCell.swift in Sources */,
 				62C9E4081CB4474E005E9F48 /* InformationQuestionsViewController.swift in Sources */,
+				62C8413E1CC6F5D700468726 /* FilterViewController.swift in Sources */,
+				6215F30B1CC9805900E2A995 /* WorkoutCell.swift in Sources */,
 				621D22F31CB3079100FE7581 /* TrainerDetailViewController.swift in Sources */,
 				62926A951CBC33F200960F94 /* CreateLoginViewController.swift in Sources */,
 				621D22ED1CB2F64000FE7581 /* RequestTrainerStatusViewController.swift in Sources */,

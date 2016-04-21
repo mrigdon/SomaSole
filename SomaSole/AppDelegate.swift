@@ -14,14 +14,12 @@ import Firebase
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-    func getUserDataAndLogin(uid: String) {
-        let firebase = Firebase(url: "http://somasole.firebaseio.com")
-        firebase?.childByAppendingPath("users").childByAppendingPath(uid).observeEventType(.Value, withBlock: { snapshot in
-            // populate shared model with data
-            let userData: Dictionary<String, AnyObject> = snapshot.value as! Dictionary<String, AnyObject>
-            User.populateFields(userData)
-        })
+    
+    override init() {
+        super.init()
+        
+        // enable firebase offine capabilities
+        Firebase.defaultConfig().persistenceEnabled = true
     }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {

@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import Firebase
+import MBProgressHUD
+import TagListView
 
 extension WorkoutsViewController: UISearchResultsUpdating {
     func updateSearchResultsForSearchController(searchController: UISearchController) {
@@ -16,15 +19,45 @@ extension WorkoutsViewController: UISearchResultsUpdating {
 
 class WorkoutsViewController: UITableViewController {
     
+    let firebase = Firebase(url: "http://somasole.firebaseio.com")
     let filterCellSize: CGFloat = 44
-    let workoutCellSize: CGFloat = 100
+    let workoutCellSize: CGFloat = 0.51575 * UIScreen.mainScreen().bounds.width
     let lightBlueColor: UIColor = UIColor(red: 0.568627451, green: 0.7333333333, blue: 0.968627451, alpha: 1.0)
-    
     let searchController = UISearchController(searchResultsController: nil)
-    let workouts = ["Boulder Shoulders", "Tibata", "Abs till you die"]
+    var workouts = [String]()
+    var filteredWorkouts = [String]()
+    var selectedFilters = [String]()
+    
+    @IBOutlet weak var tagListView: TagListView!
+    
+    func startProgressHud() {
+        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+    }
+    
+    func stopProgressHud() {
+        dispatch_async(dispatch_get_main_queue(), {
+            MBProgressHUD.hideHUDForView(self.view, animated: true)
+        })
+    }
     
     func filterContentForSearchText(searchText: String, scope: String = "All") {
-        tableView.reloadData()
+        filteredWorkouts = workouts.filter { workout in
+            return workout.lowercaseString.containsString(searchText.lowercaseString)
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), {
+            self.tableView.reloadData()
+        })
+    }
+    
+    func loadWorkouts() {
+        firebase.childByAppendingPath("workouts").observeEventType(.Value, withBlock: { data in
+            self.workouts = data.value as! [String]
+            self.stopProgressHud()
+            dispatch_async(dispatch_get_main_queue(), {
+                self.tableView.reloadData()
+            })
+        })
     }
 
     override func viewDidLoad() {
@@ -36,17 +69,28 @@ class WorkoutsViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
+        // begin load of all workouts
+        startProgressHud()
+        loadWorkouts()
+        
         // set up search controller
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchBar.scopeButtonTitles = ["All", "Favorites"]
         searchController.searchBar.barTintColor = lightBlueColor
         searchController.searchBar.tintColor = UIColor.whiteColor()
+        searchController.searchBar.layer.borderWidth = 0.0
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
         
         // no extra cells
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
+        
+        self.selectedFilters = ["test", "test", "testf"]
+        
+        // auto resize based on centent
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = workoutCellSize
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,30 +106,41 @@ class WorkoutsViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searchController.active {
-            return 1
+            return filteredWorkouts.count + 1
         }
-        
         return workouts.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cellType = searchController.active ? "cell" : "workoutCell"
+        // get correct cellType
+        var cellType = ""
+        if searchController.active && indexPath.row == 0 {
+            cellType = selectedFilters.count > 0 ? "tagCell" : "cell"
+        }
+        else {
+            cellType = "workoutCell"
+        }
+        
+        // create cell
         let cell = tableView.dequeueReusableCellWithIdentifier(cellType, forIndexPath: indexPath)
 
-        // Configure the cell...
-        if !searchController.active {
-            cell.textLabel?.text = workouts[indexPath.row]
+        // tag cell
+        if searchController.active && indexPath.row == 0 && selectedFilters.count > 0 {
+            (cell as! TagCell).addFilters([])
+            // auto resize based on centent
+            self.tableView.rowHeight = UITableViewAutomaticDimension
+            self.tableView.estimatedRowHeight = workoutCellSize
+        }
+        // filtered workout cell
+        if searchController.active && indexPath.row > 0 {
+            self.tableView.rowHeight = workoutCellSize
+        }
+        // workout cell
+        else if !searchController.active {
+            self.tableView.rowHeight = workoutCellSize
         }
 
         return cell
-    }
-    
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if !searchController.active {
-            return workoutCellSize
-        }
-        
-        return filterCellSize
     }
 
     /*

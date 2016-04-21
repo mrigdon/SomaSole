@@ -11,6 +11,7 @@ target 'SomaSole' do
     pod 'IQKeyboardManagerSwift'
     pod 'MBProgressHUD', '~> 0.9.2'
     pod 'ALCameraViewController'
+    pod 'TagListView', '~> 1.0'
 
 end
 

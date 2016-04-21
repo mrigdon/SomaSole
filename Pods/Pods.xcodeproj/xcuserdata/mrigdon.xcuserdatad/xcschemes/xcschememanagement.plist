@@ -29,6 +29,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>TagListView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>TextFieldEffects.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -57,12 +62,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1EBC1071247978EBA54551FF85282134</key>
+		<key>422654A809E58747581F03BFD5940725</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A84E9F2DB354031D30E8812CF7EF155B</key>
+		<key>B40E6D2C9D75915ABCA90F706AC529ED</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -72,17 +77,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CFB1CF8D9776109DFF7D0B03EB5CB6B2</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E2BD8E56A257B49CFC04DD8B1A9DD7E9</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>E61CE3B6DFA1FE6B3E296965C76C0E10</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EA676B13978EB4682CE1ED078AF3D3DF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F4415607677611186535B878D590A828</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FC765D2C18CDFCA7B287B8C87A0CCD35</key>
 		<dict>
 			<key>primary</key>
 			<true/>
