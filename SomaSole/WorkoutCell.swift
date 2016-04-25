@@ -12,19 +12,22 @@ class WorkoutCell: UITableViewCell {
     
     let workoutCellSize: CGFloat = 0.51575 * UIScreen.mainScreen().bounds.width
     
+    var workout: Workout?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
-        // set background image
-        let workoutImageView = UIImageView(image: UIImage(named: "boulder_shoulders"))
-        self.backgroundView = workoutImageView
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func associateWorkout(workout: Workout) {
+        self.workout = workout
+        self.backgroundView = UIImageView(image: UIImage(named: workout.imageName))
     }
 
 }

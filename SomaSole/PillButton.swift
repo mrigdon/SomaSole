@@ -41,6 +41,11 @@ class PillButton: UIButton {
         }
     }
     
+    func setSelected() {
+        self.backgroundColor = blueColor
+        selectedByUser = true
+    }
+    
     func makeOpaque() {
         blackColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
         blueColor = UIColor(red: 0, green: 0, blue: 1, alpha: 1)

@@ -24,8 +24,9 @@ class WorkoutsViewController: UITableViewController {
     let workoutCellSize: CGFloat = 0.51575 * UIScreen.mainScreen().bounds.width
     let lightBlueColor: UIColor = UIColor(red: 0.568627451, green: 0.7333333333, blue: 0.968627451, alpha: 1.0)
     let searchController = UISearchController(searchResultsController: nil)
-    var workouts = [String]()
-    var filteredWorkouts = [String]()
+    
+    var workouts = [Workout]()
+    var filteredWorkouts = [Workout]()
     var selectedFilters = [String]()
     
     @IBOutlet weak var tagListView: TagListView!
@@ -42,7 +43,7 @@ class WorkoutsViewController: UITableViewController {
     
     func filterContentForSearchText(searchText: String, scope: String = "All") {
         filteredWorkouts = workouts.filter { workout in
-            return workout.lowercaseString.containsString(searchText.lowercaseString)
+            return workout.title.lowercaseString.containsString(searchText.lowercaseString)
         }
         
         dispatch_async(dispatch_get_main_queue(), {
@@ -52,7 +53,12 @@ class WorkoutsViewController: UITableViewController {
     
     func loadWorkouts() {
         firebase.childByAppendingPath("workouts").observeEventType(.Value, withBlock: { data in
-            self.workouts = data.value as! [String]
+            // load workouts
+            let workoutTitles = data.value as! [String]
+            for (index, title) in workoutTitles.enumerate() {
+                self.workouts.append(Workout(index: WorkoutIndex(rawValue: index)!, title: title))
+            }
+            
             self.stopProgressHud()
             dispatch_async(dispatch_get_main_queue(), {
                 self.tableView.reloadData()
@@ -86,8 +92,6 @@ class WorkoutsViewController: UITableViewController {
         // no extra cells
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
         
-        self.selectedFilters = ["test", "test", "testf"]
-        
         // auto resize based on centent
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = workoutCellSize
@@ -108,6 +112,7 @@ class WorkoutsViewController: UITableViewController {
         if searchController.active {
             return filteredWorkouts.count + 1
         }
+        
         return workouts.count
     }
 
@@ -123,24 +128,54 @@ class WorkoutsViewController: UITableViewController {
         
         // create cell
         let cell = tableView.dequeueReusableCellWithIdentifier(cellType, forIndexPath: indexPath)
-
-        // tag cell
-        if searchController.active && indexPath.row == 0 && selectedFilters.count > 0 {
-            (cell as! TagCell).addFilters([])
-            // auto resize based on centent
-            self.tableView.rowHeight = UITableViewAutomaticDimension
-            self.tableView.estimatedRowHeight = workoutCellSize
-        }
-        // filtered workout cell
-        if searchController.active && indexPath.row > 0 {
+        
+        // customize cell for each case
+        if !searchController.active {
+            // all workouts
             self.tableView.rowHeight = workoutCellSize
+            let workout = workouts[indexPath.row]
+            (cell as! WorkoutCell).associateWorkout(workout)
         }
-        // workout cell
-        else if !searchController.active {
+        else if indexPath.row == 0 {
+            if selectedFilters.count == 0 {
+                // filter cell with no tags
+                self.tableView.rowHeight = filterCellSize
+            }
+            else {
+                // filter cell with tags
+                (cell as! TagCell).addFilters(selectedFilters)
+                self.tableView.rowHeight = UITableViewAutomaticDimension
+                self.tableView.estimatedRowHeight = workoutCellSize
+            }
+        }
+        else {
+            // filtered workouts
             self.tableView.rowHeight = workoutCellSize
+            let workout = filteredWorkouts[indexPath.row - 1] // - 1 because of the tag cell
+            (cell as! WorkoutCell).associateWorkout(workout)
         }
 
         return cell
+    }
+    
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        let filterVC = segue.destinationViewController as! FilterViewController
+        
+        // Pass the selected object to the new view controller.
+        filterVC.selectedFilters = self.selectedFilters
+        filterVC.addFilterClosure = { filter, adding in
+            if adding {
+                self.selectedFilters.append(filter)
+            }
+            else {
+                let index = self.selectedFilters.indexOf(filter)
+                self.selectedFilters.removeAtIndex(index!)
+            }
+        }
     }
 
     /*
@@ -175,16 +210,6 @@ class WorkoutsViewController: UITableViewController {
     override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return false if you do not want the item to be re-orderable.
         return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
     }
     */
 

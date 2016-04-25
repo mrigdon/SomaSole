@@ -9,7 +9,25 @@
 import UIKit
 
 class FilterViewController: UIViewController {
+    
+    var addFilterClosure: ((filter: String, adding: Bool) -> Void)?
+    var selectedFilters: [String]!
 
+    @IBOutlet weak var upperBodyPill: PillButton!
+    @IBOutlet weak var lowerBodyPill: PillButton!
+    @IBOutlet weak var corePill: PillButton!
+    @IBOutlet weak var totalBodyPill: PillButton!
+    @IBOutlet weak var sportsSpecificPill: PillButton!
+    @IBOutlet weak var challengesPill: PillButton!
+    
+    @IBAction func tappedFilterButton(sender: AnyObject) {
+        let filterButton = sender as! PillButton
+        
+        let adding = !filterButton.selectedByUser
+        
+        addFilterClosure!(filter: (filterButton.titleLabel?.text)!, adding: adding)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -17,6 +35,22 @@ class FilterViewController: UIViewController {
         
         // customize nav bar
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        
+        // associate filter titles with their pill
+        let filterPillDict = [
+            "Upper Body": upperBodyPill,
+            "Lower Body": lowerBodyPill,
+            "Core": corePill,
+            "Total Body": totalBodyPill,
+            "Sports Specific": sportsSpecificPill,
+            "Challenges": challengesPill
+        ]
+        
+        // set selected pills
+        for filter in self.selectedFilters {
+            let selectedPill = filterPillDict[filter]
+            selectedPill!.setSelected()
+        }
     }
 
     override func didReceiveMemoryWarning() {

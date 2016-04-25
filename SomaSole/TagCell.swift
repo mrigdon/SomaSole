@@ -19,9 +19,11 @@ class TagCell: UITableViewCell {
     @IBOutlet weak var tagListView: TagListView!
     
     func addFilters(filters: [String]) {
-        self.tagListView.addTag("First")
-        self.tagListView.addTag("Second")
-        self.tagListView.addTag("Third")
+        tagListView.removeAllTags()
+        
+        for filter in filters {
+            self.tagListView.addTag(filter)
+        }
     }
     
     override func awakeFromNib() {
