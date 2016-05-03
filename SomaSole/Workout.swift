@@ -12,6 +12,37 @@ enum WorkoutIndex: Int {
     case AbShred, AnchorAbs, Armageddon, BackToBack, BootyBlaster, BoulderShoulders, CoolDown, GetFunctional, GroundAttack, Intensity, JumpTraining, LeanLegs, Obliques, Plank, PowerUp, PreParty, Stretch, Sweat, UpperBodyBlast
 }
 
+enum WorkoutTag: Int {
+    case Core, UpperBody, LowerBody, TotalBody
+}
+
+class Movement: NSObject {
+
+    var title: String
+    
+    init(title: String) {
+        self.title = title
+    }
+
+}
+
+class Circuit: NSObject {
+    
+    var numSets: Int
+    var movements: [(Movement, Int)] = []
+    
+    init(data: [String:AnyObject]) {
+        self.numSets = data["sets"] as! Int
+        
+        let movementsData = data["movements"] as! [[String:Int]]
+        for movementData in movementsData {
+            let movement = (Movement(title: movementData.first!.0), movementData.first!.1)
+            movements.append(movement)
+        }
+    }
+    
+}
+
 class Workout: NSObject {
     
     let workoutImageNames = [
@@ -37,12 +68,33 @@ class Workout: NSObject {
     ]
     
     var index: WorkoutIndex
-    var title: String
+    var name: String
+    var time: Int
+    var intensity: Int
+    var workoutDescription: String
     var imageName: String
+    var circuits: [Circuit] = []
     
-    init(index: WorkoutIndex, title: String) {
-        self.index = index
-        self.title = title
+    init(index: Int, data: [String:AnyObject]) {
+        self.index = WorkoutIndex(rawValue: index)!
+        self.name = data["name"] as! String
         self.imageName = workoutImageNames[self.index]!
+        self.time = data["time"] as! Int
+        self.intensity = data["intensity"] as! Int
+        self.workoutDescription = data["description"] as! String
+        
+        let circuitsData = data["circuits"] as! [[String:AnyObject]]
+        for circuitData in circuitsData {
+            let circuit = Circuit(data: circuitData)
+            circuits.append(circuit)
+        }
+    }
+    
+    func printAll() {
+        print("index: \(index)")
+        print("name: \(name)")
+        print("time: \(time)")
+        print("intensity: \(intensity)")
+        print("description: \(workoutDescription)")
     }
 }

@@ -43,7 +43,7 @@ class WorkoutsViewController: UITableViewController {
     
     func filterContentForSearchText(searchText: String, scope: String = "All") {
         filteredWorkouts = workouts.filter { workout in
-            return workout.title.lowercaseString.containsString(searchText.lowercaseString)
+            return workout.name.lowercaseString.containsString(searchText.lowercaseString)
         }
         
         dispatch_async(dispatch_get_main_queue(), {
@@ -52,12 +52,10 @@ class WorkoutsViewController: UITableViewController {
     }
     
     func loadWorkouts() {
-        firebase.childByAppendingPath("workouts").observeEventType(.Value, withBlock: { data in
+        firebase.childByAppendingPath("workouts").observeEventType(.ChildAdded, withBlock: { snapshot in
             // load workouts
-            let workoutTitles = data.value as! [String]
-            for (index, title) in workoutTitles.enumerate() {
-                self.workouts.append(Workout(index: WorkoutIndex(rawValue: index)!, title: title))
-            }
+            let workout = Workout(index: Int(snapshot.key)!, data: snapshot.value as! [String : AnyObject])
+            self.workouts.append(workout)
             
             self.stopProgressHud()
             dispatch_async(dispatch_get_main_queue(), {
@@ -162,18 +160,26 @@ class WorkoutsViewController: UITableViewController {
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        let filterVC = segue.destinationViewController as! FilterViewController
-        
-        // Pass the selected object to the new view controller.
-        filterVC.selectedFilters = self.selectedFilters
-        filterVC.addFilterClosure = { filter, adding in
-            if adding {
-                self.selectedFilters.append(filter)
-            }
-            else {
-                let index = self.selectedFilters.indexOf(filter)
-                self.selectedFilters.removeAtIndex(index!)
+        if segue.identifier == "workoutSegue" {
+            let beginVC = segue.destinationViewController as! BeginWorkoutViewController
+            let index = self.tableView.indexPathForSelectedRow?.row
+            beginVC.workout = workouts[index!]
+        }
+        else {
+            // Get the new view controller using segue.destinationViewController.
+            let filterVC = segue.destinationViewController as! FilterViewController
+            
+            // Pass the selected object to the new view controller.
+            filterVC.selectedFilters = self.selectedFilters
+            filterVC.addFilterClosure = { filter, adding in
+                if adding {
+                    self.selectedFilters.append(filter)
+                    
+                }
+                else {
+                    let index = self.selectedFilters.indexOf(filter)
+                    self.selectedFilters.removeAtIndex(index!)
+                }
             }
         }
     }
