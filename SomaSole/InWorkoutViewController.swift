@@ -10,15 +10,40 @@ import UIKit
 
 class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    // constants
+    let screenWidth = UIScreen.mainScreen().bounds.width
+    
     // variables
     var workout: Workout?
     var labels: [String] = []
     var detailLabels: [String?] = []
+    var movements = [(Movement, Int)?]()
+    var animationCells = [MovementCell]()
 
     // outlets
     @IBOutlet weak var movementImageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var playPauseButton: UIBarButtonItem!
+    
+    // methods
+    private func animateProgressView(cell: MovementCell) {
+        cell.layoutIfNeeded()
+        cell.progressViewWidth.constant = self.screenWidth
+        UIView.animateWithDuration(Double(cell.movement!.1), animations: {
+            cell.layoutIfNeeded()
+        })
+    }
+    
+    private func beginWorkout(index: Int) {
+        animationCells[index].layoutIfNeeded()
+        animationCells[index].progressViewWidth.constant = self.screenWidth
+        UIView.animateWithDuration(Double(animationCells[index].movement!.1), animations: {
+                self.animationCells[index].layoutIfNeeded()
+            }, completion: { finished in
+                self.beginWorkout(index+1)
+            }
+        )
+    }
     
     // actions
     @IBAction func tappedX(sender: AnyObject) {
@@ -37,9 +62,11 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
         for (index, circuit) in self.workout!.circuits.enumerate() {
             labels.append("Circuit \(index+1)")
             detailLabels.append("Set 1/\(circuit.numSets)")
+            movements.append(nil)
             for movement in circuit.movements {
                 labels.append(movement.0.title)
                 detailLabels.append("\(movement.1)s")
+                movements.append(movement)
             }
         }
     }
@@ -59,14 +86,13 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("movementCell", forIndexPath: indexPath) as! MovementCell
         
-        cell.textLabel?.text = self.labels[indexPath.row]
-        cell.detailTextLabel?.text = self.detailLabels[indexPath.row]
+        cell.nameLabel.text = self.labels[indexPath.row]
+        cell.timeLabel.text = self.detailLabels[indexPath.row]
         
         return cell
     }
-    
 
     /*
     // MARK: - Navigation

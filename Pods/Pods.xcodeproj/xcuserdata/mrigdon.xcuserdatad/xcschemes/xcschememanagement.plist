@@ -29,6 +29,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Static.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>TagListView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -57,17 +62,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>1495EA942D27B8768DBB712160B88549</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>1520003FEBEC114D6C84F832AFEDB994</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>422654A809E58747581F03BFD5940725</key>
+		<key>6F2758D2F6F6745D3C7F605D21B9F7E7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B40E6D2C9D75915ABCA90F706AC529ED</key>
+		<key>A7CAB29350753D47825DC7B01440CFE3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -77,22 +87,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>B984A2E720E9934B269BCE791ADF96FC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B9D7C5ABE81AACA8355EF6F5CCDB56A3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>E61CE3B6DFA1FE6B3E296965C76C0E10</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EA676B13978EB4682CE1ED078AF3D3DF</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F4415607677611186535B878D590A828</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>FC765D2C18CDFCA7B287B8C87A0CCD35</key>
+		<key>F448CC558D09BA25454B69E02069ACB7</key>
 		<dict>
 			<key>primary</key>
 			<true/>

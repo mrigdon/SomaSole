@@ -27,8 +27,9 @@ class CountdownViewController: UIViewController {
     // methods
     private func beginWorkout() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let destVC = storyboard.instantiateViewControllerWithIdentifier("InWorkoutViewController") as! InWorkoutViewController
-        destVC.workout = self.workout
+//        let destVC = storyboard.instantiateViewControllerWithIdentifier("InWorkoutViewController") as! InWorkoutViewController
+        let destVC = storyboard.instantiateViewControllerWithIdentifier("InWorkout2ViewController")
+//        destVC.workout = self.workout
         self.presentViewController(destVC, animated: true, completion: {
             self.countdownStarted = false
             self.timer = 3
