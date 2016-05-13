@@ -14,7 +14,7 @@ class MovementCell: UITableViewCell {
     let screenWidth = UIScreen.mainScreen().bounds.width
     
     // variables
-    var movement: (Movement, Int)?
+    var movement: Movement?
 
     // outlets
     @IBOutlet weak var nameLabel: UILabel!
@@ -32,6 +32,10 @@ class MovementCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func resetBackground() {
+        self.progressViewWidth.constant = 0
     }
 
 }

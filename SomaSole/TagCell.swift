@@ -15,14 +15,20 @@ class TagCell: UITableViewCell {
     let paddingY = 5
     let borderWidth = 1
     let textSize = 14
+    let filterTitles = [
+        WorkoutTag.UpperBody: "Upper Body",
+        WorkoutTag.LowerBody: "Lower Body",
+        WorkoutTag.Core: "Core",
+        WorkoutTag.TotalBody: "Total Body"
+    ]
 
     @IBOutlet weak var tagListView: TagListView!
     
-    func addFilters(filters: [String]) {
+    func addFilters(filters: [WorkoutTag]) {
         tagListView.removeAllTags()
         
         for filter in filters {
-            self.tagListView.addTag(filter)
+            self.tagListView.addTag(filterTitles[filter]!)
         }
     }
     

@@ -27,7 +27,7 @@ class WorkoutsViewController: UITableViewController {
     
     var workouts = [Workout]()
     var filteredWorkouts = [Workout]()
-    var selectedFilters = [String]()
+    var selectedFilters = [WorkoutTag]()
     
     @IBOutlet weak var tagListView: TagListView!
     
@@ -41,14 +41,34 @@ class WorkoutsViewController: UITableViewController {
         })
     }
     
+    func reloadTableView() {
+        dispatch_async(dispatch_get_main_queue(), {
+            self.tableView.reloadData()
+        })
+    }
+    
     func filterContentForSearchText(searchText: String, scope: String = "All") {
         filteredWorkouts = workouts.filter { workout in
             return workout.name.lowercaseString.containsString(searchText.lowercaseString)
         }
         
-        dispatch_async(dispatch_get_main_queue(), {
-            self.tableView.reloadData()
-        })
+        self.reloadTableView()
+    }
+    
+    func filterContentForTags() {
+        filteredWorkouts = []
+        for workout in workouts {
+            // if workout.tags contains all of selected filters
+            var qualifies = true
+            for filter in selectedFilters {
+                qualifies = workout.tags.contains(filter)
+            }
+            if qualifies {
+                filteredWorkouts.append(workout)
+            }
+        }
+        
+        self.reloadTableView()
     }
     
     func loadWorkouts() {
@@ -174,12 +194,12 @@ class WorkoutsViewController: UITableViewController {
             filterVC.addFilterClosure = { filter, adding in
                 if adding {
                     self.selectedFilters.append(filter)
-                    
                 }
                 else {
                     let index = self.selectedFilters.indexOf(filter)
                     self.selectedFilters.removeAtIndex(index!)
                 }
+                self.filterContentForTags()
             }
         }
     }

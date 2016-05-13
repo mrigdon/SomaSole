@@ -17,6 +17,7 @@ class PillButton: UIButton {
     var selectedByUser: Bool = false
     var activity: Activity?
     var goal: Goal?
+    var workoutTag: WorkoutTag?
     
     override init(frame: CGRect) {
         super.init(frame: frame)

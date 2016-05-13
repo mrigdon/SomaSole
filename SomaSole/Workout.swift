@@ -19,9 +19,12 @@ enum WorkoutTag: Int {
 class Movement: NSObject {
 
     var title: String
+    var time: Int
+    var finished = false
     
-    init(title: String) {
+    init(title: String, time: Int) {
         self.title = title
+        self.time = time
     }
 
 }
@@ -29,14 +32,14 @@ class Movement: NSObject {
 class Circuit: NSObject {
     
     var numSets: Int
-    var movements: [(Movement, Int)] = []
+    var movements: [Movement] = []
     
     init(data: [String:AnyObject]) {
         self.numSets = data["sets"] as! Int
         
         let movementsData = data["movements"] as! [[String:Int]]
         for movementData in movementsData {
-            let movement = (Movement(title: movementData.first!.0), movementData.first!.1)
+            let movement = Movement(title: movementData.first!.0, time: movementData.first!.1)
             movements.append(movement)
         }
     }
@@ -74,6 +77,7 @@ class Workout: NSObject {
     var workoutDescription: String
     var imageName: String
     var circuits: [Circuit] = []
+    var tags = [WorkoutTag]()
     
     init(index: Int, data: [String:AnyObject]) {
         self.index = WorkoutIndex(rawValue: index)!
@@ -87,6 +91,11 @@ class Workout: NSObject {
         for circuitData in circuitsData {
             let circuit = Circuit(data: circuitData)
             circuits.append(circuit)
+        }
+        
+        let tagsData = data["tags"] as! [Int]
+        for tagData in tagsData {
+            self.tags.append(WorkoutTag(rawValue: tagData)!)
         }
     }
     
