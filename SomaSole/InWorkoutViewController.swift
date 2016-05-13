@@ -15,10 +15,6 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
     
     // variables
     var workout: Workout?
-    var labels: [String] = []
-    var detailLabels: [String?] = []
-    var movements = [Movement?]()
-    var animationCells = [MovementCell]()
 
     // outlets
     @IBOutlet weak var movementImageView: UIImageView!
@@ -26,39 +22,27 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var playPauseButton: UIBarButtonItem!
     
     // methods
-//    private func beginWorkout(index: Int) {
-//        animationCells[index].layoutIfNeeded()
-//        animationCells[index].progressViewWidth.constant = self.screenWidth
-//        UIView.animateWithDuration(Double(animationCells[index].movement!.time), animations: {
-//                self.animationCells[index].layoutIfNeeded()
-//            }, completion: { finished in
-//                let indexPath = NSIndexPath(forItem: index+1, inSection: 0)
-//                self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Top, animated: true)
-//                self.beginWorkout(index+1)
-//            }
-//        )
-//    }
-    
-    private func tableViewScrollTop(index: Int) {
-        let indexPath = NSIndexPath(forItem: index, inSection: 0)
-        self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Top, animated: true)
+    private func reloadTableView() {
+        dispatch_async(dispatch_get_main_queue(), {
+            self.tableView.reloadData()
+        })
     }
-    
     private func beginMovementInSet(circuitIndex: Int, setIndex: Int, workoutIndex: Int, completedSet: () -> (Void)) {
         // return if done with set in circuit
-        if workoutIndex == 2 /*workout!.circuits[circuitIndex].movements.count*/ {
+        if workoutIndex == workout!.circuits[circuitIndex].movements.count {
             completedSet()
             return
         }
         
         // animate blue progress
-        animationCells[workoutIndex].layoutIfNeeded()
-        animationCells[workoutIndex].progressViewWidth.constant = self.screenWidth
-        UIView.animateWithDuration(Double(animationCells[workoutIndex].movement!.time), animations: {
-            self.animationCells[workoutIndex].layoutIfNeeded()
+        let indexPath = NSIndexPath(forRow: workoutIndex, inSection: circuitIndex)
+        self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Top, animated: true)
+        (self.tableView.cellForRowAtIndexPath(indexPath) as! MovementCell).layoutIfNeeded()
+        (self.tableView.cellForRowAtIndexPath(indexPath) as! MovementCell).progressViewWidth.constant = self.screenWidth
+        UIView.animateWithDuration(Double(/*(self.tableView.cellForRowAtIndexPath(indexPath) as! MovementCell).movement!.time*/1), animations: {
+            (self.tableView.cellForRowAtIndexPath(indexPath) as! MovementCell).layoutIfNeeded()
             }, completion: { finished in
-                self.animationCells[workoutIndex].resetBackground()
-                self.tableViewScrollTop(workoutIndex+1)
+                (self.tableView.cellForRowAtIndexPath(indexPath) as! MovementCell).resetBackground()
                 self.beginMovementInSet(circuitIndex, setIndex: setIndex, workoutIndex: workoutIndex+1, completedSet: completedSet)
             }
         )
@@ -66,20 +50,21 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
     
     private func beginSetInCircuit(circuitIndex: Int, setIndex: Int, completedCircuit: () -> Void) {
         // return if done with all sets in circuit
-        if setIndex == 2 /*workout!.circuits[circuitIndex].numSets*/ {
+        if setIndex == workout!.circuits[circuitIndex].numSets {
             completedCircuit()
             return
         }
         
         beginMovementInSet(circuitIndex, setIndex: setIndex, workoutIndex: 0, completedSet: {
-            self.tableViewScrollTop(0)
+            let indexPath = NSIndexPath(forRow: 0, inSection: circuitIndex)
+            self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Top, animated: false)
             self.beginSetInCircuit(circuitIndex, setIndex: setIndex+1, completedCircuit: completedCircuit)
         })
     }
     
     private func beginCircuit(circuitIndex: Int) {
         // return if done with all circuits in workout
-        if circuitIndex == 2 /*workout!.circuits.count*/ {
+        if circuitIndex == workout!.circuits.count {
             return
         }
         
@@ -105,19 +90,13 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // disable scroll
         self.tableView.scrollEnabled = false
         self.tableView.alwaysBounceVertical = false
-
-        for (index, circuit) in self.workout!.circuits.enumerate() {
-            labels.append("Circuit \(index+1)")
-            detailLabels.append("Set 1/\(circuit.numSets)")
-            movements.append(nil)
-            for movement in circuit.movements {
-                labels.append(movement.title)
-                detailLabels.append("\(movement.time)s")
-                movements.append(movement)
-            }
-        }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        beginWorkout()
     }
 
     override func didReceiveMemoryWarning() {
@@ -127,33 +106,32 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
     
     // uitableview delegate
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return workout!.circuits.count
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.labels.count
+        return workout!.circuits[section].movements.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("movementCell", forIndexPath: indexPath) as! MovementCell
-        cell.resetBackground()
         
-        cell.nameLabel.text = self.labels[indexPath.row]
-        cell.timeLabel.text = self.detailLabels[indexPath.row]
-        if let movement = self.movements[indexPath.row] {
-            cell.movement = movement
-            self.animationCells.append(cell)
-        }
-        if indexPath.row == 1 {
-//            self.beginWorkout(0)
-            self.beginWorkout()
-        }
+        let movement = self.workout!.circuits[indexPath.section].movements[indexPath.row]
+        cell.nameLabel.text = movement.title
+        cell.timeLabel.text = "\(movement.time)s"
+        cell.movement = movement
         
         return cell
     }
     
     func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
         return nil
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let circuit = workout!.circuits[section]
+//        return "Circuit \(section+1) (Set \(circuit.currentSet)/\(circuit.numSets))"
+        return "Circuit \(section+1) (\(circuit.numSets) Sets)"
     }
 
     /*

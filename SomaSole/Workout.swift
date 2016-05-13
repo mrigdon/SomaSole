@@ -32,10 +32,12 @@ class Movement: NSObject {
 class Circuit: NSObject {
     
     var numSets: Int
+    var currentSet: Int
     var movements: [Movement] = []
     
     init(data: [String:AnyObject]) {
         self.numSets = data["sets"] as! Int
+        self.currentSet = 1
         
         let movementsData = data["movements"] as! [[String:Int]]
         for movementData in movementsData {
