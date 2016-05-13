@@ -13,24 +13,28 @@ import TagListView
 
 extension WorkoutsViewController: UISearchResultsUpdating {
     func updateSearchResultsForSearchController(searchController: UISearchController) {
-        filterContentForSearchText(searchController.searchBar.text!)
+        filterContent(searchController.searchBar.text!)
     }
 }
 
 class WorkoutsViewController: UITableViewController {
     
+    // constants
     let firebase = Firebase(url: "http://somasole.firebaseio.com")
     let filterCellSize: CGFloat = 44
     let workoutCellSize: CGFloat = 0.51575 * UIScreen.mainScreen().bounds.width
     let lightBlueColor: UIColor = UIColor(red: 0.568627451, green: 0.7333333333, blue: 0.968627451, alpha: 1.0)
     let searchController = UISearchController(searchResultsController: nil)
     
+    // variables
     var workouts = [Workout]()
     var filteredWorkouts = [Workout]()
     var selectedFilters = [WorkoutTag]()
     
+    // outlets
     @IBOutlet weak var tagListView: TagListView!
     
+    // methods
     func startProgressHud() {
         MBProgressHUD.showHUDAddedTo(self.view, animated: true)
     }
@@ -47,25 +51,31 @@ class WorkoutsViewController: UITableViewController {
         })
     }
     
-    func filterContentForSearchText(searchText: String, scope: String = "All") {
-        filteredWorkouts = workouts.filter { workout in
-            return workout.name.lowercaseString.containsString(searchText.lowercaseString)
-        }
-        
-        self.reloadTableView()
-    }
-    
-    func filterContentForTags() {
-        filteredWorkouts = []
+    func filterContent(searchText: String, scope: String = "All") {
+        // filter for tags
+        var tagFilteredWorkouts = [Workout]()
         for workout in workouts {
             // if workout.tags contains all of selected filters
             var qualifies = true
             for filter in selectedFilters {
                 qualifies = workout.tags.contains(filter)
+                if !qualifies {
+                    break
+                }
             }
             if qualifies {
-                filteredWorkouts.append(workout)
+                tagFilteredWorkouts.append(workout)
             }
+        }
+        
+        // filter for search text
+        if searchText != "" {
+            filteredWorkouts = tagFilteredWorkouts.filter { workout in
+                return workout.name.lowercaseString.containsString(searchText.lowercaseString)
+            }
+        }
+        else {
+            filteredWorkouts = tagFilteredWorkouts
         }
         
         self.reloadTableView()
@@ -84,6 +94,7 @@ class WorkoutsViewController: UITableViewController {
         })
     }
 
+    // uiviewcontroller
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -127,7 +138,7 @@ class WorkoutsViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchController.active {
+        if searchController.active || selectedFilters.count > 0 {
             return filteredWorkouts.count + 1
         }
         
@@ -141,7 +152,7 @@ class WorkoutsViewController: UITableViewController {
             cellType = selectedFilters.count > 0 ? "tagCell" : "cell"
         }
         else {
-            cellType = "workoutCell"
+            cellType = selectedFilters.count > 0 && indexPath.row == 0 ? "tagCell" : "workoutCell"
         }
         
         // create cell
@@ -149,10 +160,18 @@ class WorkoutsViewController: UITableViewController {
         
         // customize cell for each case
         if !searchController.active {
-            // all workouts
-            self.tableView.rowHeight = workoutCellSize
-            let workout = workouts[indexPath.row]
-            (cell as! WorkoutCell).associateWorkout(workout)
+            if selectedFilters.count > 0 && indexPath.row == 0 {
+                // filter cell with tags
+                (cell as! TagCell).addFilters(selectedFilters)
+                self.tableView.rowHeight = UITableViewAutomaticDimension
+                self.tableView.estimatedRowHeight = workoutCellSize
+            }
+            else {
+                // all workouts
+                self.tableView.rowHeight = workoutCellSize
+                let workout = workouts[indexPath.row]
+                (cell as! WorkoutCell).associateWorkout(workout)
+            }
         }
         else if indexPath.row == 0 {
             if selectedFilters.count == 0 {
@@ -199,7 +218,7 @@ class WorkoutsViewController: UITableViewController {
                     let index = self.selectedFilters.indexOf(filter)
                     self.selectedFilters.removeAtIndex(index!)
                 }
-                self.filterContentForTags()
+                self.filterContent("")
             }
         }
     }

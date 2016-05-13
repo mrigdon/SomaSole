@@ -36,10 +36,10 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
         
         // animate blue progress
         let indexPath = NSIndexPath(forRow: workoutIndex, inSection: circuitIndex)
-        self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Top, animated: true)
+        self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Top, animated: false)
         (self.tableView.cellForRowAtIndexPath(indexPath) as! MovementCell).layoutIfNeeded()
         (self.tableView.cellForRowAtIndexPath(indexPath) as! MovementCell).progressViewWidth.constant = self.screenWidth
-        UIView.animateWithDuration(Double(/*(self.tableView.cellForRowAtIndexPath(indexPath) as! MovementCell).movement!.time*/1), animations: {
+        UIView.animateWithDuration(Double(/*(self.tableView.cellForRowAtIndexPath(indexPath) as! MovementCell).movement!.time*/2), animations: {
             (self.tableView.cellForRowAtIndexPath(indexPath) as! MovementCell).layoutIfNeeded()
             }, completion: { finished in
                 (self.tableView.cellForRowAtIndexPath(indexPath) as! MovementCell).resetBackground()
