@@ -8,10 +8,18 @@
 
 import UIKit
 
-private let reuseIdentifier = "cell"
+class MovementsViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+    
+    // constants
+    private let reuseIdentifier = "cell"
+    private let screenSizeWithMargins = UIScreen.mainScreen().bounds.width - 32
+    
+    // methods
+    private func photoForIndexPath(indexPath: NSIndexPath) -> UIImage {
+        return UIImage(named: "profile")!
+    }
 
-class MovementsViewController: UICollectionViewController {
-
+    // uiviewcontroller
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,7 +27,7 @@ class MovementsViewController: UICollectionViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+//        self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
     }
@@ -42,25 +50,34 @@ class MovementsViewController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
 
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 0
+        return 20
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath)
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! MovementDescriptionCell
     
         // Configure the cell
+        cell.backgroundColor = UIColor.clearColor()
+        cell.imageView.image = photoForIndexPath(indexPath)
+        cell.setConstraints()
     
         return cell
     }
     
     // MARK: UICollectionViewDelegate
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return CGSize(width: 100, height: 129)
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 16, left: 8, bottom: 16, right: 8)
+    }
 
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking
