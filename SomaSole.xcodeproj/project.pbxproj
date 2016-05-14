@@ -40,6 +40,8 @@
 		62D640E61CD82C4200D05124 /* CountdownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D640E51CD82C4200D05124 /* CountdownViewController.swift */; };
 		62D640E81CD8392100D05124 /* InWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D640E71CD8392100D05124 /* InWorkoutViewController.swift */; };
 		62D640EA1CD8424800D05124 /* MovementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D640E91CD8424800D05124 /* MovementCell.swift */; };
+		62FE88041CE69BD700A9BB15 /* FinishedWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FE88031CE69BD700A9BB15 /* FinishedWorkoutViewController.swift */; };
+		62FE88071CE6AC0800A9BB15 /* MovementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FE88061CE6AC0800A9BB15 /* MovementsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +102,8 @@
 		62D640E51CD82C4200D05124 /* CountdownViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownViewController.swift; sourceTree = "<group>"; };
 		62D640E71CD8392100D05124 /* InWorkoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InWorkoutViewController.swift; sourceTree = "<group>"; };
 		62D640E91CD8424800D05124 /* MovementCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementCell.swift; sourceTree = "<group>"; };
+		62FE88031CE69BD700A9BB15 /* FinishedWorkoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinishedWorkoutViewController.swift; sourceTree = "<group>"; };
+		62FE88061CE6AC0800A9BB15 /* MovementsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementsViewController.swift; sourceTree = "<group>"; };
 		6DFBD11EA5E8CEC480F43C0B /* Pods-SomaSole.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SomaSole.release.xcconfig"; path = "Pods/Target Support Files/Pods-SomaSole/Pods-SomaSole.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -166,6 +170,7 @@
 			children = (
 				627A5B371CC1B58C0081BBFE /* UI */,
 				626063911CBAC4CB00B1AF3C /* Models */,
+				62FE88051CE6ABE300A9BB15 /* Movements */,
 				628DB7391CBDE4680048F09C /* Workouts */,
 				621D22EF1CB2F65D00FE7581 /* Profile */,
 				626063961CBAEE0000B1AF3C /* Login */,
@@ -252,8 +257,17 @@
 				62D640E31CD8136600D05124 /* BeginWorkoutViewController.swift */,
 				62D640E51CD82C4200D05124 /* CountdownViewController.swift */,
 				62D640E71CD8392100D05124 /* InWorkoutViewController.swift */,
+				62FE88031CE69BD700A9BB15 /* FinishedWorkoutViewController.swift */,
 			);
 			name = Workouts;
+			sourceTree = "<group>";
+		};
+		62FE88051CE6ABE300A9BB15 /* Movements */ = {
+			isa = PBXGroup;
+			children = (
+				62FE88061CE6AC0800A9BB15 /* MovementsViewController.swift */,
+			);
+			name = Movements;
 			sourceTree = "<group>";
 		};
 		9E5172BD2F5AD716C409A3BF /* Frameworks */ = {
@@ -453,7 +467,9 @@
 				62D640E61CD82C4200D05124 /* CountdownViewController.swift in Sources */,
 				626063981CBB01E500B1AF3C /* PillButton.swift in Sources */,
 				62926A991CBCA12200960F94 /* BasicViewController.swift in Sources */,
+				62FE88041CE69BD700A9BB15 /* FinishedWorkoutViewController.swift in Sources */,
 				626063931CBAC4EF00B1AF3C /* User.swift in Sources */,
+				62FE88071CE6AC0800A9BB15 /* MovementsViewController.swift in Sources */,
 				624A94E81CB7463E00A8D21A /* LoginViewController.swift in Sources */,
 				626063951CBAEDEF00B1AF3C /* CreateBasicsViewController.swift in Sources */,
 				62C9E40E1CB44FEF005E9F48 /* PurchasesViewController.swift in Sources */,

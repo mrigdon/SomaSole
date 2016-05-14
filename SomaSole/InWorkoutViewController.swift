@@ -39,7 +39,7 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
         self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Top, animated: false)
         (self.tableView.cellForRowAtIndexPath(indexPath) as! MovementCell).layoutIfNeeded()
         (self.tableView.cellForRowAtIndexPath(indexPath) as! MovementCell).progressViewWidth.constant = self.screenWidth
-        UIView.animateWithDuration(Double(/*(self.tableView.cellForRowAtIndexPath(indexPath) as! MovementCell).movement!.time*/2), animations: {
+        UIView.animateWithDuration(Double(/*(self.tableView.cellForRowAtIndexPath(indexPath) as! MovementCell).movement!.time*/0.1), animations: {
             (self.tableView.cellForRowAtIndexPath(indexPath) as! MovementCell).layoutIfNeeded()
             }, completion: { finished in
                 (self.tableView.cellForRowAtIndexPath(indexPath) as! MovementCell).resetBackground()
@@ -62,19 +62,25 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
         })
     }
     
-    private func beginCircuit(circuitIndex: Int) {
+    private func beginCircuit(circuitIndex: Int, completedWorkout: () -> Void) {
         // return if done with all circuits in workout
         if circuitIndex == workout!.circuits.count {
+            completedWorkout()
             return
         }
         
         beginSetInCircuit(circuitIndex, setIndex: 0, completedCircuit: {
-            self.beginCircuit(circuitIndex+1)
+            self.beginCircuit(circuitIndex+1, completedWorkout: completedWorkout)
         })
     }
     
     private func beginWorkout() {
-        beginCircuit(0)
+        beginCircuit(0, completedWorkout: {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let finishedVC = storyboard.instantiateViewControllerWithIdentifier("FinishedWorkoutViewController") as! FinishedWorkoutViewController
+            finishedVC.workout = self.workout
+            self.presentViewController(finishedVC, animated: true, completion: nil)
+        })
     }
     
     // actions
