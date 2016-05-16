@@ -17,14 +17,22 @@ enum WorkoutTag: Int {
 }
 
 class Movement: NSObject {
+    
+    static var sharedMovements = [Movement]()
 
     var title: String
-    var time: Int
+    var time: Int?
+    var movementDescription: String?
     var finished = false
     
     init(title: String, time: Int) {
         self.title = title
         self.time = time
+    }
+    
+    init(data: [String:String]) {
+        self.title = data["title"]!
+        self.movementDescription = data["description"]
     }
 
 }

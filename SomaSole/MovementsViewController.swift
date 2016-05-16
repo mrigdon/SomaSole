@@ -7,16 +7,50 @@
 //
 
 import UIKit
+import Firebase
 
-class MovementsViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class MovementsViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UISearchResultsUpdating {
     
     // constants
     private let reuseIdentifier = "cell"
     private let screenSizeWithMargins = UIScreen.mainScreen().bounds.width - 32
+    private let firebase = Firebase(url: "http://somasole.firebaseio.com")
+    private let lightBlueColor: UIColor = UIColor(red: 0.568627451, green: 0.7333333333, blue: 0.968627451, alpha: 1.0)
+    private let searchController = UISearchController(searchResultsController: nil)
+    
+    // variables
+    private var movements = [Movement]()
+    private var filteredMovements = [Movement]()
     
     // methods
     private func photoForIndexPath(indexPath: NSIndexPath) -> UIImage {
         return UIImage(named: "profile")!
+    }
+    
+    private func reloadCollectionView() {
+        dispatch_async(dispatch_get_main_queue(), {
+            self.collectionView?.reloadData()
+        })
+    }
+    
+    func filterContent(searchText: String, scope: String = "All") {
+        if searchText != "" {
+            filteredMovements = movements.filter { movement in
+                return movement.title.lowercaseString.containsString(searchText.lowercaseString)
+            }
+        }
+        
+        self.reloadCollectionView()
+    }
+    
+    private func loadMovements() {
+        firebase.childByAppendingPath("movements").observeSingleEventOfType(.Value, withBlock: { snapshot in
+            let movementsData = snapshot.value as! [AnyObject]
+            for movementData in movementsData {
+                self.movements.append(Movement(data: movementData as! [String:String]))
+            }
+            self.reloadCollectionView()
+        })
     }
 
     // uiviewcontroller
@@ -25,16 +59,37 @@ class MovementsViewController: UICollectionViewController, UICollectionViewDeleg
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-//        self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
+        
+        // set up search controller
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.scopeButtonTitles = ["All", "Favorites"]
+        searchController.searchBar.barTintColor = lightBlueColor
+        searchController.searchBar.tintColor = UIColor.whiteColor()
+        searchController.searchBar.layer.borderWidth = 0.0
+        searchController.searchBar.sizeToFit()
+        definesPresentationContext = true
+        
+        loadMovements()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // delegates
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+//        filterContent(searchController.searchBar.text!)
+    }
+    
+    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        let view: UICollectionReusableView = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "header", forIndexPath: indexPath)
+        
+        view.addSubview(searchController.searchBar)
+        searchController.searchBar.sizeToFit()
+        
+        return view
     }
 
     /*
@@ -55,7 +110,7 @@ class MovementsViewController: UICollectionViewController, UICollectionViewDeleg
 
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return movements.count
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -65,6 +120,7 @@ class MovementsViewController: UICollectionViewController, UICollectionViewDeleg
         cell.backgroundColor = UIColor.clearColor()
         cell.imageView.image = photoForIndexPath(indexPath)
         cell.setConstraints()
+        cell.titleLabel.text = movements[indexPath.row].title
     
         return cell
     }

@@ -2518,7 +2518,7 @@
             </objects>
             <point key="canvasLocation" x="1502" y="-347"/>
         </scene>
-        <!--Movements View Controller-->
+        <!--Movements-->
         <scene sceneID="Wcx-up-tAN">
             <objects>
                 <collectionViewController id="LEs-cE-ybP" customClass="MovementsViewController" customModule="SomaSole" customModuleProvider="target" sceneMemberID="viewController">
@@ -2528,13 +2528,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="SV2-Do-gLh">
                             <size key="itemSize" width="200" height="229"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="headerReferenceSize" width="50" height="50"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="yKT-3b-VF2" customClass="MovementDescriptionCell" customModule="SomaSole" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="200" height="229"/>
+                                <rect key="frame" x="0.0" y="114" width="200" height="229"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="200" height="229"/>
@@ -2574,12 +2574,16 @@
                                 </connections>
                             </collectionViewCell>
                         </cells>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="header" id="Lqr-jU-fFr">
+                            <rect key="frame" x="0.0" y="64" width="600" height="50"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="LEs-cE-ybP" id="S1J-f0-3g5"/>
                             <outlet property="delegate" destination="LEs-cE-ybP" id="ZNZ-Hp-ohB"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="9Aj-hb-ED5"/>
+                    <navigationItem key="navigationItem" title="Movements" id="9Aj-hb-ED5"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GXL-Aq-56W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2593,6 +2597,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Y7S-bg-dsB">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.56862745100000001" green="0.73333333329999995" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="LEs-cE-ybP" kind="relationship" relationship="rootViewController" id="hp9-gj-iT7"/>
