@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class MovementsViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UISearchResultsUpdating {
+class MovementsViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate {
     
     // constants
     private let reuseIdentifier = "cell"
@@ -34,10 +34,8 @@ class MovementsViewController: UICollectionViewController, UICollectionViewDeleg
     }
     
     func filterContent(searchText: String, scope: String = "All") {
-        if searchText != "" {
-            filteredMovements = movements.filter { movement in
-                return movement.title.lowercaseString.containsString(searchText.lowercaseString)
-            }
+        filteredMovements = movements.filter { movement in
+            return movement.title.lowercaseString.containsString(searchText.lowercaseString)
         }
         
         self.reloadCollectionView()
@@ -62,12 +60,14 @@ class MovementsViewController: UICollectionViewController, UICollectionViewDeleg
         
         // set up search controller
         searchController.searchResultsUpdater = self
+        searchController.delegate = self
+        searchController.searchBar.delegate = self
+        searchController.hidesNavigationBarDuringPresentation = false
         searchController.dimsBackgroundDuringPresentation = false
-        searchController.searchBar.scopeButtonTitles = ["All", "Favorites"]
         searchController.searchBar.barTintColor = lightBlueColor
         searchController.searchBar.tintColor = UIColor.whiteColor()
         searchController.searchBar.layer.borderWidth = 0.0
-        searchController.searchBar.sizeToFit()
+        self.navigationItem.titleView = searchController.searchBar
         definesPresentationContext = true
         
         loadMovements()
@@ -80,17 +80,17 @@ class MovementsViewController: UICollectionViewController, UICollectionViewDeleg
     
     // delegates
     func updateSearchResultsForSearchController(searchController: UISearchController) {
-//        filterContent(searchController.searchBar.text!)
+        filterContent(searchController.searchBar.text!)
     }
     
-    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-        let view: UICollectionReusableView = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "header", forIndexPath: indexPath)
-        
-        view.addSubview(searchController.searchBar)
-        searchController.searchBar.sizeToFit()
-        
-        return view
-    }
+//    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+//        let view: UICollectionReusableView = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "header", forIndexPath: indexPath)
+//        
+//        view.addSubview(searchController.searchBar)
+//        searchController.searchBar.sizeToFit()
+//        
+//        return view
+//    }
 
     /*
     // MARK: - Navigation
@@ -110,6 +110,10 @@ class MovementsViewController: UICollectionViewController, UICollectionViewDeleg
 
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if searchController.active && searchController.searchBar.text != "" {
+            return filteredMovements.count
+        }
+        
         return movements.count
     }
 
@@ -120,7 +124,16 @@ class MovementsViewController: UICollectionViewController, UICollectionViewDeleg
         cell.backgroundColor = UIColor.clearColor()
         cell.imageView.image = photoForIndexPath(indexPath)
         cell.setConstraints()
-        cell.titleLabel.text = movements[indexPath.row].title
+        
+        let movement: Movement?
+        if searchController.active && searchController.searchBar.text != "" {
+            movement = filteredMovements[indexPath.row]
+        }
+        else {
+            movement = movements[indexPath.row]
+        }
+        
+        cell.titleLabel.text = movement!.title
     
         return cell
     }
