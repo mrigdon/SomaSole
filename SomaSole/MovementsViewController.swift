@@ -82,25 +82,14 @@ class MovementsViewController: UICollectionViewController, UICollectionViewDeleg
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         filterContent(searchController.searchBar.text!)
     }
-    
-//    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-//        let view: UICollectionReusableView = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "header", forIndexPath: indexPath)
-//        
-//        view.addSubview(searchController.searchBar)
-//        searchController.searchBar.sizeToFit()
-//        
-//        return view
-//    }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    // navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        let destVC = segue.destinationViewController as! MovementDetailViewController
+        let indexPath = collectionView?.indexPathsForSelectedItems()![0]
+        let movement = searchController.active ? filteredMovements[indexPath!.row] : movements[indexPath!.row]
+        destVC.movement = movement
     }
-    */
 
     // MARK: UICollectionViewDataSource
 
@@ -133,6 +122,7 @@ class MovementsViewController: UICollectionViewController, UICollectionViewDeleg
             movement = movements[indexPath.row]
         }
         
+        cell.movement = movement
         cell.titleLabel.text = movement!.title
     
         return cell

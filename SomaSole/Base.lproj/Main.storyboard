@@ -903,6 +903,53 @@
             </objects>
             <point key="canvasLocation" x="2299" y="-347"/>
         </scene>
+        <!--Title-->
+        <scene sceneID="e48-k4-QOO">
+            <objects>
+                <viewController id="tAL-do-8gU" customClass="MovementDetailViewController" customModule="SomaSole" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Wj4-fY-Z8r"/>
+                        <viewControllerLayoutGuide type="bottom" id="9Cy-Xf-wWN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="a17-jj-k3N">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZTY-wc-fho">
+                                <rect key="frame" x="20" y="341" width="560" height="202"/>
+                                <string key="text">Stand with trunk bent towards the floor with arms resting at the sides. Hinge at the hips.Pull the hands up to the eyes. The elbows will follow the hands up. Hold for 1 count. Return to resting position in controlled manner.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wpG-Gk-D7N">
+                                <rect key="frame" x="170" y="72" width="261" height="261"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="261" id="DEV-sl-26z"/>
+                                    <constraint firstAttribute="height" constant="261" id="mdz-5V-lqZ"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wpG-Gk-D7N" firstAttribute="centerX" secondItem="a17-jj-k3N" secondAttribute="centerX" id="O94-tz-HIB"/>
+                            <constraint firstItem="9Cy-Xf-wWN" firstAttribute="top" secondItem="ZTY-wc-fho" secondAttribute="bottom" constant="8" id="QOq-vK-bjM"/>
+                            <constraint firstItem="ZTY-wc-fho" firstAttribute="top" secondItem="wpG-Gk-D7N" secondAttribute="bottom" constant="8" id="Zmx-uC-INO"/>
+                            <constraint firstItem="wpG-Gk-D7N" firstAttribute="top" secondItem="Wj4-fY-Z8r" secondAttribute="bottom" constant="8" id="cMI-AT-Dz9"/>
+                            <constraint firstItem="ZTY-wc-fho" firstAttribute="leading" secondItem="a17-jj-k3N" secondAttribute="leadingMargin" id="e1p-BS-V9A"/>
+                            <constraint firstItem="ZTY-wc-fho" firstAttribute="trailing" secondItem="a17-jj-k3N" secondAttribute="trailingMargin" id="eAR-pq-wMH"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="7Mh-RC-KI6"/>
+                    <connections>
+                        <outlet property="descriptionLabel" destination="ZTY-wc-fho" id="l1y-Lx-iqY"/>
+                        <outlet property="imageView" destination="wpG-Gk-D7N" id="eTu-JR-m4h"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0rf-PZ-Z2L" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2299" y="351"/>
+        </scene>
         <!--Basics View Controller-->
         <scene sceneID="huH-35-QRL">
             <objects>
@@ -2571,6 +2618,7 @@
                                     <outlet property="titleLabelBottomConstraint" destination="RgX-0w-eiZ" id="VKB-Mb-abj"/>
                                     <outlet property="titleLabelHeightConstraint" destination="hj2-gk-FKd" id="PLP-b8-5Xi"/>
                                     <outlet property="titleLabelTopConstraint" destination="a2h-XM-6l6" id="8Xq-4M-cNH"/>
+                                    <segue destination="tAL-do-8gU" kind="show" id="Pey-24-pyZ"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
