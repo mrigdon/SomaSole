@@ -1,38 +1,37 @@
 PODS:
   - ALCameraViewController (1.1.9)
+  - AWSCognito (2.4.1):
+    - AWSCore (= 2.4.1)
+  - AWSCore (2.4.1)
+  - AWSS3 (2.4.1):
+    - AWSCore (= 2.4.1)
   - Firebase (2.5.1)
   - IQKeyboardManagerSwift (4.0.1)
   - MBProgressHUD (0.9.2)
-  - Static (1.0.0)
   - TagListView (1.0.0)
   - TextFieldEffects (1.2.0)
   - XLPagerTabStrip (5.0.0)
 
 DEPENDENCIES:
   - ALCameraViewController
+  - AWSCognito
+  - AWSCore
+  - AWSS3
   - Firebase (>= 2.5.1)
   - IQKeyboardManagerSwift
   - MBProgressHUD (~> 0.9.2)
-  - Static (from `https://github.com/venmo/Static`)
   - TagListView (~> 1.0)
   - TextFieldEffects
   - XLPagerTabStrip (~> 5.0.0)
 
-EXTERNAL SOURCES:
-  Static:
-    :git: https://github.com/venmo/Static
-
-CHECKOUT OPTIONS:
-  Static:
-    :commit: 77d79297b079e9b7b1b9cea7e73875360abcba45
-    :git: https://github.com/venmo/Static
-
 SPEC CHECKSUMS:
   ALCameraViewController: f171ffb7e84d211277a0f97823a2bda7418dc573
+  AWSCognito: a57173a82505161bd1a9c8cfe393cea9b5b1f6bb
+  AWSCore: 9bfd632f04aaf12053e639d2a9120372844beb0d
+  AWSS3: d7a3a694ffc4010e90b14755b5b9dbf70989c117
   Firebase: 3565ea88b830f28f2c77ecc524622bc71a20d085
   IQKeyboardManagerSwift: e92246955e21dad73ad9dc89b80adb134d8bb395
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
-  Static: 8b4021cf969d40da1ad03562e5a2a7470dc94c65
   TagListView: 6bf4bded034c4c90b1e90d8cd3d8e1d852dba0a8
   TextFieldEffects: bc4fd3bd557321bd61a0762f3f50965477a36f62
   XLPagerTabStrip: 87b8b705f9a7178e76a063ffaa2d70045944a965

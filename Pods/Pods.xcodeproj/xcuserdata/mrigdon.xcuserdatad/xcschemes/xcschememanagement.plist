@@ -9,6 +9,21 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>AWSCognito.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>AWSCore.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>AWSS3.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Firebase.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -25,11 +40,6 @@
 			<false/>
 		</dict>
 		<key>Pods-SomaSole.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Static.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -62,22 +72,37 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1495EA942D27B8768DBB712160B88549</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>1520003FEBEC114D6C84F832AFEDB994</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6F2758D2F6F6745D3C7F605D21B9F7E7</key>
+		<key>3B41A9B1D49827D58E203AF61D34F608</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A7CAB29350753D47825DC7B01440CFE3</key>
+		<key>787ADFDC43AC596B7714B24B851BD6D0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7ED4992D60E40600F6E78A5F1F1DF20E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9074BB5F7A99AE760EF72445FDEE7865</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A822C1855A34B5BFBE6A38ED3E333C37</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AEBE6DBC2DC7FA6A54E3147474D1FFFC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -87,22 +112,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B984A2E720E9934B269BCE791ADF96FC</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B9D7C5ABE81AACA8355EF6F5CCDB56A3</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>E61CE3B6DFA1FE6B3E296965C76C0E10</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F448CC558D09BA25454B69E02069ACB7</key>
+		<key>E970651B798406F383457CE51DD2E2C0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EBF0575D95D57E327057606E6328A60B</key>
 		<dict>
 			<key>primary</key>
 			<true/>

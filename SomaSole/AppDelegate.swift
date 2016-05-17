@@ -9,6 +9,8 @@
 import UIKit
 import IQKeyboardManagerSwift
 import Firebase
+import AWSCognito
+import AWSS3
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -26,6 +28,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
+        // Initialize the Amazon Cognito credentials provider
+        let credentialsProvider = AWSCognitoCredentialsProvider(
+            regionType:.USEast1,
+            identityPoolId:"us-east-1:d3bf8475-a252-4c2f-af5f-8a40d942ac30"
+        )
+        let configuration = AWSServiceConfiguration(
+            region:.USWest1,
+            credentialsProvider:credentialsProvider
+        )
+        AWSServiceManager.defaultServiceManager().defaultServiceConfiguration = configuration
+        
+        // iqmanager
         IQKeyboardManager.sharedManager().enable = true
         
         // try to get logged in user
