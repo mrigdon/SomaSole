@@ -35,10 +35,6 @@ class MovementDetailViewController: UIViewController {
         
         transferManager.download(downloadRequest).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { task -> AnyObject? in
             
-            if task.error != nil {
-                print("\n\nerror: <\(task.error)>\n\n")
-            }
-            
             if task.result != nil {
                 let data = NSData(contentsOfURL: downloadingFileURL)
                 self.imageView.image = UIImage(data: data!)
