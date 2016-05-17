@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AWSS3
 
 enum WorkoutIndex: Int {
     case AbShred, AnchorAbs, Armageddon, BackToBack, BootyBlaster, BoulderShoulders, CoolDown, GetFunctional, GroundAttack, Intensity, JumpTraining, LeanLegs, Obliques, Plank, PowerUp, PreParty, Stretch, Sweat, UpperBodyBlast
@@ -81,6 +82,7 @@ class Workout: NSObject {
     ]
     
     var index: WorkoutIndex
+    var image: UIImage?
     var name: String
     var time: Int
     var intensity: Int
@@ -107,6 +109,27 @@ class Workout: NSObject {
         for tagData in tagsData {
             self.tags.append(WorkoutTag(rawValue: tagData)!)
         }
+    }
+    
+    func loadImage(reloadTableView: () -> Void) {
+        let transferManager = AWSS3TransferManager.defaultS3TransferManager()
+        let downloadFileString = self.name + ".jpg"
+        let downloadingFileURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).URLByAppendingPathComponent("downloaded-" + downloadFileString)
+        let downloadRequest: AWSS3TransferManagerDownloadRequest = AWSS3TransferManagerDownloadRequest()
+        downloadRequest.bucket = "somasole/workouts"
+        downloadRequest.key = downloadFileString
+        downloadRequest.downloadingFileURL = downloadingFileURL
+        
+        transferManager.download(downloadRequest).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { task -> AnyObject? in
+            
+            if task.result != nil {
+                let data = NSData(contentsOfURL: downloadingFileURL)
+                self.image =  UIImage(data: data!)
+                reloadTableView()
+            }
+            
+            return nil
+        })
     }
     
     func printAll() {

@@ -82,16 +82,16 @@ class WorkoutsViewController: UITableViewController {
     }
     
     func loadWorkouts() {
-        firebase.childByAppendingPath("workouts").observeEventType(.ChildAdded, withBlock: { snapshot in
+        firebase.childByAppendingPath("workouts").queryOrderedByKey().observeEventType(.ChildAdded, withBlock: { snapshot in
             // load workouts
             let workout = Workout(index: Int(snapshot.key)!, data: snapshot.value as! [String : AnyObject])
+            workout.loadImage({self.reloadTableView()})
             self.workouts.append(workout)
             
             self.stopProgressHud()
-            dispatch_async(dispatch_get_main_queue(), {
-                self.tableView.reloadData()
-            })
+            self.reloadTableView()
         })
+        
     }
 
     // uiviewcontroller
@@ -170,7 +170,13 @@ class WorkoutsViewController: UITableViewController {
                 // all workouts
                 self.tableView.rowHeight = workoutCellSize
                 let workout = workouts[indexPath.row]
-                (cell as! WorkoutCell).associateWorkout(workout)
+                (cell as! WorkoutCell).workout = workout
+                if let image = (cell as! WorkoutCell).workout!.image {
+                    cell.backgroundView = UIImageView(image: image)
+                }
+                else {
+                    cell.backgroundView = nil
+                }
             }
         }
         else if indexPath.row == 0 {
@@ -189,7 +195,13 @@ class WorkoutsViewController: UITableViewController {
             // filtered workouts
             self.tableView.rowHeight = workoutCellSize
             let workout = filteredWorkouts[indexPath.row - 1] // - 1 because of the tag cell
-            (cell as! WorkoutCell).associateWorkout(workout)
+            (cell as! WorkoutCell).workout = workout
+            if let image = (cell as! WorkoutCell).workout!.image {
+                cell.backgroundView = UIImageView(image: image)
+            }
+            else {
+                cell.backgroundView = nil
+            }
         }
 
         return cell

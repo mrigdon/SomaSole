@@ -23,25 +23,6 @@ class MovementDetailViewController: UIViewController {
         self.navigationItem.title = movement!.title
 //        self.descriptionLabel.text = movement!.movementDescription
         navigationController!.navigationBar.tintColor = UIColor.whiteColor()
-        
-        // s3 example
-        let transferManager = AWSS3TransferManager.defaultS3TransferManager()
-        let downloadFileString = "Armageddon.jpg"
-        let downloadingFileURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).URLByAppendingPathComponent("downloaded-" + downloadFileString)
-        let downloadRequest: AWSS3TransferManagerDownloadRequest = AWSS3TransferManagerDownloadRequest()
-        downloadRequest.bucket = "somasole/workouts"
-        downloadRequest.key = downloadFileString
-        downloadRequest.downloadingFileURL = downloadingFileURL
-        
-        transferManager.download(downloadRequest).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { task -> AnyObject? in
-            
-            if task.result != nil {
-                let data = NSData(contentsOfURL: downloadingFileURL)
-                self.imageView.image = UIImage(data: data!)
-            }
-            
-            return nil
-        })
     }
 
     override func didReceiveMemoryWarning() {

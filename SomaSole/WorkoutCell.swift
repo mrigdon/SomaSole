@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AWSS3
 
 class WorkoutCell: UITableViewCell {
     
@@ -23,11 +24,6 @@ class WorkoutCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
-    }
-    
-    func associateWorkout(workout: Workout) {
-        self.workout = workout
-        self.backgroundView = UIImageView(image: UIImage(named: workout.imageName))
     }
 
 }
