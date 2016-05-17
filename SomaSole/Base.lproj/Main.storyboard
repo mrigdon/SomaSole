@@ -917,7 +917,8 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZTY-wc-fho">
                                 <rect key="frame" x="20" y="341" width="560" height="202"/>
-                                <string key="text">Stand with trunk bent towards the floor with arms resting at the sides. Hinge at the hips.Pull the hands up to the eyes. The elbows will follow the hands up. Hold for 1 count. Return to resting position in controlled manner.</string>
+                                <string key="text">Stand with trunk bent towards the floor with arms resting at the sides. Hinge at the hips.
+Pull the hands up to the eyes. The elbows will follow the hands up. Hold for 1 count. Return to resting position in controlled manner.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>

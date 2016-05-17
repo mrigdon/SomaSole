@@ -27,6 +27,8 @@ class WorkoutCell: UITableViewCell {
     
     func associateWorkout(workout: Workout) {
         self.workout = workout
+        let image = UIImage(named: workout.imageName)
+        print("\(workout.name): h:\(image!.size.height) w:\(image!.size.width)\n")
         self.backgroundView = UIImageView(image: UIImage(named: workout.imageName))
     }
 
