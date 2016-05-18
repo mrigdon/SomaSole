@@ -71,7 +71,7 @@ class CountdownViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         self.workoutImageViewHeight.constant = self.workoutImageHeight
-        self.workoutImageView.image = UIImage(named: self.workout!.imageName)
+        self.workoutImageView.image = self.workout!.image
         self.timeLabel.text = "\(self.workout!.time) minutes"
     }
 

@@ -41,7 +41,7 @@ class FinishedWorkoutViewController: UIViewController {
 
         // workout image view
         workoutImageViewHeight.constant = workoutCellSize
-        self.workoutImageView.image = UIImage(named: self.workout!.imageName)
+        self.workoutImageView.image = self.workout!.image
     }
 
     override func didReceiveMemoryWarning() {

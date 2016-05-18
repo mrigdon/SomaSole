@@ -31,7 +31,7 @@ class BeginWorkoutViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         self.workoutImageViewHeight.constant = self.workoutImageHeight
-        self.workoutImageView.image = UIImage(named: self.workout!.imageName)
+        self.workoutImageView.image = workout!.image
         self.nameLabel.text = self.workout!.name
         self.timeLabel.text = "\(self.workout!.time) minutes"
         self.intensityLabel.text = "\(self.workout!.intensity)"

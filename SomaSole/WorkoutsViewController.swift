@@ -85,7 +85,6 @@ class WorkoutsViewController: UITableViewController {
         firebase.childByAppendingPath("workouts").queryOrderedByKey().observeEventType(.ChildAdded, withBlock: { snapshot in
             // load workouts
             let workout = Workout(index: Int(snapshot.key)!, data: snapshot.value as! [String : AnyObject])
-            workout.loadImage({self.reloadTableView()})
             self.workouts.append(workout)
             
             self.stopProgressHud()
@@ -119,11 +118,11 @@ class WorkoutsViewController: UITableViewController {
         tableView.tableHeaderView = searchController.searchBar
         
         // no extra cells
-        self.tableView.tableFooterView = UIView(frame: CGRect.zero)
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
         
         // auto resize based on centent
-        self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.estimatedRowHeight = workoutCellSize
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = workoutCellSize
     }
 
     override func didReceiveMemoryWarning() {
@@ -171,12 +170,7 @@ class WorkoutsViewController: UITableViewController {
                 self.tableView.rowHeight = workoutCellSize
                 let workout = workouts[indexPath.row]
                 (cell as! WorkoutCell).workout = workout
-                if let image = (cell as! WorkoutCell).workout!.image {
-                    cell.backgroundView = UIImageView(image: image)
-                }
-                else {
-                    cell.backgroundView = nil
-                }
+                cell.backgroundView = UIImageView(image: (cell as! WorkoutCell).workout!.image)
             }
         }
         else if indexPath.row == 0 {
@@ -196,12 +190,7 @@ class WorkoutsViewController: UITableViewController {
             self.tableView.rowHeight = workoutCellSize
             let workout = filteredWorkouts[indexPath.row - 1] // - 1 because of the tag cell
             (cell as! WorkoutCell).workout = workout
-            if let image = (cell as! WorkoutCell).workout!.image {
-                cell.backgroundView = UIImageView(image: image)
-            }
-            else {
-                cell.backgroundView = nil
-            }
+            cell.backgroundView = UIImageView(image: (cell as! WorkoutCell).workout!.image)
         }
 
         return cell

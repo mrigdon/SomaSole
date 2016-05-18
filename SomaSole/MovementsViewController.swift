@@ -23,7 +23,7 @@ class MovementsViewController: UICollectionViewController, UICollectionViewDeleg
     private var filteredMovements = [Movement]()
     
     // methods
-    private func photoForIndexPath(indexPath: NSIndexPath) -> UIImage {
+    private func photoForMovement(movement: Movement) -> UIImage? {
         return UIImage(named: "profile")!
     }
     
@@ -45,7 +45,9 @@ class MovementsViewController: UICollectionViewController, UICollectionViewDeleg
         firebase.childByAppendingPath("movements").observeSingleEventOfType(.Value, withBlock: { snapshot in
             let movementsData = snapshot.value as! [AnyObject]
             for movementData in movementsData {
-                self.movements.append(Movement(data: movementData as! [String:String]))
+                let movement = Movement(data: movementData as! [String:String])
+                movement.loadImage({ self.reloadCollectionView() })
+                self.movements.append(movement)
             }
             self.reloadCollectionView()
         })
@@ -58,6 +60,8 @@ class MovementsViewController: UICollectionViewController, UICollectionViewDeleg
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
+        loadMovements()
+        
         // set up search controller
         searchController.searchResultsUpdater = self
         searchController.delegate = self
@@ -69,8 +73,6 @@ class MovementsViewController: UICollectionViewController, UICollectionViewDeleg
         searchController.searchBar.layer.borderWidth = 0.0
         self.navigationItem.titleView = searchController.searchBar
         definesPresentationContext = true
-        
-        loadMovements()
     }
 
     override func didReceiveMemoryWarning() {
@@ -111,7 +113,6 @@ class MovementsViewController: UICollectionViewController, UICollectionViewDeleg
     
         // Configure the cell
         cell.backgroundColor = UIColor.clearColor()
-        cell.imageView.image = photoForIndexPath(indexPath)
         cell.setConstraints()
         
         let movement: Movement?
@@ -124,6 +125,7 @@ class MovementsViewController: UICollectionViewController, UICollectionViewDeleg
         
         cell.movement = movement
         cell.titleLabel.text = movement!.title
+        cell.imageView.image = movement!.image
     
         return cell
     }
