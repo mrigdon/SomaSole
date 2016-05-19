@@ -923,7 +923,7 @@ Pull the hands up to the eyes. The elbows will follow the hands up. Hold for 1 c
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wpG-Gk-D7N">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wpG-Gk-D7N" customClass="AnimatableImageView" customModule="Gifu">
                                 <rect key="frame" x="170" y="72" width="261" height="261"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="261" id="DEV-sl-26z"/>
@@ -944,7 +944,7 @@ Pull the hands up to the eyes. The elbows will follow the hands up. Hold for 1 c
                     <navigationItem key="navigationItem" title="Title" id="7Mh-RC-KI6"/>
                     <connections>
                         <outlet property="descriptionLabel" destination="ZTY-wc-fho" id="l1y-Lx-iqY"/>
-                        <outlet property="imageView" destination="wpG-Gk-D7N" id="eTu-JR-m4h"/>
+                        <outlet property="imageView" destination="wpG-Gk-D7N" id="uiL-of-0w9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0rf-PZ-Z2L" userLabel="First Responder" sceneMemberID="firstResponder"/>

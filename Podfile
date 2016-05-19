@@ -15,6 +15,7 @@ target 'SomaSole' do
     pod 'AWSCore'
     pod 'AWSS3'
     pod 'AWSCognito'
+    pod 'Gifu'
 
 end
 

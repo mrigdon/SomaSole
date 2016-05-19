@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '83ED46C8B3969FD4174B0F49'
-               BlueprintName = 'Pods-SomaSole'
+               BlueprintIdentifier = 'D271CDD18CF838BCD78B641F'
+               BlueprintName = 'Gifu'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'Pods_SomaSole.framework'>
+               BuildableName = 'Gifu.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
