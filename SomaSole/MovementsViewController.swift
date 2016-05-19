@@ -42,13 +42,9 @@ class MovementsViewController: UICollectionViewController, UICollectionViewDeleg
     }
     
     private func loadMovements() {
-        firebase.childByAppendingPath("movements").observeSingleEventOfType(.Value, withBlock: { snapshot in
-            let movementsData = snapshot.value as! [AnyObject]
-            for movementData in movementsData {
-                let movement = Movement(data: movementData as! [String:String])
-                movement.loadImage({ self.reloadCollectionView() })
-                self.movements.append(movement)
-            }
+        FirebaseManager.sharedRootRef.childByAppendingPath("movements").observeEventType(.ChildAdded, withBlock: { snapshot in
+            let movement = Movement(index: Int(snapshot.key)!, data: snapshot.value as! [String:String])
+            self.movements.append(movement)
             self.reloadCollectionView()
         })
     }

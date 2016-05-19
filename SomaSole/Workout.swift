@@ -23,6 +23,7 @@ class Movement: NSObject {
     static var sharedMovements = [Movement]()
 
     var title: String
+    var index: Int?
     var image: UIImage?
     var time: Int?
     var movementDescription: String?
@@ -33,9 +34,14 @@ class Movement: NSObject {
         self.time = time
     }
     
-    init(data: [String:String]) {
+    init(index: Int, data: [String:String]) {
+        self.index = index
         self.title = data["title"]!
-        self.movementDescription = data["description"]
+        self.movementDescription = data["description"]!
+        
+        let imageString = data["jpg"]!
+        let decodedData = NSData(base64EncodedString: imageString, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters)
+        image = UIImage(data: decodedData!)
     }
     
     func loadImage(completion: () -> Void) {
