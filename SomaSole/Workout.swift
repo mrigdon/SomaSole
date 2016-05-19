@@ -10,61 +10,8 @@ import UIKit
 import AWSS3
 import Firebase
 
-enum WorkoutIndex: Int {
-    case AbShred, AnchorAbs, Armageddon, BackToBack, BootyBlaster, BoulderShoulders, CoolDown, GetFunctional, GroundAttack, Intensity, JumpTraining, LeanLegs, Obliques, Plank, PowerUp, PreParty, Stretch, Sweat, UpperBodyBlast
-}
-
 enum WorkoutTag: Int {
     case Core, UpperBody, LowerBody, TotalBody
-}
-
-class Movement: NSObject {
-    
-    static var sharedMovements = [Movement]()
-
-    var title: String
-    var index: Int?
-    var image: UIImage?
-    var time: Int?
-    var movementDescription: String?
-    var finished = false
-    
-    init(title: String, time: Int) {
-        self.title = title
-        self.time = time
-    }
-    
-    init(index: Int, data: [String:String]) {
-        self.index = index
-        self.title = data["title"]!
-        self.movementDescription = data["description"]!
-        
-        let imageString = data["jpg"]!
-        let decodedData = NSData(base64EncodedString: imageString, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters)
-        image = UIImage(data: decodedData!)
-    }
-    
-    func loadImage(completion: () -> Void) {
-        let transferManager = AWSS3TransferManager.defaultS3TransferManager()
-        let downloadFileString = self.title + ".jpg"
-        let downloadingFileURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).URLByAppendingPathComponent("downloaded-" + downloadFileString)
-        let downloadRequest: AWSS3TransferManagerDownloadRequest = AWSS3TransferManagerDownloadRequest()
-        downloadRequest.bucket = "somasole/movements/jpg"
-        downloadRequest.key = downloadFileString
-        downloadRequest.downloadingFileURL = downloadingFileURL
-        
-        transferManager.download(downloadRequest).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { task -> AnyObject? in
-            
-            if task.result != nil {
-                let data = NSData(contentsOfURL: downloadingFileURL)
-                self.image =  UIImage(data: data!)!
-                completion()
-            }
-            
-            return nil
-        })
-    }
-
 }
 
 class Circuit: NSObject {
@@ -88,7 +35,7 @@ class Circuit: NSObject {
 
 class Workout: NSObject {
     
-    var index: WorkoutIndex
+    var index: Int
     var image: UIImage
     var name: String
     var time: Int
@@ -98,7 +45,7 @@ class Workout: NSObject {
     var tags = [WorkoutTag]()
     
     init(index: Int, data: [String:AnyObject]) {
-        self.index = WorkoutIndex(rawValue: index)!
+        self.index = index
         self.name = data["name"] as! String
         self.time = data["time"] as! Int
         self.intensity = data["intensity"] as! Int

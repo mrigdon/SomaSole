@@ -32,6 +32,14 @@ class MovementDetailViewController: UIViewController {
     }
     
     func loadGif() {
+        // if not nil
+        if let gif = self.movement!.gif {
+            self.imageView.animateWithImageData(gif)
+            self.stopProgressHud()
+            return
+        }
+        
+        // fetch first time
         let transferManager = AWSS3TransferManager.defaultS3TransferManager()
         let downloadFileString = self.movement!.title + ".gif"
         let downloadingFileURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).URLByAppendingPathComponent("downloaded-" + downloadFileString)
@@ -43,8 +51,8 @@ class MovementDetailViewController: UIViewController {
         transferManager.download(downloadRequest).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { task -> AnyObject? in
             
             if task.result != nil {
-                let data = NSData(contentsOfURL: downloadingFileURL)
-                self.imageView.animateWithImageData(data!)
+                self.movement!.gif = NSData(contentsOfURL: downloadingFileURL)
+                self.imageView.animateWithImageData(self.movement!.gif!)
             }
             self.stopProgressHud()
             
@@ -68,8 +76,9 @@ class MovementDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func didMoveToParentViewController(parent: UIViewController?) {
+    override func viewWillDisappear(animated: Bool) {
         imageView.stopAnimatingGIF()
+        super.viewWillDisappear(animated)
     }
 
     /*
