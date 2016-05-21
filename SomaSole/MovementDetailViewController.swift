@@ -13,12 +13,16 @@ import MBProgressHUD
 
 class MovementDetailViewController: UIViewController {
     
+    // constants
+    let descriptionFont = UIFont(name: "Helvetica Neue", size: 17.0)
+    
     // variables
     var movement: Movement?
 
     // outlets
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var imageView: AnimatableImageView!
-    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UITextView!
     
     // methods
     func startProgressHud() {
@@ -65,8 +69,12 @@ class MovementDetailViewController: UIViewController {
         super.viewDidLoad()
 
         startProgressHud()
-        self.navigationItem.title = movement!.title
-//        self.descriptionLabel.text = movement!.movementDescription
+        self.titleLabel.text = movement!.title
+        self.descriptionLabel.text = movement!.movementDescription
+        self.descriptionLabel.editable = true
+        self.descriptionLabel.font = descriptionFont
+        self.descriptionLabel.textAlignment = .Center
+        self.descriptionLabel.editable = false
         navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         loadGif()
     }

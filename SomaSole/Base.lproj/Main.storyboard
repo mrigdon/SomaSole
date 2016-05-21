@@ -903,7 +903,7 @@
             </objects>
             <point key="canvasLocation" x="2299" y="-347"/>
         </scene>
-        <!--Title-->
+        <!--Movement Detail View Controller-->
         <scene sceneID="e48-k4-QOO">
             <objects>
                 <viewController id="tAL-do-8gU" customClass="MovementDetailViewController" customModule="SomaSole" customModuleProvider="target" sceneMemberID="viewController">
@@ -915,36 +915,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZTY-wc-fho">
-                                <rect key="frame" x="20" y="341" width="560" height="202"/>
-                                <string key="text">Stand with trunk bent towards the floor with arms resting at the sides. Hinge at the hips.
-Pull the hands up to the eyes. The elbows will follow the hands up. Hold for 1 count. Return to resting position in controlled manner.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zdz-1h-SZg">
+                                <rect key="frame" x="20" y="72" width="560" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="8XC-tN-Ckf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wpG-Gk-D7N" customClass="AnimatableImageView" customModule="Gifu">
-                                <rect key="frame" x="170" y="72" width="261" height="261"/>
+                                <rect key="frame" x="170" y="101" width="261" height="261"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="261" id="DEV-sl-26z"/>
                                     <constraint firstAttribute="height" constant="261" id="mdz-5V-lqZ"/>
                                 </constraints>
                             </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="39j-nh-QjL">
+                                <rect key="frame" x="20" y="370" width="560" height="173"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <attributedString key="attributedText"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="wpG-Gk-D7N" firstAttribute="top" secondItem="Zdz-1h-SZg" secondAttribute="bottom" constant="8" id="0DC-jC-Lr2"/>
+                            <constraint firstItem="39j-nh-QjL" firstAttribute="trailing" secondItem="a17-jj-k3N" secondAttribute="trailingMargin" id="0hp-Dr-6zG"/>
+                            <constraint firstItem="Zdz-1h-SZg" firstAttribute="top" secondItem="Wj4-fY-Z8r" secondAttribute="bottom" constant="8" id="3QP-Cu-aTC"/>
+                            <constraint firstItem="9Cy-Xf-wWN" firstAttribute="top" secondItem="39j-nh-QjL" secondAttribute="bottom" constant="8" id="4Qe-TP-MKB"/>
+                            <constraint firstItem="39j-nh-QjL" firstAttribute="top" secondItem="wpG-Gk-D7N" secondAttribute="bottom" constant="8" id="5dx-6Y-jQ2"/>
                             <constraint firstItem="wpG-Gk-D7N" firstAttribute="centerX" secondItem="a17-jj-k3N" secondAttribute="centerX" id="O94-tz-HIB"/>
-                            <constraint firstItem="9Cy-Xf-wWN" firstAttribute="top" secondItem="ZTY-wc-fho" secondAttribute="bottom" constant="8" id="QOq-vK-bjM"/>
-                            <constraint firstItem="ZTY-wc-fho" firstAttribute="top" secondItem="wpG-Gk-D7N" secondAttribute="bottom" constant="8" id="Zmx-uC-INO"/>
-                            <constraint firstItem="wpG-Gk-D7N" firstAttribute="top" secondItem="Wj4-fY-Z8r" secondAttribute="bottom" constant="8" id="cMI-AT-Dz9"/>
-                            <constraint firstItem="ZTY-wc-fho" firstAttribute="leading" secondItem="a17-jj-k3N" secondAttribute="leadingMargin" id="e1p-BS-V9A"/>
-                            <constraint firstItem="ZTY-wc-fho" firstAttribute="trailing" secondItem="a17-jj-k3N" secondAttribute="trailingMargin" id="eAR-pq-wMH"/>
+                            <constraint firstItem="39j-nh-QjL" firstAttribute="leading" secondItem="a17-jj-k3N" secondAttribute="leadingMargin" id="fMY-HC-UvB"/>
+                            <constraint firstItem="Zdz-1h-SZg" firstAttribute="leading" secondItem="a17-jj-k3N" secondAttribute="leadingMargin" id="nVz-jv-OGn"/>
+                            <constraint firstItem="Zdz-1h-SZg" firstAttribute="trailing" secondItem="a17-jj-k3N" secondAttribute="trailingMargin" id="rUX-Nv-m4Z"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="7Mh-RC-KI6"/>
                     <connections>
-                        <outlet property="descriptionLabel" destination="ZTY-wc-fho" id="l1y-Lx-iqY"/>
+                        <outlet property="descriptionLabel" destination="39j-nh-QjL" id="T4W-tP-UZ5"/>
                         <outlet property="imageView" destination="wpG-Gk-D7N" id="uiL-of-0w9"/>
+                        <outlet property="titleLabel" destination="Zdz-1h-SZg" id="j2U-Ae-afR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0rf-PZ-Z2L" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1211,7 +1221,7 @@ Pull the hands up to the eyes. The elbows will follow the hands up. Hold for 1 c
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="setup" translatesAutoresizingMaskIntoConstraints="NO" id="zrS-eu-fD0">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="setup" translatesAutoresizingMaskIntoConstraints="NO" id="zrS-eu-fD0" customClass="AnimatableImageView" customModule="Gifu">
                                 <rect key="frame" x="64" y="93" width="473" height="275"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="275" id="mQ2-gc-ErE"/>
@@ -1295,7 +1305,7 @@ Pull the hands up to the eyes. The elbows will follow the hands up. Hold for 1 c
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="movementImageView" destination="zrS-eu-fD0" id="Lwx-rU-IUB"/>
+                        <outlet property="movementImageView" destination="zrS-eu-fD0" id="lQp-TO-XHD"/>
                         <outlet property="playPauseButton" destination="bGA-OS-RIq" id="m77-ka-c8T"/>
                         <outlet property="tableView" destination="WBb-4M-S8U" id="MhF-IY-c3L"/>
                     </connections>
@@ -2598,7 +2608,7 @@ Pull the hands up to the eyes. The elbows will follow the hands up. Hold for 1 c
                                                 <constraint firstAttribute="height" constant="21" id="hj2-gk-FKd"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>

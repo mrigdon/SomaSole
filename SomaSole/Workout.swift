@@ -26,7 +26,9 @@ class Circuit: NSObject {
         
         let movementsData = data["movements"] as! [[String:Int]]
         for movementData in movementsData {
-            let movement = Movement(title: movementData.first!.0, time: movementData.first!.1)
+            let indexWithPrefix = movementData.first!.0 as NSString
+            let index = Int(indexWithPrefix.substringFromIndex(1))!
+            let movement = Movement(index: index, time: movementData.first!.1)
             movements.append(movement)
         }
     }
@@ -43,6 +45,7 @@ class Workout: NSObject {
     var workoutDescription: String
     var circuits: [Circuit] = []
     var tags = [WorkoutTag]()
+    var numMovements = 0
     
     init(index: Int, data: [String:AnyObject]) {
         self.index = index
@@ -61,6 +64,7 @@ class Workout: NSObject {
         for circuitData in circuitsData {
             let circuit = Circuit(data: circuitData)
             circuits.append(circuit)
+            numMovements += circuit.movements.count
         }
         
         // init tags

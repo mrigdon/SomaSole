@@ -13,16 +13,16 @@ class Movement: NSObject {
     
     static var sharedMovements = [Movement]()
     
-    var title: String
-    var index: Int?
+    var title: String = ""
+    var index: Int
     var image: UIImage?
     var gif: NSData?
     var time: Int?
     var movementDescription: String?
     var finished = false
     
-    init(title: String, time: Int) {
-        self.title = title
+    init(index: Int, time: Int) {
+        self.index = index
         self.time = time
     }
     
@@ -32,6 +32,11 @@ class Movement: NSObject {
         self.movementDescription = data["description"]!
         
         let imageString = data["jpg"]!
+        let decodedData = NSData(base64EncodedString: imageString, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters)
+        image = UIImage(data: decodedData!)
+    }
+    
+    func decodeImage(imageString: String) {
         let decodedData = NSData(base64EncodedString: imageString, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters)
         image = UIImage(data: decodedData!)
     }
@@ -51,6 +56,11 @@ class Movement: NSObject {
                 let data = NSData(contentsOfURL: downloadingFileURL)
                 self.image =  UIImage(data: data!)!
                 completion()
+                
+                // save to firebase
+                let imageData = UIImageJPEGRepresentation(self.image!, 0)
+                let base64String = imageData!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
+                FirebaseManager.sharedRootRef.childByAppendingPath("movements").childByAppendingPath(String(self.index)).childByAppendingPath("jpg").setValue(base64String)
             }
             
             return nil

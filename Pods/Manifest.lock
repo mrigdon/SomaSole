@@ -9,6 +9,7 @@ PODS:
   - Gifu (1.0.1)
   - IQKeyboardManagerSwift (4.0.1)
   - MBProgressHUD (0.9.2)
+  - SwiftyJSON (2.3.2)
   - TagListView (1.0.0)
   - TextFieldEffects (1.2.0)
   - XLPagerTabStrip (5.0.0)
@@ -22,9 +23,19 @@ DEPENDENCIES:
   - Gifu
   - IQKeyboardManagerSwift
   - MBProgressHUD (~> 0.9.2)
+  - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
   - TagListView (~> 1.0)
   - TextFieldEffects
   - XLPagerTabStrip (~> 5.0.0)
+
+EXTERNAL SOURCES:
+  SwiftyJSON:
+    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
+
+CHECKOUT OPTIONS:
+  SwiftyJSON:
+    :commit: 2a5b70f06001316d4fb54501edc70b4084705da0
+    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
 
 SPEC CHECKSUMS:
   ALCameraViewController: f171ffb7e84d211277a0f97823a2bda7418dc573
@@ -35,6 +46,7 @@ SPEC CHECKSUMS:
   Gifu: bf7a99fe9f20a1dc18c3cb4289aebc922a2ad419
   IQKeyboardManagerSwift: e92246955e21dad73ad9dc89b80adb134d8bb395
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   TagListView: 6bf4bded034c4c90b1e90d8cd3d8e1d852dba0a8
   TextFieldEffects: bc4fd3bd557321bd61a0762f3f50965477a36f62
   XLPagerTabStrip: 87b8b705f9a7178e76a063ffaa2d70045944a965

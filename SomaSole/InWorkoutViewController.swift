@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Gifu
 
 class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -17,7 +18,7 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
     var workout: Workout?
 
     // outlets
-    @IBOutlet weak var movementImageView: UIImageView!
+    @IBOutlet weak var movementImageView: AnimatableImageView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var playPauseButton: UIBarButtonItem!
     
@@ -27,6 +28,11 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
             self.tableView.reloadData()
         })
     }
+    
+    private func movementForIndexPath(indexPath: NSIndexPath) {
+        return workout!.circuits[indexPath.section].movements[indexPath.row]
+    }
+    
     private func beginMovementInSet(circuitIndex: Int, setIndex: Int, workoutIndex: Int, completedSet: () -> (Void)) {
         // return if done with set in circuit
         if workoutIndex == workout!.circuits[circuitIndex].movements.count {
@@ -39,7 +45,8 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
         self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Top, animated: false)
         (self.tableView.cellForRowAtIndexPath(indexPath) as! MovementCell).layoutIfNeeded()
         (self.tableView.cellForRowAtIndexPath(indexPath) as! MovementCell).progressViewWidth.constant = self.screenWidth
-        UIView.animateWithDuration(Double(/*(self.tableView.cellForRowAtIndexPath(indexPath) as! MovementCell).movement!.time*/0.5), animations: {
+
+        UIView.animateWithDuration(Double((self.tableView.cellForRowAtIndexPath(indexPath) as! MovementCell).movement!.time!), animations: {
             (self.tableView.cellForRowAtIndexPath(indexPath) as! MovementCell).layoutIfNeeded()
             }, completion: { finished in
                 (self.tableView.cellForRowAtIndexPath(indexPath) as! MovementCell).resetBackground()

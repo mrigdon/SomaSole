@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import MBProgressHUD
 
 class BeginWorkoutViewController: UIViewController {
     
@@ -15,6 +17,7 @@ class BeginWorkoutViewController: UIViewController {
     
     // variables
     var workout: Workout?
+    var movementIndex = 0
 
     // outlets
     @IBOutlet weak var workoutImageViewHeight: NSLayoutConstraint!
@@ -24,9 +27,42 @@ class BeginWorkoutViewController: UIViewController {
     @IBOutlet weak var intensityLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
+    // methods
+    func startProgressHud() {
+        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+    }
+    
+    func stopProgressHud() {
+        dispatch_async(dispatch_get_main_queue(), {
+            MBProgressHUD.hideHUDForView(self.view, animated: true)
+        })
+    }
+    
+    func loadMovements() {
+        for circuit in workout!.circuits {
+            for movement in circuit.movements {
+                FirebaseManager.sharedRootRef.childByAppendingPath("movements").childByAppendingPath(String(movement.index)).observeEventType(.Value, withBlock: { snapshot in
+                    movement.title = snapshot.value["title"] as! String
+                    movement.movementDescription = snapshot.value["description"] as? String
+                    movement.decodeImage(snapshot.value["jpg"] as! String)
+                    self.movementIndex += 1
+                    if self.movementIndex == self.workout!.numMovements {
+                        self.finishedLoadingMovements()
+                    }
+                })
+            }
+        }
+    }
+    
+    func finishedLoadingMovements() {
+        stopProgressHud()
+    }
+    
     // uiviewcontroller
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        startProgressHud()
 
         // Do any additional setup after loading the view.
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
@@ -36,6 +72,8 @@ class BeginWorkoutViewController: UIViewController {
         self.timeLabel.text = "\(self.workout!.time) minutes"
         self.intensityLabel.text = "\(self.workout!.intensity)"
         self.descriptionLabel.text = self.workout!.workoutDescription
+        
+        self.loadMovements()
     }
 
     override func didReceiveMemoryWarning() {
