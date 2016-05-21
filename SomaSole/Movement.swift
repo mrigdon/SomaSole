@@ -56,11 +56,26 @@ class Movement: NSObject {
                 let data = NSData(contentsOfURL: downloadingFileURL)
                 self.image =  UIImage(data: data!)!
                 completion()
-                
-                // save to firebase
-                let imageData = UIImageJPEGRepresentation(self.image!, 0)
-                let base64String = imageData!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
-                FirebaseManager.sharedRootRef.childByAppendingPath("movements").childByAppendingPath(String(self.index)).childByAppendingPath("jpg").setValue(base64String)
+            }
+            
+            return nil
+        })
+    }
+    
+    func loadGif(completion: () -> Void) {
+        let transferManager = AWSS3TransferManager.defaultS3TransferManager()
+        let downloadFileString = self.title + ".gif"
+        let downloadingFileURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).URLByAppendingPathComponent("downloaded-" + downloadFileString)
+        let downloadRequest: AWSS3TransferManagerDownloadRequest = AWSS3TransferManagerDownloadRequest()
+        downloadRequest.bucket = "somasole/movements/gif"
+        downloadRequest.key = downloadFileString
+        downloadRequest.downloadingFileURL = downloadingFileURL
+        
+        transferManager.download(downloadRequest).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { task -> AnyObject? in
+            
+            if task.result != nil {
+                self.gif = NSData(contentsOfURL: downloadingFileURL)
+                completion()
             }
             
             return nil

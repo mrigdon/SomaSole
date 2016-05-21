@@ -45,10 +45,12 @@ class BeginWorkoutViewController: UIViewController {
                     movement.title = snapshot.value["title"] as! String
                     movement.movementDescription = snapshot.value["description"] as? String
                     movement.decodeImage(snapshot.value["jpg"] as! String)
-                    self.movementIndex += 1
-                    if self.movementIndex == self.workout!.numMovements {
-                        self.finishedLoadingMovements()
-                    }
+                    movement.loadGif({
+                        self.movementIndex += 1
+                        if self.movementIndex == self.workout!.numMovements {
+                            self.finishedLoadingMovements()
+                        }
+                    })
                 })
             }
         }

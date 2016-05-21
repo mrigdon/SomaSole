@@ -29,10 +29,6 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
         })
     }
     
-    private func movementForIndexPath(indexPath: NSIndexPath) {
-        return workout!.circuits[indexPath.section].movements[indexPath.row]
-    }
-    
     private func beginMovementInSet(circuitIndex: Int, setIndex: Int, workoutIndex: Int, completedSet: () -> (Void)) {
         // return if done with set in circuit
         if workoutIndex == workout!.circuits[circuitIndex].movements.count {
@@ -45,11 +41,13 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
         self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Top, animated: false)
         (self.tableView.cellForRowAtIndexPath(indexPath) as! MovementCell).layoutIfNeeded()
         (self.tableView.cellForRowAtIndexPath(indexPath) as! MovementCell).progressViewWidth.constant = self.screenWidth
-
+        let movement = workout!.circuits[circuitIndex].movements[workoutIndex]
+        movementImageView.animateWithImageData(movement.gif!)
         UIView.animateWithDuration(Double((self.tableView.cellForRowAtIndexPath(indexPath) as! MovementCell).movement!.time!), animations: {
             (self.tableView.cellForRowAtIndexPath(indexPath) as! MovementCell).layoutIfNeeded()
             }, completion: { finished in
                 (self.tableView.cellForRowAtIndexPath(indexPath) as! MovementCell).resetBackground()
+                self.movementImageView.stopAnimatingGIF()
                 self.beginMovementInSet(circuitIndex, setIndex: setIndex, workoutIndex: workoutIndex+1, completedSet: completedSet)
             }
         )
