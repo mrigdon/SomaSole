@@ -17,6 +17,7 @@ target 'SomaSole' do
     pod 'AWSCognito'
     pod 'Gifu'
     pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
+    pod 'pop', '~> 1.0'
 
 end
 

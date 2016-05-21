@@ -8,6 +8,7 @@
 
 import UIKit
 import Gifu
+import pop
 
 class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -16,6 +17,8 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
     
     // variables
     var workout: Workout?
+    var playing = true
+    var currentCell: MovementCell?
 
     // outlets
     @IBOutlet weak var movementImageView: AnimatableImageView!
@@ -36,9 +39,12 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
             return
         }
         
-        // animate blue progress
+        // get index path for cell and scroll to cell
         let indexPath = NSIndexPath(forRow: workoutIndex, inSection: circuitIndex)
         self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Top, animated: false)
+        
+        // animate blue progress
+        currentCell = self.tableView.cellForRowAtIndexPath(indexPath) as! MovementCell
         (self.tableView.cellForRowAtIndexPath(indexPath) as! MovementCell).layoutIfNeeded()
         (self.tableView.cellForRowAtIndexPath(indexPath) as! MovementCell).progressViewWidth.constant = self.screenWidth
         let movement = workout!.circuits[circuitIndex].movements[workoutIndex]
@@ -47,7 +53,6 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
             (self.tableView.cellForRowAtIndexPath(indexPath) as! MovementCell).layoutIfNeeded()
             }, completion: { finished in
                 (self.tableView.cellForRowAtIndexPath(indexPath) as! MovementCell).resetBackground()
-                self.movementImageView.stopAnimatingGIF()
                 self.beginMovementInSet(circuitIndex, setIndex: setIndex, workoutIndex: workoutIndex+1, completedSet: completedSet)
             }
         )
@@ -94,7 +99,15 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     @IBAction func tappedPlayPause(sender: AnyObject) {
-        
+        if playing {
+            // now in pause state
+            currentCell?.layer.removeAllAnimations()
+            playing = false
+        }
+        else {
+            // now in play state
+            playing = true
+        }
     }
     
     // uiviewcontroller
@@ -104,6 +117,11 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
         // disable scroll
         self.tableView.scrollEnabled = false
         self.tableView.alwaysBounceVertical = false
+        
+        // create pop animation
+        let anim: POPBasicAnimation = POPBasicAnimation(propertyNamed: "layoutConstraint.constant")
+        anim.fromValue = 0
+        anim.toValue = screenWidth
     }
     
     override func viewDidAppear(animated: Bool) {
