@@ -20,8 +20,11 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
     var playing = true
     var currentIndexPath: NSIndexPath?
     var currentCell: MovementCell?
+    var playButton: UIBarButtonItem?
+    var pauseButton: UIBarButtonItem?
 
     // outlets
+    @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var movementImageView: AnimatableImageView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var playPauseButton: UIBarButtonItem!
@@ -50,7 +53,7 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
         (self.tableView.cellForRowAtIndexPath(indexPath) as! MovementCell).layoutIfNeeded()
         (self.tableView.cellForRowAtIndexPath(indexPath) as! MovementCell).progressViewWidth.constant = self.screenWidth
         let movement = workout!.circuits[circuitIndex].movements[workoutIndex]
-//        movementImageView.animateWithImageData(movement.gif!)
+        movementImageView.animateWithImageData(movement.gif!)
         UIView.animateWithDuration(Double((self.tableView.cellForRowAtIndexPath(indexPath) as! MovementCell).movement!.time!), animations: {
             (self.tableView.cellForRowAtIndexPath(indexPath) as! MovementCell).layoutIfNeeded()
             }, completion: { finished in
@@ -95,26 +98,28 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
         })
     }
     
+    @objc private func play() {
+        let pausedTime = (tableView.cellForRowAtIndexPath(currentIndexPath!) as! MovementCell).progressView.layer.timeOffset
+        currentCell!.progressView.layer.speed = 1.0
+        currentCell!.progressView.layer.timeOffset = 0.0
+        currentCell!.progressView.layer.beginTime = 0.0
+        let timeSincePause = currentCell!.progressView.layer.convertTime(CACurrentMediaTime(), fromLayer: nil) - pausedTime
+        currentCell!.progressView.layer.beginTime = timeSincePause
+        movementImageView.startAnimatingGIF()
+        navigationBar.topItem!.rightBarButtonItem = pauseButton
+    }
+    
+    @objc private func pause() {
+        let pausedTime = currentCell!.progressView.layer.convertTime(CACurrentMediaTime(), fromLayer: nil)
+        currentCell!.progressView.layer.speed = 0.0
+        currentCell!.progressView.layer.timeOffset = pausedTime
+        movementImageView.stopAnimatingGIF()
+        navigationBar.topItem!.rightBarButtonItem = playButton
+    }
+    
     // actions
     @IBAction func tappedX(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    @IBAction func tappedPlayPause(sender: AnyObject) {
-        if playing {
-            playing = false
-            let pausedTime = currentCell!.progressView.layer.convertTime(CACurrentMediaTime(), fromLayer: nil)
-            currentCell!.progressView.layer.speed = 0.0
-            currentCell!.progressView.layer.timeOffset = pausedTime
-        } else {
-            playing = true
-            let pausedTime = (tableView.cellForRowAtIndexPath(currentIndexPath!) as! MovementCell).progressView.layer.timeOffset
-            currentCell!.progressView.layer.speed = 1.0
-            currentCell!.progressView.layer.timeOffset = 0.0
-            currentCell!.progressView.layer.beginTime = 0.0
-            let timeSincePause = currentCell!.progressView.layer.convertTime(CACurrentMediaTime(), fromLayer: nil) - pausedTime
-            currentCell!.progressView.layer.beginTime = timeSincePause
-        }
     }
     
     // uiviewcontroller
@@ -125,10 +130,11 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
         self.tableView.scrollEnabled = false
         self.tableView.alwaysBounceVertical = false
         
-        // create pop animation
-        let anim: POPBasicAnimation = POPBasicAnimation(propertyNamed: "layoutConstraint.constant")
-        anim.fromValue = 0
-        anim.toValue = screenWidth
+        // uibarbuttons
+        pauseButton = UIBarButtonItem(barButtonSystemItem: .Pause, target: self, action: #selector(self.pause))
+        playButton = UIBarButtonItem(barButtonSystemItem: .Play, target: self, action: #selector(self.play))
+        navigationBar.topItem!.rightBarButtonItem = pauseButton
+        
     }
     
     override func viewDidAppear(animated: Bool) {
