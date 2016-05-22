@@ -39,32 +39,31 @@ class BeginWorkoutViewController: UIViewController {
     }
     
     func loadMovements() {
+        startProgressHud()
         for circuit in workout!.circuits {
             for movement in circuit.movements {
                 FirebaseManager.sharedRootRef.childByAppendingPath("movements").childByAppendingPath(String(movement.index)).observeEventType(.Value, withBlock: { snapshot in
                     movement.title = snapshot.value["title"] as! String
                     movement.movementDescription = snapshot.value["description"] as? String
                     movement.decodeImage(snapshot.value["jpg"] as! String)
-                    movement.loadGif({
-                        self.movementIndex += 1
-                        if self.movementIndex == self.workout!.numMovements {
-                            self.finishedLoadingMovements()
-                        }
-                    })
+                    self.movementIndex += 1
+                    if self.movementIndex == self.workout!.numMovements {
+                        self.stopProgressHud()
+                    }
+//                    movement.loadGif({
+//                        self.movementIndex += 1
+//                        if self.movementIndex == self.workout!.numMovements {
+//                            self.stopProgressHud()
+//                        }
+//                    })
                 })
             }
         }
     }
     
-    func finishedLoadingMovements() {
-        stopProgressHud()
-    }
-    
     // uiviewcontroller
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        startProgressHud()
 
         // Do any additional setup after loading the view.
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()

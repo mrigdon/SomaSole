@@ -18,6 +18,7 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
     // variables
     var workout: Workout?
     var playing = true
+    var currentIndexPath: NSIndexPath?
     var currentCell: MovementCell?
 
     // outlets
@@ -44,11 +45,12 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
         self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Top, animated: false)
         
         // animate blue progress
-        currentCell = self.tableView.cellForRowAtIndexPath(indexPath) as! MovementCell
+        currentIndexPath = indexPath
+        currentCell = (self.tableView.cellForRowAtIndexPath(indexPath) as! MovementCell)
         (self.tableView.cellForRowAtIndexPath(indexPath) as! MovementCell).layoutIfNeeded()
         (self.tableView.cellForRowAtIndexPath(indexPath) as! MovementCell).progressViewWidth.constant = self.screenWidth
         let movement = workout!.circuits[circuitIndex].movements[workoutIndex]
-        movementImageView.animateWithImageData(movement.gif!)
+//        movementImageView.animateWithImageData(movement.gif!)
         UIView.animateWithDuration(Double((self.tableView.cellForRowAtIndexPath(indexPath) as! MovementCell).movement!.time!), animations: {
             (self.tableView.cellForRowAtIndexPath(indexPath) as! MovementCell).layoutIfNeeded()
             }, completion: { finished in
@@ -100,13 +102,18 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
     
     @IBAction func tappedPlayPause(sender: AnyObject) {
         if playing {
-            // now in pause state
-            currentCell?.layer.removeAllAnimations()
             playing = false
-        }
-        else {
-            // now in play state
+            let pausedTime = currentCell!.progressView.layer.convertTime(CACurrentMediaTime(), fromLayer: nil)
+            currentCell!.progressView.layer.speed = 0.0
+            currentCell!.progressView.layer.timeOffset = pausedTime
+        } else {
             playing = true
+            let pausedTime = (tableView.cellForRowAtIndexPath(currentIndexPath!) as! MovementCell).progressView.layer.timeOffset
+            currentCell!.progressView.layer.speed = 1.0
+            currentCell!.progressView.layer.timeOffset = 0.0
+            currentCell!.progressView.layer.beginTime = 0.0
+            let timeSincePause = currentCell!.progressView.layer.convertTime(CACurrentMediaTime(), fromLayer: nil) - pausedTime
+            currentCell!.progressView.layer.beginTime = timeSincePause
         }
     }
     
