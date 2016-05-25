@@ -124,7 +124,6 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
     
     // actions
     @IBAction func tappedX(sender: AnyObject) {
-        movementImageView.stopAnimatingGIF()
         pause()
         dismissViewControllerAnimated(true, completion: nil)
     }
