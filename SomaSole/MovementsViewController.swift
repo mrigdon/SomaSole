@@ -21,6 +21,7 @@ class MovementsViewController: UICollectionViewController, UICollectionViewDeleg
     // variables
     private var movements = [Movement]()
     private var filteredMovements = [Movement]()
+    var gifStrings = [(String, String)]()
     
     // methods
     private func photoForMovement(movement: Movement) -> UIImage? {
