@@ -26,14 +26,10 @@ class CountdownViewController: UIViewController {
     
     // methods
     private func beginWorkout() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let destVC = storyboard.instantiateViewControllerWithIdentifier("InWorkoutViewController") as! InWorkoutViewController
-        destVC.workout = self.workout
-        self.presentViewController(destVC, animated: true, completion: {
-            self.countdownStarted = false
-            self.timer = 3
-            self.countdownLabel.text = "3"
-        })
+        self.countdownStarted = false
+        self.timer = 3
+        self.countdownLabel.text = "3"
+        self.performSegueWithIdentifier("beginSegue", sender: self)
     }
     
     private func beginCountdown() {
@@ -80,15 +76,10 @@ class CountdownViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    // navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        let destVC = segue.destinationViewController as! InWorkoutViewController
+        destVC.workout = workout
     }
-    */
 
 }

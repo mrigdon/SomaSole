@@ -172,7 +172,9 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
         
         let movement = self.workout!.circuits[indexPath.section].movements[indexPath.row]
         cell.nameLabel.text = movement.title
-        cell.timeLabel.text = "\(movement.time)s"
+        cell.nameLabel.sizeToFit()
+        cell.timeLabel.text = "\(movement.time!)s"
+        cell.timeLabel.sizeToFit()
         cell.movement = movement
         
         return cell

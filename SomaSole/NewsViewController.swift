@@ -23,9 +23,17 @@ class NewsViewController: UIViewController, UIScrollViewDelegate, KASlideShowDel
     @IBOutlet weak var recImageView2: UIImageView!
     @IBOutlet weak var recImageView3: UIImageView!
     
+    // methods
+    @objc private func tappedArticle() {
+        performSegueWithIdentifier("articleSegue", sender: self)
+    }
+    
     // uiviewcontroller
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // white back button
+        navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         
         // init slideshow
         slideshowHeightConstraint.constant = screenWidth
@@ -33,10 +41,13 @@ class NewsViewController: UIViewController, UIScrollViewDelegate, KASlideShowDel
         slideshow.transitionDuration = 1
         slideshow.transitionType = .Slide
         slideshow.imagesContentMode = .ScaleToFill
+        
         slideshow.addImage(UIImage(named: "news_test"))
         slideshow.addImage(UIImage(named: "news_test2"))
         slideshow.addImage(UIImage(named: "news_test3"))
         slideshow.addGesture(.Swipe)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tappedArticle))
+        slideshow.addGestureRecognizer(tap)
         slideshow.delegate = self
         pageControl.currentPage = 0
         pageControl.numberOfPages = 3
