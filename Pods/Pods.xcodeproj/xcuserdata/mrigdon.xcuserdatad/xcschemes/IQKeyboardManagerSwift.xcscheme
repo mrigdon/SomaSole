@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '72F61BC0E8494CE7DEEB1ABE'
+               BlueprintIdentifier = 'DCA9BC8249481B67B5539CC7'
                BlueprintName = 'IQKeyboardManagerSwift'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'IQKeyboardManagerSwift.framework'>

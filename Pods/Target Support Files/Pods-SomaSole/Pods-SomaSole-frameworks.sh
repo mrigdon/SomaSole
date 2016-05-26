@@ -91,12 +91,11 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-SomaSole/Firebase.framework"
   install_framework "Pods-SomaSole/Gifu.framework"
   install_framework "Pods-SomaSole/IQKeyboardManagerSwift.framework"
+  install_framework "Pods-SomaSole/KASlideShow.framework"
   install_framework "Pods-SomaSole/MBProgressHUD.framework"
-  install_framework "Pods-SomaSole/SwiftyJSON.framework"
   install_framework "Pods-SomaSole/TagListView.framework"
   install_framework "Pods-SomaSole/TextFieldEffects.framework"
   install_framework "Pods-SomaSole/XLPagerTabStrip.framework"
-  install_framework "Pods-SomaSole/pop.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-SomaSole/ALCameraViewController.framework"
@@ -106,10 +105,9 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-SomaSole/Firebase.framework"
   install_framework "Pods-SomaSole/Gifu.framework"
   install_framework "Pods-SomaSole/IQKeyboardManagerSwift.framework"
+  install_framework "Pods-SomaSole/KASlideShow.framework"
   install_framework "Pods-SomaSole/MBProgressHUD.framework"
-  install_framework "Pods-SomaSole/SwiftyJSON.framework"
   install_framework "Pods-SomaSole/TagListView.framework"
   install_framework "Pods-SomaSole/TextFieldEffects.framework"
   install_framework "Pods-SomaSole/XLPagerTabStrip.framework"
-  install_framework "Pods-SomaSole/pop.framework"
 fi
