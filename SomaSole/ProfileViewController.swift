@@ -17,13 +17,22 @@ class ProfileViewController: ButtonBarPagerTabStripViewController/*, UINavigatio
     var firebase: Firebase?
     
     override func viewDidLoad() {
+        // nav bar customization
+        self.navigationController?.navigationBar.titleTextAttributes = [
+            NSForegroundColorAttributeName: UIColor.blackColor(),
+            NSFontAttributeName: UIFont(name: "AvenirNext-UltraLight", size: 24)!
+        ]
+        navigationController?.navigationBar.tintColor = UIColor.blackColor()
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+        
         // button bar customization
         settings.style.buttonBarBackgroundColor = whiteColor
         settings.style.buttonBarItemBackgroundColor = whiteColor
         settings.style.selectedBarBackgroundColor = lightBlueColor
-        settings.style.buttonBarItemTitleColor = lightBlueColor
+        settings.style.buttonBarItemTitleColor = UIColor.somasoleColor()
         settings.style.buttonBarMinimumLineSpacing = 0.0
         settings.style.buttonBarItemFont = UIFont.systemFontOfSize(14)
+        settings.style.selectedBarHeight = 3
         
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.

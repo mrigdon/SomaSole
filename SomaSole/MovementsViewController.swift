@@ -56,6 +56,7 @@ class MovementsViewController: UICollectionViewController, UICollectionViewDeleg
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
         
         loadMovements()
         
@@ -65,8 +66,8 @@ class MovementsViewController: UICollectionViewController, UICollectionViewDeleg
         searchController.searchBar.delegate = self
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.dimsBackgroundDuringPresentation = false
-        searchController.searchBar.barTintColor = lightBlueColor
-        searchController.searchBar.tintColor = UIColor.whiteColor()
+        searchController.searchBar.barTintColor = UIColor.whiteColor()
+        searchController.searchBar.tintColor = UIColor.blackColor()
         searchController.searchBar.layer.borderWidth = 0.0
         self.navigationItem.titleView = searchController.searchBar
         definesPresentationContext = true

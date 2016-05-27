@@ -9,6 +9,10 @@
 import UIKit
 import KASlideShow
 
+extension UIColor {
+    static func somasoleColor() -> UIColor { return UIColor(red: 0.568627451, green: 0.7333333333, blue: 0.968627451, alpha: 1.0) }
+}
+
 class NewsViewController: UIViewController, UIScrollViewDelegate, KASlideShowDelegate {
     
     // constants
@@ -33,7 +37,12 @@ class NewsViewController: UIViewController, UIScrollViewDelegate, KASlideShowDel
         super.viewDidLoad()
         
         // white back button
-        navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.titleTextAttributes = [
+            NSForegroundColorAttributeName: UIColor.blackColor(),
+            NSFontAttributeName: UIFont(name: "AvenirNext-UltraLight", size: 24)!
+        ]
+        navigationController?.navigationBar.tintColor = UIColor.blackColor()
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
         
         // init slideshow
         slideshowHeightConstraint.constant = screenWidth

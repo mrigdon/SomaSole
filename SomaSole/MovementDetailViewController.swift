@@ -75,7 +75,7 @@ class MovementDetailViewController: UIViewController {
         self.descriptionLabel.font = descriptionFont
         self.descriptionLabel.textAlignment = .Center
         self.descriptionLabel.editable = false
-        navigationController!.navigationBar.tintColor = UIColor.whiteColor()
+        navigationController!.navigationBar.tintColor = UIColor.blackColor()
         loadGif()
     }
 

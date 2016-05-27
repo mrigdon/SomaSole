@@ -62,7 +62,8 @@ class BeginWorkoutViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.tintColor = UIColor.blackColor()
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
         self.workoutImageViewHeight.constant = self.workoutImageHeight
         self.workoutImageView.image = workout!.image
         self.nameLabel.text = self.workout!.name

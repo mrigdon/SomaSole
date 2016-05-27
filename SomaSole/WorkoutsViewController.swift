@@ -103,6 +103,14 @@ class WorkoutsViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
+        // cusomtize navigation controller
+        self.navigationController?.navigationBar.titleTextAttributes = [
+            NSForegroundColorAttributeName: UIColor.blackColor(),
+            NSFontAttributeName: UIFont(name: "AvenirNext-UltraLight", size: 24)!
+        ]
+        navigationController?.navigationBar.tintColor = UIColor.blackColor()
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+        
         // begin load of all workouts
         startProgressHud()
         loadWorkouts()
@@ -111,9 +119,10 @@ class WorkoutsViewController: UITableViewController {
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchBar.scopeButtonTitles = ["All", "Favorites"]
-        searchController.searchBar.barTintColor = lightBlueColor
-        searchController.searchBar.tintColor = UIColor.whiteColor()
+        searchController.searchBar.barTintColor = UIColor.whiteColor()
+        searchController.searchBar.tintColor = UIColor.blackColor()
         searchController.searchBar.layer.borderWidth = 0.0
+        searchController.searchBar.layer.borderColor = UIColor.whiteColor().CGColor
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
         
