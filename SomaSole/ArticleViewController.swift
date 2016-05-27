@@ -20,7 +20,7 @@ class ArticleViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        scrollView.contentSize = CGSize(width: screenWidth, height: 1000)
+        
     }
 
     override func didReceiveMemoryWarning() {
