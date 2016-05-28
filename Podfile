@@ -18,6 +18,7 @@ target 'SomaSole' do
     pod 'Gifu'
     pod 'KASlideShow'
     pod 'RealmSwift'
+    pod 'youtube-ios-player-helper', '~> 0.1.4'
 
 end
 

@@ -18,6 +18,7 @@ PODS:
   - TagListView (1.0.0)
   - TextFieldEffects (1.2.0)
   - XLPagerTabStrip (5.0.0)
+  - youtube-ios-player-helper (0.1.6)
 
 DEPENDENCIES:
   - ALCameraViewController
@@ -33,6 +34,7 @@ DEPENDENCIES:
   - TagListView (~> 1.0)
   - TextFieldEffects
   - XLPagerTabStrip (~> 5.0.0)
+  - youtube-ios-player-helper (~> 0.1.4)
 
 SPEC CHECKSUMS:
   ALCameraViewController: f171ffb7e84d211277a0f97823a2bda7418dc573
@@ -49,5 +51,6 @@ SPEC CHECKSUMS:
   TagListView: 6bf4bded034c4c90b1e90d8cd3d8e1d852dba0a8
   TextFieldEffects: bc4fd3bd557321bd61a0762f3f50965477a36f62
   XLPagerTabStrip: 87b8b705f9a7178e76a063ffaa2d70045944a965
+  youtube-ios-player-helper: 21ab92db027c7ff86cb17a3843a3f6eafc8158d2
 
 COCOAPODS: 0.39.0

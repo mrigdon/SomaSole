@@ -24,6 +24,7 @@
 		621D22F81CB31BE600FE7581 /* TrainerRequestConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621D22F71CB31BE600FE7581 /* TrainerRequestConfirmViewController.swift */; };
 		6229FF821CEA518400838B68 /* MovementDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6229FF811CEA518400838B68 /* MovementDetailViewController.swift */; };
 		6235212B1CFA00E500B3F1BF /* ROGif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6235212A1CFA00E500B3F1BF /* ROGif.swift */; };
+		6235212D1CFA130A00B3F1BF /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6235212C1CFA130A00B3F1BF /* VideoCell.swift */; };
 		623DECDC1CF692A000EA1736 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623DECDB1CF692A000EA1736 /* NewsViewController.swift */; };
 		6248AE2C1CF9510C000A2DC9 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6248AE2B1CF9510C000A2DC9 /* Article.swift */; };
 		624A94E81CB7463E00A8D21A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624A94E71CB7463E00A8D21A /* LoginViewController.swift */; };
@@ -95,6 +96,7 @@
 		621D22F71CB31BE600FE7581 /* TrainerRequestConfirmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerRequestConfirmViewController.swift; sourceTree = "<group>"; };
 		6229FF811CEA518400838B68 /* MovementDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementDetailViewController.swift; sourceTree = "<group>"; };
 		6235212A1CFA00E500B3F1BF /* ROGif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ROGif.swift; sourceTree = "<group>"; };
+		6235212C1CFA130A00B3F1BF /* VideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
 		623DECDB1CF692A000EA1736 /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		6248AE2B1CF9510C000A2DC9 /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		624A94E71CB7463E00A8D21A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -287,6 +289,7 @@
 				6215F30A1CC9805900E2A995 /* WorkoutCell.swift */,
 				62D640E91CD8424800D05124 /* MovementCell.swift */,
 				6263BBD21CE79A2600CF383A /* MovementDescriptionCell.swift */,
+				6235212C1CFA130A00B3F1BF /* VideoCell.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -520,6 +523,7 @@
 				62CCEEA51CEC16BB00CC0D37 /* FirebaseManager.swift in Sources */,
 				621D22B11CB2DC3E00FE7581 /* ProfileViewController.swift in Sources */,
 				62F7ED781CF80DBF002A2C47 /* ArticleViewController.swift in Sources */,
+				6235212D1CFA130A00B3F1BF /* VideoCell.swift in Sources */,
 				62C9E4101CB45DC8005E9F48 /* SettingsViewController.swift in Sources */,
 				62B1AB931CC1D6F3007069E5 /* WorkoutsViewController.swift in Sources */,
 				6248AE2C1CF9510C000A2DC9 /* Article.swift in Sources */,
