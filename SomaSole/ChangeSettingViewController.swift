@@ -189,7 +189,7 @@ class ChangeSettingViewController: UIViewController, UITextFieldDelegate {
         self.verifyField.placeholder = "New " + setting + " Again"
         
         // white back button
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.tintColor = UIColor.blackColor()
         
         // secure text entry if password
         self.oldField.secureTextEntry = selectedSetting == .Password
