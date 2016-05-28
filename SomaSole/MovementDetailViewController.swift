@@ -44,23 +44,9 @@ class MovementDetailViewController: UIViewController {
         }
         
         // fetch first time
-        let transferManager = AWSS3TransferManager.defaultS3TransferManager()
-        let downloadFileString = self.movement!.title + ".gif"
-        let downloadingFileURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).URLByAppendingPathComponent("downloaded-" + downloadFileString)
-        let downloadRequest: AWSS3TransferManagerDownloadRequest = AWSS3TransferManagerDownloadRequest()
-        downloadRequest.bucket = "somasole/movements/gif"
-        downloadRequest.key = downloadFileString
-        downloadRequest.downloadingFileURL = downloadingFileURL
-        
-        transferManager.download(downloadRequest).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { task -> AnyObject? in
-            
-            if task.result != nil {
-                self.movement!.gif = NSData(contentsOfURL: downloadingFileURL)
-                self.imageView.animateWithImageData(self.movement!.gif!)
-            }
+        movement!.loadGif({
+            self.imageView.animateWithImageData(self.movement!.gif!)
             self.stopProgressHud()
-            
-            return nil
         })
     }
     

@@ -30,7 +30,7 @@ class FilterViewController: UIViewController {
         super.viewDidLoad()
         
         // customize nav bar
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.tintColor = UIColor.blackColor()
         
         // set workout tag for each pill
         upperBodyPill.workoutTag = .UpperBody

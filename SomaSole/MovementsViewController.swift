@@ -75,7 +75,12 @@ class MovementsViewController: UICollectionViewController, UICollectionViewDeleg
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        for m in movements {
+            if m.gif != nil {
+                m.gif = nil
+            }
+        }
     }
     
     // delegates

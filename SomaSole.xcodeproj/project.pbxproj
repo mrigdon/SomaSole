@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2964BECF70D5E766CDDF32FF /* Pods_SomaSole.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10769821E015672B332BE0A5 /* Pods_SomaSole.framework */; };
+		6201ABC71CF9EEC10099B18D /* VideosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6201ABC61CF9EEC10099B18D /* VideosViewController.swift */; };
 		6215F3091CC9704C00E2A995 /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6215F3081CC9704C00E2A995 /* TagCell.swift */; };
 		6215F30B1CC9805900E2A995 /* WorkoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6215F30A1CC9805900E2A995 /* WorkoutCell.swift */; };
 		621D22AD1CB2DC3E00FE7581 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621D22AC1CB2DC3E00FE7581 /* AppDelegate.swift */; };
@@ -22,6 +23,7 @@
 		621D22F31CB3079100FE7581 /* TrainerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621D22F11CB3079100FE7581 /* TrainerDetailViewController.swift */; };
 		621D22F81CB31BE600FE7581 /* TrainerRequestConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621D22F71CB31BE600FE7581 /* TrainerRequestConfirmViewController.swift */; };
 		6229FF821CEA518400838B68 /* MovementDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6229FF811CEA518400838B68 /* MovementDetailViewController.swift */; };
+		6235212B1CFA00E500B3F1BF /* ROGif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6235212A1CFA00E500B3F1BF /* ROGif.swift */; };
 		623DECDC1CF692A000EA1736 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623DECDB1CF692A000EA1736 /* NewsViewController.swift */; };
 		6248AE2C1CF9510C000A2DC9 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6248AE2B1CF9510C000A2DC9 /* Article.swift */; };
 		624A94E81CB7463E00A8D21A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624A94E71CB7463E00A8D21A /* LoginViewController.swift */; };
@@ -71,6 +73,7 @@
 /* Begin PBXFileReference section */
 		10769821E015672B332BE0A5 /* Pods_SomaSole.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SomaSole.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		442FE767159F91E46B63C384 /* Pods-SomaSole.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SomaSole.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SomaSole/Pods-SomaSole.debug.xcconfig"; sourceTree = "<group>"; };
+		6201ABC61CF9EEC10099B18D /* VideosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideosViewController.swift; sourceTree = "<group>"; };
 		6215F3081CC9704C00E2A995 /* TagCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
 		6215F30A1CC9805900E2A995 /* WorkoutCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutCell.swift; sourceTree = "<group>"; };
 		621D22A91CB2DC3E00FE7581 /* SomaSole.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SomaSole.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,6 +94,7 @@
 		621D22F11CB3079100FE7581 /* TrainerDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerDetailViewController.swift; sourceTree = "<group>"; };
 		621D22F71CB31BE600FE7581 /* TrainerRequestConfirmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerRequestConfirmViewController.swift; sourceTree = "<group>"; };
 		6229FF811CEA518400838B68 /* MovementDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementDetailViewController.swift; sourceTree = "<group>"; };
+		6235212A1CFA00E500B3F1BF /* ROGif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ROGif.swift; sourceTree = "<group>"; };
 		623DECDB1CF692A000EA1736 /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		6248AE2B1CF9510C000A2DC9 /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		624A94E71CB7463E00A8D21A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -156,6 +160,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		6201ABC81CF9EECA0099B18D /* Videos */ = {
+			isa = PBXGroup;
+			children = (
+				6201ABC61CF9EEC10099B18D /* VideosViewController.swift */,
+			);
+			name = Videos;
+			sourceTree = "<group>";
+		};
 		621D22A01CB2DC3E00FE7581 = {
 			isa = PBXGroup;
 			children = (
@@ -184,6 +196,7 @@
 			children = (
 				627A5B371CC1B58C0081BBFE /* UI */,
 				626063911CBAC4CB00B1AF3C /* Models */,
+				6201ABC81CF9EECA0099B18D /* Videos */,
 				623DECDD1CF692A700EA1736 /* News */,
 				62FE88051CE6ABE300A9BB15 /* Movements */,
 				628DB7391CBDE4680048F09C /* Workouts */,
@@ -250,6 +263,7 @@
 				62CCEEA41CEC16BB00CC0D37 /* FirebaseManager.swift */,
 				62D4298A1CEDA5DB009F157A /* Movement.swift */,
 				6248AE2B1CF9510C000A2DC9 /* Article.swift */,
+				6235212A1CFA00E500B3F1BF /* ROGif.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -497,6 +511,7 @@
 				626063981CBB01E500B1AF3C /* PillButton.swift in Sources */,
 				62926A991CBCA12200960F94 /* BasicViewController.swift in Sources */,
 				62FE88041CE69BD700A9BB15 /* FinishedWorkoutViewController.swift in Sources */,
+				6235212B1CFA00E500B3F1BF /* ROGif.swift in Sources */,
 				626063931CBAC4EF00B1AF3C /* User.swift in Sources */,
 				62FE88071CE6AC0800A9BB15 /* MovementsViewController.swift in Sources */,
 				624A94E81CB7463E00A8D21A /* LoginViewController.swift in Sources */,
@@ -511,6 +526,7 @@
 				6260639A1CBB3E5900B1AF3C /* CreateAboutViewController.swift in Sources */,
 				62926A971CBC887700960F94 /* BasicsViewController.swift in Sources */,
 				623DECDC1CF692A000EA1736 /* NewsViewController.swift in Sources */,
+				6201ABC71CF9EEC10099B18D /* VideosViewController.swift in Sources */,
 				62D640EA1CD8424800D05124 /* MovementCell.swift in Sources */,
 				621D22AD1CB2DC3E00FE7581 /* AppDelegate.swift in Sources */,
 				6215F3091CC9704C00E2A995 /* TagCell.swift in Sources */,

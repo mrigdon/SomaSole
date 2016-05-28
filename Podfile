@@ -17,6 +17,7 @@ target 'SomaSole' do
     pod 'AWSCognito'
     pod 'Gifu'
     pod 'KASlideShow'
+    pod 'RealmSwift'
 
 end
 

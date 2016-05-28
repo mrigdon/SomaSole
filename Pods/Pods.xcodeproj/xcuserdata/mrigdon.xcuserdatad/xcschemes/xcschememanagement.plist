@@ -54,6 +54,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Realm.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>RealmSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>TagListView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -77,7 +87,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>01B4376A93F6D18D582E6AA5AE919F8B</key>
+		<key>0F9F14C3A5544B4744CC18AC94E24D19</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -97,7 +107,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>283B3CE0FBF8C50900B0D556F190CA7D</key>
+		<key>2EFA3A16BE5C394F56B8F536435D4D02</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -107,7 +117,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>73248D16A200B833640FCC3F9A016821</key>
+		<key>3CE91FD3E6C843C2D937D862BABAD088</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>50BA320BEB414A2B306D2A73B9BFC079</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -122,7 +137,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>ABD513F018418C8BBAC9087D7D5FA954</key>
+		<key>9D132A194CCF50B5F9B9DE5AA8A63994</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -137,12 +152,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C0A80149DD7DF61A8B174ABB99B22FF9</key>
+		<key>BD436F6BDD2E41BF4E0AE2D5810590B3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>E61CE3B6DFA1FE6B3E296965C76C0E10</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FDAC3293B406DD06BD68B454982814B0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
