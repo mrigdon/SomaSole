@@ -17,6 +17,9 @@ class NewsViewController: UIViewController, UIScrollViewDelegate, KASlideShowDel
     
     // constants
     let screenWidth = UIScreen.mainScreen().bounds.width
+    
+    // variables
+    var articles = [Article]()
 
     // outlets
     @IBOutlet weak var slideshow: KASlideShow!
@@ -38,10 +41,6 @@ class NewsViewController: UIViewController, UIScrollViewDelegate, KASlideShowDel
         slideshow.transitionDuration = 1
         slideshow.transitionType = .Slide
         slideshow.imagesContentMode = .ScaleToFill
-        
-        slideshow.addImage(UIImage(named: "news_test"))
-        slideshow.addImage(UIImage(named: "news_test2"))
-        slideshow.addImage(UIImage(named: "news_test3"))
         slideshow.addGesture(.Swipe)
         let tap = UITapGestureRecognizer(target: self, action: #selector(tappedArticle))
         slideshow.addGestureRecognizer(tap)
@@ -50,7 +49,6 @@ class NewsViewController: UIViewController, UIScrollViewDelegate, KASlideShowDel
     
     private func setupPageControl() {
         pageControl.currentPage = 0
-        pageControl.numberOfPages = 3
         pageControl.layer.zPosition = 1
     }
     
@@ -63,6 +61,21 @@ class NewsViewController: UIViewController, UIScrollViewDelegate, KASlideShowDel
         recImageView1.image = UIImage(named: "booty_blaster")
         recImageView2.image = UIImage(named: "cool_down")
         recImageView3.image = UIImage(named: "upper_body_blast")
+    }
+    
+    private func addArticle(article: Article) {
+        articles.append(article)
+        slideshow.addImage(article.image)
+        pageControl.numberOfPages = articles.count
+    }
+    
+    private func loadArticles() {
+        FirebaseManager.sharedRootRef.childByAppendingPath("articles").observeEventType(.ChildAdded, withBlock: { snapshot in
+            
+            let article = Article(date: snapshot.key, data: snapshot.value as! [String : String])
+            self.addArticle(article)
+            
+        })
     }
     
     // actions
@@ -86,6 +99,7 @@ class NewsViewController: UIViewController, UIScrollViewDelegate, KASlideShowDel
         setupSlideshow()
         setupPageControl()
         setupRecommended()
+        loadArticles()
     }
 
     override func didReceiveMemoryWarning() {
@@ -102,14 +116,10 @@ class NewsViewController: UIViewController, UIScrollViewDelegate, KASlideShowDel
         pageControl.currentPage = Int(slideshow.currentIndex)
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    // navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        let destVC = segue.destinationViewController as! ArticleViewController
+        destVC.article = articles[pageControl.currentPage]
     }
-    */
 
 }

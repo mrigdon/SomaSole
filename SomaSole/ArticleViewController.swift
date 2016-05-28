@@ -12,6 +12,9 @@ class ArticleViewController: UIViewController {
     
     // constants
     let screenWidth = UIScreen.mainScreen().bounds.width
+    
+    // variables
+    var article: Article?
 
     // outlets
     @IBOutlet weak var scrollView: UIScrollView!
@@ -25,6 +28,7 @@ class ArticleViewController: UIViewController {
     // methods
     private func setupImageView() {
         imageViewHeight.constant = screenWidth - 16
+        imageView.image = article!.image
     }
     
     private func setupHeadline() {
@@ -33,7 +37,7 @@ class ArticleViewController: UIViewController {
         
         let font = UIFont(name: "GillSans-Light", size: 36)
         headlineLabel.font = font
-        headlineLabel.text = "The verdict is in: Android is fair use as Google beats Oracle"
+        headlineLabel.text = article!.headline
         
         headlineLabel.sizeToFit()
     }
@@ -41,14 +45,20 @@ class ArticleViewController: UIViewController {
     private func setupAuthor() {
         let font = UIFont(name: "HelveticaNeue-Medium", size: 12)
         authorLabel.font = font
-        authorLabel.text = "by Joe Mullin"
+        authorLabel.text = "by \(article!.author)"
         authorLabel.sizeToFit()
     }
     
     private func setupTime() {
         let font = UIFont(name: "HelveticaNeue", size: 12)
         timeLabel.font = font
-        timeLabel.text = "May 26, 2016 4:03 pm PDT"
+        
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = .MediumStyle
+        formatter.timeStyle = .FullStyle
+        let dateString = formatter.stringFromDate(article!.date)
+        
+        timeLabel.text = dateString
         timeLabel.sizeToFit()
     }
     
@@ -57,6 +67,7 @@ class ArticleViewController: UIViewController {
         
         let font = UIFont(name: "Georgia", size: 20)
         bodyView.font = font
+        bodyView.text = article!.body
         
         bodyView.editable = false
     }
