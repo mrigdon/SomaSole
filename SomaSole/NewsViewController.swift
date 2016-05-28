@@ -32,19 +32,7 @@ class NewsViewController: UIViewController, UIScrollViewDelegate, KASlideShowDel
         performSegueWithIdentifier("articleSegue", sender: self)
     }
     
-    // uiviewcontroller
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // white back button
-        self.navigationController?.navigationBar.titleTextAttributes = [
-            NSForegroundColorAttributeName: UIColor.blackColor(),
-            NSFontAttributeName: UIFont(name: "AvenirNext-UltraLight", size: 24)!
-        ]
-        navigationController?.navigationBar.tintColor = UIColor.blackColor()
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
-        
-        // init slideshow
+    private func setupSlideshow() {
         slideshowHeightConstraint.constant = screenWidth
         slideshow.delay = 3
         slideshow.transitionDuration = 1
@@ -58,11 +46,15 @@ class NewsViewController: UIViewController, UIScrollViewDelegate, KASlideShowDel
         let tap = UITapGestureRecognizer(target: self, action: #selector(tappedArticle))
         slideshow.addGestureRecognizer(tap)
         slideshow.delegate = self
+    }
+    
+    private func setupPageControl() {
         pageControl.currentPage = 0
         pageControl.numberOfPages = 3
         pageControl.layer.zPosition = 1
-        
-        // init recommended
+    }
+    
+    private func setupRecommended() {
         recImageView0.contentMode = .ScaleAspectFill
         recImageView1.contentMode = .ScaleAspectFill
         recImageView2.contentMode = .ScaleAspectFill
@@ -71,6 +63,29 @@ class NewsViewController: UIViewController, UIScrollViewDelegate, KASlideShowDel
         recImageView1.image = UIImage(named: "booty_blaster")
         recImageView2.image = UIImage(named: "cool_down")
         recImageView3.image = UIImage(named: "upper_body_blast")
+    }
+    
+    // actions
+    @IBAction func tappedPageControl(sender: AnyObject) {
+        
+    }
+    
+    // uiviewcontroller
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // nav bar setup
+        self.navigationController?.navigationBar.titleTextAttributes = [
+            NSForegroundColorAttributeName: UIColor.blackColor(),
+            NSFontAttributeName: UIFont(name: "AvenirNext-UltraLight", size: 24)!
+        ]
+        navigationController?.navigationBar.tintColor = UIColor.blackColor()
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+        
+        // add'l setup
+        setupSlideshow()
+        setupPageControl()
+        setupRecommended()
     }
 
     override func didReceiveMemoryWarning() {
