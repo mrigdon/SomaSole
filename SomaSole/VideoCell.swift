@@ -19,7 +19,7 @@ class VideoCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        playerView.loadWithVideoId("M7lc1UVf-VE")
+        playerView.loadWithVideoId("-k-WZkRkj0I")
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
