@@ -8,6 +8,8 @@
 
 import UIKit
 import KASlideShow
+import Firebase
+import MBProgressHUD
 
 extension UIColor {
     static func somasoleColor() -> UIColor { return UIColor(red: 0.568627451, green: 0.7333333333, blue: 0.968627451, alpha: 1.0) }
@@ -20,19 +22,34 @@ class NewsViewController: UIViewController, UIScrollViewDelegate, KASlideShowDel
     
     // variables
     var articles = [Article]()
+    var workouts = [Workout]()
+    var selectedWorkout: Workout?
+    var movementIndex = 0
 
     // outlets
     @IBOutlet weak var slideshow: KASlideShow!
     @IBOutlet weak var slideshowHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var pageControl: UIPageControl!
-    @IBOutlet weak var recImageView0: UIImageView!
-    @IBOutlet weak var recImageView1: UIImageView!
-    @IBOutlet weak var recImageView2: UIImageView!
-    @IBOutlet weak var recImageView3: UIImageView!
+    @IBOutlet var imageViewCollection: [QuickStartImageView]!
     
     // methods
     @objc private func tappedArticle() {
         performSegueWithIdentifier("articleSegue", sender: self)
+    }
+    
+    @objc private func tappedWorkout(tap: AnyObject) {
+        selectedWorkout = (tap.view!! as! QuickStartImageView).workout
+//        loadMovements()
+    }
+    
+    func startProgressHud() {
+        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+    }
+    
+    func stopProgressHud() {
+        dispatch_async(dispatch_get_main_queue(), {
+            MBProgressHUD.hideHUDForView(self.view, animated: true)
+        })
     }
     
     private func setupSlideshow() {
@@ -53,14 +70,7 @@ class NewsViewController: UIViewController, UIScrollViewDelegate, KASlideShowDel
     }
     
     private func setupRecommended() {
-        recImageView0.contentMode = .ScaleAspectFill
-        recImageView1.contentMode = .ScaleAspectFill
-        recImageView2.contentMode = .ScaleAspectFill
-        recImageView3.contentMode = .ScaleAspectFill
-        recImageView0.image = UIImage(named: "ab_shred")
-        recImageView1.image = UIImage(named: "booty_blaster")
-        recImageView2.image = UIImage(named: "cool_down")
-        recImageView3.image = UIImage(named: "upper_body_blast")
+        
     }
     
     private func addArticle(article: Article) {
@@ -69,13 +79,55 @@ class NewsViewController: UIViewController, UIScrollViewDelegate, KASlideShowDel
         pageControl.numberOfPages = articles.count
     }
     
+    private func addWorkout(workout: Workout, index: Int) {
+        workouts.append(workout)
+        imageViewCollection[index].image = workout.image
+        imageViewCollection[index].workout = workout
+        let tap = UITapGestureRecognizer(target: self, action: #selector(NewsViewController.tappedWorkout(_:)))
+        imageViewCollection[index].userInteractionEnabled = true
+        imageViewCollection[index].addGestureRecognizer(tap)
+    }
+    
     private func loadArticles() {
         FirebaseManager.sharedRootRef.childByAppendingPath("articles").observeEventType(.ChildAdded, withBlock: { snapshot in
-            
             let article = Article(date: snapshot.key, data: snapshot.value as! [String : String])
             self.addArticle(article)
             
         })
+    }
+    
+    private func loadWorkouts() {
+        var workoutIndecs = [Int:Int]()
+        for i in 0...3 {
+            workoutIndecs[i] = Int(arc4random_uniform(17))
+        }
+        
+        for item in workoutIndecs {
+            FirebaseManager.sharedRootRef.childByAppendingPath("workouts").childByAppendingPath(String(item.1)).observeSingleEventOfType(.Value, withBlock: { snapshot in
+                let workout = Workout(index: Int(snapshot.key)!, data: snapshot.value as! [String : AnyObject])
+                self.addWorkout(workout, index: item.0)
+            })
+        }
+    }
+    
+    func loadMovements() {
+        startProgressHud()
+        for circuit in selectedWorkout!.circuits {
+            for movement in circuit.movements {
+                FirebaseManager.sharedRootRef.childByAppendingPath("movements").childByAppendingPath(String(movement.index)).observeEventType(.Value, withBlock: { snapshot in
+                    movement.title = snapshot.value["title"] as! String
+                    movement.movementDescription = snapshot.value["description"] as? String
+                    movement.decodeImage(snapshot.value["jpg"] as! String)
+                    movement.loadGif({
+                        self.movementIndex += 1
+                        if self.movementIndex == self.selectedWorkout!.numMovements {
+                            self.stopProgressHud()
+                            self.performSegueWithIdentifier("workoutSegue", sender: self)
+                        }
+                    })
+                })
+            }
+        }
     }
     
     // uiviewcontroller
@@ -95,6 +147,7 @@ class NewsViewController: UIViewController, UIScrollViewDelegate, KASlideShowDel
         setupPageControl()
         setupRecommended()
         loadArticles()
+        loadWorkouts()
     }
 
     override func didReceiveMemoryWarning() {
@@ -113,8 +166,14 @@ class NewsViewController: UIViewController, UIScrollViewDelegate, KASlideShowDel
 
     // navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let destVC = segue.destinationViewController as! ArticleViewController
-        destVC.article = articles[pageControl.currentPage]
+        if segue.identifier == "articleSegue" {
+            let destVC = segue.destinationViewController as! ArticleViewController
+            destVC.article = articles[pageControl.currentPage]
+        }
+        else if segue.identifier == "workoutSegue" {
+            let destVC = segue.destinationViewController as! InWorkoutViewController
+            destVC.workout = selectedWorkout
+        }
     }
 
 }

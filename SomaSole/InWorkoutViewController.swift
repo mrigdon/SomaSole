@@ -125,7 +125,7 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
     // actions
     @IBAction func tappedX(sender: AnyObject) {
         pause()
-        dispatch_async(dispatch_get_main_queue(), {
+        dispatch_async(dispatch_get_main_queue(), { [unowned self] in
             self.dismissViewControllerAnimated(true, completion: nil)
         })
     }
