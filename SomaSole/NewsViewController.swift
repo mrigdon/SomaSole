@@ -78,11 +78,6 @@ class NewsViewController: UIViewController, UIScrollViewDelegate, KASlideShowDel
         })
     }
     
-    // actions
-    @IBAction func tappedPageControl(sender: AnyObject) {
-        
-    }
-    
     // uiviewcontroller
     override func viewDidLoad() {
         super.viewDidLoad()
