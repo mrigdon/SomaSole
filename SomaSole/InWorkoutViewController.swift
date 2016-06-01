@@ -22,14 +22,14 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
     var currentCell: MovementCell?
     var playButton: UIBarButtonItem?
     var pauseButton: UIBarButtonItem?
-    var tipView: UITextView = UITextView()
+    var gifVisible = true
 
     // outlets
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var movementImageView: AnimatableImageView!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var playPauseButton: UIBarButtonItem!
+    @IBOutlet weak var tipLabel: UILabel!
     
     // methods
     private func reloadTableView() {
@@ -52,7 +52,7 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
         // animate image view and set tip text
         let movement = workout!.circuits[circuitIndex].movements[workoutIndex]
         movementImageView.animateWithImageData(movement.gif!)
-        tipView.text = movement.movementDescription
+        tipLabel.text = movement.movementDescription
         
         // animate blue progress
         currentIndexPath = indexPath
@@ -131,7 +131,16 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     @IBAction func tappedInfo(sender: AnyObject) {
-        
+        if gifVisible {
+            movementImageView.layer.opacity = 0.0
+            tipLabel.layer.opacity = 1.0
+            gifVisible = false
+        }
+        else {
+            movementImageView.layer.opacity = 1.0
+            tipLabel.layer.opacity = 0.0
+            gifVisible = true
+        }
     }
     
     // uiviewcontroller
@@ -148,7 +157,8 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
         navigationBar.topItem!.rightBarButtonItem = pauseButton
         
         // init tip view
-        tipView.text = workout?.circuits[0].movements[0].movementDescription
+        tipLabel.text = workout?.circuits[0].movements[0].movementDescription
+        tipLabel.layer.opacity = 0.0
     }
     
     override func viewDidAppear(animated: Bool) {
