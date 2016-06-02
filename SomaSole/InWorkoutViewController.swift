@@ -8,7 +8,6 @@
 
 import UIKit
 import Gifu
-import pop
 
 class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -23,7 +22,8 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
     var playButton: UIBarButtonItem?
     var pauseButton: UIBarButtonItem?
     var gifVisible = true
-
+    var running = true
+    
     // outlets
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var navigationBar: UINavigationBar!
@@ -51,7 +51,9 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
         
         // animate image view and set tip text
         let movement = workout!.circuits[circuitIndex].movements[workoutIndex]
-        movementImageView.animateWithImageData(movement.gif!)
+        dispatch_async(dispatch_get_main_queue(), {
+            self.movementImageView.animateWithImageData(movement.gif!)
+        })
         tipLabel.text = movement.movementDescription
         
         // animate blue progress
@@ -62,8 +64,10 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
         UIView.animateWithDuration(Double((self.tableView.cellForRowAtIndexPath(indexPath) as! MovementCell).movement!.time!), animations: {
             (self.tableView.cellForRowAtIndexPath(indexPath) as! MovementCell).layoutIfNeeded()
             }, completion: { finished in
-                (self.tableView.cellForRowAtIndexPath(indexPath) as! MovementCell).resetBackground()
-                self.beginMovementInSet(circuitIndex, setIndex: setIndex, workoutIndex: workoutIndex+1, completedSet: completedSet)
+                if self.running {
+                    (self.tableView.cellForRowAtIndexPath(indexPath) as! MovementCell).resetBackground()
+                    self.beginMovementInSet(circuitIndex, setIndex: setIndex, workoutIndex: workoutIndex+1, completedSet: completedSet)
+                }
             }
         )
     }
@@ -124,10 +128,12 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
     
     // actions
     @IBAction func tappedX(sender: AnyObject) {
-        pause()
         dispatch_async(dispatch_get_main_queue(), { [unowned self] in
+            self.running = false
+            self.movementImageView.stopAnimatingGIF()
+            self.currentCell!.progressView.layer.removeAllAnimations()
             self.dismissViewControllerAnimated(true, completion: nil)
-        })
+            })
     }
     
     @IBAction func tappedInfo(sender: AnyObject) {
@@ -164,7 +170,7 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidAppear(animated: Bool) {
         beginWorkout()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -198,18 +204,18 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let circuit = workout!.circuits[section]
-//        return "Circuit \(section+1) (Set \(circuit.currentSet)/\(circuit.numSets))"
+        //        return "Circuit \(section+1) (Set \(circuit.currentSet)/\(circuit.numSets))"
         return "Circuit \(section+1) (\(circuit.numSets) Sets)"
     }
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
