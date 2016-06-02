@@ -39,7 +39,7 @@ class NewsViewController: UIViewController, UIScrollViewDelegate, KASlideShowDel
     
     @objc private func tappedWorkout(tap: AnyObject) {
         selectedWorkout = (tap.view!! as! QuickStartImageView).workout
-//        loadMovements()
+        loadMovements()
     }
     
     func startProgressHud() {
@@ -121,6 +121,7 @@ class NewsViewController: UIViewController, UIScrollViewDelegate, KASlideShowDel
                     movement.loadGif({
                         self.movementIndex += 1
                         if self.movementIndex == self.selectedWorkout!.numMovements {
+                            self.movementIndex = 0
                             self.stopProgressHud()
                             self.performSegueWithIdentifier("workoutSegue", sender: self)
                         }
