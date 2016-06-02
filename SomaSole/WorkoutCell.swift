@@ -32,7 +32,7 @@ class WorkoutCell: UITableViewCell {
     @IBAction func tappedStar(sender: AnyObject) {
         let starButton = sender as! StarButton
         
-        if workout!.favorite {
+        if User.sharedModel.favoriteWorkouts.contains(workout!.index) {
             let indexInArray = User.sharedModel.favoriteWorkouts.indexOf(workout!.index)
             User.sharedModel.favoriteWorkouts.removeAtIndex(indexInArray!)
             FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).childByAppendingPath("favoriteWorkouts").setValue(User.sharedModel.favoriteWorkouts)

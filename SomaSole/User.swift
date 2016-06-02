@@ -106,7 +106,7 @@ class User: NSObject {
             "activities": user.activities!,
             "goals": user.goals!,
             "profileImageString": user.profileImageString(),
-            "favoriteWorkouts": [Int](),
+            "favoriteWorkouts": user.favoriteWorkouts,
             "password": user.password!
         ]
         
