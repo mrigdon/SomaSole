@@ -96,6 +96,9 @@ class CreateBasicsViewController: UIViewController, UITextFieldDelegate, UIPicke
             // make select image button transparent
             self.profilePictureButton.backgroundColor = UIColor.clearColor()
             self.profilePictureButton.setTitle("", forState: UIControlState.Normal)
+            
+            // set sharedUser image
+            User.sharedModel.profileImage = image.0
         })
         
         presentViewController(cameraViewController, animated: true, completion: nil)

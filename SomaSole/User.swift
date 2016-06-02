@@ -54,24 +54,38 @@ class User: NSObject {
     var goals: [Int]?
     var profileImage: UIImage?
     var uid: String?
+    var favoriteWorkouts = [Int]()
     
     static func populateFields(data: Dictionary<String, AnyObject>) {
-        let user = User.sharedModel
-        
-        user.firstName = data["firstName"] as? String
-        user.lastName = data["lastName"] as? String
-        user.email = data["email"] as? String
-        user.password = data["password"] as? String
-        user.height = data["height"] as? Float
-        user.weight = data["weight"] as? Float
-        user.male = data["male"] as? Bool
-        user.activities = data["activities"] as? [Int]
-        user.goals = data["goals"] as? [Int]
-        user.uid = data["uid"] as? String
+        User.sharedModel.firstName = data["firstName"] as? String
+        User.sharedModel.lastName = data["lastName"] as? String
+        User.sharedModel.email = data["email"] as? String
+        User.sharedModel.password = data["password"] as? String
+        User.sharedModel.height = data["height"] as? Float
+        User.sharedModel.weight = data["weight"] as? Float
+        User.sharedModel.male = data["male"] as? Bool
+        User.sharedModel.activities = data["activities"] as? [Int]
+        User.sharedModel.goals = data["goals"] as? [Int]
+        User.sharedModel.uid = data["uid"] as? String
         
         let formatter = NSDateFormatter()
         formatter.dateFormat = "MM/dd/yyy"
-        user.dateOfBirth = formatter.dateFromString((data["dateOfBirth"] as? String)!)
+        User.sharedModel.dateOfBirth = formatter.dateFromString((data["dateOfBirth"] as? String)!)
+        
+        let imageString = data["profileImageString"] as? String
+        let imageData = NSData(base64EncodedString: imageString!, options: .IgnoreUnknownCharacters)
+        User.sharedModel.profileImage = UIImage(data: imageData!)
+        
+        if let favoriteWorkouts = data["favoriteWorkouts"] as? [Int] {
+            User.sharedModel.favoriteWorkouts = favoriteWorkouts
+        }
+    }
+    
+    static func stringFromDate(date: NSDate) -> String {
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "MM/dd/yyyy"
+        
+        return formatter.stringFromDate(date)
     }
     
     static func data() -> Dictionary<String, AnyObject> {
@@ -80,21 +94,34 @@ class User: NSObject {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "MM/dd/yyyy"
         
-        let data: Dictionary<String, AnyObject> = [
-                "uid": user.uid!,
-                "firstName": user.firstName!,
-                "lastName": user.lastName!,
-                "email": user.email!,
-                "password": user.password!,
-                "height": user.height!,
-                "weight": user.weight!,
-                "male": user.male!,
-                "dateOfBirth": dateFormatter.stringFromDate(user.dateOfBirth!),
-                "activities": user.activities!,
-                "goals": user.goals!,
-            ]
+        let userData: Dictionary<String, AnyObject> = [
+            "uid": user.uid!,
+            "firstName": user.firstName!,
+            "lastName": user.lastName!,
+            "email": user.email!,
+            "height": user.height!,
+            "weight": user.weight!,
+            "male": user.male!,
+            "dateOfBirth": User.stringFromDate(user.dateOfBirth!),
+            "activities": user.activities!,
+            "goals": user.goals!,
+            "profileImageString": user.profileImageString(),
+            "favoriteWorkouts": [Int](),
+            "password": user.password!
+        ]
         
-        return data
+        return userData
+    }
+    
+    static func saveToUserDefaults() {
+        NSUserDefaults.standardUserDefaults().setObject(User.data(), forKey: "userData")
+        NSUserDefaults.standardUserDefaults().synchronize()
+    }
+    
+    func profileImageString() -> String {
+        let imageData = UIImageJPEGRepresentation(self.profileImage!, 0.0)
+        
+        return imageData!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
     }
     
     static func printAllFields() {

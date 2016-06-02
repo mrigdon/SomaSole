@@ -17,6 +17,7 @@ class BasicsViewController: UIViewController, IndicatorInfoProvider {
     @IBOutlet weak var weightLabel: UILabel!
     @IBOutlet weak var genderLabel: UILabel!
     @IBOutlet weak var dateOfBirthLabel: UILabel!
+    @IBOutlet weak var profileImageView: UIImageView!
     
     func stringFromHeight(height: Float) -> String {
         let heightFeet: Int = Int(floor(height))
@@ -45,6 +46,7 @@ class BasicsViewController: UIViewController, IndicatorInfoProvider {
         weightLabel.text = "\(Int(user.weight!)) lbs"
         genderLabel.text = user.male == true ? "Male" : "Female"
         dateOfBirthLabel.text = stringFromDate(user.dateOfBirth!)
+        profileImageView.image = user.profileImage
     }
 
     override func didReceiveMemoryWarning() {

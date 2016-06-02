@@ -78,6 +78,8 @@ class CreateAboutViewController: UIViewController {
             "dateOfBirth": stringFromDate(user.dateOfBirth!),
             "activities": user.activities!,
             "goals": user.goals!,
+            "profileImageString": user.profileImageString(),
+            "favoriteWorkouts": [Int]()
         ]
         
         // save to Firebase

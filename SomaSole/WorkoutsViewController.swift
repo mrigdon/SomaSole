@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import MBProgressHUD
 import TagListView
+import EPShapes
 
 extension WorkoutsViewController: UISearchResultsUpdating {
     func updateSearchResultsForSearchController(searchController: UISearchController) {
@@ -179,6 +180,13 @@ class WorkoutsViewController: UITableViewController {
                 self.tableView.rowHeight = workoutCellSize
                 let workout = workouts[indexPath.row]
                 (cell as! WorkoutCell).workout = workout
+                if User.sharedModel.favoriteWorkouts.contains((cell as! WorkoutCell).workout!.index) {
+                    (cell as! WorkoutCell).starButton.fillColor = UIColor.goldColor()
+                }
+                else {
+                    (cell as! WorkoutCell).starButton.fillColor = UIColor.clearColor()
+                }
+                (cell as! WorkoutCell).starButton.config()
                 cell.backgroundView = UIImageView(image: (cell as! WorkoutCell).workout!.image)
             }
         }
@@ -199,6 +207,13 @@ class WorkoutsViewController: UITableViewController {
             self.tableView.rowHeight = workoutCellSize
             let workout = filteredWorkouts[indexPath.row - 1] // - 1 because of the tag cell
             (cell as! WorkoutCell).workout = workout
+            if User.sharedModel.favoriteWorkouts.contains((cell as! WorkoutCell).workout!.index) {
+                (cell as! WorkoutCell).starButton.fillColor = UIColor.goldColor()
+            }
+            else {
+                (cell as! WorkoutCell).starButton.fillColor = UIColor.clearColor()
+            }
+            (cell as! WorkoutCell).starButton.config()
             cell.backgroundView = UIImageView(image: (cell as! WorkoutCell).workout!.image)
         }
 

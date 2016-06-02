@@ -46,6 +46,7 @@ class Workout: NSObject {
     var circuits: [Circuit] = []
     var tags = [WorkoutTag]()
     var numMovements = 0
+    var favorite = false
     
     init(index: Int, data: [String:AnyObject]) {
         self.index = index

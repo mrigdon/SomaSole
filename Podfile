@@ -19,6 +19,7 @@ target 'SomaSole' do
     pod 'KASlideShow'
     pod 'RealmSwift'
     pod 'youtube-ios-player-helper', '~> 0.1.4'
+    pod 'EPShapes'
 
 end
 

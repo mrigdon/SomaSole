@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'ADC0F1BB1FB97636EFEC65FE'
+               BlueprintIdentifier = '0AEAC1F43108AB8ACD0DB539'
                BlueprintName = 'AWSCore'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'AWSCore.framework'>

@@ -8,12 +8,48 @@
 
 import UIKit
 import AWSS3
+import EPShapes
+import Firebase
+
+extension UIColor {
+    static func goldColor() -> UIColor {
+        return UIColor(red: 255/255, green: 215/255, blue: 0/255, alpha: 1.0)
+    }
+}
 
 class WorkoutCell: UITableViewCell {
     
+    // constants
     let workoutCellSize: CGFloat = 0.51575 * UIScreen.mainScreen().bounds.width
     
+    // variables
     var workout: Workout?
+    
+    // outlets
+    @IBOutlet weak var starButton: StarButton!
+    
+    // action
+    @IBAction func tappedStar(sender: AnyObject) {
+        let starButton = sender as! StarButton
+        
+        if workout!.favorite {
+            let indexInArray = User.sharedModel.favoriteWorkouts.indexOf(workout!.index)
+            User.sharedModel.favoriteWorkouts.removeAtIndex(indexInArray!)
+            FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).childByAppendingPath("favoriteWorkouts").setValue(User.sharedModel.favoriteWorkouts)
+            User.saveToUserDefaults()
+            starButton.fillColor = UIColor.clearColor()
+            workout!.favorite = false
+        }
+        else {
+            User.sharedModel.favoriteWorkouts.append(workout!.index)
+            FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).childByAppendingPath("favoriteWorkouts").setValue(User.sharedModel.favoriteWorkouts)
+            User.saveToUserDefaults()
+            starButton.fillColor = UIColor.goldColor()
+            workout!.favorite = true
+        }
+        
+        starButton.config()
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
