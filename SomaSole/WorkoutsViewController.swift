@@ -14,7 +14,15 @@ import EPShapes
 
 extension WorkoutsViewController: UISearchResultsUpdating {
     func updateSearchResultsForSearchController(searchController: UISearchController) {
-        filterContent(searchController.searchBar.text!)
+        let searchBar = searchController.searchBar
+        let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
+        filterContent(searchController.searchBar.text!, scope: scope)
+    }
+}
+
+extension WorkoutsViewController: UISearchBarDelegate {
+    func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        filterContent(searchBar.text!, scope: searchBar.scopeButtonTitles![selectedScope])
     }
 }
 
@@ -53,9 +61,22 @@ class WorkoutsViewController: UITableViewController {
     }
     
     func filterContent(searchText: String, scope: String = "All") {
+        // filter for scope
+        var scopeFilteredWorkouts = [Workout]()
+        if scope == "Favorites" {
+            for workout in self.workouts {
+                if User.sharedModel.favoriteWorkouts.contains(workout.index) {
+                    scopeFilteredWorkouts.append(workout)
+                }
+            }
+        }
+        else {
+            scopeFilteredWorkouts = self.workouts
+        }
+        
         // filter for tags
         var tagFilteredWorkouts = [Workout]()
-        for workout in workouts {
+        for workout in scopeFilteredWorkouts {
             // if workout.tags contains all of selected filters
             var qualifies = true
             for filter in selectedFilters {
@@ -72,7 +93,8 @@ class WorkoutsViewController: UITableViewController {
         // filter for search text
         if searchText != "" {
             filteredWorkouts = tagFilteredWorkouts.filter { workout in
-                return workout.name.lowercaseString.containsString(searchText.lowercaseString)
+                let categoryMatch = (scope == "All") || (User.sharedModel.favoriteWorkouts.contains(workout.index))
+                return categoryMatch && workout.name.lowercaseString.containsString(searchText.lowercaseString)
             }
         }
         else {
@@ -124,6 +146,7 @@ class WorkoutsViewController: UITableViewController {
         searchController.searchBar.tintColor = UIColor.blackColor()
         searchController.searchBar.layer.borderWidth = 0.0
         searchController.searchBar.layer.borderColor = UIColor.whiteColor().CGColor
+        searchController.searchBar.delegate = self
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
         
