@@ -13,130 +13,142 @@ import FBSDKLoginKit
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
+    // constants
     let placeholderColor = UIColor(red: 0.7803921569, green: 0.7803921569, blue: 0.8039215686, alpha: 1.0)
     
+    // variables
     var alertController: UIAlertController?
-    let firebaseURL = "https://somasole.firebaseio.com"
-    var firebase: Firebase?
     var email: String?
     var password: String?
 
+    // outlets
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passField: UITextField!
     @IBOutlet weak var fbLoginButton: FBSDKButton!
     
-    func stopProgressHud() {
+    // methods
+    private func stopProgressHud() {
         dispatch_async(dispatch_get_main_queue(), {
             MBProgressHUD.hideHUDForView(self.view, animated: true)
         })
     }
     
-    func errorAlert(message: String) {
+    private func errorAlert(message: String) {
         alertController!.message = message
         presentViewController(alertController!, animated: true, completion: nil)
     }
     
-    func anyFieldsEmpty() -> Bool {
+    private func anyFieldsEmpty() -> Bool {
         return emailField.text?.characters.count == 0 || passField.text?.characters.count == 0
     }
     
-    func getUserDataAndLogin(uid: String) {
-        firebase?.childByAppendingPath("users").childByAppendingPath(uid).observeEventType(.Value, withBlock: { snapshot in
-            // populate shared model with data
-            var userData: Dictionary<String, AnyObject> = snapshot.value as! Dictionary<String, AnyObject>
-            userData["password"] = self.password
-            User.populateFields(userData)
-            
-            // save to user defaults
-            NSUserDefaults.standardUserDefaults().setObject(userData["uid"], forKey: "uid")
-            NSUserDefaults.standardUserDefaults().setObject(userData, forKey: "userData")
-            NSUserDefaults.standardUserDefaults().synchronize()
-            
-            // stop progress hud
-            self.stopProgressHud()
-            
-            // login
-            self.performSegueWithIdentifier("toMain", sender: self)
+    private func createUserFromFacebook(userData: [String:AnyObject]) {
+        User.sharedModel.email = userData["email"] as? String
+        User.sharedModel.firstName = userData["first_name"] as? String
+        User.sharedModel.lastName = userData["last_name"] as? String
+        User.sharedModel.male = userData["gender"] as? String == "male"
+    }
+    
+    private func getUserDataAndLogin(uid: String) {
+        FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(uid).observeEventType(.Value, withBlock: { snapshot in
+            if !(snapshot.value is NSNull) {
+                // user exsits
+                // populate shared model with data
+                var userData: Dictionary<String, AnyObject> = snapshot.value as! Dictionary<String, AnyObject>
+                userData["password"] = self.password
+                User.populateFields(userData)
+                
+                // save to user defaults
+                NSUserDefaults.standardUserDefaults().setObject(userData["uid"], forKey: "uid")
+                NSUserDefaults.standardUserDefaults().setObject(userData, forKey: "userData")
+                NSUserDefaults.standardUserDefaults().synchronize()
+                
+                // stop progress hud
+                self.stopProgressHud()
+                
+                // login
+                self.performSegueWithIdentifier("toMain", sender: self)
+            }
+            else {
+                // user does not exist
+                let fields = ["fields": "email,first_name,last_name,birthday,gender,picture"]
+                let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: fields)
+                graphRequest.startWithCompletionHandler({ connection, result, error in
+                    if error == nil {
+                        // success
+                        User.sharedModel.uid = uid
+                        let userData = result as! [String:AnyObject]
+                        self.createUserFromFacebook(userData)
+                    }
+                    else {
+                        // error
+                        print(error)
+                    }
+                })
+            }
         })
     }
     
-    @objc private func tappedFacebook() {
+    private func loginUser() {
+        FirebaseManager.sharedRootRef.authUser(email, password: password, withCompletionBlock: { error, authData in
+            if error != nil {
+                self.handleFirebaseError(error)
+            }
+            else {
+                self.getUserDataAndLogin(authData.uid)
+            }
+        })
+    }
+    
+    private func handleFirebaseError(error: NSError) {
+        switch error.code {
+            
+        case FAuthenticationError.EmailTaken.rawValue:
+            self.errorAlert("There is already an account with this email.")
+            break
+        case FAuthenticationError.NetworkError.rawValue:
+            self.errorAlert("There is a problem with the network, please try again in a few moments.")
+            break
+        case FAuthenticationError.InvalidEmail.rawValue:
+            self.errorAlert("The email you entered is invalid.")
+            break
+        case FAuthenticationError.UserDoesNotExist.rawValue:
+            self.errorAlert("There is no registered account with that email.")
+            break
+        case FAuthenticationError.InvalidPassword.rawValue:
+            self.errorAlert("The password you entered is incorrect.")
+            break
+        default:
+            break
+            
+        }
+    }
+    
+    // actions
+    @IBAction func tappedFacebookLogin(sender: AnyObject) {
         let loginManager = FBSDKLoginManager()
         let permissions = ["public_profile", "email"]
         loginManager.logInWithReadPermissions(permissions, fromViewController: self, handler: { fbResult, fbError in
             if fbError != nil {
+                // error in login
                 print("fbError: \(fbError.code)")
             }
             else if fbResult.isCancelled {
+                // cancelled login
                 print("cancelled facebook login")
             }
             else {
-                print("logged in")
-            }
-        })
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        firebase = Firebase(url: firebaseURL)
-        
-        // customize text fields
-        emailField.layer.borderColor = placeholderColor.CGColor
-        emailField.layer.borderWidth = 1.0
-        emailField.layer.cornerRadius = 5.0
-        passField.layer.borderColor = placeholderColor.CGColor
-        passField.layer.borderWidth = 1.0
-        passField.layer.cornerRadius = 5.0
-        
-        // init alert controller
-        alertController = UIAlertController(title: "Error", message: "Error", preferredStyle: .Alert)
-        let okayAction: UIAlertAction = UIAlertAction(title: "Okay", style: .Default, handler: { value in
-            self.alertController!.dismissViewControllerAnimated(true, completion: nil)
-        })
-        alertController!.addAction(okayAction)
-        
-        // init fb login
-        fbLoginButton.addTarget(self, action: #selector(LoginViewController.tappedFacebook), forControlEvents: .TouchUpInside)
-    }
-    
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        emailField.resignFirstResponder()
-        passField.resignFirstResponder()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    func loginUser() {
-        firebase?.authUser(email, password: password, withCompletionBlock: { error, authData in
-            // if error
-            if error != nil {
-                print(error)
-                switch error.code {
-                    case FAuthenticationError.UserDoesNotExist.rawValue:
-                        self.stopProgressHud()
-                        self.errorAlert("There is no account with the given email.")
-                    case FAuthenticationError.InvalidEmail.rawValue:
-                        self.stopProgressHud()
-                        self.errorAlert("There is no account with the given email.")
-                    case FAuthenticationError.InvalidPassword.rawValue:
-                        self.stopProgressHud()
-                        self.errorAlert("Incorrect password.")
-                    case FAuthenticationError.NetworkError.rawValue:
-                        self.stopProgressHud()
-                        self.errorAlert("The network is currently unavailable, please try again in a few moments.")
-                default:
-                    break
-                }
-            }
-            // success
-            else {
-                // get user and login
-                self.getUserDataAndLogin(authData.uid)
+                // fb logged in
+                let accessToken = FBSDKAccessToken.currentAccessToken().tokenString
+                FirebaseManager.sharedRootRef.authWithOAuthProvider("facebook", token: accessToken, withCompletionBlock: { error, authData in
+                    if error != nil {
+                        self.handleFirebaseError(error)
+                    }
+                    else {
+                        // firebase logged in
+                        self.getUserDataAndLogin(authData.uid)
+                    }
+                })
             }
         })
     }
@@ -157,15 +169,34 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         loginUser()
     }
-
-    // MARK: - Navigation
-
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        // Get the new view controller using segue.destinationViewController.
-//        let main: ProfileViewController = segue.destinationViewController as! ProfileViewController
+        // customize text fields
+        emailField.layer.borderColor = placeholderColor.CGColor
+        emailField.layer.borderWidth = 1.0
+        emailField.layer.cornerRadius = 5.0
+        passField.layer.borderColor = placeholderColor.CGColor
+        passField.layer.borderWidth = 1.0
+        passField.layer.cornerRadius = 5.0
         
-        // Pass the selected object to the new view controller.
+        // init alert controller
+        alertController = UIAlertController(title: "Error", message: "Error", preferredStyle: .Alert)
+        let okayAction: UIAlertAction = UIAlertAction(title: "Okay", style: .Default, handler: { value in
+            self.alertController!.dismissViewControllerAnimated(true, completion: nil)
+        })
+        alertController!.addAction(okayAction)
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        emailField.resignFirstResponder()
+        passField.resignFirstResponder()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 
 }

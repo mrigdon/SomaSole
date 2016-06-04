@@ -123,18 +123,5 @@ class User: NSObject {
         
         return imageData!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
     }
-    
-    static func printAllFields() {
-        print(User.sharedModel.firstName)
-        print(User.sharedModel.lastName)
-        print(User.sharedModel.email)
-        print(User.sharedModel.password)
-        print(User.sharedModel.height)
-        print(User.sharedModel.weight)
-        print(User.sharedModel.male)
-        print(User.sharedModel.dateOfBirth)
-        print(User.sharedModel.activities)
-        print(User.sharedModel.goals)
-    }
 
 }
