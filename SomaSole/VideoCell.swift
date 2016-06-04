@@ -13,13 +13,14 @@ class VideoCell: UITableViewCell {
 
     // outlets
     @IBOutlet weak var playerView: YTPlayerView!
-    @IBOutlet weak var tagView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        playerView.loadWithVideoId("-k-WZkRkj0I")
+        titleLabel.numberOfLines = 0
+        titleLabel.sizeToFit()
+        titleLabel.font = UIFont(name: "AvenirNext-Regular", size: 20)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

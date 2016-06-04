@@ -55,6 +55,7 @@ class User: NSObject {
     var profileImage: UIImage?
     var uid: String?
     var favoriteWorkouts = [Int]()
+    var purchasedVideoKeys = [String]()
     
     static func populateFields(data: Dictionary<String, AnyObject>) {
         User.sharedModel.firstName = data["firstName"] as? String
@@ -78,6 +79,10 @@ class User: NSObject {
         
         if let favoriteWorkouts = data["favoriteWorkouts"] as? [Int] {
             User.sharedModel.favoriteWorkouts = favoriteWorkouts
+        }
+        
+        if let purchasedVideos = data["purchasedVideos"] as? [String] {
+            User.sharedModel.purchasedVideoKeys = purchasedVideos
         }
     }
     

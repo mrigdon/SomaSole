@@ -24,6 +24,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Alamofire.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Bolts.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -127,6 +132,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>134D315FBAE2037665B65EAA2C762F5F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>13FEE8FD8A06F303DB0FDC4099BF462B</key>
 		<dict>
 			<key>primary</key>
@@ -137,17 +147,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>343E53B760049BDD77D7599EFD386420</key>
+		<key>162C0EE44C2651AADA95A70F75315F17</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>3B41A9B1D49827D58E203AF61D34F608</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>3FBAE8D9966310458F2E758B5747E9D3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -162,6 +167,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>629017FDE7E1B1D7D99D53B75D73E6CD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>6A932845C7A5BE5374224A90EA874591</key>
 		<dict>
 			<key>primary</key>
@@ -172,22 +182,42 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8704277806ECAC1A835759CE11C8984F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>9074BB5F7A99AE760EF72445FDEE7865</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9781DA31BD1AED5061AB3C1EAAF5F3F6</key>
+		<key>9555AB568BD7A0FE89672AEEB42B89EB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A5BB44629E48CF70BC48AD79CB71A0D9</key>
+		<key>AD1A1670E97A97091EA94FCDB69F9297</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>AEA56EBE1B518C71721209FB26701898</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B3730E294500EF5735CF9E8A6BCBF3FB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B3C83A6171680604BC7DAF6349CACA61</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -202,27 +232,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D1817B66E2C23734F7FC13D2378B76A5</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D6B6F80193C3AAEF1F3C48DB459C945A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>E61CE3B6DFA1FE6B3E296965C76C0E10</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F5C14428054214EA8B9D3129FE1ABA13</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F989BD291F1266569599E8E29C48534E</key>
 		<dict>
 			<key>primary</key>
 			<true/>

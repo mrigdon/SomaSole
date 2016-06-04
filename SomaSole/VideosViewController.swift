@@ -8,14 +8,54 @@
 
 import UIKit
 import youtube_ios_player_helper
+import Alamofire
+import Firebase
 
 class VideosViewController: UITableViewController {
     
+    // variables
+    var privateVideos = [Video]()
+    var publicVideos = [Video]()
+    
+    // methods
+    private func reloadTableView() {
+        dispatch_async(dispatch_get_main_queue(), {
+            self.tableView.reloadData()
+        })
+    }
+    
+    private func loadPublic() {
+        FirebaseManager.sharedRootRef.childByAppendingPath("videos").childByAppendingPath("public").observeEventType(.ChildAdded, withBlock: { snapshot in
+            let video = Video(id: snapshot.key, title: snapshot.value as! String)
+            self.publicVideos.append(video)
+            self.reloadTableView()
+        })
+    }
+    
+    private func loadPrivate() {
+        for key in User.sharedModel.purchasedVideoKeys {
+            FirebaseManager.sharedRootRef.childByAppendingPath("videos").childByAppendingPath("private").childByAppendingPath(key).observeEventType(.Value, withBlock: { snapshot in
+                let video = Video(id: snapshot.key, title: snapshot.value as! String)
+                self.privateVideos.append(video)
+                self.reloadTableView()
+            })
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.titleTextAttributes = [
+            NSForegroundColorAttributeName: UIColor.blackColor(),
+            NSFontAttributeName: UIFont(name: "AvenirNext-UltraLight", size: 24)!
+        ]
+        
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 274
+        print(User.sharedModel.purchasedVideoKeys)
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        loadPrivate()
+        loadPublic()
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,19 +66,25 @@ class VideosViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return privateVideos.count > 0 ? 2 : 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return privateVideos.count == 0 || section == 1 ? publicVideos.count : privateVideos.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("videoCell", forIndexPath: indexPath) as! VideoCell
 
-        // Configure the cell...
+        let video = privateVideos.count == 0 || indexPath.section == 1 ? publicVideos[indexPath.row] : privateVideos[indexPath.row]
+        cell.titleLabel.text = video.title
+        cell.playerView.loadWithVideoId(video.id)
 
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return privateVideos.count == 0 || section == 1 ? "ALL VIDEOS" : "MY VIDEOS"
     }
 
     /*

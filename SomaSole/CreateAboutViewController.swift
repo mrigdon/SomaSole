@@ -79,7 +79,8 @@ class CreateAboutViewController: UIViewController {
             "activities": user.activities!,
             "goals": user.goals!,
             "profileImageString": user.profileImageString(),
-            "favoriteWorkouts": [Int]()
+            "favoriteWorkouts": [Int](),
+            "purchasedVideos": [String]()
         ]
         
         // save to Firebase
