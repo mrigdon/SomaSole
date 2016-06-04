@@ -20,6 +20,9 @@ target 'SomaSole' do
     pod 'RealmSwift'
     pod 'youtube-ios-player-helper', '~> 0.1.4'
     pod 'EPShapes'
+    pod 'FBSDKCoreKit'
+    pod 'FBSDKShareKit'
+    pod 'FBSDKLoginKit'
 
 end
 

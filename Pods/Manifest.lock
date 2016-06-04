@@ -5,7 +5,19 @@ PODS:
   - AWSCore (2.4.1)
   - AWSS3 (2.4.1):
     - AWSCore (= 2.4.1)
+  - Bolts (1.7.0):
+    - Bolts/AppLinks (= 1.7.0)
+    - Bolts/Tasks (= 1.7.0)
+  - Bolts/AppLinks (1.7.0):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.7.0)
   - EPShapes (1.0.0)
+  - FBSDKCoreKit (4.12.0):
+    - Bolts (~> 1.7)
+  - FBSDKLoginKit (4.12.0):
+    - FBSDKCoreKit
+  - FBSDKShareKit (4.12.0):
+    - FBSDKCoreKit
   - Firebase (2.5.1)
   - Gifu (1.0.1)
   - IQKeyboardManagerSwift (4.0.1)
@@ -27,6 +39,9 @@ DEPENDENCIES:
   - AWSCore
   - AWSS3
   - EPShapes
+  - FBSDKCoreKit
+  - FBSDKLoginKit
+  - FBSDKShareKit
   - Firebase (>= 2.5.1)
   - Gifu
   - IQKeyboardManagerSwift
@@ -43,7 +58,11 @@ SPEC CHECKSUMS:
   AWSCognito: a57173a82505161bd1a9c8cfe393cea9b5b1f6bb
   AWSCore: 9bfd632f04aaf12053e639d2a9120372844beb0d
   AWSS3: d7a3a694ffc4010e90b14755b5b9dbf70989c117
+  Bolts: a0058fa3b331c5a1e4402d534f2dae36dbff31e4
   EPShapes: 981666a2fe8bcee8464fec729e8729b0bf1b751a
+  FBSDKCoreKit: 6e56d5a2a64a755ad4efb5dbeee8f82fb1b99775
+  FBSDKLoginKit: 03f68a8d48c2c8bb81d7eb8097973d483543e1f6
+  FBSDKShareKit: df1491f064cffc8ebcc3fc8b71be94cc190c728e
   Firebase: 3565ea88b830f28f2c77ecc524622bc71a20d085
   Gifu: bf7a99fe9f20a1dc18c3cb4289aebc922a2ad419
   IQKeyboardManagerSwift: e92246955e21dad73ad9dc89b80adb134d8bb395

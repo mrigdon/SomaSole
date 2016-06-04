@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import MBProgressHUD
+import FBSDKLoginKit
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
@@ -22,6 +23,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passField: UITextField!
+    @IBOutlet weak var fbLoginButton: FBSDKButton!
     
     func stopProgressHud() {
         dispatch_async(dispatch_get_main_queue(), {
@@ -58,6 +60,22 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         })
     }
     
+    @objc private func tappedFacebook() {
+        let loginManager = FBSDKLoginManager()
+        let permissions = ["public_profile", "email"]
+        loginManager.logInWithReadPermissions(permissions, fromViewController: self, handler: { fbResult, fbError in
+            if fbError != nil {
+                print("fbError: \(fbError.code)")
+            }
+            else if fbResult.isCancelled {
+                print("cancelled facebook login")
+            }
+            else {
+                print("logged in")
+            }
+        })
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -78,6 +96,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             self.alertController!.dismissViewControllerAnimated(true, completion: nil)
         })
         alertController!.addAction(okayAction)
+        
+        // init fb login
+        fbLoginButton.addTarget(self, action: #selector(LoginViewController.tappedFacebook), forControlEvents: .TouchUpInside)
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -135,10 +156,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         password = passField.text
         
         loginUser()
-    }
-    
-    @IBAction func tappedFacebook(sender: AnyObject) {
-        
     }
 
     // MARK: - Navigation
