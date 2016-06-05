@@ -10,11 +10,7 @@ import UIKit
 import XLPagerTabStrip
 import Firebase
 
-class ProfileViewController: ButtonBarPagerTabStripViewController {
-    
-    let lightBlueColor: UIColor = UIColor(red: 0.568627451, green: 0.7333333333, blue: 0.968627451, alpha: 1.0)
-    let whiteColor = UIColor.whiteColor()
-    var firebase: Firebase?
+class ProfileViewController: SegmentedPagerTabStripViewController {
     
     override func viewDidLoad() {
         // nav bar customization
@@ -25,21 +21,7 @@ class ProfileViewController: ButtonBarPagerTabStripViewController {
         navigationController?.navigationBar.tintColor = UIColor.blackColor()
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
         
-        // button bar customization
-        settings.style.buttonBarBackgroundColor = whiteColor
-        settings.style.buttonBarItemBackgroundColor = whiteColor
-        settings.style.selectedBarBackgroundColor = lightBlueColor
-        settings.style.buttonBarItemTitleColor = UIColor.somasoleColor()
-        settings.style.buttonBarMinimumLineSpacing = 0.0
-        settings.style.buttonBarItemFont = UIFont.systemFontOfSize(14)
-        settings.style.selectedBarHeight = 3
-        
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        // init firebase
-        firebase = Firebase(url: "https://somasole.firebaseio.com")
-        
     }
 
     override func didReceiveMemoryWarning() {

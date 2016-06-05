@@ -55,7 +55,7 @@ class BasicsViewController: UIViewController, IndicatorInfoProvider {
     }
     
     func indicatorInfoForPagerTabStrip(pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return "BASIC"
+        return "Basic"
     }
 
     /*
