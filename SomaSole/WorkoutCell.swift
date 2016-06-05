@@ -28,6 +28,12 @@ class WorkoutCell: UITableViewCell {
     // outlets
     @IBOutlet weak var starButton: StarButton!
     
+    // methods
+    func setStarFill() {
+        starButton.fillColor = User.sharedModel.favoriteWorkouts.contains(workout!.index) ? UIColor.goldColor() : UIColor.clearColor()
+        starButton.config()
+    }
+    
     // action
     @IBAction func tappedStar(sender: AnyObject) {
         let starButton = sender as! StarButton

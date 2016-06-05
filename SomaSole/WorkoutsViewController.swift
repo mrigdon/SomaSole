@@ -2,307 +2,44 @@
 //  WorkoutsViewController.swift
 //  SomaSole
 //
-//  Created by Matthew Rigdon on 4/15/16.
+//  Created by Matthew Rigdon on 6/5/16.
 //  Copyright © 2016 SomaSole. All rights reserved.
 //
 
 import UIKit
-import Firebase
-import MBProgressHUD
-import TagListView
-import EPShapes
+import XLPagerTabStrip
 
-extension WorkoutsViewController: UISearchResultsUpdating {
-    func updateSearchResultsForSearchController(searchController: UISearchController) {
-        let searchBar = searchController.searchBar
-        let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
-        filterContent(searchController.searchBar.text!, scope: scope)
-    }
-}
+class WorkoutsViewController: SegmentedPagerTabStripViewController {
 
-extension WorkoutsViewController: UISearchBarDelegate {
-    func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        filterContent(searchBar.text!, scope: searchBar.scopeButtonTitles![selectedScope])
-    }
-}
-
-class WorkoutsViewController: UITableViewController {
-    
-    // constants
-    let firebase = Firebase(url: "http://somasole.firebaseio.com")
-    let filterCellSize: CGFloat = 44
-    let workoutCellSize: CGFloat = 0.51575 * UIScreen.mainScreen().bounds.width
-    let lightBlueColor: UIColor = UIColor(red: 0.568627451, green: 0.7333333333, blue: 0.968627451, alpha: 1.0)
-    let searchController = UISearchController(searchResultsController: nil)
-    
-    // variables
-    var workouts = [Workout]()
-    var filteredWorkouts = [Workout]()
-    var selectedFilters = [WorkoutTag]()
-    
-    // outlets
-    @IBOutlet weak var tagListView: TagListView!
-    
-    // methods
-    func startProgressHud() {
-        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-    }
-    
-    func stopProgressHud() {
-        dispatch_async(dispatch_get_main_queue(), {
-            MBProgressHUD.hideHUDForView(self.view, animated: true)
-        })
-    }
-    
-    func reloadTableView() {
-        dispatch_async(dispatch_get_main_queue(), {
-            self.tableView.reloadData()
-        })
-    }
-    
-    func filterContent(searchText: String, scope: String = "All") {
-        // filter for scope
-        var scopeFilteredWorkouts = [Workout]()
-        if scope == "Favorites" {
-            for workout in self.workouts {
-                if User.sharedModel.favoriteWorkouts.contains(workout.index) {
-                    scopeFilteredWorkouts.append(workout)
-                }
-            }
-        }
-        else {
-            scopeFilteredWorkouts = self.workouts
-        }
-        
-        // filter for tags
-        var tagFilteredWorkouts = [Workout]()
-        for workout in scopeFilteredWorkouts {
-            // if workout.tags contains all of selected filters
-            var qualifies = true
-            for filter in selectedFilters {
-                qualifies = workout.tags.contains(filter)
-                if !qualifies {
-                    break
-                }
-            }
-            if qualifies {
-                tagFilteredWorkouts.append(workout)
-            }
-        }
-        
-        // filter for search text
-        if searchText != "" {
-            filteredWorkouts = tagFilteredWorkouts.filter { workout in
-                let categoryMatch = (scope == "All") || (User.sharedModel.favoriteWorkouts.contains(workout.index))
-                return categoryMatch && workout.name.lowercaseString.containsString(searchText.lowercaseString)
-            }
-        }
-        else {
-            filteredWorkouts = tagFilteredWorkouts
-        }
-        
-        self.reloadTableView()
-    }
-    
-    func loadWorkouts() {
-        firebase.childByAppendingPath("workouts").observeEventType(.ChildAdded, withBlock: { snapshot in
-            // load workouts
-            let workout = Workout(index: Int(snapshot.key)!, data: snapshot.value as! [String : AnyObject])
-            self.workouts.append(workout)
-            
-            self.stopProgressHud()
-            self.reloadTableView()
-        })
-        
-    }
-
-    // uiviewcontroller
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
-        // cusomtize navigation controller
-        self.navigationController?.navigationBar.titleTextAttributes = [
-            NSForegroundColorAttributeName: UIColor.blackColor(),
-            NSFontAttributeName: UIFont(name: "AvenirNext-UltraLight", size: 24)!
-        ]
-        navigationController?.navigationBar.tintColor = UIColor.blackColor()
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
-        
-        // begin load of all workouts
-        startProgressHud()
-        loadWorkouts()
-        
-        // set up search controller
-        searchController.searchResultsUpdater = self
-        searchController.dimsBackgroundDuringPresentation = false
-        searchController.searchBar.scopeButtonTitles = ["All", "Favorites"]
-        searchController.searchBar.barTintColor = UIColor.whiteColor()
-        searchController.searchBar.tintColor = UIColor.blackColor()
-        searchController.searchBar.layer.borderWidth = 0.0
-        searchController.searchBar.layer.borderColor = UIColor.whiteColor().CGColor
-        searchController.searchBar.delegate = self
-        definesPresentationContext = true
-        tableView.tableHeaderView = searchController.searchBar
-        
-        // no extra cells
-        tableView.tableFooterView = UIView(frame: CGRect.zero)
-        
-        // auto resize based on centent
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = workoutCellSize
+        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    // MARK: - Table view data source
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchController.active || selectedFilters.count > 0 {
-            return filteredWorkouts.count + 1
-        }
-        
-        return workouts.count
-    }
-
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        // get correct cellType
-        var cellType = ""
-        if searchController.active && indexPath.row == 0 {
-            cellType = selectedFilters.count > 0 ? "tagCell" : "cell"
-        }
-        else {
-            cellType = selectedFilters.count > 0 && indexPath.row == 0 ? "tagCell" : "workoutCell"
-        }
-        
-        // create cell
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellType, forIndexPath: indexPath)
-        
-        // customize cell for each case
-        if !searchController.active {
-            if selectedFilters.count > 0 && indexPath.row == 0 {
-                // filter cell with tags
-                (cell as! TagCell).addFilters(selectedFilters)
-                self.tableView.rowHeight = UITableViewAutomaticDimension
-                self.tableView.estimatedRowHeight = workoutCellSize
-            }
-            else {
-                // all workouts
-                self.tableView.rowHeight = workoutCellSize
-                let workout = workouts[indexPath.row]
-                (cell as! WorkoutCell).workout = workout
-                if User.sharedModel.favoriteWorkouts.contains((cell as! WorkoutCell).workout!.index) {
-                    (cell as! WorkoutCell).starButton.fillColor = UIColor.goldColor()
-                }
-                else {
-                    (cell as! WorkoutCell).starButton.fillColor = UIColor.clearColor()
-                }
-                (cell as! WorkoutCell).starButton.config()
-                cell.backgroundView = UIImageView(image: (cell as! WorkoutCell).workout!.image)
-            }
-        }
-        else if indexPath.row == 0 {
-            if selectedFilters.count == 0 {
-                // filter cell with no tags
-                self.tableView.rowHeight = filterCellSize
-            }
-            else {
-                // filter cell with tags
-                (cell as! TagCell).addFilters(selectedFilters)
-                self.tableView.rowHeight = UITableViewAutomaticDimension
-                self.tableView.estimatedRowHeight = workoutCellSize
-            }
-        }
-        else {
-            // filtered workouts
-            self.tableView.rowHeight = workoutCellSize
-            let workout = filteredWorkouts[indexPath.row - 1] // - 1 because of the tag cell
-            (cell as! WorkoutCell).workout = workout
-            if User.sharedModel.favoriteWorkouts.contains((cell as! WorkoutCell).workout!.index) {
-                (cell as! WorkoutCell).starButton.fillColor = UIColor.goldColor()
-            }
-            else {
-                (cell as! WorkoutCell).starButton.fillColor = UIColor.clearColor()
-            }
-            (cell as! WorkoutCell).starButton.config()
-            cell.backgroundView = UIImageView(image: (cell as! WorkoutCell).workout!.image)
-        }
-
-        return cell
-    }
     
+    // segmented strip
+    override func viewControllersForPagerTabStrip(pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let allWorkoutsVC = storyboard.instantiateViewControllerWithIdentifier("AllWorkoutsViewController")
+//        let myWorkoutsVC = storyboard.instantiateViewControllerWithIdentifier("MyWorkoutsViewController")
+        
+//        return [allVideosVC, myVideosVC]
+        return [allWorkoutsVC]
+    }
+
+    /*
     // MARK: - Navigation
-    
+
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "workoutSegue" {
-            let beginVC = segue.destinationViewController as! BeginWorkoutViewController
-            let index = self.tableView.indexPathForSelectedRow?.row
-            beginVC.workout = workouts[index!]
-        }
-        else {
-            // Get the new view controller using segue.destinationViewController.
-            let filterVC = segue.destinationViewController as! FilterViewController
-            
-            // Pass the selected object to the new view controller.
-            filterVC.selectedFilters = self.selectedFilters
-            filterVC.addFilterClosure = { filter, adding in
-                if adding {
-                    self.selectedFilters.append(filter)
-                }
-                else {
-                    let index = self.selectedFilters.indexOf(filter)
-                    self.selectedFilters.removeAtIndex(index!)
-                }
-                self.filterContent("")
-            }
-        }
-    }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
     }
     */
 

@@ -40,7 +40,7 @@
 		62926A971CBC887700960F94 /* BasicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62926A961CBC887700960F94 /* BasicsViewController.swift */; };
 		62926A991CBCA12200960F94 /* BasicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62926A981CBCA12200960F94 /* BasicViewController.swift */; };
 		62AB9B801CFE8B32005498F8 /* QuickStartImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AB9B7F1CFE8B32005498F8 /* QuickStartImageView.swift */; };
-		62B1AB931CC1D6F3007069E5 /* WorkoutsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B1AB921CC1D6F3007069E5 /* WorkoutsViewController.swift */; };
+		62B1AB931CC1D6F3007069E5 /* AllWorkoutsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B1AB921CC1D6F3007069E5 /* AllWorkoutsViewController.swift */; };
 		62C8413E1CC6F5D700468726 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C8413D1CC6F5D700468726 /* FilterViewController.swift */; };
 		62C9E4081CB4474E005E9F48 /* InformationQuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9E4071CB4474E005E9F48 /* InformationQuestionsViewController.swift */; };
 		62C9E40E1CB44FEF005E9F48 /* PurchasesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9E40D1CB44FEF005E9F48 /* PurchasesViewController.swift */; };
@@ -53,6 +53,7 @@
 		62D640EA1CD8424800D05124 /* MovementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D640E91CD8424800D05124 /* MovementCell.swift */; };
 		62ED07911D04969900C325E5 /* VideosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62ED07901D04969900C325E5 /* VideosViewController.swift */; };
 		62ED07931D04984200C325E5 /* MyVideosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62ED07921D04984200C325E5 /* MyVideosViewController.swift */; };
+		62ED07951D04B19900C325E5 /* WorkoutsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62ED07941D04B19900C325E5 /* WorkoutsViewController.swift */; };
 		62F7ED781CF80DBF002A2C47 /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F7ED771CF80DBF002A2C47 /* ArticleViewController.swift */; };
 		62FE88041CE69BD700A9BB15 /* FinishedWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FE88031CE69BD700A9BB15 /* FinishedWorkoutViewController.swift */; };
 		62FE88071CE6AC0800A9BB15 /* MovementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FE88061CE6AC0800A9BB15 /* MovementsViewController.swift */; };
@@ -116,7 +117,7 @@
 		62926A961CBC887700960F94 /* BasicsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicsViewController.swift; sourceTree = "<group>"; };
 		62926A981CBCA12200960F94 /* BasicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicViewController.swift; sourceTree = "<group>"; };
 		62AB9B7F1CFE8B32005498F8 /* QuickStartImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickStartImageView.swift; sourceTree = "<group>"; };
-		62B1AB921CC1D6F3007069E5 /* WorkoutsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutsViewController.swift; sourceTree = "<group>"; };
+		62B1AB921CC1D6F3007069E5 /* AllWorkoutsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllWorkoutsViewController.swift; sourceTree = "<group>"; };
 		62C8413D1CC6F5D700468726 /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		62C9E4071CB4474E005E9F48 /* InformationQuestionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationQuestionsViewController.swift; sourceTree = "<group>"; };
 		62C9E40D1CB44FEF005E9F48 /* PurchasesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchasesViewController.swift; sourceTree = "<group>"; };
@@ -129,6 +130,7 @@
 		62D640E91CD8424800D05124 /* MovementCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementCell.swift; sourceTree = "<group>"; };
 		62ED07901D04969900C325E5 /* VideosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideosViewController.swift; sourceTree = "<group>"; };
 		62ED07921D04984200C325E5 /* MyVideosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyVideosViewController.swift; sourceTree = "<group>"; };
+		62ED07941D04B19900C325E5 /* WorkoutsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutsViewController.swift; sourceTree = "<group>"; };
 		62F7ED771CF80DBF002A2C47 /* ArticleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
 		62FE88031CE69BD700A9BB15 /* FinishedWorkoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinishedWorkoutViewController.swift; sourceTree = "<group>"; };
 		62FE88061CE6AC0800A9BB15 /* MovementsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementsViewController.swift; sourceTree = "<group>"; };
@@ -309,12 +311,13 @@
 		628DB7391CBDE4680048F09C /* Workouts */ = {
 			isa = PBXGroup;
 			children = (
-				62B1AB921CC1D6F3007069E5 /* WorkoutsViewController.swift */,
+				62B1AB921CC1D6F3007069E5 /* AllWorkoutsViewController.swift */,
 				62C8413D1CC6F5D700468726 /* FilterViewController.swift */,
 				62D640E31CD8136600D05124 /* BeginWorkoutViewController.swift */,
 				62D640E51CD82C4200D05124 /* CountdownViewController.swift */,
 				62D640E71CD8392100D05124 /* InWorkoutViewController.swift */,
 				62FE88031CE69BD700A9BB15 /* FinishedWorkoutViewController.swift */,
+				62ED07941D04B19900C325E5 /* WorkoutsViewController.swift */,
 			);
 			name = Workouts;
 			sourceTree = "<group>";
@@ -539,7 +542,7 @@
 				62F7ED781CF80DBF002A2C47 /* ArticleViewController.swift in Sources */,
 				6235212D1CFA130A00B3F1BF /* VideoCell.swift in Sources */,
 				62C9E4101CB45DC8005E9F48 /* SettingsViewController.swift in Sources */,
-				62B1AB931CC1D6F3007069E5 /* WorkoutsViewController.swift in Sources */,
+				62B1AB931CC1D6F3007069E5 /* AllWorkoutsViewController.swift in Sources */,
 				6248AE2C1CF9510C000A2DC9 /* Article.swift in Sources */,
 				6260639A1CBB3E5900B1AF3C /* CreateAboutViewController.swift in Sources */,
 				62926A971CBC887700960F94 /* BasicsViewController.swift in Sources */,
@@ -562,6 +565,7 @@
 				6263BBD31CE79A2600CF383A /* MovementDescriptionCell.swift in Sources */,
 				62D640E41CD8136600D05124 /* BeginWorkoutViewController.swift in Sources */,
 				62738D4C1CB57823006BFF9F /* ChangeSettingViewController.swift in Sources */,
+				62ED07951D04B19900C325E5 /* WorkoutsViewController.swift in Sources */,
 				621D22F81CB31BE600FE7581 /* TrainerRequestConfirmViewController.swift in Sources */,
 				62D640E81CD8392100D05124 /* InWorkoutViewController.swift in Sources */,
 			);
