@@ -11,10 +11,14 @@ import youtube_ios_player_helper
 import Firebase
 import XLPagerTabStrip
 
-class AllVideosViewController: UITableViewController, IndicatorInfoProvider {
+class AllVideosViewController: UITableViewController, IndicatorInfoProvider, UISearchBarDelegate {
+    
+    // constants
+    let searchBar = UISearchBar()
     
     // variables
     var videos = [Video]()
+    var filteredVideos = [Video]()
     
     // methods
     private func reloadTableView() {
@@ -41,13 +45,39 @@ class AllVideosViewController: UITableViewController, IndicatorInfoProvider {
         }
     }
     
+    private func filterContentForSearchText(searchText: String) {
+        filteredVideos = videos.filter { video in
+            return video.title.lowercaseString.containsString(searchText.lowercaseString)
+        }
+        
+        reloadTableView()
+    }
+    
+    // delegates
+    func indicatorInfoForPagerTabStrip(pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
+        return "All Videos"
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        filterContentForSearchText(searchText)
+    }
+    
+    // uiviewcontroller
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.navigationBar.titleTextAttributes = [
-            NSForegroundColorAttributeName: UIColor.blackColor(),
-            NSFontAttributeName: UIFont(name: "AvenirNext-UltraLight", size: 24)!
-        ]
+        searchBar.barTintColor = UIColor.whiteColor()
+        searchBar.tintColor = UIColor.blackColor()
+        searchBar.layer.borderWidth = 0.0
+        searchBar.layer.borderColor = UIColor.whiteColor().CGColor
+        searchBar.placeholder = "Search"
+        searchBar.returnKeyType = .Done
+        searchBar.delegate = self
+        searchBar.enablesReturnKeyAutomatically = false
         
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 274
@@ -62,28 +92,35 @@ class AllVideosViewController: UITableViewController, IndicatorInfoProvider {
     }
 
     // MARK: - Table view data source
+    
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 45
+    }
+    
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return searchBar
+    }
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searchBar.isFirstResponder() && searchBar.text != "" {
+            return filteredVideos.count
+        }
+        
         return videos.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("videoCell", forIndexPath: indexPath) as! VideoCell
 
-        let video = videos[indexPath.row]
+        let video = searchBar.isFirstResponder() && searchBar.text != "" ? filteredVideos[indexPath.row] : videos[indexPath.row]
         cell.titleLabel.text = video.title
         cell.playerView.loadWithVideoId(video.id)
 
         return cell
-    }
-    
-    // xlpagertabstrip
-    func indicatorInfoForPagerTabStrip(pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return "All Videos"
     }
 
     /*
