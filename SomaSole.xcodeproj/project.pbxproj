@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2964BECF70D5E766CDDF32FF /* Pods_SomaSole.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10769821E015672B332BE0A5 /* Pods_SomaSole.framework */; };
-		6201ABC71CF9EEC10099B18D /* VideosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6201ABC61CF9EEC10099B18D /* VideosViewController.swift */; };
+		6201ABC71CF9EEC10099B18D /* AllVideosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6201ABC61CF9EEC10099B18D /* AllVideosViewController.swift */; };
 		6215F3091CC9704C00E2A995 /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6215F3081CC9704C00E2A995 /* TagCell.swift */; };
 		6215F30B1CC9805900E2A995 /* WorkoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6215F30A1CC9805900E2A995 /* WorkoutCell.swift */; };
 		621D22AD1CB2DC3E00FE7581 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621D22AC1CB2DC3E00FE7581 /* AppDelegate.swift */; };
@@ -51,6 +51,8 @@
 		62D640E61CD82C4200D05124 /* CountdownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D640E51CD82C4200D05124 /* CountdownViewController.swift */; };
 		62D640E81CD8392100D05124 /* InWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D640E71CD8392100D05124 /* InWorkoutViewController.swift */; };
 		62D640EA1CD8424800D05124 /* MovementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D640E91CD8424800D05124 /* MovementCell.swift */; };
+		62ED07911D04969900C325E5 /* VideosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62ED07901D04969900C325E5 /* VideosViewController.swift */; };
+		62ED07931D04984200C325E5 /* MyVideosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62ED07921D04984200C325E5 /* MyVideosViewController.swift */; };
 		62F7ED781CF80DBF002A2C47 /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F7ED771CF80DBF002A2C47 /* ArticleViewController.swift */; };
 		62FE88041CE69BD700A9BB15 /* FinishedWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FE88031CE69BD700A9BB15 /* FinishedWorkoutViewController.swift */; };
 		62FE88071CE6AC0800A9BB15 /* MovementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FE88061CE6AC0800A9BB15 /* MovementsViewController.swift */; };
@@ -76,7 +78,7 @@
 /* Begin PBXFileReference section */
 		10769821E015672B332BE0A5 /* Pods_SomaSole.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SomaSole.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		442FE767159F91E46B63C384 /* Pods-SomaSole.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SomaSole.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SomaSole/Pods-SomaSole.debug.xcconfig"; sourceTree = "<group>"; };
-		6201ABC61CF9EEC10099B18D /* VideosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideosViewController.swift; sourceTree = "<group>"; };
+		6201ABC61CF9EEC10099B18D /* AllVideosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllVideosViewController.swift; sourceTree = "<group>"; };
 		6215F3081CC9704C00E2A995 /* TagCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
 		6215F30A1CC9805900E2A995 /* WorkoutCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutCell.swift; sourceTree = "<group>"; };
 		621D22A91CB2DC3E00FE7581 /* SomaSole.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SomaSole.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -125,6 +127,8 @@
 		62D640E51CD82C4200D05124 /* CountdownViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownViewController.swift; sourceTree = "<group>"; };
 		62D640E71CD8392100D05124 /* InWorkoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InWorkoutViewController.swift; sourceTree = "<group>"; };
 		62D640E91CD8424800D05124 /* MovementCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementCell.swift; sourceTree = "<group>"; };
+		62ED07901D04969900C325E5 /* VideosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideosViewController.swift; sourceTree = "<group>"; };
+		62ED07921D04984200C325E5 /* MyVideosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyVideosViewController.swift; sourceTree = "<group>"; };
 		62F7ED771CF80DBF002A2C47 /* ArticleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
 		62FE88031CE69BD700A9BB15 /* FinishedWorkoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinishedWorkoutViewController.swift; sourceTree = "<group>"; };
 		62FE88061CE6AC0800A9BB15 /* MovementsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementsViewController.swift; sourceTree = "<group>"; };
@@ -169,7 +173,9 @@
 		6201ABC81CF9EECA0099B18D /* Videos */ = {
 			isa = PBXGroup;
 			children = (
-				6201ABC61CF9EEC10099B18D /* VideosViewController.swift */,
+				6201ABC61CF9EEC10099B18D /* AllVideosViewController.swift */,
+				62ED07901D04969900C325E5 /* VideosViewController.swift */,
+				62ED07921D04984200C325E5 /* MyVideosViewController.swift */,
 			);
 			name = Videos;
 			sourceTree = "<group>";
@@ -526,6 +532,7 @@
 				624A94E81CB7463E00A8D21A /* LoginViewController.swift in Sources */,
 				626063951CBAEDEF00B1AF3C /* CreateBasicsViewController.swift in Sources */,
 				62C9E40E1CB44FEF005E9F48 /* PurchasesViewController.swift in Sources */,
+				62ED07931D04984200C325E5 /* MyVideosViewController.swift in Sources */,
 				62CCEEA51CEC16BB00CC0D37 /* FirebaseManager.swift in Sources */,
 				621D22B11CB2DC3E00FE7581 /* ProfileViewController.swift in Sources */,
 				62AB9B801CFE8B32005498F8 /* QuickStartImageView.swift in Sources */,
@@ -537,11 +544,12 @@
 				6260639A1CBB3E5900B1AF3C /* CreateAboutViewController.swift in Sources */,
 				62926A971CBC887700960F94 /* BasicsViewController.swift in Sources */,
 				623DECDC1CF692A000EA1736 /* NewsViewController.swift in Sources */,
-				6201ABC71CF9EEC10099B18D /* VideosViewController.swift in Sources */,
+				6201ABC71CF9EEC10099B18D /* AllVideosViewController.swift in Sources */,
 				62D640EA1CD8424800D05124 /* MovementCell.swift in Sources */,
 				621D22AD1CB2DC3E00FE7581 /* AppDelegate.swift in Sources */,
 				6215F3091CC9704C00E2A995 /* TagCell.swift in Sources */,
 				62C9E4081CB4474E005E9F48 /* InformationQuestionsViewController.swift in Sources */,
+				62ED07911D04969900C325E5 /* VideosViewController.swift in Sources */,
 				62C8413E1CC6F5D700468726 /* FilterViewController.swift in Sources */,
 				62D4298B1CEDA5DB009F157A /* Movement.swift in Sources */,
 				6215F30B1CC9805900E2A995 /* WorkoutCell.swift in Sources */,
