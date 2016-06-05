@@ -65,6 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseManager.sharedRootRef.authUser(User.sharedModel.email, password: User.sharedModel.password, withCompletionBlock: { error, data in })
         
         // if is logged in
+        print(userData!)
         User.populateFields(userData!)
     
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)

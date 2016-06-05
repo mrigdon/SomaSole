@@ -16,7 +16,6 @@ import XLPagerTabStrip
 class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate, IndicatorInfoProvider {
     
     // constants
-    let firebase = Firebase(url: "http://somasole.firebaseio.com")
     let filterCellSize: CGFloat = 44
     let workoutCellSize: CGFloat = 0.51575 * UIScreen.mainScreen().bounds.width
     let searchBar = UISearchBar()
@@ -25,9 +24,6 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate, Ind
     var workouts = [Workout]()
     var filteredWorkouts = [Workout]()
     var selectedFilters = [WorkoutTag]()
-    
-    // outlets
-    @IBOutlet weak var tagListView: TagListView!
     
     // methods
     func startProgressHud() {
@@ -77,7 +73,7 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate, Ind
     }
     
     func loadWorkouts() {
-        firebase.childByAppendingPath("workouts").observeEventType(.ChildAdded, withBlock: { snapshot in
+        FirebaseManager.sharedRootRef.childByAppendingPath("workouts").observeEventType(.ChildAdded, withBlock: { snapshot in
             // load workouts
             let workout = Workout(index: Int(snapshot.key)!, data: snapshot.value as! [String : AnyObject])
             self.workouts.append(workout)

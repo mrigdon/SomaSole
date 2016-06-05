@@ -81,6 +81,7 @@ class AllVideosViewController: UITableViewController, IndicatorInfoProvider, UIS
         
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 274
+        self.tableView.tableFooterView = UIView(frame: CGRect.zero)
 
         loadPublic()
         loadPrivate()

@@ -27,10 +27,9 @@ class WorkoutsViewController: SegmentedPagerTabStripViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         let allWorkoutsVC = storyboard.instantiateViewControllerWithIdentifier("AllWorkoutsViewController")
-//        let myWorkoutsVC = storyboard.instantiateViewControllerWithIdentifier("MyWorkoutsViewController")
+        let favoriteWorkoutsVC = storyboard.instantiateViewControllerWithIdentifier("FavoriteWorkoutsViewController")
         
-//        return [allVideosVC, myVideosVC]
-        return [allWorkoutsVC]
+        return [allWorkoutsVC, favoriteWorkoutsVC]
     }
 
     /*
