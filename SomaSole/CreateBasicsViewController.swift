@@ -205,18 +205,14 @@ class CreateBasicsViewController: UIViewController, UITextFieldDelegate, UIPicke
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-        
         // set user fields
-        let user = User.sharedModel
-        user.firstName = firstNameField.text
-        user.lastName = lastNameField.text
-        user.height = Float(heightFeet!) + (Float(heightInches!) / 12)
-        user.weight = weight
-        user.male = male
-        user.dateOfBirth = dateOfBirth
-        user.profileImage = profileImage
+        User.sharedModel.firstName = firstNameField.text
+        User.sharedModel.lastName = lastNameField.text
+        User.sharedModel.height = Float(heightFeet!) + (Float(heightInches!) / 12)
+        User.sharedModel.weight = weight
+        User.sharedModel.male = male
+        User.sharedModel.dateOfBirth = dateOfBirth
+        User.sharedModel.profileImage = profileImage
     }
 
 }

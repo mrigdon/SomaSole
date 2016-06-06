@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import MBProgressHUD
 import FBSDKLoginKit
+import TextFieldEffects
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
@@ -22,9 +23,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     var password: String?
 
     // outlets
-    @IBOutlet weak var emailField: UITextField!
-    @IBOutlet weak var passField: UITextField!
+    @IBOutlet weak var emailField: KaedeTextField!
+    @IBOutlet weak var passField: KaedeTextField!
     @IBOutlet weak var fbLoginButton: FBSDKButton!
+    @IBOutlet weak var logoImageView: UIImageView!
     
     // methods
     private func stopProgressHud() {
@@ -47,6 +49,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         User.sharedModel.firstName = userData["first_name"] as? String
         User.sharedModel.lastName = userData["last_name"] as? String
         User.sharedModel.male = userData["gender"] as? String == "male"
+        let urlString = ((userData["picture"] as! [String:AnyObject])["data"] as! [String:AnyObject])["url"] as! String
+        let url = NSURL(string: urlString)
+        let data = NSData(contentsOfURL: url!)
+        let image = UIImage(data: data!)
+        User.sharedModel.profileImage = image
+        performSegueWithIdentifier("facebookCreateSegue", sender: self)
     }
     
     private func getUserDataAndLogin(uid: String) {
@@ -197,6 +205,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "facebookCreateSegue" {
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            let createBasicsVC = sb.instantiateViewControllerWithIdentifier("CreateBasicsViewController") as! CreateBasicsViewController
+            let barButton = UIBarButtonItem(barButtonSystemItem: .Cancel, target: createBasicsVC, action: nil)
+            createBasicsVC.navigationController?.navigationBar.topItem?.leftBarButtonItem = barButton
+        }
     }
 
 }
