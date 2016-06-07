@@ -53,32 +53,54 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         User.sharedModel.firstName = userData["first_name"] as? String
         User.sharedModel.lastName = userData["last_name"] as? String
         User.sharedModel.male = userData["gender"] as? String == "male"
+        
         let urlString = ((userData["picture"] as! [String:AnyObject])["data"] as! [String:AnyObject])["url"] as! String
         let url = NSURL(string: urlString)
         let data = NSData(contentsOfURL: url!)
         let image = UIImage(data: data!)
         User.sharedModel.profileImage = image
+        
         stopProgressHud()
         performSegueWithIdentifier("facebookCreateSegue", sender: self)
     }
     
     private func getUserDataAndLogin(uid: String) {
         FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(uid).observeEventType(.Value, withBlock: { snapshot in
-            // populate shared model with data
-            var userData: Dictionary<String, AnyObject> = snapshot.value as! Dictionary<String, AnyObject>
-            userData["password"] = self.password
-            User.populateFields(userData)
-            
-            // save to user defaults
-            NSUserDefaults.standardUserDefaults().setObject(userData["uid"], forKey: "uid")
-            NSUserDefaults.standardUserDefaults().setObject(userData, forKey: "userData")
-            NSUserDefaults.standardUserDefaults().synchronize()
-            
-            // stop progress hud
-            self.stopProgressHud()
-            
-            // login
-            self.performSegueWithIdentifier("toMain", sender: self)
+            if !(snapshot.value is NSNull) {
+                // user exsits
+                // populate shared model with data
+                var userData: Dictionary<String, AnyObject> = snapshot.value as! Dictionary<String, AnyObject>
+                userData["password"] = self.password
+                User.populateFields(userData)
+                
+                // save to user defaults
+                NSUserDefaults.standardUserDefaults().setObject(userData["uid"], forKey: "uid")
+                NSUserDefaults.standardUserDefaults().setObject(userData, forKey: "userData")
+                NSUserDefaults.standardUserDefaults().synchronize()
+                
+                // stop progress hud
+                self.stopProgressHud()
+                
+                // login
+                self.performSegueWithIdentifier("toMain", sender: self)
+            }
+            else {
+                // user does not exist
+                let fields = ["fields": "email,first_name,last_name,birthday,gender,picture.type(large)"]
+                let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: fields)
+                graphRequest.startWithCompletionHandler({ connection, result, error in
+                    if error == nil {
+                        // success
+                        User.sharedModel.uid = uid
+                        let userData = result as! [String:AnyObject]
+                        self.createUserFromFacebook(userData)
+                    }
+                    else {
+                        // error
+                        print(error)
+                    }
+                })
+            }
         })
     }
     
