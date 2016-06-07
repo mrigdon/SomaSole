@@ -104,6 +104,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Toucan.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>XLPagerTabStrip-XLPagerTabStrip.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -132,11 +137,6 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>134D315FBAE2037665B65EAA2C762F5F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>13FEE8FD8A06F303DB0FDC4099BF462B</key>
 		<dict>
 			<key>primary</key>
@@ -147,12 +147,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>162C0EE44C2651AADA95A70F75315F17</key>
+		<key>29F7B4DDF24BB5CD3C2BE7CFE215F68B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2C297F381D0BFD75248C76F5AAF549C1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>3B41A9B1D49827D58E203AF61D34F608</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>52B12F73A197A0F23300532D209F8725</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -163,11 +173,6 @@
 			<true/>
 		</dict>
 		<key>5D69761C2CD2A1E5C013537B29CAB4CF</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>629017FDE7E1B1D7D99D53B75D73E6CD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -187,22 +192,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8704277806ECAC1A835759CE11C8984F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>9074BB5F7A99AE760EF72445FDEE7865</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9555AB568BD7A0FE89672AEEB42B89EB</key>
+		<key>ABBCF50139DB8CEEB193496326223F90</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AD1A1670E97A97091EA94FCDB69F9297</key>
+		<key>AE79558F9A763BE700AE5BAA7107AB85</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -212,12 +212,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B3730E294500EF5735CF9E8A6BCBF3FB</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B3C83A6171680604BC7DAF6349CACA61</key>
+		<key>B44AB4C923ED4C928D7577F80131B50C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -227,7 +222,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>BD56C97367104E94939A54CA3A7FABE6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BF936FED91F0A6A1D749913B4F857E86</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>CE015165761C25EDF694202E90F10F62</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E50572E256B7C36B1A90D3D1BC2C1B29</key>
 		<dict>
 			<key>primary</key>
 			<true/>

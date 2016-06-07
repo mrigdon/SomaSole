@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '578961F5241CF51498DEE9E1'
+               BlueprintIdentifier = 'E385A2BCF0024D06D1AA0351'
                BlueprintName = 'Pods-SomaSole'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Pods_SomaSole.framework'>

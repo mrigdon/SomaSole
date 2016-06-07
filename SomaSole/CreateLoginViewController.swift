@@ -32,6 +32,7 @@ class CreateLoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailField: KaedeTextField!
     @IBOutlet weak var passwordField: KaedeTextField!
     @IBOutlet weak var verifyPasswordField: KaedeTextField!
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
     
     func anyFieldsEmpty() -> Bool {
         return emailField.text?.characters.count == 0 || passwordField.text?.characters.count == 0 || verifyPasswordField.text?.characters.count == 0
@@ -102,9 +103,6 @@ class CreateLoginViewController: UIViewController, UITextFieldDelegate {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-        
         User.sharedModel.email = emailField.text
         User.sharedModel.password = passwordField.text
     }

@@ -35,6 +35,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         })
     }
     
+    func startProgressHud() {
+        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+    }
+    
     private func errorAlert(message: String) {
         alertController!.message = message
         presentViewController(alertController!, animated: true, completion: nil)
@@ -54,46 +58,27 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let data = NSData(contentsOfURL: url!)
         let image = UIImage(data: data!)
         User.sharedModel.profileImage = image
+        stopProgressHud()
         performSegueWithIdentifier("facebookCreateSegue", sender: self)
     }
     
     private func getUserDataAndLogin(uid: String) {
         FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(uid).observeEventType(.Value, withBlock: { snapshot in
-            if !(snapshot.value is NSNull) {
-                // user exsits
-                // populate shared model with data
-                var userData: Dictionary<String, AnyObject> = snapshot.value as! Dictionary<String, AnyObject>
-                userData["password"] = self.password
-                User.populateFields(userData)
-                
-                // save to user defaults
-                NSUserDefaults.standardUserDefaults().setObject(userData["uid"], forKey: "uid")
-                NSUserDefaults.standardUserDefaults().setObject(userData, forKey: "userData")
-                NSUserDefaults.standardUserDefaults().synchronize()
-                
-                // stop progress hud
-                self.stopProgressHud()
-                
-                // login
-                self.performSegueWithIdentifier("toMain", sender: self)
-            }
-            else {
-                // user does not exist
-                let fields = ["fields": "email,first_name,last_name,birthday,gender,picture"]
-                let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: fields)
-                graphRequest.startWithCompletionHandler({ connection, result, error in
-                    if error == nil {
-                        // success
-                        User.sharedModel.uid = uid
-                        let userData = result as! [String:AnyObject]
-                        self.createUserFromFacebook(userData)
-                    }
-                    else {
-                        // error
-                        print(error)
-                    }
-                })
-            }
+            // populate shared model with data
+            var userData: Dictionary<String, AnyObject> = snapshot.value as! Dictionary<String, AnyObject>
+            userData["password"] = self.password
+            User.populateFields(userData)
+            
+            // save to user defaults
+            NSUserDefaults.standardUserDefaults().setObject(userData["uid"], forKey: "uid")
+            NSUserDefaults.standardUserDefaults().setObject(userData, forKey: "userData")
+            NSUserDefaults.standardUserDefaults().synchronize()
+            
+            // stop progress hud
+            self.stopProgressHud()
+            
+            // login
+            self.performSegueWithIdentifier("toMain", sender: self)
         })
     }
     
@@ -134,6 +119,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     // actions
     @IBAction func tappedFacebookLogin(sender: AnyObject) {
+        User.sharedModel.facebookUser = true
         let loginManager = FBSDKLoginManager()
         let permissions = ["public_profile", "email"]
         loginManager.logInWithReadPermissions(permissions, fromViewController: self, handler: { fbResult, fbError in
@@ -147,6 +133,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             }
             else {
                 // fb logged in
+                self.startProgressHud()
                 let accessToken = FBSDKAccessToken.currentAccessToken().tokenString
                 FirebaseManager.sharedRootRef.authWithOAuthProvider("facebook", token: accessToken, withCompletionBlock: { error, authData in
                     if error != nil {
@@ -162,6 +149,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func tappedLogin(sender: AnyObject) {
+        User.sharedModel.facebookUser = false
         // return if any fields are empty
         if anyFieldsEmpty() {
             errorAlert("Please fill out all fields.")
@@ -209,10 +197,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "facebookCreateSegue" {
-            let sb = UIStoryboard(name: "Main", bundle: nil)
-            let createBasicsVC = sb.instantiateViewControllerWithIdentifier("CreateBasicsViewController") as! CreateBasicsViewController
-            let barButton = UIBarButtonItem(barButtonSystemItem: .Cancel, target: createBasicsVC, action: nil)
-            createBasicsVC.navigationController?.navigationBar.topItem?.leftBarButtonItem = barButton
+            let createBasicsVC = (segue.destinationViewController as! UINavigationController).viewControllers.first as! CreateBasicsViewController
+            createBasicsVC.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Cancel, target: createBasicsVC, action: #selector(CreateBasicsViewController.dismiss))
         }
     }
 

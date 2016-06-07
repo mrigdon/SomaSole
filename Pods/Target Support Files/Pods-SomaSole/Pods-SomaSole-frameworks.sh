@@ -103,6 +103,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-SomaSole/RealmSwift.framework"
   install_framework "Pods-SomaSole/TagListView.framework"
   install_framework "Pods-SomaSole/TextFieldEffects.framework"
+  install_framework "Pods-SomaSole/Toucan.framework"
   install_framework "Pods-SomaSole/XLPagerTabStrip.framework"
   install_framework "Pods-SomaSole/youtube_ios_player_helper.framework"
 fi
@@ -126,6 +127,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-SomaSole/RealmSwift.framework"
   install_framework "Pods-SomaSole/TagListView.framework"
   install_framework "Pods-SomaSole/TextFieldEffects.framework"
+  install_framework "Pods-SomaSole/Toucan.framework"
   install_framework "Pods-SomaSole/XLPagerTabStrip.framework"
   install_framework "Pods-SomaSole/youtube_ios_player_helper.framework"
 fi

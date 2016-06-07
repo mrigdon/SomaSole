@@ -102,6 +102,9 @@ class CreateAboutViewController: UIViewController {
     
     func createFirebaseUserAndLogin() {
         let user = User.sharedModel
+        if user.facebookUser {
+            self.saveUserData()
+        }
         firebase?.createUser(user.email, password: user.password, withValueCompletionBlock: { error, result in
             if error != nil {
                 self.stopProgressHud()

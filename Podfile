@@ -24,6 +24,7 @@ target 'SomaSole' do
     pod 'FBSDKShareKit'
     pod 'FBSDKLoginKit'
     pod 'Alamofire', '~> 3.4'
+    pod 'Toucan'
 
 end
 

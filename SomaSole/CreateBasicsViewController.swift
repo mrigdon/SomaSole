@@ -9,6 +9,22 @@
 import UIKit
 import TextFieldEffects
 import ALCameraViewController
+import Toucan
+
+extension NSDate {
+    func stringForDateField() -> String {
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "MM/dd/yyyy"
+        
+        return formatter.stringFromDate(self)
+    }
+}
+
+extension UIImage {
+    func roundImage() -> UIImage {
+        return Toucan(image: self).maskWithEllipse().image
+    }
+}
 
 class CreateBasicsViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
@@ -38,6 +54,10 @@ class CreateBasicsViewController: UIViewController, UITextFieldDelegate, UIPicke
     @IBOutlet weak var genderField: KaedeTextField!
     @IBOutlet weak var dateOfBirthField: KaedeTextField!
     
+    func dismiss() {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     func heightForPickerIndex(index: Int) -> Int {
         return 11 - index
     }
@@ -51,6 +71,26 @@ class CreateBasicsViewController: UIViewController, UITextFieldDelegate, UIPicke
     
     func anyFieldsEmpty() -> Bool {
         return firstNameField.text?.characters.count == 0 || lastNameField.text?.characters.count == 0 || heightField.text?.characters.count == 0 || weightField.text?.characters.count == 0 || genderField.text?.characters.count == 0 || dateOfBirthField.text?.characters.count == 0
+    }
+    
+    private func setupFields() {
+        if let image = User.sharedModel.profileImage {
+            profilePictureView.image = image
+            profileImage = image
+            hideImageButton()
+        }
+        firstNameField.text = User.sharedModel.firstName?.capitalizedString
+        lastNameField.text = User.sharedModel.lastName?.capitalizedString
+        if let male = User.sharedModel.male {
+            genderField.text = male ? "Male" : "Female"
+            self.male = male
+        }
+        dateOfBirthField.text = User.sharedModel.dateOfBirth?.stringForDateField()
+    }
+    
+    private func hideImageButton() {
+        self.profilePictureButton.backgroundColor = UIColor.clearColor()
+        self.profilePictureButton.setTitle("", forState: UIControlState.Normal)
     }
     
     override func viewDidLoad() {
@@ -77,6 +117,9 @@ class CreateBasicsViewController: UIViewController, UITextFieldDelegate, UIPicke
         dateOfBirthPicker = UIDatePicker()
         dateOfBirthPicker?.datePickerMode = .Date
         dateOfBirthField.inputView = dateOfBirthPicker
+        
+        // init from user in case fb login
+        setupFields()
     }
 
     override func didReceiveMemoryWarning() {
@@ -94,8 +137,7 @@ class CreateBasicsViewController: UIViewController, UITextFieldDelegate, UIPicke
             self.profilePictureView.image = self.profileImage
             
             // make select image button transparent
-            self.profilePictureButton.backgroundColor = UIColor.clearColor()
-            self.profilePictureButton.setTitle("", forState: UIControlState.Normal)
+            self.hideImageButton()
             
             // set sharedUser image
             User.sharedModel.profileImage = image.0

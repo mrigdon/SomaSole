@@ -31,6 +31,7 @@ PODS:
     - Realm (= 1.0.0)
   - TagListView (1.0.0)
   - TextFieldEffects (1.2.0)
+  - Toucan (0.5.0)
   - XLPagerTabStrip (5.0.0)
   - youtube-ios-player-helper (0.1.6)
 
@@ -52,6 +53,7 @@ DEPENDENCIES:
   - RealmSwift
   - TagListView (~> 1.0)
   - TextFieldEffects
+  - Toucan
   - XLPagerTabStrip (~> 5.0.0)
   - youtube-ios-player-helper (~> 0.1.4)
 
@@ -75,6 +77,7 @@ SPEC CHECKSUMS:
   RealmSwift: 3229306d020d96f83b335f87a0dcbf2cef0e6a2b
   TagListView: 6bf4bded034c4c90b1e90d8cd3d8e1d852dba0a8
   TextFieldEffects: bc4fd3bd557321bd61a0762f3f50965477a36f62
+  Toucan: 0519c341148252ae114c5a657d2a85bb9ada9e40
   XLPagerTabStrip: 87b8b705f9a7178e76a063ffaa2d70045944a965
   youtube-ios-player-helper: 21ab92db027c7ff86cb17a3843a3f6eafc8158d2
 

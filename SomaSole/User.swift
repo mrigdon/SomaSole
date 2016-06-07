@@ -56,6 +56,7 @@ class User: NSObject {
     var uid: String?
     var favoriteWorkouts = [Int]()
     var purchasedVideoKeys = [String]()
+    var facebookUser = false
     
     static func populateFields(data: Dictionary<String, AnyObject>) {
         User.sharedModel.firstName = data["firstName"] as? String
