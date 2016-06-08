@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'CED57680288130526C4D76E5'
+               BlueprintIdentifier = '61B0731273CB680480EC1349'
                BlueprintName = 'EPShapes'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'EPShapes.framework'>

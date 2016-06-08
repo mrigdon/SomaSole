@@ -14,6 +14,17 @@ class VideoCell: UITableViewCell {
     // outlets
     @IBOutlet weak var playerView: YTPlayerView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var overlayView: UIView!
+    @IBOutlet weak var buyCircleView: UIView!
+    @IBOutlet weak var buyLabel: UILabel!
+    
+    // methods
+    func setPurchaseOverlay() {
+        overlayView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.7)
+        buyCircleView.backgroundColor = UIColor.whiteColor()
+        buyCircleView.layer.cornerRadius = buyCircleView.frame.size.width / 2
+        buyLabel.textColor = UIColor.blackColor()
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
