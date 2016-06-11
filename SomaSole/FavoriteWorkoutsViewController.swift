@@ -11,6 +11,7 @@ import TagListView
 import MBProgressHUD
 import XLPagerTabStrip
 import Firebase
+import EPShapes
 
 class FavoriteWorkoutsViewController: UITableViewController, IndicatorInfoProvider, UISearchBarDelegate {
 
@@ -71,16 +72,38 @@ class FavoriteWorkoutsViewController: UITableViewController, IndicatorInfoProvid
         self.reloadTableView()
     }
     
-    func loadFavoriteWorkouts() {
-        for workoutIndex in User.sharedModel.favoriteWorkouts {
+    private func loadFavoriteWorkouts() {
+        startProgressHud()
+        if User.sharedModel.favoriteWorkouts.count == 0 {
+            stopProgressHud()
+            return
+        }
+        
+        for (index, workoutIndex) in User.sharedModel.favoriteWorkouts.enumerate() {
             FirebaseManager.sharedRootRef.childByAppendingPath("workouts").childByAppendingPath(String(workoutIndex)).observeEventType(.Value, withBlock: { snapshot in
                 let workout = Workout(index: Int(snapshot.key)!, data: snapshot.value as! [String : AnyObject])
-                self.workouts.append(workout)
+                self.workouts.insert(workout, atIndex: index)
                 
                 self.stopProgressHud()
                 self.reloadTableView()
             })
         }
+    }
+    
+    @objc private func tappedStar(sender: AnyObject) {
+        let star = sender as! IndexedStarButton
+        
+        // data
+        let indexPath = NSIndexPath(forRow: star.index!, inSection: 0)
+        workouts.removeAtIndex(indexPath.row)
+        User.sharedModel.favoriteWorkouts.removeAtIndex(indexPath.row)
+        FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).childByAppendingPath("favoriteWorkouts").setValue(User.sharedModel.favoriteWorkouts)
+        User.saveToUserDefaults()
+        
+        // ui
+        tableView.beginUpdates()
+        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        tableView.endUpdates()
     }
     
     // delegates
@@ -124,16 +147,17 @@ class FavoriteWorkoutsViewController: UITableViewController, IndicatorInfoProvid
         searchBar.delegate = self
         searchBar.enablesReturnKeyAutomatically = false
         
-        // begin load of all workouts
-        startProgressHud()
-        loadFavoriteWorkouts()
-        
         // no extra cells
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         
         // auto resize based on centent
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = workoutCellSize
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        workouts = []
+        loadFavoriteWorkouts()
     }
     
     override func didReceiveMemoryWarning() {
@@ -177,6 +201,8 @@ class FavoriteWorkoutsViewController: UITableViewController, IndicatorInfoProvid
             let workout = searchBar.isFirstResponder() && searchBar.text != "" ? filteredWorkouts[indexPath.row] : workouts[indexPath.row]
             (cell as! WorkoutCell).workout = workout
             (cell as! WorkoutCell).setStarFill()
+            (cell as! WorkoutCell).starButton.addTarget(self, action: #selector(tappedStar(_:)), forControlEvents: .TouchUpInside)
+            (cell as! WorkoutCell).starButton.index = indexPath.row
             cell.backgroundView = UIImageView(image: (cell as! WorkoutCell).workout!.image)
         }
         

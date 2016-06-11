@@ -17,6 +17,12 @@ extension UIColor {
     }
 }
 
+class IndexedStarButton: StarButton {
+    
+    var index: Int?
+    
+}
+
 class WorkoutCell: UITableViewCell {
     
     // constants
@@ -26,7 +32,7 @@ class WorkoutCell: UITableViewCell {
     var workout: Workout?
     
     // outlets
-    @IBOutlet weak var starButton: StarButton!
+    @IBOutlet weak var starButton: IndexedStarButton!
     
     // methods
     func setStarFill() {
@@ -36,11 +42,11 @@ class WorkoutCell: UITableViewCell {
     
     // action
     @IBAction func tappedStar(sender: AnyObject) {
-        let starButton = sender as! StarButton
-        
+        let starButton = sender as! IndexedStarButton
         if User.sharedModel.favoriteWorkouts.contains(workout!.index) {
             let indexInArray = User.sharedModel.favoriteWorkouts.indexOf(workout!.index)
             User.sharedModel.favoriteWorkouts.removeAtIndex(indexInArray!)
+            print("here")
             FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).childByAppendingPath("favoriteWorkouts").setValue(User.sharedModel.favoriteWorkouts)
             User.saveToUserDefaults()
             starButton.fillColor = UIColor.clearColor()
@@ -53,7 +59,6 @@ class WorkoutCell: UITableViewCell {
             starButton.fillColor = UIColor.goldColor()
             workout!.favorite = true
         }
-        
         starButton.config()
     }
     

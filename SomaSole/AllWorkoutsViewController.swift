@@ -136,6 +136,10 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate, Ind
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = workoutCellSize
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        reloadTableView()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
