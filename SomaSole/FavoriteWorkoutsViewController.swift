@@ -73,10 +73,8 @@ class FavoriteWorkoutsViewController: UITableViewController, IndicatorInfoProvid
     }
     
     private func loadFavoriteWorkouts() {
-        startProgressHud()
-        if User.sharedModel.favoriteWorkouts.count == 0 {
-            stopProgressHud()
-            return
+        if User.sharedModel.favoriteWorkouts.count > 0 {
+            startProgressHud()
         }
         
         for (index, workoutIndex) in User.sharedModel.favoriteWorkouts.enumerate() {
@@ -91,18 +89,16 @@ class FavoriteWorkoutsViewController: UITableViewController, IndicatorInfoProvid
     }
     
     @objc private func tappedStar(sender: AnyObject) {
-        let star = sender as! IndexedStarButton
-        
-        // data
-        let indexPath = NSIndexPath(forRow: star.index!, inSection: 0)
-        workouts.removeAtIndex(indexPath.row)
-        User.sharedModel.favoriteWorkouts.removeAtIndex(indexPath.row)
+        let switchOriginInTableView = sender.convertPoint(CGPointZero, toView: tableView)
+        let indexPath = tableView.indexPathForRowAtPoint(switchOriginInTableView)
+        workouts.removeAtIndex(indexPath!.row)
+        User.sharedModel.favoriteWorkouts.removeAtIndex(indexPath!.row)
         FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).childByAppendingPath("favoriteWorkouts").setValue(User.sharedModel.favoriteWorkouts)
         User.saveToUserDefaults()
         
         // ui
         tableView.beginUpdates()
-        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
         tableView.endUpdates()
     }
     
@@ -158,6 +154,7 @@ class FavoriteWorkoutsViewController: UITableViewController, IndicatorInfoProvid
     override func viewDidAppear(animated: Bool) {
         workouts = []
         loadFavoriteWorkouts()
+        self.reloadTableView()
     }
     
     override func didReceiveMemoryWarning() {
