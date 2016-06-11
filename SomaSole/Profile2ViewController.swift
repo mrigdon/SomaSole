@@ -8,6 +8,8 @@
 
 import UIKit
 import Toucan
+import MBProgressHUD
+import Firebase
 
 extension Float {
     var heightString: String {
@@ -58,25 +60,105 @@ extension Profile2ViewController: UITableViewDataSource {
         let field = fields[indexPath.row]
         cell.keyLabel.text = field.0
         cell.valueField.text = field.1
+        textFields.append(cell.valueField)
         
         return cell
     }
 }
 
+extension Profile2ViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return false
+    }
+}
+
 class Profile2ViewController: UIViewController {
     
+    enum TextFieldIndex {
+        case FirstName, LastName, Email, Password, Height, Weight, DOB, Gender
+    }
+    
+    // variables
     var fields = [(String, String)]()
+    var alertController: UIAlertController?
+    var textFields = [UITextField]()
 
+    // outlets
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var basicTableViewHeight: NSLayoutConstraint!
     
+    // methods
     private func ui(closure: () -> Void) {
         dispatch_async(dispatch_get_main_queue(), {
             closure()
         })
     }
     
+    func startProgressHud() {
+        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+    }
+    
+    func stopProgressHud() {
+        dispatch_async(dispatch_get_main_queue(), {
+            MBProgressHUD.hideHUDForView(self.view, animated: true)
+        })
+    }
+    
+    private func successAlert(message: String) {
+        alertController?.title = "Success"
+        alertController?.message = message
+        presentViewController(alertController!, animated: true, completion: nil)
+    }
+    
+    private func errorAlert(message: String) {
+        alertController?.title = "Error"
+        alertController?.message = message
+        presentViewController(alertController!, animated: true, completion: nil)
+    }
+    
+    private func handleFirebaseError(error: NSError) {
+        switch error.code {
+            
+        case FAuthenticationError.EmailTaken.rawValue:
+            self.errorAlert("There is already an account with this email.")
+            break
+        case FAuthenticationError.NetworkError.rawValue:
+            self.errorAlert("There is a problem with the network, please try again in a few moments.")
+            break
+        case FAuthenticationError.InvalidEmail.rawValue:
+            self.errorAlert("The email you entered is invalid.")
+            break
+        case FAuthenticationError.UserDoesNotExist.rawValue:
+            self.errorAlert("There is no registered account with that email.")
+            break
+        case FAuthenticationError.InvalidPassword.rawValue:
+            self.errorAlert("The password you entered is incorrect.")
+            break
+        default:
+            break
+            
+        }
+    }
+    
+    // actions
+    @IBAction func tappedSave(sender: AnyObject) {
+        startProgressHud()
+        
+        FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).setValue(User.data(), withCompletionBlock: { error, firebase in
+            self.stopProgressHud()
+            if error != nil {
+                self.handleFirebaseError(error)
+            }
+            else {
+                self.successAlert("Your info has been updated")
+                User.saveToUserDefaults()
+            }
+        })
+    }
+    
+    // uiviewcontroller
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -90,6 +172,12 @@ class Profile2ViewController: UIViewController {
             ("D.O.B.", User.sharedModel.dateOfBirth!.simpleString),
             ("Gender", User.sharedModel.male!.genderString)
         ]
+        
+        alertController = UIAlertController(title: "Error", message: "Error", preferredStyle: .Alert)
+        let okayAction: UIAlertAction = UIAlertAction(title: "Okay", style: .Default, handler: { value in
+            self.alertController!.dismissViewControllerAnimated(true, completion: nil)
+        })
+        alertController!.addAction(okayAction)
 
         ui {
             self.basicTableViewHeight.constant = 352 // 44 * 8
