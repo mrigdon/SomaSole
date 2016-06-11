@@ -19,6 +19,8 @@ class NewsViewController: UIViewController, UIScrollViewDelegate, KASlideShowDel
     
     // constants
     let screenWidth = UIScreen.mainScreen().bounds.width
+    let navbarImageHeight: Double = 40
+    let navbarImageWidth: Double = 63.2
     
     // variables
     var articles = [Article]()
@@ -31,6 +33,7 @@ class NewsViewController: UIViewController, UIScrollViewDelegate, KASlideShowDel
     @IBOutlet weak var slideshowHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet var imageViewCollection: [QuickStartImageView]!
+    @IBOutlet weak var navItemImageView: UIImageView!
     
     // methods
     @objc private func tappedArticle() {

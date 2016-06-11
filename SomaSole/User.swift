@@ -113,7 +113,6 @@ class User: NSObject {
             "goals": user.goals!,
             "profileImageString": user.profileImageString(),
             "favoriteWorkouts": user.favoriteWorkouts,
-            "password": user.password!
         ]
         
         return userData
