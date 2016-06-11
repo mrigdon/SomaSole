@@ -20,12 +20,6 @@ extension NSDate {
     }
 }
 
-extension UIImage {
-    func roundImage() -> UIImage {
-        return Toucan(image: self).maskWithEllipse().image
-    }
-}
-
 class CreateBasicsViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
     let genderForPickerIndex = [
