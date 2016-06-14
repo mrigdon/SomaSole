@@ -43,6 +43,15 @@ extension UIImage {
     }
 }
 
+extension Float {
+    var feet: Int {
+        return Int(floor(self))
+    }
+    var inches: Int {
+        return Int((self - floor(self)) * 12)
+    }
+}
+
 extension Profile2ViewController: UITableViewDelegate {
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -60,6 +69,19 @@ extension Profile2ViewController: UITableViewDataSource {
         let field = fields[indexPath.row]
         cell.keyLabel.text = field.0
         cell.valueField.text = field.1
+        cell.valueField.addTarget(self, action: #selector(basicTextFieldDidChange(_:)), forControlEvents: .EditingChanged)
+        if indexPath.row == TextFieldIndex.Height.hashValue {
+            cell.valueField.inputView = heightPicker
+        }
+        else if indexPath.row == TextFieldIndex.DOB.hashValue {
+            cell.valueField.inputView = dateOfBirthPicker
+        }
+        else if indexPath.row == TextFieldIndex.Gender.hashValue {
+            cell.valueField.inputView = genderPicker
+        }
+        else if indexPath.row == TextFieldIndex.Weight.hashValue {
+            cell.valueField.keyboardType = .NumberPad
+        }
         textFields.append(cell.valueField)
         
         return cell
@@ -73,6 +95,41 @@ extension Profile2ViewController: UITextFieldDelegate {
     }
 }
 
+extension Profile2ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return pickerView == heightPicker ? 2 : 1
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        // height picker
+        if pickerView == heightPicker {
+            if component == 0 {
+                heightFeet = 11 - row
+            }
+            else {
+                heightInches = 11 - row
+            }
+        }
+            // gender picker
+        else {
+            male = row == 0
+        }
+    }
+    
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerView == heightPicker ? 11 : 2
+    }
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if pickerView == heightPicker {
+            return component == 0 ? "\(11-row) feet" : "\(11-row) inches"
+        }
+        else {
+            return row == 0 ? "Male" : "Female"
+        }
+    }
+}
+
 class Profile2ViewController: UIViewController {
     
     enum TextFieldIndex {
@@ -83,11 +140,19 @@ class Profile2ViewController: UIViewController {
     var fields = [(String, String)]()
     var alertController: UIAlertController?
     var textFields = [UITextField]()
+    var anyFieldEmpty = false
+    var heightPicker = UIPickerView()
+    var genderPicker = UIPickerView()
+    var dateOfBirthPicker = UIDatePicker()
+    var male = false
+    var heightFeet = 0
+    var heightInches = 0
 
     // outlets
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var basicTableViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     
     // methods
     private func ui(closure: () -> Void) {
@@ -142,9 +207,42 @@ class Profile2ViewController: UIViewController {
         }
     }
     
+    private func allFieldsValid() -> Bool {
+        for textField in textFields {
+            if textField.text!.isEmpty {
+                return false
+            }
+        }
+        
+        return true
+    }
+    
+    private func setupPickers() {
+        // init height picker
+        heightPicker.dataSource = self
+        heightPicker.delegate = self
+        
+        // init gender picker
+        genderPicker.dataSource = self
+        genderPicker.delegate = self
+        
+        // init date of birth picker
+        dateOfBirthPicker.datePickerMode = .Date
+    }
+    
+    @objc private func basicTextFieldDidChange(sender: AnyObject) {
+        saveButton.enabled = allFieldsValid()
+    }
+    
     // actions
     @IBAction func tappedSave(sender: AnyObject) {
         startProgressHud()
+        
+        // TODO: -
+        User.sharedModel.firstName = textFields[TextFieldIndex.FirstName.hashValue].text
+        User.sharedModel.lastName = textFields[TextFieldIndex.LastName.hashValue].text
+        User.sharedModel.email = textFields[TextFieldIndex.Email.hashValue].text
+        User.sharedModel.firstName = textFields[TextFieldIndex.FirstName.hashValue].text
         
         FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).setValue(User.data(), withCompletionBlock: { error, firebase in
             self.stopProgressHud()
@@ -162,6 +260,7 @@ class Profile2ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // fields for text fields
         fields = [
             ("First Name", User.sharedModel.firstName!),
             ("Last Name", User.sharedModel.lastName!),
@@ -173,12 +272,22 @@ class Profile2ViewController: UIViewController {
             ("Gender", User.sharedModel.male!.genderString)
         ]
         
+        // alert controller
         alertController = UIAlertController(title: "Error", message: "Error", preferredStyle: .Alert)
         let okayAction: UIAlertAction = UIAlertAction(title: "Okay", style: .Default, handler: { value in
             self.alertController!.dismissViewControllerAnimated(true, completion: nil)
         })
         alertController!.addAction(okayAction)
+        
+        // setup pickers
+        setupPickers()
+        
+        // setup fields
+        male = User.sharedModel.male!
+        heightFeet = User.sharedModel.height!.feet
+        heightInches = User.sharedModel.height!.inches
 
+        // ui
         ui {
             self.basicTableViewHeight.constant = 352 // 44 * 8
             self.imageView.image = User.sharedModel.profileImage?.roundImage

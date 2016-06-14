@@ -8,16 +8,60 @@
 
 import UIKit
 import Stripe
+import MBProgressHUD
 
-class PaymentViewController: UIViewController, STPPaymentCardTextFieldDelegate {
+extension PaymentViewController: STPPaymentCardTextFieldDelegate {
+    func paymentCardTextFieldDidChange(textField: STPPaymentCardTextField) {
+        saveButton.enabled = textField.valid
+    }
+}
+
+class PaymentViewController: UIViewController {
     
-    let paymentTextField = STPPaymentCardTextField()
+    // constants
+    
+    
+    // outlets
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var paymentTextField: STPPaymentCardTextField!
+    
+    // methods
+    private func startProgressHud() {
+        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+    }
+    
+    private func stopProgressHud() {
+        dispatch_async(dispatch_get_main_queue(), {
+            MBProgressHUD.hideHUDForView(self.view, animated: true)
+        })
+    }
+    
+    private func handleStripeError(error: NSError) {
+        
+    }
+    
+    // actions
+    @IBAction func tappedSave(sender: AnyObject) {
+        let card = paymentTextField.cardParams
+        STPAPIClient.sharedClient().createTokenWithCard(card, completion: { token, error in
+            if let error = error {
+                self.handleStripeError(error)
+            }
+            else {
+                
+            }
+        })
+    }
+    
+    @IBAction func tappedCancel(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
 
+    // uiviewcontroller
     override func viewDidLoad() {
         super.viewDidLoad()
-        paymentTextField.frame = CGRectMake(15, 15, CGRectGetWidth(self.view.frame) - 30, 44)
-        paymentTextField.delegate = self
-        view.addSubview(paymentTextField)
+        
+        saveButton.enabled = false
     }
 
     override func didReceiveMemoryWarning() {

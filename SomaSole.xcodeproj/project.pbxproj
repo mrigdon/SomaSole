@@ -186,7 +186,6 @@
 				6201ABC61CF9EEC10099B18D /* AllVideosViewController.swift */,
 				62ED07901D04969900C325E5 /* VideosViewController.swift */,
 				62ED07921D04984200C325E5 /* MyVideosViewController.swift */,
-				621859791D07D6C500CEC45D /* PaymentViewController.swift */,
 			);
 			name = Videos;
 			sourceTree = "<group>";
@@ -226,6 +225,7 @@
 				621D22EF1CB2F65D00FE7581 /* Profile */,
 				626063961CBAEE0000B1AF3C /* Login */,
 				621D22AC1CB2DC3E00FE7581 /* AppDelegate.swift */,
+				621859791D07D6C500CEC45D /* PaymentViewController.swift */,
 				621D22B21CB2DC3F00FE7581 /* Main.storyboard */,
 				621D22B51CB2DC3F00FE7581 /* Assets.xcassets */,
 				621D22B71CB2DC3F00FE7581 /* LaunchScreen.storyboard */,
