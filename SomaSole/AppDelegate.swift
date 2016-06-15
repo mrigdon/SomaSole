@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         //FirebaseManager.uploadArticle()
-        Stripe.setDefaultPublishableKey("pk_test_6pRNASCoBOKtIshFeQd4XMUh")
+        Stripe.setDefaultPublishableKey("pk_test_yAloS0mmAIglRzjupfHB1Bpp")
         
         // Initialize the Amazon Cognito credentials provider
         let credentialsProvider = AWSCognitoCredentialsProvider(

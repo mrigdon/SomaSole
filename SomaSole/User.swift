@@ -57,6 +57,7 @@ class User: NSObject {
     var favoriteWorkouts = [Int]()
     var purchasedVideoKeys = [String]()
     var facebookUser = false
+    var premium = false
     
     static func populateFields(data: Dictionary<String, AnyObject>) {
         User.sharedModel.firstName = data["firstName"] as? String
@@ -69,6 +70,7 @@ class User: NSObject {
         User.sharedModel.activities = data["activities"] as? [Int]
         User.sharedModel.goals = data["goals"] as? [Int]
         User.sharedModel.uid = data["uid"] as? String
+        User.sharedModel.premium = data["premium"] as! Bool
         
         let formatter = NSDateFormatter()
         formatter.dateFormat = "MM/dd/yyy"
@@ -113,6 +115,7 @@ class User: NSObject {
             "goals": user.goals!,
             "profileImageString": user.profileImageString(),
             "favoriteWorkouts": user.favoriteWorkouts,
+            "premium": user.premium
         ]
         
         return userData
@@ -127,6 +130,10 @@ class User: NSObject {
         let imageData = UIImageJPEGRepresentation(self.profileImage!, 0.0)
         
         return imageData!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
+    }
+    
+    func saveToFirebase() {
+        FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(uid).setValue(User.data())
     }
 
 }

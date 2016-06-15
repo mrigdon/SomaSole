@@ -19,7 +19,12 @@ extension PaymentViewController: STPPaymentCardTextFieldDelegate {
 class PaymentViewController: UIViewController {
     
     // constants
+    let successStatusCode = 200
+    let invalidCardStatusCode = 402
     
+    // variables
+    var errorAlertController: UIAlertController?
+    var successAlertController: UIAlertController?
     
     // outlets
     @IBOutlet weak var saveButton: UIBarButtonItem!
@@ -27,12 +32,34 @@ class PaymentViewController: UIViewController {
     
     // methods
     private func startProgressHud() {
-        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        ui {
+            MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        }
     }
     
     private func stopProgressHud() {
-        dispatch_async(dispatch_get_main_queue(), {
+        ui {
             MBProgressHUD.hideHUDForView(self.view, animated: true)
+        }
+    }
+    
+    private func successAlert(message: String) {
+        ui {
+            self.successAlertController?.message = message
+            self.presentViewController(self.successAlertController!, animated: true, completion: nil)
+        }
+    }
+    
+    private func errorAlert(message: String) {
+        ui {
+            self.errorAlertController?.message = message
+            self.presentViewController(self.errorAlertController!, animated: true, completion: nil)
+        }
+    }
+    
+    private func ui(closure: () -> Void) {
+        dispatch_async(dispatch_get_main_queue(), {
+            closure()
         })
     }
     
@@ -40,15 +67,43 @@ class PaymentViewController: UIViewController {
         
     }
     
+    private func createBackendChargeWithToken(token: STPToken, completion: () -> Void) {
+        let url = NSURL(string: "https://somasole-payments.herokuapp.com/charge")!
+        let request = NSMutableURLRequest(URL: url)
+        request.HTTPMethod = "POST"
+        let body = "stripeToken=\(token.tokenId)&email=\(User.sharedModel.email!)"
+        request.HTTPBody = body.dataUsingEncoding(NSUTF8StringEncoding)
+        let configuration = NSURLSessionConfiguration.ephemeralSessionConfiguration()
+        let session = NSURLSession(configuration: configuration)
+        let task = session.dataTaskWithRequest(request) { data, response, error -> Void in
+            self.stopProgressHud()
+            if let error = error {
+                print(error)
+            } else if let code = (response as? NSHTTPURLResponse)?.statusCode {
+                if code == self.successStatusCode {
+                    User.sharedModel.premium = true
+                    User.saveToUserDefaults()
+                    User.sharedModel.saveToFirebase()
+                    self.successAlert("Congratulations! You are now subscribed to the Monthly Premium Plan!")
+                } else if code == self.invalidCardStatusCode {
+                    self.errorAlert("It looks like your card was invalid.")
+                }
+            }
+        }
+        task.resume()
+    }
+    
     // actions
     @IBAction func tappedSave(sender: AnyObject) {
+        paymentTextField.resignFirstResponder()
+        startProgressHud()
         let card = paymentTextField.cardParams
         STPAPIClient.sharedClient().createTokenWithCard(card, completion: { token, error in
             if let error = error {
                 self.handleStripeError(error)
             }
             else {
-                
+                self.createBackendChargeWithToken(token!, completion: {})
             }
         })
     }
@@ -62,6 +117,22 @@ class PaymentViewController: UIViewController {
         super.viewDidLoad()
         
         saveButton.enabled = false
+        
+        // alert controller
+        errorAlertController = UIAlertController(title: "Error", message: "Error", preferredStyle: .Alert)
+        let errorOkayAction: UIAlertAction = UIAlertAction(title: "Okay", style: .Default, handler: { value in
+            self.ui {
+                self.errorAlertController!.dismissViewControllerAnimated(true, completion: nil)
+            }
+        })
+        errorAlertController!.addAction(errorOkayAction)
+        successAlertController = UIAlertController(title: "Success!", message: "Success", preferredStyle: .Alert)
+        let successOkayAction: UIAlertAction = UIAlertAction(title: "Okay", style: .Default, handler: { value in
+            self.ui {
+                self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+            }
+        })
+        successAlertController!.addAction(successOkayAction)
     }
 
     override func didReceiveMemoryWarning() {
