@@ -8,22 +8,45 @@
 
 import UIKit
 import youtube_ios_player_helper
+import Masonry
 
 class VideoCell: UITableViewCell {
+    
+    // variables
+    var overlayView = UIView()
+    var circleView = UIView()
+    var lockImageView = UIImageView(image: UIImage(named: "lock"))
+    var purchaseOverlayAdded = false
 
     // outlets
     @IBOutlet weak var playerView: YTPlayerView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var overlayView: UIView!
-    @IBOutlet weak var buyCircleView: UIView!
-    @IBOutlet weak var buyLabel: UILabel!
     
-    // methods
-    func setPurchaseOverlay() {
-        overlayView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.7)
-        buyCircleView.backgroundColor = UIColor.whiteColor()
-        buyCircleView.layer.cornerRadius = buyCircleView.frame.size.width / 2
-        buyLabel.textColor = UIColor.blackColor()
+    // methods    
+    func setPurchaseOverlay(flag: Bool) {
+        dispatch_async(dispatch_get_main_queue(), {
+            if flag && !self.purchaseOverlayAdded {
+                self.purchaseOverlayAdded = true
+                self.addSubview(self.overlayView)
+                self.overlayView.mas_makeConstraints { make in
+                    make.top.equalTo()(self.mas_top)
+                    make.right.equalTo()(self.mas_right)
+                    make.bottom.equalTo()(self.mas_bottom)
+                    make.left.equalTo()(self.mas_left)
+                }
+                self.addSubview(self.circleView)
+                self.circleView.mas_makeConstraints { make in
+                    make.center.equalTo()(self)
+                    make.width.equalTo()(100)
+                    make.height.equalTo()(100)
+                }
+                self.bringSubviewToFront(self.circleView)
+            } else {
+                self.purchaseOverlayAdded = false
+                self.overlayView.removeFromSuperview()
+                self.circleView.removeFromSuperview()
+            }
+        })
     }
     
     override func awakeFromNib() {
@@ -32,6 +55,13 @@ class VideoCell: UITableViewCell {
         titleLabel.numberOfLines = 0
         titleLabel.sizeToFit()
         titleLabel.font = UIFont(name: "AvenirNext-Regular", size: 20)
+        overlayView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.6)
+        circleView.backgroundColor = UIColor.whiteColor()
+        circleView.layer.cornerRadius = 50
+        circleView.addSubview(lockImageView)
+        lockImageView.mas_makeConstraints { make in
+            make.center.equalTo()(self.circleView)
+        }
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

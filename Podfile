@@ -26,6 +26,7 @@ target 'SomaSole' do
     pod 'Alamofire', '~> 3.4'
     pod 'Toucan'
     pod 'Stripe'
+    pod 'Masonry'
 
 end
 

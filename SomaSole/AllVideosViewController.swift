@@ -10,6 +10,7 @@ import UIKit
 import youtube_ios_player_helper
 import Firebase
 import XLPagerTabStrip
+import Masonry
 
 class AllVideosViewController: UITableViewController, IndicatorInfoProvider, UISearchBarDelegate {
     
@@ -21,6 +22,10 @@ class AllVideosViewController: UITableViewController, IndicatorInfoProvider, UIS
     var filteredVideos = [Video]()
     
     // methods
+    @objc private func tappedOverlay() {
+        performSegueWithIdentifier("paymentSegue", sender: self)
+    }
+    
     private func reloadTableView() {
         dispatch_async(dispatch_get_main_queue(), {
             self.tableView.reloadData()
@@ -120,8 +125,19 @@ class AllVideosViewController: UITableViewController, IndicatorInfoProvider, UIS
         let video = searchBar.isFirstResponder() && searchBar.text != "" ? filteredVideos[indexPath.row] : videos[indexPath.row]
         cell.titleLabel.text = video.title
         cell.playerView.loadWithVideoId(video.id)
+        cell.setPurchaseOverlay(indexPath.row > 2 && !User.sharedModel.premium)
+        if cell.purchaseOverlayAdded {
+            let tap1 = UITapGestureRecognizer(target: self, action: #selector(tappedOverlay))
+            cell.overlayView.addGestureRecognizer(tap1)
+            let tap2 = UITapGestureRecognizer(target: self, action: #selector(tappedOverlay))
+            cell.circleView.addGestureRecognizer(tap2)
+        }
 
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return indexPath.row <= 2 || User.sharedModel.premium
     }
 
     /*
