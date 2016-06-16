@@ -26,6 +26,7 @@ class VideoCell: UITableViewCell {
     func setPurchaseOverlay(flag: Bool) {
         dispatch_async(dispatch_get_main_queue(), {
             if flag && !self.purchaseOverlayAdded {
+                // overlay view
                 self.purchaseOverlayAdded = true
                 self.addSubview(self.overlayView)
                 self.overlayView.mas_makeConstraints { make in
@@ -34,6 +35,9 @@ class VideoCell: UITableViewCell {
                     make.bottom.equalTo()(self.mas_bottom)
                     make.left.equalTo()(self.mas_left)
                 }
+                self.bringSubviewToFront(self.overlayView)
+                
+                // circle view
                 self.addSubview(self.circleView)
                 self.circleView.mas_makeConstraints { make in
                     make.center.equalTo()(self)

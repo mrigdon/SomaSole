@@ -126,18 +126,15 @@ class AllVideosViewController: UITableViewController, IndicatorInfoProvider, UIS
         cell.titleLabel.text = video.title
         cell.playerView.loadWithVideoId(video.id)
         cell.setPurchaseOverlay(indexPath.row > 2 && !User.sharedModel.premium)
-        if cell.purchaseOverlayAdded {
-            let tap1 = UITapGestureRecognizer(target: self, action: #selector(tappedOverlay))
-            cell.overlayView.addGestureRecognizer(tap1)
-            let tap2 = UITapGestureRecognizer(target: self, action: #selector(tappedOverlay))
-            cell.circleView.addGestureRecognizer(tap2)
-        }
+        cell.selectionStyle = .None
 
         return cell
     }
     
-    override func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return indexPath.row <= 2 || User.sharedModel.premium
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.row > 2 && !User.sharedModel.premium {
+            performSegueWithIdentifier("paymentSegue", sender: self)
+        }
     }
 
     /*
