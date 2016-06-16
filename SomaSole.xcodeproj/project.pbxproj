@@ -50,6 +50,7 @@
 		62C9E40E1CB44FEF005E9F48 /* PurchasesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9E40D1CB44FEF005E9F48 /* PurchasesViewController.swift */; };
 		62C9E4101CB45DC8005E9F48 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9E40F1CB45DC8005E9F48 /* SettingsViewController.swift */; };
 		62CCEEA51CEC16BB00CC0D37 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CCEEA41CEC16BB00CC0D37 /* FirebaseManager.swift */; };
+		62CF96471D126F7800DDC38A /* GoPremiumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CF96461D126F7800DDC38A /* GoPremiumViewController.swift */; };
 		62D4298B1CEDA5DB009F157A /* Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D4298A1CEDA5DB009F157A /* Movement.swift */; };
 		62D640E41CD8136600D05124 /* BeginWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D640E31CD8136600D05124 /* BeginWorkoutViewController.swift */; };
 		62D640E61CD82C4200D05124 /* CountdownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D640E51CD82C4200D05124 /* CountdownViewController.swift */; };
@@ -132,6 +133,7 @@
 		62C9E40D1CB44FEF005E9F48 /* PurchasesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchasesViewController.swift; sourceTree = "<group>"; };
 		62C9E40F1CB45DC8005E9F48 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		62CCEEA41CEC16BB00CC0D37 /* FirebaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		62CF96461D126F7800DDC38A /* GoPremiumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoPremiumViewController.swift; sourceTree = "<group>"; };
 		62D4298A1CEDA5DB009F157A /* Movement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movement.swift; sourceTree = "<group>"; };
 		62D640E31CD8136600D05124 /* BeginWorkoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeginWorkoutViewController.swift; sourceTree = "<group>"; };
 		62D640E51CD82C4200D05124 /* CountdownViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownViewController.swift; sourceTree = "<group>"; };
@@ -226,8 +228,8 @@
 				628DB7391CBDE4680048F09C /* Workouts */,
 				621D22EF1CB2F65D00FE7581 /* Profile */,
 				626063961CBAEE0000B1AF3C /* Login */,
+				62CF96451D126EF000DDC38A /* Payments */,
 				621D22AC1CB2DC3E00FE7581 /* AppDelegate.swift */,
-				621859791D07D6C500CEC45D /* PaymentViewController.swift */,
 				621D22B21CB2DC3F00FE7581 /* Main.storyboard */,
 				621D22B51CB2DC3F00FE7581 /* Assets.xcassets */,
 				621D22B71CB2DC3F00FE7581 /* LaunchScreen.storyboard */,
@@ -335,6 +337,15 @@
 				62FE88031CE69BD700A9BB15 /* FinishedWorkoutViewController.swift */,
 			);
 			name = Workouts;
+			sourceTree = "<group>";
+		};
+		62CF96451D126EF000DDC38A /* Payments */ = {
+			isa = PBXGroup;
+			children = (
+				621859791D07D6C500CEC45D /* PaymentViewController.swift */,
+				62CF96461D126F7800DDC38A /* GoPremiumViewController.swift */,
+			);
+			name = Payments;
 			sourceTree = "<group>";
 		};
 		62FE88051CE6ABE300A9BB15 /* Movements */ = {
@@ -572,6 +583,7 @@
 				6215F3091CC9704C00E2A995 /* TagCell.swift in Sources */,
 				62C9E4081CB4474E005E9F48 /* InformationQuestionsViewController.swift in Sources */,
 				62ED07911D04969900C325E5 /* VideosViewController.swift in Sources */,
+				62CF96471D126F7800DDC38A /* GoPremiumViewController.swift in Sources */,
 				62C8413E1CC6F5D700468726 /* FilterViewController.swift in Sources */,
 				62D4298B1CEDA5DB009F157A /* Movement.swift in Sources */,
 				6215F30B1CC9805900E2A995 /* WorkoutCell.swift in Sources */,

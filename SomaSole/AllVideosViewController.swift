@@ -98,6 +98,9 @@ class AllVideosViewController: UITableViewController, IndicatorInfoProvider, UIS
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.navigationBar.tintColor = UIColor.blackColor()
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+        
         searchBar.barTintColor = UIColor.whiteColor()
         searchBar.tintColor = UIColor.blackColor()
         searchBar.layer.borderWidth = 0.0
