@@ -152,14 +152,21 @@ class AllVideosViewController: UITableViewController, IndicatorInfoProvider, UIS
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("videoCell", forIndexPath: indexPath) as! VideoCell
+        let reuseID = indexPath.row > 2 && !User.sharedModel.premium ? "videoOverlayCell" : "videoCell"
+        let cell = tableView.dequeueReusableCellWithIdentifier(reuseID, forIndexPath: indexPath) 
 
         let video = searchBar.isFirstResponder() && searchBar.text != "" ? filteredVideos[indexPath.row] : (favorites ? User.sharedModel.favoriteVideos[indexPath.row] : videos[indexPath.row])
-        cell.video = video
-        cell.titleLabel.text = video.title
-        cell.playerView.loadWithVideoId(video.id)
-        cell.setPurchaseOverlay(indexPath.row > 2 && !User.sharedModel.premium)
-        cell.setStarFill()
+        
+        if indexPath.row > 2 && !User.sharedModel.premium {
+            (cell as! VideoOverlayCell).video = video
+            (cell as! VideoOverlayCell).titleLabel.text = video.title
+            (cell as! VideoOverlayCell).playerView.loadWithVideoId(video.id)
+        } else {
+            (cell as! VideoCell).video = video
+            (cell as! VideoCell).titleLabel.text = video.title
+            (cell as! VideoCell).playerView.loadWithVideoId(video.id)
+            (cell as! VideoCell).setStarFill()
+        }
         cell.selectionStyle = .None
 
         return cell

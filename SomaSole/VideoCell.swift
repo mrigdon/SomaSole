@@ -13,10 +13,6 @@ import Masonry
 class VideoCell: UITableViewCell {
     
     // variables
-    var overlayView = UIView()
-    var circleView = UIView()
-    var lockImageView = UIImageView(image: UIImage(named: "lock"))
-    var purchaseOverlayAdded = false
     var video: Video?
 
     // outlets
@@ -28,36 +24,6 @@ class VideoCell: UITableViewCell {
     func setStarFill() {
         starButton.fillColor = User.sharedModel.favoriteVideoKeys.contains(video!.id) ? UIColor.goldColor() : UIColor.clearColor()
         starButton.config()
-    }
-    
-    func setPurchaseOverlay(flag: Bool) {
-        dispatch_async(dispatch_get_main_queue(), {
-            if flag && !self.purchaseOverlayAdded {
-                // overlay view
-                self.purchaseOverlayAdded = true
-                self.addSubview(self.overlayView)
-                self.overlayView.mas_makeConstraints { make in
-                    make.top.equalTo()(self.mas_top)
-                    make.right.equalTo()(self.mas_right)
-                    make.bottom.equalTo()(self.mas_bottom)
-                    make.left.equalTo()(self.mas_left)
-                }
-                self.bringSubviewToFront(self.overlayView)
-                
-                // circle view
-                self.addSubview(self.circleView)
-                self.circleView.mas_makeConstraints { make in
-                    make.center.equalTo()(self)
-                    make.width.equalTo()(100)
-                    make.height.equalTo()(100)
-                }
-                self.bringSubviewToFront(self.circleView)
-            } else {
-                self.purchaseOverlayAdded = false
-                self.overlayView.removeFromSuperview()
-                self.circleView.removeFromSuperview()
-            }
-        })
     }
     
     // actions
@@ -87,13 +53,6 @@ class VideoCell: UITableViewCell {
         titleLabel.numberOfLines = 0
         titleLabel.sizeToFit()
         titleLabel.font = UIFont(name: "AvenirNext-Regular", size: 20)
-        overlayView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.6)
-        circleView.backgroundColor = UIColor.whiteColor()
-        circleView.layer.cornerRadius = 50
-        circleView.addSubview(lockImageView)
-        lockImageView.mas_makeConstraints { make in
-            make.center.equalTo()(self.circleView)
-        }
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -102,4 +61,75 @@ class VideoCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+}
+
+class VideoOverlayCell: UITableViewCell {
+    
+    // variables
+    var overlayView = UIView()
+    var circleView = UIView()
+    var lockImageView = UIImageView(image: UIImage(named: "lock"))
+    var video: Video?
+    
+    // outlets
+    @IBOutlet weak var playerView: YTPlayerView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var starButton: IndexedStarButton!
+    
+    // methods
+    func setStarFill() {
+        starButton.fillColor = User.sharedModel.favoriteVideoKeys.contains(video!.id) ? UIColor.goldColor() : UIColor.clearColor()
+        starButton.config()
+    }
+    
+    func setPurchaseOverlay() {
+        dispatch_async(dispatch_get_main_queue(), {
+            // overlay view
+            self.addSubview(self.overlayView)
+            self.overlayView.mas_makeConstraints { make in
+                make.top.equalTo()(self.mas_top)
+                make.right.equalTo()(self.mas_right)
+                make.bottom.equalTo()(self.mas_bottom)
+                make.left.equalTo()(self.mas_left)
+            }
+            self.bringSubviewToFront(self.overlayView)
+            
+            // circle view
+            self.addSubview(self.circleView)
+            self.circleView.mas_makeConstraints { make in
+                make.center.equalTo()(self)
+                make.width.equalTo()(100)
+                make.height.equalTo()(100)
+            }
+            self.bringSubviewToFront(self.circleView)
+        })
+    }
+    
+    // actions
+    @IBAction func tappedStar(sender: AnyObject) {
+        
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+        titleLabel.numberOfLines = 0
+        titleLabel.sizeToFit()
+        titleLabel.font = UIFont(name: "AvenirNext-Regular", size: 20)
+        overlayView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.6)
+        circleView.backgroundColor = UIColor.whiteColor()
+        circleView.layer.cornerRadius = 50
+        circleView.addSubview(lockImageView)
+        lockImageView.mas_makeConstraints { make in
+            make.center.equalTo()(self.circleView)
+        }
+        setPurchaseOverlay()
+    }
+    
+    override func setSelected(selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        
+        // Configure the view for the selected state
+    }
+    
 }
