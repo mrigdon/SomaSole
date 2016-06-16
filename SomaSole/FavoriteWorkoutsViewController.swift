@@ -73,11 +73,11 @@ class FavoriteWorkoutsViewController: UITableViewController, IndicatorInfoProvid
     }
     
     private func loadFavoriteWorkouts() {
-        if User.sharedModel.favoriteWorkouts.count > 0 {
+        if User.sharedModel.favoriteWorkoutKeys.count > 0 {
             startProgressHud()
         }
         
-        for (index, workoutIndex) in User.sharedModel.favoriteWorkouts.enumerate() {
+        for (index, workoutIndex) in User.sharedModel.favoriteWorkoutKeys.enumerate() {
             FirebaseManager.sharedRootRef.childByAppendingPath("workouts").childByAppendingPath(String(workoutIndex)).observeEventType(.Value, withBlock: { snapshot in
                 let workout = Workout(index: Int(snapshot.key)!, data: snapshot.value as! [String : AnyObject])
                 self.workouts.insert(workout, atIndex: index)
@@ -92,8 +92,8 @@ class FavoriteWorkoutsViewController: UITableViewController, IndicatorInfoProvid
         let switchOriginInTableView = sender.convertPoint(CGPointZero, toView: tableView)
         let indexPath = tableView.indexPathForRowAtPoint(switchOriginInTableView)
         workouts.removeAtIndex(indexPath!.row)
-        User.sharedModel.favoriteWorkouts.removeAtIndex(indexPath!.row)
-        FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).childByAppendingPath("favoriteWorkouts").setValue(User.sharedModel.favoriteWorkouts)
+        User.sharedModel.favoriteWorkoutKeys.removeAtIndex(indexPath!.row)
+        FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).childByAppendingPath("favoriteWorkoutKeys").setValue(User.sharedModel.favoriteWorkoutKeys)
         User.saveToUserDefaults()
         
         // ui

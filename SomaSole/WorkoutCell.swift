@@ -36,24 +36,25 @@ class WorkoutCell: UITableViewCell {
     
     // methods
     func setStarFill() {
-        starButton.fillColor = User.sharedModel.favoriteWorkouts.contains(workout!.index) ? UIColor.goldColor() : UIColor.clearColor()
+        starButton.fillColor = User.sharedModel.favoriteWorkoutKeys.contains(workout!.index) ? UIColor.goldColor() : UIColor.clearColor()
         starButton.config()
     }
     
     // action
     @IBAction func tappedStar(sender: AnyObject) {
         let starButton = sender as! IndexedStarButton
-        if User.sharedModel.favoriteWorkouts.contains(workout!.index) {
-            let indexInArray = User.sharedModel.favoriteWorkouts.indexOf(workout!.index)
-            User.sharedModel.favoriteWorkouts.removeAtIndex(indexInArray!)
-            FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).childByAppendingPath("favoriteWorkouts").setValue(User.sharedModel.favoriteWorkouts)
+        if User.sharedModel.favoriteWorkoutKeys.contains(workout!.index) {
+            User.sharedModel.favoriteWorkouts.removeAtIndex(User.sharedModel.favoriteWorkouts.indexOf(workout!)!)
+            User.sharedModel.favoriteWorkoutKeys.removeAtIndex(User.sharedModel.favoriteWorkoutKeys.indexOf(workout!.index)!)
+            FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).childByAppendingPath("favoriteWorkoutKeys").setValue(User.sharedModel.favoriteWorkoutKeys)
             User.saveToUserDefaults()
             starButton.fillColor = UIColor.clearColor()
             workout!.favorite = false
         }
         else {
-            User.sharedModel.favoriteWorkouts.append(workout!.index)
-            FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).childByAppendingPath("favoriteWorkouts").setValue(User.sharedModel.favoriteWorkouts)
+            User.sharedModel.favoriteWorkouts.append(workout!)
+            User.sharedModel.favoriteWorkoutKeys.append(workout!.index)
+            FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).childByAppendingPath("favoriteWorkoutKeys").setValue(User.sharedModel.favoriteWorkoutKeys)
             User.saveToUserDefaults()
             starButton.fillColor = UIColor.goldColor()
             workout!.favorite = true

@@ -20,6 +20,9 @@ class AllVideosViewController: UITableViewController, IndicatorInfoProvider, UIS
     // variables
     var videos = [Video]()
     var filteredVideos = [Video]()
+    var unfilledStarButton: UIBarButtonItem?
+    var filledStarButton: UIBarButtonItem?
+    var favorites = false
     
     // methods
     @objc private func tappedOverlay() {
@@ -36,6 +39,9 @@ class AllVideosViewController: UITableViewController, IndicatorInfoProvider, UIS
         FirebaseManager.sharedRootRef.childByAppendingPath("videos").childByAppendingPath("public").observeEventType(.ChildAdded, withBlock: { snapshot in
             let video = Video(id: snapshot.key, title: snapshot.value as! String)
             self.videos.insert(video, atIndex: 0)
+            if User.sharedModel.favoriteVideoKeys.contains(video.id) {
+                User.sharedModel.favoriteVideos.append(video)
+            }
             self.reloadTableView()
         })
     }
@@ -45,16 +51,33 @@ class AllVideosViewController: UITableViewController, IndicatorInfoProvider, UIS
             FirebaseManager.sharedRootRef.childByAppendingPath("videos").childByAppendingPath("private").childByAppendingPath(key).observeEventType(.Value, withBlock: { snapshot in
                 let video = Video(id: snapshot.key, title: snapshot.value as! String)
                 self.videos.insert(video, atIndex: 0)
+                if User.sharedModel.favoriteVideoKeys.contains(video.id) {
+                    User.sharedModel.favoriteVideos.append(video)
+                }
                 self.reloadTableView()
             })
         }
     }
     
     private func filterContentForSearchText(searchText: String) {
-        filteredVideos = videos.filter { video in
+        filteredVideos = (favorites ? User.sharedModel.favoriteVideos : videos).filter { video in
             return video.title.lowercaseString.containsString(searchText.lowercaseString)
         }
         
+        reloadTableView()
+    }
+    
+    @objc private func tappedUnfilledStar() {
+        // switch to favorites
+        navigationItem.rightBarButtonItem = filledStarButton
+        favorites = true
+        reloadTableView()
+    }
+    
+    @objc private func tappedFilledStar() {
+        // switch to non-favorites
+        navigationItem.rightBarButtonItem = unfilledStarButton
+        favorites = false
         reloadTableView()
     }
     
@@ -87,6 +110,12 @@ class AllVideosViewController: UITableViewController, IndicatorInfoProvider, UIS
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 274
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
+        
+        unfilledStarButton = UIBarButtonItem(image: UIImage(named: "star_unfilled"), style: .Plain, target: self, action: #selector(tappedUnfilledStar))
+        unfilledStarButton?.tintColor = UIColor.goldColor()
+        filledStarButton = UIBarButtonItem(image: UIImage(named: "star_filled"), style: .Plain, target: self, action: #selector(tappedFilledStar))
+        filledStarButton?.tintColor = UIColor.goldColor()
+        navigationItem.rightBarButtonItem = unfilledStarButton
 
         loadPublic()
         loadPrivate()
@@ -116,16 +145,18 @@ class AllVideosViewController: UITableViewController, IndicatorInfoProvider, UIS
             return filteredVideos.count
         }
         
-        return videos.count
+        return favorites ? User.sharedModel.favoriteVideos.count : videos.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("videoCell", forIndexPath: indexPath) as! VideoCell
 
-        let video = searchBar.isFirstResponder() && searchBar.text != "" ? filteredVideos[indexPath.row] : videos[indexPath.row]
+        let video = searchBar.isFirstResponder() && searchBar.text != "" ? filteredVideos[indexPath.row] : (favorites ? User.sharedModel.favoriteVideos[indexPath.row] : videos[indexPath.row])
+        cell.video = video
         cell.titleLabel.text = video.title
         cell.playerView.loadWithVideoId(video.id)
         cell.setPurchaseOverlay(indexPath.row > 2 && !User.sharedModel.premium)
+        cell.setStarFill()
         cell.selectionStyle = .None
 
         return cell

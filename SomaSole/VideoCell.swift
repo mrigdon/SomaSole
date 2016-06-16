@@ -17,12 +17,19 @@ class VideoCell: UITableViewCell {
     var circleView = UIView()
     var lockImageView = UIImageView(image: UIImage(named: "lock"))
     var purchaseOverlayAdded = false
+    var video: Video?
 
     // outlets
     @IBOutlet weak var playerView: YTPlayerView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var starButton: IndexedStarButton!
     
-    // methods    
+    // methods
+    func setStarFill() {
+        starButton.fillColor = User.sharedModel.favoriteVideoKeys.contains(video!.id) ? UIColor.goldColor() : UIColor.clearColor()
+        starButton.config()
+    }
+    
     func setPurchaseOverlay(flag: Bool) {
         dispatch_async(dispatch_get_main_queue(), {
             if flag && !self.purchaseOverlayAdded {
@@ -51,6 +58,27 @@ class VideoCell: UITableViewCell {
                 self.circleView.removeFromSuperview()
             }
         })
+    }
+    
+    // actions
+    @IBAction func tappedStar(sender: AnyObject) {
+        let starButton = sender as! IndexedStarButton
+        if User.sharedModel.favoriteVideoKeys.contains(video!.id) {
+            User.sharedModel.favoriteVideos.removeAtIndex(User.sharedModel.favoriteVideos.indexOf(video!)!)
+            User.sharedModel.favoriteVideoKeys.removeAtIndex(User.sharedModel.favoriteVideoKeys.indexOf(video!.id)!)
+            FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).childByAppendingPath("favoriteVideoKeys").setValue(User.sharedModel.favoriteVideoKeys)
+            User.saveToUserDefaults()
+            starButton.fillColor = UIColor.clearColor()
+            video!.favorite = false
+        } else {
+            User.sharedModel.favoriteVideos.append(video!)
+            User.sharedModel.favoriteVideoKeys.append(video!.id)
+            FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).childByAppendingPath("favoriteVideoKeys").setValue(User.sharedModel.favoriteVideoKeys)
+            User.saveToUserDefaults()
+            starButton.fillColor = UIColor.goldColor()
+            video!.favorite = true
+        }
+        starButton.config()
     }
     
     override func awakeFromNib() {

@@ -21,9 +21,11 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate, Ind
     let searchBar = UISearchBar()
     
     // variables
-    var workouts = [Workout]()
     var filteredWorkouts = [Workout]()
     var selectedFilters = [WorkoutTag]()
+    var unfilledStarButton: UIBarButtonItem?
+    var filledStarButton: UIBarButtonItem?
+    var favorites = false
     
     // methods
     func startProgressHud() {
@@ -45,7 +47,7 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate, Ind
     func filterContent(searchText: String) {
         // filter for tags
         var tagFilteredWorkouts = [Workout]()
-        for workout in workouts {
+        for workout in favorites ? User.sharedModel.favoriteWorkouts : Workout.sharedWorkouts {
             // if workout.tags contains all of selected filters
             var qualifies = true
             for filter in selectedFilters {
@@ -76,12 +78,29 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate, Ind
         FirebaseManager.sharedRootRef.childByAppendingPath("workouts").observeEventType(.ChildAdded, withBlock: { snapshot in
             // load workouts
             let workout = Workout(index: Int(snapshot.key)!, data: snapshot.value as! [String : AnyObject])
-            self.workouts.append(workout)
+            Workout.sharedWorkouts.append(workout)
+            if User.sharedModel.favoriteWorkoutKeys.contains(workout.index) {
+                User.sharedModel.favoriteWorkouts.append(workout)
+            }
             
             self.stopProgressHud()
             self.reloadTableView()
         })
         
+    }
+    
+    @objc private func tappedUnfilledStar() {
+        // switch to favorites
+        navigationItem.rightBarButtonItem = filledStarButton
+        favorites = true
+        reloadTableView()
+    }
+    
+    @objc private func tappedFilledStar() {
+        // switch to non-favorites
+        navigationItem.rightBarButtonItem = unfilledStarButton
+        favorites = false
+        reloadTableView()
     }
     
     // delegates
@@ -125,6 +144,13 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate, Ind
         searchBar.delegate = self
         searchBar.enablesReturnKeyAutomatically = false
         
+        // set up bar buttons
+        unfilledStarButton = UIBarButtonItem(image: UIImage(named: "star_unfilled"), style: .Plain, target: self, action: #selector(tappedUnfilledStar))
+        unfilledStarButton?.tintColor = UIColor.goldColor()
+        filledStarButton = UIBarButtonItem(image: UIImage(named: "star_filled"), style: .Plain, target: self, action: #selector(tappedFilledStar))
+        filledStarButton?.tintColor = UIColor.goldColor()
+        navigationItem.rightBarButtonItem = unfilledStarButton
+        
         // begin load of all workouts
         startProgressHud()
         loadWorkouts()
@@ -165,7 +191,7 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate, Ind
             return selectedFilters.count > 0 ? filteredWorkouts.count + 1 : filteredWorkouts.count
         }
         
-        return workouts.count
+        return favorites ? User.sharedModel.favoriteWorkouts.count : Workout.sharedWorkouts.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -179,7 +205,7 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate, Ind
         }
         else {
             self.tableView.rowHeight = workoutCellSize
-            let workout = searchBar.isFirstResponder() && searchBar.text != "" ? filteredWorkouts[indexPath.row] : workouts[indexPath.row]
+            let workout = searchBar.isFirstResponder() && searchBar.text != "" ? filteredWorkouts[indexPath.row] : (favorites ? User.sharedModel.favoriteWorkouts[indexPath.row] : Workout.sharedWorkouts[indexPath.row])
             (cell as! WorkoutCell).workout = workout
             (cell as! WorkoutCell).setStarFill()
             cell.backgroundView = UIImageView(image: (cell as! WorkoutCell).workout!.image)
@@ -195,7 +221,7 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate, Ind
         if segue.identifier == "workoutSegue" {
             let beginVC = segue.destinationViewController as! BeginWorkoutViewController
             let index = self.tableView.indexPathForSelectedRow?.row
-            beginVC.workout = workouts[index!]
+            beginVC.workout = Workout.sharedWorkouts[index!]
         }
         else {
             // Get the new view controller using segue.destinationViewController.

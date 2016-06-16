@@ -37,6 +37,8 @@ class Circuit: NSObject {
 
 class Workout: NSObject {
     
+    static var sharedWorkouts = [Workout]()
+    
     var index: Int
     var image: UIImage
     var name: String
