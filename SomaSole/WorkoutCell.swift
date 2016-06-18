@@ -50,9 +50,8 @@ class WorkoutCell: UITableViewCell {
             User.saveToUserDefaults()
             starButton.fillColor = UIColor.clearColor()
             workout!.favorite = false
-        }
-        else {
-            User.sharedModel.favoriteWorkouts.append(workout!)
+        } else {
+            User.sharedModel.favoriteWorkouts.insertAlpha(workout!)
             User.sharedModel.favoriteWorkoutKeys.append(workout!.index)
             FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).childByAppendingPath("favoriteWorkoutKeys").setValue(User.sharedModel.favoriteWorkoutKeys)
             User.saveToUserDefaults()

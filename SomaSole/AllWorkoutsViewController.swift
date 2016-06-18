@@ -13,6 +13,24 @@ import TagListView
 import EPShapes
 import XLPagerTabStrip
 
+extension Array where Element: Workout {
+    mutating func insertAlpha(workout: Element) {
+        if self.count == 0 {
+            self.append(workout)
+            return
+        }
+        
+        for (index, item) in self.enumerate() {
+            if workout.name.localizedCompare(item.name) == .OrderedAscending {
+                self.insert(workout, atIndex: index)
+                return
+            }
+        }
+        
+        self.append(workout)
+    }
+}
+
 class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate, IndicatorInfoProvider {
     
     // constants
@@ -57,7 +75,7 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate, Ind
                 }
             }
             if qualifies {
-                tagFilteredWorkouts.append(workout)
+                tagFilteredWorkouts.insertAlpha(workout)
             }
         }
         
