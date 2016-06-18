@@ -213,7 +213,7 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate, Ind
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cellType = selectedFilters.count > 0 && indexPath.row == 0 ? "tagCell" : "workoutCell"
+        let cellType = selectedFilters.count > 0 && indexPath.row == 0 ? "tagCell" : (indexPath.row < 3 || User.sharedModel.premium ? "workoutCell" : "workoutOverlayCell")
         let cell = tableView.dequeueReusableCellWithIdentifier(cellType, forIndexPath: indexPath)
         
         if selectedFilters.count > 0 && indexPath.row == 0 {
@@ -224,9 +224,12 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate, Ind
         else {
             self.tableView.rowHeight = workoutCellSize
             let workout = searchBar.isFirstResponder() && searchBar.text != "" ? filteredWorkouts[indexPath.row] : (favorites ? User.sharedModel.favoriteWorkouts[indexPath.row] : Workout.sharedWorkouts[indexPath.row])
-            (cell as! WorkoutCell).workout = workout
-            (cell as! WorkoutCell).setStarFill()
-            cell.backgroundView = UIImageView(image: (cell as! WorkoutCell).workout!.image)
+            if indexPath.row < 3 || User.sharedModel.premium {
+                (cell as! WorkoutCell).workout = workout
+                (cell as! WorkoutCell).setStarFill()
+            }
+            cell.selectionStyle = .None
+            cell.backgroundView = UIImageView(image: workout.image)
         }
 
         return cell
@@ -240,8 +243,7 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate, Ind
             let beginVC = segue.destinationViewController as! BeginWorkoutViewController
             let index = self.tableView.indexPathForSelectedRow?.row
             beginVC.workout = Workout.sharedWorkouts[index!]
-        }
-        else {
+        } else if segue.identifier == "tagListSegue" || segue.identifier == "filterSegue" {
             // Get the new view controller using segue.destinationViewController.
             let filterVC = segue.destinationViewController as! FilterViewController
             
