@@ -171,12 +171,6 @@ class AllVideosViewController: UITableViewController, IndicatorInfoProvider, UIS
 
         return cell
     }
-    
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.row > 2 && !User.sharedModel.premium {
-            performSegueWithIdentifier("paymentSegue", sender: self)
-        }
-    }
 
     /*
     // Override to support conditional editing of the table view.
