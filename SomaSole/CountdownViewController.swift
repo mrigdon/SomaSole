@@ -17,6 +17,7 @@ class CountdownViewController: UIViewController {
     var workout: Workout?
     var timer = 3
     var countdownStarted = false
+    var customPace = false
     
     // outlets
     @IBOutlet weak var workoutImageView: UIImageView!
@@ -57,6 +58,15 @@ class CountdownViewController: UIViewController {
     @IBAction func tappedStart(sender: AnyObject) {
         if !countdownStarted {
             countdownStarted = true
+            customPace = false
+            self.beginCountdown()
+        }
+    }
+    
+    @IBAction func tappedGoAtYourOwnPace(sender: AnyObject) {
+        if !countdownStarted {
+            countdownStarted = true
+            customPace = true
             self.beginCountdown()
         }
     }
@@ -80,6 +90,7 @@ class CountdownViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let destVC = segue.destinationViewController as! InWorkoutViewController
         destVC.workout = workout
+        destVC.customPace = customPace
     }
 
 }

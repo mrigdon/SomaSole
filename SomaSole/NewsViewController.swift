@@ -61,6 +61,8 @@ class NewsViewController: UIViewController, UIScrollViewDelegate, KASlideShowDel
         slideshow.transitionDuration = 1
         slideshow.transitionType = .Slide
         slideshow.imagesContentMode = .ScaleToFill
+        slideshow.delay = 2
+        slideshow.start()
         slideshow.addGesture(.Swipe)
         let tap = UITapGestureRecognizer(target: self, action: #selector(tappedArticle))
         slideshow.addGestureRecognizer(tap)

@@ -37,5 +37,9 @@ class MovementCell: UITableViewCell {
     func resetBackground() {
         self.progressViewWidth.constant = 0
     }
+    
+    func setBackground() {
+        progressViewWidth.constant = screenWidth
+    }
 
 }

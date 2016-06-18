@@ -9,6 +9,12 @@
 import UIKit
 import Gifu
 
+extension Bool {
+    var alpha: CGFloat {
+        return self ? 1 : 0
+    }
+}
+
 class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // constants
@@ -23,6 +29,12 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
     var pauseButton: UIBarButtonItem?
     var gifVisible = true
     var running = true
+    var customPace = false
+    var movementCounter = 0
+    var setCounter = 0
+    var circuitCounter = 0
+    
+    var currentCircuit: Circuit?
     
     // outlets
     @IBOutlet weak var contentView: UIView!
@@ -30,6 +42,7 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var movementImageView: AnimatableImageView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tipLabel: UILabel!
+    @IBOutlet weak var nextButton: UIButton!
     
     // methods
     private func reloadTableView() {
@@ -58,14 +71,14 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
         
         // animate blue progress
         currentIndexPath = indexPath
-        currentCell = (self.tableView.cellForRowAtIndexPath(indexPath) as! MovementCell)
-        (self.tableView.cellForRowAtIndexPath(indexPath) as! MovementCell).layoutIfNeeded()
-        (self.tableView.cellForRowAtIndexPath(indexPath) as! MovementCell).progressViewWidth.constant = self.screenWidth
-        UIView.animateWithDuration(Double((self.tableView.cellForRowAtIndexPath(indexPath) as! MovementCell).movement!.time!), animations: {
-            (self.tableView.cellForRowAtIndexPath(indexPath) as! MovementCell).layoutIfNeeded()
+        currentCell = self.tableView.cellForRowAtIndexPath(indexPath) as? MovementCell
+        currentCell!.layoutIfNeeded()
+        currentCell!.progressViewWidth.constant = self.screenWidth
+        UIView.animateWithDuration(Double(currentCell!.movement!.time!), animations: {
+            self.currentCell!.layoutIfNeeded()
             }, completion: { finished in
                 if self.running {
-                    (self.tableView.cellForRowAtIndexPath(indexPath) as! MovementCell).resetBackground()
+                    self.currentCell!.resetBackground()
                     self.beginMovementInSet(circuitIndex, setIndex: setIndex, workoutIndex: workoutIndex+1, completedSet: completedSet)
                 }
             }
@@ -99,16 +112,30 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     private func beginWorkout() {
-        beginCircuit(0, completedWorkout: {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let finishedVC = storyboard.instantiateViewControllerWithIdentifier("FinishedWorkoutViewController") as! FinishedWorkoutViewController
-            finishedVC.workout = self.workout
-            self.presentViewController(finishedVC, animated: true, completion: nil)
-        })
+        if customPace {
+            // for custom pace workouts
+            let firstCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! MovementCell
+            currentCell = firstCell
+            currentCircuit = workout?.circuits[0]
+            firstCell.layoutIfNeeded()
+            firstCell.setBackground()
+            firstCell.layoutIfNeeded()
+            let movement = currentCircuit!.movements[movementCounter]
+            dispatch_async(dispatch_get_main_queue(), {
+                self.movementImageView.animateWithImageData(movement.gif!)
+            })
+            tipLabel.text = movement.movementDescription
+            
+        } else {
+            // for timed workouts
+            beginCircuit(0, completedWorkout: {
+                self.performSegueWithIdentifier("finishedSegue", sender: self)
+            })
+        }
     }
     
     @objc private func play() {
-        let pausedTime = (tableView.cellForRowAtIndexPath(currentIndexPath!) as! MovementCell).progressView.layer.timeOffset
+        let pausedTime = currentCell!.progressView.layer.timeOffset
         currentCell!.progressView.layer.speed = 1.0
         currentCell!.progressView.layer.timeOffset = 0.0
         currentCell!.progressView.layer.beginTime = 0.0
@@ -131,9 +158,9 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
         dispatch_async(dispatch_get_main_queue(), { [unowned self] in
             self.running = false
             self.movementImageView.stopAnimatingGIF()
-            self.currentCell!.progressView.layer.removeAllAnimations()
+            self.currentCell?.progressView.layer.removeAllAnimations()
             self.dismissViewControllerAnimated(true, completion: nil)
-            })
+        })
     }
     
     @IBAction func tappedInfo(sender: AnyObject) {
@@ -147,6 +174,41 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
             tipLabel.layer.opacity = 0.0
             gifVisible = true
         }
+    }
+    
+    @IBAction func tappedNext(sender: AnyObject) {
+        currentCell?.layoutIfNeeded()
+        currentCell?.resetBackground()
+        currentCell?.layoutIfNeeded()
+        
+        movementCounter += 1
+        if movementCounter == currentCircuit!.movements.count {
+            setCounter += 1
+            if setCounter == currentCircuit!.numSets {
+                circuitCounter += 1
+                setCounter = 0
+            }
+            movementCounter = 0
+        }
+        
+        if circuitCounter == workout!.circuits.count {
+            // done with workout
+            performSegueWithIdentifier("finishedSegue", sender: self)
+            return
+        }
+        
+        currentCircuit = workout?.circuits[circuitCounter]
+        let indexPath = NSIndexPath(forRow: movementCounter, inSection: circuitCounter)
+        tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Top, animated: false)
+        currentCell = tableView.cellForRowAtIndexPath(indexPath) as? MovementCell
+        tableView.layoutIfNeeded()
+        currentCell?.setBackground()
+        tableView.layoutIfNeeded()
+        let movement = currentCircuit!.movements[movementCounter]
+        dispatch_async(dispatch_get_main_queue(), {
+            self.movementImageView.animateWithImageData(movement.gif!)
+        })
+        tipLabel.text = movement.movementDescription
     }
     
     // uiviewcontroller
@@ -165,6 +227,10 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
         // init tip view
         tipLabel.text = workout?.circuits[0].movements[0].movementDescription
         tipLabel.layer.opacity = 0.0
+        
+        // remove next button if not custom pace
+        nextButton.enabled = customPace
+        nextButton.alpha = customPace.alpha
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -206,6 +272,11 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
         let circuit = workout!.circuits[section]
         //        return "Circuit \(section+1) (Set \(circuit.currentSet)/\(circuit.numSets))"
         return "Circuit \(section+1) (\(circuit.numSets) Sets)"
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let destVC = segue.destinationViewController as! FinishedWorkoutViewController
+        destVC.workout = workout
     }
     
     /*
