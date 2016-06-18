@@ -23,6 +23,13 @@ class GoPremiumViewController: UIViewController {
 
         descriptionLabel.numberOfLines = 0
         descriptionLabel.sizeToFit()
+        
+        self.navigationController?.navigationBar.titleTextAttributes = [
+            NSForegroundColorAttributeName: UIColor.blackColor(),
+            NSFontAttributeName: UIFont(name: "AvenirNext-UltraLight", size: 24)!
+        ]
+        navigationController?.navigationBar.tintColor = UIColor.blackColor()
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
     }
 
     override func didReceiveMemoryWarning() {

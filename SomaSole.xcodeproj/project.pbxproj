@@ -23,6 +23,7 @@
 		621D22ED1CB2F64000FE7581 /* RequestTrainerStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621D22EB1CB2F64000FE7581 /* RequestTrainerStatusViewController.swift */; };
 		621D22F31CB3079100FE7581 /* TrainerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621D22F11CB3079100FE7581 /* TrainerDetailViewController.swift */; };
 		621D22F81CB31BE600FE7581 /* TrainerRequestConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621D22F71CB31BE600FE7581 /* TrainerRequestConfirmViewController.swift */; };
+		621DA9601D15EF2F002DF0AF /* Payment2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621DA95F1D15EF2F002DF0AF /* Payment2ViewController.swift */; };
 		62264C1A1D04C85F00DDCFC0 /* FavoriteWorkoutsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62264C191D04C85F00DDCFC0 /* FavoriteWorkoutsViewController.swift */; };
 		6229FF821CEA518400838B68 /* MovementDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6229FF811CEA518400838B68 /* MovementDetailViewController.swift */; };
 		6235212B1CFA00E500B3F1BF /* ROGif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6235212A1CFA00E500B3F1BF /* ROGif.swift */; };
@@ -106,6 +107,7 @@
 		621D22EB1CB2F64000FE7581 /* RequestTrainerStatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestTrainerStatusViewController.swift; sourceTree = "<group>"; };
 		621D22F11CB3079100FE7581 /* TrainerDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerDetailViewController.swift; sourceTree = "<group>"; };
 		621D22F71CB31BE600FE7581 /* TrainerRequestConfirmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerRequestConfirmViewController.swift; sourceTree = "<group>"; };
+		621DA95F1D15EF2F002DF0AF /* Payment2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payment2ViewController.swift; sourceTree = "<group>"; };
 		62264C191D04C85F00DDCFC0 /* FavoriteWorkoutsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteWorkoutsViewController.swift; sourceTree = "<group>"; };
 		6229FF811CEA518400838B68 /* MovementDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementDetailViewController.swift; sourceTree = "<group>"; };
 		6235212A1CFA00E500B3F1BF /* ROGif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ROGif.swift; sourceTree = "<group>"; };
@@ -344,6 +346,7 @@
 			children = (
 				621859791D07D6C500CEC45D /* PaymentViewController.swift */,
 				62CF96461D126F7800DDC38A /* GoPremiumViewController.swift */,
+				621DA95F1D15EF2F002DF0AF /* Payment2ViewController.swift */,
 			);
 			name = Payments;
 			sourceTree = "<group>";
@@ -571,6 +574,7 @@
 				6235212D1CFA130A00B3F1BF /* VideoCell.swift in Sources */,
 				62C9E4101CB45DC8005E9F48 /* SettingsViewController.swift in Sources */,
 				62780C691D0BA87300198441 /* ProfileCell.swift in Sources */,
+				621DA9601D15EF2F002DF0AF /* Payment2ViewController.swift in Sources */,
 				62B1AB931CC1D6F3007069E5 /* AllWorkoutsViewController.swift in Sources */,
 				6248AE2C1CF9510C000A2DC9 /* Article.swift in Sources */,
 				6260639A1CBB3E5900B1AF3C /* CreateAboutViewController.swift in Sources */,

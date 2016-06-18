@@ -117,6 +117,7 @@ class PaymentViewController: UIViewController {
         super.viewDidLoad()
         
         saveButton.enabled = false
+        paymentTextField.layer.borderWidth = 0
         
         // alert controller
         errorAlertController = UIAlertController(title: "Error", message: "Error", preferredStyle: .Alert)
