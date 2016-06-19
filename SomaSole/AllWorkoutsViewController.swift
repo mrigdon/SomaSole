@@ -209,21 +209,23 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate, Ind
             return selectedFilters.count > 0 ? filteredWorkouts.count + 1 : filteredWorkouts.count
         }
         
-        return favorites ? User.sharedModel.favoriteWorkouts.count : Workout.sharedWorkouts.count
+        return favorites ? User.sharedModel.favoriteWorkouts.count + 1 : Workout.sharedWorkouts.count + 1 // plus one for the filter cell
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cellType = selectedFilters.count > 0 && indexPath.row == 0 ? "tagCell" : (indexPath.row < 3 || User.sharedModel.premium ? "workoutCell" : "workoutOverlayCell")
+        let cellType = selectedFilters.count > 0 && indexPath.row == 0 ? "tagCell" : indexPath.row == 0 ? "filterCell" : indexPath.row < 3 || User.sharedModel.premium ? "workoutCell" : "workoutOverlayCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellType, forIndexPath: indexPath)
         
         if selectedFilters.count > 0 && indexPath.row == 0 {
             (cell as! TagCell).addFilters(selectedFilters)
             self.tableView.rowHeight = UITableViewAutomaticDimension
             self.tableView.estimatedRowHeight = workoutCellSize
-        }
-        else {
+        } else if indexPath.row == 0 {
+            self.tableView.rowHeight = filterCellSize
+        } else {
             self.tableView.rowHeight = workoutCellSize
-            let workout = searchBar.isFirstResponder() && searchBar.text != "" ? filteredWorkouts[indexPath.row] : (favorites ? User.sharedModel.favoriteWorkouts[indexPath.row] : Workout.sharedWorkouts[indexPath.row])
+            let workoutIndex = indexPath.row - 1 // -1 for the filter cell
+            let workout = searchBar.isFirstResponder() && searchBar.text != "" ? filteredWorkouts[workoutIndex] : (favorites ? User.sharedModel.favoriteWorkouts[workoutIndex] : Workout.sharedWorkouts[workoutIndex])
             if indexPath.row < 3 || User.sharedModel.premium {
                 (cell as! WorkoutCell).workout = workout
                 (cell as! WorkoutCell).setStarFill()
