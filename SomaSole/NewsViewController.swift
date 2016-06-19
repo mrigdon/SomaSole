@@ -62,7 +62,6 @@ class NewsViewController: UIViewController, UIScrollViewDelegate, KASlideShowDel
         slideshow.transitionType = .Slide
         slideshow.imagesContentMode = .ScaleToFill
         slideshow.delay = 2
-        slideshow.start()
         slideshow.addGesture(.Swipe)
         let tap = UITapGestureRecognizer(target: self, action: #selector(tappedArticle))
         slideshow.addGestureRecognizer(tap)
@@ -136,6 +135,10 @@ class NewsViewController: UIViewController, UIScrollViewDelegate, KASlideShowDel
         }
     }
     
+    @objc private func nextSlide() {
+        slideshow.next()
+    }
+    
     // uiviewcontroller
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -154,6 +157,11 @@ class NewsViewController: UIViewController, UIScrollViewDelegate, KASlideShowDel
         setupRecommended()
         loadArticles()
         loadWorkouts()
+        NSTimer.scheduledTimerWithTimeInterval(4, target: self, selector: #selector(nextSlide), userInfo: nil, repeats: true)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        
     }
 
     override func didReceiveMemoryWarning() {
