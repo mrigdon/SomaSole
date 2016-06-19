@@ -31,6 +31,7 @@ PODS:
   - RealmSwift (1.0.0):
     - Realm (= 1.0.0)
   - Stripe (7.0.2)
+  - SwiftyMarkdown (0.2.3)
   - TagListView (1.0.0)
   - TextFieldEffects (1.2.0)
   - Toucan (0.5.0)
@@ -55,6 +56,7 @@ DEPENDENCIES:
   - MBProgressHUD (~> 0.9.2)
   - RealmSwift
   - Stripe
+  - SwiftyMarkdown
   - TagListView (~> 1.0)
   - TextFieldEffects
   - Toucan
@@ -81,6 +83,7 @@ SPEC CHECKSUMS:
   Realm: e15cd8e7c11d3e576f628ba0b7cb855269b4991c
   RealmSwift: 3229306d020d96f83b335f87a0dcbf2cef0e6a2b
   Stripe: d1eae5522cf993590f962ac1829a56c2096cf486
+  SwiftyMarkdown: 62920e177bbd441f2e4427e164e1674b1be46b39
   TagListView: 6bf4bded034c4c90b1e90d8cd3d8e1d852dba0a8
   TextFieldEffects: bc4fd3bd557321bd61a0762f3f50965477a36f62
   Toucan: 0519c341148252ae114c5a657d2a85bb9ada9e40

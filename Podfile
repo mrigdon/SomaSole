@@ -27,6 +27,7 @@ target 'SomaSole' do
     pod 'Toucan'
     pod 'Stripe'
     pod 'Masonry'
+    pod 'SwiftyMarkdown'
 
 end
 

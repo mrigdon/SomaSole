@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyMarkdown
 
 class ArticleViewController: UIViewController {
     
@@ -65,9 +66,10 @@ class ArticleViewController: UIViewController {
     private func setupBody() {
         bodyView.editable = true
         
-        let font = UIFont(name: "Georgia", size: 20)
-        bodyView.font = font
-        bodyView.text = article!.body
+        let mdText = SwiftyMarkdown(string: article!.body)
+        mdText.body.fontName = "Georgia"
+        mdText.body.fontSize = 20
+        bodyView.attributedText = mdText.attributedString()
         
         bodyView.editable = false
     }
