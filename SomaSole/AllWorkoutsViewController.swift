@@ -93,9 +93,41 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate, Ind
     }
     
     func loadWorkouts() {
-        FirebaseManager.sharedRootRef.childByAppendingPath("workouts").observeEventType(.ChildAdded, withBlock: { snapshot in
+        FirebaseManager.sharedRootRef.childByAppendingPath("workouts_legacy").observeEventType(.ChildAdded, withBlock: { snapshot in
             // load workouts
             let workout = Workout(index: Int(snapshot.key)!, data: snapshot.value as! [String : AnyObject])
+            Workout.sharedWorkouts.append(workout)
+            if User.sharedModel.favoriteWorkoutKeys.contains(workout.index) {
+                User.sharedModel.favoriteWorkouts.append(workout)
+            }
+            
+            self.stopProgressHud()
+            self.reloadTableView()
+        })
+        
+    }
+    
+    private func loadPublicWorkouts() {
+        FirebaseManager.sharedRootRef.childByAppendingPath("workouts/public").observeEventType(.ChildAdded, withBlock: { snapshot in
+            // load workouts
+            let workout = Workout(index: Int(snapshot.key)!, data: snapshot.value as! [String : AnyObject])
+            workout.free = true
+            Workout.sharedWorkouts.append(workout)
+            if User.sharedModel.favoriteWorkoutKeys.contains(workout.index) {
+                User.sharedModel.favoriteWorkouts.append(workout)
+            }
+            
+            self.stopProgressHud()
+            self.reloadTableView()
+        })
+        
+    }
+    
+    private func loadPrivateWorkouts() {
+        FirebaseManager.sharedRootRef.childByAppendingPath("workouts/private").observeEventType(.ChildAdded, withBlock: { snapshot in
+            // load workouts
+            let workout = Workout(index: Int(snapshot.key)!, data: snapshot.value as! [String : AnyObject])
+            workout.free = false
             Workout.sharedWorkouts.append(workout)
             if User.sharedModel.favoriteWorkoutKeys.contains(workout.index) {
                 User.sharedModel.favoriteWorkouts.append(workout)
@@ -171,7 +203,8 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate, Ind
         
         // begin load of all workouts
         startProgressHud()
-        loadWorkouts()
+        loadPublicWorkouts()
+        loadPrivateWorkouts()
         
         // no extra cells
         tableView.tableFooterView = UIView(frame: CGRect.zero)
@@ -213,7 +246,21 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate, Ind
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cellType = selectedFilters.count > 0 && indexPath.row == 0 ? "tagCell" : indexPath.row == 0 ? "filterCell" : indexPath.row < 3 || User.sharedModel.premium ? "workoutCell" : "workoutOverlayCell"
+        var cellType = ""
+        var workout: Workout?
+        if selectedFilters.count > 0 && indexPath.row == 0 {
+            cellType = "tagCell"
+        } else if indexPath.row == 0 {
+            cellType = "filterCell"
+        } else {
+            let workoutIndex = indexPath.row - 1 // -1 for the filter cell
+            workout = searchBar.isFirstResponder() && searchBar.text != "" ? filteredWorkouts[workoutIndex] : (favorites ? User.sharedModel.favoriteWorkouts[workoutIndex] : Workout.sharedWorkouts[workoutIndex])
+            if workout!.free || User.sharedModel.premium {
+                cellType = "workoutCell"
+            } else {
+                cellType = "workoutOverlayCell"
+            }
+        }
         let cell = tableView.dequeueReusableCellWithIdentifier(cellType, forIndexPath: indexPath)
         
         if selectedFilters.count > 0 && indexPath.row == 0 {
@@ -226,7 +273,7 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate, Ind
             self.tableView.rowHeight = workoutCellSize
             let workoutIndex = indexPath.row - 1 // -1 for the filter cell
             let workout = searchBar.isFirstResponder() && searchBar.text != "" ? filteredWorkouts[workoutIndex] : (favorites ? User.sharedModel.favoriteWorkouts[workoutIndex] : Workout.sharedWorkouts[workoutIndex])
-            if indexPath.row < 3 || User.sharedModel.premium {
+            if workout.free || User.sharedModel.premium {
                 (cell as! WorkoutCell).workout = workout
                 (cell as! WorkoutCell).setStarFill()
             }

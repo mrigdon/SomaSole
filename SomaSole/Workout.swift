@@ -49,6 +49,7 @@ class Workout: NSObject {
     var tags = [WorkoutTag]()
     var numMovements = 0
     var favorite = false
+    var free = false
     
     init(index: Int, data: [String:AnyObject]) {
         self.index = index
