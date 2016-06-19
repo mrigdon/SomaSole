@@ -1,60 +1,70 @@
 //
-//  Profile2ViewController.swift
+//  Profile3ViewController.swift
 //  SomaSole
 //
-//  Created by Matthew Rigdon on 6/10/16.
+//  Created by Matthew Rigdon on 6/18/16.
 //  Copyright © 2016 SomaSole. All rights reserved.
 //
 
 import UIKit
-import Toucan
 import MBProgressHUD
 import Firebase
+import Toucan
+import Masonry
 
-extension Profile2ViewController: UITableViewDelegate {
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-}
-
-extension Profile2ViewController: UITableViewDataSource {
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 8
+extension Float {
+    var heightString: String {
+        let feet = floor(self)
+        let inches = (self - feet) * 12
+        return "\(Int(feet))' \(Int(inches))\""
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! ProfileCell
-        
-        let field = fields[indexPath.row]
-        cell.keyLabel.text = field.0
-        cell.valueField.text = field.1
-        cell.valueField.addTarget(self, action: #selector(basicTextFieldDidChange(_:)), forControlEvents: .EditingChanged)
-        if indexPath.row == TextFieldIndex.Height.hashValue {
-            cell.valueField.inputView = heightPicker
-        }
-        else if indexPath.row == TextFieldIndex.DOB.hashValue {
-            cell.valueField.inputView = dateOfBirthPicker
-        }
-        else if indexPath.row == TextFieldIndex.Gender.hashValue {
-            cell.valueField.inputView = genderPicker
-        }
-        else if indexPath.row == TextFieldIndex.Weight.hashValue {
-            cell.valueField.keyboardType = .NumberPad
-        }
-        textFields.append(cell.valueField)
-        
-        return cell
+    var weightString: String {
+        return "\(self) lbs"
     }
 }
 
-extension Profile2ViewController: UITextFieldDelegate {
+extension NSDate {
+    var simpleString: String {
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "MM/dd/yyyy"
+        return formatter.stringFromDate(self)
+    }
+}
+
+extension Bool {
+    var genderString: String {
+        return self ? "Male" : "Female"
+    }
+}
+
+extension UIImage {
+    var roundImage: UIImage {
+        return Toucan(image: self).maskWithEllipse().image
+    }
+    
+    func formattedForTableHeader(size: Int) -> UIImage {
+        return Toucan(image: self).resize(CGSize(width: size, height: size)).image
+    }
+}
+
+extension Float {
+    var feet: Int {
+        return Int(floor(self))
+    }
+    var inches: Int {
+        return Int((self - floor(self)) * 12)
+    }
+}
+
+extension Profile3ViewController: UITextFieldDelegate {
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return false
     }
 }
 
-extension Profile2ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+extension Profile3ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return pickerView == heightPicker ? 2 : 1
     }
@@ -89,14 +99,13 @@ extension Profile2ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
 }
 
-class Profile2ViewController: UIViewController {
+class Profile3ViewController: UITableViewController {
     
     enum TextFieldIndex {
-        case FirstName, LastName, Email, Password, Height, Weight, DOB, Gender
+        case FirstName, LastName, Email, Height, Weight, DOB, Gender
     }
     
     // variables
-    var fields = [(String, String)]()
     var alertController: UIAlertController?
     var textFields = [UITextField]()
     var anyFieldEmpty = false
@@ -106,11 +115,8 @@ class Profile2ViewController: UIViewController {
     var male = false
     var heightFeet = 0
     var heightInches = 0
-
+    
     // outlets
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var basicTableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
     // methods
@@ -219,18 +225,6 @@ class Profile2ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // fields for text fields
-        fields = [
-            ("First Name", User.sharedModel.firstName!),
-            ("Last Name", User.sharedModel.lastName!),
-            ("Email", User.sharedModel.email!),
-            ("Password", "XXXXXXXX"),
-            ("Height", User.sharedModel.height!.heightString),
-            ("Weight", User.sharedModel.weight!.weightString),
-            ("D.O.B.", User.sharedModel.dateOfBirth!.simpleString),
-            ("Gender", User.sharedModel.male!.genderString)
-        ]
-        
         // alert controller
         alertController = UIAlertController(title: "Error", message: "Error", preferredStyle: .Alert)
         let okayAction: UIAlertAction = UIAlertAction(title: "Okay", style: .Default, handler: { value in
@@ -245,32 +239,99 @@ class Profile2ViewController: UIViewController {
         male = User.sharedModel.male!
         heightFeet = User.sharedModel.height!.feet
         heightInches = User.sharedModel.height!.inches
-
-        // ui
-        ui {
-            self.basicTableViewHeight.constant = 352 // 44 * 8
-            self.imageView.image = User.sharedModel.profileImage?.roundImage
+        
+        // setup profile image
+        let tableHeaderViewHeight: CGFloat = 152
+        let tableHeaderViewPadding: CGFloat = 32
+        tableView.tableHeaderView?.frame.size.height = tableHeaderViewHeight
+        let tableHeaderView = UIView()
+        tableHeaderView.frame.size.height = tableHeaderViewHeight
+        let profileImageView = UIImageView(image: User.sharedModel.profileImage!.roundImage.formattedForTableHeader(Int(tableHeaderViewHeight - tableHeaderViewPadding)))
+        profileImageView.contentMode = .ScaleAspectFill
+        profileImageView.frame.size.height = tableHeaderViewHeight - tableHeaderViewPadding
+        profileImageView.frame.size.width = tableHeaderViewHeight - tableHeaderViewPadding
+        tableHeaderView.addSubview(profileImageView)
+        profileImageView.mas_makeConstraints { make in
+            make.center.equalTo()(tableHeaderView)
         }
+        tableView.tableHeaderView = tableHeaderView
     }
     
     override func viewDidAppear(animated: Bool) {
-
+        ui {
+            self.tableView.reloadData()
+        }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return User.sharedModel.premium ? 2 : 3 // extra for go premium
     }
-    */
-
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if User.sharedModel.premium {
+            return section == 0 ? 7 : 1
+        } else {
+            return section == 0 ? 1 : (section == 1 ? 7 : 1)
+        }
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cellType = ""
+        if User.sharedModel.premium {
+            cellType = indexPath.section == 0 ? "profileCell" : "logoutCell"
+        } else {
+            cellType = indexPath.section == 0 ? "goPremiumCell" : (indexPath.section == 1 ? "profileCell" : "logoutCell")
+        }
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellType, forIndexPath: indexPath)
+        
+        if (User.sharedModel.premium && indexPath.section == 0) || (!User.sharedModel.premium && indexPath.section == 1) {
+            let cell = cell as! ProfileCell
+            if indexPath.row == TextFieldIndex.FirstName.hashValue {
+                cell.keyLabel.text = "First Name"
+                cell.valueField.text = User.sharedModel.firstName
+            }
+            else if indexPath.row == TextFieldIndex.LastName.hashValue {
+                cell.keyLabel.text = "Last Name"
+                cell.valueField.text = User.sharedModel.lastName
+            }
+            else if indexPath.row == TextFieldIndex.Email.hashValue {
+                cell.keyLabel.text = "Email"
+                cell.valueField.text = User.sharedModel.email
+            }
+            else if indexPath.row == TextFieldIndex.Height.hashValue {
+                cell.keyLabel.text = "Height"
+                cell.valueField.text = User.sharedModel.height?.heightString
+                cell.valueField.inputView = heightPicker
+            }
+            else if indexPath.row == TextFieldIndex.Weight.hashValue {
+                cell.keyLabel.text = "Weight"
+                cell.valueField.text = User.sharedModel.weight?.weightString
+                cell.valueField.keyboardType = .NumberPad
+            }
+            else if indexPath.row == TextFieldIndex.DOB.hashValue {
+                cell.keyLabel.text = "D.O.B."
+                cell.valueField.text = User.sharedModel.dateOfBirth?.simpleString
+                cell.valueField.inputView = dateOfBirthPicker
+            }
+            else if indexPath.row == TextFieldIndex.Gender.hashValue {
+                cell.keyLabel.text = "Gender"
+                cell.valueField.text = User.sharedModel.male?.genderString
+                cell.valueField.inputView = genderPicker
+            }
+            cell.valueField.addTarget(self, action: #selector(basicTextFieldDidChange(_:)), forControlEvents: .EditingChanged)
+            textFields.append(cell.valueField)
+        }
+        
+        return cell
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        FirebaseManager.sharedRootRef.unauth()
+    }
+    
 }

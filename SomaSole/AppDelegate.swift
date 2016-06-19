@@ -51,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let userData = NSUserDefaults.standardUserDefaults().objectForKey("userData") as? Dictionary<String, AnyObject>
         
         // if not logged in yet, send to login screen
-        if userData == nil || firebase.authData == nil {
+        if userData == nil {
             self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)

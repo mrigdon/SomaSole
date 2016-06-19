@@ -24,6 +24,7 @@
 		621D22F31CB3079100FE7581 /* TrainerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621D22F11CB3079100FE7581 /* TrainerDetailViewController.swift */; };
 		621D22F81CB31BE600FE7581 /* TrainerRequestConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621D22F71CB31BE600FE7581 /* TrainerRequestConfirmViewController.swift */; };
 		621DA9601D15EF2F002DF0AF /* Payment2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621DA95F1D15EF2F002DF0AF /* Payment2ViewController.swift */; };
+		621DA9641D15FE2E002DF0AF /* Profile3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621DA9631D15FE2E002DF0AF /* Profile3ViewController.swift */; };
 		62264C1A1D04C85F00DDCFC0 /* FavoriteWorkoutsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62264C191D04C85F00DDCFC0 /* FavoriteWorkoutsViewController.swift */; };
 		6229FF821CEA518400838B68 /* MovementDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6229FF811CEA518400838B68 /* MovementDetailViewController.swift */; };
 		6235212B1CFA00E500B3F1BF /* ROGif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6235212A1CFA00E500B3F1BF /* ROGif.swift */; };
@@ -108,6 +109,7 @@
 		621D22F11CB3079100FE7581 /* TrainerDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerDetailViewController.swift; sourceTree = "<group>"; };
 		621D22F71CB31BE600FE7581 /* TrainerRequestConfirmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerRequestConfirmViewController.swift; sourceTree = "<group>"; };
 		621DA95F1D15EF2F002DF0AF /* Payment2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payment2ViewController.swift; sourceTree = "<group>"; };
+		621DA9631D15FE2E002DF0AF /* Profile3ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile3ViewController.swift; sourceTree = "<group>"; };
 		62264C191D04C85F00DDCFC0 /* FavoriteWorkoutsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteWorkoutsViewController.swift; sourceTree = "<group>"; };
 		6229FF811CEA518400838B68 /* MovementDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementDetailViewController.swift; sourceTree = "<group>"; };
 		6235212A1CFA00E500B3F1BF /* ROGif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ROGif.swift; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 				621D22F71CB31BE600FE7581 /* TrainerRequestConfirmViewController.swift */,
 				62926A981CBCA12200960F94 /* BasicViewController.swift */,
 				62780C661D0BA2CF00198441 /* Profile2ViewController.swift */,
+				621DA9631D15FE2E002DF0AF /* Profile3ViewController.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -591,6 +594,7 @@
 				62C8413E1CC6F5D700468726 /* FilterViewController.swift in Sources */,
 				62D4298B1CEDA5DB009F157A /* Movement.swift in Sources */,
 				6215F30B1CC9805900E2A995 /* WorkoutCell.swift in Sources */,
+				621DA9641D15FE2E002DF0AF /* Profile3ViewController.swift in Sources */,
 				6259FCAE1D0388D800DF09D4 /* Video.swift in Sources */,
 				621D22F31CB3079100FE7581 /* TrainerDetailViewController.swift in Sources */,
 				627BC9E91CCE8B68008C8647 /* Workout.swift in Sources */,
