@@ -13,6 +13,7 @@ class Video: NSObject {
     var id = ""
     var title = ""
     var favorite = false
+    var free = false
     
     init(id: String, title: String) {
         super.init()

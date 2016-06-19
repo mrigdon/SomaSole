@@ -38,7 +38,8 @@ class AllVideosViewController: UITableViewController, IndicatorInfoProvider, UIS
     private func loadPublic() {
         FirebaseManager.sharedRootRef.childByAppendingPath("videos").childByAppendingPath("public").observeEventType(.ChildAdded, withBlock: { snapshot in
             let video = Video(id: snapshot.key, title: snapshot.value as! String)
-            self.videos.insert(video, atIndex: 0)
+            video.free = true
+            self.videos.append(video)
             if User.sharedModel.favoriteVideoKeys.contains(video.id) {
                 User.sharedModel.favoriteVideos.append(video)
             }
@@ -47,16 +48,15 @@ class AllVideosViewController: UITableViewController, IndicatorInfoProvider, UIS
     }
     
     private func loadPrivate() {
-        for key in User.sharedModel.purchasedVideoKeys {
-            FirebaseManager.sharedRootRef.childByAppendingPath("videos").childByAppendingPath("private").childByAppendingPath(key).observeEventType(.Value, withBlock: { snapshot in
-                let video = Video(id: snapshot.key, title: snapshot.value as! String)
-                self.videos.insert(video, atIndex: 0)
-                if User.sharedModel.favoriteVideoKeys.contains(video.id) {
-                    User.sharedModel.favoriteVideos.append(video)
-                }
-                self.reloadTableView()
-            })
-        }
+        FirebaseManager.sharedRootRef.childByAppendingPath("videos").childByAppendingPath("private").observeEventType(.ChildAdded, withBlock: { snapshot in
+            let video = Video(id: snapshot.key, title: snapshot.value as! String)
+            video.free = false
+            self.videos.append(video)
+            if User.sharedModel.favoriteVideoKeys.contains(video.id) {
+                User.sharedModel.favoriteVideos.append(video)
+            }
+            self.reloadTableView()
+        })
     }
     
     private func filterContentForSearchText(searchText: String) {
@@ -152,20 +152,20 @@ class AllVideosViewController: UITableViewController, IndicatorInfoProvider, UIS
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let reuseID = indexPath.row > 2 && !User.sharedModel.premium ? "videoOverlayCell" : "videoCell"
-        let cell = tableView.dequeueReusableCellWithIdentifier(reuseID, forIndexPath: indexPath) 
-
         let video = searchBar.isFirstResponder() && searchBar.text != "" ? filteredVideos[indexPath.row] : (favorites ? User.sharedModel.favoriteVideos[indexPath.row] : videos[indexPath.row])
         
-        if indexPath.row > 2 && !User.sharedModel.premium {
-            (cell as! VideoOverlayCell).video = video
-            (cell as! VideoOverlayCell).titleLabel.text = video.title
-            (cell as! VideoOverlayCell).playerView.loadWithVideoId(video.id)
-        } else {
+        let reuseID = video.free || User.sharedModel.premium ? "videoCell" : "videoOverlayCell"
+        let cell = tableView.dequeueReusableCellWithIdentifier(reuseID, forIndexPath: indexPath)
+        
+        if video.free || User.sharedModel.premium {
             (cell as! VideoCell).video = video
             (cell as! VideoCell).titleLabel.text = video.title
             (cell as! VideoCell).playerView.loadWithVideoId(video.id)
             (cell as! VideoCell).setStarFill()
+        } else {
+            (cell as! VideoOverlayCell).video = video
+            (cell as! VideoOverlayCell).titleLabel.text = video.title
+            (cell as! VideoOverlayCell).playerView.loadWithVideoId(video.id)
         }
         cell.selectionStyle = .None
 

@@ -331,7 +331,12 @@ class Profile3ViewController: UITableViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        FirebaseManager.sharedRootRef.unauth()
+        if segue.identifier == "logoutSegue" {
+            FirebaseManager.sharedRootRef.unauth()
+            User.sharedModel = User()
+            NSUserDefaults.standardUserDefaults().setObject(nil, forKey: "userData")
+            NSUserDefaults.standardUserDefaults().synchronize()
+        }
     }
     
 }

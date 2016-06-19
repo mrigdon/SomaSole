@@ -107,6 +107,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     private func loginUser() {
         FirebaseManager.sharedRootRef.authUser(email, password: password, withCompletionBlock: { error, authData in
             if error != nil {
+                self.stopProgressHud()
                 self.handleFirebaseError(error)
             }
             else {
