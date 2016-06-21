@@ -47,6 +47,7 @@
 		62926A991CBCA12200960F94 /* BasicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62926A981CBCA12200960F94 /* BasicViewController.swift */; };
 		62AB9B801CFE8B32005498F8 /* QuickStartImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AB9B7F1CFE8B32005498F8 /* QuickStartImageView.swift */; };
 		62B1AB931CC1D6F3007069E5 /* AllWorkoutsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B1AB921CC1D6F3007069E5 /* AllWorkoutsViewController.swift */; };
+		62BBCED31D18E09700E01DE9 /* News2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BBCED21D18E09700E01DE9 /* News2ViewController.swift */; };
 		62C8413E1CC6F5D700468726 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C8413D1CC6F5D700468726 /* FilterViewController.swift */; };
 		62C9E4081CB4474E005E9F48 /* InformationQuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9E4071CB4474E005E9F48 /* InformationQuestionsViewController.swift */; };
 		62C9E40E1CB44FEF005E9F48 /* PurchasesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9E40D1CB44FEF005E9F48 /* PurchasesViewController.swift */; };
@@ -132,6 +133,7 @@
 		62926A981CBCA12200960F94 /* BasicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicViewController.swift; sourceTree = "<group>"; };
 		62AB9B7F1CFE8B32005498F8 /* QuickStartImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickStartImageView.swift; sourceTree = "<group>"; };
 		62B1AB921CC1D6F3007069E5 /* AllWorkoutsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllWorkoutsViewController.swift; sourceTree = "<group>"; };
+		62BBCED21D18E09700E01DE9 /* News2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = News2ViewController.swift; sourceTree = "<group>"; };
 		62C8413D1CC6F5D700468726 /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		62C9E4071CB4474E005E9F48 /* InformationQuestionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationQuestionsViewController.swift; sourceTree = "<group>"; };
 		62C9E40D1CB44FEF005E9F48 /* PurchasesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchasesViewController.swift; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 			children = (
 				623DECDB1CF692A000EA1736 /* NewsViewController.swift */,
 				62F7ED771CF80DBF002A2C47 /* ArticleViewController.swift */,
+				62BBCED21D18E09700E01DE9 /* News2ViewController.swift */,
 			);
 			name = News;
 			sourceTree = "<group>";
@@ -563,6 +566,7 @@
 				62FE88041CE69BD700A9BB15 /* FinishedWorkoutViewController.swift in Sources */,
 				6235212B1CFA00E500B3F1BF /* ROGif.swift in Sources */,
 				626063931CBAC4EF00B1AF3C /* User.swift in Sources */,
+				62BBCED31D18E09700E01DE9 /* News2ViewController.swift in Sources */,
 				62FE88071CE6AC0800A9BB15 /* MovementsViewController.swift in Sources */,
 				6218597A1D07D6C500CEC45D /* PaymentViewController.swift in Sources */,
 				624A94E81CB7463E00A8D21A /* LoginViewController.swift in Sources */,
