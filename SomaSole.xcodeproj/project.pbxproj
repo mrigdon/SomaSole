@@ -38,6 +38,7 @@
 		626063981CBB01E500B1AF3C /* PillButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626063971CBB01E500B1AF3C /* PillButton.swift */; };
 		6260639A1CBB3E5900B1AF3C /* CreateAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626063991CBB3E5900B1AF3C /* CreateAboutViewController.swift */; };
 		6263BBD31CE79A2600CF383A /* MovementDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6263BBD21CE79A2600CF383A /* MovementDescriptionCell.swift */; };
+		626D2CF41D1A4F8C00812ED0 /* ROImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626D2CF31D1A4F8C00812ED0 /* ROImage.swift */; };
 		62738D4C1CB57823006BFF9F /* ChangeSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62738D4B1CB57823006BFF9F /* ChangeSettingViewController.swift */; };
 		62780C671D0BA2CF00198441 /* Profile2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62780C661D0BA2CF00198441 /* Profile2ViewController.swift */; };
 		62780C691D0BA87300198441 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62780C681D0BA87300198441 /* ProfileCell.swift */; };
@@ -124,6 +125,7 @@
 		626063971CBB01E500B1AF3C /* PillButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PillButton.swift; sourceTree = "<group>"; };
 		626063991CBB3E5900B1AF3C /* CreateAboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAboutViewController.swift; sourceTree = "<group>"; };
 		6263BBD21CE79A2600CF383A /* MovementDescriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementDescriptionCell.swift; sourceTree = "<group>"; };
+		626D2CF31D1A4F8C00812ED0 /* ROImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ROImage.swift; sourceTree = "<group>"; };
 		62738D4B1CB57823006BFF9F /* ChangeSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeSettingViewController.swift; sourceTree = "<group>"; };
 		62780C661D0BA2CF00198441 /* Profile2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile2ViewController.swift; sourceTree = "<group>"; };
 		62780C681D0BA87300198441 /* ProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
@@ -301,6 +303,7 @@
 				6248AE2B1CF9510C000A2DC9 /* Article.swift */,
 				6235212A1CFA00E500B3F1BF /* ROGif.swift */,
 				6259FCAD1D0388D800DF09D4 /* Video.swift */,
+				626D2CF31D1A4F8C00812ED0 /* ROImage.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -582,6 +585,7 @@
 				62C9E4101CB45DC8005E9F48 /* SettingsViewController.swift in Sources */,
 				62780C691D0BA87300198441 /* ProfileCell.swift in Sources */,
 				621DA9601D15EF2F002DF0AF /* Payment2ViewController.swift in Sources */,
+				626D2CF41D1A4F8C00812ED0 /* ROImage.swift in Sources */,
 				62B1AB931CC1D6F3007069E5 /* AllWorkoutsViewController.swift in Sources */,
 				6248AE2C1CF9510C000A2DC9 /* Article.swift in Sources */,
 				6260639A1CBB3E5900B1AF3C /* CreateAboutViewController.swift in Sources */,

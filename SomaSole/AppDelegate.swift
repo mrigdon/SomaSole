@@ -47,7 +47,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.sharedManager().enable = true
         
         // try to get logged in user
-        let firebase = Firebase(url: "http://somasole.firebaseio.com")
         let userData = NSUserDefaults.standardUserDefaults().objectForKey("userData") as? Dictionary<String, AnyObject>
         
         // if not logged in yet, send to login screen

@@ -9,9 +9,22 @@
 import UIKit
 import AWSS3
 import Firebase
+import RealmSwift
 
 enum WorkoutTag: Int {
     case Core, UpperBody, LowerBody, TotalBody
+}
+
+class Setup: NSObject {
+    
+    var imageIndex: Int
+    var image: UIImage?
+    var long: Bool
+    
+    init(data: [String:Int]) {
+        imageIndex = data["index"]!
+        long = Bool(data["index"]!)
+    }
 }
 
 class Circuit: NSObject {
@@ -19,6 +32,7 @@ class Circuit: NSObject {
     var numSets: Int
     var currentSet: Int
     var movements: [Movement] = []
+    var setup: Setup
     
     init(data: [String:AnyObject]) {
         self.numSets = data["sets"] as! Int
@@ -30,6 +44,47 @@ class Circuit: NSObject {
             let index = Int(indexWithPrefix.substringFromIndex(1))!
             let movement = Movement(index: index, time: movementData.first!.1)
             movements.append(movement)
+        }
+        
+        self.setup = Setup(data: data["setup"] as! [String:Int])
+    }
+    
+    func loadSetupImage(completion: () -> Void) {
+        // first try from realm
+        let realm = try! Realm()
+        let realmImage = realm.objects(ROImage).filter("title = 'setup\(setup.imageIndex)'")
+        
+        // get from s3 if not in realm, then add to realm
+        if realmImage.count != 0 {
+            setup.image = UIImage(data: realmImage[0].data)
+            completion()
+        } else {
+            let transferManager = AWSS3TransferManager.defaultS3TransferManager()
+            let downloadFileString = "setup\(setup.imageIndex).jpg"
+            let downloadingFileURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).URLByAppendingPathComponent("downloaded-" + downloadFileString)
+            let downloadRequest: AWSS3TransferManagerDownloadRequest = AWSS3TransferManagerDownloadRequest()
+            downloadRequest.bucket = "somasole/setups"
+            downloadRequest.key = downloadFileString
+            downloadRequest.downloadingFileURL = downloadingFileURL
+            
+            transferManager.download(downloadRequest).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { task -> AnyObject? in
+                
+                if task.result != nil {
+                    let downloadData = NSData(contentsOfURL: downloadingFileURL)
+                    self.setup.image = UIImage(data: downloadData!)
+                    completion()
+                    
+                    // cache to realm
+                    let realmImage = ROImage()
+                    realmImage.title = "setup\(self.setup.imageIndex)"
+                    realmImage.data = downloadData!
+                    try! realm.write {
+                        realm.add(realmImage)
+                    }
+                }
+                
+                return nil
+            })
         }
     }
     

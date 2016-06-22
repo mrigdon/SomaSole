@@ -76,8 +76,7 @@ class Movement: NSObject {
         if realmGif.count != 0 {
             self.gif = realmGif[0].data
             completion()
-        }
-        else {
+        } else {
             let transferManager = AWSS3TransferManager.defaultS3TransferManager()
             let downloadFileString = self.title + ".gif"
             let downloadingFileURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).URLByAppendingPathComponent("downloaded-" + downloadFileString)
