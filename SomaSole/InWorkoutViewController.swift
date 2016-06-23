@@ -43,6 +43,7 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tipLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var setupImageView: UIImageView!
     
     // methods
     private func reloadTableView() {
@@ -105,6 +106,8 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
             completedWorkout()
             return
         }
+        
+        movementImageView.image = workout!.circuits[circuitIndex].setup.image
         
         beginSetInCircuit(circuitIndex, setIndex: 0, completedCircuit: {
             self.beginCircuit(circuitIndex+1, completedWorkout: completedWorkout)

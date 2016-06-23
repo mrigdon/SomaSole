@@ -57,6 +57,12 @@ extension Float {
     }
 }
 
+extension Int {
+    var heightValue: Int {
+        return 11 - self
+    }
+}
+
 extension Profile3ViewController: UITextFieldDelegate {
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -70,17 +76,13 @@ extension Profile3ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        // height picker
         if pickerView == heightPicker {
             if component == 0 {
                 heightFeet = 11 - row
-            }
-            else {
+            } else {
                 heightInches = 11 - row
             }
-        }
-            // gender picker
-        else {
+        } else {
             male = row == 0
         }
     }
@@ -92,9 +94,39 @@ extension Profile3ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView == heightPicker {
             return component == 0 ? "\(11-row) feet" : "\(11-row) inches"
-        }
-        else {
+        } else {
             return row == 0 ? "Male" : "Female"
+        }
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        if textField == textFields[TextFieldIndex.Height.hashValue] {
+            let heightFeet = heightPicker.selectedRowInComponent(0).heightValue
+            let heightInches = heightPicker.selectedRowInComponent(1).heightValue
+            textField.text = "\(heightFeet)' \(heightInches)\""
+        } else if textField == textFields[TextFieldIndex.Weight.hashValue] {
+            let weight = Float(textField.text!)
+            if let weight = weight {
+                textField.text = "\(weight) lbs"
+            }
+        } else if textField == textFields[TextFieldIndex.Gender.hashValue] {
+            male = Bool(~(genderPicker.selectedRowInComponent(0)))
+            textField.text = genderPicker.selectedRowInComponent(0) == 0 ? "Male" : "Female"
+        } else if textField == textFields[TextFieldIndex.DOB.hashValue] {
+            let dateOfBirth = dateOfBirthPicker.date
+            textField.text = dateOfBirth.simpleString
+        }
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        if textField == textFields[TextFieldIndex.Height.hashValue] {
+            textField.selectedTextRange = textField.textRangeFromPosition(textField.beginningOfDocument, toPosition: textField.endOfDocument)
+        } else if textField == textFields[TextFieldIndex.Weight.hashValue] {
+            textField.selectedTextRange = textField.textRangeFromPosition(textField.beginningOfDocument, toPosition: textField.endOfDocument)
+        } else if textField == textFields[TextFieldIndex.DOB.hashValue] {
+            textField.selectedTextRange = textField.textRangeFromPosition(textField.beginningOfDocument, toPosition: textField.endOfDocument)
+        } else if textField == textFields[TextFieldIndex.Gender.hashValue] {
+            textField.selectedTextRange = textField.textRangeFromPosition(textField.beginningOfDocument, toPosition: textField.endOfDocument)
         }
     }
 }
@@ -294,36 +326,31 @@ class Profile3ViewController: UITableViewController {
             if indexPath.row == TextFieldIndex.FirstName.hashValue {
                 cell.keyLabel.text = "First Name"
                 cell.valueField.text = User.sharedModel.firstName
-            }
-            else if indexPath.row == TextFieldIndex.LastName.hashValue {
+            } else if indexPath.row == TextFieldIndex.LastName.hashValue {
                 cell.keyLabel.text = "Last Name"
                 cell.valueField.text = User.sharedModel.lastName
-            }
-            else if indexPath.row == TextFieldIndex.Email.hashValue {
+            } else if indexPath.row == TextFieldIndex.Email.hashValue {
                 cell.keyLabel.text = "Email"
                 cell.valueField.text = User.sharedModel.email
-            }
-            else if indexPath.row == TextFieldIndex.Height.hashValue {
+            } else if indexPath.row == TextFieldIndex.Height.hashValue {
                 cell.keyLabel.text = "Height"
                 cell.valueField.text = User.sharedModel.height?.heightString
                 cell.valueField.inputView = heightPicker
-            }
-            else if indexPath.row == TextFieldIndex.Weight.hashValue {
+            } else if indexPath.row == TextFieldIndex.Weight.hashValue {
                 cell.keyLabel.text = "Weight"
                 cell.valueField.text = User.sharedModel.weight?.weightString
                 cell.valueField.keyboardType = .NumberPad
-            }
-            else if indexPath.row == TextFieldIndex.DOB.hashValue {
+            } else if indexPath.row == TextFieldIndex.DOB.hashValue {
                 cell.keyLabel.text = "D.O.B."
                 cell.valueField.text = User.sharedModel.dateOfBirth?.simpleString
                 cell.valueField.inputView = dateOfBirthPicker
-            }
-            else if indexPath.row == TextFieldIndex.Gender.hashValue {
+            } else if indexPath.row == TextFieldIndex.Gender.hashValue {
                 cell.keyLabel.text = "Gender"
                 cell.valueField.text = User.sharedModel.male?.genderString
                 cell.valueField.inputView = genderPicker
             }
             cell.valueField.addTarget(self, action: #selector(basicTextFieldDidChange(_:)), forControlEvents: .EditingChanged)
+            cell.valueField.delegate = self
             textFields.append(cell.valueField)
         }
         
