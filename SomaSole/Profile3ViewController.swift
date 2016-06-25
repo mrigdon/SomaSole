@@ -11,6 +11,7 @@ import MBProgressHUD
 import Firebase
 import Toucan
 import Masonry
+import SwiftString
 
 extension Float {
     var heightString: String {
@@ -60,6 +61,36 @@ extension Float {
 extension Int {
     var heightValue: Int {
         return 11 - self
+    }
+}
+
+extension String {
+    var heightValue: Float {
+        let feetIndex = self.indexOf("'")
+        let spaceIndex = self.indexOf(" ")
+        let inchesIndex = self.indexOf("\"")
+        
+        let feet = Float(self.substring(0, length: feetIndex!))
+        let inches = Float(self.substring(spaceIndex! + 1, length: inchesIndex! - spaceIndex! - 1))! / 12
+        
+        return feet! + inches
+    }
+    
+    var weightValue: Float {
+        let spaceIndex = self.indexOf(" ")
+        
+        return Float(self.substring(0, length: spaceIndex!))!
+    }
+    
+    var dateOfBirthValue: NSDate {
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "MM/dd/yyyy"
+        
+        return formatter.dateFromString(self)!
+    }
+    
+    var maleValue: Bool {
+        return self == "Male"
     }
 }
 
@@ -235,22 +266,46 @@ class Profile3ViewController: UITableViewController {
     @IBAction func tappedSave(sender: AnyObject) {
         startProgressHud()
         
-        // TODO: -
+        let data = User.data()
+        
         User.sharedModel.firstName = textFields[TextFieldIndex.FirstName.hashValue].text
         User.sharedModel.lastName = textFields[TextFieldIndex.LastName.hashValue].text
         User.sharedModel.email = textFields[TextFieldIndex.Email.hashValue].text
-        User.sharedModel.firstName = textFields[TextFieldIndex.FirstName.hashValue].text
+        User.sharedModel.height = textFields[TextFieldIndex.Height.hashValue].text!.heightValue
+        User.sharedModel.weight = textFields[TextFieldIndex.Weight.hashValue].text!.weightValue
+        User.sharedModel.dateOfBirth = textFields[TextFieldIndex.DOB.hashValue].text!.dateOfBirthValue
+        User.sharedModel.male = textFields[TextFieldIndex.Gender.hashValue].text!.maleValue
         
-        FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).setValue(User.data(), withCompletionBlock: { error, firebase in
-            self.stopProgressHud()
-            if error != nil {
-                self.handleFirebaseError(error)
-            }
-            else {
-                self.successAlert("Your info has been updated")
-                User.saveToUserDefaults()
-            }
-        })
+        if !User.sharedModel.facebookUser {
+            FirebaseManager.sharedRootRef.changeEmailForUser(data["email"]! as! String, password: User.sharedModel.password, toNewEmail: User.sharedModel.email, withCompletionBlock: { error in
+                if let error = error {
+                    self.handleFirebaseError(error)
+                    User.populateFields(data)
+                } else {
+                    FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).setValue(User.data(), withCompletionBlock: { error, firebase in
+                        self.stopProgressHud()
+                        if error != nil {
+                            self.handleFirebaseError(error)
+                            User.populateFields(data)
+                        } else {
+                            self.successAlert("Your info has been updated")
+                            User.saveToUserDefaults()
+                        }
+                    })
+                }
+            })
+        } else {
+            FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).setValue(User.data(), withCompletionBlock: { error, firebase in
+                self.stopProgressHud()
+                if error != nil {
+                    self.handleFirebaseError(error)
+                    User.populateFields(data)
+                } else {
+                    self.successAlert("Your info has been updated")
+                    User.saveToUserDefaults()
+                }
+            })
+        }
     }
     
     // uiviewcontroller

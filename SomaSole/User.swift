@@ -74,6 +74,7 @@ class User: NSObject {
         User.sharedModel.uid = data["uid"] as? String
         User.sharedModel.premium = data["premium"] as! Bool
         User.sharedModel.facebookUser = data["facebook"] as! Bool
+        User.sharedModel.password = data["password"] as? String
         
         let formatter = NSDateFormatter()
         formatter.dateFormat = "MM/dd/yyy"
@@ -120,7 +121,8 @@ class User: NSObject {
             "favoriteWorkoutKeys": user.favoriteWorkoutKeys,
             "favoriteVideoKeys": user.favoriteVideoKeys,
             "premium": user.premium,
-            "facebook": user.facebookUser
+            "facebook": user.facebookUser,
+            "password": user.password!
         ]
         
         return userData

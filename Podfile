@@ -29,6 +29,7 @@ target 'SomaSole' do
     pod 'Masonry'
     pod 'SwiftyMarkdown'
     pod 'SwiftyJSON'
+    pod 'SwiftString'
 
 end
 
