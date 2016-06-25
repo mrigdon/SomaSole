@@ -92,28 +92,28 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate, Ind
         self.reloadTableView()
     }
     
-    func loadWorkouts() {
-        FirebaseManager.sharedRootRef.childByAppendingPath("workouts_legacy").observeEventType(.ChildAdded, withBlock: { snapshot in
-            // load workouts
-            let workout = Workout(index: Int(snapshot.key)!, data: snapshot.value as! [String : AnyObject])
-            Workout.sharedWorkouts.append(workout)
-            if User.sharedModel.favoriteWorkoutKeys.contains(workout.index) {
-                User.sharedModel.favoriteWorkouts.append(workout)
-            }
-            
-            self.stopProgressHud()
-            self.reloadTableView()
-        })
-        
-    }
+//    func loadWorkouts() {
+//        FirebaseManager.sharedRootRef.childByAppendingPath("workouts_legacy").observeEventType(.ChildAdded, withBlock: { snapshot in
+//            // load workouts
+//            let workout = Workout(name: snapshot.key, data: snapshot.value as! [String : AnyObject])
+//            Workout.sharedWorkouts.append(workout)
+//            if User.sharedModel.favoriteWorkoutKeys.contains(workout.name) {
+//                User.sharedModel.favoriteWorkouts.append(workout)
+//            }
+//            
+//            self.stopProgressHud()
+//            self.reloadTableView()
+//        })
+//        
+//    }
     
     private func loadPublicWorkouts() {
         FirebaseManager.sharedRootRef.childByAppendingPath("workouts/public").observeEventType(.ChildAdded, withBlock: { snapshot in
             // load workouts
-            let workout = Workout(index: Int(snapshot.key)!, data: snapshot.value as! [String : AnyObject])
+            let workout = Workout(name: snapshot.key, data: snapshot.value as! [String : AnyObject])
             workout.free = true
             Workout.sharedWorkouts.append(workout)
-            if User.sharedModel.favoriteWorkoutKeys.contains(workout.index) {
+            if User.sharedModel.favoriteWorkoutKeys.contains(workout.name) {
                 User.sharedModel.favoriteWorkouts.append(workout)
             }
             
@@ -126,10 +126,10 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate, Ind
     private func loadPrivateWorkouts() {
         FirebaseManager.sharedRootRef.childByAppendingPath("workouts/private").observeEventType(.ChildAdded, withBlock: { snapshot in
             // load workouts
-            let workout = Workout(index: Int(snapshot.key)!, data: snapshot.value as! [String : AnyObject])
+            let workout = Workout(name: snapshot.key, data: snapshot.value as! [String : AnyObject])
             workout.free = false
             Workout.sharedWorkouts.append(workout)
-            if User.sharedModel.favoriteWorkoutKeys.contains(workout.index) {
+            if User.sharedModel.favoriteWorkoutKeys.contains(workout.name) {
                 User.sharedModel.favoriteWorkouts.append(workout)
             }
             

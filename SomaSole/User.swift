@@ -54,9 +54,8 @@ class User: NSObject {
     var goals: [Int]?
     var profileImage: UIImage?
     var uid: String?
-    var favoriteWorkoutKeys = [Int]()
+    var favoriteWorkoutKeys = [String]()
     var favoriteWorkouts = [Workout]()
-    var purchasedVideoKeys = [String]()
     var favoriteVideoKeys = [String]()
     var favoriteVideos = [Video]()
     var facebookUser = false
@@ -83,12 +82,8 @@ class User: NSObject {
         let imageData = NSData(base64EncodedString: imageString!, options: .IgnoreUnknownCharacters)
         User.sharedModel.profileImage = UIImage(data: imageData!)
         
-        if let favoriteWorkoutKeys = data["favoriteWorkoutKeys"] as? [Int] {
+        if let favoriteWorkoutKeys = data["favoriteWorkoutKeys"] as? [String] {
             User.sharedModel.favoriteWorkoutKeys = favoriteWorkoutKeys
-        }
-        
-        if let purchasedVideos = data["purchasedVideos"] as? [String] {
-            User.sharedModel.purchasedVideoKeys = purchasedVideos
         }
         
         if let favoriteVideoKeys = data["favoriteVideoKeys"] as? [String] {

@@ -79,7 +79,7 @@ class CreateAboutViewController: UIViewController {
             "activities": user.activities!,
             "goals": user.goals!,
             "profileImageString": user.profileImageString(),
-            "favoriteWorkoutKeys": [Int](),
+            "favoriteWorkoutKeys": [String](),
             "favoriteVideoKeys": [String](),
             "purchasedVideos": [String](),
             "premium": user.premium

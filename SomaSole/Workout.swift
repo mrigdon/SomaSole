@@ -94,7 +94,6 @@ class Workout: NSObject {
     
     static var sharedWorkouts = [Workout]()
     
-    var index: Int
     var image: UIImage
     var name: String
     var time: Int
@@ -106,9 +105,8 @@ class Workout: NSObject {
     var favorite = false
     var free = false
     
-    init(index: Int, data: [String:AnyObject]) {
-        self.index = index
-        self.name = data["name"] as! String
+    init(name: String, data: [String:AnyObject]) {
+        self.name = name
         self.time = data["time"] as! Int
         self.intensity = data["intensity"] as! Int
         self.workoutDescription = data["description"] as! String

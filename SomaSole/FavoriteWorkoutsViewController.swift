@@ -77,10 +77,10 @@ class FavoriteWorkoutsViewController: UITableViewController, IndicatorInfoProvid
             startProgressHud()
         }
         
-        for (index, workoutIndex) in User.sharedModel.favoriteWorkoutKeys.enumerate() {
+        for (_, workoutIndex) in User.sharedModel.favoriteWorkoutKeys.enumerate() {
             FirebaseManager.sharedRootRef.childByAppendingPath("workouts").childByAppendingPath(String(workoutIndex)).observeEventType(.Value, withBlock: { snapshot in
-                let workout = Workout(index: Int(snapshot.key)!, data: snapshot.value as! [String : AnyObject])
-                self.workouts.insert(workout, atIndex: index)
+                let workout = Workout(name: snapshot.key, data: snapshot.value as! [String : AnyObject])
+                self.workouts.append(workout)
                 
                 self.stopProgressHud()
                 self.reloadTableView()

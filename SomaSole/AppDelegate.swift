@@ -13,6 +13,7 @@ import AWSCognito
 import AWSS3
 import FBSDKCoreKit
 import Stripe
+import SwiftyJSON
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

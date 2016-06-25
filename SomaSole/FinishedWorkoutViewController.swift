@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FBSDKShareKit
 
 class FinishedWorkoutViewController: UIViewController {
     
@@ -19,15 +20,11 @@ class FinishedWorkoutViewController: UIViewController {
     // outlets
     @IBOutlet weak var workoutImageView: UIImageView!
     @IBOutlet weak var workoutImageViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var shareButton: FBSDKShareButton!
     
     // actions
-    @IBAction func tappedYes(sender: AnyObject) {
-    }
-    
-    @IBAction func tappedNo(sender: AnyObject) {
-    }
-    
     @IBAction func tappedShare(sender: AnyObject) {
+        
     }
     
     @IBAction func tappedBackToWorkouts(sender: AnyObject) {
@@ -42,6 +39,9 @@ class FinishedWorkoutViewController: UIViewController {
         // workout image view
         workoutImageViewHeight.constant = workoutCellSize
         self.workoutImageView.image = self.workout!.image
+        let shareContent = FBSDKShareLinkContent()
+        shareContent.contentDescription = "test"
+        shareButton.shareContent = shareContent
     }
 
     override func didReceiveMemoryWarning() {

@@ -75,7 +75,7 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
         currentCell = self.tableView.cellForRowAtIndexPath(indexPath) as? MovementCell
         currentCell!.layoutIfNeeded()
         currentCell!.progressViewWidth.constant = self.screenWidth
-        UIView.animateWithDuration(Double(currentCell!.movement!.time!), animations: {
+        UIView.animateWithDuration(/*Double(currentCell!.movement!.time!)*/0.05, animations: {
             self.currentCell!.layoutIfNeeded()
             }, completion: { finished in
                 if self.running {
@@ -106,8 +106,6 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
             completedWorkout()
             return
         }
-        
-        movementImageView.image = workout!.circuits[circuitIndex].setup.image
         
         beginSetInCircuit(circuitIndex, setIndex: 0, completedCircuit: {
             self.beginCircuit(circuitIndex+1, completedWorkout: completedWorkout)

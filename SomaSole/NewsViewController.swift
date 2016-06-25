@@ -103,7 +103,7 @@ class NewsViewController: UIViewController, UIScrollViewDelegate, KASlideShowDel
     private func loadWorkouts() {
         for index in 0...3 {
             FirebaseManager.sharedRootRef.childByAppendingPath("workouts/public").childByAppendingPath(String(index)).observeSingleEventOfType(.Value, withBlock: { snapshot in
-                let workout = Workout(index: Int(snapshot.key)!, data: snapshot.value as! [String : AnyObject])
+                let workout = Workout(name: snapshot.key, data: snapshot.value as! [String : AnyObject])
                 self.addWorkout(workout, index: index)
             })
         }

@@ -101,7 +101,7 @@ class News2ViewController: UIViewController {
     }
     
     private func addWorkout(json: JSON) {
-        workout = Workout(index: json["index"].intValue, data: json["data"].dictionaryObject!)
+        workout = Workout(name: json["index"].stringValue, data: json["data"].dictionaryObject!)
         workoutImageView.image = workout!.image
         workoutImageView.workout = workout
         let tap = UITapGestureRecognizer(target: self, action: #selector(tappedWorkout(_:)))

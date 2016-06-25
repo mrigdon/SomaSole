@@ -27,13 +27,13 @@ class MyVideosViewController: UITableViewController, IndicatorInfoProvider, UISe
     }
     
     private func loadPrivate() {
-        for key in User.sharedModel.purchasedVideoKeys {
-            FirebaseManager.sharedRootRef.childByAppendingPath("videos").childByAppendingPath("private").childByAppendingPath(key).observeEventType(.Value, withBlock: { snapshot in
-                let video = Video(id: snapshot.key, title: snapshot.value as! String)
-                self.videos.insert(video, atIndex: 0)
-                self.reloadTableView()
-            })
-        }
+//        for key in User.sharedModel.purchasedVideoKeys {
+//            FirebaseManager.sharedRootRef.childByAppendingPath("videos").childByAppendingPath("private").childByAppendingPath(key).observeEventType(.Value, withBlock: { snapshot in
+//                let video = Video(id: snapshot.key, title: snapshot.value as! String)
+//                self.videos.insert(video, atIndex: 0)
+//                self.reloadTableView()
+//            })
+//        }
     }
     
     private func filterContentForSearchText(searchText: String) {
