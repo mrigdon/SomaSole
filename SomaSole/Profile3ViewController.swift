@@ -301,7 +301,7 @@ class Profile3ViewController: UITableViewController {
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return User.sharedModel.premium ? 2 : 3 // extra for go premium
+        return User.sharedModel.premium ? 3 : 4 // extra for go premium
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -315,9 +315,9 @@ class Profile3ViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cellType = ""
         if User.sharedModel.premium {
-            cellType = indexPath.section == 0 ? "profileCell" : "logoutCell"
+            cellType = indexPath.section == 0 ? "profileCell" : (indexPath.section == 1 ? "changePasswordCell" : "logoutCell")
         } else {
-            cellType = indexPath.section == 0 ? "goPremiumCell" : (indexPath.section == 1 ? "profileCell" : "logoutCell")
+            cellType = indexPath.section == 0 ? "goPremiumCell" : (indexPath.section == 1 ? "profileCell" : (indexPath.section == 2 ? "changePasswordCell" : "logoutCell"))
         }
         let cell = tableView.dequeueReusableCellWithIdentifier(cellType, forIndexPath: indexPath)
         

@@ -75,7 +75,7 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
         currentCell = self.tableView.cellForRowAtIndexPath(indexPath) as? MovementCell
         currentCell!.layoutIfNeeded()
         currentCell!.progressViewWidth.constant = self.screenWidth
-        UIView.animateWithDuration(/*Double(currentCell!.movement!.time!)*/0.05, animations: {
+        UIView.animateWithDuration(Double(currentCell!.movement!.time!), animations: {
             self.currentCell!.layoutIfNeeded()
             }, completion: { finished in
                 if self.running {
