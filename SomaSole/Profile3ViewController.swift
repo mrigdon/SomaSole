@@ -301,23 +301,35 @@ class Profile3ViewController: UITableViewController {
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return User.sharedModel.premium ? 3 : 4 // extra for go premium
+        if User.sharedModel.facebookUser {
+            return User.sharedModel.premium ? 2 : 3
+        } else {
+            return User.sharedModel.premium ? 3 : 4
+        }
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if User.sharedModel.premium {
             return section == 0 ? 7 : 1
         } else {
-            return section == 0 ? 1 : (section == 1 ? 7 : 1)
+            return section == 1 ? 7 : 1
         }
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cellType = ""
         if User.sharedModel.premium {
-            cellType = indexPath.section == 0 ? "profileCell" : (indexPath.section == 1 ? "changePasswordCell" : "logoutCell")
+            if User.sharedModel.facebookUser {
+                cellType = indexPath.section == 0 ? "profileCell" : "logoutCell"
+            } else {
+                cellType = indexPath.section == 0 ? "profileCell" : (indexPath.section == 1 ? "changePasswordCell" : "logoutCell")
+            }
         } else {
-            cellType = indexPath.section == 0 ? "goPremiumCell" : (indexPath.section == 1 ? "profileCell" : (indexPath.section == 2 ? "changePasswordCell" : "logoutCell"))
+            if User.sharedModel.facebookUser {
+                cellType = indexPath.section == 0 ? "goPremiumCell" : (indexPath.section == 1 ? "profileCell" : "logoutCell")
+            } else {
+                cellType = indexPath.section == 0 ? "goPremiumCell" : (indexPath.section == 1 ? "profileCell" : (indexPath.section == 2 ? "changePasswordCell" : "logoutCell"))
+            }
         }
         let cell = tableView.dequeueReusableCellWithIdentifier(cellType, forIndexPath: indexPath)
         
@@ -332,6 +344,8 @@ class Profile3ViewController: UITableViewController {
             } else if indexPath.row == TextFieldIndex.Email.hashValue {
                 cell.keyLabel.text = "Email"
                 cell.valueField.text = User.sharedModel.email
+                cell.valueField.enabled = !User.sharedModel.facebookUser
+                cell.valueField.textColor = User.sharedModel.facebookUser ? UIColor.placeholderGray() : UIColor.blackColor()
             } else if indexPath.row == TextFieldIndex.Height.hashValue {
                 cell.keyLabel.text = "Height"
                 cell.valueField.text = User.sharedModel.height?.heightString
@@ -355,6 +369,10 @@ class Profile3ViewController: UITableViewController {
         }
         
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return !((User.sharedModel.premium && indexPath.section == 0) || (!User.sharedModel.premium && indexPath.section == 1))
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

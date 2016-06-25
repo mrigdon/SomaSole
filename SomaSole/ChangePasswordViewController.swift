@@ -104,6 +104,7 @@ class ChangePasswordViewController: UITableViewController {
             for textField in self.textFields {
                 textField.text = ""
             }
+            
             if let error = error {
                 self.handleFirebaseError(error)
             } else {

@@ -82,7 +82,8 @@ class CreateAboutViewController: UIViewController {
             "favoriteWorkoutKeys": [String](),
             "favoriteVideoKeys": [String](),
             "purchasedVideos": [String](),
-            "premium": user.premium
+            "premium": user.premium,
+            "facebook": user.facebookUser
         ]
         
         // save to Firebase
@@ -112,8 +113,7 @@ class CreateAboutViewController: UIViewController {
                 self.stopProgressHud()
                 self.errorAlert("Something went wrong, please try again")
                 self.successfullyCreatedFirebaseUser = false
-            }
-            else {
+            } else {
                 User.sharedModel.uid = result["uid"] as? String
                 self.saveUserData()
             }
