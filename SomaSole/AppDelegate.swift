@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             credentialsProvider:credentialsProvider
         )
         AWSServiceManager.defaultServiceManager().defaultServiceConfiguration = configuration
-        
+                
         // iqmanager
         IQKeyboardManager.sharedManager().enable = true
         

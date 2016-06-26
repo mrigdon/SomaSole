@@ -23,7 +23,6 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
     // variables
     var workout: Workout?
     var playing = true
-    var currentIndexPath: NSIndexPath?
     var currentCell: MovementCell?
     var playButton: UIBarButtonItem?
     var pauseButton: UIBarButtonItem?
@@ -52,35 +51,37 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
         })
     }
     
-    private func beginMovementInSet(circuitIndex: Int, setIndex: Int, workoutIndex: Int, completedSet: () -> (Void)) {
+    private func beginMovementInSet(circuitIndex: Int, setIndex: Int, movementIndex: Int, completedSet: () -> (Void)) {
         // return if done with set in circuit
-        if workoutIndex == workout!.circuits[circuitIndex].movements.count {
+        if movementIndex == workout!.circuits[circuitIndex].movements.count + 1 { // +1 for the setup
             completedSet()
             return
         }
         
         // get index path for cell and scroll to cell
-        let indexPath = NSIndexPath(forRow: workoutIndex, inSection: circuitIndex)
+        let indexPath = NSIndexPath(forRow: movementIndex, inSection: circuitIndex)
         self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Top, animated: false)
         
         // animate image view and set tip text
-        let movement = workout!.circuits[circuitIndex].movements[workoutIndex]
+        let circuit = workout!.circuits[circuitIndex]
+        let movement: Movement? = indexPath.row == 0 ? nil : circuit.movements[movementIndex - 1] // -1 for the setup
+        let imageData = indexPath.row == 0 ? UIImageJPEGRepresentation(circuit.setup.image!, 1.0) : movement!.gif
         dispatch_async(dispatch_get_main_queue(), {
-            self.movementImageView.animateWithImageData(movement.gif!)
+            self.movementImageView.animateWithImageData(imageData!)
         })
-        tipLabel.text = movement.movementDescription
+        tipLabel.text = indexPath.row == 0 ? (circuit.setup.long ? "Long Length" : "Short Length") : movement!.movementDescription
         
         // animate blue progress
-        currentIndexPath = indexPath
         currentCell = self.tableView.cellForRowAtIndexPath(indexPath) as? MovementCell
         currentCell!.layoutIfNeeded()
         currentCell!.progressViewWidth.constant = self.screenWidth
-        UIView.animateWithDuration(Double(currentCell!.movement!.time!), animations: {
+        let time = indexPath.row == 0 ? 15 : Double(movement!.time!)
+        UIView.animateWithDuration(time, animations: {
             self.currentCell!.layoutIfNeeded()
             }, completion: { finished in
                 if self.running {
                     self.currentCell!.resetBackground()
-                    self.beginMovementInSet(circuitIndex, setIndex: setIndex, workoutIndex: workoutIndex+1, completedSet: completedSet)
+                    self.beginMovementInSet(circuitIndex, setIndex: setIndex, movementIndex: movementIndex+1, completedSet: completedSet)
                 }
             }
         )
@@ -93,7 +94,7 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
             return
         }
         
-        beginMovementInSet(circuitIndex, setIndex: setIndex, workoutIndex: 0, completedSet: {
+        beginMovementInSet(circuitIndex, setIndex: setIndex, movementIndex: 0, completedSet: {
             let indexPath = NSIndexPath(forRow: 0, inSection: circuitIndex)
             self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Top, animated: false)
             self.beginSetInCircuit(circuitIndex, setIndex: setIndex+1, completedCircuit: completedCircuit)
@@ -249,18 +250,26 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return workout!.circuits[section].movements.count
+        return workout!.circuits[section].movements.count + 1 // +1 for the setup
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("movementCell", forIndexPath: indexPath) as! MovementCell
         
-        let movement = self.workout!.circuits[indexPath.section].movements[indexPath.row]
-        cell.nameLabel.text = movement.title
-        cell.nameLabel.sizeToFit()
-        cell.timeLabel.text = "\(movement.time!)s"
-        cell.timeLabel.sizeToFit()
-        cell.movement = movement
+        if indexPath.row == 0 {
+            let setup = workout!.circuits[indexPath.row].setup
+            cell.nameLabel.text = "Setup"
+            cell.nameLabel.sizeToFit()
+            cell.timeLabel.text = setup.long ? "Long Length" : "Short Length"
+            cell.timeLabel.sizeToFit()
+        } else {
+            let movement = self.workout!.circuits[indexPath.section].movements[indexPath.row - 1] // -1 for the setup
+            cell.nameLabel.text = movement.title
+            cell.nameLabel.sizeToFit()
+            cell.timeLabel.text = "\(movement.time!)s"
+            cell.timeLabel.sizeToFit()
+            cell.movement = movement
+        }
         
         return cell
     }
