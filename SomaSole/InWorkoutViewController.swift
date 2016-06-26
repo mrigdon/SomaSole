@@ -122,12 +122,10 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
             firstCell.layoutIfNeeded()
             firstCell.setBackground()
             firstCell.layoutIfNeeded()
-            let movement = currentCircuit!.movements[movementCounter]
             dispatch_async(dispatch_get_main_queue(), {
-                self.movementImageView.animateWithImageData(movement.gif!)
+                self.movementImageView.animateWithImageData(UIImageJPEGRepresentation(self.currentCircuit!.setup.image!, 1.0)!)
             })
-            tipLabel.text = movement.movementDescription
-            
+            tipLabel.text = currentCircuit!.setup.long ? "Long Length" : "Short Length"
         } else {
             // for timed workouts
             beginCircuit(0, completedWorkout: {
@@ -184,7 +182,7 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
         currentCell?.layoutIfNeeded()
         
         movementCounter += 1
-        if movementCounter == currentCircuit!.movements.count {
+        if movementCounter == currentCircuit!.movements.count + 1 { // +1 for the setup
             setCounter += 1
             if setCounter == currentCircuit!.numSets {
                 circuitCounter += 1
@@ -206,11 +204,12 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
         tableView.layoutIfNeeded()
         currentCell?.setBackground()
         tableView.layoutIfNeeded()
-        let movement = currentCircuit!.movements[movementCounter]
+        let movement: Movement? = indexPath.row == 0 ? nil : currentCircuit!.movements[movementCounter - 1] // -1 for the setup
+        let imageData = indexPath.row == 0 ? UIImageJPEGRepresentation(currentCircuit!.setup.image!, 1.0) : movement!.gif
         dispatch_async(dispatch_get_main_queue(), {
-            self.movementImageView.animateWithImageData(movement.gif!)
+            self.movementImageView.animateWithImageData(imageData!)
         })
-        tipLabel.text = movement.movementDescription
+        tipLabel.text = indexPath.row == 0 ? (currentCircuit!.setup.long ? "Long Length" : "Short Length") : movement!.movementDescription
     }
     
     // uiviewcontroller
