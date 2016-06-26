@@ -39,9 +39,6 @@ class FinishedWorkoutViewController: UIViewController {
         // workout image view
         workoutImageViewHeight.constant = workoutCellSize
         self.workoutImageView.image = self.workout!.image
-        let shareContent = FBSDKShareLinkContent()
-        shareContent.contentDescription = "test"
-        shareButton.shareContent = shareContent
     }
 
     override func didReceiveMemoryWarning() {
