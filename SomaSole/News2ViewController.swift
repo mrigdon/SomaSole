@@ -35,6 +35,9 @@ class News2ViewController: UIViewController {
     var workout: Workout?
     var videos = [Video]()
     var movementIndex = 0
+    var setupIndex = 0
+    var setupsLoaded = false
+    var movementsLoaded = false
 
     // outlets
     @IBOutlet weak var slideshow: KASlideShow!
@@ -121,6 +124,17 @@ class News2ViewController: UIViewController {
     func loadMovements() {
         startProgressHud()
         for circuit in workout!.circuits {
+            circuit.loadSetupImage {
+                self.setupIndex += 1
+                if self.setupIndex == self.workout!.circuits.count {
+                    self.setupsLoaded = true
+                    if self.movementsLoaded {
+                        self.stopProgressHud()
+                        self.performSegueWithIdentifier("workoutSegue", sender: self)
+                    }
+                }
+            }
+            
             for movement in circuit.movements {
                 FirebaseManager.sharedRootRef.childByAppendingPath("movements").childByAppendingPath(String(movement.index)).observeEventType(.Value, withBlock: { snapshot in
                     movement.title = snapshot.value["title"] as! String
@@ -130,8 +144,11 @@ class News2ViewController: UIViewController {
                         self.movementIndex += 1
                         if self.movementIndex == self.workout!.numMovements {
                             self.movementIndex = 0
-                            self.stopProgressHud()
-                            self.performSegueWithIdentifier("workoutSegue", sender: self)
+                            self.movementsLoaded = true
+                            if self.setupsLoaded {
+                                self.stopProgressHud()
+                                self.performSegueWithIdentifier("workoutSegue", sender: self)
+                            }
                         }
                     })
                 })
