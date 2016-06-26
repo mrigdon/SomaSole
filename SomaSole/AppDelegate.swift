@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             credentialsProvider:credentialsProvider
         )
         AWSServiceManager.defaultServiceManager().defaultServiceConfiguration = configuration
-                
+        
         // iqmanager
         IQKeyboardManager.sharedManager().enable = true
         
@@ -103,4 +103,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
+
+//        FirebaseManager.sharedRootRef.childByAppendingPath("workouts/private").observeEventType(.ChildAdded, withBlock: { snapshot in
+//
+//            let workout = Workout(name: snapshot.key, data: snapshot.value as! [String : AnyObject])
+//            let imageName = workout.name.stringByReplacingOccurrencesOfString(" ", withString: "")
+//            let image = UIImage(named: imageName)
+//            let imageData = UIImageJPEGRepresentation(image!, 1.0)
+//            let imageString = imageData?.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
+//
+//            FirebaseManager.sharedRootRef.childByAppendingPath("workouts/private/\(workout.name)/image").setValue(imageString)
+//
+//        })
 
