@@ -99,36 +99,6 @@ extension Profile3ViewController: UITextFieldDelegate {
         textField.resignFirstResponder()
         return false
     }
-}
-
-extension Profile3ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-        return pickerView == heightPicker ? 2 : 1
-    }
-    
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if pickerView == heightPicker {
-            if component == 0 {
-                heightFeet = 11 - row
-            } else {
-                heightInches = 11 - row
-            }
-        } else {
-            male = row == 0
-        }
-    }
-    
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerView == heightPicker ? 11 : 2
-    }
-    
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if pickerView == heightPicker {
-            return component == 0 ? "\(11-row) feet" : "\(11-row) inches"
-        } else {
-            return row == 0 ? "Male" : "Female"
-        }
-    }
     
     func textFieldDidEndEditing(textField: UITextField) {
         if textField == textFields[TextFieldIndex.Height.hashValue] {
@@ -162,6 +132,36 @@ extension Profile3ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
 }
 
+extension Profile3ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return pickerView == heightPicker ? 2 : 1
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if pickerView == heightPicker {
+            if component == 0 {
+                heightFeet = 11 - row
+            } else {
+                heightInches = 11 - row
+            }
+        } else {
+            male = row == 0
+        }
+    }
+    
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerView == heightPicker ? 11 : 2
+    }
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if pickerView == heightPicker {
+            return component == 0 ? "\(11-row) feet" : "\(11-row) inches"
+        } else {
+            return row == 0 ? "Male" : "Female"
+        }
+    }
+}
+
 class Profile3ViewController: UITableViewController {
     
     enum TextFieldIndex {
@@ -170,7 +170,9 @@ class Profile3ViewController: UITableViewController {
     
     // variables
     var alertController: UIAlertController?
+    var passwordController = UIAlertController(title: "Enter Password to Continue", message: nil, preferredStyle: .Alert)
     var textFields = [UITextField]()
+    var passwordField = UITextField()
     var anyFieldEmpty = false
     var heightPicker = UIPickerView()
     var genderPicker = UIPickerView()
@@ -178,6 +180,8 @@ class Profile3ViewController: UITableViewController {
     var male = false
     var heightFeet = 0
     var heightInches = 0
+    var password = ""
+    var data = [String:AnyObject]()
     
     // outlets
     @IBOutlet weak var saveButton: UIBarButtonItem!
@@ -262,11 +266,49 @@ class Profile3ViewController: UITableViewController {
         saveButton.enabled = allFieldsValid()
     }
     
+    @objc private func passwordFieldDidChange(sender: AnyObject) {
+        let textField = sender as! UITextField
+        password = textField.text!
+    }
+    
+    private func saveNonFacebook() {
+        startProgressHud()
+        if textFields[TextFieldIndex.Email.hashValue].text == data["email"] as? String {
+            FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).setValue(User.data(), withCompletionBlock: { error, firebase in
+                self.stopProgressHud()
+                if error != nil {
+                    self.handleFirebaseError(error)
+                    User.populateFields(self.data)
+                } else {
+                    self.successAlert("Your info has been updated")
+                    User.saveToUserDefaults()
+                }
+            })
+        } else {
+            FirebaseManager.sharedRootRef.changeEmailForUser(data["email"]! as! String, password: password, toNewEmail: User.sharedModel.email, withCompletionBlock: { error in
+                if let error = error {
+                    self.stopProgressHud()
+                    self.handleFirebaseError(error)
+                    User.populateFields(self.data)
+                } else {
+                    FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).setValue(User.data(), withCompletionBlock: { error, firebase in
+                        self.stopProgressHud()
+                        if error != nil {
+                            self.handleFirebaseError(error)
+                            User.populateFields(self.data)
+                        } else {
+                            self.successAlert("Your info has been updated")
+                            User.saveToUserDefaults()
+                        }
+                    })
+                }
+            })
+        }
+    }
+    
     // actions
     @IBAction func tappedSave(sender: AnyObject) {
-        startProgressHud()
-        
-        let data = User.data()
+        data = User.data()
         
         User.sharedModel.firstName = textFields[TextFieldIndex.FirstName.hashValue].text
         User.sharedModel.lastName = textFields[TextFieldIndex.LastName.hashValue].text
@@ -277,29 +319,14 @@ class Profile3ViewController: UITableViewController {
         User.sharedModel.male = textFields[TextFieldIndex.Gender.hashValue].text!.maleValue
         
         if !User.sharedModel.facebookUser {
-            FirebaseManager.sharedRootRef.changeEmailForUser(data["email"]! as! String, password: User.sharedModel.password, toNewEmail: User.sharedModel.email, withCompletionBlock: { error in
-                if let error = error {
-                    self.handleFirebaseError(error)
-                    User.populateFields(data)
-                } else {
-                    FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).setValue(User.data(), withCompletionBlock: { error, firebase in
-                        self.stopProgressHud()
-                        if error != nil {
-                            self.handleFirebaseError(error)
-                            User.populateFields(data)
-                        } else {
-                            self.successAlert("Your info has been updated")
-                            User.saveToUserDefaults()
-                        }
-                    })
-                }
-            })
+            self.presentViewController(passwordController, animated: true, completion: nil)
         } else {
+            startProgressHud()
             FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).setValue(User.data(), withCompletionBlock: { error, firebase in
                 self.stopProgressHud()
                 if error != nil {
                     self.handleFirebaseError(error)
-                    User.populateFields(data)
+                    User.populateFields(self.data)
                 } else {
                     self.successAlert("Your info has been updated")
                     User.saveToUserDefaults()
@@ -318,6 +345,20 @@ class Profile3ViewController: UITableViewController {
             self.alertController!.dismissViewControllerAnimated(true, completion: nil)
         })
         alertController!.addAction(okayAction)
+        
+        // password
+        passwordController.addTextFieldWithConfigurationHandler({ textField in
+            textField.placeholder = "Password"
+            textField.secureTextEntry = true
+            textField.delegate = self
+            textField.addTarget(self, action: #selector(self.passwordFieldDidChange(_:)), forControlEvents: .EditingChanged)
+            self.passwordField = textField
+        })
+        let confirmAction = UIAlertAction(title: "Confirm", style: .Default, handler: { action in
+            self.alertController?.dismissViewControllerAnimated(true, completion: nil)
+            self.saveNonFacebook()
+        })
+        passwordController.addAction(confirmAction)
         
         // setup pickers
         setupPickers()
