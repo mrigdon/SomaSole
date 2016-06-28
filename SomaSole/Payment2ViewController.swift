@@ -130,7 +130,7 @@ class Payment2ViewController: UITableViewController {
         
         paymentTextField.borderWidth = 0
         let grayConstant: CGFloat = 0.666666686534882
-        promoCodeTextField.attributedPlaceholder = NSAttributedString(string: "   Promo Code", attributes: [
+        promoCodeTextField.attributedPlaceholder = NSAttributedString(string: "Promo Code", attributes: [
             NSForegroundColorAttributeName: UIColor(red: grayConstant, green: grayConstant, blue: grayConstant, alpha: 1.0),
             NSFontAttributeName: UIFont(name: "HelveticaNeue", size: 17.0)!
             ])
