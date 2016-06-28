@@ -81,7 +81,7 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
             }, completion: { finished in
                 if self.running {
                     self.currentCell!.resetBackground()
-                    self.beginMovementInSet(circuitIndex, setIndex: setIndex, movementIndex: movementIndex+1, completedSet: completedSet)
+                    self.beginMovementInSet(circuitIndex, setIndex: setIndex, movementIndex: movementIndex + 1, completedSet: completedSet)
                 }
             }
         )
