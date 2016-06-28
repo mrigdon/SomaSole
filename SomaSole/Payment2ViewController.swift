@@ -9,6 +9,7 @@
 import UIKit
 import Stripe
 import MBProgressHUD
+import SwiftyJSON
 
 extension UIColor {
     var coreImageColor: CoreImage.CIColor? {
@@ -88,11 +89,13 @@ class Payment2ViewController: UITableViewController {
         let session = NSURLSession(configuration: configuration)
         let task = session.dataTaskWithRequest(request) { data, response, error -> Void in
             self.stopProgressHud()
-            print(data)
             if let error = error {
                 print(error)
             } else if let code = (response as? NSHTTPURLResponse)?.statusCode {
                 if code == self.successStatusCode {
+                    let json = try! NSJSONSerialization.JSONObjectWithData(data!, options: [])
+                    let swiftyJSON = JSON(json)
+                    User.sharedModel.stripeID = swiftyJSON["id"].stringValue
                     User.sharedModel.premium = true
                     User.saveToUserDefaults()
                     User.sharedModel.saveToFirebase()

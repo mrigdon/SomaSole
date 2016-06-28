@@ -349,23 +349,35 @@ class Profile3ViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if User.sharedModel.premium {
-            return section == 0 ? 6 : 1
+        if User.sharedModel.facebookUser {
+            if User.sharedModel.premium {
+                return section == 0 ? 6 : 1
+            } else {
+                return section == 0 ? 1 : section == 1 ? 6 : 1
+            }
         } else {
-            return section == 0 ? 1 : section == 1 ? 6 : section == 2 ? 2 : 1
+            if User.sharedModel.premium {
+                return section == 0 ? 6 : section == 1 ? 2 : 1
+            } else {
+                return section == 0 ? 1 : section == 1 ? 6 : section == 2 ? 2 : 1
+            }
         }
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cellType = ""
-        if User.sharedModel.premium {
-            if User.sharedModel.facebookUser {
+        if User.sharedModel.facebookUser {
+            if User.sharedModel.premium {
                 cellType = indexPath.section == 0 ? "profileCell" : "logoutCell"
             } else {
-                cellType = indexPath.section == 0 ? "profileCell" : (indexPath.section == 1 ? "changePasswordCell" : "logoutCell")
+                cellType = indexPath.section == 0 ? "goPremiumCell" : indexPath.section == 1 ? "profileCell" : "logoutCell"
             }
         } else {
-            cellType = indexPath.section == 0 ? "goPremiumCell" : indexPath.section == 1 ? "profileCell" : indexPath.section == 2 && indexPath.row == 0 ? "changeEmailCell" : indexPath.section == 2 ? "changePasswordCell" : "logoutCell"
+            if User.sharedModel.premium {
+                cellType = indexPath.section == 0 ? "profileCell" : indexPath.section == 1 && indexPath.row == 0 ? "changeEmailCell" : indexPath.section == 1 ? "changePasswordCell" : "logoutCell"
+            } else {
+                cellType = indexPath.section == 0 ? "goPremiumCell" : indexPath.section == 1 ? "profileCell" : indexPath.section == 2 && indexPath.row == 0 ? "changeEmailCell" : indexPath.section == 2 ? "changePasswordCell" : "logoutCell"
+            }
         }
         let cell = tableView.dequeueReusableCellWithIdentifier(cellType, forIndexPath: indexPath)
         
