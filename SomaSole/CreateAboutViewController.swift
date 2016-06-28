@@ -83,7 +83,8 @@ class CreateAboutViewController: UIViewController {
             "favoriteVideoKeys": [String](),
             "purchasedVideos": [String](),
             "premium": user.premium,
-            "facebook": user.facebookUser
+            "facebook": user.facebookUser,
+            "stripeID": user.stripeID
         ]
         
         // save to Firebase

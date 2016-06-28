@@ -60,6 +60,7 @@ class User: NSObject {
     var favoriteVideos = [Video]()
     var facebookUser = false
     var premium = false
+    var stripeID = ""
     
     static func populateFields(data: Dictionary<String, AnyObject>) {
         User.sharedModel.firstName = data["firstName"] as? String
@@ -74,6 +75,7 @@ class User: NSObject {
         User.sharedModel.uid = data["uid"] as? String
         User.sharedModel.premium = data["premium"] as! Bool
         User.sharedModel.facebookUser = data["facebook"] as! Bool
+        User.sharedModel.stripeID = data["stripeID"] as! String
         
         let formatter = NSDateFormatter()
         formatter.dateFormat = "MM/dd/yyy"
@@ -120,7 +122,8 @@ class User: NSObject {
             "favoriteWorkoutKeys": user.favoriteWorkoutKeys,
             "favoriteVideoKeys": user.favoriteVideoKeys,
             "premium": user.premium,
-            "facebook": user.facebookUser
+            "facebook": user.facebookUser,
+            "stripeID": user.stripeID
         ]
         
         return userData

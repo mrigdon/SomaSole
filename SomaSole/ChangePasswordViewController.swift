@@ -19,31 +19,20 @@ extension UIColor {
 class ChangePasswordViewController: UITableViewController {
     
     // constants
-    let placeholders = ["Current Password", "New Password", "New Password (Again)"]
+    let passwordPlaceholders = ["Current Password", "New Password", "New Password (Again)"]
+    let emailPlaceholders = ["Current Email", "New Email", "Enter Password"]
     
     // variables
     var textFields = [UITextField]()
     var alertController: UIAlertController?
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        saveButton.enabled = false
-        
-        // init alert controller
-        alertController = UIAlertController(title: "Error", message: "Error", preferredStyle: .Alert)
-        let okayAction: UIAlertAction = UIAlertAction(title: "Okay", style: .Default, handler: { value in
-            self.alertController!.dismissViewControllerAnimated(true, completion: nil)
-        })
-        alertController!.addAction(okayAction)
-    }
+    var email = true
     
     // outlets
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
     // methods
     private func fieldsValid() -> Bool {
-        return (textFields[0].text != "" && textFields[1].text != "" && textFields[2].text != "") && textFields[1].text == textFields[2].text
+        return email ? textFields[0].text != "" && textFields[1].text != "" && textFields[2].text != "" : (textFields[0].text != "" && textFields[1].text != "" && textFields[2].text != "") && textFields[1].text == textFields[2].text
     }
     
     @objc private func textFieldDidChange() {
@@ -99,18 +88,52 @@ class ChangePasswordViewController: UITableViewController {
     // actions
     @IBAction func tappedSave(sender: AnyObject) {
         startProgressHud()
-        FirebaseManager.sharedRootRef.changePasswordForUser(User.sharedModel.email, fromOld: textFields[0].text, toNew: textFields[1].text, withCompletionBlock: { error in
-            self.stopProgressHud()
-            for textField in self.textFields {
-                textField.text = ""
-            }
-            
-            if let error = error {
-                self.handleFirebaseError(error)
-            } else {
-                self.successAlert("Successfully changed password.")
-            }
+        if email {
+            FirebaseManager.sharedRootRef.changeEmailForUser(User.sharedModel.email, password: textFields[2].text, toNewEmail: textFields[1].text, withCompletionBlock: { error in
+                self.stopProgressHud()
+                if let error = error {
+                    self.textFields[1].text = ""
+                    self.textFields[2].text = ""
+                    self.handleFirebaseError(error)
+                } else {
+                    User.sharedModel.email = self.textFields[1].text
+                    self.textFields[0].text = User.sharedModel.email
+                    self.textFields[1].text = ""
+                    self.textFields[2].text = ""
+                    FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).childByAppendingPath("email").setValue(User.sharedModel.email)
+                    User.saveToUserDefaults()
+                    self.successAlert("Successfully changed email.")
+                }
+            })
+        } else {
+            FirebaseManager.sharedRootRef.changePasswordForUser(User.sharedModel.email, fromOld: textFields[0].text, toNew: textFields[1].text, withCompletionBlock: { error in
+                self.stopProgressHud()
+                for textField in self.textFields {
+                    textField.text = ""
+                }
+                
+                if let error = error {
+                    self.handleFirebaseError(error)
+                } else {
+                    self.successAlert("Successfully changed password.")
+                }
+            })
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        saveButton.enabled = false
+        
+        // init alert controller
+        alertController = UIAlertController(title: "Error", message: "Error", preferredStyle: .Alert)
+        let okayAction: UIAlertAction = UIAlertAction(title: "Okay", style: .Default, handler: { value in
+            self.alertController!.dismissViewControllerAnimated(true, completion: nil)
         })
+        alertController!.addAction(okayAction)
+        
+        navigationItem.title = email ? "Change Email" : "Change Password"
     }
 
     override func didReceiveMemoryWarning() {
@@ -131,14 +154,25 @@ class ChangePasswordViewController: UITableViewController {
         let reuseID = indexPath.section == 0 ? "passwordCell" : "confirmCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(reuseID, forIndexPath: indexPath)
 
-        (cell as! PasswordCell).textField.attributedPlaceholder = NSAttributedString(string: placeholders[indexPath.row], attributes: [
+        (cell as! PasswordCell).textField.attributedPlaceholder = NSAttributedString(string: email ? emailPlaceholders[indexPath.row] : passwordPlaceholders[indexPath.row], attributes: [
                 NSForegroundColorAttributeName: UIColor.placeholderGray(),
                 NSFontAttributeName: UIFont(name: "HelveticaNeue", size: 17.0)!
                 ])
         (cell as! PasswordCell).textField.addTarget(self, action: #selector(textFieldDidChange), forControlEvents: .EditingChanged)
+        (cell as! PasswordCell).textField.secureTextEntry = !email || indexPath.row == 2
+        
+        if email && indexPath.row == 0 {
+            (cell as! PasswordCell).textField.text = User.sharedModel.email
+            (cell as! PasswordCell).textField.enabled = false
+        }
+        
         textFields.append((cell as! PasswordCell).textField)
 
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return false
     }
 
     /*

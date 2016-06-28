@@ -165,12 +165,11 @@ extension Profile3ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
 class Profile3ViewController: UITableViewController {
     
     enum TextFieldIndex {
-        case FirstName, LastName, Email, Height, Weight, DOB, Gender
+        case FirstName, LastName, Height, Weight, DOB, Gender
     }
     
     // variables
     var alertController: UIAlertController?
-    var passwordController = UIAlertController(title: "Enter Password to Continue", message: nil, preferredStyle: .Alert)
     var textFields = [UITextField]()
     var passwordField = UITextField()
     var anyFieldEmpty = false
@@ -271,68 +270,27 @@ class Profile3ViewController: UITableViewController {
         password = textField.text!
     }
     
-    private func saveNonFacebook() {
-        startProgressHud()
-        if textFields[TextFieldIndex.Email.hashValue].text == data["email"] as? String {
-            FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).setValue(User.data(), withCompletionBlock: { error, firebase in
-                self.stopProgressHud()
-                if error != nil {
-                    self.handleFirebaseError(error)
-                    User.populateFields(self.data)
-                } else {
-                    self.successAlert("Your info has been updated")
-                    User.saveToUserDefaults()
-                }
-            })
-        } else {
-            FirebaseManager.sharedRootRef.changeEmailForUser(data["email"]! as! String, password: password, toNewEmail: User.sharedModel.email, withCompletionBlock: { error in
-                if let error = error {
-                    self.stopProgressHud()
-                    self.handleFirebaseError(error)
-                    User.populateFields(self.data)
-                } else {
-                    FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).setValue(User.data(), withCompletionBlock: { error, firebase in
-                        self.stopProgressHud()
-                        if error != nil {
-                            self.handleFirebaseError(error)
-                            User.populateFields(self.data)
-                        } else {
-                            self.successAlert("Your info has been updated")
-                            User.saveToUserDefaults()
-                        }
-                    })
-                }
-            })
-        }
-    }
-    
     // actions
     @IBAction func tappedSave(sender: AnyObject) {
         data = User.data()
         
         User.sharedModel.firstName = textFields[TextFieldIndex.FirstName.hashValue].text
         User.sharedModel.lastName = textFields[TextFieldIndex.LastName.hashValue].text
-        User.sharedModel.email = textFields[TextFieldIndex.Email.hashValue].text
         User.sharedModel.height = textFields[TextFieldIndex.Height.hashValue].text!.heightValue
         User.sharedModel.weight = textFields[TextFieldIndex.Weight.hashValue].text!.weightValue
         User.sharedModel.dateOfBirth = textFields[TextFieldIndex.DOB.hashValue].text!.dateOfBirthValue
         User.sharedModel.male = textFields[TextFieldIndex.Gender.hashValue].text!.maleValue
         
-        if !User.sharedModel.facebookUser {
-            self.presentViewController(passwordController, animated: true, completion: nil)
-        } else {
-            startProgressHud()
-            FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).setValue(User.data(), withCompletionBlock: { error, firebase in
-                self.stopProgressHud()
-                if error != nil {
-                    self.handleFirebaseError(error)
-                    User.populateFields(self.data)
-                } else {
-                    self.successAlert("Your info has been updated")
-                    User.saveToUserDefaults()
-                }
-            })
-        }
+        startProgressHud()
+        FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).setValue(User.data(), withCompletionBlock: { error, firebase in
+            self.stopProgressHud()
+            if error != nil {
+                self.handleFirebaseError(error)
+            } else {
+                self.successAlert("Your info has been updated")
+                User.saveToUserDefaults()
+            }
+        })
     }
     
     // uiviewcontroller
@@ -345,20 +303,6 @@ class Profile3ViewController: UITableViewController {
             self.alertController!.dismissViewControllerAnimated(true, completion: nil)
         })
         alertController!.addAction(okayAction)
-        
-        // password
-        passwordController.addTextFieldWithConfigurationHandler({ textField in
-            textField.placeholder = "Password"
-            textField.secureTextEntry = true
-            textField.delegate = self
-            textField.addTarget(self, action: #selector(self.passwordFieldDidChange(_:)), forControlEvents: .EditingChanged)
-            self.passwordField = textField
-        })
-        let confirmAction = UIAlertAction(title: "Confirm", style: .Default, handler: { action in
-            self.alertController?.dismissViewControllerAnimated(true, completion: nil)
-            self.saveNonFacebook()
-        })
-        passwordController.addAction(confirmAction)
         
         // setup pickers
         setupPickers()
@@ -406,9 +350,9 @@ class Profile3ViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if User.sharedModel.premium {
-            return section == 0 ? 7 : 1
+            return section == 0 ? 6 : 1
         } else {
-            return section == 1 ? 7 : 1
+            return section == 0 ? 1 : section == 1 ? 6 : section == 2 ? 2 : 1
         }
     }
     
@@ -421,11 +365,7 @@ class Profile3ViewController: UITableViewController {
                 cellType = indexPath.section == 0 ? "profileCell" : (indexPath.section == 1 ? "changePasswordCell" : "logoutCell")
             }
         } else {
-            if User.sharedModel.facebookUser {
-                cellType = indexPath.section == 0 ? "goPremiumCell" : (indexPath.section == 1 ? "profileCell" : "logoutCell")
-            } else {
-                cellType = indexPath.section == 0 ? "goPremiumCell" : (indexPath.section == 1 ? "profileCell" : (indexPath.section == 2 ? "changePasswordCell" : "logoutCell"))
-            }
+            cellType = indexPath.section == 0 ? "goPremiumCell" : indexPath.section == 1 ? "profileCell" : indexPath.section == 2 && indexPath.row == 0 ? "changeEmailCell" : indexPath.section == 2 ? "changePasswordCell" : "logoutCell"
         }
         let cell = tableView.dequeueReusableCellWithIdentifier(cellType, forIndexPath: indexPath)
         
@@ -437,11 +377,6 @@ class Profile3ViewController: UITableViewController {
             } else if indexPath.row == TextFieldIndex.LastName.hashValue {
                 cell.keyLabel.text = "Last Name"
                 cell.valueField.text = User.sharedModel.lastName
-            } else if indexPath.row == TextFieldIndex.Email.hashValue {
-                cell.keyLabel.text = "Email"
-                cell.valueField.text = User.sharedModel.email
-                cell.valueField.enabled = !User.sharedModel.facebookUser
-                cell.valueField.textColor = User.sharedModel.facebookUser ? UIColor.placeholderGray() : UIColor.blackColor()
             } else if indexPath.row == TextFieldIndex.Height.hashValue {
                 cell.keyLabel.text = "Height"
                 cell.valueField.text = User.sharedModel.height?.heightString
@@ -477,6 +412,10 @@ class Profile3ViewController: UITableViewController {
             User.sharedModel = User()
             NSUserDefaults.standardUserDefaults().setObject(nil, forKey: "userData")
             NSUserDefaults.standardUserDefaults().synchronize()
+        } else if segue.identifier == "changeEmailSegue" {
+            (segue.destinationViewController as! ChangePasswordViewController).email = true
+        } else if segue.identifier == "changePasswordSegue" {
+            (segue.destinationViewController as! ChangePasswordViewController).email = false
         }
     }
     

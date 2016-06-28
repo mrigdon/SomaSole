@@ -88,6 +88,7 @@ class Payment2ViewController: UITableViewController {
         let session = NSURLSession(configuration: configuration)
         let task = session.dataTaskWithRequest(request) { data, response, error -> Void in
             self.stopProgressHud()
+            print(data)
             if let error = error {
                 print(error)
             } else if let code = (response as? NSHTTPURLResponse)?.statusCode {
