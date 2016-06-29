@@ -275,8 +275,8 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate, Ind
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "workoutSegue" {
             let beginVC = segue.destinationViewController as! BeginWorkoutViewController
-            let index = self.tableView.indexPathForSelectedRow!.row - 1 // -1 for the filter cell
-            beginVC.workout = Workout.sharedWorkouts[index]
+            let cell = tableView.cellForRowAtIndexPath(tableView.indexPathForSelectedRow!) as! WorkoutCell
+            beginVC.workout = cell.workout
         } else if segue.identifier == "tagListSegue" || segue.identifier == "filterSegue" {
             // Get the new view controller using segue.destinationViewController.
             let filterVC = segue.destinationViewController as! FilterViewController
