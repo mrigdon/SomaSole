@@ -51,6 +51,7 @@
 		62AB9B801CFE8B32005498F8 /* QuickStartImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AB9B7F1CFE8B32005498F8 /* QuickStartImageView.swift */; };
 		62B1AB931CC1D6F3007069E5 /* AllWorkoutsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B1AB921CC1D6F3007069E5 /* AllWorkoutsViewController.swift */; };
 		62BBCED31D18E09700E01DE9 /* News2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BBCED21D18E09700E01DE9 /* News2ViewController.swift */; };
+		62C18E9E1D235D0B00C05798 /* PlayVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C18E9D1D235D0B00C05798 /* PlayVideoViewController.swift */; };
 		62C8413E1CC6F5D700468726 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C8413D1CC6F5D700468726 /* FilterViewController.swift */; };
 		62C9E4081CB4474E005E9F48 /* InformationQuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9E4071CB4474E005E9F48 /* InformationQuestionsViewController.swift */; };
 		62C9E40E1CB44FEF005E9F48 /* PurchasesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9E40D1CB44FEF005E9F48 /* PurchasesViewController.swift */; };
@@ -140,6 +141,7 @@
 		62AB9B7F1CFE8B32005498F8 /* QuickStartImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickStartImageView.swift; sourceTree = "<group>"; };
 		62B1AB921CC1D6F3007069E5 /* AllWorkoutsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllWorkoutsViewController.swift; sourceTree = "<group>"; };
 		62BBCED21D18E09700E01DE9 /* News2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = News2ViewController.swift; sourceTree = "<group>"; };
+		62C18E9D1D235D0B00C05798 /* PlayVideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayVideoViewController.swift; sourceTree = "<group>"; };
 		62C8413D1CC6F5D700468726 /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		62C9E4071CB4474E005E9F48 /* InformationQuestionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationQuestionsViewController.swift; sourceTree = "<group>"; };
 		62C9E40D1CB44FEF005E9F48 /* PurchasesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchasesViewController.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				62ED07901D04969900C325E5 /* VideosViewController.swift */,
 				6201ABC61CF9EEC10099B18D /* AllVideosViewController.swift */,
 				62ED07921D04984200C325E5 /* MyVideosViewController.swift */,
+				62C18E9D1D235D0B00C05798 /* PlayVideoViewController.swift */,
 			);
 			name = Videos;
 			sourceTree = "<group>";
@@ -581,6 +584,7 @@
 				6218597A1D07D6C500CEC45D /* PaymentViewController.swift in Sources */,
 				624A94E81CB7463E00A8D21A /* LoginViewController.swift in Sources */,
 				62F07E161D111A9B0028D45D /* OverlayView.swift in Sources */,
+				62C18E9E1D235D0B00C05798 /* PlayVideoViewController.swift in Sources */,
 				626063951CBAEDEF00B1AF3C /* CreateBasicsViewController.swift in Sources */,
 				62C9E40E1CB44FEF005E9F48 /* PurchasesViewController.swift in Sources */,
 				62ED07931D04984200C325E5 /* MyVideosViewController.swift in Sources */,

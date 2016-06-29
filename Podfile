@@ -30,6 +30,7 @@ target 'SomaSole' do
     pod 'SwiftyMarkdown'
     pod 'SwiftyJSON'
     pod 'SwiftString'
+    pod 'AlamofireImage', '~> 2.0'
 
 end
 

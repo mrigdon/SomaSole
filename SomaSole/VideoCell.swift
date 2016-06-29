@@ -16,11 +16,11 @@ class VideoCell: UITableViewCell {
     var video: Video?
 
     // outlets
-    @IBOutlet weak var playerView: YTPlayerView!
+    @IBOutlet weak var videoImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var starButton: IndexedStarButton!
     
-    // methods
+    // method
     func setStarFill() {
         starButton.fillColor = User.sharedModel.favoriteVideoKeys.contains(video!.id) ? UIColor.goldColor() : UIColor.clearColor()
         starButton.config()

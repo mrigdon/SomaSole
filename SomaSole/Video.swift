@@ -12,8 +12,11 @@ class Video: NSObject {
 
     var id = ""
     var title = ""
+    var time = 0
+    var videoDescription = ""
     var favorite = false
     var free = false
+    var image = UIImage()
     
     init(id: String, title: String) {
         super.init()

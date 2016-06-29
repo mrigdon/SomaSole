@@ -11,6 +11,8 @@ import youtube_ios_player_helper
 import Firebase
 import XLPagerTabStrip
 import Masonry
+import AlamofireImage
+import Alamofire
 
 class AllVideosViewController: UITableViewController, IndicatorInfoProvider, UISearchBarDelegate {
     
@@ -39,11 +41,17 @@ class AllVideosViewController: UITableViewController, IndicatorInfoProvider, UIS
         FirebaseManager.sharedRootRef.childByAppendingPath("videos").childByAppendingPath("public").observeEventType(.ChildAdded, withBlock: { snapshot in
             let video = Video(id: snapshot.key, title: snapshot.value as! String)
             video.free = true
-            self.videos.append(video)
             if User.sharedModel.favoriteVideoKeys.contains(video.id) {
                 User.sharedModel.favoriteVideos.append(video)
             }
-            self.reloadTableView()
+            
+            Alamofire.request(.GET, "http://img.youtube.com/vi/\(video.id)/mqdefault.jpg").responseImage(completionHandler: { response in
+                if let image = response.result.value {
+                    video.image = image
+                    self.videos.append(video)
+                    self.reloadTableView()
+                }
+            })
         })
     }
     
@@ -55,7 +63,14 @@ class AllVideosViewController: UITableViewController, IndicatorInfoProvider, UIS
             if User.sharedModel.favoriteVideoKeys.contains(video.id) {
                 User.sharedModel.favoriteVideos.append(video)
             }
-            self.reloadTableView()
+            
+            Alamofire.request(.GET, "http://img.youtube.com/vi/\(video.id)/0.jpg").responseImage(completionHandler: { response in
+                if let image = response.result.value {
+                    video.image = image
+                    self.videos.append(video)
+                    self.reloadTableView()
+                }
+            })
         })
     }
     
@@ -121,7 +136,7 @@ class AllVideosViewController: UITableViewController, IndicatorInfoProvider, UIS
         navigationItem.rightBarButtonItem = unfilledStarButton
 
         loadPublic()
-        loadPrivate()
+//        loadPrivate()
     }
 
     override func didReceiveMemoryWarning() {
@@ -160,7 +175,8 @@ class AllVideosViewController: UITableViewController, IndicatorInfoProvider, UIS
         if video.free || User.sharedModel.premium {
             (cell as! VideoCell).video = video
             (cell as! VideoCell).titleLabel.text = video.title
-            (cell as! VideoCell).playerView.loadWithVideoId(video.id)
+            (cell as! VideoCell).videoImageView.image = video.image
+            (cell as! VideoCell).videoImageView.sizeToFit()
             (cell as! VideoCell).setStarFill()
         } else {
             (cell as! VideoOverlayCell).video = video
@@ -170,6 +186,14 @@ class AllVideosViewController: UITableViewController, IndicatorInfoProvider, UIS
         cell.selectionStyle = .None
 
         return cell
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "videoSegue" {
+            let cell = tableView.cellForRowAtIndexPath(tableView.indexPathForSelectedRow!) as! VideoCell
+            let video = cell.video
+            (segue.destinationViewController as! PlayVideoViewController).video = video
+        }
     }
 
     /*

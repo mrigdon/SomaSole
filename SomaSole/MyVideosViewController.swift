@@ -108,7 +108,7 @@ class MyVideosViewController: UITableViewController, IndicatorInfoProvider, UISe
         
         let video = searchBar.isFirstResponder() && searchBar.text != "" ? filteredVideos[indexPath.row] : videos[indexPath.row]
         cell.titleLabel.text = video.title
-        cell.playerView.loadWithVideoId(video.id)
+//        cell.playerView.loadWithVideoId(video.id)
         
         return cell
     }
