@@ -12,6 +12,7 @@ import Firebase
 import Toucan
 import Masonry
 import SwiftString
+import Alamofire
 
 extension Float {
     var heightString: String {
@@ -170,6 +171,8 @@ class Profile3ViewController: UITableViewController {
     
     // variables
     var alertController: UIAlertController?
+    var deleteController: UIAlertController = UIAlertController(title: "Are You Sure?", message: "If you are a premium member your billing will stop immediately and your money will not be refunded. Still sure? If so, enter password to confirm.", preferredStyle: .Alert)
+    var confirmAction = UIAlertAction()
     var textFields = [UITextField]()
     var passwordField = UITextField()
     var anyFieldEmpty = false
@@ -268,6 +271,7 @@ class Profile3ViewController: UITableViewController {
     @objc private func passwordFieldDidChange(sender: AnyObject) {
         let textField = sender as! UITextField
         password = textField.text!
+        confirmAction.enabled = password != ""
     }
     
     // actions
@@ -303,6 +307,42 @@ class Profile3ViewController: UITableViewController {
             self.alertController!.dismissViewControllerAnimated(true, completion: nil)
         })
         alertController!.addAction(okayAction)
+        
+        // delete controller
+        deleteController.addTextFieldWithConfigurationHandler { textField in
+            textField.secureTextEntry = true
+            textField.placeholder = "Password"
+            textField.addTarget(self, action: #selector(self.passwordFieldDidChange(_:)), forControlEvents: .EditingChanged)
+        }
+        let nevermindAction = UIAlertAction(title: "Nevermind, Don't Delete", style: .Default, handler: { action in
+            self.alertController!.dismissViewControllerAnimated(true, completion: nil)
+        })
+        confirmAction = UIAlertAction(title: "Yes, Delete it", style: .Destructive, handler: { action in
+            self.startProgressHud()
+            FirebaseManager.sharedRootRef.removeUser(User.sharedModel.email, password: self.password, withCompletionBlock: { error in
+                if let error = error {
+                    self.handleFirebaseError(error)
+                } else {
+                    FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).removeValue()
+                    NSUserDefaults.standardUserDefaults().setObject(nil, forKey: "userData")
+                    NSUserDefaults.standardUserDefaults().synchronize()
+                    if User.sharedModel.premium {
+                        Alamofire.request(.POST, "https://somasole-payments.herokuapp.com/delete_customer/\(User.sharedModel.stripeID)").responseJSON { response in
+                            if let _ = response.result.value {
+                                self.stopProgressHud()
+                                self.performSegueWithIdentifier("deleteSegue", sender: self)
+                            }
+                        }
+                    } else {
+                        self.stopProgressHud()
+                        self.performSegueWithIdentifier("deleteSegue", sender: self)
+                    }
+                }
+            })
+        })
+        confirmAction.enabled = false
+        deleteController.addAction(nevermindAction)
+        deleteController.addAction(confirmAction)
         
         // setup pickers
         setupPickers()
@@ -342,9 +382,9 @@ class Profile3ViewController: UITableViewController {
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         if User.sharedModel.facebookUser {
-            return User.sharedModel.premium ? 2 : 3
-        } else {
             return User.sharedModel.premium ? 3 : 4
+        } else {
+            return User.sharedModel.premium ? 4 : 5
         }
     }
     
@@ -368,15 +408,15 @@ class Profile3ViewController: UITableViewController {
         var cellType = ""
         if User.sharedModel.facebookUser {
             if User.sharedModel.premium {
-                cellType = indexPath.section == 0 ? "profileCell" : "logoutCell"
+                cellType = indexPath.section == 0 ? "profileCell" : indexPath.section == 1 ? "logoutCell" : "deleteAccountCell"
             } else {
-                cellType = indexPath.section == 0 ? "goPremiumCell" : indexPath.section == 1 ? "profileCell" : "logoutCell"
+                cellType = indexPath.section == 0 ? "goPremiumCell" : indexPath.section == 1 ? "profileCell" : indexPath.section == 2 ? "logoutCell" : "deleteAccountCell"
             }
         } else {
             if User.sharedModel.premium {
-                cellType = indexPath.section == 0 ? "profileCell" : indexPath.section == 1 && indexPath.row == 0 ? "changeEmailCell" : indexPath.section == 1 ? "changePasswordCell" : "logoutCell"
+                cellType = indexPath.section == 0 ? "profileCell" : indexPath.section == 1 && indexPath.row == 0 ? "changeEmailCell" : indexPath.section == 1 ? "changePasswordCell" : indexPath.section == 2 ? "logoutCell" : "deleteAccountCell"
             } else {
-                cellType = indexPath.section == 0 ? "goPremiumCell" : indexPath.section == 1 ? "profileCell" : indexPath.section == 2 && indexPath.row == 0 ? "changeEmailCell" : indexPath.section == 2 ? "changePasswordCell" : "logoutCell"
+                cellType = indexPath.section == 0 ? "goPremiumCell" : indexPath.section == 1 ? "profileCell" : indexPath.section == 2 && indexPath.row == 0 ? "changeEmailCell" : indexPath.section == 2 ? "changePasswordCell" : indexPath.section == 3 ? "logoutCell" : "deleteAccountCell"
             }
         }
         let cell = tableView.dequeueReusableCellWithIdentifier(cellType, forIndexPath: indexPath)
@@ -416,6 +456,13 @@ class Profile3ViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return !((User.sharedModel.premium && indexPath.section == 0) || (!User.sharedModel.premium && indexPath.section == 1))
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if (User.sharedModel.facebookUser && ((User.sharedModel.premium && indexPath.section == 2) || (!User.sharedModel.premium && indexPath.section == 3))) || (!User.sharedModel.facebookUser && ((User.sharedModel.premium && indexPath.section == 3) || (!User.sharedModel.premium && indexPath.section == 4))) {
+            presentViewController(deleteController, animated: true, completion: nil)
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
