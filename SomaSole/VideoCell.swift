@@ -72,7 +72,7 @@ class VideoOverlayCell: UITableViewCell {
     var video: Video?
     
     // outlets
-    @IBOutlet weak var playerView: YTPlayerView!
+    @IBOutlet weak var videoImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var starButton: IndexedStarButton!
     

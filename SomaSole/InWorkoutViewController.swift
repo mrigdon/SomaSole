@@ -40,7 +40,7 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var movementImageView: AnimatableImageView!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var tipLabel: UILabel!
+    @IBOutlet weak var tipLabel: UITextView!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var setupImageView: UIImageView!
     
@@ -226,12 +226,20 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
         navigationBar.topItem!.rightBarButtonItem = pauseButton
         
         // init tip view
+        tipLabel.editable = true
+        tipLabel.font = UIFont(name: "HelveticaNeue", size: 17)
+        tipLabel.editable = false
         tipLabel.text = workout?.circuits[0].movements[0].movementDescription
         tipLabel.layer.opacity = 0.0
         
         // remove next button if not custom pace
         nextButton.enabled = customPace
         nextButton.alpha = customPace.alpha
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tipLabel.setContentOffset(CGPointZero, animated: false)
     }
     
     override func viewDidAppear(animated: Bool) {

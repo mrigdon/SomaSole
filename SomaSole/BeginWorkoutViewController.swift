@@ -28,7 +28,7 @@ class BeginWorkoutViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var intensityLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UITextView!
     
     // methods
     func startProgressHud() {
@@ -85,9 +85,17 @@ class BeginWorkoutViewController: UIViewController {
         self.nameLabel.text = self.workout!.name
         self.timeLabel.text = "\(self.workout!.time) minutes"
         self.intensityLabel.text = "\(self.workout!.intensity)"
+        self.descriptionLabel.editable = true
+        self.descriptionLabel.font = UIFont(name: "HelveticaNeue", size: 17)
+        self.descriptionLabel.editable = false
         self.descriptionLabel.text = self.workout!.workoutDescription
         
         self.loadMovements()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.descriptionLabel.setContentOffset(CGPointZero, animated: false)
     }
 
     override func didReceiveMemoryWarning() {

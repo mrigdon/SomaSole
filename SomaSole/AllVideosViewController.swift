@@ -59,7 +59,6 @@ class AllVideosViewController: UITableViewController, IndicatorInfoProvider, UIS
         FirebaseManager.sharedRootRef.childByAppendingPath("videos").childByAppendingPath("private").observeEventType(.ChildAdded, withBlock: { snapshot in
             let video = Video(id: snapshot.key, title: snapshot.value as! String)
             video.free = false
-            self.videos.append(video)
             if User.sharedModel.favoriteVideoKeys.contains(video.id) {
                 User.sharedModel.favoriteVideos.append(video)
             }
@@ -136,7 +135,7 @@ class AllVideosViewController: UITableViewController, IndicatorInfoProvider, UIS
         navigationItem.rightBarButtonItem = unfilledStarButton
 
         loadPublic()
-//        loadPrivate()
+        loadPrivate()
     }
 
     override func didReceiveMemoryWarning() {
@@ -176,12 +175,13 @@ class AllVideosViewController: UITableViewController, IndicatorInfoProvider, UIS
             (cell as! VideoCell).video = video
             (cell as! VideoCell).titleLabel.text = video.title
             (cell as! VideoCell).videoImageView.image = video.image
-            (cell as! VideoCell).videoImageView.sizeToFit()
+            (cell as! VideoCell).titleLabel.sizeToFit()
             (cell as! VideoCell).setStarFill()
         } else {
             (cell as! VideoOverlayCell).video = video
             (cell as! VideoOverlayCell).titleLabel.text = video.title
-            (cell as! VideoOverlayCell).playerView.loadWithVideoId(video.id)
+            (cell as! VideoOverlayCell).videoImageView.image = video.image
+            (cell as! VideoOverlayCell).titleLabel.sizeToFit()
         }
         cell.selectionStyle = .None
 
