@@ -40,7 +40,7 @@ class CreateBasicsViewController: UIViewController, UITextFieldDelegate, UIPicke
     
     @IBOutlet weak var profilePictureButton: UIButton!
     @IBOutlet weak var profilePictureView: UIImageView!
-    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var nextButton: UIBarButtonItem!
     @IBOutlet weak var firstNameField: KaedeTextField!
     @IBOutlet weak var lastNameField: KaedeTextField!
     @IBOutlet weak var heightField: KaedeTextField!
@@ -80,6 +80,10 @@ class CreateBasicsViewController: UIViewController, UITextFieldDelegate, UIPicke
             self.male = male
         }
         dateOfBirthField.text = User.sharedModel.dateOfBirth?.stringForDateField()
+    }
+    
+    @IBAction func textFieldChanged(sender: AnyObject) {
+        nextButton.enabled = firstNameField.text != "" && lastNameField.text != "" && genderField.text != "" && dateOfBirthField.text != "" && heightField.text != "" && weightField.text != ""
     }
     
     private func hideImageButton() {
@@ -248,7 +252,11 @@ class CreateBasicsViewController: UIViewController, UITextFieldDelegate, UIPicke
         User.sharedModel.weight = weight
         User.sharedModel.male = male
         User.sharedModel.dateOfBirth = dateOfBirth
-        User.sharedModel.profileImage = profileImage
+        if let profileImage = profileImage {
+           User.sharedModel.profileImage = profileImage
+        } else {
+            User.sharedModel.profileImage = UIImage(named: "profile")
+        }
     }
 
 }

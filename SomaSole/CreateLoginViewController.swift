@@ -28,7 +28,7 @@ class CreateLoginViewController: UIViewController, UITextFieldDelegate {
     
     var alertController: UIAlertController?
 
-    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var nextButton: UIBarButtonItem!
     @IBOutlet weak var emailField: KaedeTextField!
     @IBOutlet weak var passwordField: KaedeTextField!
     @IBOutlet weak var verifyPasswordField: KaedeTextField!
@@ -45,6 +45,10 @@ class CreateLoginViewController: UIViewController, UITextFieldDelegate {
     func errorAlert(message: String) {
         alertController!.message = message
         presentViewController(alertController!, animated: true, completion: nil)
+    }
+    
+    @IBAction func textFieldChanged(sender: AnyObject) {
+        nextButton.enabled = emailField.text != "" && passwordField.text != "" && verifyPasswordField.text != ""
     }
     
     override func viewDidLoad() {
