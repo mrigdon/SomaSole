@@ -248,10 +248,10 @@ class CreateBasicsViewController: UIViewController, UITextFieldDelegate, UIPicke
         // set user fields
         User.sharedModel.firstName = firstNameField.text
         User.sharedModel.lastName = lastNameField.text
-        User.sharedModel.height = Float(heightFeet!) + (Float(heightInches!) / 12)
-        User.sharedModel.weight = weight
-        User.sharedModel.male = male
-        User.sharedModel.dateOfBirth = dateOfBirth
+        User.sharedModel.height = heightField.text?.heightValue
+        User.sharedModel.weight = Float(weightField.text!)
+        User.sharedModel.male = genderField.text?.maleValue
+        User.sharedModel.dateOfBirth = dateOfBirthField.text?.dateOfBirthValue
         if let profileImage = profileImage {
            User.sharedModel.profileImage = profileImage
         } else {
