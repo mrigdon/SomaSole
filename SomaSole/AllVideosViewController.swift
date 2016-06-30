@@ -13,6 +13,28 @@ import XLPagerTabStrip
 import Masonry
 import AlamofireImage
 import Alamofire
+import MBProgressHUD
+
+extension Array where Element: Video {
+    mutating func appendAfterPublic(video: Element) {
+        if self.count == 0 {
+            self.append(video)
+            return
+        }
+        
+        for (index, item) in self.enumerate() {
+            if !item.free {
+                if index + 1 < self.count {
+                    self.insert(video, atIndex: index + 1)
+                    return
+                }
+                break
+            }
+        }
+        
+        self.append(video)
+    }
+}
 
 class AllVideosViewController: UITableViewController, IndicatorInfoProvider, UISearchBarDelegate {
     
@@ -27,6 +49,16 @@ class AllVideosViewController: UITableViewController, IndicatorInfoProvider, UIS
     var favorites = false
     
     // methods
+    private func startProgressHud() {
+        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+    }
+    
+    private func stopProgressHud() {
+        dispatch_async(dispatch_get_main_queue(), {
+            MBProgressHUD.hideHUDForView(self.view, animated: true)
+        })
+    }
+    
     @objc private func tappedOverlay() {
         performSegueWithIdentifier("paymentSegue", sender: self)
     }
@@ -48,8 +80,9 @@ class AllVideosViewController: UITableViewController, IndicatorInfoProvider, UIS
             Alamofire.request(.GET, "http://img.youtube.com/vi/\(video.id)/mqdefault.jpg").responseImage(completionHandler: { response in
                 if let image = response.result.value {
                     video.image = image
-                    self.videos.append(video)
+                    self.videos.insert(video, atIndex: 0)
                     self.reloadTableView()
+                    self.stopProgressHud()
                 }
             })
         })
@@ -68,6 +101,7 @@ class AllVideosViewController: UITableViewController, IndicatorInfoProvider, UIS
                     video.image = image
                     self.videos.append(video)
                     self.reloadTableView()
+                    self.stopProgressHud()
                 }
             })
         })
@@ -134,6 +168,7 @@ class AllVideosViewController: UITableViewController, IndicatorInfoProvider, UIS
         filledStarButton?.tintColor = UIColor.goldColor()
         navigationItem.rightBarButtonItem = unfilledStarButton
 
+        startProgressHud()
         loadPublic()
         loadPrivate()
     }

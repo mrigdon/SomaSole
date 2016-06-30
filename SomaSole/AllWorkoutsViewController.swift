@@ -97,7 +97,7 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate, Ind
             // load workouts
             let workout = Workout(name: snapshot.key, data: snapshot.value as! [String : AnyObject])
             workout.free = true
-            Workout.sharedWorkouts.append(workout)
+            Workout.sharedWorkouts.insert(workout, atIndex: 0)
             if User.sharedModel.favoriteWorkoutKeys.contains(workout.name) {
                 User.sharedModel.favoriteWorkouts.append(workout)
             }
