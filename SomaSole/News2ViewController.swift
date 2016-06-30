@@ -12,6 +12,8 @@ import youtube_ios_player_helper
 import MBProgressHUD
 import Firebase
 import SwiftyJSON
+import Alamofire
+import AlamofireImage
 
 extension News2ViewController: KASlideShowDelegate {
     func kaSlideShowDidShowNext(slideShow: KASlideShow!) {
@@ -42,7 +44,7 @@ class News2ViewController: UIViewController {
     // outlets
     @IBOutlet weak var slideshow: KASlideShow!
     @IBOutlet weak var pageControl: UIPageControl!
-    @IBOutlet var playerViews: [YTPlayerView]!
+    @IBOutlet var videoImages: [UIImageView]!
     @IBOutlet weak var workoutImageView: QuickStartImageView!
     @IBOutlet weak var workoutImageViewHeight: NSLayoutConstraint!
     @IBOutlet weak var slideshowHeight: NSLayoutConstraint!
@@ -98,8 +100,13 @@ class News2ViewController: UIViewController {
     private func addVideos(json: JSON) {
         for (key, data) in json {
             let video = Video(id: key, title: data.stringValue)
-            playerViews[videos.count].loadWithVideoId(video.id)
-            videos.append(video)
+            Alamofire.request(.GET, "http://img.youtube.com/vi/\(video.id)/mqdefault.jpg").responseImage(completionHandler: { response in
+                if let image = response.result.value {
+                    video.image = image
+                    self.videoImages[self.videos.count].image = video.image
+                    self.videos.append(video)
+                }
+            })
         }
     }
     
