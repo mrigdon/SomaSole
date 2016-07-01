@@ -96,12 +96,11 @@ class ChangePasswordViewController: UITableViewController {
                     self.textFields[2].text = ""
                     self.handleFirebaseError(error)
                 } else {
-                    User.sharedModel.email = self.textFields[1].text
+                    User.sharedModel.email = self.textFields[1].text!
                     self.textFields[0].text = User.sharedModel.email
                     self.textFields[1].text = ""
                     self.textFields[2].text = ""
                     FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).childByAppendingPath("email").setValue(User.sharedModel.email)
-                    User.saveToUserDefaults()
                     self.successAlert("Successfully changed email.")
                 }
             })

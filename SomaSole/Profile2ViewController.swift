@@ -198,21 +198,21 @@ class Profile2ViewController: UIViewController {
         startProgressHud()
         
         // TODO: -
-        User.sharedModel.firstName = textFields[TextFieldIndex.FirstName.hashValue].text
-        User.sharedModel.lastName = textFields[TextFieldIndex.LastName.hashValue].text
-        User.sharedModel.email = textFields[TextFieldIndex.Email.hashValue].text
-        User.sharedModel.firstName = textFields[TextFieldIndex.FirstName.hashValue].text
+//        User.sharedModel.firstName = textFields[TextFieldIndex.FirstName.hashValue].text
+//        User.sharedModel.lastName = textFields[TextFieldIndex.LastName.hashValue].text
+//        User.sharedModel.email = textFields[TextFieldIndex.Email.hashValue].text
+//        User.sharedModel.firstName = textFields[TextFieldIndex.FirstName.hashValue].text
         
-        FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).setValue(User.data(), withCompletionBlock: { error, firebase in
-            self.stopProgressHud()
-            if error != nil {
-                self.handleFirebaseError(error)
-            }
-            else {
-                self.successAlert("Your info has been updated")
-                User.saveToUserDefaults()
-            }
-        })
+//        FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).setValue(User.data(), withCompletionBlock: { error, firebase in
+//            self.stopProgressHud()
+//            if error != nil {
+//                self.handleFirebaseError(error)
+//            }
+//            else {
+//                self.successAlert("Your info has been updated")
+//                User.saveToUserDefaults()
+//            }
+//        })
     }
     
     // uiviewcontroller
@@ -221,14 +221,14 @@ class Profile2ViewController: UIViewController {
         
         // fields for text fields
         fields = [
-            ("First Name", User.sharedModel.firstName!),
-            ("Last Name", User.sharedModel.lastName!),
-            ("Email", User.sharedModel.email!),
-            ("Password", "XXXXXXXX"),
-            ("Height", User.sharedModel.height!.heightString),
-            ("Weight", User.sharedModel.weight!.weightString),
-            ("D.O.B.", User.sharedModel.dateOfBirth!.simpleString),
-            ("Gender", User.sharedModel.male!.genderString)
+//            ("First Name", User.sharedModel.firstName!),
+//            ("Last Name", User.sharedModel.lastName!),
+//            ("Email", User.sharedModel.email!),
+//            ("Password", "XXXXXXXX"),
+//            ("Height", User.sharedModel.height!.heightString),
+//            ("Weight", User.sharedModel.weight!.weightString),
+//            ("D.O.B.", User.sharedModel.dateOfBirth!.simpleString),
+//            ("Gender", User.sharedModel.male!.genderString)
         ]
         
         // alert controller
@@ -242,14 +242,14 @@ class Profile2ViewController: UIViewController {
         setupPickers()
         
         // setup fields
-        male = User.sharedModel.male!
-        heightFeet = User.sharedModel.height!.feet
-        heightInches = User.sharedModel.height!.inches
+//        male = User.sharedModel.male!
+//        heightFeet = User.sharedModel.height!.feet
+//        heightInches = User.sharedModel.height!.inches
 
         // ui
         ui {
             self.basicTableViewHeight.constant = 352 // 44 * 8
-            self.imageView.image = User.sharedModel.profileImage?.roundImage
+//            self.imageView.image = User.sharedModel.profileImage?.roundImage
         }
     }
     

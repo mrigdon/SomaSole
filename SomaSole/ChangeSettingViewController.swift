@@ -95,20 +95,20 @@ class ChangeSettingViewController: UIViewController, UITextFieldDelegate {
     func saveUserData(field: Setting) {
         let user = User.sharedModel
         
-        if field == .Email {
-            user.email = newEmail
-            firebase?.childByAppendingPath("users").childByAppendingPath("email").setValue(newEmail)
-            NSUserDefaults.standardUserDefaults().setObject(User.data(), forKey: "userData")
-            self.stopProgressHud()
-            self.successAlert("Successfully changed email to \(newEmail)")
-        }
-            
-        else if field == .Password {
-            user.password = newPassword
-            NSUserDefaults.standardUserDefaults().setObject(User.data(), forKey: "userData")
-            self.stopProgressHud()
-            self.successAlert("Successfully changed password to \(newPassword)")
-        }
+//        if field == .Email {
+//            user.email = newEmail
+//            firebase?.childByAppendingPath("users").childByAppendingPath("email").setValue(newEmail)
+//            NSUserDefaults.standardUserDefaults().setObject(User.data(), forKey: "userData")
+//            self.stopProgressHud()
+//            self.successAlert("Successfully changed email to \(newEmail)")
+//        }
+//            
+//        else if field == .Password {
+//            user.password = newPassword
+//            NSUserDefaults.standardUserDefaults().setObject(User.data(), forKey: "userData")
+//            self.stopProgressHud()
+//            self.successAlert("Successfully changed password to \(newPassword)")
+//        }
     }
     
     func changeField(field: Setting) {

@@ -47,14 +47,12 @@ class WorkoutCell: UITableViewCell {
             User.sharedModel.favoriteWorkouts.removeAtIndex(User.sharedModel.favoriteWorkouts.indexOf(workout!)!)
             User.sharedModel.favoriteWorkoutKeys.removeAtIndex(User.sharedModel.favoriteWorkoutKeys.indexOf(workout!.name)!)
             FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).childByAppendingPath("favoriteWorkoutKeys").setValue(User.sharedModel.favoriteWorkoutKeys)
-            User.saveToUserDefaults()
             starButton.fillColor = UIColor.clearColor()
             workout!.favorite = false
         } else {
             User.sharedModel.favoriteWorkouts.insertAlpha(workout!)
             User.sharedModel.favoriteWorkoutKeys.append(workout!.name)
             FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).childByAppendingPath("favoriteWorkoutKeys").setValue(User.sharedModel.favoriteWorkoutKeys)
-            User.saveToUserDefaults()
             starButton.fillColor = UIColor.goldColor()
             workout!.favorite = true
         }

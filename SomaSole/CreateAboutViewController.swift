@@ -57,73 +57,33 @@ class CreateAboutViewController: UIViewController {
         })
     }
     
-    func stringFromDate(date: NSDate) -> String {
-        let formatter = NSDateFormatter()
-        formatter.dateFormat = "MM/dd/yyyy"
-        
-        return formatter.stringFromDate(date)
-    }
-    
-    func saveUserData() {
-        let user = User.sharedModel
-        
-        var userData: Dictionary<String, AnyObject> = [
-            "uid": user.uid!,
-            "firstName": user.firstName!,
-            "lastName": user.lastName!,
-            "email": user.email!,
-            "height": user.height!,
-            "weight": user.weight!,
-            "male": user.male!,
-            "dateOfBirth": stringFromDate(user.dateOfBirth!),
-            "activities": user.activities!,
-            "goals": user.goals!,
-            "profileImageString": user.profileImageString(),
-            "favoriteWorkoutKeys": [String](),
-            "favoriteVideoKeys": [String](),
-            "purchasedVideos": [String](),
-            "premium": user.premium,
-            "facebook": user.facebookUser,
-            "stripeID": user.stripeID
-        ]
-        
-        // save to Firebase
-        firebase?.childByAppendingPath("users").childByAppendingPath(user.uid).setValue(userData)
-        
-        // save uid to nsuserdefaults
-        userData["password"] = User.sharedModel.password
-        NSUserDefaults.standardUserDefaults().setObject(user.uid, forKey: "firebaseUID")
-        NSUserDefaults.standardUserDefaults().setObject(userData, forKey: "userData")
-        NSUserDefaults.standardUserDefaults().synchronize()
-        
-        stopProgressHud()
-        
-        // present main application
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let main = storyboard.instantiateViewControllerWithIdentifier("MainViewController")
-        presentViewController(main, animated: true, completion: nil)
-    }
-    
-    func createFirebaseUserAndLogin() {
-        let user = User.sharedModel
-        if user.facebookUser {
-            self.saveUserData()
-        }
-        firebase?.createUser(user.email, password: user.password, withValueCompletionBlock: { error, result in
-            if error != nil {
-                self.stopProgressHud()
-                self.errorAlert("Something went wrong, please try again")
-                self.successfullyCreatedFirebaseUser = false
-            } else {
-                User.sharedModel.uid = result["uid"] as? String
-                self.saveUserData()
-            }
-        })
-    }
-    
     func errorAlert(message: String) {
         alertController!.message = message
         presentViewController(alertController!, animated: true, completion: nil)
+    }
+    
+    private func handleFirebaseError(error: NSError) {
+        switch error.code {
+            
+        case FAuthenticationError.EmailTaken.rawValue:
+            self.errorAlert("There is already an account with this email.")
+            break
+        case FAuthenticationError.NetworkError.rawValue:
+            self.errorAlert("There is a problem with the network, please try again in a few moments.")
+            break
+        case FAuthenticationError.InvalidEmail.rawValue:
+            self.errorAlert("The email you entered is invalid.")
+            break
+        case FAuthenticationError.UserDoesNotExist.rawValue:
+            self.errorAlert("There is no registered account with that email.")
+            break
+        case FAuthenticationError.InvalidPassword.rawValue:
+            self.errorAlert("The password you entered is incorrect.")
+            break
+        default:
+            break
+            
+        }
     }
     
     override func viewDidLoad() {
@@ -208,12 +168,27 @@ class CreateAboutViewController: UIViewController {
         if weightLossPill.selectedByUser { selectedGoals.append(weightLossPill.goal!.hashValue) }
         
         // set to user
-        let user = User.sharedModel
-        user.activities = selectedActivities
-        user.goals = selectedGoals
+        User.sharedModel.activities = selectedActivities
+        User.sharedModel.goals = selectedGoals
         
         // create firebase user
-        createFirebaseUserAndLogin()
+        if User.sharedModel.facebook {
+            FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).setValue(User.sharedModel.dict())
+            self.performSegueWithIdentifier("toMain", sender: self)
+        } else {
+            FirebaseManager.sharedRootRef.createUser(User.sharedModel.email, password: User.sharedModel.password, withValueCompletionBlock: { error, result in
+                // stop progress
+                self.stopProgressHud()
+                if let error = error {
+                    self.successfullyCreatedFirebaseUser = false
+                    self.handleFirebaseError(error)
+                } else {
+                    User.sharedModel.uid = result["uid"] as! String
+                    FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).setValue(User.sharedModel.dict())
+                    self.performSegueWithIdentifier("toMain", sender: self)
+                }
+            })
+        }
     }
     
     @IBAction func selectedPill(sender: AnyObject) {

@@ -44,76 +44,21 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         presentViewController(alertController!, animated: true, completion: nil)
     }
     
-    private func anyFieldsEmpty() -> Bool {
-        return emailField.text?.characters.count == 0 || passField.text?.characters.count == 0
-    }
-    
     private func createUserFromFacebook(userData: [String:AnyObject]) {
-        User.sharedModel.email = userData["email"] as? String
-        User.sharedModel.firstName = userData["first_name"] as? String
-        User.sharedModel.lastName = userData["last_name"] as? String
-        User.sharedModel.male = userData["gender"] as? String == "male"
+        User.sharedModel.email = userData["email"] as! String
+        User.sharedModel.firstName = userData["first_name"] as! String
+        User.sharedModel.lastName = userData["last_name"] as! String
+        User.sharedModel.male = userData["gender"] as! String == "male"
+        User.sharedModel.facebook = true
         
         let urlString = ((userData["picture"] as! [String:AnyObject])["data"] as! [String:AnyObject])["url"] as! String
         let url = NSURL(string: urlString)
         let data = NSData(contentsOfURL: url!)
         let image = UIImage(data: data!)
-        User.sharedModel.profileImage = image
+        User.sharedModel.profileImage = image!
         
         stopProgressHud()
         performSegueWithIdentifier("facebookCreateSegue", sender: self)
-    }
-    
-    private func getUserDataAndLogin(uid: String) {
-        FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(uid).observeEventType(.Value, withBlock: { snapshot in
-            if !(snapshot.value is NSNull) {
-                // user exsits
-                // populate shared model with data
-                var userData: Dictionary<String, AnyObject> = snapshot.value as! Dictionary<String, AnyObject>
-                userData["password"] = self.password
-                User.populateFields(userData)
-                
-                // save to user defaults
-                NSUserDefaults.standardUserDefaults().setObject(userData["uid"], forKey: "uid")
-                NSUserDefaults.standardUserDefaults().setObject(userData, forKey: "userData")
-                NSUserDefaults.standardUserDefaults().synchronize()
-                
-                // stop progress hud
-                self.stopProgressHud()
-                
-                // login
-                self.performSegueWithIdentifier("toMain", sender: self)
-            }
-            else {
-                // user does not exist
-                let fields = ["fields": "email,first_name,last_name,birthday,gender,picture.type(large)"]
-                let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: fields)
-                graphRequest.startWithCompletionHandler({ connection, result, error in
-                    if error == nil {
-                        // success
-                        User.sharedModel.uid = uid
-                        let userData = result as! [String:AnyObject]
-                        self.createUserFromFacebook(userData)
-                    }
-                    else {
-                        // error
-                        print(error)
-                    }
-                })
-            }
-        })
-    }
-    
-    private func loginUser() {
-        FirebaseManager.sharedRootRef.authUser(email, password: password, withCompletionBlock: { error, authData in
-            if error != nil {
-                self.stopProgressHud()
-                self.handleFirebaseError(error)
-            }
-            else {
-                self.getUserDataAndLogin(authData.uid)
-            }
-        })
     }
     
     private func handleFirebaseError(error: NSError) {
@@ -142,29 +87,45 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     // actions
     @IBAction func tappedFacebookLogin(sender: AnyObject) {
-        User.sharedModel.facebookUser = true
         let loginManager = FBSDKLoginManager()
         let permissions = ["public_profile", "email"]
         loginManager.logInWithReadPermissions(permissions, fromViewController: self, handler: { fbResult, fbError in
             if fbError != nil {
                 // error in login
                 print("fbError: \(fbError.code)")
-            }
-            else if fbResult.isCancelled {
+            } else if fbResult.isCancelled {
                 // cancelled login
                 print("cancelled facebook login")
-            }
-            else {
+            } else {
                 // fb logged in
                 self.startProgressHud()
                 let accessToken = FBSDKAccessToken.currentAccessToken().tokenString
                 FirebaseManager.sharedRootRef.authWithOAuthProvider("facebook", token: accessToken, withCompletionBlock: { error, authData in
                     if error != nil {
                         self.handleFirebaseError(error)
-                    }
-                    else {
+                    } else {
                         // firebase logged in
-                        self.getUserDataAndLogin(authData.uid)
+                        FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(authData.uid).observeSingleEventOfType(.Value, withBlock: { snapshot in
+                            if !(snapshot.value is NSNull) {
+                                User.sharedModel = User(uid: snapshot.key, data: snapshot.value as! [String:AnyObject])
+                                self.performSegueWithIdentifier("toMain", sender: self)
+                            } else {
+                                let fields = ["fields": "email,first_name,last_name,birthday,gender,picture.type(large)"]
+                                let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: fields)
+                                graphRequest.startWithCompletionHandler({ connection, result, error in
+                                    if error == nil {
+                                        // success
+                                        User.sharedModel.uid = authData.uid
+                                        let userData = result as! [String:AnyObject]
+                                        self.createUserFromFacebook(userData)
+                                    }
+                                    else {
+                                        // error
+                                        print(error)
+                                    }
+                                })
+                            }
+                        })
                     }
                 })
             }
@@ -172,9 +133,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func tappedLogin(sender: AnyObject) {
-        User.sharedModel.facebookUser = false
         // return if any fields are empty
-        if anyFieldsEmpty() {
+        if emailField.text?.characters.count == 0 || passField.text?.characters.count == 0 {
             errorAlert("Please fill out all fields.")
             return
         }
@@ -182,11 +142,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         // start progress hud
         MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         
-        // get username and password
-        email = emailField.text
-        password = passField.text
-        
-        loginUser()
+        FirebaseManager.sharedRootRef.authUser(emailField.text, password: passField.text, withCompletionBlock: { error, authData in
+            self.stopProgressHud()
+            if let error = error {
+                self.handleFirebaseError(error)
+            } else {
+                FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(authData.uid).observeSingleEventOfType(.Value, withBlock: { snapshot in
+                    User.sharedModel = User(uid: snapshot.key, data: snapshot.value as! [String:AnyObject])
+                    self.performSegueWithIdentifier("toMain", sender: self)
+                })
+            }
+        })
     }
     
     override func viewDidLoad() {

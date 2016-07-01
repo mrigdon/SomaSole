@@ -68,18 +68,12 @@ class CreateBasicsViewController: UIViewController, UITextFieldDelegate, UIPicke
     }
     
     private func setupFields() {
-        if let image = User.sharedModel.profileImage {
-            profilePictureView.image = image
-            profileImage = image
-            hideImageButton()
-        }
-        firstNameField.text = User.sharedModel.firstName?.capitalizedString
-        lastNameField.text = User.sharedModel.lastName?.capitalizedString
-        if let male = User.sharedModel.male {
-            genderField.text = male ? "Male" : "Female"
-            self.male = male
-        }
-        dateOfBirthField.text = User.sharedModel.dateOfBirth?.stringForDateField()
+        profilePictureView.image = User.sharedModel.profileImage
+        hideImageButton()
+        firstNameField.text = User.sharedModel.firstName.capitalizedString
+        lastNameField.text = User.sharedModel.lastName.capitalizedString
+        genderField.text = User.sharedModel.male ? "Male" : "Female"
+        dateOfBirthField.text = User.sharedModel.dateOfBirth.simpleString
     }
     
     @IBAction func textFieldChanged(sender: AnyObject) {
@@ -117,7 +111,9 @@ class CreateBasicsViewController: UIViewController, UITextFieldDelegate, UIPicke
         dateOfBirthField.inputView = dateOfBirthPicker
         
         // init from user in case fb login
-        setupFields()
+        if User.sharedModel.facebook {
+            setupFields()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -138,7 +134,7 @@ class CreateBasicsViewController: UIViewController, UITextFieldDelegate, UIPicke
             self.hideImageButton()
             
             // set sharedUser image
-            User.sharedModel.profileImage = image.0
+            User.sharedModel.profileImage = image.0!
         })
         
         presentViewController(cameraViewController, animated: true, completion: nil)
@@ -246,17 +242,13 @@ class CreateBasicsViewController: UIViewController, UITextFieldDelegate, UIPicke
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // set user fields
-        User.sharedModel.firstName = firstNameField.text
-        User.sharedModel.lastName = lastNameField.text
-        User.sharedModel.height = heightField.text?.heightValue
-        User.sharedModel.weight = Float(weightField.text!)
-        User.sharedModel.male = genderField.text?.maleValue
-        User.sharedModel.dateOfBirth = dateOfBirthField.text?.dateOfBirthValue
-        if let profileImage = profileImage {
-           User.sharedModel.profileImage = profileImage
-        } else {
-            User.sharedModel.profileImage = UIImage(named: "profile")
-        }
+        User.sharedModel.firstName = firstNameField.text!
+        User.sharedModel.lastName = lastNameField.text!
+        User.sharedModel.height = heightField.text!.heightValue
+        User.sharedModel.weight = Float(weightField.text!)!
+        User.sharedModel.male = genderField.text!.maleValue
+        User.sharedModel.dateOfBirth = dateOfBirthField.text!.dateOfBirthValue
+        User.sharedModel.profileImage = profilePictureView.image!
     }
 
 }

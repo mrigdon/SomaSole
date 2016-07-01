@@ -8,6 +8,20 @@
 
 import UIKit
 
+extension String {
+    var base64Image: UIImage {
+        let imageData = NSData(base64EncodedString: self, options: .IgnoreUnknownCharacters)
+        return UIImage(data: imageData!)!
+    }
+}
+
+extension UIImage {
+    var base64String: String {
+        let imageData = UIImageJPEGRepresentation(self, 1.0)
+        return imageData!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
+    }
+}
+
 enum Activity {
     case Climbing
     case Basketball
@@ -42,106 +56,86 @@ class User: NSObject {
     
     static var sharedModel = User()
     
-    var firstName: String?
-    var lastName: String?
-    var email: String?
-    var password: String?
-    var height: Float?
-    var weight: Float?
-    var male: Bool?
-    var dateOfBirth: NSDate?
-    var activities: [Int]?
-    var goals: [Int]?
-    var profileImage: UIImage?
-    var uid: String?
+    // required
+    var uid = ""
+    var firstName = ""
+    var lastName = ""
+    var email = ""
+    var password = ""
+    var height: Float = 0
+    var weight: Float = 0
+    var male = false
+    var dateOfBirth = NSDate()
+    var profileImage = UIImage(named: "profile")!
+    var facebook = false
+    var premium = false
+    var stripeID = ""
+    var trialEligible = true
+    
+    // optional
+    var activities = [Int]()
+    var goals = [Int]()
     var favoriteWorkoutKeys = [String]()
     var favoriteWorkouts = [Workout]()
     var favoriteVideoKeys = [String]()
     var favoriteVideos = [Video]()
-    var facebookUser = false
-    var premium = false
-    var stripeID = ""
     
-    static func populateFields(data: Dictionary<String, AnyObject>) {
-        User.sharedModel.firstName = data["firstName"] as? String
-        User.sharedModel.lastName = data["lastName"] as? String
-        User.sharedModel.email = data["email"] as? String
-        User.sharedModel.password = data["password"] as? String
-        User.sharedModel.height = data["height"] as? Float
-        User.sharedModel.weight = data["weight"] as? Float
-        User.sharedModel.male = data["male"] as? Bool
-        User.sharedModel.activities = data["activities"] as? [Int]
-        User.sharedModel.goals = data["goals"] as? [Int]
-        User.sharedModel.uid = data["uid"] as? String
-        User.sharedModel.premium = data["premium"] as! Bool
-        User.sharedModel.facebookUser = data["facebook"] as! Bool
-        User.sharedModel.stripeID = data["stripeID"] as! String
+    override init() {
+        super.init()
+    }
+    
+    init(uid: String, data: [String:AnyObject]) {
+        // required
+        self.uid = uid
+        self.firstName = data["firstName"] as! String
+        self.lastName = data["lastName"] as! String
+        self.email = data["email"] as! String
+        self.height = data["height"] as! Float
+        self.weight = data["weight"] as! Float
+        self.male = data["male"] as! Bool
+        self.dateOfBirth = (data["dateOfBirth"] as! String).dateOfBirthValue
+        self.profileImage = (data["profileImageString"] as! String).base64Image
+        self.facebook = data["facebook"] as! Bool
+        self.premium = data["premium"] as! Bool
+        self.stripeID = data["stripeID"] as! String
+        self.trialEligible = data["trialEligible"] as! Bool
         
-        let formatter = NSDateFormatter()
-        formatter.dateFormat = "MM/dd/yyy"
-        User.sharedModel.dateOfBirth = formatter.dateFromString((data["dateOfBirth"] as? String)!)
-        
-        let imageString = data["profileImageString"] as? String
-        let imageData = NSData(base64EncodedString: imageString!, options: .IgnoreUnknownCharacters)
-        User.sharedModel.profileImage = UIImage(data: imageData!)
-        
+        // optional
+        if let activities = data["activities"] as? [Int] {
+            self.activities = activities
+        }
+        if let goals = data["goals"] as? [Int] {
+            self.goals = goals
+        }
         if let favoriteWorkoutKeys = data["favoriteWorkoutKeys"] as? [String] {
-            User.sharedModel.favoriteWorkoutKeys = favoriteWorkoutKeys
+            self.favoriteWorkoutKeys = favoriteWorkoutKeys
         }
-        
         if let favoriteVideoKeys = data["favoriteVideoKeys"] as? [String] {
-            User.sharedModel.favoriteVideoKeys = favoriteVideoKeys
+            self.favoriteVideoKeys = favoriteVideoKeys
         }
     }
     
-    static func stringFromDate(date: NSDate) -> String {
-        let formatter = NSDateFormatter()
-        formatter.dateFormat = "MM/dd/yyyy"
-        
-        return formatter.stringFromDate(date)
-    }
-    
-    static func data() -> Dictionary<String, AnyObject> {
-        let user = User.sharedModel
-        
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "MM/dd/yyyy"
-        
-        let userData: Dictionary<String, AnyObject> = [
-            "uid": user.uid!,
-            "firstName": user.firstName!,
-            "lastName": user.lastName!,
-            "email": user.email!,
-            "height": user.height!,
-            "weight": user.weight!,
-            "male": user.male!,
-            "dateOfBirth": User.stringFromDate(user.dateOfBirth!),
-            "activities": user.activities!,
-            "goals": user.goals!,
-            "profileImageString": user.profileImageString(),
-            "favoriteWorkoutKeys": user.favoriteWorkoutKeys,
-            "favoriteVideoKeys": user.favoriteVideoKeys,
-            "premium": user.premium,
-            "facebook": user.facebookUser,
-            "stripeID": user.stripeID
+    func dict() -> [String:AnyObject] {
+        let data: [String:AnyObject] = [
+            "firstName": firstName,
+            "lastName": lastName,
+            "email": email,
+            "height": height,
+            "weight": weight,
+            "male": male,
+            "dateOfBirth": dateOfBirth.simpleString,
+            "profileImageString": profileImage.base64String,
+            "facebook": facebook,
+            "premium": premium,
+            "stripeID": stripeID,
+            "trialEligible": trialEligible,
+            "activities": activities,
+            "goals": goals,
+            "favoriteWorkoutKyes": favoriteWorkoutKeys,
+            "favoriteVideoKeys": favoriteVideoKeys
         ]
         
-        return userData
-    }
-    
-    static func saveToUserDefaults() {
-        NSUserDefaults.standardUserDefaults().setObject(User.data(), forKey: "userData")
-        NSUserDefaults.standardUserDefaults().synchronize()
-    }
-    
-    func profileImageString() -> String {
-        let imageData = UIImageJPEGRepresentation(self.profileImage!, 0.0)
-        
-        return imageData!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
-    }
-    
-    func saveToFirebase() {
-        FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(uid).setValue(User.data())
+        return data
     }
 
 }

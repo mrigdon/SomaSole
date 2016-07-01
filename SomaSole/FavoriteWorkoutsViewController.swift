@@ -94,7 +94,7 @@ class FavoriteWorkoutsViewController: UITableViewController, IndicatorInfoProvid
         workouts.removeAtIndex(indexPath!.row)
         User.sharedModel.favoriteWorkoutKeys.removeAtIndex(indexPath!.row)
         FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).childByAppendingPath("favoriteWorkoutKeys").setValue(User.sharedModel.favoriteWorkoutKeys)
-        User.saveToUserDefaults()
+//        User.saveToUserDefaults()
         
         // ui
         tableView.beginUpdates()

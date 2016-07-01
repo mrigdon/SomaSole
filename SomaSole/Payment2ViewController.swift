@@ -83,7 +83,7 @@ class Payment2ViewController: UITableViewController {
         let url = NSURL(string: "https://somasole-payments.herokuapp.com/charge")!
         let request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "POST"
-        let body = "stripeToken=\(token.tokenId)&email=\(User.sharedModel.email!)"
+        let body = "stripeToken=\(token.tokenId)&email=\(User.sharedModel.email)"
         request.HTTPBody = body.dataUsingEncoding(NSUTF8StringEncoding)
         let configuration = NSURLSessionConfiguration.ephemeralSessionConfiguration()
         let session = NSURLSession(configuration: configuration)
@@ -97,8 +97,7 @@ class Payment2ViewController: UITableViewController {
                     let swiftyJSON = JSON(json)
                     User.sharedModel.stripeID = swiftyJSON["id"].stringValue
                     User.sharedModel.premium = true
-                    User.saveToUserDefaults()
-                    User.sharedModel.saveToFirebase()
+                    FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).setValue(User.sharedModel.dict())
                     self.successAlert("Congratulations! You are now subscribed to the Monthly Premium Plan!")
                 } else if code == self.invalidCardStatusCode {
                     self.errorAlert("It looks like your card was invalid.")

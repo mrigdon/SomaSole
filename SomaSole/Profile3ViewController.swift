@@ -276,23 +276,23 @@ class Profile3ViewController: UITableViewController {
     
     // actions
     @IBAction func tappedSave(sender: AnyObject) {
-        data = User.data()
+        let oldData = User.sharedModel.dict()
         
-        User.sharedModel.firstName = textFields[TextFieldIndex.FirstName.hashValue].text
-        User.sharedModel.lastName = textFields[TextFieldIndex.LastName.hashValue].text
+        User.sharedModel.firstName = textFields[TextFieldIndex.FirstName.hashValue].text!
+        User.sharedModel.lastName = textFields[TextFieldIndex.LastName.hashValue].text!
         User.sharedModel.height = textFields[TextFieldIndex.Height.hashValue].text!.heightValue
         User.sharedModel.weight = textFields[TextFieldIndex.Weight.hashValue].text!.weightValue
         User.sharedModel.dateOfBirth = textFields[TextFieldIndex.DOB.hashValue].text!.dateOfBirthValue
         User.sharedModel.male = textFields[TextFieldIndex.Gender.hashValue].text!.maleValue
         
         startProgressHud()
-        FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).setValue(User.data(), withCompletionBlock: { error, firebase in
+        FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).setValue(User.sharedModel.dict(), withCompletionBlock: { error, firebase in
             self.stopProgressHud()
             if error != nil {
+                User.sharedModel = User(uid: User.sharedModel.uid, data: oldData)
                 self.handleFirebaseError(error)
             } else {
                 self.successAlert("Your info has been updated")
-                User.saveToUserDefaults()
             }
         })
     }
@@ -347,18 +347,13 @@ class Profile3ViewController: UITableViewController {
         // setup pickers
         setupPickers()
         
-        // setup fields
-        male = User.sharedModel.male!
-        heightFeet = User.sharedModel.height!.feet
-        heightInches = User.sharedModel.height!.inches
-        
         // setup profile image
         let tableHeaderViewHeight: CGFloat = 152
         let tableHeaderViewPadding: CGFloat = 32
         tableView.tableHeaderView?.frame.size.height = tableHeaderViewHeight
         let tableHeaderView = UIView()
         tableHeaderView.frame.size.height = tableHeaderViewHeight
-        let profileImageView = UIImageView(image: User.sharedModel.profileImage!.roundImage.formattedForTableHeader(Int(tableHeaderViewHeight - tableHeaderViewPadding)))
+        let profileImageView = UIImageView(image: User.sharedModel.profileImage.roundImage.formattedForTableHeader(Int(tableHeaderViewHeight - tableHeaderViewPadding)))
         profileImageView.contentMode = .ScaleAspectFill
         profileImageView.frame.size.height = tableHeaderViewHeight - tableHeaderViewPadding
         profileImageView.frame.size.width = tableHeaderViewHeight - tableHeaderViewPadding
@@ -381,7 +376,7 @@ class Profile3ViewController: UITableViewController {
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if User.sharedModel.facebookUser {
+        if User.sharedModel.facebook {
             return User.sharedModel.premium ? 3 : 4
         } else {
             return User.sharedModel.premium ? 4 : 5
@@ -389,7 +384,7 @@ class Profile3ViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if User.sharedModel.facebookUser {
+        if User.sharedModel.facebook {
             if User.sharedModel.premium {
                 return section == 0 ? 6 : 1
             } else {
@@ -406,7 +401,7 @@ class Profile3ViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cellType = ""
-        if User.sharedModel.facebookUser {
+        if User.sharedModel.facebook {
             if User.sharedModel.premium {
                 cellType = indexPath.section == 0 ? "profileCell" : indexPath.section == 1 ? "logoutCell" : "deleteAccountCell"
             } else {
@@ -431,19 +426,19 @@ class Profile3ViewController: UITableViewController {
                 cell.valueField.text = User.sharedModel.lastName
             } else if indexPath.row == TextFieldIndex.Height.hashValue {
                 cell.keyLabel.text = "Height"
-                cell.valueField.text = User.sharedModel.height?.heightString
+                cell.valueField.text = User.sharedModel.height.heightString
                 cell.valueField.inputView = heightPicker
             } else if indexPath.row == TextFieldIndex.Weight.hashValue {
                 cell.keyLabel.text = "Weight"
-                cell.valueField.text = User.sharedModel.weight?.weightString
+                cell.valueField.text = User.sharedModel.weight.weightString
                 cell.valueField.keyboardType = .NumberPad
             } else if indexPath.row == TextFieldIndex.DOB.hashValue {
                 cell.keyLabel.text = "D.O.B."
-                cell.valueField.text = User.sharedModel.dateOfBirth?.simpleString
+                cell.valueField.text = User.sharedModel.dateOfBirth.simpleString
                 cell.valueField.inputView = dateOfBirthPicker
             } else if indexPath.row == TextFieldIndex.Gender.hashValue {
                 cell.keyLabel.text = "Gender"
-                cell.valueField.text = User.sharedModel.male?.genderString
+                cell.valueField.text = User.sharedModel.male.genderString
                 cell.valueField.inputView = genderPicker
             }
             cell.valueField.addTarget(self, action: #selector(basicTextFieldDidChange(_:)), forControlEvents: .EditingChanged)
@@ -459,7 +454,7 @@ class Profile3ViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if (User.sharedModel.facebookUser && ((User.sharedModel.premium && indexPath.section == 2) || (!User.sharedModel.premium && indexPath.section == 3))) || (!User.sharedModel.facebookUser && ((User.sharedModel.premium && indexPath.section == 3) || (!User.sharedModel.premium && indexPath.section == 4))) {
+        if (User.sharedModel.facebook && ((User.sharedModel.premium && indexPath.section == 2) || (!User.sharedModel.premium && indexPath.section == 3))) || (!User.sharedModel.facebook && ((User.sharedModel.premium && indexPath.section == 3) || (!User.sharedModel.premium && indexPath.section == 4))) {
             presentViewController(deleteController, animated: true, completion: nil)
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
         }

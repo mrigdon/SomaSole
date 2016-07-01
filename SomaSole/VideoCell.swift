@@ -33,14 +33,12 @@ class VideoCell: UITableViewCell {
             User.sharedModel.favoriteVideos.removeAtIndex(User.sharedModel.favoriteVideos.indexOf(video!)!)
             User.sharedModel.favoriteVideoKeys.removeAtIndex(User.sharedModel.favoriteVideoKeys.indexOf(video!.id)!)
             FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).childByAppendingPath("favoriteVideoKeys").setValue(User.sharedModel.favoriteVideoKeys)
-            User.saveToUserDefaults()
             starButton.fillColor = UIColor.clearColor()
             video!.favorite = false
         } else {
             User.sharedModel.favoriteVideos.append(video!)
             User.sharedModel.favoriteVideoKeys.append(video!.id)
             FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).childByAppendingPath("favoriteVideoKeys").setValue(User.sharedModel.favoriteVideoKeys)
-            User.saveToUserDefaults()
             starButton.fillColor = UIColor.goldColor()
             video!.favorite = true
         }

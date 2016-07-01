@@ -42,10 +42,10 @@ class BasicsViewController: UIViewController, IndicatorInfoProvider {
         let user = User.sharedModel
         firstNameLabel.text = user.firstName
         lastNameLabel.text = user.lastName
-        heightLabel.text = stringFromHeight(user.height!)
-        weightLabel.text = "\(Int(user.weight!)) lbs"
-        genderLabel.text = user.male == true ? "Male" : "Female"
-        dateOfBirthLabel.text = stringFromDate(user.dateOfBirth!)
+//        heightLabel.text = stringFromHeight(user.height!)
+//        weightLabel.text = "\(Int(user.weight!)) lbs"
+//        genderLabel.text = user.male == true ? "Male" : "Female"
+//        dateOfBirthLabel.text = stringFromDate(user.dateOfBirth!)
         profileImageView.image = user.profileImage
     }
 
