@@ -224,7 +224,7 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate, Ind
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (searchBar.isFirstResponder() && searchBar.text != "") || selectedFilters.count > 0 {
-            return selectedFilters.count > 0 ? filteredWorkouts.count + 1 : filteredWorkouts.count
+            return filteredWorkouts.count + 1
         }
         
         return favorites ? User.sharedModel.favoriteWorkouts.count + 1 : Workout.sharedWorkouts.count + 1 // plus one for the filter cell
