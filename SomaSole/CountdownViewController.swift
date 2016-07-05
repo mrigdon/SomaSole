@@ -34,6 +34,7 @@ class CountdownViewController: UIViewController {
     }
     
     private func beginCountdown() {
+        countdownLabel.alpha = 1
         UIView.animateWithDuration(0.5, animations: {
                 self.countdownLabel.alpha = 0
             }, completion: { finished in
@@ -44,8 +45,7 @@ class CountdownViewController: UIViewController {
                     }, completion: { finished in
                         if self.timer > 0 {
                             self.beginCountdown()
-                        }
-                        else {
+                        } else {
                             self.beginWorkout()
                         }
                     }
@@ -79,6 +79,11 @@ class CountdownViewController: UIViewController {
         self.workoutImageViewHeight.constant = self.workoutImageHeight
         self.workoutImageView.image = self.workout!.image
         self.timeLabel.text = "\(self.workout!.time) minutes"
+        countdownLabel.alpha = 0
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        countdownLabel.alpha = 0
     }
 
     override func didReceiveMemoryWarning() {
