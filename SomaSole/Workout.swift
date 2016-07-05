@@ -52,7 +52,8 @@ class Circuit: NSObject {
     func loadSetupImage(completion: () -> Void) {
         // first try from realm
         let realm = try! Realm()
-        let realmImage = realm.objects(ROImage).filter("title = 'setup\(setup.imageIndex)'")
+        let length = setup.long ? "long" : "short"
+        let realmImage = realm.objects(ROImage).filter("title = 'setup\(setup.imageIndex)\(length)'")
         
         // get from s3 if not in realm, then add to realm
         if realmImage.count != 0 {
@@ -60,7 +61,7 @@ class Circuit: NSObject {
             completion()
         } else {
             let transferManager = AWSS3TransferManager.defaultS3TransferManager()
-            let downloadFileString = "setup\(setup.imageIndex).jpg"
+            let downloadFileString = "setup\(setup.imageIndex)\(length).jpg"
             let downloadingFileURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).URLByAppendingPathComponent("downloaded-" + downloadFileString)
             let downloadRequest: AWSS3TransferManagerDownloadRequest = AWSS3TransferManagerDownloadRequest()
             downloadRequest.bucket = "somasole/setups"
@@ -76,7 +77,7 @@ class Circuit: NSObject {
                     
                     // cache to realm
                     let realmImage = ROImage()
-                    realmImage.title = "setup\(self.setup.imageIndex)"
+                    realmImage.title = "setup\(self.setup.imageIndex)\(length)"
                     realmImage.data = downloadData!
                     try! realm.write {
                         realm.add(realmImage)

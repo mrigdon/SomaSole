@@ -125,7 +125,7 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
             dispatch_async(dispatch_get_main_queue(), {
                 self.movementImageView.animateWithImageData(UIImageJPEGRepresentation(self.currentCircuit!.setup.image!, 1.0)!)
             })
-            tipLabel.text = currentCircuit!.setup.long ? "Long Length" : "Short Length"
+            tipLabel.text = ""
         } else {
             // for timed workouts
             beginCircuit(0, completedWorkout: {
@@ -209,7 +209,7 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
         dispatch_async(dispatch_get_main_queue(), {
             self.movementImageView.animateWithImageData(imageData!)
         })
-        tipLabel.text = indexPath.row == 0 ? (currentCircuit!.setup.long ? "Long Length" : "Short Length") : movement!.movementDescription
+        tipLabel.text = indexPath.row == 0 ? "" : movement!.movementDescription
     }
     
     // uiviewcontroller
@@ -264,10 +264,9 @@ class InWorkoutViewController: UIViewController, UITableViewDelegate, UITableVie
         let cell = tableView.dequeueReusableCellWithIdentifier("movementCell", forIndexPath: indexPath) as! MovementCell
         
         if indexPath.row == 0 {
-            let setup = workout!.circuits[indexPath.row].setup
-            cell.nameLabel.text = "Setup"
+            cell.nameLabel.text = "Rest/Setup"
             cell.nameLabel.sizeToFit()
-            cell.timeLabel.text = setup.long ? "Long Length" : "Short Length"
+            cell.timeLabel.text = ""
             cell.timeLabel.sizeToFit()
         } else {
             let movement = self.workout!.circuits[indexPath.section].movements[indexPath.row - 1] // -1 for the setup

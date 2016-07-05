@@ -13,6 +13,7 @@ import Toucan
 import Masonry
 import SwiftString
 import Alamofire
+import ALCameraViewController
 
 extension Float {
     var heightString: String {
@@ -195,6 +196,21 @@ class Profile3ViewController: UITableViewController {
         })
     }
     
+    @objc private func tappedImage() {
+//        let cameraVC = CameraViewController(croppingEnabled: true, allowsLibraryAccess: true, completion: { image in
+//            if let image = image.0 {
+//                self.dismissViewControllerAnimated(true, completion: nil)
+//                User.sharedModel.profileImage = image
+//                FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).setValue(User.sharedModel.dict())
+//                (self.tableView.tableHeaderView?.subviews[0] as! UIImageView).image = image
+//                self.ui {
+//                    self.tableView.reloadData()
+//                }
+//            }
+//        })
+//        presentViewController(cameraVC, animated: true, completion: nil)
+    }
+    
     func startProgressHud() {
         MBProgressHUD.showHUDAddedTo(self.view, animated: true)
     }
@@ -359,6 +375,9 @@ class Profile3ViewController: UITableViewController {
         profileImageView.contentMode = .ScaleAspectFill
         profileImageView.frame.size.height = tableHeaderViewHeight - tableHeaderViewPadding
         profileImageView.frame.size.width = tableHeaderViewHeight - tableHeaderViewPadding
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tappedImage))
+        profileImageView.userInteractionEnabled = true
+        profileImageView.addGestureRecognizer(tap)
         tableHeaderView.addSubview(profileImageView)
         profileImageView.mas_makeConstraints { make in
             make.center.equalTo()(tableHeaderView)
@@ -446,6 +465,10 @@ class Profile3ViewController: UITableViewController {
             cell.valueField.addTarget(self, action: #selector(basicTextFieldDidChange(_:)), forControlEvents: .EditingChanged)
             cell.valueField.delegate = self
             textFields.append(cell.valueField)
+        }
+        
+        if cellType == "deleteAccountCell" {
+            (cell as! LabelCell).label.text = User.sharedModel.premium ? "Cancel Subscription" : "Delete Account"
         }
         
         return cell
