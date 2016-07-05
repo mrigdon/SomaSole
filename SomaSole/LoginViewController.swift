@@ -108,6 +108,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                         FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(authData.uid).observeSingleEventOfType(.Value, withBlock: { snapshot in
                             if !(snapshot.value is NSNull) {
                                 User.sharedModel = User(uid: snapshot.key, data: snapshot.value as! [String:AnyObject])
+                                NSUserDefaults.standardUserDefaults().setObject(User.sharedModel.dict(), forKey: "userData")
+                                NSUserDefaults.standardUserDefaults().setObject(User.sharedModel.uid, forKey: "uid")
+                                NSUserDefaults.standardUserDefaults().synchronize()
                                 self.performSegueWithIdentifier("toMain", sender: self)
                             } else {
                                 let fields = ["fields": "email,first_name,last_name,birthday,gender,picture.type(large)"]
@@ -149,6 +152,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             } else {
                 FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(authData.uid).observeSingleEventOfType(.Value, withBlock: { snapshot in
                     User.sharedModel = User(uid: snapshot.key, data: snapshot.value as! [String:AnyObject])
+                    NSUserDefaults.standardUserDefaults().setObject(User.sharedModel.dict(), forKey: "userData")
+                    NSUserDefaults.standardUserDefaults().setObject(User.sharedModel.uid, forKey: "uid")
+                    NSUserDefaults.standardUserDefaults().synchronize()
                     self.performSegueWithIdentifier("toMain", sender: self)
                 })
             }

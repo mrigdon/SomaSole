@@ -101,6 +101,8 @@ class ChangePasswordViewController: UITableViewController {
                     self.textFields[1].text = ""
                     self.textFields[2].text = ""
                     FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).childByAppendingPath("email").setValue(User.sharedModel.email)
+                    NSUserDefaults.standardUserDefaults().setObject(User.sharedModel.dict(), forKey: "userData")
+                    NSUserDefaults.standardUserDefaults().synchronize()
                     self.successAlert("Successfully changed email.")
                 }
             })

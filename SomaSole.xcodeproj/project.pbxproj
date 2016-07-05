@@ -43,6 +43,7 @@
 		62780C671D0BA2CF00198441 /* Profile2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62780C661D0BA2CF00198441 /* Profile2ViewController.swift */; };
 		62780C691D0BA87300198441 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62780C681D0BA87300198441 /* ProfileCell.swift */; };
 		627BC9E91CCE8B68008C8647 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627BC9E81CCE8B68008C8647 /* Workout.swift */; };
+		62915B851D2C155C0012A274 /* VideoThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62915B841D2C155C0012A274 /* VideoThumbnailView.swift */; };
 		62926A951CBC33F200960F94 /* CreateLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62926A941CBC33F200960F94 /* CreateLoginViewController.swift */; };
 		62926A971CBC887700960F94 /* BasicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62926A961CBC887700960F94 /* BasicsViewController.swift */; };
 		62926A991CBCA12200960F94 /* BasicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62926A981CBCA12200960F94 /* BasicViewController.swift */; };
@@ -133,6 +134,7 @@
 		62780C661D0BA2CF00198441 /* Profile2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile2ViewController.swift; sourceTree = "<group>"; };
 		62780C681D0BA87300198441 /* ProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		627BC9E81CCE8B68008C8647 /* Workout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
+		62915B841D2C155C0012A274 /* VideoThumbnailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoThumbnailView.swift; sourceTree = "<group>"; };
 		62926A941CBC33F200960F94 /* CreateLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateLoginViewController.swift; sourceTree = "<group>"; };
 		62926A961CBC887700960F94 /* BasicsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicsViewController.swift; sourceTree = "<group>"; };
 		62926A981CBCA12200960F94 /* BasicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicViewController.swift; sourceTree = "<group>"; };
@@ -340,6 +342,7 @@
 				62780C681D0BA87300198441 /* ProfileCell.swift */,
 				62F07E151D111A9B0028D45D /* OverlayView.swift */,
 				62A8DF141D1F1E170024D4B3 /* PasswordCell.swift */,
+				62915B841D2C155C0012A274 /* VideoThumbnailView.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -627,6 +630,7 @@
 				62ED07951D04B19900C325E5 /* WorkoutsViewController.swift in Sources */,
 				62780C671D0BA2CF00198441 /* Profile2ViewController.swift in Sources */,
 				621D22F81CB31BE600FE7581 /* TrainerRequestConfirmViewController.swift in Sources */,
+				62915B851D2C155C0012A274 /* VideoThumbnailView.swift in Sources */,
 				62D640E81CD8392100D05124 /* InWorkoutViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -49,6 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // try to get logged in user
         let userData = NSUserDefaults.standardUserDefaults().objectForKey("userData") as? Dictionary<String, AnyObject>
+        let uid = NSUserDefaults.standardUserDefaults().objectForKey("uid") as? String
         
         // if not logged in yet, send to login screen
         if userData == nil {
@@ -65,6 +66,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         FirebaseManager.sharedRootRef.authUser(User.sharedModel.email, password: User.sharedModel.password, withCompletionBlock: { error, data in })
+        User.sharedModel = User(uid: uid!, data: userData!)
     
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }

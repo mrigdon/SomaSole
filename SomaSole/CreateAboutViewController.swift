@@ -174,6 +174,9 @@ class CreateAboutViewController: UIViewController {
         // create firebase user
         if User.sharedModel.facebook {
             FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).setValue(User.sharedModel.dict())
+            NSUserDefaults.standardUserDefaults().setObject(User.sharedModel.dict(), forKey: "userData")
+            NSUserDefaults.standardUserDefaults().setObject(User.sharedModel.uid, forKey: "uid")
+            NSUserDefaults.standardUserDefaults().synchronize()
             self.performSegueWithIdentifier("toMain", sender: self)
         } else {
             FirebaseManager.sharedRootRef.createUser(User.sharedModel.email, password: User.sharedModel.password, withValueCompletionBlock: { error, result in
@@ -185,6 +188,9 @@ class CreateAboutViewController: UIViewController {
                 } else {
                     User.sharedModel.uid = result["uid"] as! String
                     FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).setValue(User.sharedModel.dict())
+                    NSUserDefaults.standardUserDefaults().setObject(User.sharedModel.dict(), forKey: "userData")
+                    NSUserDefaults.standardUserDefaults().setObject(User.sharedModel.uid, forKey: "uid")
+                    NSUserDefaults.standardUserDefaults().synchronize()
                     self.performSegueWithIdentifier("toMain", sender: self)
                 }
             })

@@ -292,6 +292,8 @@ class Profile3ViewController: UITableViewController {
                 User.sharedModel = User(uid: User.sharedModel.uid, data: oldData)
                 self.handleFirebaseError(error)
             } else {
+                NSUserDefaults.standardUserDefaults().setObject(User.sharedModel.dict(), forKey: "userData")
+                NSUserDefaults.standardUserDefaults().synchronize()
                 self.successAlert("Your info has been updated")
             }
         })
@@ -465,6 +467,7 @@ class Profile3ViewController: UITableViewController {
             FirebaseManager.sharedRootRef.unauth()
             User.sharedModel = User()
             NSUserDefaults.standardUserDefaults().setObject(nil, forKey: "userData")
+            NSUserDefaults.standardUserDefaults().setObject(nil, forKey: "uid")
             NSUserDefaults.standardUserDefaults().synchronize()
         } else if segue.identifier == "changeEmailSegue" {
             (segue.destinationViewController as! ChangePasswordViewController).email = true
