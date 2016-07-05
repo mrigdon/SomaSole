@@ -31,10 +31,6 @@ class Movement: NSObject {
         self.index = index
         self.title = data["title"]!
         self.movementDescription = data["description"]!
-        
-        let imageString = data["jpg"]!
-        let decodedData = NSData(base64EncodedString: imageString, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters)
-        image = UIImage(data: decodedData!)
     }
     
     func decodeImage(imageString: String) {

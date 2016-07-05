@@ -45,6 +45,9 @@ class MovementsViewController: UICollectionViewController, UICollectionViewDeleg
     private func loadMovements() {
         FirebaseManager.sharedRootRef.childByAppendingPath("movements").observeEventType(.ChildAdded, withBlock: { snapshot in
             let movement = Movement(index: Int(snapshot.key)!, data: snapshot.value as! [String:String])
+            movement.image = UIImage(named: movement.title)
+            let url = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("\(movement.title).gif", ofType: nil)!)
+            movement.gif = NSData(contentsOfURL: url)
             self.movements.append(movement)
             self.reloadCollectionView()
         })

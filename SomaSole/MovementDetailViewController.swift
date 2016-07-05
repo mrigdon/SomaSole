@@ -54,7 +54,6 @@ class MovementDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        startProgressHud()
         self.titleLabel.text = movement!.title
         self.descriptionLabel.text = movement!.movementDescription
         self.descriptionLabel.editable = true
@@ -62,7 +61,10 @@ class MovementDetailViewController: UIViewController {
         self.descriptionLabel.textAlignment = .Center
         self.descriptionLabel.editable = false
         navigationController!.navigationBar.tintColor = UIColor.blackColor()
-        loadGif()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        self.imageView.animateWithImageData(movement!.gif!)
     }
 
     override func didReceiveMemoryWarning() {

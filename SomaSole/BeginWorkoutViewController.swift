@@ -48,29 +48,18 @@ class BeginWorkoutViewController: UIViewController {
     func loadMovements() {
         startProgressHud()
         for circuit in workout!.circuits {
-            circuit.loadSetupImage {
-                self.setupIndex += 1
-                if self.setupIndex == self.workout!.circuits.count {
-                    self.setupsLoaded = true
-                    if self.movementsLoaded {
-                        self.stopProgressHud()
-                    }
-                }
-            }
+            let length = circuit.setup.long ? "long" : "short"
+            circuit.setup.image = UIImage(named: "setup\(circuit.setup.imageIndex)\(length)")
             
             for movement in circuit.movements {
                 FirebaseManager.sharedRootRef.childByAppendingPath("movements").childByAppendingPath(String(movement.index)).observeEventType(.Value, withBlock: { snapshot in
                     movement.title = snapshot.value["title"] as! String
                     movement.movementDescription = snapshot.value["description"] as? String
-                    movement.decodeImage(snapshot.value["jpg"] as! String)
-                    movement.loadGif {
-                        self.movementIndex += 1
-                        if self.movementIndex == self.workout!.numMovements {
-                            self.movementsLoaded = true
-                            if self.setupsLoaded {
-                                self.stopProgressHud()
-                            }
-                        }
+                    let url = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("\(movement.title).gif", ofType: nil)!)
+                    movement.gif = NSData(contentsOfURL: url)
+                    self.movementIndex += 1
+                    if self.movementIndex == self.workout!.numMovements {
+                        self.stopProgressHud()
                     }
                 })
             }
