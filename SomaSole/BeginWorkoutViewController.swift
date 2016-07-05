@@ -31,6 +31,10 @@ class BeginWorkoutViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UITextView!
     
     // methods
+    func dismiss() {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     func startProgressHud() {
         MBProgressHUD.showHUDAddedTo(self.view, animated: true)
     }

@@ -219,8 +219,10 @@ class News2ViewController: UIViewController {
             let destVC = segue.destinationViewController as! ArticleViewController
             destVC.article = articles[pageControl.currentPage]
         } else if segue.identifier == "workoutSegue" {
-            let destVC = segue.destinationViewController as! InWorkoutViewController
-            destVC.workout = workout
+            let destVC = segue.destinationViewController as! UINavigationController
+            let rootVC = destVC.viewControllers.first as! BeginWorkoutViewController
+            rootVC.workout = workout
+            rootVC.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Stop, target: rootVC, action: #selector(BeginWorkoutViewController.dismiss))
         } else if segue.identifier == "videoSegue" {
             let destVC = segue.destinationViewController as! UINavigationController
             let rootVC = destVC.viewControllers.first as! PlayVideoViewController
