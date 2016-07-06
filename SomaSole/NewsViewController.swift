@@ -12,7 +12,7 @@ import Firebase
 import MBProgressHUD
 
 extension UIColor {
-    static func somasoleColor() -> UIColor { return UIColor(red: 0.568627451, green: 0.7333333333, blue: 0.968627451, alpha: 1.0) }
+    static func somasoleColor() -> UIColor { return UIColor(red: 65/255, green: 182/255, blue: 230/255, alpha: 1.0) }
 }
 
 class NewsViewController: UIViewController, UIScrollViewDelegate, KASlideShowDelegate {

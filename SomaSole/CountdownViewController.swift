@@ -30,6 +30,7 @@ class CountdownViewController: UIViewController {
         self.countdownStarted = false
         self.timer = 3
         self.countdownLabel.text = "3"
+        self.countdownLabel.alpha = 0
         self.performSegueWithIdentifier("beginSegue", sender: self)
     }
     
@@ -93,9 +94,10 @@ class CountdownViewController: UIViewController {
     
     // navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let destVC = segue.destinationViewController as! InWorkoutViewController
+        let rootVC = segue.destinationViewController as! UINavigationController
+        let destVC = rootVC.viewControllers.first as! GuidedWorkoutViewController
         destVC.workout = workout
-        destVC.customPace = customPace
+//        destVC.customPace = customPace
     }
 
 }

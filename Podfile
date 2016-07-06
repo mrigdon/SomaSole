@@ -31,6 +31,8 @@ target 'SomaSole' do
     pod 'SwiftyJSON'
     pod 'SwiftString'
     pod 'AlamofireImage', '~> 2.0'
+    pod 'KDCircularProgress'
+    pod 'MZTimerLabel'
 
 end
 
