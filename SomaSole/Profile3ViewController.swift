@@ -172,7 +172,7 @@ class Profile3ViewController: UITableViewController {
     
     // variables
     var alertController: UIAlertController?
-    var deleteController: UIAlertController = UIAlertController(title: "Are You Sure?", message: "If you are a premium member your billing will stop immediately and your money will not be refunded. Still sure? If so, enter password to confirm.", preferredStyle: .Alert)
+    var cancelController: UIAlertController = UIAlertController(title: "Are You Sure?", message: "Your billing will stop immediately and your money will not be refunded. Still sure you want to cancel your premium subscription? If so, enter password to confirm.", preferredStyle: .Alert)
     var confirmAction = UIAlertAction()
     var textFields = [UITextField]()
     var passwordField = UITextField()
@@ -327,7 +327,7 @@ class Profile3ViewController: UITableViewController {
         alertController!.addAction(okayAction)
         
         // delete controller
-        deleteController.addTextFieldWithConfigurationHandler { textField in
+        cancelController.addTextFieldWithConfigurationHandler { textField in
             textField.secureTextEntry = true
             textField.placeholder = "Password"
             textField.addTarget(self, action: #selector(self.passwordFieldDidChange(_:)), forControlEvents: .EditingChanged)
@@ -359,8 +359,8 @@ class Profile3ViewController: UITableViewController {
             })
         })
         confirmAction.enabled = false
-        deleteController.addAction(nevermindAction)
-        deleteController.addAction(confirmAction)
+        cancelController.addAction(nevermindAction)
+        cancelController.addAction(confirmAction)
         
         // setup pickers
         setupPickers()
@@ -467,10 +467,6 @@ class Profile3ViewController: UITableViewController {
             textFields.append(cell.valueField)
         }
         
-        if cellType == "deleteAccountCell" {
-            (cell as! LabelCell).label.text = User.sharedModel.premium ? "Cancel Subscription" : "Delete Account"
-        }
-        
         return cell
     }
     
@@ -480,7 +476,7 @@ class Profile3ViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if (User.sharedModel.facebook && ((User.sharedModel.premium && indexPath.section == 2) || (!User.sharedModel.premium && indexPath.section == 3))) || (!User.sharedModel.facebook && ((User.sharedModel.premium && indexPath.section == 3) || (!User.sharedModel.premium && indexPath.section == 4))) {
-            presentViewController(deleteController, animated: true, completion: nil)
+            presentViewController(cancelController, animated: true, completion: nil)
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
         }
     }

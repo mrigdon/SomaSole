@@ -56,7 +56,7 @@ class News2ViewController: UIViewController {
     }
     
     @objc private func tappedWorkout(tap: AnyObject) {
-        loadMovements()
+        performSegueWithIdentifier("workoutSegue", sender: self)
     }
     
     @objc private func tappedVideoThumbnail(tap: UITapGestureRecognizer) {
@@ -148,41 +148,6 @@ class News2ViewController: UIViewController {
             self.addVideos(featured["videos"])
             self.addWorkout(featured["workout"])
         })
-    }
-    
-    func loadMovements() {
-        startProgressHud()
-        for circuit in workout!.circuits {
-            circuit.loadSetupImage {
-                self.setupIndex += 1
-                if self.setupIndex == self.workout!.circuits.count {
-                    self.setupsLoaded = true
-                    if self.movementsLoaded {
-                        self.stopProgressHud()
-                        self.performSegueWithIdentifier("workoutSegue", sender: self)
-                    }
-                }
-            }
-            
-            for movement in circuit.movements {
-                FirebaseManager.sharedRootRef.childByAppendingPath("movements").childByAppendingPath(String(movement.index)).observeEventType(.Value, withBlock: { snapshot in
-                    movement.title = snapshot.value["title"] as! String
-                    movement.movementDescription = snapshot.value["description"] as? String
-                    movement.decodeImage(snapshot.value["jpg"] as! String)
-                    movement.loadGif({
-                        self.movementIndex += 1
-                        if self.movementIndex == self.workout!.numMovements {
-                            self.movementIndex = 0
-                            self.movementsLoaded = true
-                            if self.setupsLoaded {
-                                self.stopProgressHud()
-                                self.performSegueWithIdentifier("workoutSegue", sender: self)
-                            }
-                        }
-                    })
-                })
-            }
-        }
     }
     
     @objc private func nextSlide() {
