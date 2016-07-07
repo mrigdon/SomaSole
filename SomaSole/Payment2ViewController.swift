@@ -76,7 +76,7 @@ class Payment2ViewController: UITableViewController {
     }
     
     private func handleStripeError(error: NSError) {
-        
+        self.errorAlert("Something went wrong, please try again later.")
     }
     
     private func createBackendChargeWithToken(token: STPToken, completion: () -> Void) {
@@ -89,8 +89,8 @@ class Payment2ViewController: UITableViewController {
         let session = NSURLSession(configuration: configuration)
         let task = session.dataTaskWithRequest(request) { data, response, error -> Void in
             self.stopProgressHud()
-            if let error = error {
-                print(error)
+            if let _ = error {
+                self.errorAlert("Something went wrong, please try again later.")
             } else if let code = (response as? NSHTTPURLResponse)?.statusCode {
                 if code == self.successStatusCode {
                     let json = try! NSJSONSerialization.JSONObjectWithData(data!, options: [])
@@ -115,8 +115,7 @@ class Payment2ViewController: UITableViewController {
         STPAPIClient.sharedClient().createTokenWithCard(card, completion: { token, error in
             if let error = error {
                 self.handleStripeError(error)
-            }
-            else {
+            } else {
                 self.createBackendChargeWithToken(token!, completion: {})
             }
         })
