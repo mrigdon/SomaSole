@@ -68,11 +68,11 @@ class GuidedWorkoutViewController: UIViewController {
         // animate image view and set tip text
         let circuit = workout!.circuits[circuitIndex]
         let movement: Movement? = movementIndex == 0 ? nil : circuit.movements[movementIndex - 1] // -1 to account for setup
-        let imageData = movementIndex == 0 ? UIImageJPEGRepresentation(circuit.setup.image!, 1.0) : movement!.gif
+        let imageData = movementIndex == 0 ? (setIndex == 0 ? UIImageJPEGRepresentation(circuit.setup.image!, 1.0) : NSData(contentsOfURL: NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("Rest.gif", ofType: nil)!))) : movement!.gif
         dispatch_async(dispatch_get_main_queue(), {
             self.gifView.animateWithImageData(imageData!)
         })
-        movementLabel.text = movementIndex == 0 ? "Setup/Rest" : movement!.title
+        movementLabel.text = movementIndex == 0 ? (setIndex == 0 ? "Setup" : "Rest") : movement!.title
         tipTextView.text = movementIndex == 0 ? (circuit.setup.long ? "Long Length" : "Short Length") : movement!.movementDescription
         
         // animate blue progress

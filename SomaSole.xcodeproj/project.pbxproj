@@ -32,6 +32,10 @@
 		623DECDC1CF692A000EA1736 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623DECDB1CF692A000EA1736 /* NewsViewController.swift */; };
 		6248AE2C1CF9510C000A2DC9 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6248AE2B1CF9510C000A2DC9 /* Article.swift */; };
 		624A94E81CB7463E00A8D21A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624A94E71CB7463E00A8D21A /* LoginViewController.swift */; };
+		624DBB761D2DF1260066ECB8 /* Rest.gif in Resources */ = {isa = PBXBuildFile; fileRef = 624DBB751D2DF1260066ECB8 /* Rest.gif */; };
+		624DBB781D2DF86B0066ECB8 /* CustomPaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624DBB771D2DF86B0066ECB8 /* CustomPaceViewController.swift */; };
+		624DBB7A1D2E02DC0066ECB8 /* Crossing High Pull.gif in Resources */ = {isa = PBXBuildFile; fileRef = 624DBB791D2E02DC0066ECB8 /* Crossing High Pull.gif */; };
+		624DBB7C1D2E037A0066ECB8 /* Clamshell with Lift (Right Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 624DBB7B1D2E037A0066ECB8 /* Clamshell with Lift (Right Leg).gif */; };
 		6259FCAE1D0388D800DF09D4 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6259FCAD1D0388D800DF09D4 /* Video.swift */; };
 		626063931CBAC4EF00B1AF3C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626063921CBAC4EF00B1AF3C /* User.swift */; };
 		626063951CBAEDEF00B1AF3C /* CreateBasicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626063941CBAEDEF00B1AF3C /* CreateBasicsViewController.swift */; };
@@ -60,10 +64,8 @@
 		626FBF7B1D2C653B005B592B /* Butt Kick Jump.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBEE21D2C653A005B592B /* Butt Kick Jump.gif */; };
 		626FBF7C1D2C653B005B592B /* Butterfly.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBEE31D2C653A005B592B /* Butterfly.gif */; };
 		626FBF7D1D2C653B005B592B /* Clamshell with Lift (Left Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBEE41D2C653A005B592B /* Clamshell with Lift (Left Leg).gif */; };
-		626FBF7E1D2C653B005B592B /* Clamshell with Lift (Right Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBEE51D2C653A005B592B /* Clamshell with Lift (Right Leg).gif */; };
 		626FBF7F1D2C653B005B592B /* Clean.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBEE61D2C653A005B592B /* Clean.gif */; };
 		626FBF801D2C653B005B592B /* Crab Walk.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBEE71D2C653A005B592B /* Crab Walk.gif */; };
-		626FBF811D2C653B005B592B /* Crossing High Pull.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBEE81D2C653A005B592B /* Crossing High Pull.gif */; };
 		626FBF821D2C653B005B592B /* Delt Row.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBEE91D2C653A005B592B /* Delt Row.gif */; };
 		626FBF831D2C653B005B592B /* Diamond Push-Up.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBEEA1D2C653A005B592B /* Diamond Push-Up.gif */; };
 		626FBF841D2C653B005B592B /* Dragonfly Crunch.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBEEB1D2C653A005B592B /* Dragonfly Crunch.gif */; };
@@ -130,7 +132,6 @@
 		626FBFC11D2C653B005B592B /* Quad Stretch with Twist (Right Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF281D2C653A005B592B /* Quad Stretch with Twist (Right Leg).gif */; };
 		626FBFC21D2C653B005B592B /* Rear Deltoid Stretch (Left Arm).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF291D2C653A005B592B /* Rear Deltoid Stretch (Left Arm).gif */; };
 		626FBFC31D2C653B005B592B /* Rear Deltoid Stretch (Right Arm).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF2A1D2C653A005B592B /* Rear Deltoid Stretch (Right Arm).gif */; };
-		626FBFC41D2C653B005B592B /* Rest.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF2B1D2C653A005B592B /* Rest.gif */; };
 		626FBFC51D2C653B005B592B /* Reverse Bear Crawl.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF2C1D2C653A005B592B /* Reverse Bear Crawl.gif */; };
 		626FBFC61D2C653B005B592B /* Reverse Crunch.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF2D1D2C653A005B592B /* Reverse Crunch.gif */; };
 		626FBFC71D2C653B005B592B /* Reverse Lunge (Left Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF2E1D2C653A005B592B /* Reverse Lunge (Left Leg).gif */; };
@@ -278,6 +279,10 @@
 		623DECDB1CF692A000EA1736 /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		6248AE2B1CF9510C000A2DC9 /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		624A94E71CB7463E00A8D21A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		624DBB751D2DF1260066ECB8 /* Rest.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Rest.gif; sourceTree = "<group>"; };
+		624DBB771D2DF86B0066ECB8 /* CustomPaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPaceViewController.swift; sourceTree = "<group>"; };
+		624DBB791D2E02DC0066ECB8 /* Crossing High Pull.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Crossing High Pull.gif"; sourceTree = "<group>"; };
+		624DBB7B1D2E037A0066ECB8 /* Clamshell with Lift (Right Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Clamshell with Lift (Right Leg).gif"; sourceTree = "<group>"; };
 		6259FCAD1D0388D800DF09D4 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		626063921CBAC4EF00B1AF3C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		626063941CBAEDEF00B1AF3C /* CreateBasicsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateBasicsViewController.swift; sourceTree = "<group>"; };
@@ -306,10 +311,8 @@
 		626FBEE21D2C653A005B592B /* Butt Kick Jump.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Butt Kick Jump.gif"; sourceTree = "<group>"; };
 		626FBEE31D2C653A005B592B /* Butterfly.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Butterfly.gif; sourceTree = "<group>"; };
 		626FBEE41D2C653A005B592B /* Clamshell with Lift (Left Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Clamshell with Lift (Left Leg).gif"; sourceTree = "<group>"; };
-		626FBEE51D2C653A005B592B /* Clamshell with Lift (Right Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Clamshell with Lift (Right Leg).gif"; sourceTree = "<group>"; };
 		626FBEE61D2C653A005B592B /* Clean.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Clean.gif; sourceTree = "<group>"; };
 		626FBEE71D2C653A005B592B /* Crab Walk.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Crab Walk.gif"; sourceTree = "<group>"; };
-		626FBEE81D2C653A005B592B /* Crossing High Pull.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Crossing High Pull.gif"; sourceTree = "<group>"; };
 		626FBEE91D2C653A005B592B /* Delt Row.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Delt Row.gif"; sourceTree = "<group>"; };
 		626FBEEA1D2C653A005B592B /* Diamond Push-Up.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Diamond Push-Up.gif"; sourceTree = "<group>"; };
 		626FBEEB1D2C653A005B592B /* Dragonfly Crunch.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Dragonfly Crunch.gif"; sourceTree = "<group>"; };
@@ -376,7 +379,6 @@
 		626FBF281D2C653A005B592B /* Quad Stretch with Twist (Right Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Quad Stretch with Twist (Right Leg).gif"; sourceTree = "<group>"; };
 		626FBF291D2C653A005B592B /* Rear Deltoid Stretch (Left Arm).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Rear Deltoid Stretch (Left Arm).gif"; sourceTree = "<group>"; };
 		626FBF2A1D2C653A005B592B /* Rear Deltoid Stretch (Right Arm).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Rear Deltoid Stretch (Right Arm).gif"; sourceTree = "<group>"; };
-		626FBF2B1D2C653A005B592B /* Rest.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Rest.gif; sourceTree = "<group>"; };
 		626FBF2C1D2C653A005B592B /* Reverse Bear Crawl.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Reverse Bear Crawl.gif"; sourceTree = "<group>"; };
 		626FBF2D1D2C653A005B592B /* Reverse Crunch.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Reverse Crunch.gif"; sourceTree = "<group>"; };
 		626FBF2E1D2C653A005B592B /* Reverse Lunge (Left Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Reverse Lunge (Left Leg).gif"; sourceTree = "<group>"; };
@@ -663,10 +665,10 @@
 				626FBEE21D2C653A005B592B /* Butt Kick Jump.gif */,
 				626FBEE31D2C653A005B592B /* Butterfly.gif */,
 				626FBEE41D2C653A005B592B /* Clamshell with Lift (Left Leg).gif */,
-				626FBEE51D2C653A005B592B /* Clamshell with Lift (Right Leg).gif */,
+				624DBB7B1D2E037A0066ECB8 /* Clamshell with Lift (Right Leg).gif */,
 				626FBEE61D2C653A005B592B /* Clean.gif */,
 				626FBEE71D2C653A005B592B /* Crab Walk.gif */,
-				626FBEE81D2C653A005B592B /* Crossing High Pull.gif */,
+				624DBB791D2E02DC0066ECB8 /* Crossing High Pull.gif */,
 				626FBEE91D2C653A005B592B /* Delt Row.gif */,
 				626FBEEA1D2C653A005B592B /* Diamond Push-Up.gif */,
 				626FBEEB1D2C653A005B592B /* Dragonfly Crunch.gif */,
@@ -733,7 +735,7 @@
 				626FBF281D2C653A005B592B /* Quad Stretch with Twist (Right Leg).gif */,
 				626FBF291D2C653A005B592B /* Rear Deltoid Stretch (Left Arm).gif */,
 				626FBF2A1D2C653A005B592B /* Rear Deltoid Stretch (Right Arm).gif */,
-				626FBF2B1D2C653A005B592B /* Rest.gif */,
+				624DBB751D2DF1260066ECB8 /* Rest.gif */,
 				626FBF2C1D2C653A005B592B /* Reverse Bear Crawl.gif */,
 				626FBF2D1D2C653A005B592B /* Reverse Crunch.gif */,
 				626FBF2E1D2C653A005B592B /* Reverse Lunge (Left Leg).gif */,
@@ -831,6 +833,7 @@
 				62D640E71CD8392100D05124 /* InWorkoutViewController.swift */,
 				62FE88031CE69BD700A9BB15 /* FinishedWorkoutViewController.swift */,
 				626FC0031D2C8950005B592B /* GuidedWorkoutViewController.swift */,
+				624DBB771D2DF86B0066ECB8 /* CustomPaceViewController.swift */,
 			);
 			name = Workouts;
 			sourceTree = "<group>";
@@ -974,6 +977,7 @@
 			files = (
 				626FBFBE1D2C653B005B592B /* Punch.gif in Resources */,
 				626FBF6F1D2C653B005B592B /* Anchored Mountain Climbers.gif in Resources */,
+				624DBB7A1D2E02DC0066ECB8 /* Crossing High Pull.gif in Resources */,
 				626FBFF81D2C653B005B592B /* Tricep Stretch (Left Arm).gif in Resources */,
 				626FBFB81D2C653B005B592B /* Plank Delt Row.gif in Resources */,
 				626FBFE11D2C653B005B592B /* Stacked Shuffle (Left Foot Up).gif in Resources */,
@@ -986,6 +990,7 @@
 				626FBF921D2C653B005B592B /* Groin Stretch (Right Leg).gif in Resources */,
 				626FBFF61D2C653B005B592B /* T-Raise.gif in Resources */,
 				626FBFAC1D2C653B005B592B /* Middle Hamstring Stretch (Left Leg).gif in Resources */,
+				624DBB7C1D2E037A0066ECB8 /* Clamshell with Lift (Right Leg).gif in Resources */,
 				626FBFDF1D2C653B005B592B /* Squat Lift.gif in Resources */,
 				626FBF7D1D2C653B005B592B /* Clamshell with Lift (Left Leg).gif in Resources */,
 				626FBFC51D2C653B005B592B /* Reverse Bear Crawl.gif in Resources */,
@@ -1035,10 +1040,10 @@
 				626FBFED1D2C653B005B592B /* Standing Side Stretch (Left Side).gif in Resources */,
 				626FBFC21D2C653B005B592B /* Rear Deltoid Stretch (Left Arm).gif in Resources */,
 				626FBFA11D2C653B005B592B /* Lateral Hamstring Stretch (Right Leg).gif in Resources */,
-				626FBFC41D2C653B005B592B /* Rest.gif in Resources */,
 				626FBF771D2C653B005B592B /* Big Circle (Clockwise).gif in Resources */,
 				626FBFB51D2C653B005B592B /* Pec Stretch (Double Arm).gif in Resources */,
 				626FBF701D2C653B005B592B /* Anchored Pull-In.gif in Resources */,
+				624DBB761D2DF1260066ECB8 /* Rest.gif in Resources */,
 				626FBFDC1D2C653B005B592B /* Split Squat (Left Leg Up).gif in Resources */,
 				626FBF911D2C653B005B592B /* Groin Stretch (Left Leg).gif in Resources */,
 				626FBFE71D2C653B005B592B /* Standing Kick-Out (Left Arm).gif in Resources */,
@@ -1057,7 +1062,6 @@
 				626FBFDA1D2C653B005B592B /* Side Plank Reach Under (Right Side).gif in Resources */,
 				626FBF961D2C653B005B592B /* Hip Extension - Bridge.gif in Resources */,
 				626FBFA21D2C653B005B592B /* Leg Circle (Clockwise).gif in Resources */,
-				626FBF811D2C653B005B592B /* Crossing High Pull.gif in Resources */,
 				626FBFD61D2C653B005B592B /* Side Plank Hip Dip (Right Side).gif in Resources */,
 				626FC0021D2C653B005B592B /* Y-Raise.gif in Resources */,
 				626FBFB31D2C653B005B592B /* Outer Hip Stretch (Left Leg).gif in Resources */,
@@ -1104,7 +1108,6 @@
 				626FBFEF1D2C653B005B592B /* Standking Kick-Out (Right Arm).gif in Resources */,
 				626FBFB91D2C653B005B592B /* Plank Jack.gif in Resources */,
 				626FBF781D2C653B005B592B /* Big Circle (Counter-Clockwise).gif in Resources */,
-				626FBF7E1D2C653B005B592B /* Clamshell with Lift (Right Leg).gif in Resources */,
 				626FBFE01D2C653B005B592B /* Squat Side Punch.gif in Resources */,
 				626FBF851D2C653B005B592B /* Flutter Kick.gif in Resources */,
 				626FBFCA1D2C653B005B592B /* Russian Twists.gif in Resources */,
@@ -1209,6 +1212,7 @@
 				6235212B1CFA00E500B3F1BF /* ROGif.swift in Sources */,
 				626063931CBAC4EF00B1AF3C /* User.swift in Sources */,
 				62BBCED31D18E09700E01DE9 /* News2ViewController.swift in Sources */,
+				624DBB781D2DF86B0066ECB8 /* CustomPaceViewController.swift in Sources */,
 				62FE88071CE6AC0800A9BB15 /* MovementsViewController.swift in Sources */,
 				6218597A1D07D6C500CEC45D /* PaymentViewController.swift in Sources */,
 				624A94E81CB7463E00A8D21A /* LoginViewController.swift in Sources */,

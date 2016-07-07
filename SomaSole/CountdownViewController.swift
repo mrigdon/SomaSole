@@ -31,7 +31,8 @@ class CountdownViewController: UIViewController {
         self.timer = 3
         self.countdownLabel.text = "3"
         self.countdownLabel.alpha = 0
-        self.performSegueWithIdentifier("beginSegue", sender: self)
+        let segueID = customPace ? "customSegue" : "guidedSegue"
+        self.performSegueWithIdentifier(segueID, sender: self)
     }
     
     private func beginCountdown() {
@@ -95,9 +96,11 @@ class CountdownViewController: UIViewController {
     // navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let rootVC = segue.destinationViewController as! UINavigationController
-        let destVC = rootVC.viewControllers.first as! GuidedWorkoutViewController
-        destVC.workout = workout
-//        destVC.customPace = customPace
+        if segue.identifier == "guidedSegue" {
+            (rootVC.viewControllers.first as! GuidedWorkoutViewController).workout = workout
+        } else {
+            (rootVC.viewControllers.first as! CustomPaceViewController).workout = workout
+        }
     }
 
 }
