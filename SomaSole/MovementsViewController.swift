@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import MBProgressHUD
 
 class MovementsViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate {
     
@@ -24,6 +25,16 @@ class MovementsViewController: UICollectionViewController, UICollectionViewDeleg
     var gifStrings = [(String, String)]()
     
     // methods
+    private func startProgressHud() {
+        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+    }
+    
+    private func stopProgressHud() {
+        dispatch_async(dispatch_get_main_queue(), {
+            MBProgressHUD.hideHUDForView(self.view, animated: true)
+        })
+    }
+    
     private func photoForMovement(movement: Movement) -> UIImage? {
         return UIImage(named: "profile")!
     }
@@ -43,12 +54,16 @@ class MovementsViewController: UICollectionViewController, UICollectionViewDeleg
     }
     
     private func loadMovements() {
+        startProgressHud()
         FirebaseManager.sharedRootRef.childByAppendingPath("movements").observeEventType(.ChildAdded, withBlock: { snapshot in
+            self.stopProgressHud()
             let movement = Movement(index: Int(snapshot.key)!, data: snapshot.value as! [String:String])
             movement.image = UIImage(named: movement.title)
             let url = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("\(movement.title).gif", ofType: nil)!)
             movement.gif = NSData(contentsOfURL: url)
-            self.movements.append(movement)
+            if movement.title != "Rest" {
+                self.movements.append(movement)
+            }
             self.reloadCollectionView()
         })
     }
