@@ -28,7 +28,12 @@ class PlayVideoViewController: UIViewController {
         super.viewDidLoad()
         
         if let video = video {
-            playerView.loadWithVideoId(video.id)
+            let playerVars = [
+                "modestbranding": 1,
+                "showinfo": 0,
+                "rel": 0
+            ]
+            playerView.loadWithVideoId(video.id, playerVars: playerVars)
             nameLabel.text = video.title
             timeLabel.text = "\(video.time) minutes"
             descriptionLabel.text = video.videoDescription

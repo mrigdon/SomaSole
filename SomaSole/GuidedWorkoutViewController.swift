@@ -165,6 +165,9 @@ class GuidedWorkoutViewController: UIViewController {
         tipTextView.editable = false
         tipTextView.alpha = 0
         tipTextView.textAlignment = .Center
+        
+        movementLabel.numberOfLines = 0
+        movementLabel.sizeToFit()
     }
     
     override func viewDidAppear(animated: Bool) {

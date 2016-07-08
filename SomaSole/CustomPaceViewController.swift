@@ -124,6 +124,9 @@ class CustomPaceViewController: UIViewController {
         tipTextView.alpha = 0
         tipTextView.textAlignment = .Center
         
+        movementLabel.numberOfLines = 0
+        movementLabel.sizeToFit()
+        
         var image = UIImage(named: "fast_forward")?.imageWithRenderingMode(.AlwaysTemplate)
         nextButton.setImage(image, forState: .Normal)
         nextButton.tintColor = UIColor.somasoleColor()
