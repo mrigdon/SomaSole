@@ -10,6 +10,7 @@ import UIKit
 import KDCircularProgress
 import Gifu
 import MZTimerLabel
+import SwiftyMarkdown
 
 extension UIColor {
     static func progressGrayColor() -> UIColor {
@@ -103,7 +104,8 @@ class GuidedWorkoutViewController: UIViewController {
             return
         }
         
-        setLabel.text = "Circuit \(circuitIndex+1)/\(workout!.circuits.count) Set \(setIndex+1)/\(workout!.circuits[circuitIndex].numSets)"
+        let mdText = SwiftyMarkdown(string: "**Circuit:** \(circuitIndex+1)/\(workout!.circuits.count)   **Set:** \(setIndex+1)/\(workout!.circuits[circuitIndex].numSets)")
+        setLabel.attributedText = mdText.attributedString()
         
         beginMovementInSet(circuitIndex, setIndex: setIndex, movementIndex: 0, completedSet: {
             self.beginSetInCircuit(circuitIndex, setIndex: setIndex+1, completedCircuit: completedCircuit)
