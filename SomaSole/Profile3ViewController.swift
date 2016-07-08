@@ -347,11 +347,13 @@ class Profile3ViewController: UITableViewController {
                     if User.sharedModel.premium {
                         Alamofire.request(.POST, "https://somasole-payments.herokuapp.com/delete_customer/\(User.sharedModel.stripeID)").responseJSON { response in
                             if let _ = response.result.value {
+                                User.sharedModel = User()
                                 self.stopProgressHud()
                                 self.performSegueWithIdentifier("deleteSegue", sender: self)
                             }
                         }
                     } else {
+                        User.sharedModel = User()
                         self.stopProgressHud()
                         self.performSegueWithIdentifier("deleteSegue", sender: self)
                     }
@@ -383,6 +385,26 @@ class Profile3ViewController: UITableViewController {
             make.center.equalTo()(tableHeaderView)
         }
         tableView.tableHeaderView = tableHeaderView
+        
+        User.sharedModel.downloadProfileImage({
+            let tableHeaderViewHeight: CGFloat = 152
+            let tableHeaderViewPadding: CGFloat = 32
+            self.tableView.tableHeaderView?.frame.size.height = tableHeaderViewHeight
+            let tableHeaderView = UIView()
+            tableHeaderView.frame.size.height = tableHeaderViewHeight
+            let profileImageView = UIImageView(image: User.sharedModel.profileImage.roundImage.formattedForTableHeader(Int(tableHeaderViewHeight - tableHeaderViewPadding)))
+            profileImageView.contentMode = .ScaleAspectFill
+            profileImageView.frame.size.height = tableHeaderViewHeight - tableHeaderViewPadding
+            profileImageView.frame.size.width = tableHeaderViewHeight - tableHeaderViewPadding
+            let tap = UITapGestureRecognizer(target: self, action: #selector(self.tappedImage))
+            profileImageView.userInteractionEnabled = true
+            profileImageView.addGestureRecognizer(tap)
+            tableHeaderView.addSubview(profileImageView)
+            profileImageView.mas_makeConstraints { make in
+                make.center.equalTo()(tableHeaderView)
+            }
+            self.tableView.tableHeaderView = tableHeaderView
+        })
     }
     
     override func viewDidAppear(animated: Bool) {

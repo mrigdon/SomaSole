@@ -248,7 +248,9 @@ class CreateBasicsViewController: UIViewController, UITextFieldDelegate, UIPicke
         User.sharedModel.weight = Float(weightField.text!)!
         User.sharedModel.male = genderField.text!.maleValue
         User.sharedModel.dateOfBirth = dateOfBirthField.text!.dateOfBirthValue
-        User.sharedModel.profileImage = profilePictureView.image!
+        if let image = profilePictureView.image {
+            User.sharedModel.profileImage = image
+        }
     }
 
 }

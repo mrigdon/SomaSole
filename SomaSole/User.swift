@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AWSS3
+import RealmSwift
 
 extension String {
     var base64Image: UIImage {
@@ -94,7 +96,6 @@ class User: NSObject {
         self.weight = data["weight"] as! Float
         self.male = data["male"] as! Bool
         self.dateOfBirth = (data["dateOfBirth"] as! String).dateOfBirthValue
-        self.profileImage = (data["profileImageString"] as! String).base64Image
         self.facebook = data["facebook"] as! Bool
         self.premium = data["premium"] as! Bool
         self.stripeID = data["stripeID"] as! String
@@ -124,7 +125,6 @@ class User: NSObject {
             "weight": weight,
             "male": male,
             "dateOfBirth": dateOfBirth.simpleString,
-            "profileImageString": profileImage.base64String,
             "facebook": facebook,
             "premium": premium,
             "stripeID": stripeID,
@@ -136,6 +136,66 @@ class User: NSObject {
         ]
         
         return data
+    }
+    
+    func uploadProfileImage() {
+        let imageData = UIImageJPEGRepresentation(profileImage, 0.6)
+        let fileURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).URLByAppendingPathComponent("temp")
+        imageData?.writeToURL(fileURL, atomically: true)
+        
+        let uploadRequest = AWSS3TransferManagerUploadRequest()
+        uploadRequest.bucket = "somasole/profile_pictures"
+        uploadRequest.key = uid
+        uploadRequest.body = fileURL
+        AWSS3TransferManager.defaultS3TransferManager().upload(uploadRequest).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { task -> AnyObject? in
+            if let error = task.error {
+                print("error uploading image: \(error.code)")
+            } else {
+                print("successfully uploaded image")
+            }
+            
+            return nil
+        })
+    }
+    
+    func downloadProfileImage(completion: () -> Void) {
+        // first try from realm
+        let realm = try! Realm()
+        let realmImage = realm.objects(ROImage).filter("title = '\(uid)'")
+        
+        // get from s3 if not in realm, then add to realm
+        if realmImage.count != 0 {
+            profileImage = UIImage(data: realmImage[0].data)!
+            completion()
+        } else {
+            let transferManager = AWSS3TransferManager.defaultS3TransferManager()
+            let downloadFileString = "\(uid)"
+            let downloadingFileURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).URLByAppendingPathComponent("downloaded-" + downloadFileString)
+            let downloadRequest = AWSS3TransferManagerDownloadRequest()
+            downloadRequest.bucket = "somasole/profile_pictures"
+            downloadRequest.key = downloadFileString
+            downloadRequest.downloadingFileURL = downloadingFileURL
+            
+            // download from s3
+            transferManager.download(downloadRequest).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { task -> AnyObject? in
+                
+                if task.error == nil {
+                    let imageData = NSData(contentsOfURL: downloadingFileURL)
+                    self.profileImage = UIImage(data: imageData!)!
+                    
+                    // cache to realm
+                    let rImage = ROImage()
+                    rImage.title = self.uid
+                    rImage.data = imageData!
+                    try! realm.write {
+                        realm.add(rImage)
+                    }
+                }
+                completion()
+                
+                return nil
+            })
+        }
     }
 
 }

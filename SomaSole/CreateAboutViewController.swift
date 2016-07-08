@@ -177,6 +177,7 @@ class CreateAboutViewController: UIViewController {
             NSUserDefaults.standardUserDefaults().setObject(User.sharedModel.dict(), forKey: "userData")
             NSUserDefaults.standardUserDefaults().setObject(User.sharedModel.uid, forKey: "uid")
             NSUserDefaults.standardUserDefaults().synchronize()
+            User.sharedModel.uploadProfileImage()
             self.performSegueWithIdentifier("toMain", sender: self)
         } else {
             FirebaseManager.sharedRootRef.createUser(User.sharedModel.email, password: User.sharedModel.password, withValueCompletionBlock: { error, result in
@@ -191,6 +192,7 @@ class CreateAboutViewController: UIViewController {
                     NSUserDefaults.standardUserDefaults().setObject(User.sharedModel.dict(), forKey: "userData")
                     NSUserDefaults.standardUserDefaults().setObject(User.sharedModel.uid, forKey: "uid")
                     NSUserDefaults.standardUserDefaults().synchronize()
+                    User.sharedModel.uploadProfileImage()
                     self.performSegueWithIdentifier("toMain", sender: self)
                 }
             })
