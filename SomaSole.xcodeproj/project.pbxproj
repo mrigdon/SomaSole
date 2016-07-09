@@ -882,7 +882,7 @@
 				TargetAttributes = {
 					621D22A81CB2DC3E00FE7581 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = L58EF955F5;
+						DevelopmentTeam = NES42PHG68;
 					};
 					621D22BE1CB2DC3F00FE7581 = {
 						CreatedOnToolsVersion = 7.2;
@@ -1334,11 +1334,15 @@
 			baseConfigurationReference = 442FE767159F91E46B63C384 /* Pods-SomaSole.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Matthew Rigdon (NES42PHG68)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Matthew Rigdon (NES42PHG68)";
 				INFOPLIST_FILE = SomaSole/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.SomaSole.SomaSole;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SomaSole.SomaSole.XXX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "b6586aea-a71a-4060-b0cf-7e325beb14f2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1347,11 +1351,15 @@
 			baseConfigurationReference = 6DFBD11EA5E8CEC480F43C0B /* Pods-SomaSole.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Matthew Rigdon (NES42PHG68)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Matthew Rigdon (NES42PHG68)";
 				INFOPLIST_FILE = SomaSole/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.SomaSole.SomaSole;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SomaSole.SomaSole.XXX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "b6586aea-a71a-4060-b0cf-7e325beb14f2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
