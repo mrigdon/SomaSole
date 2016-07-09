@@ -74,7 +74,9 @@ class AllVideosViewController: UITableViewController, IndicatorInfoProvider, UIS
             let video = Video(id: snapshot.key, title: snapshot.value as! String)
             video.free = true
             if User.sharedModel.favoriteVideoKeys.contains(video.id) {
-                User.sharedModel.favoriteVideos.append(video)
+                if !User.sharedModel.favoriteVideos.contains(video) {
+                    User.sharedModel.favoriteVideos.append(video)
+                }
             }
             
             Alamofire.request(.GET, "http://img.youtube.com/vi/\(video.id)/mqdefault.jpg").responseImage(completionHandler: { response in
@@ -93,7 +95,9 @@ class AllVideosViewController: UITableViewController, IndicatorInfoProvider, UIS
             let video = Video(id: snapshot.key, title: snapshot.value as! String)
             video.free = false
             if User.sharedModel.favoriteVideoKeys.contains(video.id) {
-                User.sharedModel.favoriteVideos.append(video)
+                if !User.sharedModel.favoriteVideos.contains(video) {
+                    User.sharedModel.favoriteVideos.append(video)
+                }
             }
             
             Alamofire.request(.GET, "http://img.youtube.com/vi/\(video.id)/0.jpg").responseImage(completionHandler: { response in
@@ -168,6 +172,7 @@ class AllVideosViewController: UITableViewController, IndicatorInfoProvider, UIS
         filledStarButton?.tintColor = UIColor.goldColor()
         navigationItem.rightBarButtonItem = unfilledStarButton
 
+        videos = [Video]()
         startProgressHud()
         loadPublic()
         loadPrivate()

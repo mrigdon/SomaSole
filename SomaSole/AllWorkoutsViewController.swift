@@ -187,6 +187,7 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate, Ind
         navigationItem.rightBarButtonItem = unfilledStarButton
         
         // begin load of all workouts
+        Workout.sharedWorkouts = [Workout]()
         startProgressHud()
         loadPublicWorkouts()
         loadPrivateWorkouts()

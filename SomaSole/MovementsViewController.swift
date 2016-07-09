@@ -76,6 +76,7 @@ class MovementsViewController: UICollectionViewController, UICollectionViewDeleg
         // self.clearsSelectionOnViewWillAppear = false
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
         
+        movements = [Movement]()
         loadMovements()
         
         // set up search controller
