@@ -16,6 +16,8 @@ extension UIColor {
     static func progressGrayColor() -> UIColor {
         return UIColor(red: 220/255, green: 222/255, blue: 224/255, alpha: 1.0)
     }
+    
+    static func somasoleColor() -> UIColor { return UIColor(red: 65/255, green: 182/255, blue: 230/255, alpha: 1.0) }
 }
 
 class GuidedWorkoutViewController: UIViewController {
