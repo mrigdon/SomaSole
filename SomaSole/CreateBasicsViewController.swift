@@ -127,14 +127,16 @@ class CreateBasicsViewController: UIViewController, UITextFieldDelegate, UIPicke
             self.dismissViewControllerAnimated(true, completion: nil)
             
             // set image view
-            self.profileImage = image.0
-            self.profilePictureView.image = self.profileImage
-            
-            // make select image button transparent
-            self.hideImageButton()
-            
-            // set sharedUser image
-            User.sharedModel.profileImage = image.0!
+            if let image = image.0 {
+                self.profileImage = image
+                self.profilePictureView.image = self.profileImage
+                
+                // make select image button transparent
+                self.hideImageButton()
+                
+                // set sharedUser image
+                User.sharedModel.profileImage = image
+            }
         })
         
         presentViewController(cameraViewController, animated: true, completion: nil)
