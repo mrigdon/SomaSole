@@ -59,8 +59,6 @@ class MovementsViewController: UICollectionViewController, UICollectionViewDeleg
             self.stopProgressHud()
             let movement = Movement(index: Int(snapshot.key)!, data: snapshot.value as! [String:String])
             movement.image = UIImage(named: movement.title)
-            let url = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("\(movement.title).gif", ofType: nil)!)
-            movement.gif = NSData(contentsOfURL: url)
             if movement.title != "Rest" {
                 self.movements.append(movement)
             }

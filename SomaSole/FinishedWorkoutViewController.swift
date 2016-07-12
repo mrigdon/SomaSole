@@ -22,17 +22,6 @@ class FinishedWorkoutViewController: UIViewController {
     @IBOutlet weak var workoutImageViewHeight: NSLayoutConstraint!
     @IBOutlet weak var shareButton: FBSDKShareButton!
     
-    // actions
-    @IBAction func tappedShare(sender: AnyObject) {
-        
-    }
-    
-    @IBAction func tappedBackToWorkouts(sender: AnyObject) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let mainVC = storyboard.instantiateViewControllerWithIdentifier("MainViewController")
-        presentViewController(mainVC, animated: true, completion: nil)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -50,6 +39,10 @@ class FinishedWorkoutViewController: UIViewController {
         return .LightContent
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let destVC = segue.destinationViewController as! UITabBarController
+        destVC.selectedIndex = 1
+    }
 
     /*
     // MARK: - Navigation

@@ -18,6 +18,8 @@ class MovementDetailViewController: UIViewController {
     
     // variables
     var movement: Movement?
+    var url = NSURL()
+    var data = NSData()
 
     // outlets
     @IBOutlet weak var titleLabel: UILabel!
@@ -32,6 +34,12 @@ class MovementDetailViewController: UIViewController {
     func stopProgressHud() {
         dispatch_async(dispatch_get_main_queue(), {
             MBProgressHUD.hideHUDForView(self.view, animated: true)
+        })
+    }
+    
+    private func ui(closure: () -> Void) {
+        dispatch_async(dispatch_get_main_queue(), {
+            closure()
         })
     }
     
@@ -61,10 +69,16 @@ class MovementDetailViewController: UIViewController {
         self.descriptionLabel.textAlignment = .Center
         self.descriptionLabel.editable = false
         navigationController!.navigationBar.tintColor = UIColor.blackColor()
+        startProgressHud()
     }
     
     override func viewDidAppear(animated: Bool) {
-        self.imageView.animateWithImageData(movement!.gif!)
+        url = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("\(movement!.title).gif", ofType: nil)!)
+        data = NSData(contentsOfURL: self.url)!
+        ui {
+            self.imageView.animateWithImageData(self.data)
+        }
+        stopProgressHud()
     }
 
     override func didReceiveMemoryWarning() {
