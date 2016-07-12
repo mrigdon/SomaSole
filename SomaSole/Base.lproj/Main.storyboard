@@ -1574,12 +1574,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uJV-9S-6o6">
-                                <rect key="frame" x="20" y="200" width="560" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="te9-5p-gLn">
                                 <rect key="frame" x="208" y="251" width="184" height="30"/>
                                 <constraints>
@@ -1629,21 +1623,18 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="BrU-14-Gls" firstAttribute="centerX" secondItem="D1a-y9-hTv" secondAttribute="centerX" id="5kN-of-9Eg"/>
-                            <constraint firstItem="uJV-9S-6o6" firstAttribute="leading" secondItem="D1a-y9-hTv" secondAttribute="leadingMargin" id="7is-L4-Q0r"/>
                             <constraint firstItem="te9-5p-gLn" firstAttribute="centerX" secondItem="D1a-y9-hTv" secondAttribute="centerX" id="8Tt-0q-MSg"/>
                             <constraint firstItem="TFU-KY-a6f" firstAttribute="top" secondItem="BrU-14-Gls" secondAttribute="bottom" constant="42" id="CcB-H1-73V"/>
                             <constraint firstItem="RoP-4q-Qm6" firstAttribute="leading" secondItem="D1a-y9-hTv" secondAttribute="leadingMargin" constant="-20" id="DvV-E0-cV3"/>
                             <constraint firstItem="TFU-KY-a6f" firstAttribute="leading" secondItem="D1a-y9-hTv" secondAttribute="leadingMargin" id="GKl-d1-Flx"/>
-                            <constraint firstItem="uJV-9S-6o6" firstAttribute="trailing" secondItem="D1a-y9-hTv" secondAttribute="trailingMargin" id="Gge-JG-E5o"/>
+                            <constraint firstItem="te9-5p-gLn" firstAttribute="top" secondItem="RoP-4q-Qm6" secondAttribute="bottom" constant="59" id="GlL-Js-tpq"/>
                             <constraint firstItem="asD-ec-BOE" firstAttribute="leading" secondItem="D1a-y9-hTv" secondAttribute="leadingMargin" id="NKA-ej-sfA"/>
                             <constraint firstItem="asD-ec-BOE" firstAttribute="top" secondItem="te9-5p-gLn" secondAttribute="bottom" constant="8" id="OQg-tY-kGH"/>
                             <constraint firstItem="asD-ec-BOE" firstAttribute="trailing" secondItem="D1a-y9-hTv" secondAttribute="trailingMargin" id="TkY-1f-Zcj"/>
                             <constraint firstItem="BrU-14-Gls" firstAttribute="top" secondItem="asD-ec-BOE" secondAttribute="bottom" constant="8" id="cHL-vB-nUU"/>
                             <constraint firstItem="RoP-4q-Qm6" firstAttribute="top" secondItem="cHn-VK-SgG" secondAttribute="bottom" id="cdh-5Q-Z7t"/>
                             <constraint firstItem="TFU-KY-a6f" firstAttribute="trailing" secondItem="D1a-y9-hTv" secondAttribute="trailingMargin" id="j2n-Hc-Kyk"/>
-                            <constraint firstItem="te9-5p-gLn" firstAttribute="top" secondItem="uJV-9S-6o6" secondAttribute="bottom" constant="30" id="nVx-qA-OHI"/>
                             <constraint firstAttribute="trailingMargin" secondItem="RoP-4q-Qm6" secondAttribute="trailing" constant="-20" id="nwH-ed-juo"/>
-                            <constraint firstItem="uJV-9S-6o6" firstAttribute="top" secondItem="RoP-4q-Qm6" secondAttribute="bottom" constant="8" id="zK1-WI-BUu"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="RyH-kQ-aE4">
@@ -1667,7 +1658,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="countdownLabel" destination="TFU-KY-a6f" id="kc5-83-bIF"/>
-                        <outlet property="timeLabel" destination="uJV-9S-6o6" id="VrK-Us-118"/>
                         <outlet property="workoutImageView" destination="RoP-4q-Qm6" id="TgW-ae-9dX"/>
                         <outlet property="workoutImageViewHeight" destination="mYI-uP-NuX" id="2x3-FK-0Bc"/>
                         <segue destination="9bV-OA-jzX" kind="presentation" identifier="guidedSegue" id="N6p-W5-bsu"/>
