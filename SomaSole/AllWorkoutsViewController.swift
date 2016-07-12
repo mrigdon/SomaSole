@@ -39,6 +39,7 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate, Ind
     let searchBar = UISearchBar()
     
     // variables
+    var workouts = [Workout]()
     var filteredWorkouts = [Workout]()
     var selectedFilters = [WorkoutTag]()
     var unfilledStarButton: UIBarButtonItem?
@@ -65,7 +66,7 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate, Ind
     func filterContent(searchText: String) {
         // filter for tags
         var tagFilteredWorkouts = [Workout]()
-        for workout in favorites ? User.sharedModel.favoriteWorkouts : Workout.sharedWorkouts {
+        for workout in favorites ? User.sharedModel.favoriteWorkouts : workouts {
             // if workout.tags contains all of selected filters
             var qualifies = true
             for filter in selectedFilters {
@@ -84,8 +85,7 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate, Ind
             filteredWorkouts = tagFilteredWorkouts.filter { workout in
                 return workout.name.lowercaseString.containsString(searchText.lowercaseString)
             }
-        }
-        else {
+        } else {
             filteredWorkouts = tagFilteredWorkouts
         }
         
@@ -97,7 +97,7 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate, Ind
             // load workouts
             let workout = Workout(name: snapshot.key, data: snapshot.value as! [String : AnyObject])
             workout.free = true
-            Workout.sharedWorkouts.insert(workout, atIndex: 0)
+            self.workouts.insert(workout, atIndex: 0)
             if User.sharedModel.favoriteWorkoutKeys.contains(workout.name) {
                 User.sharedModel.favoriteWorkouts.append(workout)
             }
@@ -113,7 +113,7 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate, Ind
             // load workouts
             let workout = Workout(name: snapshot.key, data: snapshot.value as! [String : AnyObject])
             workout.free = false
-            Workout.sharedWorkouts.append(workout)
+            self.workouts.append(workout)
             if User.sharedModel.favoriteWorkoutKeys.contains(workout.name) {
                 User.sharedModel.favoriteWorkouts.append(workout)
             }
@@ -187,7 +187,7 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate, Ind
         navigationItem.rightBarButtonItem = unfilledStarButton
         
         // begin load of all workouts
-        Workout.sharedWorkouts = [Workout]()
+        workouts = [Workout]()
         startProgressHud()
         loadPublicWorkouts()
         loadPrivateWorkouts()
@@ -228,7 +228,7 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate, Ind
             return filteredWorkouts.count + 1
         }
         
-        return favorites ? User.sharedModel.favoriteWorkouts.count + 1 : Workout.sharedWorkouts.count + 1 // plus one for the filter cell
+        return favorites ? User.sharedModel.favoriteWorkouts.count + 1 : workouts.count + 1 // plus one for the filter cell
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -240,7 +240,7 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate, Ind
             cellType = "filterCell"
         } else {
             let workoutIndex = indexPath.row - 1 // -1 for the filter cell
-            workout = searchBar.isFirstResponder() && searchBar.text != "" ? filteredWorkouts[workoutIndex] : (favorites ? User.sharedModel.favoriteWorkouts[workoutIndex] : Workout.sharedWorkouts[workoutIndex])
+            workout = searchBar.isFirstResponder() && searchBar.text != "" ? filteredWorkouts[workoutIndex] : (favorites ? User.sharedModel.favoriteWorkouts[workoutIndex] : workouts[workoutIndex])
             if workout!.free || User.sharedModel.premium {
                 cellType = "workoutCell"
             } else {
@@ -258,7 +258,7 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate, Ind
         } else {
             self.tableView.rowHeight = workoutCellSize
             let workoutIndex = indexPath.row - 1 // -1 for the filter cell
-            let workout = searchBar.isFirstResponder() && searchBar.text != "" ? filteredWorkouts[workoutIndex] : (favorites ? User.sharedModel.favoriteWorkouts[workoutIndex] : Workout.sharedWorkouts[workoutIndex])
+            let workout = (searchBar.isFirstResponder() && searchBar.text != "") || selectedFilters.count > 0 ? filteredWorkouts[workoutIndex] : favorites ? User.sharedModel.favoriteWorkouts[workoutIndex] : workouts[workoutIndex]
             if workout.free || User.sharedModel.premium {
                 (cell as! WorkoutCell).workout = workout
                 (cell as! WorkoutCell).setStarFill()

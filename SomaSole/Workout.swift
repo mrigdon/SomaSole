@@ -12,7 +12,7 @@ import Firebase
 import RealmSwift
 
 enum WorkoutTag: Int {
-    case Core, UpperBody, LowerBody, TotalBody
+    case UpperBody, Core, LowerBody, TotalBody
 }
 
 class Setup: NSObject {
