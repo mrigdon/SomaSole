@@ -29,6 +29,7 @@
 		624DBB781D2DF86B0066ECB8 /* CustomPaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624DBB771D2DF86B0066ECB8 /* CustomPaceViewController.swift */; };
 		624DBB7A1D2E02DC0066ECB8 /* Crossing High Pull.gif in Resources */ = {isa = PBXBuildFile; fileRef = 624DBB791D2E02DC0066ECB8 /* Crossing High Pull.gif */; };
 		624DBB7C1D2E037A0066ECB8 /* Clamshell with Lift (Right Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 624DBB7B1D2E037A0066ECB8 /* Clamshell with Lift (Right Leg).gif */; };
+		6257B6741D349291004D76B0 /* Straight Leg Dead Lift.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6257B6731D349291004D76B0 /* Straight Leg Dead Lift.gif */; };
 		6259FCAE1D0388D800DF09D4 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6259FCAD1D0388D800DF09D4 /* Video.swift */; };
 		626063931CBAC4EF00B1AF3C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626063921CBAC4EF00B1AF3C /* User.swift */; };
 		626063951CBAEDEF00B1AF3C /* CreateBasicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626063941CBAEDEF00B1AF3C /* CreateBasicsViewController.swift */; };
@@ -169,7 +170,6 @@
 		626FBFEE1D2C653B005B592B /* Standing Side Stretch (Right Side).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF551D2C653A005B592B /* Standing Side Stretch (Right Side).gif */; };
 		626FBFEF1D2C653B005B592B /* Standking Kick-Out (Right Arm).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF561D2C653A005B592B /* Standking Kick-Out (Right Arm).gif */; };
 		626FBFF01D2C653B005B592B /* Straight High Pull.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF571D2C653A005B592B /* Straight High Pull.gif */; };
-		626FBFF11D2C653B005B592B /* Straight Leg Dead Lift.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF581D2C653A005B592B /* Straight Leg Dead Lift.gif */; };
 		626FBFF21D2C653B005B592B /* Sumo Squat.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF591D2C653A005B592B /* Sumo Squat.gif */; };
 		626FBFF31D2C653B005B592B /* Superman Press.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF5A1D2C653A005B592B /* Superman Press.gif */; };
 		626FBFF41D2C653B005B592B /* Swing Jump.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF5B1D2C653A005B592B /* Swing Jump.gif */; };
@@ -258,6 +258,7 @@
 		624DBB771D2DF86B0066ECB8 /* CustomPaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPaceViewController.swift; sourceTree = "<group>"; };
 		624DBB791D2E02DC0066ECB8 /* Crossing High Pull.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Crossing High Pull.gif"; sourceTree = "<group>"; };
 		624DBB7B1D2E037A0066ECB8 /* Clamshell with Lift (Right Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Clamshell with Lift (Right Leg).gif"; sourceTree = "<group>"; };
+		6257B6731D349291004D76B0 /* Straight Leg Dead Lift.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Straight Leg Dead Lift.gif"; sourceTree = "<group>"; };
 		6259FCAD1D0388D800DF09D4 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		626063921CBAC4EF00B1AF3C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		626063941CBAEDEF00B1AF3C /* CreateBasicsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateBasicsViewController.swift; sourceTree = "<group>"; };
@@ -398,7 +399,6 @@
 		626FBF551D2C653A005B592B /* Standing Side Stretch (Right Side).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Standing Side Stretch (Right Side).gif"; sourceTree = "<group>"; };
 		626FBF561D2C653A005B592B /* Standking Kick-Out (Right Arm).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Standking Kick-Out (Right Arm).gif"; sourceTree = "<group>"; };
 		626FBF571D2C653A005B592B /* Straight High Pull.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Straight High Pull.gif"; sourceTree = "<group>"; };
-		626FBF581D2C653A005B592B /* Straight Leg Dead Lift.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Straight Leg Dead Lift.gif"; sourceTree = "<group>"; };
 		626FBF591D2C653A005B592B /* Sumo Squat.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Sumo Squat.gif"; sourceTree = "<group>"; };
 		626FBF5A1D2C653A005B592B /* Superman Press.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Superman Press.gif"; sourceTree = "<group>"; };
 		626FBF5B1D2C653A005B592B /* Swing Jump.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Swing Jump.gif"; sourceTree = "<group>"; };
@@ -729,8 +729,8 @@
 				626FBF541D2C653A005B592B /* Standing Side Stretch (Left Side).gif */,
 				626FBF551D2C653A005B592B /* Standing Side Stretch (Right Side).gif */,
 				626FBF561D2C653A005B592B /* Standking Kick-Out (Right Arm).gif */,
+				6257B6731D349291004D76B0 /* Straight Leg Dead Lift.gif */,
 				626FBF571D2C653A005B592B /* Straight High Pull.gif */,
-				626FBF581D2C653A005B592B /* Straight Leg Dead Lift.gif */,
 				626FBF591D2C653A005B592B /* Sumo Squat.gif */,
 				626FBF5A1D2C653A005B592B /* Superman Press.gif */,
 				626FBF5B1D2C653A005B592B /* Swing Jump.gif */,
@@ -1027,6 +1027,7 @@
 				626FBFAE1D2C653B005B592B /* Middle Swing.gif in Resources */,
 				626FBFCF1D2C653B005B592B /* Seated High Row.gif in Resources */,
 				626FBFA31D2C653B005B592B /* Leg Circle (Counter-Clockwise).gif in Resources */,
+				6257B6741D349291004D76B0 /* Straight Leg Dead Lift.gif in Resources */,
 				626FBFFB1D2C653B005B592B /* Up&Out.gif in Resources */,
 				626FBFCD1D2C653B005B592B /* Scissor Jump.gif in Resources */,
 				626FBFB01D2C653B005B592B /* Normal Push-Up.gif in Resources */,
@@ -1070,7 +1071,6 @@
 				626FBF871D2C653B005B592B /* Forward Lunge (Right Leg).gif in Resources */,
 				626FBF9A1D2C653B005B592B /* I-Curl.gif in Resources */,
 				626FBFB21D2C653B005B592B /* Opposite Plank Reach (Right Arm).gif in Resources */,
-				626FBFF11D2C653B005B592B /* Straight Leg Dead Lift.gif in Resources */,
 				626FBFA91D2C653B005B592B /* Lying Quad Stretch (Right Leg).gif in Resources */,
 				626FBF8B1D2C653B005B592B /* Front Squat.gif in Resources */,
 				626FBF711D2C653B005B592B /* Anchored Spiderman Push-Up.gif in Resources */,

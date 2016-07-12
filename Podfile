@@ -33,6 +33,7 @@ target 'SomaSole' do
     pod 'AlamofireImage', '~> 2.0'
     pod 'KDCircularProgress'
     pod 'MZTimerLabel'
+    pod 'FLAnimatedImage', '~> 1.0'
 
 end
 

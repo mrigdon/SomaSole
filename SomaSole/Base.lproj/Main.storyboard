@@ -935,7 +935,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wpG-Gk-D7N" customClass="AnimatableImageView" customModule="Gifu">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wpG-Gk-D7N" customClass="FLAnimatedImageView">
                                 <rect key="frame" x="170" y="101" width="261" height="261"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="261" id="DEV-sl-26z"/>
@@ -983,7 +983,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="descriptionLabel" destination="39j-nh-QjL" id="T4W-tP-UZ5"/>
-                        <outlet property="imageView" destination="wpG-Gk-D7N" id="uiL-of-0w9"/>
+                        <outlet property="imageView" destination="wpG-Gk-D7N" id="DXf-Tw-XHT"/>
                         <outlet property="titleLabel" destination="Zdz-1h-SZg" id="j2U-Ae-afR"/>
                     </connections>
                 </viewController>

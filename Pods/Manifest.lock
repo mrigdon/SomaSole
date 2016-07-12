@@ -22,6 +22,7 @@ PODS:
   - FBSDKShareKit (4.12.0):
     - FBSDKCoreKit
   - Firebase (2.5.1)
+  - FLAnimatedImage (1.0.12)
   - Gifu (1.0.1)
   - IQKeyboardManagerSwift (4.0.1)
   - KASlideShow (2.2)
@@ -56,6 +57,7 @@ DEPENDENCIES:
   - FBSDKLoginKit
   - FBSDKShareKit
   - Firebase (>= 2.5.1)
+  - FLAnimatedImage (~> 1.0)
   - Gifu
   - IQKeyboardManagerSwift
   - KASlideShow
@@ -87,6 +89,7 @@ SPEC CHECKSUMS:
   FBSDKLoginKit: 03f68a8d48c2c8bb81d7eb8097973d483543e1f6
   FBSDKShareKit: df1491f064cffc8ebcc3fc8b71be94cc190c728e
   Firebase: 3565ea88b830f28f2c77ecc524622bc71a20d085
+  FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
   Gifu: bf7a99fe9f20a1dc18c3cb4289aebc922a2ad419
   IQKeyboardManagerSwift: e92246955e21dad73ad9dc89b80adb134d8bb395
   KASlideShow: 380f5ecee5f14370c9435ecedccee5b35fb69c5f

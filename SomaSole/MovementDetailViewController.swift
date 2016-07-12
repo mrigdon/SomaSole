@@ -8,8 +8,8 @@
 
 import UIKit
 import AWSS3
-import Gifu
 import MBProgressHUD
+import FLAnimatedImage
 
 class MovementDetailViewController: UIViewController {
     
@@ -20,10 +20,11 @@ class MovementDetailViewController: UIViewController {
     var movement: Movement?
     var url = NSURL()
     var data = NSData()
+    var image = FLAnimatedImage()
 
     // outlets
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var imageView: AnimatableImageView!
+    @IBOutlet weak var imageView: FLAnimatedImageView!
     @IBOutlet weak var descriptionLabel: UITextView!
     
     // methods
@@ -45,17 +46,17 @@ class MovementDetailViewController: UIViewController {
     
     func loadGif() {
         // if not nil
-        if let gif = self.movement!.gif {
-            self.imageView.animateWithImageData(gif)
-            self.stopProgressHud()
-            return
-        }
-        
-        // fetch first time
-        movement!.loadGif({
-            self.imageView.animateWithImageData(self.movement!.gif!)
-            self.stopProgressHud()
-        })
+//        if let gif = self.movement!.gif {
+//            self.imageView.animateWithImageData(gif)
+//            self.stopProgressHud()
+//            return
+//        }
+//        
+//        // fetch first time
+//        movement!.loadGif({
+//            self.imageView.animateWithImageData(self.movement!.gif!)
+//            self.stopProgressHud()
+//        })
     }
     
     // uiviewcontroller
@@ -75,8 +76,9 @@ class MovementDetailViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         url = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("\(movement!.title).gif", ofType: nil)!)
         data = NSData(contentsOfURL: self.url)!
+        image = FLAnimatedImage(animatedGIFData: data)
         ui {
-            self.imageView.animateWithImageData(self.data)
+            self.imageView.animatedImage = self.image
         }
         stopProgressHud()
     }
@@ -87,7 +89,7 @@ class MovementDetailViewController: UIViewController {
     }
     
     override func viewWillDisappear(animated: Bool) {
-        imageView.stopAnimatingGIF()
+        imageView.stopAnimating()
         super.viewWillDisappear(animated)
     }
 
