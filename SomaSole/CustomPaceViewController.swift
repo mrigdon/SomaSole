@@ -131,6 +131,7 @@ class CustomPaceViewController: UIViewController {
         tipTextView.editable = true
         tipTextView.font = UIFont(name: "HelveticaNeue", size: 17)
         tipTextView.editable = false
+        tipTextView.selectable = false
         tipTextView.alpha = 0
         tipTextView.textAlignment = .Center
         

@@ -1373,23 +1373,11 @@
                                             <constraint firstAttribute="height" constant="200" id="a9o-KU-ASk"/>
                                         </constraints>
                                     </imageView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AhV-0c-XgL">
-                                        <rect key="frame" x="100" y="100" width="200" height="200"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="200" id="6PJ-sM-cCo"/>
-                                            <constraint firstAttribute="height" constant="200" id="z1U-Fm-KdI"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="AhV-0c-XgL" firstAttribute="centerX" secondItem="vxj-KH-Aba" secondAttribute="centerX" id="3if-el-LeR"/>
                                     <constraint firstItem="fHS-9C-45i" firstAttribute="centerX" secondItem="vxj-KH-Aba" secondAttribute="centerX" id="ekg-yE-LWx"/>
                                     <constraint firstAttribute="width" constant="400" id="joX-en-38B"/>
-                                    <constraint firstItem="AhV-0c-XgL" firstAttribute="centerY" secondItem="vxj-KH-Aba" secondAttribute="centerY" id="lnQ-eq-PWT"/>
                                     <constraint firstAttribute="height" constant="400" id="rVi-lb-fGN"/>
                                     <constraint firstItem="fHS-9C-45i" firstAttribute="centerY" secondItem="vxj-KH-Aba" secondAttribute="centerY" id="suK-oF-Gus"/>
                                 </constraints>
@@ -1422,6 +1410,16 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="roundedCorners" value="NO"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tIV-Yc-lUb">
+                                <rect key="frame" x="200" y="200" width="200" height="200"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="5UG-Rg-zb3"/>
+                                    <constraint firstAttribute="width" constant="200" id="d1d-su-vI0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7XH-7I-FGy">
                                 <rect key="frame" x="20" y="85" width="560" height="26"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
@@ -1457,7 +1455,9 @@
                             <constraint firstItem="z1L-3l-Diu" firstAttribute="leading" secondItem="Y5g-U1-dGH" secondAttribute="leadingMargin" id="LqL-ck-zFY"/>
                             <constraint firstItem="7XH-7I-FGy" firstAttribute="trailing" secondItem="Y5g-U1-dGH" secondAttribute="trailingMargin" id="QWk-xx-Pyw"/>
                             <constraint firstItem="z1L-3l-Diu" firstAttribute="trailing" secondItem="Y5g-U1-dGH" secondAttribute="trailingMargin" id="Qko-Yd-HtA"/>
+                            <constraint firstItem="tIV-Yc-lUb" firstAttribute="centerX" secondItem="Y5g-U1-dGH" secondAttribute="centerX" id="Uxi-Ms-Mn5"/>
                             <constraint firstItem="vxj-KH-Aba" firstAttribute="centerX" secondItem="Y5g-U1-dGH" secondAttribute="centerX" id="fG7-Zt-Jiw"/>
+                            <constraint firstItem="tIV-Yc-lUb" firstAttribute="centerY" secondItem="Y5g-U1-dGH" secondAttribute="centerY" id="zLs-q1-bIl"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="bwK-xe-C2q">
@@ -1494,7 +1494,7 @@
                         <outlet property="progressView" destination="vxj-KH-Aba" id="s3a-gb-Cqs"/>
                         <outlet property="setLabel" destination="z1L-3l-Diu" id="1w3-gv-ceh"/>
                         <outlet property="timeLabel" destination="bjM-fZ-Eoc" id="71S-Ej-Wg0"/>
-                        <outlet property="tipTextView" destination="AhV-0c-XgL" id="6cr-Dr-FYV"/>
+                        <outlet property="tipTextView" destination="tIV-Yc-lUb" id="38Y-nZ-6Pd"/>
                         <segue destination="j9m-xj-g5o" kind="presentation" identifier="finishedSegue" id="oKK-Ue-uAs"/>
                     </connections>
                 </viewController>
@@ -3283,14 +3283,14 @@
         <image name="videos" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="eYZ-zP-Gte"/>
-        <segue reference="nCl-W3-Vn0"/>
-        <segue reference="4eL-kw-GYP"/>
         <segue reference="L1j-8U-f84"/>
-        <segue reference="nuW-4e-9Zq"/>
-        <segue reference="0ZQ-sa-92A"/>
+        <segue reference="nCl-W3-Vn0"/>
+        <segue reference="oKK-Ue-uAs"/>
         <segue reference="yH4-Va-FID"/>
         <segue reference="AYP-Ub-T6L"/>
         <segue reference="0aP-Cp-rF3"/>
+        <segue reference="eYZ-zP-Gte"/>
+        <segue reference="0ZQ-sa-92A"/>
+        <segue reference="nuW-4e-9Zq"/>
     </inferredMetricsTieBreakers>
 </document>
