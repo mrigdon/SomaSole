@@ -193,8 +193,7 @@ class CreateBasicsViewController: UIViewController, UITextFieldDelegate, UIPicke
         if pickerView == heightPicker {
             if component == 0 {
                 heightFeet = 11 - row
-            }
-            else {
+            } else {
                 heightInches = 11 - row
             }
         }
@@ -202,8 +201,7 @@ class CreateBasicsViewController: UIViewController, UITextFieldDelegate, UIPicke
         else {
             if row == 0 {
                 male = true
-            }
-            else {
+            } else {
                 male = false
             }
         }
@@ -211,7 +209,7 @@ class CreateBasicsViewController: UIViewController, UITextFieldDelegate, UIPicke
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView == heightPicker {
-            return 11
+            return 12
         }
         else {
             return 2

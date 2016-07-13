@@ -152,7 +152,7 @@ extension Profile3ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerView == heightPicker ? 11 : 2
+        return pickerView == heightPicker ? 12 : 2
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
