@@ -71,7 +71,7 @@ class AllVideosViewController: UITableViewController, IndicatorInfoProvider, UIS
     
     private func loadPublic() {
         FirebaseManager.sharedRootRef.childByAppendingPath("videos").childByAppendingPath("public").observeEventType(.ChildAdded, withBlock: { snapshot in
-            let video = Video(id: snapshot.key, title: snapshot.value as! String)
+            let video = Video(id: snapshot.key, data: snapshot.value as! [String : AnyObject])
             video.free = true
             if User.sharedModel.favoriteVideoKeys.contains(video.id) {
                 if !User.sharedModel.favoriteVideos.contains(video) {
@@ -92,7 +92,7 @@ class AllVideosViewController: UITableViewController, IndicatorInfoProvider, UIS
     
     private func loadPrivate() {
         FirebaseManager.sharedRootRef.childByAppendingPath("videos").childByAppendingPath("private").observeEventType(.ChildAdded, withBlock: { snapshot in
-            let video = Video(id: snapshot.key, title: snapshot.value as! String)
+            let video = Video(id: snapshot.key, data: snapshot.value as! [String:AnyObject])
             video.free = false
             if User.sharedModel.favoriteVideoKeys.contains(video.id) {
                 if !User.sharedModel.favoriteVideos.contains(video) {

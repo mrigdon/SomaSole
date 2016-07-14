@@ -18,9 +18,11 @@ class Video: NSObject {
     var free = false
     var image = UIImage()
     
-    init(id: String, title: String) {
+    init(id: String, data: [String:AnyObject]) {
         super.init()
         self.id = id
-        self.title = title
+        self.title = data["title"] as! String
+        self.time = data["time"] as! Int
+        self.videoDescription = data["description"] as! String
     }
 }

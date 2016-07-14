@@ -113,7 +113,7 @@ class News2ViewController: UIViewController {
     
     private func addVideos(json: JSON) {
         for (key, data) in json {
-            let video = Video(id: key, title: data.stringValue)
+            let video = Video(id: key, data: data.dictionaryObject!)
             Alamofire.request(.GET, "http://img.youtube.com/vi/\(video.id)/mqdefault.jpg").responseImage(completionHandler: { response in
                 if let image = response.result.value {
                     video.image = image
