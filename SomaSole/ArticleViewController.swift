@@ -28,8 +28,8 @@ class ArticleViewController: UIViewController {
     
     // methods
     private func setupImageView() {
-        imageViewHeight.constant = screenWidth - 16
-        imageView.image = article!.image
+        imageViewHeight.constant = screenWidth
+        imageView.image = article!.plainImage
     }
     
     private func setupHeadline() {

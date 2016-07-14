@@ -106,7 +106,7 @@ class News2ViewController: UIViewController {
         for (key, data) in json {
             let article = Article(date: key, data: data.dictionaryObject as! [String:String])
             articles.append(article)
-            slideshow.addImage(article.image)
+            slideshow.addImage(article.textImage)
             pageControl.numberOfPages = articles.count
         }
     }

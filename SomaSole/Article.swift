@@ -12,7 +12,8 @@ class Article: NSObject {
 
     var author = ""
     var date: NSDate
-    var image: UIImage
+    var textImage: UIImage
+    var plainImage: UIImage
     var headline = ""
     var body = ""
     
@@ -26,9 +27,13 @@ class Article: NSObject {
         formatter.timeStyle = .FullStyle
         self.date = formatter.dateFromString(date)!
         
-        let imageString = data["imageString"]!
-        let imageData = NSData(base64EncodedString: imageString, options: .IgnoreUnknownCharacters)!
-        image = UIImage(data: imageData)!
+        let plainImageString = data["plainImage"]!
+        let plainImageData = NSData(base64EncodedString: plainImageString, options: .IgnoreUnknownCharacters)!
+        plainImage = UIImage(data: plainImageData)!
+        
+        let textImageString = data["textImage"]!
+        let textImageData = NSData(base64EncodedString: textImageString, options: .IgnoreUnknownCharacters)!
+        textImage = UIImage(data: textImageData)!
     }
     
 }
