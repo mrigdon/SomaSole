@@ -23,7 +23,7 @@ class Setup: NSObject {
     
     init(data: [String:Int]) {
         imageIndex = data["index"]!
-        long = Bool(data["index"]!)
+        long = Bool(data["length"]!)
     }
 }
 
