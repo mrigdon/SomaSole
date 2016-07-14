@@ -80,10 +80,11 @@ class Payment2ViewController: UITableViewController {
     }
     
     private func createBackendChargeWithToken(token: STPToken, completion: () -> Void) {
+        let promoCode = promoCodeTextField.text ?? ""
         let url = NSURL(string: "https://somasole-payments.herokuapp.com/charge")!
         let request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "POST"
-        let body = "stripeToken=\(token.tokenId)&email=\(User.sharedModel.email)"
+        let body = "stripeToken=\(token.tokenId)&email=\(User.sharedModel.email)&promoCode=\(promoCode)"
         request.HTTPBody = body.dataUsingEncoding(NSUTF8StringEncoding)
         let configuration = NSURLSessionConfiguration.ephemeralSessionConfiguration()
         let session = NSURLSession(configuration: configuration)
