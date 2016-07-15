@@ -69,11 +69,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Gifu.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>IQKeyboardManagerSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -177,12 +172,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0435E9CFFD9949BBBBB9C6440E9711BB</key>
+		<key>05094CC4A047119F7ADC14EE74C4881C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>05094CC4A047119F7ADC14EE74C4881C</key>
+		<key>05338626A3646725E0DACB164F0512AF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>05607E8CAAE7F632C41D496197A47F11</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -197,6 +197,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>12427A4DFDC7AFC42C60F0272194F550</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>13FEE8FD8A06F303DB0FDC4099BF462B</key>
 		<dict>
 			<key>primary</key>
@@ -207,22 +212,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>17A2E5A34389403440490180F33A31D4</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>1E9A336D0282A66F7B4E41F58A184AA6</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>2ABFF296C264A334E787928214B74B29</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>328093DA56AA3B9AC3922A8C83ABB2BB</key>
+		<key>1FDF6CD13E9B14C0BB9A8427DF710621</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -232,22 +222,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3C328EA41D417682E6BD1433804E99B0</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>498369C4C0C7950EF9C724D79EB083A6</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>4A64587E72040FA41C98887418603E0B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>52D82BFDD1E808D9CB257431922C1EE4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5B66BF35C45D505E554786849FDF73FD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -257,17 +237,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>67BFC7D12D710CB8CDC23D4BACA84A0B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>6A932845C7A5BE5374224A90EA874591</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>73B54B3B333FB6C0D9D42575AC176E3A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -278,6 +248,21 @@
 			<true/>
 		</dict>
 		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7DED52E10D92A511B97629DDB7D30B61</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8103750F77D7C0B4A00ECB7A4BFF7DE6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>860A82C771E24786BF94D0AD30B32B03</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -297,7 +282,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9F036DDA51A518F90ADFF705558FDA53</key>
+		<key>A16F57BB82116D59E13E91BF77831E6F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -307,12 +292,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AEA56EBE1B518C71721209FB26701898</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B4174F90A5D615F8316FF61C94C55088</key>
+		<key>AB6B40DDAF92D78D48F5AE03F1821D08</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -322,7 +302,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C9BFAE5A768E89A3F67E1A5F54A43EA4</key>
+		<key>BF0EF53EF994A1F5401F220B418D9D7B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C4C72081C6956B5E3F5268E558790001</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -332,12 +317,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DA1AB656084C61085B88C93226C64C15</key>
+		<key>E61CE3B6DFA1FE6B3E296965C76C0E10</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E61CE3B6DFA1FE6B3E296965C76C0E10</key>
+		<key>F1A6B76314AA528E66F4A5E318CB317A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F746A17C99FC5E9AD681B5169F350F04</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -1366,7 +1366,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vxj-KH-Aba" customClass="KDCircularProgress" customModule="KDCircularProgress">
                                 <rect key="frame" x="100" y="100" width="400" height="400"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fHS-9C-45i" customClass="AnimatableImageView" customModule="Gifu">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fHS-9C-45i" customClass="FLAnimatedImageView">
                                         <rect key="frame" x="100" y="100" width="200" height="200"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="CCX-qJ-yBi"/>
@@ -1488,7 +1488,7 @@
                         </view>
                     </navigationItem>
                     <connections>
-                        <outlet property="gifView" destination="fHS-9C-45i" id="z1b-Ap-tzy"/>
+                        <outlet property="gifView" destination="fHS-9C-45i" id="n5W-CZ-piF"/>
                         <outlet property="infoButton" destination="rck-f8-Jz5" id="aAT-zk-Dbg"/>
                         <outlet property="movementLabel" destination="7XH-7I-FGy" id="wuy-J2-aO2"/>
                         <outlet property="progressView" destination="vxj-KH-Aba" id="s3a-gb-Cqs"/>
@@ -3164,7 +3164,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zRO-1o-k1o" customClass="AnimatableImageView" customModule="Gifu">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zRO-1o-k1o" customClass="FLAnimatedImageView">
                                 <rect key="frame" x="200" y="200" width="200" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="DAs-BK-5CV"/>
@@ -3248,7 +3248,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="gifView" destination="zRO-1o-k1o" id="Zo3-Zu-Q3a"/>
+                        <outlet property="gifView" destination="zRO-1o-k1o" id="UBH-3y-aYT"/>
                         <outlet property="infoButton" destination="hb8-wa-tVy" id="VM3-Aq-2wd"/>
                         <outlet property="movementLabel" destination="ftQ-92-XZR" id="A2V-0z-jSp"/>
                         <outlet property="nextButton" destination="yaT-FL-gip" id="cH1-5L-XZJ"/>
@@ -3283,14 +3283,14 @@
         <image name="videos" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="L1j-8U-f84"/>
         <segue reference="nCl-W3-Vn0"/>
         <segue reference="oKK-Ue-uAs"/>
-        <segue reference="yH4-Va-FID"/>
+        <segue reference="L1j-8U-f84"/>
+        <segue reference="nuW-4e-9Zq"/>
+        <segue reference="0ZQ-sa-92A"/>
         <segue reference="AYP-Ub-T6L"/>
+        <segue reference="yH4-Va-FID"/>
         <segue reference="0aP-Cp-rF3"/>
         <segue reference="eYZ-zP-Gte"/>
-        <segue reference="0ZQ-sa-92A"/>
-        <segue reference="nuW-4e-9Zq"/>
     </inferredMetricsTieBreakers>
 </document>

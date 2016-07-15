@@ -15,7 +15,6 @@ target 'SomaSole' do
     pod 'AWSCore'
     pod 'AWSS3'
     pod 'AWSCognito'
-    pod 'Gifu'
     pod 'KASlideShow'
     pod 'RealmSwift'
     pod 'youtube-ios-player-helper', '~> 0.1.4'

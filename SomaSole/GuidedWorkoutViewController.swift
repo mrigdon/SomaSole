@@ -8,7 +8,7 @@
 
 import UIKit
 import KDCircularProgress
-import Gifu
+import FLAnimatedImage
 import MZTimerLabel
 import SwiftyMarkdown
 
@@ -32,7 +32,7 @@ class GuidedWorkoutViewController: UIViewController {
     // outlets
     @IBOutlet weak var movementLabel: UILabel!
     @IBOutlet weak var progressView: KDCircularProgress!
-    @IBOutlet weak var gifView: AnimatableImageView!
+    @IBOutlet weak var gifView: FLAnimatedImageView!
     @IBOutlet weak var infoButton: UIButton!
     @IBOutlet weak var timeLabel: MZTimerLabel!
     @IBOutlet weak var setLabel: UILabel!
@@ -41,7 +41,7 @@ class GuidedWorkoutViewController: UIViewController {
     // actions
     @IBAction func tappedX(sender: AnyObject) {
         dispatch_async(dispatch_get_main_queue(), { [unowned self] in
-            self.gifView.stopAnimatingGIF()
+            self.gifView.stopAnimating()
             self.progressView.pauseAnimation()
             self.timer.pause()
             self.dismissViewControllerAnimated(true, completion: nil)
@@ -72,9 +72,15 @@ class GuidedWorkoutViewController: UIViewController {
         let circuit = workout!.circuits[circuitIndex]
         let movement: Movement? = movementIndex == 0 ? nil : circuit.movements[movementIndex - 1] // -1 to account for setup
         let imageData = movementIndex == 0 ? (setIndex == 0 ? UIImageJPEGRepresentation(circuit.setup.image!, 1.0) : NSData(contentsOfURL: NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("Rest.gif", ofType: nil)!))) : movement!.gif
-        dispatch_async(dispatch_get_main_queue(), {
-            self.gifView.animateWithImageData(imageData!)
-        })
+        if movementIndex == 0 {
+            ui {
+                self.gifView.image = UIImage(data: imageData!)
+            }
+        } else {
+            ui {
+                self.gifView.animatedImage = FLAnimatedImage(animatedGIFData: imageData!)
+            }
+        }
         movementLabel.text = movementIndex == 0 ? (setIndex == 0 ? "Setup" : "Rest") : movement!.title
         tipTextView.text = movementIndex == 0 ? (circuit.setup.long ? "Long Length" : "Short Length") : movement!.movementDescription
         
@@ -143,7 +149,7 @@ class GuidedWorkoutViewController: UIViewController {
         progressView.layer.beginTime = 0.0
         let timeSincePause = progressView.layer.convertTime(CACurrentMediaTime(), fromLayer: nil) - pausedTime
         progressView.layer.beginTime = timeSincePause
-        gifView.startAnimatingGIF()
+        gifView.startAnimating()
         timer.start()
         navigationItem.rightBarButtonItem = pauseButton
     }
@@ -152,7 +158,7 @@ class GuidedWorkoutViewController: UIViewController {
         let pausedTime = progressView.layer.convertTime(CACurrentMediaTime(), fromLayer: nil)
         progressView.layer.speed = 0
         progressView.layer.timeOffset = pausedTime
-        gifView.stopAnimatingGIF()
+        gifView.stopAnimating()
         timer.pause()
         navigationItem.rightBarButtonItem = playButton
     }

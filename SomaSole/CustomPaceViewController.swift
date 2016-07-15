@@ -8,7 +8,7 @@
 
 import UIKit
 import MZTimerLabel
-import Gifu
+import FLAnimatedImage
 import SwiftyMarkdown
 
 class CustomPaceViewController: UIViewController {
@@ -24,7 +24,7 @@ class CustomPaceViewController: UIViewController {
     
     // outlets
     @IBOutlet weak var movementLabel: UILabel!
-    @IBOutlet weak var gifView: AnimatableImageView!
+    @IBOutlet weak var gifView: FLAnimatedImageView!
     @IBOutlet weak var infoButton: UIButton!
     @IBOutlet weak var setLabel: UILabel!
     @IBOutlet weak var tipTextView: UITextView!
@@ -34,7 +34,7 @@ class CustomPaceViewController: UIViewController {
     // actions
     @IBAction func tappedX(sender: AnyObject) {
         dispatch_async(dispatch_get_main_queue(), { [unowned self] in
-            self.gifView.stopAnimatingGIF()
+            self.gifView.stopAnimating()
             self.timer.pause()
             self.dismissViewControllerAnimated(true, completion: nil)
         })
@@ -69,8 +69,14 @@ class CustomPaceViewController: UIViewController {
         setLabel.attributedText = mdText.attributedString()
         
         let imageData = movementCounter == 0 ? (setCounter == 0 ? UIImageJPEGRepresentation(currentCircuit!.setup.image!, 1.0) : NSData(contentsOfURL: NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("Rest.gif", ofType: nil)!))) : movement!.gif
-        ui {
-            self.gifView.animateWithImageData(imageData!)
+        if movementCounter == 0 {
+            ui {
+                self.gifView.image = UIImage(data: imageData!)
+            }
+        } else {
+            ui {
+                self.gifView.animatedImage = FLAnimatedImage(animatedGIFData: imageData!)
+            }
         }
         tipTextView.text = movementCounter == 0 ? "" : movement!.movementDescription
     }
@@ -100,8 +106,14 @@ class CustomPaceViewController: UIViewController {
         setLabel.attributedText = mdText.attributedString()
         
         let imageData = movementCounter == 0 ? (setCounter == 0 ? UIImageJPEGRepresentation(currentCircuit!.setup.image!, 1.0) : NSData(contentsOfURL: NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("Rest.gif", ofType: nil)!))) : movement!.gif
-        ui {
-            self.gifView.animateWithImageData(imageData!)
+        if movementCounter == 0 {
+            ui {
+                self.gifView.image = UIImage(data: imageData!)
+            }
+        } else {
+            ui {
+                self.gifView.animatedImage = FLAnimatedImage(animatedGIFData: imageData!)
+            }
         }
         tipTextView.text = movementCounter == 0 ? "" : movement!.movementDescription
     }
@@ -121,7 +133,8 @@ class CustomPaceViewController: UIViewController {
         setLabel.attributedText = mdText.attributedString()
         
         ui {
-            self.gifView.animateWithImageData(UIImageJPEGRepresentation(self.currentCircuit!.setup.image!, 1.0)!)
+//            self.gifView.animatedImage = FLAnimatedImage(animatedGIFData: UIImageJPEGRepresentation(self.currentCircuit!.setup.image!, 1.0)!)
+            self.gifView.image = UIImage(data: UIImageJPEGRepresentation(self.currentCircuit!.setup.image!, 1.0)!)
         }
     }
     
