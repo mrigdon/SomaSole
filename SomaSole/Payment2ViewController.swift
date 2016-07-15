@@ -99,6 +99,8 @@ class Payment2ViewController: UITableViewController {
                     User.sharedModel.stripeID = swiftyJSON["id"].stringValue
                     User.sharedModel.premium = true
                     FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).setValue(User.sharedModel.dict())
+                    NSUserDefaults.standardUserDefaults().setObject(User.sharedModel.dict(), forKey: "userData")
+                    NSUserDefaults.standardUserDefaults().synchronize()
                     self.successAlert("Congratulations! You are now subscribed to the Monthly Premium Plan!")
                 } else if code == self.invalidCardStatusCode {
                     self.errorAlert("It looks like your card was invalid.")
