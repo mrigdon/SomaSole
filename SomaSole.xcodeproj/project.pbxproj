@@ -25,11 +25,7 @@
 		6235212D1CFA130A00B3F1BF /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6235212C1CFA130A00B3F1BF /* VideoCell.swift */; };
 		6248AE2C1CF9510C000A2DC9 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6248AE2B1CF9510C000A2DC9 /* Article.swift */; };
 		624A94E81CB7463E00A8D21A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624A94E71CB7463E00A8D21A /* LoginViewController.swift */; };
-		624DBB761D2DF1260066ECB8 /* Rest.gif in Resources */ = {isa = PBXBuildFile; fileRef = 624DBB751D2DF1260066ECB8 /* Rest.gif */; };
 		624DBB781D2DF86B0066ECB8 /* CustomPaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624DBB771D2DF86B0066ECB8 /* CustomPaceViewController.swift */; };
-		624DBB7A1D2E02DC0066ECB8 /* Crossing High Pull.gif in Resources */ = {isa = PBXBuildFile; fileRef = 624DBB791D2E02DC0066ECB8 /* Crossing High Pull.gif */; };
-		624DBB7C1D2E037A0066ECB8 /* Clamshell with Lift (Right Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 624DBB7B1D2E037A0066ECB8 /* Clamshell with Lift (Right Leg).gif */; };
-		6257B6741D349291004D76B0 /* Straight Leg Dead Lift.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6257B6731D349291004D76B0 /* Straight Leg Dead Lift.gif */; };
 		6259FCAE1D0388D800DF09D4 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6259FCAD1D0388D800DF09D4 /* Video.swift */; };
 		626063931CBAC4EF00B1AF3C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626063921CBAC4EF00B1AF3C /* User.swift */; };
 		626063951CBAEDEF00B1AF3C /* CreateBasicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626063941CBAEDEF00B1AF3C /* CreateBasicsViewController.swift */; };
@@ -38,160 +34,164 @@
 		6263BBD31CE79A2600CF383A /* MovementDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6263BBD21CE79A2600CF383A /* MovementDescriptionCell.swift */; };
 		626D2CF41D1A4F8C00812ED0 /* ROImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626D2CF31D1A4F8C00812ED0 /* ROImage.swift */; };
 		626FBECF1D2C5014005B592B /* LabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626FBECE1D2C5014005B592B /* LabelCell.swift */; };
-		626FBF6A1D2C653B005B592B /* 2 Arm Pulley.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBED11D2C653A005B592B /* 2 Arm Pulley.gif */; };
-		626FBF6B1D2C653B005B592B /* Alternating Superman.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBED21D2C653A005B592B /* Alternating Superman.gif */; };
-		626FBF6C1D2C653B005B592B /* Anchored Bicycle.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBED31D2C653A005B592B /* Anchored Bicycle.gif */; };
-		626FBF6D1D2C653B005B592B /* Anchored Hop-In.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBED41D2C653A005B592B /* Anchored Hop-In.gif */; };
-		626FBF6E1D2C653B005B592B /* Anchored Mountain Climber Push-Up.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBED51D2C653A005B592B /* Anchored Mountain Climber Push-Up.gif */; };
-		626FBF6F1D2C653B005B592B /* Anchored Mountain Climbers.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBED61D2C653A005B592B /* Anchored Mountain Climbers.gif */; };
-		626FBF701D2C653B005B592B /* Anchored Pull-In.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBED71D2C653A005B592B /* Anchored Pull-In.gif */; };
-		626FBF711D2C653B005B592B /* Anchored Spiderman Push-Up.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBED81D2C653A005B592B /* Anchored Spiderman Push-Up.gif */; };
-		626FBF721D2C653B005B592B /* Anchored Spiderman.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBED91D2C653A005B592B /* Anchored Spiderman.gif */; };
-		626FBF731D2C653B005B592B /* Back Squat.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBEDA1D2C653A005B592B /* Back Squat.gif */; };
-		626FBF741D2C653B005B592B /* Bear Crawl.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBEDB1D2C653A005B592B /* Bear Crawl.gif */; };
-		626FBF751D2C653B005B592B /* Bent-Over Kick-Back.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBEDC1D2C653A005B592B /* Bent-Over Kick-Back.gif */; };
-		626FBF761D2C653B005B592B /* Bent-Over Kick-Out.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBEDD1D2C653A005B592B /* Bent-Over Kick-Out.gif */; };
-		626FBF771D2C653B005B592B /* Big Circle (Clockwise).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBEDE1D2C653A005B592B /* Big Circle (Clockwise).gif */; };
-		626FBF781D2C653B005B592B /* Big Circle (Counter-Clockwise).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBEDF1D2C653A005B592B /* Big Circle (Counter-Clockwise).gif */; };
-		626FBF791D2C653B005B592B /* Box Jump.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBEE01D2C653A005B592B /* Box Jump.gif */; };
-		626FBF7A1D2C653B005B592B /* Burpee.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBEE11D2C653A005B592B /* Burpee.gif */; };
-		626FBF7B1D2C653B005B592B /* Butt Kick Jump.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBEE21D2C653A005B592B /* Butt Kick Jump.gif */; };
-		626FBF7C1D2C653B005B592B /* Butterfly.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBEE31D2C653A005B592B /* Butterfly.gif */; };
-		626FBF7D1D2C653B005B592B /* Clamshell with Lift (Left Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBEE41D2C653A005B592B /* Clamshell with Lift (Left Leg).gif */; };
-		626FBF7F1D2C653B005B592B /* Clean.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBEE61D2C653A005B592B /* Clean.gif */; };
-		626FBF801D2C653B005B592B /* Crab Walk.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBEE71D2C653A005B592B /* Crab Walk.gif */; };
-		626FBF821D2C653B005B592B /* Delt Row.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBEE91D2C653A005B592B /* Delt Row.gif */; };
-		626FBF831D2C653B005B592B /* Diamond Push-Up.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBEEA1D2C653A005B592B /* Diamond Push-Up.gif */; };
-		626FBF841D2C653B005B592B /* Dragonfly Crunch.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBEEB1D2C653A005B592B /* Dragonfly Crunch.gif */; };
-		626FBF851D2C653B005B592B /* Flutter Kick.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBEEC1D2C653A005B592B /* Flutter Kick.gif */; };
-		626FBF861D2C653B005B592B /* Forward Lunge (Left Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBEED1D2C653A005B592B /* Forward Lunge (Left Leg).gif */; };
-		626FBF871D2C653B005B592B /* Forward Lunge (Right Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBEEE1D2C653A005B592B /* Forward Lunge (Right Leg).gif */; };
-		626FBF881D2C653B005B592B /* Front Balance Drill (Left Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBEEF1D2C653A005B592B /* Front Balance Drill (Left Leg).gif */; };
-		626FBF891D2C653B005B592B /* Front Balance Drill (Right Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBEF01D2C653A005B592B /* Front Balance Drill (Right Leg).gif */; };
-		626FBF8A1D2C653B005B592B /* Front Ball Throw.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBEF11D2C653A005B592B /* Front Ball Throw.gif */; };
-		626FBF8B1D2C653B005B592B /* Front Squat.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBEF21D2C653A005B592B /* Front Squat.gif */; };
-		626FBF8C1D2C653B005B592B /* Glute Kick-Back (Left Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBEF31D2C653A005B592B /* Glute Kick-Back (Left Leg).gif */; };
-		626FBF8D1D2C653B005B592B /* Glute Kick-Back (Right Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBEF41D2C653A005B592B /* Glute Kick-Back (Right Leg).gif */; };
-		626FBF8E1D2C653B005B592B /* Glute Kick-Up (Left Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBEF51D2C653A005B592B /* Glute Kick-Up (Left Leg).gif */; };
-		626FBF8F1D2C653B005B592B /* Glute Kick-Up (Right Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBEF61D2C653A005B592B /* Glute Kick-Up (Right Leg).gif */; };
-		626FBF901D2C653B005B592B /* Good Morning.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBEF71D2C653A005B592B /* Good Morning.gif */; };
-		626FBF911D2C653B005B592B /* Groin Stretch (Left Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBEF81D2C653A005B592B /* Groin Stretch (Left Leg).gif */; };
-		626FBF921D2C653B005B592B /* Groin Stretch (Right Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBEF91D2C653A005B592B /* Groin Stretch (Right Leg).gif */; };
-		626FBF931D2C653B005B592B /* Groiner.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBEFA1D2C653A005B592B /* Groiner.gif */; };
-		626FBF941D2C653B005B592B /* Hip Abduction (Left Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBEFB1D2C653A005B592B /* Hip Abduction (Left Leg).gif */; };
-		626FBF951D2C653B005B592B /* Hip Abduction (Right Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBEFC1D2C653A005B592B /* Hip Abduction (Right Leg).gif */; };
-		626FBF961D2C653B005B592B /* Hip Extension - Bridge.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBEFD1D2C653A005B592B /* Hip Extension - Bridge.gif */; };
-		626FBF971D2C653B005B592B /* Hip Extension - Knee Up.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBEFE1D2C653A005B592B /* Hip Extension - Knee Up.gif */; };
-		626FBF981D2C653B005B592B /* Hip Extension - Leg Raise.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBEFF1D2C653A005B592B /* Hip Extension - Leg Raise.gif */; };
-		626FBF991D2C653B005B592B /* Hover Pushouts.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF001D2C653A005B592B /* Hover Pushouts.gif */; };
-		626FBF9A1D2C653B005B592B /* I-Curl.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF011D2C653A005B592B /* I-Curl.gif */; };
-		626FBF9B1D2C653B005B592B /* I-Raise.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF021D2C653A005B592B /* I-Raise.gif */; };
-		626FBF9C1D2C653B005B592B /* Iron Cross.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF031D2C653A005B592B /* Iron Cross.gif */; };
-		626FBF9D1D2C653B005B592B /* Jammer Jump.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF041D2C653A005B592B /* Jammer Jump.gif */; };
-		626FBF9E1D2C653B005B592B /* Kick Slide (Left Foot Up).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF051D2C653A005B592B /* Kick Slide (Left Foot Up).gif */; };
-		626FBF9F1D2C653B005B592B /* Kick Slide (Right Foot Up).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF061D2C653A005B592B /* Kick Slide (Right Foot Up).gif */; };
-		626FBFA01D2C653B005B592B /* Lateral Hamstring Stretch (Left Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF071D2C653A005B592B /* Lateral Hamstring Stretch (Left Leg).gif */; };
-		626FBFA11D2C653B005B592B /* Lateral Hamstring Stretch (Right Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF081D2C653A005B592B /* Lateral Hamstring Stretch (Right Leg).gif */; };
-		626FBFA21D2C653B005B592B /* Leg Circle (Clockwise).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF091D2C653A005B592B /* Leg Circle (Clockwise).gif */; };
-		626FBFA31D2C653B005B592B /* Leg Circle (Counter-Clockwise).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF0A1D2C653A005B592B /* Leg Circle (Counter-Clockwise).gif */; };
-		626FBFA41D2C653B005B592B /* Leg Raise (Left Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF0B1D2C653A005B592B /* Leg Raise (Left Leg).gif */; };
-		626FBFA51D2C653B005B592B /* Leg Raise (Right Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF0C1D2C653A005B592B /* Leg Raise (Right Leg).gif */; };
-		626FBFA61D2C653B005B592B /* Lift and Twist (Left Side).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF0D1D2C653A005B592B /* Lift and Twist (Left Side).gif */; };
-		626FBFA71D2C653B005B592B /* Lift and Twist (Right Side).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF0E1D2C653A005B592B /* Lift and Twist (Right Side).gif */; };
-		626FBFA81D2C653B005B592B /* Lying Quad Stretch (Left Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF0F1D2C653A005B592B /* Lying Quad Stretch (Left Leg).gif */; };
-		626FBFA91D2C653B005B592B /* Lying Quad Stretch (Right Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF101D2C653A005B592B /* Lying Quad Stretch (Right Leg).gif */; };
-		626FBFAA1D2C653B005B592B /* Medial Hamstring Stretch (Left Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF111D2C653A005B592B /* Medial Hamstring Stretch (Left Leg).gif */; };
-		626FBFAB1D2C653B005B592B /* Medial Hamstring Stretch (Right Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF121D2C653A005B592B /* Medial Hamstring Stretch (Right Leg).gif */; };
-		626FBFAC1D2C653B005B592B /* Middle Hamstring Stretch (Left Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF131D2C653A005B592B /* Middle Hamstring Stretch (Left Leg).gif */; };
-		626FBFAD1D2C653B005B592B /* Middle Hamstring Stretch (Right Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF141D2C653A005B592B /* Middle Hamstring Stretch (Right Leg).gif */; };
-		626FBFAE1D2C653B005B592B /* Middle Swing.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF151D2C653A005B592B /* Middle Swing.gif */; };
-		626FBFAF1D2C653B005B592B /* Monster Walk.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF161D2C653A005B592B /* Monster Walk.gif */; };
-		626FBFB01D2C653B005B592B /* Normal Push-Up.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF171D2C653A005B592B /* Normal Push-Up.gif */; };
-		626FBFB11D2C653B005B592B /* Opposite Plank Reach (Left Arm).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF181D2C653A005B592B /* Opposite Plank Reach (Left Arm).gif */; };
-		626FBFB21D2C653B005B592B /* Opposite Plank Reach (Right Arm).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF191D2C653A005B592B /* Opposite Plank Reach (Right Arm).gif */; };
-		626FBFB31D2C653B005B592B /* Outer Hip Stretch (Left Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF1A1D2C653A005B592B /* Outer Hip Stretch (Left Leg).gif */; };
-		626FBFB41D2C653B005B592B /* Outer Hip Stretch (Right Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF1B1D2C653A005B592B /* Outer Hip Stretch (Right Leg).gif */; };
-		626FBFB51D2C653B005B592B /* Pec Stretch (Double Arm).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF1C1D2C653A005B592B /* Pec Stretch (Double Arm).gif */; };
-		626FBFB61D2C653B005B592B /* Plank Delt Row (Left Arm).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF1D1D2C653A005B592B /* Plank Delt Row (Left Arm).gif */; };
-		626FBFB71D2C653B005B592B /* Plank Delt Row (Right Arm).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF1E1D2C653A005B592B /* Plank Delt Row (Right Arm).gif */; };
-		626FBFB81D2C653B005B592B /* Plank Delt Row.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF1F1D2C653A005B592B /* Plank Delt Row.gif */; };
-		626FBFB91D2C653B005B592B /* Plank Jack.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF201D2C653A005B592B /* Plank Jack.gif */; };
-		626FBFBA1D2C653B005B592B /* Plank Pull Through (Left Arm).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF211D2C653A005B592B /* Plank Pull Through (Left Arm).gif */; };
-		626FBFBB1D2C653B005B592B /* Plank Pull Through (Right Arm).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF221D2C653A005B592B /* Plank Pull Through (Right Arm).gif */; };
-		626FBFBC1D2C653B005B592B /* Plank Walk (Left).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF231D2C653A005B592B /* Plank Walk (Left).gif */; };
-		626FBFBD1D2C653B005B592B /* Plank Walk (Right).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF241D2C653A005B592B /* Plank Walk (Right).gif */; };
-		626FBFBE1D2C653B005B592B /* Punch.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF251D2C653A005B592B /* Punch.gif */; };
-		626FBFBF1D2C653B005B592B /* Push-Up with Rotation.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF261D2C653A005B592B /* Push-Up with Rotation.gif */; };
-		626FBFC01D2C653B005B592B /* Quad Stretch with Twist (Left Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF271D2C653A005B592B /* Quad Stretch with Twist (Left Leg).gif */; };
-		626FBFC11D2C653B005B592B /* Quad Stretch with Twist (Right Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF281D2C653A005B592B /* Quad Stretch with Twist (Right Leg).gif */; };
-		626FBFC21D2C653B005B592B /* Rear Deltoid Stretch (Left Arm).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF291D2C653A005B592B /* Rear Deltoid Stretch (Left Arm).gif */; };
-		626FBFC31D2C653B005B592B /* Rear Deltoid Stretch (Right Arm).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF2A1D2C653A005B592B /* Rear Deltoid Stretch (Right Arm).gif */; };
-		626FBFC51D2C653B005B592B /* Reverse Bear Crawl.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF2C1D2C653A005B592B /* Reverse Bear Crawl.gif */; };
-		626FBFC61D2C653B005B592B /* Reverse Crunch.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF2D1D2C653A005B592B /* Reverse Crunch.gif */; };
-		626FBFC71D2C653B005B592B /* Reverse Lunge (Left Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF2E1D2C653A005B592B /* Reverse Lunge (Left Leg).gif */; };
-		626FBFC81D2C653B005B592B /* Reverse Lunge (Right Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF2F1D2C653A005B592B /* Reverse Lunge (Right Leg).gif */; };
-		626FBFC91D2C653B005B592B /* Rocky Solo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF301D2C653A005B592B /* Rocky Solo.gif */; };
-		626FBFCA1D2C653B005B592B /* Russian Twists.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF311D2C653A005B592B /* Russian Twists.gif */; };
-		626FBFCB1D2C653B005B592B /* Same-Side Superman.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF321D2C653A005B592B /* Same-Side Superman.gif */; };
-		626FBFCC1D2C653B005B592B /* Scapula Stretch.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF331D2C653A005B592B /* Scapula Stretch.gif */; };
-		626FBFCD1D2C653B005B592B /* Scissor Jump.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF341D2C653A005B592B /* Scissor Jump.gif */; };
-		626FBFCE1D2C653B005B592B /* Scissor Kick.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF351D2C653A005B592B /* Scissor Kick.gif */; };
-		626FBFCF1D2C653B005B592B /* Seated High Row.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF361D2C653A005B592B /* Seated High Row.gif */; };
-		626FBFD01D2C653B005B592B /* Seated Low Row.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF371D2C653A005B592B /* Seated Low Row.gif */; };
-		626FBFD11D2C653B005B592B /* Seated Pinch Row.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF381D2C653A005B592B /* Seated Pinch Row.gif */; };
-		626FBFD21D2C653B005B592B /* Side Balance Drill.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF391D2C653A005B592B /* Side Balance Drill.gif */; };
-		626FBFD31D2C653B005B592B /* Side Lunge (Left Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF3A1D2C653A005B592B /* Side Lunge (Left Leg).gif */; };
-		626FBFD41D2C653B005B592B /* Side Lunge (Right Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF3B1D2C653A005B592B /* Side Lunge (Right Leg).gif */; };
-		626FBFD51D2C653B005B592B /* Side Plank Hip Dip (Left Side).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF3C1D2C653A005B592B /* Side Plank Hip Dip (Left Side).gif */; };
-		626FBFD61D2C653B005B592B /* Side Plank Hip Dip (Right Side).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF3D1D2C653A005B592B /* Side Plank Hip Dip (Right Side).gif */; };
-		626FBFD71D2C653B005B592B /* Side Plank Hold (Left Side).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF3E1D2C653A005B592B /* Side Plank Hold (Left Side).gif */; };
-		626FBFD81D2C653B005B592B /* Side Plank Hold (Right Side).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF3F1D2C653A005B592B /* Side Plank Hold (Right Side).gif */; };
-		626FBFD91D2C653B005B592B /* Side Plank Reach Under (Left Side).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF401D2C653A005B592B /* Side Plank Reach Under (Left Side).gif */; };
-		626FBFDA1D2C653B005B592B /* Side Plank Reach Under (Right Side).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF411D2C653A005B592B /* Side Plank Reach Under (Right Side).gif */; };
-		626FBFDB1D2C653B005B592B /* Ski Jump.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF421D2C653A005B592B /* Ski Jump.gif */; };
-		626FBFDC1D2C653B005B592B /* Split Squat (Left Leg Up).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF431D2C653A005B592B /* Split Squat (Left Leg Up).gif */; };
-		626FBFDD1D2C653B005B592B /* Split Squat (Right Leg Up).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF441D2C653A005B592B /* Split Squat (Right Leg Up).gif */; };
-		626FBFDE1D2C653B005B592B /* Squat Jump.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF451D2C653A005B592B /* Squat Jump.gif */; };
-		626FBFDF1D2C653B005B592B /* Squat Lift.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF461D2C653A005B592B /* Squat Lift.gif */; };
-		626FBFE01D2C653B005B592B /* Squat Side Punch.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF471D2C653A005B592B /* Squat Side Punch.gif */; };
-		626FBFE11D2C653B005B592B /* Stacked Shuffle (Left Foot Up).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF481D2C653A005B592B /* Stacked Shuffle (Left Foot Up).gif */; };
-		626FBFE21D2C653B005B592B /* Stacked Shuffle (Right Foot Up).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF491D2C653A005B592B /* Stacked Shuffle (Right Foot Up).gif */; };
-		626FBFE31D2C653B005B592B /* Standing Hip Abduction (Left Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF4A1D2C653A005B592B /* Standing Hip Abduction (Left Leg).gif */; };
-		626FBFE41D2C653B005B592B /* Standing Hip Abduction (Right Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF4B1D2C653A005B592B /* Standing Hip Abduction (Right Leg).gif */; };
-		626FBFE51D2C653B005B592B /* Standing Hip Extension (Left Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF4C1D2C653A005B592B /* Standing Hip Extension (Left Leg).gif */; };
-		626FBFE61D2C653B005B592B /* Standing Hip Extension (Right Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF4D1D2C653A005B592B /* Standing Hip Extension (Right Leg).gif */; };
-		626FBFE71D2C653B005B592B /* Standing Kick-Out (Left Arm).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF4E1D2C653A005B592B /* Standing Kick-Out (Left Arm).gif */; };
-		626FBFE81D2C653B005B592B /* Standing Kick-Out (Right Arm).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF4F1D2C653A005B592B /* Standing Kick-Out (Right Arm).gif */; };
-		626FBFE91D2C653B005B592B /* Standing Kick-Up (Left Arm).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF501D2C653A005B592B /* Standing Kick-Up (Left Arm).gif */; };
-		626FBFEA1D2C653B005B592B /* Standing Kick-Up (Right Arm).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF511D2C653A005B592B /* Standing Kick-Up (Right Arm).gif */; };
-		626FBFEB1D2C653B005B592B /* Standing Pinch Row.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF521D2C653A005B592B /* Standing Pinch Row.gif */; };
-		626FBFEC1D2C653B005B592B /* Standing Russian Twists.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF531D2C653A005B592B /* Standing Russian Twists.gif */; };
-		626FBFED1D2C653B005B592B /* Standing Side Stretch (Left Side).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF541D2C653A005B592B /* Standing Side Stretch (Left Side).gif */; };
-		626FBFEE1D2C653B005B592B /* Standing Side Stretch (Right Side).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF551D2C653A005B592B /* Standing Side Stretch (Right Side).gif */; };
-		626FBFEF1D2C653B005B592B /* Standking Kick-Out (Right Arm).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF561D2C653A005B592B /* Standking Kick-Out (Right Arm).gif */; };
-		626FBFF01D2C653B005B592B /* Straight High Pull.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF571D2C653A005B592B /* Straight High Pull.gif */; };
-		626FBFF21D2C653B005B592B /* Sumo Squat.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF591D2C653A005B592B /* Sumo Squat.gif */; };
-		626FBFF31D2C653B005B592B /* Superman Press.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF5A1D2C653A005B592B /* Superman Press.gif */; };
-		626FBFF41D2C653B005B592B /* Swing Jump.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF5B1D2C653A005B592B /* Swing Jump.gif */; };
-		626FBFF51D2C653B005B592B /* T-Curl.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF5C1D2C653A005B592B /* T-Curl.gif */; };
-		626FBFF61D2C653B005B592B /* T-Raise.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF5D1D2C653A005B592B /* T-Raise.gif */; };
-		626FBFF71D2C653B005B592B /* Tricep Dip.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF5E1D2C653B005B592B /* Tricep Dip.gif */; };
-		626FBFF81D2C653B005B592B /* Tricep Stretch (Left Arm).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF5F1D2C653B005B592B /* Tricep Stretch (Left Arm).gif */; };
-		626FBFF91D2C653B005B592B /* Tricep Stretch (Right Arm).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF601D2C653B005B592B /* Tricep Stretch (Right Arm).gif */; };
-		626FBFFA1D2C653B005B592B /* Tuck Jump.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF611D2C653B005B592B /* Tuck Jump.gif */; };
-		626FBFFB1D2C653B005B592B /* Up&Out.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF621D2C653B005B592B /* Up&Out.gif */; };
-		626FBFFC1D2C653B005B592B /* V-Up.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF631D2C653B005B592B /* V-Up.gif */; };
-		626FBFFD1D2C653B005B592B /* Wide Push-Up.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF641D2C653B005B592B /* Wide Push-Up.gif */; };
-		626FBFFE1D2C653B005B592B /* X-Jack.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF651D2C653B005B592B /* X-Jack.gif */; };
-		626FBFFF1D2C653B005B592B /* X-Walk (Left).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF661D2C653B005B592B /* X-Walk (Left).gif */; };
-		626FC0001D2C653B005B592B /* X-Walk (Right).gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF671D2C653B005B592B /* X-Walk (Right).gif */; };
-		626FC0011D2C653B005B592B /* Y-Curl.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF681D2C653B005B592B /* Y-Curl.gif */; };
-		626FC0021D2C653B005B592B /* Y-Raise.gif in Resources */ = {isa = PBXBuildFile; fileRef = 626FBF691D2C653B005B592B /* Y-Raise.gif */; };
 		626FC0041D2C8950005B592B /* GuidedWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626FC0031D2C8950005B592B /* GuidedWorkoutViewController.swift */; };
 		62780C691D0BA87300198441 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62780C681D0BA87300198441 /* ProfileCell.swift */; };
 		627BC9E91CCE8B68008C8647 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627BC9E81CCE8B68008C8647 /* Workout.swift */; };
 		62915B851D2C155C0012A274 /* VideoThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62915B841D2C155C0012A274 /* VideoThumbnailView.swift */; };
 		62926A951CBC33F200960F94 /* CreateLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62926A941CBC33F200960F94 /* CreateLoginViewController.swift */; };
+		629C23A21D388E6D000D4E3A /* 2 Arm Pulley.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23091D388E6D000D4E3A /* 2 Arm Pulley.gif */; };
+		629C23A31D388E6D000D4E3A /* Alternating Superman.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C230A1D388E6D000D4E3A /* Alternating Superman.gif */; };
+		629C23A41D388E6D000D4E3A /* Anchored Bicycle.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C230B1D388E6D000D4E3A /* Anchored Bicycle.gif */; };
+		629C23A51D388E6D000D4E3A /* Anchored Hop-In.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C230C1D388E6D000D4E3A /* Anchored Hop-In.gif */; };
+		629C23A61D388E6D000D4E3A /* Anchored Mountain Climber Push-Up.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C230D1D388E6D000D4E3A /* Anchored Mountain Climber Push-Up.gif */; };
+		629C23A71D388E6D000D4E3A /* Anchored Mountain Climbers.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C230E1D388E6D000D4E3A /* Anchored Mountain Climbers.gif */; };
+		629C23A81D388E6D000D4E3A /* Anchored Pull-In.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C230F1D388E6D000D4E3A /* Anchored Pull-In.gif */; };
+		629C23A91D388E6D000D4E3A /* Anchored Spiderman Push-Up.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23101D388E6D000D4E3A /* Anchored Spiderman Push-Up.gif */; };
+		629C23AA1D388E6D000D4E3A /* Anchored Spiderman.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23111D388E6D000D4E3A /* Anchored Spiderman.gif */; };
+		629C23AB1D388E6D000D4E3A /* Back Squat.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23121D388E6D000D4E3A /* Back Squat.gif */; };
+		629C23AC1D388E6D000D4E3A /* Bear Crawl.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23131D388E6D000D4E3A /* Bear Crawl.gif */; };
+		629C23AD1D388E6D000D4E3A /* Bent-Over Kick-Back.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23141D388E6D000D4E3A /* Bent-Over Kick-Back.gif */; };
+		629C23AE1D388E6D000D4E3A /* Bent-Over Kick-Out.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23151D388E6D000D4E3A /* Bent-Over Kick-Out.gif */; };
+		629C23AF1D388E6D000D4E3A /* Big Circle (Clockwise).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23161D388E6D000D4E3A /* Big Circle (Clockwise).gif */; };
+		629C23B01D388E6D000D4E3A /* Big Circle (Counter-Clockwise).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23171D388E6D000D4E3A /* Big Circle (Counter-Clockwise).gif */; };
+		629C23B11D388E6D000D4E3A /* Box Jump.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23181D388E6D000D4E3A /* Box Jump.gif */; };
+		629C23B21D388E6D000D4E3A /* Burpee.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23191D388E6D000D4E3A /* Burpee.gif */; };
+		629C23B31D388E6D000D4E3A /* Butt Kick Jump.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C231A1D388E6D000D4E3A /* Butt Kick Jump.gif */; };
+		629C23B41D388E6D000D4E3A /* Butterfly.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C231B1D388E6D000D4E3A /* Butterfly.gif */; };
+		629C23B51D388E6D000D4E3A /* Clamshell with Lift (Left Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C231C1D388E6D000D4E3A /* Clamshell with Lift (Left Leg).gif */; };
+		629C23B61D388E6D000D4E3A /* Clamshell with Lift (Right Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C231D1D388E6D000D4E3A /* Clamshell with Lift (Right Leg).gif */; };
+		629C23B71D388E6D000D4E3A /* Clean.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C231E1D388E6D000D4E3A /* Clean.gif */; };
+		629C23B81D388E6D000D4E3A /* Crab Walk.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C231F1D388E6D000D4E3A /* Crab Walk.gif */; };
+		629C23B91D388E6D000D4E3A /* Crossing High Pull.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23201D388E6D000D4E3A /* Crossing High Pull.gif */; };
+		629C23BA1D388E6D000D4E3A /* Delt Row.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23211D388E6D000D4E3A /* Delt Row.gif */; };
+		629C23BB1D388E6D000D4E3A /* Diamond Push-Up.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23221D388E6D000D4E3A /* Diamond Push-Up.gif */; };
+		629C23BC1D388E6D000D4E3A /* Dragonfly Crunch.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23231D388E6D000D4E3A /* Dragonfly Crunch.gif */; };
+		629C23BD1D388E6D000D4E3A /* Flutter Kick.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23241D388E6D000D4E3A /* Flutter Kick.gif */; };
+		629C23BE1D388E6D000D4E3A /* Forward Lunge (Left Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23251D388E6D000D4E3A /* Forward Lunge (Left Leg).gif */; };
+		629C23BF1D388E6D000D4E3A /* Forward Lunge (Right Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23261D388E6D000D4E3A /* Forward Lunge (Right Leg).gif */; };
+		629C23C01D388E6D000D4E3A /* Front Balance Drill (Left Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23271D388E6D000D4E3A /* Front Balance Drill (Left Leg).gif */; };
+		629C23C11D388E6D000D4E3A /* Front Balance Drill (Right Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23281D388E6D000D4E3A /* Front Balance Drill (Right Leg).gif */; };
+		629C23C21D388E6D000D4E3A /* Front Ball Throw.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23291D388E6D000D4E3A /* Front Ball Throw.gif */; };
+		629C23C31D388E6D000D4E3A /* Front Squat.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C232A1D388E6D000D4E3A /* Front Squat.gif */; };
+		629C23C41D388E6D000D4E3A /* Glute Kick-Back (Left Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C232B1D388E6D000D4E3A /* Glute Kick-Back (Left Leg).gif */; };
+		629C23C51D388E6D000D4E3A /* Glute Kick-Back (Right Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C232C1D388E6D000D4E3A /* Glute Kick-Back (Right Leg).gif */; };
+		629C23C61D388E6D000D4E3A /* Glute Kick-Up (Left Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C232D1D388E6D000D4E3A /* Glute Kick-Up (Left Leg).gif */; };
+		629C23C71D388E6D000D4E3A /* Glute Kick-Up (Right Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C232E1D388E6D000D4E3A /* Glute Kick-Up (Right Leg).gif */; };
+		629C23C81D388E6D000D4E3A /* Good Morning.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C232F1D388E6D000D4E3A /* Good Morning.gif */; };
+		629C23C91D388E6D000D4E3A /* Groin Stretch (Left Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23301D388E6D000D4E3A /* Groin Stretch (Left Leg).gif */; };
+		629C23CA1D388E6D000D4E3A /* Groin Stretch (Right Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23311D388E6D000D4E3A /* Groin Stretch (Right Leg).gif */; };
+		629C23CB1D388E6D000D4E3A /* Groiner.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23321D388E6D000D4E3A /* Groiner.gif */; };
+		629C23CC1D388E6D000D4E3A /* Hip Abduction (Left Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23331D388E6D000D4E3A /* Hip Abduction (Left Leg).gif */; };
+		629C23CD1D388E6D000D4E3A /* Hip Abduction (Right Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23341D388E6D000D4E3A /* Hip Abduction (Right Leg).gif */; };
+		629C23CE1D388E6D000D4E3A /* Hip Extension - Bridge.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23351D388E6D000D4E3A /* Hip Extension - Bridge.gif */; };
+		629C23CF1D388E6D000D4E3A /* Hip Extension - Knee Up.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23361D388E6D000D4E3A /* Hip Extension - Knee Up.gif */; };
+		629C23D01D388E6D000D4E3A /* Hip Extension - Leg Raise.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23371D388E6D000D4E3A /* Hip Extension - Leg Raise.gif */; };
+		629C23D11D388E6D000D4E3A /* Hover Pushouts.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23381D388E6D000D4E3A /* Hover Pushouts.gif */; };
+		629C23D21D388E6D000D4E3A /* I-Curl.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23391D388E6D000D4E3A /* I-Curl.gif */; };
+		629C23D31D388E6D000D4E3A /* I-Raise.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C233A1D388E6D000D4E3A /* I-Raise.gif */; };
+		629C23D41D388E6D000D4E3A /* Iron Cross.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C233B1D388E6D000D4E3A /* Iron Cross.gif */; };
+		629C23D51D388E6D000D4E3A /* Jammer Jump.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C233C1D388E6D000D4E3A /* Jammer Jump.gif */; };
+		629C23D61D388E6D000D4E3A /* Kick Slide (Left Foot Up).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C233D1D388E6D000D4E3A /* Kick Slide (Left Foot Up).gif */; };
+		629C23D71D388E6D000D4E3A /* Kick Slide (Right Foot Up).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C233E1D388E6D000D4E3A /* Kick Slide (Right Foot Up).gif */; };
+		629C23D81D388E6D000D4E3A /* Lateral Hamstring Stretch (Left Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C233F1D388E6D000D4E3A /* Lateral Hamstring Stretch (Left Leg).gif */; };
+		629C23D91D388E6D000D4E3A /* Lateral Hamstring Stretch (Right Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23401D388E6D000D4E3A /* Lateral Hamstring Stretch (Right Leg).gif */; };
+		629C23DA1D388E6D000D4E3A /* Leg Circle (Clockwise).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23411D388E6D000D4E3A /* Leg Circle (Clockwise).gif */; };
+		629C23DB1D388E6D000D4E3A /* Leg Circle (Counter-Clockwise).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23421D388E6D000D4E3A /* Leg Circle (Counter-Clockwise).gif */; };
+		629C23DC1D388E6D000D4E3A /* Leg Raise (Left Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23431D388E6D000D4E3A /* Leg Raise (Left Leg).gif */; };
+		629C23DD1D388E6D000D4E3A /* Leg Raise (Right Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23441D388E6D000D4E3A /* Leg Raise (Right Leg).gif */; };
+		629C23DE1D388E6D000D4E3A /* Lift and Twist (Left Side).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23451D388E6D000D4E3A /* Lift and Twist (Left Side).gif */; };
+		629C23DF1D388E6D000D4E3A /* Lift and Twist (Right Side).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23461D388E6D000D4E3A /* Lift and Twist (Right Side).gif */; };
+		629C23E01D388E6D000D4E3A /* Lying Quad Stretch (Left Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23471D388E6D000D4E3A /* Lying Quad Stretch (Left Leg).gif */; };
+		629C23E11D388E6D000D4E3A /* Lying Quad Stretch (Right Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23481D388E6D000D4E3A /* Lying Quad Stretch (Right Leg).gif */; };
+		629C23E21D388E6D000D4E3A /* Medial Hamstring Stretch (Left Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23491D388E6D000D4E3A /* Medial Hamstring Stretch (Left Leg).gif */; };
+		629C23E31D388E6D000D4E3A /* Medial Hamstring Stretch (Right Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C234A1D388E6D000D4E3A /* Medial Hamstring Stretch (Right Leg).gif */; };
+		629C23E41D388E6D000D4E3A /* Middle Hamstring Stretch (Left Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C234B1D388E6D000D4E3A /* Middle Hamstring Stretch (Left Leg).gif */; };
+		629C23E51D388E6D000D4E3A /* Middle Hamstring Stretch (Right Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C234C1D388E6D000D4E3A /* Middle Hamstring Stretch (Right Leg).gif */; };
+		629C23E61D388E6D000D4E3A /* Middle Swing.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C234D1D388E6D000D4E3A /* Middle Swing.gif */; };
+		629C23E71D388E6D000D4E3A /* Monster Walk.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C234E1D388E6D000D4E3A /* Monster Walk.gif */; };
+		629C23E81D388E6D000D4E3A /* Normal Push-Up.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C234F1D388E6D000D4E3A /* Normal Push-Up.gif */; };
+		629C23E91D388E6D000D4E3A /* Opposite Plank Reach (Left Arm).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23501D388E6D000D4E3A /* Opposite Plank Reach (Left Arm).gif */; };
+		629C23EA1D388E6D000D4E3A /* Opposite Plank Reach (Right Arm).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23511D388E6D000D4E3A /* Opposite Plank Reach (Right Arm).gif */; };
+		629C23EB1D388E6D000D4E3A /* Outer Hip Stretch (Left Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23521D388E6D000D4E3A /* Outer Hip Stretch (Left Leg).gif */; };
+		629C23EC1D388E6D000D4E3A /* Outer Hip Stretch (Right Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23531D388E6D000D4E3A /* Outer Hip Stretch (Right Leg).gif */; };
+		629C23ED1D388E6D000D4E3A /* Pec Stretch (Double Arm).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23541D388E6D000D4E3A /* Pec Stretch (Double Arm).gif */; };
+		629C23EE1D388E6D000D4E3A /* Plank Delt Row (Left Arm).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23551D388E6D000D4E3A /* Plank Delt Row (Left Arm).gif */; };
+		629C23EF1D388E6D000D4E3A /* Plank Delt Row (Right Arm).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23561D388E6D000D4E3A /* Plank Delt Row (Right Arm).gif */; };
+		629C23F01D388E6D000D4E3A /* Plank Delt Row.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23571D388E6D000D4E3A /* Plank Delt Row.gif */; };
+		629C23F11D388E6D000D4E3A /* Plank Jack.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23581D388E6D000D4E3A /* Plank Jack.gif */; };
+		629C23F21D388E6D000D4E3A /* Plank Pull Through (Left Arm).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23591D388E6D000D4E3A /* Plank Pull Through (Left Arm).gif */; };
+		629C23F31D388E6D000D4E3A /* Plank Pull Through (Right Arm).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C235A1D388E6D000D4E3A /* Plank Pull Through (Right Arm).gif */; };
+		629C23F41D388E6D000D4E3A /* Plank Walk (Left).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C235B1D388E6D000D4E3A /* Plank Walk (Left).gif */; };
+		629C23F51D388E6D000D4E3A /* Plank Walk (Right).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C235C1D388E6D000D4E3A /* Plank Walk (Right).gif */; };
+		629C23F61D388E6D000D4E3A /* Punch.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C235D1D388E6D000D4E3A /* Punch.gif */; };
+		629C23F71D388E6D000D4E3A /* Push-Up with Rotation.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C235E1D388E6D000D4E3A /* Push-Up with Rotation.gif */; };
+		629C23F81D388E6D000D4E3A /* Quad Stretch with Twist (Left Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C235F1D388E6D000D4E3A /* Quad Stretch with Twist (Left Leg).gif */; };
+		629C23F91D388E6D000D4E3A /* Quad Stretch with Twist (Right Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23601D388E6D000D4E3A /* Quad Stretch with Twist (Right Leg).gif */; };
+		629C23FA1D388E6D000D4E3A /* Rear Deltoid Stretch (Left Arm).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23611D388E6D000D4E3A /* Rear Deltoid Stretch (Left Arm).gif */; };
+		629C23FB1D388E6D000D4E3A /* Rear Deltoid Stretch (Right Arm).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23621D388E6D000D4E3A /* Rear Deltoid Stretch (Right Arm).gif */; };
+		629C23FC1D388E6D000D4E3A /* Rest.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23631D388E6D000D4E3A /* Rest.gif */; };
+		629C23FD1D388E6D000D4E3A /* Reverse Bear Crawl.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23641D388E6D000D4E3A /* Reverse Bear Crawl.gif */; };
+		629C23FE1D388E6D000D4E3A /* Reverse Crunch.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23651D388E6D000D4E3A /* Reverse Crunch.gif */; };
+		629C23FF1D388E6D000D4E3A /* Reverse Lunge (Left Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23661D388E6D000D4E3A /* Reverse Lunge (Left Leg).gif */; };
+		629C24001D388E6D000D4E3A /* Reverse Lunge (Right Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23671D388E6D000D4E3A /* Reverse Lunge (Right Leg).gif */; };
+		629C24011D388E6D000D4E3A /* Rocky Solo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23681D388E6D000D4E3A /* Rocky Solo.gif */; };
+		629C24021D388E6D000D4E3A /* Russian Twists.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23691D388E6D000D4E3A /* Russian Twists.gif */; };
+		629C24031D388E6D000D4E3A /* Same-Side Superman.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C236A1D388E6D000D4E3A /* Same-Side Superman.gif */; };
+		629C24041D388E6D000D4E3A /* Scapula Stretch.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C236B1D388E6D000D4E3A /* Scapula Stretch.gif */; };
+		629C24051D388E6D000D4E3A /* Scissor Jump.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C236C1D388E6D000D4E3A /* Scissor Jump.gif */; };
+		629C24061D388E6D000D4E3A /* Scissor Kick.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C236D1D388E6D000D4E3A /* Scissor Kick.gif */; };
+		629C24071D388E6D000D4E3A /* Seated High Row.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C236E1D388E6D000D4E3A /* Seated High Row.gif */; };
+		629C24081D388E6D000D4E3A /* Seated Low Row.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C236F1D388E6D000D4E3A /* Seated Low Row.gif */; };
+		629C24091D388E6D000D4E3A /* Seated Pinch Row.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23701D388E6D000D4E3A /* Seated Pinch Row.gif */; };
+		629C240A1D388E6D000D4E3A /* Side Balance Drill.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23711D388E6D000D4E3A /* Side Balance Drill.gif */; };
+		629C240B1D388E6D000D4E3A /* Side Lunge (Left Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23721D388E6D000D4E3A /* Side Lunge (Left Leg).gif */; };
+		629C240C1D388E6D000D4E3A /* Side Lunge (Right Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23731D388E6D000D4E3A /* Side Lunge (Right Leg).gif */; };
+		629C240D1D388E6D000D4E3A /* Side Plank Hip Dip (Left Side).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23741D388E6D000D4E3A /* Side Plank Hip Dip (Left Side).gif */; };
+		629C240E1D388E6D000D4E3A /* Side Plank Hip Dip (Right Side).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23751D388E6D000D4E3A /* Side Plank Hip Dip (Right Side).gif */; };
+		629C240F1D388E6D000D4E3A /* Side Plank Hold (Left Side).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23761D388E6D000D4E3A /* Side Plank Hold (Left Side).gif */; };
+		629C24101D388E6D000D4E3A /* Side Plank Hold (Right Side).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23771D388E6D000D4E3A /* Side Plank Hold (Right Side).gif */; };
+		629C24111D388E6D000D4E3A /* Side Plank Reach Under (Left Side).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23781D388E6D000D4E3A /* Side Plank Reach Under (Left Side).gif */; };
+		629C24121D388E6D000D4E3A /* Side Plank Reach Under (Right Side).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23791D388E6D000D4E3A /* Side Plank Reach Under (Right Side).gif */; };
+		629C24131D388E6D000D4E3A /* Ski Jump.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C237A1D388E6D000D4E3A /* Ski Jump.gif */; };
+		629C24141D388E6D000D4E3A /* Split Squat (Left Leg Up).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C237B1D388E6D000D4E3A /* Split Squat (Left Leg Up).gif */; };
+		629C24151D388E6D000D4E3A /* Split Squat (Right Leg Up).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C237C1D388E6D000D4E3A /* Split Squat (Right Leg Up).gif */; };
+		629C24161D388E6D000D4E3A /* Squat Jump.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C237D1D388E6D000D4E3A /* Squat Jump.gif */; };
+		629C24171D388E6D000D4E3A /* Squat Lift.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C237E1D388E6D000D4E3A /* Squat Lift.gif */; };
+		629C24181D388E6D000D4E3A /* Squat Side Punch.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C237F1D388E6D000D4E3A /* Squat Side Punch.gif */; };
+		629C24191D388E6D000D4E3A /* Stacked Shuffle (Left Foot Up).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23801D388E6D000D4E3A /* Stacked Shuffle (Left Foot Up).gif */; };
+		629C241A1D388E6D000D4E3A /* Stacked Shuffle (Right Foot Up).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23811D388E6D000D4E3A /* Stacked Shuffle (Right Foot Up).gif */; };
+		629C241B1D388E6D000D4E3A /* Standing Hip Abduction (Left Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23821D388E6D000D4E3A /* Standing Hip Abduction (Left Leg).gif */; };
+		629C241C1D388E6D000D4E3A /* Standing Hip Abduction (Right Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23831D388E6D000D4E3A /* Standing Hip Abduction (Right Leg).gif */; };
+		629C241D1D388E6D000D4E3A /* Standing Hip Extension (Left Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23841D388E6D000D4E3A /* Standing Hip Extension (Left Leg).gif */; };
+		629C241E1D388E6D000D4E3A /* Standing Hip Extension (Right Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23851D388E6D000D4E3A /* Standing Hip Extension (Right Leg).gif */; };
+		629C241F1D388E6D000D4E3A /* Standing Kick-Out (Left Arm).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23861D388E6D000D4E3A /* Standing Kick-Out (Left Arm).gif */; };
+		629C24201D388E6D000D4E3A /* Standing Kick-Out (Right Arm).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23871D388E6D000D4E3A /* Standing Kick-Out (Right Arm).gif */; };
+		629C24211D388E6D000D4E3A /* Standing Kick-Up (Left Arm).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23881D388E6D000D4E3A /* Standing Kick-Up (Left Arm).gif */; };
+		629C24221D388E6D000D4E3A /* Standing Kick-Up (Right Arm).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23891D388E6D000D4E3A /* Standing Kick-Up (Right Arm).gif */; };
+		629C24231D388E6D000D4E3A /* Standing Pinch Row.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C238A1D388E6D000D4E3A /* Standing Pinch Row.gif */; };
+		629C24241D388E6D000D4E3A /* Standing Russian Twists.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C238B1D388E6D000D4E3A /* Standing Russian Twists.gif */; };
+		629C24251D388E6D000D4E3A /* Standing Side Stretch (Left Side).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C238C1D388E6D000D4E3A /* Standing Side Stretch (Left Side).gif */; };
+		629C24261D388E6D000D4E3A /* Standing Side Stretch (Right Side).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C238D1D388E6D000D4E3A /* Standing Side Stretch (Right Side).gif */; };
+		629C24271D388E6D000D4E3A /* Standking Kick-Out (Right Arm).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C238E1D388E6D000D4E3A /* Standking Kick-Out (Right Arm).gif */; };
+		629C24281D388E6D000D4E3A /* Straight High Pull.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C238F1D388E6D000D4E3A /* Straight High Pull.gif */; };
+		629C24291D388E6D000D4E3A /* Straight Leg Dead Lift.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23901D388E6D000D4E3A /* Straight Leg Dead Lift.gif */; };
+		629C242A1D388E6D000D4E3A /* Sumo Squat.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23911D388E6D000D4E3A /* Sumo Squat.gif */; };
+		629C242B1D388E6D000D4E3A /* Superman Press.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23921D388E6D000D4E3A /* Superman Press.gif */; };
+		629C242C1D388E6D000D4E3A /* Swing Jump.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23931D388E6D000D4E3A /* Swing Jump.gif */; };
+		629C242D1D388E6D000D4E3A /* T-Curl.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23941D388E6D000D4E3A /* T-Curl.gif */; };
+		629C242E1D388E6D000D4E3A /* T-Raise.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23951D388E6D000D4E3A /* T-Raise.gif */; };
+		629C242F1D388E6D000D4E3A /* Tricep Dip.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23961D388E6D000D4E3A /* Tricep Dip.gif */; };
+		629C24301D388E6D000D4E3A /* Tricep Stretch (Left Arm).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23971D388E6D000D4E3A /* Tricep Stretch (Left Arm).gif */; };
+		629C24311D388E6D000D4E3A /* Tricep Stretch (Right Arm).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23981D388E6D000D4E3A /* Tricep Stretch (Right Arm).gif */; };
+		629C24321D388E6D000D4E3A /* Tuck Jump.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23991D388E6D000D4E3A /* Tuck Jump.gif */; };
+		629C24331D388E6D000D4E3A /* Up&Out.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C239A1D388E6D000D4E3A /* Up&Out.gif */; };
+		629C24341D388E6D000D4E3A /* V-Up.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C239B1D388E6D000D4E3A /* V-Up.gif */; };
+		629C24351D388E6D000D4E3A /* Wide Push-Up.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C239C1D388E6D000D4E3A /* Wide Push-Up.gif */; };
+		629C24361D388E6D000D4E3A /* X-Jack.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C239D1D388E6D000D4E3A /* X-Jack.gif */; };
+		629C24371D388E6D000D4E3A /* X-Walk (Left).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C239E1D388E6D000D4E3A /* X-Walk (Left).gif */; };
+		629C24381D388E6D000D4E3A /* X-Walk (Right).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C239F1D388E6D000D4E3A /* X-Walk (Right).gif */; };
+		629C24391D388E6D000D4E3A /* Y-Curl.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23A01D388E6D000D4E3A /* Y-Curl.gif */; };
+		629C243A1D388E6D000D4E3A /* Y-Raise.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23A11D388E6D000D4E3A /* Y-Raise.gif */; };
 		62A8DF151D1F1E170024D4B3 /* PasswordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A8DF141D1F1E170024D4B3 /* PasswordCell.swift */; };
 		62A8DF191D1F1EA40024D4B3 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A8DF181D1F1EA40024D4B3 /* ChangePasswordViewController.swift */; };
 		62AB9B801CFE8B32005498F8 /* QuickStartImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AB9B7F1CFE8B32005498F8 /* QuickStartImageView.swift */; };
@@ -254,11 +254,7 @@
 		6235212C1CFA130A00B3F1BF /* VideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
 		6248AE2B1CF9510C000A2DC9 /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		624A94E71CB7463E00A8D21A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		624DBB751D2DF1260066ECB8 /* Rest.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Rest.gif; sourceTree = "<group>"; };
 		624DBB771D2DF86B0066ECB8 /* CustomPaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPaceViewController.swift; sourceTree = "<group>"; };
-		624DBB791D2E02DC0066ECB8 /* Crossing High Pull.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Crossing High Pull.gif"; sourceTree = "<group>"; };
-		624DBB7B1D2E037A0066ECB8 /* Clamshell with Lift (Right Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Clamshell with Lift (Right Leg).gif"; sourceTree = "<group>"; };
-		6257B6731D349291004D76B0 /* Straight Leg Dead Lift.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Straight Leg Dead Lift.gif"; sourceTree = "<group>"; };
 		6259FCAD1D0388D800DF09D4 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		626063921CBAC4EF00B1AF3C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		626063941CBAEDEF00B1AF3C /* CreateBasicsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateBasicsViewController.swift; sourceTree = "<group>"; };
@@ -267,160 +263,164 @@
 		6263BBD21CE79A2600CF383A /* MovementDescriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementDescriptionCell.swift; sourceTree = "<group>"; };
 		626D2CF31D1A4F8C00812ED0 /* ROImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ROImage.swift; sourceTree = "<group>"; };
 		626FBECE1D2C5014005B592B /* LabelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelCell.swift; sourceTree = "<group>"; };
-		626FBED11D2C653A005B592B /* 2 Arm Pulley.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "2 Arm Pulley.gif"; sourceTree = "<group>"; };
-		626FBED21D2C653A005B592B /* Alternating Superman.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Alternating Superman.gif"; sourceTree = "<group>"; };
-		626FBED31D2C653A005B592B /* Anchored Bicycle.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Anchored Bicycle.gif"; sourceTree = "<group>"; };
-		626FBED41D2C653A005B592B /* Anchored Hop-In.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Anchored Hop-In.gif"; sourceTree = "<group>"; };
-		626FBED51D2C653A005B592B /* Anchored Mountain Climber Push-Up.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Anchored Mountain Climber Push-Up.gif"; sourceTree = "<group>"; };
-		626FBED61D2C653A005B592B /* Anchored Mountain Climbers.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Anchored Mountain Climbers.gif"; sourceTree = "<group>"; };
-		626FBED71D2C653A005B592B /* Anchored Pull-In.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Anchored Pull-In.gif"; sourceTree = "<group>"; };
-		626FBED81D2C653A005B592B /* Anchored Spiderman Push-Up.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Anchored Spiderman Push-Up.gif"; sourceTree = "<group>"; };
-		626FBED91D2C653A005B592B /* Anchored Spiderman.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Anchored Spiderman.gif"; sourceTree = "<group>"; };
-		626FBEDA1D2C653A005B592B /* Back Squat.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Back Squat.gif"; sourceTree = "<group>"; };
-		626FBEDB1D2C653A005B592B /* Bear Crawl.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Bear Crawl.gif"; sourceTree = "<group>"; };
-		626FBEDC1D2C653A005B592B /* Bent-Over Kick-Back.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Bent-Over Kick-Back.gif"; sourceTree = "<group>"; };
-		626FBEDD1D2C653A005B592B /* Bent-Over Kick-Out.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Bent-Over Kick-Out.gif"; sourceTree = "<group>"; };
-		626FBEDE1D2C653A005B592B /* Big Circle (Clockwise).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Big Circle (Clockwise).gif"; sourceTree = "<group>"; };
-		626FBEDF1D2C653A005B592B /* Big Circle (Counter-Clockwise).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Big Circle (Counter-Clockwise).gif"; sourceTree = "<group>"; };
-		626FBEE01D2C653A005B592B /* Box Jump.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Box Jump.gif"; sourceTree = "<group>"; };
-		626FBEE11D2C653A005B592B /* Burpee.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Burpee.gif; sourceTree = "<group>"; };
-		626FBEE21D2C653A005B592B /* Butt Kick Jump.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Butt Kick Jump.gif"; sourceTree = "<group>"; };
-		626FBEE31D2C653A005B592B /* Butterfly.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Butterfly.gif; sourceTree = "<group>"; };
-		626FBEE41D2C653A005B592B /* Clamshell with Lift (Left Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Clamshell with Lift (Left Leg).gif"; sourceTree = "<group>"; };
-		626FBEE61D2C653A005B592B /* Clean.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Clean.gif; sourceTree = "<group>"; };
-		626FBEE71D2C653A005B592B /* Crab Walk.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Crab Walk.gif"; sourceTree = "<group>"; };
-		626FBEE91D2C653A005B592B /* Delt Row.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Delt Row.gif"; sourceTree = "<group>"; };
-		626FBEEA1D2C653A005B592B /* Diamond Push-Up.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Diamond Push-Up.gif"; sourceTree = "<group>"; };
-		626FBEEB1D2C653A005B592B /* Dragonfly Crunch.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Dragonfly Crunch.gif"; sourceTree = "<group>"; };
-		626FBEEC1D2C653A005B592B /* Flutter Kick.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Flutter Kick.gif"; sourceTree = "<group>"; };
-		626FBEED1D2C653A005B592B /* Forward Lunge (Left Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Forward Lunge (Left Leg).gif"; sourceTree = "<group>"; };
-		626FBEEE1D2C653A005B592B /* Forward Lunge (Right Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Forward Lunge (Right Leg).gif"; sourceTree = "<group>"; };
-		626FBEEF1D2C653A005B592B /* Front Balance Drill (Left Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Front Balance Drill (Left Leg).gif"; sourceTree = "<group>"; };
-		626FBEF01D2C653A005B592B /* Front Balance Drill (Right Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Front Balance Drill (Right Leg).gif"; sourceTree = "<group>"; };
-		626FBEF11D2C653A005B592B /* Front Ball Throw.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Front Ball Throw.gif"; sourceTree = "<group>"; };
-		626FBEF21D2C653A005B592B /* Front Squat.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Front Squat.gif"; sourceTree = "<group>"; };
-		626FBEF31D2C653A005B592B /* Glute Kick-Back (Left Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Glute Kick-Back (Left Leg).gif"; sourceTree = "<group>"; };
-		626FBEF41D2C653A005B592B /* Glute Kick-Back (Right Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Glute Kick-Back (Right Leg).gif"; sourceTree = "<group>"; };
-		626FBEF51D2C653A005B592B /* Glute Kick-Up (Left Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Glute Kick-Up (Left Leg).gif"; sourceTree = "<group>"; };
-		626FBEF61D2C653A005B592B /* Glute Kick-Up (Right Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Glute Kick-Up (Right Leg).gif"; sourceTree = "<group>"; };
-		626FBEF71D2C653A005B592B /* Good Morning.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Good Morning.gif"; sourceTree = "<group>"; };
-		626FBEF81D2C653A005B592B /* Groin Stretch (Left Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Groin Stretch (Left Leg).gif"; sourceTree = "<group>"; };
-		626FBEF91D2C653A005B592B /* Groin Stretch (Right Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Groin Stretch (Right Leg).gif"; sourceTree = "<group>"; };
-		626FBEFA1D2C653A005B592B /* Groiner.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Groiner.gif; sourceTree = "<group>"; };
-		626FBEFB1D2C653A005B592B /* Hip Abduction (Left Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Hip Abduction (Left Leg).gif"; sourceTree = "<group>"; };
-		626FBEFC1D2C653A005B592B /* Hip Abduction (Right Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Hip Abduction (Right Leg).gif"; sourceTree = "<group>"; };
-		626FBEFD1D2C653A005B592B /* Hip Extension - Bridge.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Hip Extension - Bridge.gif"; sourceTree = "<group>"; };
-		626FBEFE1D2C653A005B592B /* Hip Extension - Knee Up.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Hip Extension - Knee Up.gif"; sourceTree = "<group>"; };
-		626FBEFF1D2C653A005B592B /* Hip Extension - Leg Raise.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Hip Extension - Leg Raise.gif"; sourceTree = "<group>"; };
-		626FBF001D2C653A005B592B /* Hover Pushouts.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Hover Pushouts.gif"; sourceTree = "<group>"; };
-		626FBF011D2C653A005B592B /* I-Curl.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "I-Curl.gif"; sourceTree = "<group>"; };
-		626FBF021D2C653A005B592B /* I-Raise.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "I-Raise.gif"; sourceTree = "<group>"; };
-		626FBF031D2C653A005B592B /* Iron Cross.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Iron Cross.gif"; sourceTree = "<group>"; };
-		626FBF041D2C653A005B592B /* Jammer Jump.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Jammer Jump.gif"; sourceTree = "<group>"; };
-		626FBF051D2C653A005B592B /* Kick Slide (Left Foot Up).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Kick Slide (Left Foot Up).gif"; sourceTree = "<group>"; };
-		626FBF061D2C653A005B592B /* Kick Slide (Right Foot Up).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Kick Slide (Right Foot Up).gif"; sourceTree = "<group>"; };
-		626FBF071D2C653A005B592B /* Lateral Hamstring Stretch (Left Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Lateral Hamstring Stretch (Left Leg).gif"; sourceTree = "<group>"; };
-		626FBF081D2C653A005B592B /* Lateral Hamstring Stretch (Right Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Lateral Hamstring Stretch (Right Leg).gif"; sourceTree = "<group>"; };
-		626FBF091D2C653A005B592B /* Leg Circle (Clockwise).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Leg Circle (Clockwise).gif"; sourceTree = "<group>"; };
-		626FBF0A1D2C653A005B592B /* Leg Circle (Counter-Clockwise).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Leg Circle (Counter-Clockwise).gif"; sourceTree = "<group>"; };
-		626FBF0B1D2C653A005B592B /* Leg Raise (Left Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Leg Raise (Left Leg).gif"; sourceTree = "<group>"; };
-		626FBF0C1D2C653A005B592B /* Leg Raise (Right Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Leg Raise (Right Leg).gif"; sourceTree = "<group>"; };
-		626FBF0D1D2C653A005B592B /* Lift and Twist (Left Side).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Lift and Twist (Left Side).gif"; sourceTree = "<group>"; };
-		626FBF0E1D2C653A005B592B /* Lift and Twist (Right Side).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Lift and Twist (Right Side).gif"; sourceTree = "<group>"; };
-		626FBF0F1D2C653A005B592B /* Lying Quad Stretch (Left Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Lying Quad Stretch (Left Leg).gif"; sourceTree = "<group>"; };
-		626FBF101D2C653A005B592B /* Lying Quad Stretch (Right Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Lying Quad Stretch (Right Leg).gif"; sourceTree = "<group>"; };
-		626FBF111D2C653A005B592B /* Medial Hamstring Stretch (Left Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Medial Hamstring Stretch (Left Leg).gif"; sourceTree = "<group>"; };
-		626FBF121D2C653A005B592B /* Medial Hamstring Stretch (Right Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Medial Hamstring Stretch (Right Leg).gif"; sourceTree = "<group>"; };
-		626FBF131D2C653A005B592B /* Middle Hamstring Stretch (Left Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Middle Hamstring Stretch (Left Leg).gif"; sourceTree = "<group>"; };
-		626FBF141D2C653A005B592B /* Middle Hamstring Stretch (Right Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Middle Hamstring Stretch (Right Leg).gif"; sourceTree = "<group>"; };
-		626FBF151D2C653A005B592B /* Middle Swing.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Middle Swing.gif"; sourceTree = "<group>"; };
-		626FBF161D2C653A005B592B /* Monster Walk.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Monster Walk.gif"; sourceTree = "<group>"; };
-		626FBF171D2C653A005B592B /* Normal Push-Up.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Normal Push-Up.gif"; sourceTree = "<group>"; };
-		626FBF181D2C653A005B592B /* Opposite Plank Reach (Left Arm).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Opposite Plank Reach (Left Arm).gif"; sourceTree = "<group>"; };
-		626FBF191D2C653A005B592B /* Opposite Plank Reach (Right Arm).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Opposite Plank Reach (Right Arm).gif"; sourceTree = "<group>"; };
-		626FBF1A1D2C653A005B592B /* Outer Hip Stretch (Left Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Outer Hip Stretch (Left Leg).gif"; sourceTree = "<group>"; };
-		626FBF1B1D2C653A005B592B /* Outer Hip Stretch (Right Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Outer Hip Stretch (Right Leg).gif"; sourceTree = "<group>"; };
-		626FBF1C1D2C653A005B592B /* Pec Stretch (Double Arm).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Pec Stretch (Double Arm).gif"; sourceTree = "<group>"; };
-		626FBF1D1D2C653A005B592B /* Plank Delt Row (Left Arm).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Plank Delt Row (Left Arm).gif"; sourceTree = "<group>"; };
-		626FBF1E1D2C653A005B592B /* Plank Delt Row (Right Arm).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Plank Delt Row (Right Arm).gif"; sourceTree = "<group>"; };
-		626FBF1F1D2C653A005B592B /* Plank Delt Row.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Plank Delt Row.gif"; sourceTree = "<group>"; };
-		626FBF201D2C653A005B592B /* Plank Jack.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Plank Jack.gif"; sourceTree = "<group>"; };
-		626FBF211D2C653A005B592B /* Plank Pull Through (Left Arm).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Plank Pull Through (Left Arm).gif"; sourceTree = "<group>"; };
-		626FBF221D2C653A005B592B /* Plank Pull Through (Right Arm).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Plank Pull Through (Right Arm).gif"; sourceTree = "<group>"; };
-		626FBF231D2C653A005B592B /* Plank Walk (Left).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Plank Walk (Left).gif"; sourceTree = "<group>"; };
-		626FBF241D2C653A005B592B /* Plank Walk (Right).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Plank Walk (Right).gif"; sourceTree = "<group>"; };
-		626FBF251D2C653A005B592B /* Punch.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Punch.gif; sourceTree = "<group>"; };
-		626FBF261D2C653A005B592B /* Push-Up with Rotation.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Push-Up with Rotation.gif"; sourceTree = "<group>"; };
-		626FBF271D2C653A005B592B /* Quad Stretch with Twist (Left Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Quad Stretch with Twist (Left Leg).gif"; sourceTree = "<group>"; };
-		626FBF281D2C653A005B592B /* Quad Stretch with Twist (Right Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Quad Stretch with Twist (Right Leg).gif"; sourceTree = "<group>"; };
-		626FBF291D2C653A005B592B /* Rear Deltoid Stretch (Left Arm).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Rear Deltoid Stretch (Left Arm).gif"; sourceTree = "<group>"; };
-		626FBF2A1D2C653A005B592B /* Rear Deltoid Stretch (Right Arm).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Rear Deltoid Stretch (Right Arm).gif"; sourceTree = "<group>"; };
-		626FBF2C1D2C653A005B592B /* Reverse Bear Crawl.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Reverse Bear Crawl.gif"; sourceTree = "<group>"; };
-		626FBF2D1D2C653A005B592B /* Reverse Crunch.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Reverse Crunch.gif"; sourceTree = "<group>"; };
-		626FBF2E1D2C653A005B592B /* Reverse Lunge (Left Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Reverse Lunge (Left Leg).gif"; sourceTree = "<group>"; };
-		626FBF2F1D2C653A005B592B /* Reverse Lunge (Right Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Reverse Lunge (Right Leg).gif"; sourceTree = "<group>"; };
-		626FBF301D2C653A005B592B /* Rocky Solo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Rocky Solo.gif"; sourceTree = "<group>"; };
-		626FBF311D2C653A005B592B /* Russian Twists.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Russian Twists.gif"; sourceTree = "<group>"; };
-		626FBF321D2C653A005B592B /* Same-Side Superman.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Same-Side Superman.gif"; sourceTree = "<group>"; };
-		626FBF331D2C653A005B592B /* Scapula Stretch.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Scapula Stretch.gif"; sourceTree = "<group>"; };
-		626FBF341D2C653A005B592B /* Scissor Jump.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Scissor Jump.gif"; sourceTree = "<group>"; };
-		626FBF351D2C653A005B592B /* Scissor Kick.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Scissor Kick.gif"; sourceTree = "<group>"; };
-		626FBF361D2C653A005B592B /* Seated High Row.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Seated High Row.gif"; sourceTree = "<group>"; };
-		626FBF371D2C653A005B592B /* Seated Low Row.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Seated Low Row.gif"; sourceTree = "<group>"; };
-		626FBF381D2C653A005B592B /* Seated Pinch Row.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Seated Pinch Row.gif"; sourceTree = "<group>"; };
-		626FBF391D2C653A005B592B /* Side Balance Drill.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Side Balance Drill.gif"; sourceTree = "<group>"; };
-		626FBF3A1D2C653A005B592B /* Side Lunge (Left Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Side Lunge (Left Leg).gif"; sourceTree = "<group>"; };
-		626FBF3B1D2C653A005B592B /* Side Lunge (Right Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Side Lunge (Right Leg).gif"; sourceTree = "<group>"; };
-		626FBF3C1D2C653A005B592B /* Side Plank Hip Dip (Left Side).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Side Plank Hip Dip (Left Side).gif"; sourceTree = "<group>"; };
-		626FBF3D1D2C653A005B592B /* Side Plank Hip Dip (Right Side).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Side Plank Hip Dip (Right Side).gif"; sourceTree = "<group>"; };
-		626FBF3E1D2C653A005B592B /* Side Plank Hold (Left Side).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Side Plank Hold (Left Side).gif"; sourceTree = "<group>"; };
-		626FBF3F1D2C653A005B592B /* Side Plank Hold (Right Side).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Side Plank Hold (Right Side).gif"; sourceTree = "<group>"; };
-		626FBF401D2C653A005B592B /* Side Plank Reach Under (Left Side).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Side Plank Reach Under (Left Side).gif"; sourceTree = "<group>"; };
-		626FBF411D2C653A005B592B /* Side Plank Reach Under (Right Side).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Side Plank Reach Under (Right Side).gif"; sourceTree = "<group>"; };
-		626FBF421D2C653A005B592B /* Ski Jump.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Ski Jump.gif"; sourceTree = "<group>"; };
-		626FBF431D2C653A005B592B /* Split Squat (Left Leg Up).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Split Squat (Left Leg Up).gif"; sourceTree = "<group>"; };
-		626FBF441D2C653A005B592B /* Split Squat (Right Leg Up).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Split Squat (Right Leg Up).gif"; sourceTree = "<group>"; };
-		626FBF451D2C653A005B592B /* Squat Jump.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Squat Jump.gif"; sourceTree = "<group>"; };
-		626FBF461D2C653A005B592B /* Squat Lift.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Squat Lift.gif"; sourceTree = "<group>"; };
-		626FBF471D2C653A005B592B /* Squat Side Punch.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Squat Side Punch.gif"; sourceTree = "<group>"; };
-		626FBF481D2C653A005B592B /* Stacked Shuffle (Left Foot Up).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Stacked Shuffle (Left Foot Up).gif"; sourceTree = "<group>"; };
-		626FBF491D2C653A005B592B /* Stacked Shuffle (Right Foot Up).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Stacked Shuffle (Right Foot Up).gif"; sourceTree = "<group>"; };
-		626FBF4A1D2C653A005B592B /* Standing Hip Abduction (Left Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Standing Hip Abduction (Left Leg).gif"; sourceTree = "<group>"; };
-		626FBF4B1D2C653A005B592B /* Standing Hip Abduction (Right Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Standing Hip Abduction (Right Leg).gif"; sourceTree = "<group>"; };
-		626FBF4C1D2C653A005B592B /* Standing Hip Extension (Left Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Standing Hip Extension (Left Leg).gif"; sourceTree = "<group>"; };
-		626FBF4D1D2C653A005B592B /* Standing Hip Extension (Right Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Standing Hip Extension (Right Leg).gif"; sourceTree = "<group>"; };
-		626FBF4E1D2C653A005B592B /* Standing Kick-Out (Left Arm).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Standing Kick-Out (Left Arm).gif"; sourceTree = "<group>"; };
-		626FBF4F1D2C653A005B592B /* Standing Kick-Out (Right Arm).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Standing Kick-Out (Right Arm).gif"; sourceTree = "<group>"; };
-		626FBF501D2C653A005B592B /* Standing Kick-Up (Left Arm).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Standing Kick-Up (Left Arm).gif"; sourceTree = "<group>"; };
-		626FBF511D2C653A005B592B /* Standing Kick-Up (Right Arm).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Standing Kick-Up (Right Arm).gif"; sourceTree = "<group>"; };
-		626FBF521D2C653A005B592B /* Standing Pinch Row.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Standing Pinch Row.gif"; sourceTree = "<group>"; };
-		626FBF531D2C653A005B592B /* Standing Russian Twists.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Standing Russian Twists.gif"; sourceTree = "<group>"; };
-		626FBF541D2C653A005B592B /* Standing Side Stretch (Left Side).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Standing Side Stretch (Left Side).gif"; sourceTree = "<group>"; };
-		626FBF551D2C653A005B592B /* Standing Side Stretch (Right Side).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Standing Side Stretch (Right Side).gif"; sourceTree = "<group>"; };
-		626FBF561D2C653A005B592B /* Standking Kick-Out (Right Arm).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Standking Kick-Out (Right Arm).gif"; sourceTree = "<group>"; };
-		626FBF571D2C653A005B592B /* Straight High Pull.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Straight High Pull.gif"; sourceTree = "<group>"; };
-		626FBF591D2C653A005B592B /* Sumo Squat.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Sumo Squat.gif"; sourceTree = "<group>"; };
-		626FBF5A1D2C653A005B592B /* Superman Press.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Superman Press.gif"; sourceTree = "<group>"; };
-		626FBF5B1D2C653A005B592B /* Swing Jump.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Swing Jump.gif"; sourceTree = "<group>"; };
-		626FBF5C1D2C653A005B592B /* T-Curl.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "T-Curl.gif"; sourceTree = "<group>"; };
-		626FBF5D1D2C653A005B592B /* T-Raise.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "T-Raise.gif"; sourceTree = "<group>"; };
-		626FBF5E1D2C653B005B592B /* Tricep Dip.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Tricep Dip.gif"; sourceTree = "<group>"; };
-		626FBF5F1D2C653B005B592B /* Tricep Stretch (Left Arm).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Tricep Stretch (Left Arm).gif"; sourceTree = "<group>"; };
-		626FBF601D2C653B005B592B /* Tricep Stretch (Right Arm).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Tricep Stretch (Right Arm).gif"; sourceTree = "<group>"; };
-		626FBF611D2C653B005B592B /* Tuck Jump.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Tuck Jump.gif"; sourceTree = "<group>"; };
-		626FBF621D2C653B005B592B /* Up&Out.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Up&Out.gif"; sourceTree = "<group>"; };
-		626FBF631D2C653B005B592B /* V-Up.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "V-Up.gif"; sourceTree = "<group>"; };
-		626FBF641D2C653B005B592B /* Wide Push-Up.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Wide Push-Up.gif"; sourceTree = "<group>"; };
-		626FBF651D2C653B005B592B /* X-Jack.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "X-Jack.gif"; sourceTree = "<group>"; };
-		626FBF661D2C653B005B592B /* X-Walk (Left).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "X-Walk (Left).gif"; sourceTree = "<group>"; };
-		626FBF671D2C653B005B592B /* X-Walk (Right).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "X-Walk (Right).gif"; sourceTree = "<group>"; };
-		626FBF681D2C653B005B592B /* Y-Curl.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Y-Curl.gif"; sourceTree = "<group>"; };
-		626FBF691D2C653B005B592B /* Y-Raise.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Y-Raise.gif"; sourceTree = "<group>"; };
 		626FC0031D2C8950005B592B /* GuidedWorkoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuidedWorkoutViewController.swift; sourceTree = "<group>"; };
 		62780C681D0BA87300198441 /* ProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		627BC9E81CCE8B68008C8647 /* Workout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
 		62915B841D2C155C0012A274 /* VideoThumbnailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoThumbnailView.swift; sourceTree = "<group>"; };
 		62926A941CBC33F200960F94 /* CreateLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateLoginViewController.swift; sourceTree = "<group>"; };
+		629C23091D388E6D000D4E3A /* 2 Arm Pulley.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "2 Arm Pulley.gif"; sourceTree = "<group>"; };
+		629C230A1D388E6D000D4E3A /* Alternating Superman.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Alternating Superman.gif"; sourceTree = "<group>"; };
+		629C230B1D388E6D000D4E3A /* Anchored Bicycle.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Anchored Bicycle.gif"; sourceTree = "<group>"; };
+		629C230C1D388E6D000D4E3A /* Anchored Hop-In.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Anchored Hop-In.gif"; sourceTree = "<group>"; };
+		629C230D1D388E6D000D4E3A /* Anchored Mountain Climber Push-Up.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Anchored Mountain Climber Push-Up.gif"; sourceTree = "<group>"; };
+		629C230E1D388E6D000D4E3A /* Anchored Mountain Climbers.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Anchored Mountain Climbers.gif"; sourceTree = "<group>"; };
+		629C230F1D388E6D000D4E3A /* Anchored Pull-In.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Anchored Pull-In.gif"; sourceTree = "<group>"; };
+		629C23101D388E6D000D4E3A /* Anchored Spiderman Push-Up.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Anchored Spiderman Push-Up.gif"; sourceTree = "<group>"; };
+		629C23111D388E6D000D4E3A /* Anchored Spiderman.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Anchored Spiderman.gif"; sourceTree = "<group>"; };
+		629C23121D388E6D000D4E3A /* Back Squat.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Back Squat.gif"; sourceTree = "<group>"; };
+		629C23131D388E6D000D4E3A /* Bear Crawl.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Bear Crawl.gif"; sourceTree = "<group>"; };
+		629C23141D388E6D000D4E3A /* Bent-Over Kick-Back.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Bent-Over Kick-Back.gif"; sourceTree = "<group>"; };
+		629C23151D388E6D000D4E3A /* Bent-Over Kick-Out.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Bent-Over Kick-Out.gif"; sourceTree = "<group>"; };
+		629C23161D388E6D000D4E3A /* Big Circle (Clockwise).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Big Circle (Clockwise).gif"; sourceTree = "<group>"; };
+		629C23171D388E6D000D4E3A /* Big Circle (Counter-Clockwise).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Big Circle (Counter-Clockwise).gif"; sourceTree = "<group>"; };
+		629C23181D388E6D000D4E3A /* Box Jump.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Box Jump.gif"; sourceTree = "<group>"; };
+		629C23191D388E6D000D4E3A /* Burpee.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Burpee.gif; sourceTree = "<group>"; };
+		629C231A1D388E6D000D4E3A /* Butt Kick Jump.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Butt Kick Jump.gif"; sourceTree = "<group>"; };
+		629C231B1D388E6D000D4E3A /* Butterfly.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Butterfly.gif; sourceTree = "<group>"; };
+		629C231C1D388E6D000D4E3A /* Clamshell with Lift (Left Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Clamshell with Lift (Left Leg).gif"; sourceTree = "<group>"; };
+		629C231D1D388E6D000D4E3A /* Clamshell with Lift (Right Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Clamshell with Lift (Right Leg).gif"; sourceTree = "<group>"; };
+		629C231E1D388E6D000D4E3A /* Clean.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Clean.gif; sourceTree = "<group>"; };
+		629C231F1D388E6D000D4E3A /* Crab Walk.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Crab Walk.gif"; sourceTree = "<group>"; };
+		629C23201D388E6D000D4E3A /* Crossing High Pull.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Crossing High Pull.gif"; sourceTree = "<group>"; };
+		629C23211D388E6D000D4E3A /* Delt Row.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Delt Row.gif"; sourceTree = "<group>"; };
+		629C23221D388E6D000D4E3A /* Diamond Push-Up.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Diamond Push-Up.gif"; sourceTree = "<group>"; };
+		629C23231D388E6D000D4E3A /* Dragonfly Crunch.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Dragonfly Crunch.gif"; sourceTree = "<group>"; };
+		629C23241D388E6D000D4E3A /* Flutter Kick.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Flutter Kick.gif"; sourceTree = "<group>"; };
+		629C23251D388E6D000D4E3A /* Forward Lunge (Left Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Forward Lunge (Left Leg).gif"; sourceTree = "<group>"; };
+		629C23261D388E6D000D4E3A /* Forward Lunge (Right Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Forward Lunge (Right Leg).gif"; sourceTree = "<group>"; };
+		629C23271D388E6D000D4E3A /* Front Balance Drill (Left Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Front Balance Drill (Left Leg).gif"; sourceTree = "<group>"; };
+		629C23281D388E6D000D4E3A /* Front Balance Drill (Right Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Front Balance Drill (Right Leg).gif"; sourceTree = "<group>"; };
+		629C23291D388E6D000D4E3A /* Front Ball Throw.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Front Ball Throw.gif"; sourceTree = "<group>"; };
+		629C232A1D388E6D000D4E3A /* Front Squat.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Front Squat.gif"; sourceTree = "<group>"; };
+		629C232B1D388E6D000D4E3A /* Glute Kick-Back (Left Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Glute Kick-Back (Left Leg).gif"; sourceTree = "<group>"; };
+		629C232C1D388E6D000D4E3A /* Glute Kick-Back (Right Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Glute Kick-Back (Right Leg).gif"; sourceTree = "<group>"; };
+		629C232D1D388E6D000D4E3A /* Glute Kick-Up (Left Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Glute Kick-Up (Left Leg).gif"; sourceTree = "<group>"; };
+		629C232E1D388E6D000D4E3A /* Glute Kick-Up (Right Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Glute Kick-Up (Right Leg).gif"; sourceTree = "<group>"; };
+		629C232F1D388E6D000D4E3A /* Good Morning.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Good Morning.gif"; sourceTree = "<group>"; };
+		629C23301D388E6D000D4E3A /* Groin Stretch (Left Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Groin Stretch (Left Leg).gif"; sourceTree = "<group>"; };
+		629C23311D388E6D000D4E3A /* Groin Stretch (Right Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Groin Stretch (Right Leg).gif"; sourceTree = "<group>"; };
+		629C23321D388E6D000D4E3A /* Groiner.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Groiner.gif; sourceTree = "<group>"; };
+		629C23331D388E6D000D4E3A /* Hip Abduction (Left Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Hip Abduction (Left Leg).gif"; sourceTree = "<group>"; };
+		629C23341D388E6D000D4E3A /* Hip Abduction (Right Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Hip Abduction (Right Leg).gif"; sourceTree = "<group>"; };
+		629C23351D388E6D000D4E3A /* Hip Extension - Bridge.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Hip Extension - Bridge.gif"; sourceTree = "<group>"; };
+		629C23361D388E6D000D4E3A /* Hip Extension - Knee Up.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Hip Extension - Knee Up.gif"; sourceTree = "<group>"; };
+		629C23371D388E6D000D4E3A /* Hip Extension - Leg Raise.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Hip Extension - Leg Raise.gif"; sourceTree = "<group>"; };
+		629C23381D388E6D000D4E3A /* Hover Pushouts.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Hover Pushouts.gif"; sourceTree = "<group>"; };
+		629C23391D388E6D000D4E3A /* I-Curl.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "I-Curl.gif"; sourceTree = "<group>"; };
+		629C233A1D388E6D000D4E3A /* I-Raise.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "I-Raise.gif"; sourceTree = "<group>"; };
+		629C233B1D388E6D000D4E3A /* Iron Cross.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Iron Cross.gif"; sourceTree = "<group>"; };
+		629C233C1D388E6D000D4E3A /* Jammer Jump.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Jammer Jump.gif"; sourceTree = "<group>"; };
+		629C233D1D388E6D000D4E3A /* Kick Slide (Left Foot Up).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Kick Slide (Left Foot Up).gif"; sourceTree = "<group>"; };
+		629C233E1D388E6D000D4E3A /* Kick Slide (Right Foot Up).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Kick Slide (Right Foot Up).gif"; sourceTree = "<group>"; };
+		629C233F1D388E6D000D4E3A /* Lateral Hamstring Stretch (Left Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Lateral Hamstring Stretch (Left Leg).gif"; sourceTree = "<group>"; };
+		629C23401D388E6D000D4E3A /* Lateral Hamstring Stretch (Right Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Lateral Hamstring Stretch (Right Leg).gif"; sourceTree = "<group>"; };
+		629C23411D388E6D000D4E3A /* Leg Circle (Clockwise).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Leg Circle (Clockwise).gif"; sourceTree = "<group>"; };
+		629C23421D388E6D000D4E3A /* Leg Circle (Counter-Clockwise).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Leg Circle (Counter-Clockwise).gif"; sourceTree = "<group>"; };
+		629C23431D388E6D000D4E3A /* Leg Raise (Left Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Leg Raise (Left Leg).gif"; sourceTree = "<group>"; };
+		629C23441D388E6D000D4E3A /* Leg Raise (Right Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Leg Raise (Right Leg).gif"; sourceTree = "<group>"; };
+		629C23451D388E6D000D4E3A /* Lift and Twist (Left Side).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Lift and Twist (Left Side).gif"; sourceTree = "<group>"; };
+		629C23461D388E6D000D4E3A /* Lift and Twist (Right Side).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Lift and Twist (Right Side).gif"; sourceTree = "<group>"; };
+		629C23471D388E6D000D4E3A /* Lying Quad Stretch (Left Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Lying Quad Stretch (Left Leg).gif"; sourceTree = "<group>"; };
+		629C23481D388E6D000D4E3A /* Lying Quad Stretch (Right Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Lying Quad Stretch (Right Leg).gif"; sourceTree = "<group>"; };
+		629C23491D388E6D000D4E3A /* Medial Hamstring Stretch (Left Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Medial Hamstring Stretch (Left Leg).gif"; sourceTree = "<group>"; };
+		629C234A1D388E6D000D4E3A /* Medial Hamstring Stretch (Right Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Medial Hamstring Stretch (Right Leg).gif"; sourceTree = "<group>"; };
+		629C234B1D388E6D000D4E3A /* Middle Hamstring Stretch (Left Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Middle Hamstring Stretch (Left Leg).gif"; sourceTree = "<group>"; };
+		629C234C1D388E6D000D4E3A /* Middle Hamstring Stretch (Right Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Middle Hamstring Stretch (Right Leg).gif"; sourceTree = "<group>"; };
+		629C234D1D388E6D000D4E3A /* Middle Swing.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Middle Swing.gif"; sourceTree = "<group>"; };
+		629C234E1D388E6D000D4E3A /* Monster Walk.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Monster Walk.gif"; sourceTree = "<group>"; };
+		629C234F1D388E6D000D4E3A /* Normal Push-Up.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Normal Push-Up.gif"; sourceTree = "<group>"; };
+		629C23501D388E6D000D4E3A /* Opposite Plank Reach (Left Arm).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Opposite Plank Reach (Left Arm).gif"; sourceTree = "<group>"; };
+		629C23511D388E6D000D4E3A /* Opposite Plank Reach (Right Arm).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Opposite Plank Reach (Right Arm).gif"; sourceTree = "<group>"; };
+		629C23521D388E6D000D4E3A /* Outer Hip Stretch (Left Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Outer Hip Stretch (Left Leg).gif"; sourceTree = "<group>"; };
+		629C23531D388E6D000D4E3A /* Outer Hip Stretch (Right Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Outer Hip Stretch (Right Leg).gif"; sourceTree = "<group>"; };
+		629C23541D388E6D000D4E3A /* Pec Stretch (Double Arm).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Pec Stretch (Double Arm).gif"; sourceTree = "<group>"; };
+		629C23551D388E6D000D4E3A /* Plank Delt Row (Left Arm).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Plank Delt Row (Left Arm).gif"; sourceTree = "<group>"; };
+		629C23561D388E6D000D4E3A /* Plank Delt Row (Right Arm).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Plank Delt Row (Right Arm).gif"; sourceTree = "<group>"; };
+		629C23571D388E6D000D4E3A /* Plank Delt Row.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Plank Delt Row.gif"; sourceTree = "<group>"; };
+		629C23581D388E6D000D4E3A /* Plank Jack.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Plank Jack.gif"; sourceTree = "<group>"; };
+		629C23591D388E6D000D4E3A /* Plank Pull Through (Left Arm).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Plank Pull Through (Left Arm).gif"; sourceTree = "<group>"; };
+		629C235A1D388E6D000D4E3A /* Plank Pull Through (Right Arm).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Plank Pull Through (Right Arm).gif"; sourceTree = "<group>"; };
+		629C235B1D388E6D000D4E3A /* Plank Walk (Left).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Plank Walk (Left).gif"; sourceTree = "<group>"; };
+		629C235C1D388E6D000D4E3A /* Plank Walk (Right).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Plank Walk (Right).gif"; sourceTree = "<group>"; };
+		629C235D1D388E6D000D4E3A /* Punch.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Punch.gif; sourceTree = "<group>"; };
+		629C235E1D388E6D000D4E3A /* Push-Up with Rotation.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Push-Up with Rotation.gif"; sourceTree = "<group>"; };
+		629C235F1D388E6D000D4E3A /* Quad Stretch with Twist (Left Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Quad Stretch with Twist (Left Leg).gif"; sourceTree = "<group>"; };
+		629C23601D388E6D000D4E3A /* Quad Stretch with Twist (Right Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Quad Stretch with Twist (Right Leg).gif"; sourceTree = "<group>"; };
+		629C23611D388E6D000D4E3A /* Rear Deltoid Stretch (Left Arm).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Rear Deltoid Stretch (Left Arm).gif"; sourceTree = "<group>"; };
+		629C23621D388E6D000D4E3A /* Rear Deltoid Stretch (Right Arm).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Rear Deltoid Stretch (Right Arm).gif"; sourceTree = "<group>"; };
+		629C23631D388E6D000D4E3A /* Rest.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Rest.gif; sourceTree = "<group>"; };
+		629C23641D388E6D000D4E3A /* Reverse Bear Crawl.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Reverse Bear Crawl.gif"; sourceTree = "<group>"; };
+		629C23651D388E6D000D4E3A /* Reverse Crunch.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Reverse Crunch.gif"; sourceTree = "<group>"; };
+		629C23661D388E6D000D4E3A /* Reverse Lunge (Left Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Reverse Lunge (Left Leg).gif"; sourceTree = "<group>"; };
+		629C23671D388E6D000D4E3A /* Reverse Lunge (Right Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Reverse Lunge (Right Leg).gif"; sourceTree = "<group>"; };
+		629C23681D388E6D000D4E3A /* Rocky Solo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Rocky Solo.gif"; sourceTree = "<group>"; };
+		629C23691D388E6D000D4E3A /* Russian Twists.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Russian Twists.gif"; sourceTree = "<group>"; };
+		629C236A1D388E6D000D4E3A /* Same-Side Superman.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Same-Side Superman.gif"; sourceTree = "<group>"; };
+		629C236B1D388E6D000D4E3A /* Scapula Stretch.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Scapula Stretch.gif"; sourceTree = "<group>"; };
+		629C236C1D388E6D000D4E3A /* Scissor Jump.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Scissor Jump.gif"; sourceTree = "<group>"; };
+		629C236D1D388E6D000D4E3A /* Scissor Kick.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Scissor Kick.gif"; sourceTree = "<group>"; };
+		629C236E1D388E6D000D4E3A /* Seated High Row.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Seated High Row.gif"; sourceTree = "<group>"; };
+		629C236F1D388E6D000D4E3A /* Seated Low Row.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Seated Low Row.gif"; sourceTree = "<group>"; };
+		629C23701D388E6D000D4E3A /* Seated Pinch Row.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Seated Pinch Row.gif"; sourceTree = "<group>"; };
+		629C23711D388E6D000D4E3A /* Side Balance Drill.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Side Balance Drill.gif"; sourceTree = "<group>"; };
+		629C23721D388E6D000D4E3A /* Side Lunge (Left Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Side Lunge (Left Leg).gif"; sourceTree = "<group>"; };
+		629C23731D388E6D000D4E3A /* Side Lunge (Right Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Side Lunge (Right Leg).gif"; sourceTree = "<group>"; };
+		629C23741D388E6D000D4E3A /* Side Plank Hip Dip (Left Side).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Side Plank Hip Dip (Left Side).gif"; sourceTree = "<group>"; };
+		629C23751D388E6D000D4E3A /* Side Plank Hip Dip (Right Side).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Side Plank Hip Dip (Right Side).gif"; sourceTree = "<group>"; };
+		629C23761D388E6D000D4E3A /* Side Plank Hold (Left Side).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Side Plank Hold (Left Side).gif"; sourceTree = "<group>"; };
+		629C23771D388E6D000D4E3A /* Side Plank Hold (Right Side).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Side Plank Hold (Right Side).gif"; sourceTree = "<group>"; };
+		629C23781D388E6D000D4E3A /* Side Plank Reach Under (Left Side).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Side Plank Reach Under (Left Side).gif"; sourceTree = "<group>"; };
+		629C23791D388E6D000D4E3A /* Side Plank Reach Under (Right Side).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Side Plank Reach Under (Right Side).gif"; sourceTree = "<group>"; };
+		629C237A1D388E6D000D4E3A /* Ski Jump.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Ski Jump.gif"; sourceTree = "<group>"; };
+		629C237B1D388E6D000D4E3A /* Split Squat (Left Leg Up).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Split Squat (Left Leg Up).gif"; sourceTree = "<group>"; };
+		629C237C1D388E6D000D4E3A /* Split Squat (Right Leg Up).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Split Squat (Right Leg Up).gif"; sourceTree = "<group>"; };
+		629C237D1D388E6D000D4E3A /* Squat Jump.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Squat Jump.gif"; sourceTree = "<group>"; };
+		629C237E1D388E6D000D4E3A /* Squat Lift.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Squat Lift.gif"; sourceTree = "<group>"; };
+		629C237F1D388E6D000D4E3A /* Squat Side Punch.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Squat Side Punch.gif"; sourceTree = "<group>"; };
+		629C23801D388E6D000D4E3A /* Stacked Shuffle (Left Foot Up).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Stacked Shuffle (Left Foot Up).gif"; sourceTree = "<group>"; };
+		629C23811D388E6D000D4E3A /* Stacked Shuffle (Right Foot Up).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Stacked Shuffle (Right Foot Up).gif"; sourceTree = "<group>"; };
+		629C23821D388E6D000D4E3A /* Standing Hip Abduction (Left Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Standing Hip Abduction (Left Leg).gif"; sourceTree = "<group>"; };
+		629C23831D388E6D000D4E3A /* Standing Hip Abduction (Right Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Standing Hip Abduction (Right Leg).gif"; sourceTree = "<group>"; };
+		629C23841D388E6D000D4E3A /* Standing Hip Extension (Left Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Standing Hip Extension (Left Leg).gif"; sourceTree = "<group>"; };
+		629C23851D388E6D000D4E3A /* Standing Hip Extension (Right Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Standing Hip Extension (Right Leg).gif"; sourceTree = "<group>"; };
+		629C23861D388E6D000D4E3A /* Standing Kick-Out (Left Arm).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Standing Kick-Out (Left Arm).gif"; sourceTree = "<group>"; };
+		629C23871D388E6D000D4E3A /* Standing Kick-Out (Right Arm).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Standing Kick-Out (Right Arm).gif"; sourceTree = "<group>"; };
+		629C23881D388E6D000D4E3A /* Standing Kick-Up (Left Arm).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Standing Kick-Up (Left Arm).gif"; sourceTree = "<group>"; };
+		629C23891D388E6D000D4E3A /* Standing Kick-Up (Right Arm).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Standing Kick-Up (Right Arm).gif"; sourceTree = "<group>"; };
+		629C238A1D388E6D000D4E3A /* Standing Pinch Row.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Standing Pinch Row.gif"; sourceTree = "<group>"; };
+		629C238B1D388E6D000D4E3A /* Standing Russian Twists.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Standing Russian Twists.gif"; sourceTree = "<group>"; };
+		629C238C1D388E6D000D4E3A /* Standing Side Stretch (Left Side).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Standing Side Stretch (Left Side).gif"; sourceTree = "<group>"; };
+		629C238D1D388E6D000D4E3A /* Standing Side Stretch (Right Side).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Standing Side Stretch (Right Side).gif"; sourceTree = "<group>"; };
+		629C238E1D388E6D000D4E3A /* Standking Kick-Out (Right Arm).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Standking Kick-Out (Right Arm).gif"; sourceTree = "<group>"; };
+		629C238F1D388E6D000D4E3A /* Straight High Pull.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Straight High Pull.gif"; sourceTree = "<group>"; };
+		629C23901D388E6D000D4E3A /* Straight Leg Dead Lift.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Straight Leg Dead Lift.gif"; sourceTree = "<group>"; };
+		629C23911D388E6D000D4E3A /* Sumo Squat.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Sumo Squat.gif"; sourceTree = "<group>"; };
+		629C23921D388E6D000D4E3A /* Superman Press.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Superman Press.gif"; sourceTree = "<group>"; };
+		629C23931D388E6D000D4E3A /* Swing Jump.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Swing Jump.gif"; sourceTree = "<group>"; };
+		629C23941D388E6D000D4E3A /* T-Curl.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "T-Curl.gif"; sourceTree = "<group>"; };
+		629C23951D388E6D000D4E3A /* T-Raise.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "T-Raise.gif"; sourceTree = "<group>"; };
+		629C23961D388E6D000D4E3A /* Tricep Dip.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Tricep Dip.gif"; sourceTree = "<group>"; };
+		629C23971D388E6D000D4E3A /* Tricep Stretch (Left Arm).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Tricep Stretch (Left Arm).gif"; sourceTree = "<group>"; };
+		629C23981D388E6D000D4E3A /* Tricep Stretch (Right Arm).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Tricep Stretch (Right Arm).gif"; sourceTree = "<group>"; };
+		629C23991D388E6D000D4E3A /* Tuck Jump.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Tuck Jump.gif"; sourceTree = "<group>"; };
+		629C239A1D388E6D000D4E3A /* Up&Out.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Up&Out.gif"; sourceTree = "<group>"; };
+		629C239B1D388E6D000D4E3A /* V-Up.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "V-Up.gif"; sourceTree = "<group>"; };
+		629C239C1D388E6D000D4E3A /* Wide Push-Up.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Wide Push-Up.gif"; sourceTree = "<group>"; };
+		629C239D1D388E6D000D4E3A /* X-Jack.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "X-Jack.gif"; sourceTree = "<group>"; };
+		629C239E1D388E6D000D4E3A /* X-Walk (Left).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "X-Walk (Left).gif"; sourceTree = "<group>"; };
+		629C239F1D388E6D000D4E3A /* X-Walk (Right).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "X-Walk (Right).gif"; sourceTree = "<group>"; };
+		629C23A01D388E6D000D4E3A /* Y-Curl.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Y-Curl.gif"; sourceTree = "<group>"; };
+		629C23A11D388E6D000D4E3A /* Y-Raise.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Y-Raise.gif"; sourceTree = "<group>"; };
 		62A8DF141D1F1E170024D4B3 /* PasswordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordCell.swift; sourceTree = "<group>"; };
 		62A8DF181D1F1EA40024D4B3 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		62AB9B7F1CFE8B32005498F8 /* QuickStartImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickStartImageView.swift; sourceTree = "<group>"; };
@@ -595,159 +595,159 @@
 		626FBED01D2C650C005B592B /* GIF */ = {
 			isa = PBXGroup;
 			children = (
-				626FBED11D2C653A005B592B /* 2 Arm Pulley.gif */,
-				626FBED21D2C653A005B592B /* Alternating Superman.gif */,
-				626FBED31D2C653A005B592B /* Anchored Bicycle.gif */,
-				626FBED41D2C653A005B592B /* Anchored Hop-In.gif */,
-				626FBED51D2C653A005B592B /* Anchored Mountain Climber Push-Up.gif */,
-				626FBED61D2C653A005B592B /* Anchored Mountain Climbers.gif */,
-				626FBED71D2C653A005B592B /* Anchored Pull-In.gif */,
-				626FBED81D2C653A005B592B /* Anchored Spiderman Push-Up.gif */,
-				626FBED91D2C653A005B592B /* Anchored Spiderman.gif */,
-				626FBEDA1D2C653A005B592B /* Back Squat.gif */,
-				626FBEDB1D2C653A005B592B /* Bear Crawl.gif */,
-				626FBEDC1D2C653A005B592B /* Bent-Over Kick-Back.gif */,
-				626FBEDD1D2C653A005B592B /* Bent-Over Kick-Out.gif */,
-				626FBEDE1D2C653A005B592B /* Big Circle (Clockwise).gif */,
-				626FBEDF1D2C653A005B592B /* Big Circle (Counter-Clockwise).gif */,
-				626FBEE01D2C653A005B592B /* Box Jump.gif */,
-				626FBEE11D2C653A005B592B /* Burpee.gif */,
-				626FBEE21D2C653A005B592B /* Butt Kick Jump.gif */,
-				626FBEE31D2C653A005B592B /* Butterfly.gif */,
-				626FBEE41D2C653A005B592B /* Clamshell with Lift (Left Leg).gif */,
-				624DBB7B1D2E037A0066ECB8 /* Clamshell with Lift (Right Leg).gif */,
-				626FBEE61D2C653A005B592B /* Clean.gif */,
-				626FBEE71D2C653A005B592B /* Crab Walk.gif */,
-				624DBB791D2E02DC0066ECB8 /* Crossing High Pull.gif */,
-				626FBEE91D2C653A005B592B /* Delt Row.gif */,
-				626FBEEA1D2C653A005B592B /* Diamond Push-Up.gif */,
-				626FBEEB1D2C653A005B592B /* Dragonfly Crunch.gif */,
-				626FBEEC1D2C653A005B592B /* Flutter Kick.gif */,
-				626FBEED1D2C653A005B592B /* Forward Lunge (Left Leg).gif */,
-				626FBEEE1D2C653A005B592B /* Forward Lunge (Right Leg).gif */,
-				626FBEEF1D2C653A005B592B /* Front Balance Drill (Left Leg).gif */,
-				626FBEF01D2C653A005B592B /* Front Balance Drill (Right Leg).gif */,
-				626FBEF11D2C653A005B592B /* Front Ball Throw.gif */,
-				626FBEF21D2C653A005B592B /* Front Squat.gif */,
-				626FBEF31D2C653A005B592B /* Glute Kick-Back (Left Leg).gif */,
-				626FBEF41D2C653A005B592B /* Glute Kick-Back (Right Leg).gif */,
-				626FBEF51D2C653A005B592B /* Glute Kick-Up (Left Leg).gif */,
-				626FBEF61D2C653A005B592B /* Glute Kick-Up (Right Leg).gif */,
-				626FBEF71D2C653A005B592B /* Good Morning.gif */,
-				626FBEF81D2C653A005B592B /* Groin Stretch (Left Leg).gif */,
-				626FBEF91D2C653A005B592B /* Groin Stretch (Right Leg).gif */,
-				626FBEFA1D2C653A005B592B /* Groiner.gif */,
-				626FBEFB1D2C653A005B592B /* Hip Abduction (Left Leg).gif */,
-				626FBEFC1D2C653A005B592B /* Hip Abduction (Right Leg).gif */,
-				626FBEFD1D2C653A005B592B /* Hip Extension - Bridge.gif */,
-				626FBEFE1D2C653A005B592B /* Hip Extension - Knee Up.gif */,
-				626FBEFF1D2C653A005B592B /* Hip Extension - Leg Raise.gif */,
-				626FBF001D2C653A005B592B /* Hover Pushouts.gif */,
-				626FBF011D2C653A005B592B /* I-Curl.gif */,
-				626FBF021D2C653A005B592B /* I-Raise.gif */,
-				626FBF031D2C653A005B592B /* Iron Cross.gif */,
-				626FBF041D2C653A005B592B /* Jammer Jump.gif */,
-				626FBF051D2C653A005B592B /* Kick Slide (Left Foot Up).gif */,
-				626FBF061D2C653A005B592B /* Kick Slide (Right Foot Up).gif */,
-				626FBF071D2C653A005B592B /* Lateral Hamstring Stretch (Left Leg).gif */,
-				626FBF081D2C653A005B592B /* Lateral Hamstring Stretch (Right Leg).gif */,
-				626FBF091D2C653A005B592B /* Leg Circle (Clockwise).gif */,
-				626FBF0A1D2C653A005B592B /* Leg Circle (Counter-Clockwise).gif */,
-				626FBF0B1D2C653A005B592B /* Leg Raise (Left Leg).gif */,
-				626FBF0C1D2C653A005B592B /* Leg Raise (Right Leg).gif */,
-				626FBF0D1D2C653A005B592B /* Lift and Twist (Left Side).gif */,
-				626FBF0E1D2C653A005B592B /* Lift and Twist (Right Side).gif */,
-				626FBF0F1D2C653A005B592B /* Lying Quad Stretch (Left Leg).gif */,
-				626FBF101D2C653A005B592B /* Lying Quad Stretch (Right Leg).gif */,
-				626FBF111D2C653A005B592B /* Medial Hamstring Stretch (Left Leg).gif */,
-				626FBF121D2C653A005B592B /* Medial Hamstring Stretch (Right Leg).gif */,
-				626FBF131D2C653A005B592B /* Middle Hamstring Stretch (Left Leg).gif */,
-				626FBF141D2C653A005B592B /* Middle Hamstring Stretch (Right Leg).gif */,
-				626FBF151D2C653A005B592B /* Middle Swing.gif */,
-				626FBF161D2C653A005B592B /* Monster Walk.gif */,
-				626FBF171D2C653A005B592B /* Normal Push-Up.gif */,
-				626FBF181D2C653A005B592B /* Opposite Plank Reach (Left Arm).gif */,
-				626FBF191D2C653A005B592B /* Opposite Plank Reach (Right Arm).gif */,
-				626FBF1A1D2C653A005B592B /* Outer Hip Stretch (Left Leg).gif */,
-				626FBF1B1D2C653A005B592B /* Outer Hip Stretch (Right Leg).gif */,
-				626FBF1C1D2C653A005B592B /* Pec Stretch (Double Arm).gif */,
-				626FBF1D1D2C653A005B592B /* Plank Delt Row (Left Arm).gif */,
-				626FBF1E1D2C653A005B592B /* Plank Delt Row (Right Arm).gif */,
-				626FBF1F1D2C653A005B592B /* Plank Delt Row.gif */,
-				626FBF201D2C653A005B592B /* Plank Jack.gif */,
-				626FBF211D2C653A005B592B /* Plank Pull Through (Left Arm).gif */,
-				626FBF221D2C653A005B592B /* Plank Pull Through (Right Arm).gif */,
-				626FBF231D2C653A005B592B /* Plank Walk (Left).gif */,
-				626FBF241D2C653A005B592B /* Plank Walk (Right).gif */,
-				626FBF251D2C653A005B592B /* Punch.gif */,
-				626FBF261D2C653A005B592B /* Push-Up with Rotation.gif */,
-				626FBF271D2C653A005B592B /* Quad Stretch with Twist (Left Leg).gif */,
-				626FBF281D2C653A005B592B /* Quad Stretch with Twist (Right Leg).gif */,
-				626FBF291D2C653A005B592B /* Rear Deltoid Stretch (Left Arm).gif */,
-				626FBF2A1D2C653A005B592B /* Rear Deltoid Stretch (Right Arm).gif */,
-				624DBB751D2DF1260066ECB8 /* Rest.gif */,
-				626FBF2C1D2C653A005B592B /* Reverse Bear Crawl.gif */,
-				626FBF2D1D2C653A005B592B /* Reverse Crunch.gif */,
-				626FBF2E1D2C653A005B592B /* Reverse Lunge (Left Leg).gif */,
-				626FBF2F1D2C653A005B592B /* Reverse Lunge (Right Leg).gif */,
-				626FBF301D2C653A005B592B /* Rocky Solo.gif */,
-				626FBF311D2C653A005B592B /* Russian Twists.gif */,
-				626FBF321D2C653A005B592B /* Same-Side Superman.gif */,
-				626FBF331D2C653A005B592B /* Scapula Stretch.gif */,
-				626FBF341D2C653A005B592B /* Scissor Jump.gif */,
-				626FBF351D2C653A005B592B /* Scissor Kick.gif */,
-				626FBF361D2C653A005B592B /* Seated High Row.gif */,
-				626FBF371D2C653A005B592B /* Seated Low Row.gif */,
-				626FBF381D2C653A005B592B /* Seated Pinch Row.gif */,
-				626FBF391D2C653A005B592B /* Side Balance Drill.gif */,
-				626FBF3A1D2C653A005B592B /* Side Lunge (Left Leg).gif */,
-				626FBF3B1D2C653A005B592B /* Side Lunge (Right Leg).gif */,
-				626FBF3C1D2C653A005B592B /* Side Plank Hip Dip (Left Side).gif */,
-				626FBF3D1D2C653A005B592B /* Side Plank Hip Dip (Right Side).gif */,
-				626FBF3E1D2C653A005B592B /* Side Plank Hold (Left Side).gif */,
-				626FBF3F1D2C653A005B592B /* Side Plank Hold (Right Side).gif */,
-				626FBF401D2C653A005B592B /* Side Plank Reach Under (Left Side).gif */,
-				626FBF411D2C653A005B592B /* Side Plank Reach Under (Right Side).gif */,
-				626FBF421D2C653A005B592B /* Ski Jump.gif */,
-				626FBF431D2C653A005B592B /* Split Squat (Left Leg Up).gif */,
-				626FBF441D2C653A005B592B /* Split Squat (Right Leg Up).gif */,
-				626FBF451D2C653A005B592B /* Squat Jump.gif */,
-				626FBF461D2C653A005B592B /* Squat Lift.gif */,
-				626FBF471D2C653A005B592B /* Squat Side Punch.gif */,
-				626FBF481D2C653A005B592B /* Stacked Shuffle (Left Foot Up).gif */,
-				626FBF491D2C653A005B592B /* Stacked Shuffle (Right Foot Up).gif */,
-				626FBF4A1D2C653A005B592B /* Standing Hip Abduction (Left Leg).gif */,
-				626FBF4B1D2C653A005B592B /* Standing Hip Abduction (Right Leg).gif */,
-				626FBF4C1D2C653A005B592B /* Standing Hip Extension (Left Leg).gif */,
-				626FBF4D1D2C653A005B592B /* Standing Hip Extension (Right Leg).gif */,
-				626FBF4E1D2C653A005B592B /* Standing Kick-Out (Left Arm).gif */,
-				626FBF4F1D2C653A005B592B /* Standing Kick-Out (Right Arm).gif */,
-				626FBF501D2C653A005B592B /* Standing Kick-Up (Left Arm).gif */,
-				626FBF511D2C653A005B592B /* Standing Kick-Up (Right Arm).gif */,
-				626FBF521D2C653A005B592B /* Standing Pinch Row.gif */,
-				626FBF531D2C653A005B592B /* Standing Russian Twists.gif */,
-				626FBF541D2C653A005B592B /* Standing Side Stretch (Left Side).gif */,
-				626FBF551D2C653A005B592B /* Standing Side Stretch (Right Side).gif */,
-				626FBF561D2C653A005B592B /* Standking Kick-Out (Right Arm).gif */,
-				6257B6731D349291004D76B0 /* Straight Leg Dead Lift.gif */,
-				626FBF571D2C653A005B592B /* Straight High Pull.gif */,
-				626FBF591D2C653A005B592B /* Sumo Squat.gif */,
-				626FBF5A1D2C653A005B592B /* Superman Press.gif */,
-				626FBF5B1D2C653A005B592B /* Swing Jump.gif */,
-				626FBF5C1D2C653A005B592B /* T-Curl.gif */,
-				626FBF5D1D2C653A005B592B /* T-Raise.gif */,
-				626FBF5E1D2C653B005B592B /* Tricep Dip.gif */,
-				626FBF5F1D2C653B005B592B /* Tricep Stretch (Left Arm).gif */,
-				626FBF601D2C653B005B592B /* Tricep Stretch (Right Arm).gif */,
-				626FBF611D2C653B005B592B /* Tuck Jump.gif */,
-				626FBF621D2C653B005B592B /* Up&Out.gif */,
-				626FBF631D2C653B005B592B /* V-Up.gif */,
-				626FBF641D2C653B005B592B /* Wide Push-Up.gif */,
-				626FBF651D2C653B005B592B /* X-Jack.gif */,
-				626FBF661D2C653B005B592B /* X-Walk (Left).gif */,
-				626FBF671D2C653B005B592B /* X-Walk (Right).gif */,
-				626FBF681D2C653B005B592B /* Y-Curl.gif */,
-				626FBF691D2C653B005B592B /* Y-Raise.gif */,
+				629C23091D388E6D000D4E3A /* 2 Arm Pulley.gif */,
+				629C230A1D388E6D000D4E3A /* Alternating Superman.gif */,
+				629C230B1D388E6D000D4E3A /* Anchored Bicycle.gif */,
+				629C230C1D388E6D000D4E3A /* Anchored Hop-In.gif */,
+				629C230D1D388E6D000D4E3A /* Anchored Mountain Climber Push-Up.gif */,
+				629C230E1D388E6D000D4E3A /* Anchored Mountain Climbers.gif */,
+				629C230F1D388E6D000D4E3A /* Anchored Pull-In.gif */,
+				629C23101D388E6D000D4E3A /* Anchored Spiderman Push-Up.gif */,
+				629C23111D388E6D000D4E3A /* Anchored Spiderman.gif */,
+				629C23121D388E6D000D4E3A /* Back Squat.gif */,
+				629C23131D388E6D000D4E3A /* Bear Crawl.gif */,
+				629C23141D388E6D000D4E3A /* Bent-Over Kick-Back.gif */,
+				629C23151D388E6D000D4E3A /* Bent-Over Kick-Out.gif */,
+				629C23161D388E6D000D4E3A /* Big Circle (Clockwise).gif */,
+				629C23171D388E6D000D4E3A /* Big Circle (Counter-Clockwise).gif */,
+				629C23181D388E6D000D4E3A /* Box Jump.gif */,
+				629C23191D388E6D000D4E3A /* Burpee.gif */,
+				629C231A1D388E6D000D4E3A /* Butt Kick Jump.gif */,
+				629C231B1D388E6D000D4E3A /* Butterfly.gif */,
+				629C231C1D388E6D000D4E3A /* Clamshell with Lift (Left Leg).gif */,
+				629C231D1D388E6D000D4E3A /* Clamshell with Lift (Right Leg).gif */,
+				629C231E1D388E6D000D4E3A /* Clean.gif */,
+				629C231F1D388E6D000D4E3A /* Crab Walk.gif */,
+				629C23201D388E6D000D4E3A /* Crossing High Pull.gif */,
+				629C23211D388E6D000D4E3A /* Delt Row.gif */,
+				629C23221D388E6D000D4E3A /* Diamond Push-Up.gif */,
+				629C23231D388E6D000D4E3A /* Dragonfly Crunch.gif */,
+				629C23241D388E6D000D4E3A /* Flutter Kick.gif */,
+				629C23251D388E6D000D4E3A /* Forward Lunge (Left Leg).gif */,
+				629C23261D388E6D000D4E3A /* Forward Lunge (Right Leg).gif */,
+				629C23271D388E6D000D4E3A /* Front Balance Drill (Left Leg).gif */,
+				629C23281D388E6D000D4E3A /* Front Balance Drill (Right Leg).gif */,
+				629C23291D388E6D000D4E3A /* Front Ball Throw.gif */,
+				629C232A1D388E6D000D4E3A /* Front Squat.gif */,
+				629C232B1D388E6D000D4E3A /* Glute Kick-Back (Left Leg).gif */,
+				629C232C1D388E6D000D4E3A /* Glute Kick-Back (Right Leg).gif */,
+				629C232D1D388E6D000D4E3A /* Glute Kick-Up (Left Leg).gif */,
+				629C232E1D388E6D000D4E3A /* Glute Kick-Up (Right Leg).gif */,
+				629C232F1D388E6D000D4E3A /* Good Morning.gif */,
+				629C23301D388E6D000D4E3A /* Groin Stretch (Left Leg).gif */,
+				629C23311D388E6D000D4E3A /* Groin Stretch (Right Leg).gif */,
+				629C23321D388E6D000D4E3A /* Groiner.gif */,
+				629C23331D388E6D000D4E3A /* Hip Abduction (Left Leg).gif */,
+				629C23341D388E6D000D4E3A /* Hip Abduction (Right Leg).gif */,
+				629C23351D388E6D000D4E3A /* Hip Extension - Bridge.gif */,
+				629C23361D388E6D000D4E3A /* Hip Extension - Knee Up.gif */,
+				629C23371D388E6D000D4E3A /* Hip Extension - Leg Raise.gif */,
+				629C23381D388E6D000D4E3A /* Hover Pushouts.gif */,
+				629C23391D388E6D000D4E3A /* I-Curl.gif */,
+				629C233A1D388E6D000D4E3A /* I-Raise.gif */,
+				629C233B1D388E6D000D4E3A /* Iron Cross.gif */,
+				629C233C1D388E6D000D4E3A /* Jammer Jump.gif */,
+				629C233D1D388E6D000D4E3A /* Kick Slide (Left Foot Up).gif */,
+				629C233E1D388E6D000D4E3A /* Kick Slide (Right Foot Up).gif */,
+				629C233F1D388E6D000D4E3A /* Lateral Hamstring Stretch (Left Leg).gif */,
+				629C23401D388E6D000D4E3A /* Lateral Hamstring Stretch (Right Leg).gif */,
+				629C23411D388E6D000D4E3A /* Leg Circle (Clockwise).gif */,
+				629C23421D388E6D000D4E3A /* Leg Circle (Counter-Clockwise).gif */,
+				629C23431D388E6D000D4E3A /* Leg Raise (Left Leg).gif */,
+				629C23441D388E6D000D4E3A /* Leg Raise (Right Leg).gif */,
+				629C23451D388E6D000D4E3A /* Lift and Twist (Left Side).gif */,
+				629C23461D388E6D000D4E3A /* Lift and Twist (Right Side).gif */,
+				629C23471D388E6D000D4E3A /* Lying Quad Stretch (Left Leg).gif */,
+				629C23481D388E6D000D4E3A /* Lying Quad Stretch (Right Leg).gif */,
+				629C23491D388E6D000D4E3A /* Medial Hamstring Stretch (Left Leg).gif */,
+				629C234A1D388E6D000D4E3A /* Medial Hamstring Stretch (Right Leg).gif */,
+				629C234B1D388E6D000D4E3A /* Middle Hamstring Stretch (Left Leg).gif */,
+				629C234C1D388E6D000D4E3A /* Middle Hamstring Stretch (Right Leg).gif */,
+				629C234D1D388E6D000D4E3A /* Middle Swing.gif */,
+				629C234E1D388E6D000D4E3A /* Monster Walk.gif */,
+				629C234F1D388E6D000D4E3A /* Normal Push-Up.gif */,
+				629C23501D388E6D000D4E3A /* Opposite Plank Reach (Left Arm).gif */,
+				629C23511D388E6D000D4E3A /* Opposite Plank Reach (Right Arm).gif */,
+				629C23521D388E6D000D4E3A /* Outer Hip Stretch (Left Leg).gif */,
+				629C23531D388E6D000D4E3A /* Outer Hip Stretch (Right Leg).gif */,
+				629C23541D388E6D000D4E3A /* Pec Stretch (Double Arm).gif */,
+				629C23551D388E6D000D4E3A /* Plank Delt Row (Left Arm).gif */,
+				629C23561D388E6D000D4E3A /* Plank Delt Row (Right Arm).gif */,
+				629C23571D388E6D000D4E3A /* Plank Delt Row.gif */,
+				629C23581D388E6D000D4E3A /* Plank Jack.gif */,
+				629C23591D388E6D000D4E3A /* Plank Pull Through (Left Arm).gif */,
+				629C235A1D388E6D000D4E3A /* Plank Pull Through (Right Arm).gif */,
+				629C235B1D388E6D000D4E3A /* Plank Walk (Left).gif */,
+				629C235C1D388E6D000D4E3A /* Plank Walk (Right).gif */,
+				629C235D1D388E6D000D4E3A /* Punch.gif */,
+				629C235E1D388E6D000D4E3A /* Push-Up with Rotation.gif */,
+				629C235F1D388E6D000D4E3A /* Quad Stretch with Twist (Left Leg).gif */,
+				629C23601D388E6D000D4E3A /* Quad Stretch with Twist (Right Leg).gif */,
+				629C23611D388E6D000D4E3A /* Rear Deltoid Stretch (Left Arm).gif */,
+				629C23621D388E6D000D4E3A /* Rear Deltoid Stretch (Right Arm).gif */,
+				629C23631D388E6D000D4E3A /* Rest.gif */,
+				629C23641D388E6D000D4E3A /* Reverse Bear Crawl.gif */,
+				629C23651D388E6D000D4E3A /* Reverse Crunch.gif */,
+				629C23661D388E6D000D4E3A /* Reverse Lunge (Left Leg).gif */,
+				629C23671D388E6D000D4E3A /* Reverse Lunge (Right Leg).gif */,
+				629C23681D388E6D000D4E3A /* Rocky Solo.gif */,
+				629C23691D388E6D000D4E3A /* Russian Twists.gif */,
+				629C236A1D388E6D000D4E3A /* Same-Side Superman.gif */,
+				629C236B1D388E6D000D4E3A /* Scapula Stretch.gif */,
+				629C236C1D388E6D000D4E3A /* Scissor Jump.gif */,
+				629C236D1D388E6D000D4E3A /* Scissor Kick.gif */,
+				629C236E1D388E6D000D4E3A /* Seated High Row.gif */,
+				629C236F1D388E6D000D4E3A /* Seated Low Row.gif */,
+				629C23701D388E6D000D4E3A /* Seated Pinch Row.gif */,
+				629C23711D388E6D000D4E3A /* Side Balance Drill.gif */,
+				629C23721D388E6D000D4E3A /* Side Lunge (Left Leg).gif */,
+				629C23731D388E6D000D4E3A /* Side Lunge (Right Leg).gif */,
+				629C23741D388E6D000D4E3A /* Side Plank Hip Dip (Left Side).gif */,
+				629C23751D388E6D000D4E3A /* Side Plank Hip Dip (Right Side).gif */,
+				629C23761D388E6D000D4E3A /* Side Plank Hold (Left Side).gif */,
+				629C23771D388E6D000D4E3A /* Side Plank Hold (Right Side).gif */,
+				629C23781D388E6D000D4E3A /* Side Plank Reach Under (Left Side).gif */,
+				629C23791D388E6D000D4E3A /* Side Plank Reach Under (Right Side).gif */,
+				629C237A1D388E6D000D4E3A /* Ski Jump.gif */,
+				629C237B1D388E6D000D4E3A /* Split Squat (Left Leg Up).gif */,
+				629C237C1D388E6D000D4E3A /* Split Squat (Right Leg Up).gif */,
+				629C237D1D388E6D000D4E3A /* Squat Jump.gif */,
+				629C237E1D388E6D000D4E3A /* Squat Lift.gif */,
+				629C237F1D388E6D000D4E3A /* Squat Side Punch.gif */,
+				629C23801D388E6D000D4E3A /* Stacked Shuffle (Left Foot Up).gif */,
+				629C23811D388E6D000D4E3A /* Stacked Shuffle (Right Foot Up).gif */,
+				629C23821D388E6D000D4E3A /* Standing Hip Abduction (Left Leg).gif */,
+				629C23831D388E6D000D4E3A /* Standing Hip Abduction (Right Leg).gif */,
+				629C23841D388E6D000D4E3A /* Standing Hip Extension (Left Leg).gif */,
+				629C23851D388E6D000D4E3A /* Standing Hip Extension (Right Leg).gif */,
+				629C23861D388E6D000D4E3A /* Standing Kick-Out (Left Arm).gif */,
+				629C23871D388E6D000D4E3A /* Standing Kick-Out (Right Arm).gif */,
+				629C23881D388E6D000D4E3A /* Standing Kick-Up (Left Arm).gif */,
+				629C23891D388E6D000D4E3A /* Standing Kick-Up (Right Arm).gif */,
+				629C238A1D388E6D000D4E3A /* Standing Pinch Row.gif */,
+				629C238B1D388E6D000D4E3A /* Standing Russian Twists.gif */,
+				629C238C1D388E6D000D4E3A /* Standing Side Stretch (Left Side).gif */,
+				629C238D1D388E6D000D4E3A /* Standing Side Stretch (Right Side).gif */,
+				629C238E1D388E6D000D4E3A /* Standking Kick-Out (Right Arm).gif */,
+				629C238F1D388E6D000D4E3A /* Straight High Pull.gif */,
+				629C23901D388E6D000D4E3A /* Straight Leg Dead Lift.gif */,
+				629C23911D388E6D000D4E3A /* Sumo Squat.gif */,
+				629C23921D388E6D000D4E3A /* Superman Press.gif */,
+				629C23931D388E6D000D4E3A /* Swing Jump.gif */,
+				629C23941D388E6D000D4E3A /* T-Curl.gif */,
+				629C23951D388E6D000D4E3A /* T-Raise.gif */,
+				629C23961D388E6D000D4E3A /* Tricep Dip.gif */,
+				629C23971D388E6D000D4E3A /* Tricep Stretch (Left Arm).gif */,
+				629C23981D388E6D000D4E3A /* Tricep Stretch (Right Arm).gif */,
+				629C23991D388E6D000D4E3A /* Tuck Jump.gif */,
+				629C239A1D388E6D000D4E3A /* Up&Out.gif */,
+				629C239B1D388E6D000D4E3A /* V-Up.gif */,
+				629C239C1D388E6D000D4E3A /* Wide Push-Up.gif */,
+				629C239D1D388E6D000D4E3A /* X-Jack.gif */,
+				629C239E1D388E6D000D4E3A /* X-Walk (Left).gif */,
+				629C239F1D388E6D000D4E3A /* X-Walk (Right).gif */,
+				629C23A01D388E6D000D4E3A /* Y-Curl.gif */,
+				629C23A11D388E6D000D4E3A /* Y-Raise.gif */,
 			);
 			name = GIF;
 			sourceTree = "<group>";
@@ -921,163 +921,163 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				626FBFBE1D2C653B005B592B /* Punch.gif in Resources */,
-				626FBF6F1D2C653B005B592B /* Anchored Mountain Climbers.gif in Resources */,
-				624DBB7A1D2E02DC0066ECB8 /* Crossing High Pull.gif in Resources */,
-				626FBFF81D2C653B005B592B /* Tricep Stretch (Left Arm).gif in Resources */,
-				626FBFB81D2C653B005B592B /* Plank Delt Row.gif in Resources */,
-				626FBFE11D2C653B005B592B /* Stacked Shuffle (Left Foot Up).gif in Resources */,
-				626FBFF71D2C653B005B592B /* Tricep Dip.gif in Resources */,
-				626FBFC61D2C653B005B592B /* Reverse Crunch.gif in Resources */,
-				626FBF8E1D2C653B005B592B /* Glute Kick-Up (Left Leg).gif in Resources */,
-				626FBF951D2C653B005B592B /* Hip Abduction (Right Leg).gif in Resources */,
-				626FBFE91D2C653B005B592B /* Standing Kick-Up (Left Arm).gif in Resources */,
-				626FBF791D2C653B005B592B /* Box Jump.gif in Resources */,
-				626FBF921D2C653B005B592B /* Groin Stretch (Right Leg).gif in Resources */,
-				626FBFF61D2C653B005B592B /* T-Raise.gif in Resources */,
-				626FBFAC1D2C653B005B592B /* Middle Hamstring Stretch (Left Leg).gif in Resources */,
-				624DBB7C1D2E037A0066ECB8 /* Clamshell with Lift (Right Leg).gif in Resources */,
-				626FBFDF1D2C653B005B592B /* Squat Lift.gif in Resources */,
-				626FBF7D1D2C653B005B592B /* Clamshell with Lift (Left Leg).gif in Resources */,
-				626FBFC51D2C653B005B592B /* Reverse Bear Crawl.gif in Resources */,
+				629C23F61D388E6D000D4E3A /* Punch.gif in Resources */,
+				629C23A71D388E6D000D4E3A /* Anchored Mountain Climbers.gif in Resources */,
+				629C24301D388E6D000D4E3A /* Tricep Stretch (Left Arm).gif in Resources */,
+				629C23F01D388E6D000D4E3A /* Plank Delt Row.gif in Resources */,
+				629C24191D388E6D000D4E3A /* Stacked Shuffle (Left Foot Up).gif in Resources */,
+				629C242F1D388E6D000D4E3A /* Tricep Dip.gif in Resources */,
+				629C23FE1D388E6D000D4E3A /* Reverse Crunch.gif in Resources */,
+				629C23C61D388E6D000D4E3A /* Glute Kick-Up (Left Leg).gif in Resources */,
+				629C23CD1D388E6D000D4E3A /* Hip Abduction (Right Leg).gif in Resources */,
+				629C24211D388E6D000D4E3A /* Standing Kick-Up (Left Arm).gif in Resources */,
+				629C23B11D388E6D000D4E3A /* Box Jump.gif in Resources */,
+				629C23CA1D388E6D000D4E3A /* Groin Stretch (Right Leg).gif in Resources */,
+				629C242E1D388E6D000D4E3A /* T-Raise.gif in Resources */,
+				629C23E41D388E6D000D4E3A /* Middle Hamstring Stretch (Left Leg).gif in Resources */,
+				629C24171D388E6D000D4E3A /* Squat Lift.gif in Resources */,
+				629C23B51D388E6D000D4E3A /* Clamshell with Lift (Left Leg).gif in Resources */,
+				629C23FD1D388E6D000D4E3A /* Reverse Bear Crawl.gif in Resources */,
 				621D22B91CB2DC3F00FE7581 /* LaunchScreen.storyboard in Resources */,
-				626FBFA61D2C653B005B592B /* Lift and Twist (Left Side).gif in Resources */,
-				626FBFC71D2C653B005B592B /* Reverse Lunge (Left Leg).gif in Resources */,
-				626FBF801D2C653B005B592B /* Crab Walk.gif in Resources */,
-				626FBFCC1D2C653B005B592B /* Scapula Stretch.gif in Resources */,
-				626FBF7A1D2C653B005B592B /* Burpee.gif in Resources */,
-				626FBFEC1D2C653B005B592B /* Standing Russian Twists.gif in Resources */,
-				626FBFF51D2C653B005B592B /* T-Curl.gif in Resources */,
-				626FBF721D2C653B005B592B /* Anchored Spiderman.gif in Resources */,
-				626FBFDE1D2C653B005B592B /* Squat Jump.gif in Resources */,
+				629C23DE1D388E6D000D4E3A /* Lift and Twist (Left Side).gif in Resources */,
+				629C23FF1D388E6D000D4E3A /* Reverse Lunge (Left Leg).gif in Resources */,
+				629C23B81D388E6D000D4E3A /* Crab Walk.gif in Resources */,
+				629C24041D388E6D000D4E3A /* Scapula Stretch.gif in Resources */,
+				629C23B21D388E6D000D4E3A /* Burpee.gif in Resources */,
+				629C24241D388E6D000D4E3A /* Standing Russian Twists.gif in Resources */,
+				629C242D1D388E6D000D4E3A /* T-Curl.gif in Resources */,
+				629C23AA1D388E6D000D4E3A /* Anchored Spiderman.gif in Resources */,
+				629C24161D388E6D000D4E3A /* Squat Jump.gif in Resources */,
 				621D22B61CB2DC3F00FE7581 /* Assets.xcassets in Resources */,
-				626FBFB61D2C653B005B592B /* Plank Delt Row (Left Arm).gif in Resources */,
-				626FBFC91D2C653B005B592B /* Rocky Solo.gif in Resources */,
-				626FBF6E1D2C653B005B592B /* Anchored Mountain Climber Push-Up.gif in Resources */,
-				626FBFFD1D2C653B005B592B /* Wide Push-Up.gif in Resources */,
-				626FBF8A1D2C653B005B592B /* Front Ball Throw.gif in Resources */,
-				626FBF8F1D2C653B005B592B /* Glute Kick-Up (Right Leg).gif in Resources */,
-				626FBFD21D2C653B005B592B /* Side Balance Drill.gif in Resources */,
-				626FBF941D2C653B005B592B /* Hip Abduction (Left Leg).gif in Resources */,
-				626FBFD81D2C653B005B592B /* Side Plank Hold (Right Side).gif in Resources */,
-				626FBFA71D2C653B005B592B /* Lift and Twist (Right Side).gif in Resources */,
-				626FBFA81D2C653B005B592B /* Lying Quad Stretch (Left Leg).gif in Resources */,
-				626FBF9E1D2C653B005B592B /* Kick Slide (Left Foot Up).gif in Resources */,
-				626FBFBF1D2C653B005B592B /* Push-Up with Rotation.gif in Resources */,
-				626FC0001D2C653B005B592B /* X-Walk (Right).gif in Resources */,
-				626FBFA51D2C653B005B592B /* Leg Raise (Right Leg).gif in Resources */,
-				626FBFC81D2C653B005B592B /* Reverse Lunge (Right Leg).gif in Resources */,
-				626FBFB71D2C653B005B592B /* Plank Delt Row (Right Arm).gif in Resources */,
-				626FBFD01D2C653B005B592B /* Seated Low Row.gif in Resources */,
-				626FBFCB1D2C653B005B592B /* Same-Side Superman.gif in Resources */,
-				626FBFE31D2C653B005B592B /* Standing Hip Abduction (Left Leg).gif in Resources */,
-				626FBF731D2C653B005B592B /* Back Squat.gif in Resources */,
-				626FBFB41D2C653B005B592B /* Outer Hip Stretch (Right Leg).gif in Resources */,
-				626FBF8D1D2C653B005B592B /* Glute Kick-Back (Right Leg).gif in Resources */,
-				626FBF7C1D2C653B005B592B /* Butterfly.gif in Resources */,
-				626FBFF31D2C653B005B592B /* Superman Press.gif in Resources */,
-				626FBF6C1D2C653B005B592B /* Anchored Bicycle.gif in Resources */,
-				626FBFFC1D2C653B005B592B /* V-Up.gif in Resources */,
-				626FBF9B1D2C653B005B592B /* I-Raise.gif in Resources */,
-				626FBF821D2C653B005B592B /* Delt Row.gif in Resources */,
-				626FBFAF1D2C653B005B592B /* Monster Walk.gif in Resources */,
-				626FBF8C1D2C653B005B592B /* Glute Kick-Back (Left Leg).gif in Resources */,
-				626FBFAD1D2C653B005B592B /* Middle Hamstring Stretch (Right Leg).gif in Resources */,
-				626FBFED1D2C653B005B592B /* Standing Side Stretch (Left Side).gif in Resources */,
-				626FBFC21D2C653B005B592B /* Rear Deltoid Stretch (Left Arm).gif in Resources */,
-				626FBFA11D2C653B005B592B /* Lateral Hamstring Stretch (Right Leg).gif in Resources */,
-				626FBF771D2C653B005B592B /* Big Circle (Clockwise).gif in Resources */,
-				626FBFB51D2C653B005B592B /* Pec Stretch (Double Arm).gif in Resources */,
-				626FBF701D2C653B005B592B /* Anchored Pull-In.gif in Resources */,
-				624DBB761D2DF1260066ECB8 /* Rest.gif in Resources */,
-				626FBFDC1D2C653B005B592B /* Split Squat (Left Leg Up).gif in Resources */,
-				626FBF911D2C653B005B592B /* Groin Stretch (Left Leg).gif in Resources */,
-				626FBFE71D2C653B005B592B /* Standing Kick-Out (Left Arm).gif in Resources */,
-				626FBFEE1D2C653B005B592B /* Standing Side Stretch (Right Side).gif in Resources */,
-				626FBF971D2C653B005B592B /* Hip Extension - Knee Up.gif in Resources */,
-				626FBFBC1D2C653B005B592B /* Plank Walk (Left).gif in Resources */,
-				626FBFDD1D2C653B005B592B /* Split Squat (Right Leg Up).gif in Resources */,
-				626FBFD71D2C653B005B592B /* Side Plank Hold (Left Side).gif in Resources */,
-				626FBFF41D2C653B005B592B /* Swing Jump.gif in Resources */,
-				626FBFB11D2C653B005B592B /* Opposite Plank Reach (Left Arm).gif in Resources */,
-				626FBF7B1D2C653B005B592B /* Butt Kick Jump.gif in Resources */,
-				626FBFE21D2C653B005B592B /* Stacked Shuffle (Right Foot Up).gif in Resources */,
-				626FBF9D1D2C653B005B592B /* Jammer Jump.gif in Resources */,
-				626FBFD31D2C653B005B592B /* Side Lunge (Left Leg).gif in Resources */,
-				626FBF9C1D2C653B005B592B /* Iron Cross.gif in Resources */,
-				626FBFDA1D2C653B005B592B /* Side Plank Reach Under (Right Side).gif in Resources */,
-				626FBF961D2C653B005B592B /* Hip Extension - Bridge.gif in Resources */,
-				626FBFA21D2C653B005B592B /* Leg Circle (Clockwise).gif in Resources */,
-				626FBFD61D2C653B005B592B /* Side Plank Hip Dip (Right Side).gif in Resources */,
-				626FC0021D2C653B005B592B /* Y-Raise.gif in Resources */,
-				626FBFB31D2C653B005B592B /* Outer Hip Stretch (Left Leg).gif in Resources */,
-				626FBF841D2C653B005B592B /* Dragonfly Crunch.gif in Resources */,
-				626FBF881D2C653B005B592B /* Front Balance Drill (Left Leg).gif in Resources */,
-				626FBFA01D2C653B005B592B /* Lateral Hamstring Stretch (Left Leg).gif in Resources */,
-				626FBFBA1D2C653B005B592B /* Plank Pull Through (Left Arm).gif in Resources */,
-				626FBFC01D2C653B005B592B /* Quad Stretch with Twist (Left Leg).gif in Resources */,
-				626FBF831D2C653B005B592B /* Diamond Push-Up.gif in Resources */,
-				626FBFDB1D2C653B005B592B /* Ski Jump.gif in Resources */,
-				626FBFF21D2C653B005B592B /* Sumo Squat.gif in Resources */,
-				626FBFE81D2C653B005B592B /* Standing Kick-Out (Right Arm).gif in Resources */,
-				626FBF901D2C653B005B592B /* Good Morning.gif in Resources */,
-				626FBFD11D2C653B005B592B /* Seated Pinch Row.gif in Resources */,
-				626FBF7F1D2C653B005B592B /* Clean.gif in Resources */,
-				626FBFFA1D2C653B005B592B /* Tuck Jump.gif in Resources */,
-				626FBFAE1D2C653B005B592B /* Middle Swing.gif in Resources */,
-				626FBFCF1D2C653B005B592B /* Seated High Row.gif in Resources */,
-				626FBFA31D2C653B005B592B /* Leg Circle (Counter-Clockwise).gif in Resources */,
-				6257B6741D349291004D76B0 /* Straight Leg Dead Lift.gif in Resources */,
-				626FBFFB1D2C653B005B592B /* Up&Out.gif in Resources */,
-				626FBFCD1D2C653B005B592B /* Scissor Jump.gif in Resources */,
-				626FBFB01D2C653B005B592B /* Normal Push-Up.gif in Resources */,
-				626FBFF01D2C653B005B592B /* Straight High Pull.gif in Resources */,
-				626FBFAB1D2C653B005B592B /* Medial Hamstring Stretch (Right Leg).gif in Resources */,
-				626FBFCE1D2C653B005B592B /* Scissor Kick.gif in Resources */,
-				626FBF991D2C653B005B592B /* Hover Pushouts.gif in Resources */,
-				626FBFD51D2C653B005B592B /* Side Plank Hip Dip (Left Side).gif in Resources */,
-				626FBF861D2C653B005B592B /* Forward Lunge (Left Leg).gif in Resources */,
-				626FBFEA1D2C653B005B592B /* Standing Kick-Up (Right Arm).gif in Resources */,
-				626FBF9F1D2C653B005B592B /* Kick Slide (Right Foot Up).gif in Resources */,
-				626FBFC31D2C653B005B592B /* Rear Deltoid Stretch (Right Arm).gif in Resources */,
-				626FBF6B1D2C653B005B592B /* Alternating Superman.gif in Resources */,
-				626FBF6A1D2C653B005B592B /* 2 Arm Pulley.gif in Resources */,
-				626FBFEB1D2C653B005B592B /* Standing Pinch Row.gif in Resources */,
-				626FBFFE1D2C653B005B592B /* X-Jack.gif in Resources */,
-				626FBF761D2C653B005B592B /* Bent-Over Kick-Out.gif in Resources */,
+				629C23EE1D388E6D000D4E3A /* Plank Delt Row (Left Arm).gif in Resources */,
+				629C24011D388E6D000D4E3A /* Rocky Solo.gif in Resources */,
+				629C23A61D388E6D000D4E3A /* Anchored Mountain Climber Push-Up.gif in Resources */,
+				629C24351D388E6D000D4E3A /* Wide Push-Up.gif in Resources */,
+				629C23C21D388E6D000D4E3A /* Front Ball Throw.gif in Resources */,
+				629C23C71D388E6D000D4E3A /* Glute Kick-Up (Right Leg).gif in Resources */,
+				629C240A1D388E6D000D4E3A /* Side Balance Drill.gif in Resources */,
+				629C23CC1D388E6D000D4E3A /* Hip Abduction (Left Leg).gif in Resources */,
+				629C24101D388E6D000D4E3A /* Side Plank Hold (Right Side).gif in Resources */,
+				629C23DF1D388E6D000D4E3A /* Lift and Twist (Right Side).gif in Resources */,
+				629C23E01D388E6D000D4E3A /* Lying Quad Stretch (Left Leg).gif in Resources */,
+				629C23D61D388E6D000D4E3A /* Kick Slide (Left Foot Up).gif in Resources */,
+				629C23F71D388E6D000D4E3A /* Push-Up with Rotation.gif in Resources */,
+				629C24381D388E6D000D4E3A /* X-Walk (Right).gif in Resources */,
+				629C23DD1D388E6D000D4E3A /* Leg Raise (Right Leg).gif in Resources */,
+				629C24001D388E6D000D4E3A /* Reverse Lunge (Right Leg).gif in Resources */,
+				629C23EF1D388E6D000D4E3A /* Plank Delt Row (Right Arm).gif in Resources */,
+				629C24081D388E6D000D4E3A /* Seated Low Row.gif in Resources */,
+				629C24031D388E6D000D4E3A /* Same-Side Superman.gif in Resources */,
+				629C241B1D388E6D000D4E3A /* Standing Hip Abduction (Left Leg).gif in Resources */,
+				629C23AB1D388E6D000D4E3A /* Back Squat.gif in Resources */,
+				629C23EC1D388E6D000D4E3A /* Outer Hip Stretch (Right Leg).gif in Resources */,
+				629C23C51D388E6D000D4E3A /* Glute Kick-Back (Right Leg).gif in Resources */,
+				629C23B41D388E6D000D4E3A /* Butterfly.gif in Resources */,
+				629C242B1D388E6D000D4E3A /* Superman Press.gif in Resources */,
+				629C23A41D388E6D000D4E3A /* Anchored Bicycle.gif in Resources */,
+				629C24341D388E6D000D4E3A /* V-Up.gif in Resources */,
+				629C23D31D388E6D000D4E3A /* I-Raise.gif in Resources */,
+				629C23BA1D388E6D000D4E3A /* Delt Row.gif in Resources */,
+				629C23E71D388E6D000D4E3A /* Monster Walk.gif in Resources */,
+				629C23C41D388E6D000D4E3A /* Glute Kick-Back (Left Leg).gif in Resources */,
+				629C23E51D388E6D000D4E3A /* Middle Hamstring Stretch (Right Leg).gif in Resources */,
+				629C24251D388E6D000D4E3A /* Standing Side Stretch (Left Side).gif in Resources */,
+				629C23FA1D388E6D000D4E3A /* Rear Deltoid Stretch (Left Arm).gif in Resources */,
+				629C23D91D388E6D000D4E3A /* Lateral Hamstring Stretch (Right Leg).gif in Resources */,
+				629C23FC1D388E6D000D4E3A /* Rest.gif in Resources */,
+				629C23AF1D388E6D000D4E3A /* Big Circle (Clockwise).gif in Resources */,
+				629C23ED1D388E6D000D4E3A /* Pec Stretch (Double Arm).gif in Resources */,
+				629C23A81D388E6D000D4E3A /* Anchored Pull-In.gif in Resources */,
+				629C24141D388E6D000D4E3A /* Split Squat (Left Leg Up).gif in Resources */,
+				629C23C91D388E6D000D4E3A /* Groin Stretch (Left Leg).gif in Resources */,
+				629C241F1D388E6D000D4E3A /* Standing Kick-Out (Left Arm).gif in Resources */,
+				629C24261D388E6D000D4E3A /* Standing Side Stretch (Right Side).gif in Resources */,
+				629C23CF1D388E6D000D4E3A /* Hip Extension - Knee Up.gif in Resources */,
+				629C23F41D388E6D000D4E3A /* Plank Walk (Left).gif in Resources */,
+				629C24151D388E6D000D4E3A /* Split Squat (Right Leg Up).gif in Resources */,
+				629C240F1D388E6D000D4E3A /* Side Plank Hold (Left Side).gif in Resources */,
+				629C242C1D388E6D000D4E3A /* Swing Jump.gif in Resources */,
+				629C23E91D388E6D000D4E3A /* Opposite Plank Reach (Left Arm).gif in Resources */,
+				629C23B31D388E6D000D4E3A /* Butt Kick Jump.gif in Resources */,
+				629C241A1D388E6D000D4E3A /* Stacked Shuffle (Right Foot Up).gif in Resources */,
+				629C23D51D388E6D000D4E3A /* Jammer Jump.gif in Resources */,
+				629C240B1D388E6D000D4E3A /* Side Lunge (Left Leg).gif in Resources */,
+				629C23D41D388E6D000D4E3A /* Iron Cross.gif in Resources */,
+				629C24121D388E6D000D4E3A /* Side Plank Reach Under (Right Side).gif in Resources */,
+				629C23CE1D388E6D000D4E3A /* Hip Extension - Bridge.gif in Resources */,
+				629C23DA1D388E6D000D4E3A /* Leg Circle (Clockwise).gif in Resources */,
+				629C23B91D388E6D000D4E3A /* Crossing High Pull.gif in Resources */,
+				629C240E1D388E6D000D4E3A /* Side Plank Hip Dip (Right Side).gif in Resources */,
+				629C243A1D388E6D000D4E3A /* Y-Raise.gif in Resources */,
+				629C23EB1D388E6D000D4E3A /* Outer Hip Stretch (Left Leg).gif in Resources */,
+				629C23BC1D388E6D000D4E3A /* Dragonfly Crunch.gif in Resources */,
+				629C23C01D388E6D000D4E3A /* Front Balance Drill (Left Leg).gif in Resources */,
+				629C23D81D388E6D000D4E3A /* Lateral Hamstring Stretch (Left Leg).gif in Resources */,
+				629C23F21D388E6D000D4E3A /* Plank Pull Through (Left Arm).gif in Resources */,
+				629C23F81D388E6D000D4E3A /* Quad Stretch with Twist (Left Leg).gif in Resources */,
+				629C23BB1D388E6D000D4E3A /* Diamond Push-Up.gif in Resources */,
+				629C24131D388E6D000D4E3A /* Ski Jump.gif in Resources */,
+				629C242A1D388E6D000D4E3A /* Sumo Squat.gif in Resources */,
+				629C24201D388E6D000D4E3A /* Standing Kick-Out (Right Arm).gif in Resources */,
+				629C23C81D388E6D000D4E3A /* Good Morning.gif in Resources */,
+				629C24091D388E6D000D4E3A /* Seated Pinch Row.gif in Resources */,
+				629C23B71D388E6D000D4E3A /* Clean.gif in Resources */,
+				629C24321D388E6D000D4E3A /* Tuck Jump.gif in Resources */,
+				629C23E61D388E6D000D4E3A /* Middle Swing.gif in Resources */,
+				629C24071D388E6D000D4E3A /* Seated High Row.gif in Resources */,
+				629C23DB1D388E6D000D4E3A /* Leg Circle (Counter-Clockwise).gif in Resources */,
+				629C24331D388E6D000D4E3A /* Up&Out.gif in Resources */,
+				629C24051D388E6D000D4E3A /* Scissor Jump.gif in Resources */,
+				629C23E81D388E6D000D4E3A /* Normal Push-Up.gif in Resources */,
+				629C24281D388E6D000D4E3A /* Straight High Pull.gif in Resources */,
+				629C23E31D388E6D000D4E3A /* Medial Hamstring Stretch (Right Leg).gif in Resources */,
+				629C24061D388E6D000D4E3A /* Scissor Kick.gif in Resources */,
+				629C23D11D388E6D000D4E3A /* Hover Pushouts.gif in Resources */,
+				629C240D1D388E6D000D4E3A /* Side Plank Hip Dip (Left Side).gif in Resources */,
+				629C23BE1D388E6D000D4E3A /* Forward Lunge (Left Leg).gif in Resources */,
+				629C24221D388E6D000D4E3A /* Standing Kick-Up (Right Arm).gif in Resources */,
+				629C23D71D388E6D000D4E3A /* Kick Slide (Right Foot Up).gif in Resources */,
+				629C23FB1D388E6D000D4E3A /* Rear Deltoid Stretch (Right Arm).gif in Resources */,
+				629C23A31D388E6D000D4E3A /* Alternating Superman.gif in Resources */,
+				629C23A21D388E6D000D4E3A /* 2 Arm Pulley.gif in Resources */,
+				629C24231D388E6D000D4E3A /* Standing Pinch Row.gif in Resources */,
+				629C24361D388E6D000D4E3A /* X-Jack.gif in Resources */,
+				629C23AE1D388E6D000D4E3A /* Bent-Over Kick-Out.gif in Resources */,
 				621D22DD1CB2DC7C00FE7581 /* Podfile in Resources */,
-				626FBFE61D2C653B005B592B /* Standing Hip Extension (Right Leg).gif in Resources */,
-				626FBFF91D2C653B005B592B /* Tricep Stretch (Right Arm).gif in Resources */,
-				626FBF6D1D2C653B005B592B /* Anchored Hop-In.gif in Resources */,
+				629C241E1D388E6D000D4E3A /* Standing Hip Extension (Right Leg).gif in Resources */,
+				629C24311D388E6D000D4E3A /* Tricep Stretch (Right Arm).gif in Resources */,
+				629C23A51D388E6D000D4E3A /* Anchored Hop-In.gif in Resources */,
 				621D22B41CB2DC3F00FE7581 /* Main.storyboard in Resources */,
-				626FBFA41D2C653B005B592B /* Leg Raise (Left Leg).gif in Resources */,
-				626FBF981D2C653B005B592B /* Hip Extension - Leg Raise.gif in Resources */,
-				626FBFEF1D2C653B005B592B /* Standking Kick-Out (Right Arm).gif in Resources */,
-				626FBFB91D2C653B005B592B /* Plank Jack.gif in Resources */,
-				626FBF781D2C653B005B592B /* Big Circle (Counter-Clockwise).gif in Resources */,
-				626FBFE01D2C653B005B592B /* Squat Side Punch.gif in Resources */,
-				626FBF851D2C653B005B592B /* Flutter Kick.gif in Resources */,
-				626FBFCA1D2C653B005B592B /* Russian Twists.gif in Resources */,
-				626FBF751D2C653B005B592B /* Bent-Over Kick-Back.gif in Resources */,
-				626FBFAA1D2C653B005B592B /* Medial Hamstring Stretch (Left Leg).gif in Resources */,
-				626FBF891D2C653B005B592B /* Front Balance Drill (Right Leg).gif in Resources */,
-				626FBFC11D2C653B005B592B /* Quad Stretch with Twist (Right Leg).gif in Resources */,
-				626FBFD41D2C653B005B592B /* Side Lunge (Right Leg).gif in Resources */,
-				626FBFFF1D2C653B005B592B /* X-Walk (Left).gif in Resources */,
-				626FBFE51D2C653B005B592B /* Standing Hip Extension (Left Leg).gif in Resources */,
-				626FBFBB1D2C653B005B592B /* Plank Pull Through (Right Arm).gif in Resources */,
-				626FBF741D2C653B005B592B /* Bear Crawl.gif in Resources */,
-				626FBFD91D2C653B005B592B /* Side Plank Reach Under (Left Side).gif in Resources */,
-				626FBF871D2C653B005B592B /* Forward Lunge (Right Leg).gif in Resources */,
-				626FBF9A1D2C653B005B592B /* I-Curl.gif in Resources */,
-				626FBFB21D2C653B005B592B /* Opposite Plank Reach (Right Arm).gif in Resources */,
-				626FBFA91D2C653B005B592B /* Lying Quad Stretch (Right Leg).gif in Resources */,
-				626FBF8B1D2C653B005B592B /* Front Squat.gif in Resources */,
-				626FBF711D2C653B005B592B /* Anchored Spiderman Push-Up.gif in Resources */,
-				626FBFE41D2C653B005B592B /* Standing Hip Abduction (Right Leg).gif in Resources */,
-				626FBFBD1D2C653B005B592B /* Plank Walk (Right).gif in Resources */,
-				626FC0011D2C653B005B592B /* Y-Curl.gif in Resources */,
-				626FBF931D2C653B005B592B /* Groiner.gif in Resources */,
+				629C23DC1D388E6D000D4E3A /* Leg Raise (Left Leg).gif in Resources */,
+				629C23D01D388E6D000D4E3A /* Hip Extension - Leg Raise.gif in Resources */,
+				629C24271D388E6D000D4E3A /* Standking Kick-Out (Right Arm).gif in Resources */,
+				629C23F11D388E6D000D4E3A /* Plank Jack.gif in Resources */,
+				629C23B01D388E6D000D4E3A /* Big Circle (Counter-Clockwise).gif in Resources */,
+				629C23B61D388E6D000D4E3A /* Clamshell with Lift (Right Leg).gif in Resources */,
+				629C24181D388E6D000D4E3A /* Squat Side Punch.gif in Resources */,
+				629C23BD1D388E6D000D4E3A /* Flutter Kick.gif in Resources */,
+				629C24021D388E6D000D4E3A /* Russian Twists.gif in Resources */,
+				629C23AD1D388E6D000D4E3A /* Bent-Over Kick-Back.gif in Resources */,
+				629C23E21D388E6D000D4E3A /* Medial Hamstring Stretch (Left Leg).gif in Resources */,
+				629C23C11D388E6D000D4E3A /* Front Balance Drill (Right Leg).gif in Resources */,
+				629C23F91D388E6D000D4E3A /* Quad Stretch with Twist (Right Leg).gif in Resources */,
+				629C240C1D388E6D000D4E3A /* Side Lunge (Right Leg).gif in Resources */,
+				629C24371D388E6D000D4E3A /* X-Walk (Left).gif in Resources */,
+				629C241D1D388E6D000D4E3A /* Standing Hip Extension (Left Leg).gif in Resources */,
+				629C23F31D388E6D000D4E3A /* Plank Pull Through (Right Arm).gif in Resources */,
+				629C23AC1D388E6D000D4E3A /* Bear Crawl.gif in Resources */,
+				629C24111D388E6D000D4E3A /* Side Plank Reach Under (Left Side).gif in Resources */,
+				629C23BF1D388E6D000D4E3A /* Forward Lunge (Right Leg).gif in Resources */,
+				629C23D21D388E6D000D4E3A /* I-Curl.gif in Resources */,
+				629C23EA1D388E6D000D4E3A /* Opposite Plank Reach (Right Arm).gif in Resources */,
+				629C24291D388E6D000D4E3A /* Straight Leg Dead Lift.gif in Resources */,
+				629C23E11D388E6D000D4E3A /* Lying Quad Stretch (Right Leg).gif in Resources */,
+				629C23C31D388E6D000D4E3A /* Front Squat.gif in Resources */,
+				629C23A91D388E6D000D4E3A /* Anchored Spiderman Push-Up.gif in Resources */,
+				629C241C1D388E6D000D4E3A /* Standing Hip Abduction (Right Leg).gif in Resources */,
+				629C23F51D388E6D000D4E3A /* Plank Walk (Right).gif in Resources */,
+				629C24391D388E6D000D4E3A /* Y-Curl.gif in Resources */,
+				629C23CB1D388E6D000D4E3A /* Groiner.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
