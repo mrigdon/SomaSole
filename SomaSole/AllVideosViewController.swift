@@ -177,6 +177,10 @@ class AllVideosViewController: UITableViewController, IndicatorInfoProvider, UIS
         loadPublic()
         loadPrivate()
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        reloadTableView()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
