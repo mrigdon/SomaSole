@@ -124,6 +124,8 @@ class VideoOverlayCell: UITableViewCell {
         circleView.addSubview(lockImageView)
         lockImageView.mas_makeConstraints { make in
             make.center.equalTo()(self.circleView)
+            make.center.height().equalTo()(60)
+            make.center.width().equalTo()(60)
         }
         setPurchaseOverlay()
     }

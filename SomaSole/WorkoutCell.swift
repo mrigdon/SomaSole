@@ -119,6 +119,8 @@ class WorkoutOverlayCell: UITableViewCell {
         circleView.addSubview(lockImageView)
         lockImageView.mas_makeConstraints { make in
             make.center.equalTo()(self.circleView)
+            make.height.equalTo()(60)
+            make.width.equalTo()(60)
         }
         setPurchaseOverlay()
     }
