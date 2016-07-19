@@ -76,7 +76,7 @@ class BeginWorkoutViewController: UIViewController {
         self.workoutImageViewHeight.constant = self.workoutImageHeight
         self.workoutImageView.image = workout!.image
         self.nameLabel.text = self.workout!.name
-        self.timeLabel.text = "\(self.workout!.time) minutes"
+        self.timeLabel.text = "\(Int(self.workout!.time / 60)) minutes"
         self.intensityLabel.text = "\(self.workout!.intensity)"
         self.descriptionLabel.editable = true
         self.descriptionLabel.font = UIFont(name: "HelveticaNeue", size: 17)

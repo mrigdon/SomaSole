@@ -134,7 +134,7 @@ class GuidedWorkoutViewController: UIViewController {
     
     private func beginWorkout() {
         timer = MZTimerLabel(label: timeLabel, andTimerType: MZTimerLabelTypeTimer)
-        timer.setCountDownTime(Double(workout!.time) * 60)
+        timer.setCountDownTime(Double(workout!.time))
         timer.timeFormat = "mm:ss"
         timer.start()
         beginCircuit(0, completedWorkout: {
