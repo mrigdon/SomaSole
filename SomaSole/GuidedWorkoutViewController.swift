@@ -68,8 +68,14 @@ class GuidedWorkoutViewController: UIViewController {
             return
         }
         
-        // animate image view and set tip text
+        // get current circuit
         let circuit = workout!.circuits[circuitIndex]
+        
+        // setup counter labels
+        let mdText = SwiftyMarkdown(string: "**Circuit:** \(circuitIndex+1)/\(workout!.circuits.count)   **Set:** \(setIndex+1)/\(circuit.numSets)   **Movement:** \(movementIndex)/\(circuit.movements.count)")
+        setLabel.attributedText = mdText.attributedString()
+        
+        // animate image view and set tip text
         let movement: Movement? = movementIndex == 0 ? nil : circuit.movements[movementIndex - 1] // -1 to account for setup
         let imageData = movementIndex == 0 ? (setIndex == 0 ? UIImageJPEGRepresentation(circuit.setup.image!, 1.0) : NSData(contentsOfURL: NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("Rest.gif", ofType: nil)!))) : movement!.gif
         if movementIndex == 0 {
@@ -111,9 +117,6 @@ class GuidedWorkoutViewController: UIViewController {
             completedCircuit()
             return
         }
-        
-        let mdText = SwiftyMarkdown(string: "**Circuit:** \(circuitIndex+1)/\(workout!.circuits.count)   **Set:** \(setIndex+1)/\(workout!.circuits[circuitIndex].numSets)")
-        setLabel.attributedText = mdText.attributedString()
         
         beginMovementInSet(circuitIndex, setIndex: setIndex, movementIndex: 0, completedSet: {
             self.beginSetInCircuit(circuitIndex, setIndex: setIndex+1, completedCircuit: completedCircuit)
@@ -177,8 +180,8 @@ class GuidedWorkoutViewController: UIViewController {
         tipTextView.alpha = 0
         tipTextView.textAlignment = .Center
         
-        movementLabel.numberOfLines = 0
-        movementLabel.sizeToFit()
+        movementLabel.adjustsFontSizeToFitWidth = true
+        setLabel.adjustsFontSizeToFitWidth = true
     }
     
     override func viewDidAppear(animated: Bool) {
