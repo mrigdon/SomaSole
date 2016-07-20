@@ -3138,11 +3138,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ftQ-92-XZR">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ftQ-92-XZR">
                                 <rect key="frame" x="20" y="85" width="560" height="26"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="26" id="2kT-6Y-qmf"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -3171,7 +3168,7 @@
                                     <constraint firstAttribute="height" constant="200" id="ESF-fK-uYf"/>
                                 </constraints>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GGm-WK-uTd">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GGm-WK-uTd">
                                 <rect key="frame" x="20" y="130" width="560" height="340"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -3232,7 +3229,6 @@
                             <constraint firstItem="GGm-WK-uTd" firstAttribute="trailing" secondItem="IXv-f3-WL3" secondAttribute="trailingMargin" id="XIb-ob-lcW"/>
                             <constraint firstItem="CqP-ro-1PO" firstAttribute="leading" secondItem="IXv-f3-WL3" secondAttribute="leadingMargin" id="bha-Ob-DCT"/>
                             <constraint firstItem="CqP-ro-1PO" firstAttribute="trailing" secondItem="IXv-f3-WL3" secondAttribute="trailingMargin" id="e94-fi-EdG"/>
-                            <constraint firstItem="CqP-ro-1PO" firstAttribute="top" secondItem="GGm-WK-uTd" secondAttribute="bottom" constant="14" id="hbj-8I-K3r"/>
                             <constraint firstItem="ftQ-92-XZR" firstAttribute="leading" secondItem="IXv-f3-WL3" secondAttribute="leadingMargin" id="nY7-Ux-K2A"/>
                             <constraint firstItem="hb8-wa-tVy" firstAttribute="leading" secondItem="IXv-f3-WL3" secondAttribute="leadingMargin" id="qQi-xD-pXt"/>
                             <constraint firstItem="ftQ-92-XZR" firstAttribute="top" secondItem="q6N-jx-ehk" secondAttribute="bottom" constant="21" id="rhr-F0-kbf"/>
@@ -3284,13 +3280,13 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="nCl-W3-Vn0"/>
-        <segue reference="oKK-Ue-uAs"/>
+        <segue reference="4eL-kw-GYP"/>
         <segue reference="L1j-8U-f84"/>
-        <segue reference="nuW-4e-9Zq"/>
         <segue reference="0ZQ-sa-92A"/>
+        <segue reference="nuW-4e-9Zq"/>
+        <segue reference="eYZ-zP-Gte"/>
         <segue reference="AYP-Ub-T6L"/>
         <segue reference="yH4-Va-FID"/>
         <segue reference="0aP-Cp-rF3"/>
-        <segue reference="eYZ-zP-Gte"/>
     </inferredMetricsTieBreakers>
 </document>
