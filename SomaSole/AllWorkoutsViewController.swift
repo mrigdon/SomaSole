@@ -68,10 +68,10 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate, Ind
         var tagFilteredWorkouts = [Workout]()
         for workout in favorites ? User.sharedModel.favoriteWorkouts : workouts {
             // if workout.tags contains all of selected filters
-            var qualifies = true
+            var qualifies = false
             for filter in selectedFilters {
                 qualifies = workout.tags.contains(filter)
-                if !qualifies {
+                if qualifies {
                     break
                 }
             }
