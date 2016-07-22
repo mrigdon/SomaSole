@@ -20,6 +20,7 @@
 		621D22DD1CB2DC7C00FE7581 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 621D22DC1CB2DC7C00FE7581 /* Podfile */; };
 		621DA9601D15EF2F002DF0AF /* Payment2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621DA95F1D15EF2F002DF0AF /* Payment2ViewController.swift */; };
 		621DA9641D15FE2E002DF0AF /* Profile3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621DA9631D15FE2E002DF0AF /* Profile3ViewController.swift */; };
+		622878211D41CA5800D23E5C /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622878201D41CA5800D23E5C /* TermsViewController.swift */; };
 		6229FF821CEA518400838B68 /* MovementDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6229FF811CEA518400838B68 /* MovementDetailViewController.swift */; };
 		6235212B1CFA00E500B3F1BF /* ROGif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6235212A1CFA00E500B3F1BF /* ROGif.swift */; };
 		6235212D1CFA130A00B3F1BF /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6235212C1CFA130A00B3F1BF /* VideoCell.swift */; };
@@ -255,6 +256,7 @@
 		621D22DC1CB2DC7C00FE7581 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		621DA95F1D15EF2F002DF0AF /* Payment2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payment2ViewController.swift; sourceTree = "<group>"; };
 		621DA9631D15FE2E002DF0AF /* Profile3ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile3ViewController.swift; sourceTree = "<group>"; };
+		622878201D41CA5800D23E5C /* TermsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		6229FF811CEA518400838B68 /* MovementDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementDetailViewController.swift; sourceTree = "<group>"; };
 		6235212A1CFA00E500B3F1BF /* ROGif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ROGif.swift; sourceTree = "<group>"; };
 		6235212C1CFA130A00B3F1BF /* VideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
@@ -600,6 +602,7 @@
 				626063941CBAEDEF00B1AF3C /* CreateBasicsViewController.swift */,
 				626063991CBB3E5900B1AF3C /* CreateAboutViewController.swift */,
 				62926A941CBC33F200960F94 /* CreateLoginViewController.swift */,
+				622878201D41CA5800D23E5C /* TermsViewController.swift */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -1192,6 +1195,7 @@
 				62F7ED781CF80DBF002A2C47 /* ArticleViewController.swift in Sources */,
 				6235212D1CFA130A00B3F1BF /* VideoCell.swift in Sources */,
 				626FBECF1D2C5014005B592B /* LabelCell.swift in Sources */,
+				622878211D41CA5800D23E5C /* TermsViewController.swift in Sources */,
 				62780C691D0BA87300198441 /* ProfileCell.swift in Sources */,
 				621DA9601D15EF2F002DF0AF /* Payment2ViewController.swift in Sources */,
 				626D2CF41D1A4F8C00812ED0 /* ROImage.swift in Sources */,

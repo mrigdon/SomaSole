@@ -57,6 +57,10 @@ class CreateAboutViewController: UIViewController {
         })
     }
     
+    func startProgressHud() {
+        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+    }
+    
     func errorAlert(message: String) {
         alertController!.message = message
         presentViewController(alertController!, animated: true, completion: nil)
@@ -136,9 +140,6 @@ class CreateAboutViewController: UIViewController {
     }
     
     @IBAction func tappedFinish(sender: AnyObject) {
-        // start progress hud
-        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        
         // get all selected activities
         if climbingPill.selectedByUser { selectedActivities.append(climbingPill.activity!.hashValue) }
         if basketballPill.selectedByUser { selectedActivities.append(basketballPill.activity!.hashValue) }
@@ -171,31 +172,47 @@ class CreateAboutViewController: UIViewController {
         User.sharedModel.activities = selectedActivities
         User.sharedModel.goals = selectedGoals
         
-        // create firebase user
-        if User.sharedModel.facebook {
-            FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).setValue(User.sharedModel.dict())
-            NSUserDefaults.standardUserDefaults().setObject(User.sharedModel.dict(), forKey: "userData")
-            NSUserDefaults.standardUserDefaults().setObject(User.sharedModel.uid, forKey: "uid")
-            NSUserDefaults.standardUserDefaults().synchronize()
-            User.sharedModel.uploadProfileImage()
-            self.performSegueWithIdentifier("toMain", sender: self)
-        } else {
-            FirebaseManager.sharedRootRef.createUser(User.sharedModel.email, password: User.sharedModel.password, withValueCompletionBlock: { error, result in
-                // stop progress
-                self.stopProgressHud()
-                if let error = error {
-                    self.successfullyCreatedFirebaseUser = false
-                    self.handleFirebaseError(error)
-                } else {
-                    User.sharedModel.uid = result["uid"] as! String
+        // go to terms
+        performSegueWithIdentifier("termsSegue", sender: self)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "termsSegue" {
+            let destVC = segue.destinationViewController as! UINavigationController
+            let rootVC = destVC.viewControllers.first as! TermsViewController
+            
+            if User.sharedModel.facebook {
+                rootVC.acceptClosure = {
+                    self.startProgressHud()
                     FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).setValue(User.sharedModel.dict())
                     NSUserDefaults.standardUserDefaults().setObject(User.sharedModel.dict(), forKey: "userData")
                     NSUserDefaults.standardUserDefaults().setObject(User.sharedModel.uid, forKey: "uid")
                     NSUserDefaults.standardUserDefaults().synchronize()
                     User.sharedModel.uploadProfileImage()
+                    self.stopProgressHud()
                     self.performSegueWithIdentifier("toMain", sender: self)
                 }
-            })
+            } else {
+                rootVC.acceptClosure = {
+                    self.startProgressHud()
+                    FirebaseManager.sharedRootRef.createUser(User.sharedModel.email, password: User.sharedModel.password, withValueCompletionBlock: { error, result in
+                        // stop progress
+                        self.stopProgressHud()
+                        if let error = error {
+                            self.successfullyCreatedFirebaseUser = false
+                            self.handleFirebaseError(error)
+                        } else {
+                            User.sharedModel.uid = result["uid"] as! String
+                            FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).setValue(User.sharedModel.dict())
+                            NSUserDefaults.standardUserDefaults().setObject(User.sharedModel.dict(), forKey: "userData")
+                            NSUserDefaults.standardUserDefaults().setObject(User.sharedModel.uid, forKey: "uid")
+                            NSUserDefaults.standardUserDefaults().synchronize()
+                            User.sharedModel.uploadProfileImage()
+                            self.performSegueWithIdentifier("toMain", sender: self)
+                        }
+                    })
+                }
+            }
         }
     }
     
