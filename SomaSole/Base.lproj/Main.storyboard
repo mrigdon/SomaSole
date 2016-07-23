@@ -781,7 +781,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uns-FS-Ui8">
                                 <rect key="frame" x="20" y="109" width="560" height="394"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <mutableString key="text">SomaSole TERMS OF USE
+                                <string key="text">SomaSole TERMS OF USE
 
 Last Modified on July 21, 2016
 
@@ -1040,7 +1040,7 @@ You acknowledge and agree that SomaSole would be irreparably damaged if the term
 
 19.11 Entire Agreement.
 
-This ToU, including the documents referenced in this ToU, constitutes the entire agreement between you and SomaSole with respect to the Service and supersedes any and all prior agreements between you and SomaSole relating to the Service.</mutableString>
+This ToU, including the documents referenced in this ToU, constitutes the entire agreement between you and SomaSole with respect to the Service and supersedes any and all prior agreements between you and SomaSole relating to the Service.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -2992,10 +2992,31 @@ This ToU, including the documents referenced in this ToU, constitutes the entire
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ubO-yB-BwX" customClass="IndexedStarButton" customModule="SomaSole">
+                                            <rect key="frame" x="562" y="8" width="30" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="tei-gF-Xb8"/>
+                                                <constraint firstAttribute="width" constant="30" id="zlT-r8-gvL"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="corners">
+                                                    <integer key="value" value="5"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="extrusionPercent">
+                                                    <integer key="value" value="50"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="strokeColor">
+                                                    <color key="value" red="1" green="0.84313725490000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="tappedStar:" destination="wDT-8S-h9v" eventType="touchUpInside" id="sTE-oO-wyo"/>
+                                            </connections>
+                                        </view>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wnb-ca-PIf">
                                             <rect key="frame" x="8" y="37" width="584" height="214"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="214" id="igT-FX-RYC"/>
+                                                <constraint firstAttribute="height" constant="214" id="J3D-0N-CAu"/>
                                             </constraints>
                                         </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z2X-Gg-NQn">
@@ -3019,27 +3040,6 @@ This ToU, including the documents referenced in this ToU, constitutes the entire
                                                 <constraint firstAttribute="width" constant="66" id="lEa-lf-6eX"/>
                                             </constraints>
                                         </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ubO-yB-BwX" customClass="IndexedStarButton" customModule="SomaSole">
-                                            <rect key="frame" x="562" y="8" width="30" height="30"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="30" id="tei-gF-Xb8"/>
-                                                <constraint firstAttribute="width" constant="30" id="zlT-r8-gvL"/>
-                                            </constraints>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="corners">
-                                                    <integer key="value" value="5"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="extrusionPercent">
-                                                    <integer key="value" value="50"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="color" keyPath="strokeColor">
-                                                    <color key="value" red="1" green="0.84313725490000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="tappedStar:" destination="wDT-8S-h9v" eventType="touchUpInside" id="sTE-oO-wyo"/>
-                                            </connections>
-                                        </view>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="Wnb-ca-PIf" firstAttribute="leading" secondItem="PeS-zp-q14" secondAttribute="leadingMargin" id="77Z-Yc-8yD"/>
@@ -3059,6 +3059,7 @@ This ToU, including the documents referenced in this ToU, constitutes the entire
                                     <outlet property="starButton" destination="ubO-yB-BwX" id="3kZ-VX-Jtt"/>
                                     <outlet property="titleLabel" destination="uLb-le-4Od" id="oXD-M0-Wym"/>
                                     <outlet property="videoImageView" destination="Wnb-ca-PIf" id="ts6-oR-A9a"/>
+                                    <outlet property="videoImageViewHeight" destination="J3D-0N-CAu" id="qX3-4a-krm"/>
                                     <segue destination="0dZ-hV-uXw" kind="show" identifier="videoSegue" id="NgW-Cd-xhq"/>
                                 </connections>
                             </tableViewCell>
@@ -3142,6 +3143,7 @@ This ToU, including the documents referenced in this ToU, constitutes the entire
                                     <outlet property="starButton" destination="LdT-Hr-9hu" id="bQ9-91-9LT"/>
                                     <outlet property="titleLabel" destination="MXK-0R-lBd" id="qbI-da-SLi"/>
                                     <outlet property="videoImageView" destination="A6R-YW-yBM" id="RtD-61-7Xd"/>
+                                    <outlet property="videoImageViewHeight" destination="zR5-O7-Rva" id="hvp-yt-n9F"/>
                                     <segue destination="8Im-MZ-Qjf" kind="presentation" identifier="premiumSegue" id="Em9-oI-XgO"/>
                                 </connections>
                             </tableViewCell>
@@ -3661,14 +3663,14 @@ This ToU, including the documents referenced in this ToU, constitutes the entire
         <image name="videos" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="AYP-Ub-T6L"/>
         <segue reference="X0W-T2-P7W"/>
         <segue reference="0aP-Cp-rF3"/>
         <segue reference="yH4-Va-FID"/>
-        <segue reference="eYZ-zP-Gte"/>
-        <segue reference="L1j-8U-f84"/>
-        <segue reference="0ZQ-sa-92A"/>
+        <segue reference="AYP-Ub-T6L"/>
+        <segue reference="Em9-oI-XgO"/>
+        <segue reference="NgW-Cd-xhq"/>
         <segue reference="nuW-4e-9Zq"/>
+        <segue reference="L1j-8U-f84"/>
         <segue reference="4eL-kw-GYP"/>
     </inferredMetricsTieBreakers>
 </document>

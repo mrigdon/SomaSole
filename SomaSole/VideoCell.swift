@@ -19,6 +19,7 @@ class VideoCell: UITableViewCell {
     @IBOutlet weak var videoImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var starButton: IndexedStarButton!
+    @IBOutlet weak var videoImageViewHeight: NSLayoutConstraint!
     
     // method
     func setStarFill() {
@@ -55,6 +56,7 @@ class VideoCell: UITableViewCell {
         titleLabel.numberOfLines = 0
         titleLabel.sizeToFit()
         titleLabel.font = UIFont(name: "AvenirNext-Regular", size: 20)
+        videoImageViewHeight.constant = (UIScreen.mainScreen().bounds.width - 16) * (9/16)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -77,6 +79,7 @@ class VideoOverlayCell: UITableViewCell {
     @IBOutlet weak var videoImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var starButton: IndexedStarButton!
+    @IBOutlet weak var videoImageViewHeight: NSLayoutConstraint!
     
     // methods
     func setStarFill() {
@@ -118,6 +121,7 @@ class VideoOverlayCell: UITableViewCell {
         titleLabel.numberOfLines = 0
         titleLabel.sizeToFit()
         titleLabel.font = UIFont(name: "AvenirNext-Regular", size: 20)
+        videoImageViewHeight.constant = (UIScreen.mainScreen().bounds.width - 16) * (9/16)
         overlayView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.6)
         circleView.backgroundColor = UIColor.whiteColor()
         circleView.layer.cornerRadius = 50
