@@ -123,7 +123,6 @@
 		629C23EB1D388E6D000D4E3A /* Outer Hip Stretch (Left Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23521D388E6D000D4E3A /* Outer Hip Stretch (Left Leg).gif */; };
 		629C23EC1D388E6D000D4E3A /* Outer Hip Stretch (Right Leg).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23531D388E6D000D4E3A /* Outer Hip Stretch (Right Leg).gif */; };
 		629C23ED1D388E6D000D4E3A /* Pec Stretch (Double Arm).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23541D388E6D000D4E3A /* Pec Stretch (Double Arm).gif */; };
-		629C23EE1D388E6D000D4E3A /* Plank Delt Row (Left Arm).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23551D388E6D000D4E3A /* Plank Delt Row (Left Arm).gif */; };
 		629C23EF1D388E6D000D4E3A /* Plank Delt Row (Right Arm).gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23561D388E6D000D4E3A /* Plank Delt Row (Right Arm).gif */; };
 		629C23F01D388E6D000D4E3A /* Plank Delt Row.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23571D388E6D000D4E3A /* Plank Delt Row.gif */; };
 		629C23F11D388E6D000D4E3A /* Plank Jack.gif in Resources */ = {isa = PBXBuildFile; fileRef = 629C23581D388E6D000D4E3A /* Plank Jack.gif */; };
@@ -208,6 +207,7 @@
 		62C8413E1CC6F5D700468726 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C8413D1CC6F5D700468726 /* FilterViewController.swift */; };
 		62CCEEA51CEC16BB00CC0D37 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CCEEA41CEC16BB00CC0D37 /* FirebaseManager.swift */; };
 		62CF96471D126F7800DDC38A /* GoPremiumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CF96461D126F7800DDC38A /* GoPremiumViewController.swift */; };
+		62D1E1C61D4314700080FD3B /* Plank Delt Row (Left Arm).gif in Resources */ = {isa = PBXBuildFile; fileRef = 62D1E1C51D4314700080FD3B /* Plank Delt Row (Left Arm).gif */; };
 		62D4298B1CEDA5DB009F157A /* Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D4298A1CEDA5DB009F157A /* Movement.swift */; };
 		62D640E41CD8136600D05124 /* BeginWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D640E31CD8136600D05124 /* BeginWorkoutViewController.swift */; };
 		62D640E61CD82C4200D05124 /* CountdownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D640E51CD82C4200D05124 /* CountdownViewController.swift */; };
@@ -359,7 +359,6 @@
 		629C23521D388E6D000D4E3A /* Outer Hip Stretch (Left Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Outer Hip Stretch (Left Leg).gif"; sourceTree = "<group>"; };
 		629C23531D388E6D000D4E3A /* Outer Hip Stretch (Right Leg).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Outer Hip Stretch (Right Leg).gif"; sourceTree = "<group>"; };
 		629C23541D388E6D000D4E3A /* Pec Stretch (Double Arm).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Pec Stretch (Double Arm).gif"; sourceTree = "<group>"; };
-		629C23551D388E6D000D4E3A /* Plank Delt Row (Left Arm).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Plank Delt Row (Left Arm).gif"; sourceTree = "<group>"; };
 		629C23561D388E6D000D4E3A /* Plank Delt Row (Right Arm).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Plank Delt Row (Right Arm).gif"; sourceTree = "<group>"; };
 		629C23571D388E6D000D4E3A /* Plank Delt Row.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Plank Delt Row.gif"; sourceTree = "<group>"; };
 		629C23581D388E6D000D4E3A /* Plank Jack.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Plank Jack.gif"; sourceTree = "<group>"; };
@@ -444,6 +443,7 @@
 		62C8413D1CC6F5D700468726 /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		62CCEEA41CEC16BB00CC0D37 /* FirebaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		62CF96461D126F7800DDC38A /* GoPremiumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoPremiumViewController.swift; sourceTree = "<group>"; };
+		62D1E1C51D4314700080FD3B /* Plank Delt Row (Left Arm).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Plank Delt Row (Left Arm).gif"; sourceTree = "<group>"; };
 		62D4298A1CEDA5DB009F157A /* Movement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movement.swift; sourceTree = "<group>"; };
 		62D640E31CD8136600D05124 /* BeginWorkoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeginWorkoutViewController.swift; sourceTree = "<group>"; };
 		62D640E51CD82C4200D05124 /* CountdownViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownViewController.swift; sourceTree = "<group>"; };
@@ -692,7 +692,7 @@
 				629C23521D388E6D000D4E3A /* Outer Hip Stretch (Left Leg).gif */,
 				629C23531D388E6D000D4E3A /* Outer Hip Stretch (Right Leg).gif */,
 				629C23541D388E6D000D4E3A /* Pec Stretch (Double Arm).gif */,
-				629C23551D388E6D000D4E3A /* Plank Delt Row (Left Arm).gif */,
+				62D1E1C51D4314700080FD3B /* Plank Delt Row (Left Arm).gif */,
 				629C23561D388E6D000D4E3A /* Plank Delt Row (Right Arm).gif */,
 				629C23571D388E6D000D4E3A /* Plank Delt Row.gif */,
 				629C23581D388E6D000D4E3A /* Plank Jack.gif */,
@@ -972,7 +972,6 @@
 				628C08581D3F0F1800495AB4 /* Hip Rotation (Left).gif in Resources */,
 				628C08501D3F0C4900495AB4 /* Anchored Leg Circle (Clockwise).gif in Resources */,
 				621D22B61CB2DC3F00FE7581 /* Assets.xcassets in Resources */,
-				629C23EE1D388E6D000D4E3A /* Plank Delt Row (Left Arm).gif in Resources */,
 				629C24011D388E6D000D4E3A /* Rocky Solo.gif in Resources */,
 				629C23A61D388E6D000D4E3A /* Anchored Mountain Climber Push-Up.gif in Resources */,
 				629C24351D388E6D000D4E3A /* Wide Push-Up.gif in Resources */,
@@ -1088,6 +1087,7 @@
 				629C23E21D388E6D000D4E3A /* Medial Hamstring Stretch (Left Leg).gif in Resources */,
 				629C23C11D388E6D000D4E3A /* Front Balance Drill (Right Leg).gif in Resources */,
 				629C23F91D388E6D000D4E3A /* Quad Stretch with Twist (Right Leg).gif in Resources */,
+				62D1E1C61D4314700080FD3B /* Plank Delt Row (Left Arm).gif in Resources */,
 				629C240C1D388E6D000D4E3A /* Side Lunge (Right Leg).gif in Resources */,
 				629C24371D388E6D000D4E3A /* X-Walk (Left).gif in Resources */,
 				629C241D1D388E6D000D4E3A /* Standing Hip Extension (Left Leg).gif in Resources */,
