@@ -18,7 +18,7 @@ class PlayVideoViewController: UIViewController {
     @IBOutlet weak var playerView: YTPlayerView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UITextView!
     
     func dismiss() {
         dismissViewControllerAnimated(true, completion: nil)
@@ -35,11 +35,19 @@ class PlayVideoViewController: UIViewController {
             ]
             playerView.loadWithVideoId(video.id, playerVars: playerVars)
             nameLabel.text = video.title
+            nameLabel.numberOfLines = 0
+            nameLabel.sizeToFit()
             timeLabel.text = "\(video.time) minutes"
+            descriptionLabel.editable = true
+            descriptionLabel.font = UIFont(name: "HelveticaNeue", size: 17)
+            descriptionLabel.editable = false
             descriptionLabel.text = video.videoDescription
-            descriptionLabel.numberOfLines = 0
-            descriptionLabel.sizeToFit()
         }
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.descriptionLabel.setContentOffset(CGPointZero, animated: false)
     }
 
     override func didReceiveMemoryWarning() {

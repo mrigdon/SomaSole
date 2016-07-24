@@ -3403,15 +3403,6 @@ This ToU, including the documents referenced in this ToU, constitutes the entire
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TIME:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RVH-go-OjI">
-                                <rect key="frame" x="20" y="323" width="64" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="64" id="Jzv-Cb-rci"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DESCRIPTION:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SBr-ox-7ob">
                                 <rect key="frame" x="20" y="352" width="133" height="21"/>
                                 <constraints>
@@ -3433,12 +3424,6 @@ This ToU, including the documents referenced in this ToU, constitutes the entire
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JmJ-kD-meX">
-                                <rect key="frame" x="20" y="381" width="560" height="25"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gYN-LR-JwV" customClass="YTPlayerView">
                                 <rect key="frame" x="20" y="72" width="560" height="214"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -3453,21 +3438,37 @@ This ToU, including the documents referenced in this ToU, constitutes the entire
                                     <constraint firstAttribute="width" constant="100" id="ZoC-hg-CT9"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TIME:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RVH-go-OjI">
+                                <rect key="frame" x="20" y="323" width="64" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="Jzv-Cb-rci"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Label" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1xY-Ha-dh5">
+                                <rect key="frame" x="20" y="381" width="560" height="162"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="gYN-LR-JwV" firstAttribute="trailing" secondItem="Rfk-hT-VRW" secondAttribute="trailingMargin" id="0W7-rr-jru"/>
                             <constraint firstItem="XIa-7l-NJM" firstAttribute="top" secondItem="gYN-LR-JwV" secondAttribute="bottom" constant="8" id="6AA-is-7zK"/>
                             <constraint firstItem="gYN-LR-JwV" firstAttribute="top" secondItem="fuN-0e-tuh" secondAttribute="bottom" constant="8" id="ArX-1n-TWx"/>
-                            <constraint firstItem="JmJ-kD-meX" firstAttribute="leading" secondItem="Rfk-hT-VRW" secondAttribute="leadingMargin" id="CoW-Pr-xPs"/>
                             <constraint firstItem="cEJ-Kh-HbT" firstAttribute="trailing" secondItem="Rfk-hT-VRW" secondAttribute="trailingMargin" id="D6R-u1-4Ss"/>
+                            <constraint firstItem="1xY-Ha-dh5" firstAttribute="top" secondItem="SBr-ox-7ob" secondAttribute="bottom" constant="8" id="GpF-1W-y09"/>
                             <constraint firstItem="XIa-7l-NJM" firstAttribute="leading" secondItem="Rfk-hT-VRW" secondAttribute="leadingMargin" id="Jnp-hY-v0O"/>
                             <constraint firstItem="ard-L6-H2Q" firstAttribute="trailing" secondItem="Rfk-hT-VRW" secondAttribute="trailingMargin" id="NV7-kn-dB2"/>
                             <constraint firstItem="cRi-aO-m0z" firstAttribute="trailing" secondItem="Rfk-hT-VRW" secondAttribute="trailingMargin" id="Nni-3U-fHY"/>
+                            <constraint firstItem="RVH-go-OjI" firstAttribute="top" secondItem="ard-L6-H2Q" secondAttribute="bottom" constant="8" id="P3L-a0-E5s"/>
+                            <constraint firstItem="Hox-lF-m83" firstAttribute="top" secondItem="1xY-Ha-dh5" secondAttribute="bottom" constant="8" id="PYW-uo-Sy5"/>
                             <constraint firstItem="ard-L6-H2Q" firstAttribute="top" secondItem="cRi-aO-m0z" secondAttribute="bottom" constant="8" id="Pk6-dR-Urm"/>
-                            <constraint firstItem="RVH-go-OjI" firstAttribute="top" secondItem="XIa-7l-NJM" secondAttribute="bottom" constant="8" id="Y4w-kc-Yg0"/>
                             <constraint firstItem="SBr-ox-7ob" firstAttribute="top" secondItem="RVH-go-OjI" secondAttribute="bottom" constant="8" id="Z42-un-WBo"/>
-                            <constraint firstItem="JmJ-kD-meX" firstAttribute="top" secondItem="SBr-ox-7ob" secondAttribute="bottom" constant="8" id="ZUg-kM-EYl"/>
+                            <constraint firstItem="1xY-Ha-dh5" firstAttribute="leading" secondItem="Rfk-hT-VRW" secondAttribute="leadingMargin" id="Zch-Yh-9UV"/>
                             <constraint firstItem="gYN-LR-JwV" firstAttribute="leading" secondItem="Rfk-hT-VRW" secondAttribute="leadingMargin" id="ghY-cv-G6x"/>
                             <constraint firstItem="ard-L6-H2Q" firstAttribute="top" secondItem="gYN-LR-JwV" secondAttribute="bottom" constant="8" id="gmB-Fu-HK7"/>
                             <constraint firstItem="SBr-ox-7ob" firstAttribute="leading" secondItem="Rfk-hT-VRW" secondAttribute="leadingMargin" id="jV0-9U-v9h"/>
@@ -3476,8 +3477,8 @@ This ToU, including the documents referenced in this ToU, constitutes the entire
                             <constraint firstItem="cRi-aO-m0z" firstAttribute="top" secondItem="fuN-0e-tuh" secondAttribute="bottom" constant="8" id="lLk-81-Ji1"/>
                             <constraint firstItem="cEJ-Kh-HbT" firstAttribute="leading" secondItem="RVH-go-OjI" secondAttribute="trailing" constant="8" id="ndm-ef-FHy"/>
                             <constraint firstItem="ard-L6-H2Q" firstAttribute="leading" secondItem="XIa-7l-NJM" secondAttribute="trailing" constant="8" id="oE0-dv-VKd"/>
-                            <constraint firstItem="JmJ-kD-meX" firstAttribute="trailing" secondItem="Rfk-hT-VRW" secondAttribute="trailingMargin" id="pZL-dk-zz3"/>
                             <constraint firstItem="cEJ-Kh-HbT" firstAttribute="top" secondItem="ard-L6-H2Q" secondAttribute="bottom" constant="8" id="uaN-Zq-E1k"/>
+                            <constraint firstItem="1xY-Ha-dh5" firstAttribute="trailing" secondItem="Rfk-hT-VRW" secondAttribute="trailingMargin" id="yUF-aE-VqP"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="aX1-qR-h1a">
@@ -3500,7 +3501,7 @@ This ToU, including the documents referenced in this ToU, constitutes the entire
                         </view>
                     </navigationItem>
                     <connections>
-                        <outlet property="descriptionLabel" destination="JmJ-kD-meX" id="kMx-pU-YqN"/>
+                        <outlet property="descriptionLabel" destination="1xY-Ha-dh5" id="LX2-wx-oEc"/>
                         <outlet property="nameLabel" destination="ard-L6-H2Q" id="ePc-J4-plw"/>
                         <outlet property="playerView" destination="gYN-LR-JwV" id="Ivq-bL-Cz3"/>
                         <outlet property="timeLabel" destination="cEJ-Kh-HbT" id="mVW-VU-YR9"/>
