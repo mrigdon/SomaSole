@@ -2888,7 +2888,7 @@ This ToU, including the documents referenced in this ToU, constitutes the entire
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="2N9-aK-W0i"/>
                                         </constraints>
-                                        <state key="normal" title="Start 2-Month Free Trial">
+                                        <state key="normal" title="Start 1-Month Free Trial">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
