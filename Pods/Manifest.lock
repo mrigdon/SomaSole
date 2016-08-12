@@ -34,7 +34,6 @@ PODS:
   - Realm/Headers (1.0.0)
   - RealmSwift (1.0.0):
     - Realm (= 1.0.0)
-  - Stripe (7.0.2)
   - SwiftString (0.5)
   - SwiftyJSON (2.3.2)
   - SwiftyMarkdown (0.2.3)
@@ -64,7 +63,6 @@ DEPENDENCIES:
   - MBProgressHUD (~> 0.9.2)
   - MZTimerLabel
   - RealmSwift
-  - Stripe
   - SwiftString
   - SwiftyJSON
   - SwiftyMarkdown
@@ -96,7 +94,6 @@ SPEC CHECKSUMS:
   MZTimerLabel: cd9bfb9304540ef2a9e163384fca9c978f0dbf83
   Realm: e15cd8e7c11d3e576f628ba0b7cb855269b4991c
   RealmSwift: 3229306d020d96f83b335f87a0dcbf2cef0e6a2b
-  Stripe: d1eae5522cf993590f962ac1829a56c2096cf486
   SwiftString: ec9c31c55b2aa147a1154f5f5f8483dc71e3165f
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   SwiftyMarkdown: 62920e177bbd441f2e4427e164e1674b1be46b39

@@ -14,6 +14,7 @@ import Masonry
 import AlamofireImage
 import Alamofire
 import MBProgressHUD
+import StoreKit
 
 extension Array where Element: Video {
     mutating func appendAfterPublic(video: Element) {
@@ -151,7 +152,7 @@ class AllVideosViewController: UITableViewController, IndicatorInfoProvider, UIS
         super.viewDidLoad()
         
         navigationController?.navigationBar.tintColor = UIColor.blackColor()
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
         
         searchBar.barTintColor = UIColor.whiteColor()
         searchBar.tintColor = UIColor.blackColor()
@@ -162,9 +163,9 @@ class AllVideosViewController: UITableViewController, IndicatorInfoProvider, UIS
         searchBar.delegate = self
         searchBar.enablesReturnKeyAutomatically = false
         
-        self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.estimatedRowHeight = 274
-        self.tableView.tableFooterView = UIView(frame: CGRect.zero)
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 274
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
         
         unfilledStarButton = UIBarButtonItem(image: UIImage(named: "star_unfilled"), style: .Plain, target: self, action: #selector(tappedUnfilledStar))
         unfilledStarButton?.tintColor = UIColor.goldColor()
@@ -184,7 +185,6 @@ class AllVideosViewController: UITableViewController, IndicatorInfoProvider, UIS
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
@@ -239,50 +239,5 @@ class AllVideosViewController: UITableViewController, IndicatorInfoProvider, UIS
             (segue.destinationViewController as! PlayVideoViewController).video = video
         }
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

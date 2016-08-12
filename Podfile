@@ -24,7 +24,6 @@ target 'SomaSole' do
     pod 'FBSDKLoginKit'
     pod 'Alamofire', '~> 3.4'
     pod 'Toucan'
-    pod 'Stripe'
     pod 'Masonry'
     pod 'SwiftyMarkdown'
     pod 'SwiftyJSON'

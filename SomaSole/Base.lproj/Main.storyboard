@@ -2765,86 +2765,6 @@ This ToU, including the documents referenced in this ToU, constitutes the entire
             </objects>
             <point key="canvasLocation" x="2299" y="0.0"/>
         </scene>
-        <!--Delegate-->
-        <scene sceneID="BkN-0E-hgj">
-            <objects>
-                <tableViewController id="je4-xg-Uh6" customClass="Payment2ViewController" customModule="SomaSole" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="sJc-Jk-OV4">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                        <sections>
-                            <tableViewSection id="XNO-cJ-dtH">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Y4e-kA-AU2">
-                                        <rect key="frame" x="0.0" y="99" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Y4e-kA-AU2" id="Gqv-04-9ya">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6UC-7C-kCP" customClass="STPPaymentCardTextField">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <connections>
-                                                        <outlet property="delegate" destination="je4-xg-Uh6" id="1Dm-ou-eY9"/>
-                                                    </connections>
-                                                </view>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="6UC-7C-kCP" firstAttribute="leading" secondItem="Gqv-04-9ya" secondAttribute="leading" id="6dx-Iv-mDY"/>
-                                                <constraint firstAttribute="trailing" secondItem="6UC-7C-kCP" secondAttribute="trailing" id="h7P-za-UDO"/>
-                                                <constraint firstAttribute="bottom" secondItem="6UC-7C-kCP" secondAttribute="bottom" id="vnC-EH-V77"/>
-                                                <constraint firstItem="6UC-7C-kCP" firstAttribute="top" secondItem="Gqv-04-9ya" secondAttribute="top" id="wK1-2G-lpi"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="skd-1W-rQ4">
-                                        <rect key="frame" x="0.0" y="143" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="skd-1W-rQ4" id="6Cd-3W-Wkh">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Promo Code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lsu-Jm-v6Z">
-                                                    <rect key="frame" x="20" y="0.0" width="580" height="43.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="Lsu-Jm-v6Z" secondAttribute="bottom" id="0hY-qz-QZ6"/>
-                                                <constraint firstAttribute="trailing" secondItem="Lsu-Jm-v6Z" secondAttribute="trailing" id="3aV-ae-rn4"/>
-                                                <constraint firstItem="Lsu-Jm-v6Z" firstAttribute="top" secondItem="6Cd-3W-Wkh" secondAttribute="top" id="7Bs-tm-by5"/>
-                                                <constraint firstItem="Lsu-Jm-v6Z" firstAttribute="leading" secondItem="6Cd-3W-Wkh" secondAttribute="leading" constant="20" id="NtA-4d-qGW"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
-                        <connections>
-                            <outlet property="dataSource" destination="je4-xg-Uh6" id="txh-lo-VxF"/>
-                            <outlet property="delegate" destination="je4-xg-Uh6" id="UZv-i0-6Bp"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="PAYMENT INFO" id="qCu-86-KZk">
-                        <barButtonItem key="rightBarButtonItem" title="Submit" id="Ein-XG-UCs">
-                            <connections>
-                                <action selector="tappedSubmit:" destination="je4-xg-Uh6" id="IMV-V8-bbE"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="paymentTextField" destination="6UC-7C-kCP" id="yZ8-id-Jja"/>
-                        <outlet property="promoCodeTextField" destination="Lsu-Jm-v6Z" id="ufk-Ql-Va8"/>
-                        <outlet property="submitButton" destination="Ein-XG-UCs" id="wml-im-qaj"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rRg-Vv-Izu" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3849" y="0.0"/>
-        </scene>
         <!--Go Premium View Controller-->
         <scene sceneID="kAe-Of-ptB">
             <objects>
@@ -2892,7 +2812,7 @@ This ToU, including the documents referenced in this ToU, constitutes the entire
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="je4-xg-Uh6" kind="show" id="JHO-E2-vel"/>
+                                            <action selector="tappedStart:" destination="5b4-bW-Og8" eventType="touchUpInside" id="sxq-PB-281"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$7.99/mo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gDU-2f-WGl">

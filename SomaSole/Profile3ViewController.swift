@@ -172,7 +172,7 @@ class Profile3ViewController: UITableViewController {
     
     // variables
     var alertController: UIAlertController?
-    var cancelController: UIAlertController = UIAlertController(title: "Are You Sure?", message: "Your billing will stop immediately and your money will not be refunded. Still sure you want to cancel your premium subscription? If so, enter password to confirm.", preferredStyle: .Alert)
+    var cancelController: UIAlertController = UIAlertController(title: "Are You Sure?", message: "If you are a premium member, you MUST cancel your subscription from the Settings App of your phone in order to stop being billed.", preferredStyle: .Alert)
     var confirmAction = UIAlertAction()
     var textFields = [UITextField]()
     var passwordField = UITextField()
@@ -344,19 +344,9 @@ class Profile3ViewController: UITableViewController {
                     FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).removeValue()
                     NSUserDefaults.standardUserDefaults().setObject(nil, forKey: "userData")
                     NSUserDefaults.standardUserDefaults().synchronize()
-                    if User.sharedModel.premium {
-                        Alamofire.request(.POST, "https://somasole-payments.herokuapp.com/delete_customer/\(User.sharedModel.stripeID)").responseJSON { response in
-                            if let _ = response.result.value {
-                                User.sharedModel = User()
-                                self.stopProgressHud()
-                                self.performSegueWithIdentifier("deleteSegue", sender: self)
-                            }
-                        }
-                    } else {
-                        User.sharedModel = User()
-                        self.stopProgressHud()
-                        self.performSegueWithIdentifier("deleteSegue", sender: self)
-                    }
+                    User.sharedModel = User()
+                    self.stopProgressHud()
+                    self.performSegueWithIdentifier("deleteSegue", sender: self)
                 }
             })
         })

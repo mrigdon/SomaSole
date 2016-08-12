@@ -177,7 +177,6 @@
 		621D22C41CB2DC3F00FE7581 /* SomaSoleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621D22C31CB2DC3F00FE7581 /* SomaSoleTests.swift */; };
 		621D22CF1CB2DC3F00FE7581 /* SomaSoleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621D22CE1CB2DC3F00FE7581 /* SomaSoleUITests.swift */; };
 		621D22DD1CB2DC7C00FE7581 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 621D22DC1CB2DC7C00FE7581 /* Podfile */; };
-		621DA9601D15EF2F002DF0AF /* Payment2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621DA95F1D15EF2F002DF0AF /* Payment2ViewController.swift */; };
 		621DA9641D15FE2E002DF0AF /* Profile3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621DA9631D15FE2E002DF0AF /* Profile3ViewController.swift */; };
 		622878211D41CA5800D23E5C /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622878201D41CA5800D23E5C /* TermsViewController.swift */; };
 		6229FF821CEA518400838B68 /* MovementDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6229FF811CEA518400838B68 /* MovementDetailViewController.swift */; };
@@ -203,6 +202,7 @@
 		62A8DF191D1F1EA40024D4B3 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A8DF181D1F1EA40024D4B3 /* ChangePasswordViewController.swift */; };
 		62AB9B801CFE8B32005498F8 /* QuickStartImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AB9B7F1CFE8B32005498F8 /* QuickStartImageView.swift */; };
 		62B1AB931CC1D6F3007069E5 /* AllWorkoutsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B1AB921CC1D6F3007069E5 /* AllWorkoutsViewController.swift */; };
+		62B4AAA61D4C2A6300DD1273 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62B4AAA51D4C2A6300DD1273 /* StoreKit.framework */; };
 		62BBCED31D18E09700E01DE9 /* News2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BBCED21D18E09700E01DE9 /* News2ViewController.swift */; };
 		62C18E9E1D235D0B00C05798 /* PlayVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C18E9D1D235D0B00C05798 /* PlayVideoViewController.swift */; };
 		62C8413E1CC6F5D700468726 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C8413D1CC6F5D700468726 /* FilterViewController.swift */; };
@@ -413,10 +413,10 @@
 		621D22CE1CB2DC3F00FE7581 /* SomaSoleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomaSoleUITests.swift; sourceTree = "<group>"; };
 		621D22D01CB2DC3F00FE7581 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		621D22DC1CB2DC7C00FE7581 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		621DA95F1D15EF2F002DF0AF /* Payment2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payment2ViewController.swift; sourceTree = "<group>"; };
 		621DA9631D15FE2E002DF0AF /* Profile3ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile3ViewController.swift; sourceTree = "<group>"; };
 		622878201D41CA5800D23E5C /* TermsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		6229FF811CEA518400838B68 /* MovementDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementDetailViewController.swift; sourceTree = "<group>"; };
+		622F6E0D1D541A2600397F90 /* SomaSole-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SomaSole-Bridging-Header.h"; sourceTree = "<group>"; };
 		6235212A1CFA00E500B3F1BF /* ROGif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ROGif.swift; sourceTree = "<group>"; };
 		6235212C1CFA130A00B3F1BF /* VideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
 		6248AE2B1CF9510C000A2DC9 /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
@@ -439,6 +439,7 @@
 		62A8DF181D1F1EA40024D4B3 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		62AB9B7F1CFE8B32005498F8 /* QuickStartImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickStartImageView.swift; sourceTree = "<group>"; };
 		62B1AB921CC1D6F3007069E5 /* AllWorkoutsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllWorkoutsViewController.swift; sourceTree = "<group>"; };
+		62B4AAA51D4C2A6300DD1273 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		62BBCED21D18E09700E01DE9 /* News2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = News2ViewController.swift; sourceTree = "<group>"; };
 		62C18E9D1D235D0B00C05798 /* PlayVideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayVideoViewController.swift; sourceTree = "<group>"; };
 		62C8413D1CC6F5D700468726 /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
@@ -461,6 +462,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2964BECF70D5E766CDDF32FF /* Pods_SomaSole.framework in Frameworks */,
+				62B4AAA61D4C2A6300DD1273 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -536,6 +538,7 @@
 				626063961CBAEE0000B1AF3C /* Login */,
 				62CF96451D126EF000DDC38A /* Payments */,
 				621D22AC1CB2DC3E00FE7581 /* AppDelegate.swift */,
+				622F6E0D1D541A2600397F90 /* SomaSole-Bridging-Header.h */,
 				621D22B21CB2DC3F00FE7581 /* Main.storyboard */,
 				621D22B51CB2DC3F00FE7581 /* Assets.xcassets */,
 				621D22B71CB2DC3F00FE7581 /* LaunchScreen.storyboard */,
@@ -810,7 +813,6 @@
 			isa = PBXGroup;
 			children = (
 				62CF96461D126F7800DDC38A /* GoPremiumViewController.swift */,
-				621DA95F1D15EF2F002DF0AF /* Payment2ViewController.swift */,
 			);
 			name = Payments;
 			sourceTree = "<group>";
@@ -827,6 +829,7 @@
 		9E5172BD2F5AD716C409A3BF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				62B4AAA51D4C2A6300DD1273 /* StoreKit.framework */,
 				10769821E015672B332BE0A5 /* Pods_SomaSole.framework */,
 			);
 			name = Frameworks;
@@ -897,13 +900,18 @@
 		621D22A11CB2DC3E00FE7581 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0720;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = SomaSole;
 				TargetAttributes = {
 					621D22A81CB2DC3E00FE7581 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = NES42PHG68;
+						DevelopmentTeam = U4YGTQJS9C;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
 					};
 					621D22BE1CB2DC3F00FE7581 = {
 						CreatedOnToolsVersion = 7.2;
@@ -1197,7 +1205,6 @@
 				626FBECF1D2C5014005B592B /* LabelCell.swift in Sources */,
 				622878211D41CA5800D23E5C /* TermsViewController.swift in Sources */,
 				62780C691D0BA87300198441 /* ProfileCell.swift in Sources */,
-				621DA9601D15EF2F002DF0AF /* Payment2ViewController.swift in Sources */,
 				626D2CF41D1A4F8C00812ED0 /* ROImage.swift in Sources */,
 				62B1AB931CC1D6F3007069E5 /* AllWorkoutsViewController.swift in Sources */,
 				6248AE2C1CF9510C000A2DC9 /* Article.swift in Sources */,
@@ -1362,14 +1369,17 @@
 			baseConfigurationReference = 442FE767159F91E46B63C384 /* Pods-SomaSole.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Matthew Rigdon (NES42PHG68)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Matthew Rigdon (NES42PHG68)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = SomaSole/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.SomaSole.SomaSole.XXX;
+				PRODUCT_BUNDLE_IDENTIFIER = com.somasole.SomaSoleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b6586aea-a71a-4060-b0cf-7e325beb14f2";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "SomaSole/SomaSole-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1379,14 +1389,16 @@
 			baseConfigurationReference = 6DFBD11EA5E8CEC480F43C0B /* Pods-SomaSole.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Matthew Rigdon (NES42PHG68)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Matthew Rigdon (NES42PHG68)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = SomaSole/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.SomaSole.SomaSole.XXX;
+				PRODUCT_BUNDLE_IDENTIFIER = com.somasole.SomaSoleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b6586aea-a71a-4060-b0cf-7e325beb14f2";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "SomaSole/SomaSole-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

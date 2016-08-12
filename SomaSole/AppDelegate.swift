@@ -12,8 +12,8 @@ import Firebase
 import AWSCognito
 import AWSS3
 import FBSDKCoreKit
-import Stripe
 import SwiftyJSON
+import Alamofire
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -29,10 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
-        //FirebaseManager.uploadArticle()
-        Stripe.setDefaultPublishableKey("pk_live_cnu98oUaPDiGhicoUMzq7QfX")
-        
         // Initialize the Amazon Cognito credentials provider
         let credentialsProvider = AWSCognitoCredentialsProvider(
             regionType:.USEast1,
@@ -102,16 +98,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
-
-//        FirebaseManager.sharedRootRef.childByAppendingPath("workouts/private").observeEventType(.ChildAdded, withBlock: { snapshot in
-//
-//            let workout = Workout(name: snapshot.key, data: snapshot.value as! [String : AnyObject])
-//            let imageName = workout.name.stringByReplacingOccurrencesOfString(" ", withString: "")
-//            let image = UIImage(named: imageName)
-//            let imageData = UIImageJPEGRepresentation(image!, 1.0)
-//            let imageString = imageData?.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
-//
-//            FirebaseManager.sharedRootRef.childByAppendingPath("workouts/private/\(workout.name)/image").setValue(imageString)
-//
-//        })
 
