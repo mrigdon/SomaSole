@@ -22,9 +22,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     enum ReceiptStatus: Int {
         case Valid = 0
+        case Sandbox = 21007
     }
     
-    private func validateReceipt() {
+    enum ReceiptEnvironment: String {
+        case Production = "https://buy.itunes.apple.com/verifyReceipt"
+        case Sandbox = "https://sandbox.itunes.apple.com/verifyReceipt"
+    }
+    
+    private func validateReceipt(environment: ReceiptEnvironment = .Production) {
         let receiptURL = NSBundle.mainBundle().appStoreReceiptURL
         let receipt = NSData(contentsOfURL: receiptURL!)
         let requestContents = [
@@ -32,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             "password": "5e6e3b769b504bc9bb175786fe7a6114"
         ]
         let requestData = try! NSJSONSerialization.dataWithJSONObject(requestContents, options: [])
-        let storeURL = NSURL(string: "https://sandbox.itunes.apple.com/verifyReceipt")
+        let storeURL = NSURL(string: environment.rawValue)
         let request = NSMutableURLRequest(URL: storeURL!)
         request.HTTPMethod = "POST"
         request.HTTPBody = requestData
@@ -50,6 +56,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     User.sharedModel.premium = premium
                     User.sharedModel.save()
                 }
+            } else if status == .Sandbox {
+                self.validateReceipt(.Sandbox)
             }
         }
     }
