@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import Firebase
 import MBProgressHUD
 import TagListView
+import Firebase
 import EPShapes
 import XLPagerTabStrip
 
@@ -40,6 +40,7 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate, Ind
     
     // variables
     var workouts = [Workout]()
+    var favoriteWorkoutKeys = NSUserDefaults.standardUserDefaults().objectForKey("favoriteWorkoutKeys") as? [String]
     var filteredWorkouts = [Workout]()
     var selectedFilters = [WorkoutTag]()
     var unfilledStarButton: UIBarButtonItem?
@@ -65,8 +66,8 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate, Ind
     
     func filterContent(searchText: String) {
         // filter for tags
-        var tagFilteredWorkouts = selectedFilters.count > 0 ? [Workout]() : workouts
-        for workout in favorites ? User.sharedModel.favoriteWorkouts : workouts {
+        var tagFilteredWorkouts = selectedFilters.count > 0 ? [Workout]() : favorites ? Workout.sharedFavorites : workouts
+        for workout in favorites ? Workout.sharedFavorites : workouts {
             for filter in selectedFilters {
                 if workout.tags.contains(filter) {
                     tagFilteredWorkouts.insertAlpha(workout)
@@ -93,8 +94,10 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate, Ind
             let workout = Workout(name: snapshot.key, data: snapshot.value as! [String : AnyObject])
             workout.free = true
             self.workouts.insert(workout, atIndex: 0)
-            if User.sharedModel.favoriteWorkoutKeys.contains(workout.name) {
-                User.sharedModel.favoriteWorkouts.append(workout)
+            if let keys = self.favoriteWorkoutKeys {
+                if keys.contains(workout.name) {
+                    Workout.sharedFavorites.append(workout)
+                }
             }
             
             self.stopProgressHud()
@@ -109,8 +112,10 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate, Ind
             let workout = Workout(name: snapshot.key, data: snapshot.value as! [String : AnyObject])
             workout.free = false
             self.workouts.append(workout)
-            if User.sharedModel.favoriteWorkoutKeys.contains(workout.name) {
-                User.sharedModel.favoriteWorkouts.append(workout)
+            if let keys = self.favoriteWorkoutKeys {
+                if keys.contains(workout.name) {
+                    Workout.sharedFavorites.append(workout)
+                }
             }
             
             self.stopProgressHud()
@@ -145,26 +150,17 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate, Ind
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         filterContent(searchText)
     }
-
-    // uiviewcontroller
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
-        // cusomtize navigation controller
+    
+    private func setupNavigationController() {
         self.navigationController?.navigationBar.titleTextAttributes = [
             NSForegroundColorAttributeName: UIColor.blackColor(),
             NSFontAttributeName: UIFont(name: "AvenirNext-UltraLight", size: 24)!
         ]
         navigationController?.navigationBar.tintColor = UIColor.blackColor()
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
-        
-        // setup searchBar
+    }
+    
+    private func setupSearchBar() {
         searchBar.barTintColor = UIColor.whiteColor()
         searchBar.tintColor = UIColor.blackColor()
         searchBar.layer.borderWidth = 0.0
@@ -173,26 +169,38 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate, Ind
         searchBar.returnKeyType = .Done
         searchBar.delegate = self
         searchBar.enablesReturnKeyAutomatically = false
-        
-        // set up bar buttons
+    }
+    
+    private func setupBarButtons() {
         unfilledStarButton = UIBarButtonItem(image: UIImage(named: "star_unfilled"), style: .Plain, target: self, action: #selector(tappedUnfilledStar))
         unfilledStarButton?.tintColor = UIColor.goldColor()
         filledStarButton = UIBarButtonItem(image: UIImage(named: "star_filled"), style: .Plain, target: self, action: #selector(tappedFilledStar))
         filledStarButton?.tintColor = UIColor.goldColor()
         navigationItem.rightBarButtonItem = unfilledStarButton
-        
-        // begin load of all workouts
-        workouts = [Workout]()
-        startProgressHud()
-        loadPublicWorkouts()
-        loadPrivateWorkouts()
-        
+    }
+    
+    private func setupTableView() {
         // no extra cells
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         
         // auto resize based on centent
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = workoutCellSize
+    }
+
+    // uiviewcontroller
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // ui setup
+        setupNavigationController()
+        setupSearchBar()
+        setupBarButtons()
+        
+        // begin load of all workouts
+        startProgressHud()
+        loadPublicWorkouts()
+        loadPrivateWorkouts()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -223,7 +231,7 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate, Ind
             return filteredWorkouts.count + 1
         }
         
-        return favorites ? User.sharedModel.favoriteWorkouts.count + 1 : workouts.count + 1 // plus one for the filter cell
+        return favorites ? Workout.sharedFavorites.count + 1 : workouts.count + 1 // plus one for the filter cell
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -235,7 +243,7 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate, Ind
             cellType = "filterCell"
         } else {
             let workoutIndex = indexPath.row - 1 // -1 for the filter cell
-            workout = searchBar.isFirstResponder() && searchBar.text != "" ? filteredWorkouts[workoutIndex] : (favorites ? User.sharedModel.favoriteWorkouts[workoutIndex] : workouts[workoutIndex])
+            workout = searchBar.isFirstResponder() && searchBar.text != "" ? filteredWorkouts[workoutIndex] : (favorites ? Workout.sharedFavorites[workoutIndex] : workouts[workoutIndex])
             if workout!.free || User.sharedModel.premium {
                 cellType = "workoutCell"
             } else {
@@ -253,7 +261,7 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate, Ind
         } else {
             self.tableView.rowHeight = workoutCellSize
             let workoutIndex = indexPath.row - 1 // -1 for the filter cell
-            let workout = (searchBar.isFirstResponder() && searchBar.text != "") || selectedFilters.count > 0 ? filteredWorkouts[workoutIndex] : favorites ? User.sharedModel.favoriteWorkouts[workoutIndex] : workouts[workoutIndex]
+            let workout = (searchBar.isFirstResponder() && searchBar.text != "") || selectedFilters.count > 0 ? filteredWorkouts[workoutIndex] : favorites ? Workout.sharedFavorites[workoutIndex] : workouts[workoutIndex]
             if workout.free || User.sharedModel.premium {
                 (cell as! WorkoutCell).workout = workout
                 (cell as! WorkoutCell).setStarFill()

@@ -85,27 +85,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // iqmanager
         IQKeyboardManager.sharedManager().enable = true
         
-        // try to get logged in user
-        let userData = NSUserDefaults.standardUserDefaults().objectForKey("userData") as? Dictionary<String, AnyObject>
-        let uid = NSUserDefaults.standardUserDefaults().objectForKey("uid") as? String
-        
-        // if not logged in yet, send to login screen
-        if userData == nil {
-            self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-            
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            
-            let initialViewController = storyboard.instantiateViewControllerWithIdentifier("LoginViewController")
-            
-            self.window?.rootViewController = initialViewController
-            self.window?.makeKeyAndVisible()
-            
-            return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-        }
-        
-        FirebaseManager.sharedRootRef.authUser(User.sharedModel.email, password: User.sharedModel.password, withCompletionBlock: { error, data in })
-        User.sharedModel = User(uid: uid!, data: userData!)
-        
         // validate receipt
         validateReceipt()
     

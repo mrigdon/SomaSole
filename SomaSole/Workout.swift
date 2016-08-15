@@ -93,7 +93,7 @@ class Circuit: NSObject {
 
 class Workout: NSObject {
     
-    static var sharedWorkouts = [Workout]()
+    static var sharedFavorites = [Workout]()
     
     var image: UIImage
     var name: String

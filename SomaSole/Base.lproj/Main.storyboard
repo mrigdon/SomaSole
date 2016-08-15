@@ -2189,7 +2189,6 @@ This ToU, including the documents referenced in this ToU, constitutes the entire
                         <segue destination="ucx-vH-0vq" kind="relationship" relationship="viewControllers" id="Ars-SE-pqU"/>
                         <segue destination="TqM-dV-lQe" kind="relationship" relationship="viewControllers" id="zg6-K6-CxF"/>
                         <segue destination="p4u-o3-CDs" kind="relationship" relationship="viewControllers" id="oXU-yR-Pvr"/>
-                        <segue destination="1F4-jK-oJ3" kind="relationship" relationship="viewControllers" id="kuS-AD-UWd"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
