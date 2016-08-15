@@ -131,11 +131,18 @@ class User: NSObject {
             "trialEligible": trialEligible,
             "activities": activities,
             "goals": goals,
-            "favoriteWorkoutKyes": favoriteWorkoutKeys,
+            "favoriteWorkoutKeys": favoriteWorkoutKeys,
             "favoriteVideoKeys": favoriteVideoKeys
         ]
         
         return data
+    }
+    
+    func save() {
+        FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(uid)
+            .setValue(dict())
+        NSUserDefaults.standardUserDefaults().setObject(dict(), forKey: "userData")
+        NSUserDefaults.standardUserDefaults().synchronize()
     }
     
     func uploadProfileImage() {
