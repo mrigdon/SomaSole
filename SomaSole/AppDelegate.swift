@@ -20,6 +20,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
+    enum ReceiptStatus: Int {
+        case Valid = 0
+    }
+    
+    private func validateReceipt() {
+        let receiptURL = NSBundle.mainBundle().appStoreReceiptURL
+        let receipt = NSData(contentsOfURL: receiptURL!)
+        let requestContents = [
+            "receipt-data": receipt!.base64EncodedStringWithOptions([]),
+            "password": "5e6e3b769b504bc9bb175786fe7a6114"
+        ]
+        let requestData = try! NSJSONSerialization.dataWithJSONObject(requestContents, options: [])
+        let storeURL = NSURL(string: "https://sandbox.itunes.apple.com/verifyReceipt")
+        let request = NSMutableURLRequest(URL: storeURL!)
+        request.HTTPMethod = "POST"
+        request.HTTPBody = requestData
+        let (params, _) = Alamofire.ParameterEncoding.URL.encode(request, parameters: nil)
+        Alamofire.request(params).responseJSON { response in
+            let data = try! NSJSONSerialization.JSONObjectWithData(response.data!, options: NSJSONReadingOptions.AllowFragments)
+            let json = JSON(data)
+            let status = ReceiptStatus(rawValue: json["status"].intValue)
+            
+            if status == .Valid {
+                let expiresTime = json["receipt"]["in_app"][0]["expires_date_ms"].doubleValue / 1000
+                let currentTime = NSDate().timeIntervalSince1970
+                let premium = currentTime < expiresTime
+                if User.sharedModel.premium != premium {
+                    User.sharedModel.premium = premium
+                    User.sharedModel.save()
+                }
+            }
+        }
+    }
+    
     override init() {
         super.init()
         
@@ -63,6 +97,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseManager.sharedRootRef.authUser(User.sharedModel.email, password: User.sharedModel.password, withCompletionBlock: { error, data in })
         User.sharedModel = User(uid: uid!, data: userData!)
+        
+        // validate receipt
+        validateReceipt()
     
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
