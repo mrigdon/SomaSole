@@ -53,14 +53,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     if status == .Valid {
                         var expiresTime: Double = 0
                         for inApp in json["receipt"]["in_app"].arrayValue {
-                            print(inApp["expires_date_pst"])
-                            if inApp["expires_time_ms"].doubleValue / 1000 > expiresTime {
-                                expiresTime = inApp["expires_time_ms"].doubleValue / 1000
+                            if inApp["expires_date_ms"].doubleValue / 1000 > expiresTime {
+                                print(inApp["expires_date_pst"])
+                                expiresTime = inApp["expires_date_ms"].doubleValue / 1000
                             }
                         }
                         let currentTime = NSDate().timeIntervalSince1970
                         let premium = currentTime < expiresTime
-                        print(premium)
                         User.sharedModel.premium = premium
                     } else if status == .Sandbox {
                         self.validateReceipt(.Sandbox)
@@ -101,7 +100,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         setupAWS()
         setupIQManager()
-        validateReceipt()
     
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }

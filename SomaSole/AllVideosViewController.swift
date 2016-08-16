@@ -84,7 +84,7 @@ class AllVideosViewController: UITableViewController, IndicatorInfoProvider, UIS
             Alamofire.request(.GET, "http://img.youtube.com/vi/\(video.id)/mqdefault.jpg").responseImage(completionHandler: { response in
                 if let image = response.result.value {
                     video.image = image
-                    self.videos.insert(video, atIndex: 0)
+                    self.videos.append(video)
                     self.reloadTableView()
                     self.stopProgressHud()
                 }
@@ -185,7 +185,7 @@ class AllVideosViewController: UITableViewController, IndicatorInfoProvider, UIS
 
         startProgressHud()
         loadPublic()
-        loadPrivate()
+//        loadPrivate()
     }
     
     override func viewDidAppear(animated: Bool) {

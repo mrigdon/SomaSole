@@ -93,7 +93,7 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate, Ind
             // load workouts
             let workout = Workout(name: snapshot.key, data: snapshot.value as! [String : AnyObject])
             workout.free = true
-            self.workouts.insert(workout, atIndex: 0)
+            self.workouts.append(workout)
             if let keys = self.favoriteWorkoutKeys {
                 if keys.contains(workout.name) {
                     Workout.sharedFavorites.append(workout)
@@ -200,7 +200,7 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate, Ind
         // begin load of all workouts
         startProgressHud()
         loadPublicWorkouts()
-        loadPrivateWorkouts()
+//        loadPrivateWorkouts()
     }
     
     override func viewDidAppear(animated: Bool) {
