@@ -36,26 +36,30 @@ class WorkoutCell: UITableViewCell {
     
     // methods
     func setStarFill() {
-        starButton.fillColor = User.sharedModel.favoriteWorkoutKeys.contains(workout!.name) ? UIColor.goldColor() : UIColor.clearColor()
+        starButton.fillColor = Workout.sharedFavorites.contains(workout!) ? UIColor.goldColor() : UIColor.clearColor()
         starButton.config()
     }
     
     // action
     @IBAction func tappedStar(sender: AnyObject) {
         let starButton = sender as! IndexedStarButton
-        if User.sharedModel.favoriteWorkoutKeys.contains(workout!.name) {
-            User.sharedModel.favoriteWorkouts.removeAtIndex(User.sharedModel.favoriteWorkouts.indexOf(workout!)!)
-            User.sharedModel.favoriteWorkoutKeys.removeAtIndex(User.sharedModel.favoriteWorkoutKeys.indexOf(workout!.name)!)
-            FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).childByAppendingPath("favoriteWorkoutKeys").setValue(User.sharedModel.favoriteWorkoutKeys)
-            NSUserDefaults.standardUserDefaults().setObject(User.sharedModel.dict(), forKey: "userData")
+        if Workout.sharedFavorites.contains(workout!) {
+            Workout.sharedFavorites.removeAtIndex(Workout.sharedFavorites.indexOf(workout!)!)
+            var favoriteWorkouts = [String]()
+            for workout in Workout.sharedFavorites {
+                favoriteWorkouts.append(workout.name)
+            }
+            NSUserDefaults.standardUserDefaults().setObject(favoriteWorkouts, forKey: "favoriteWorkoutKeys")
             NSUserDefaults.standardUserDefaults().synchronize()
             starButton.fillColor = UIColor.clearColor()
             workout!.favorite = false
         } else {
-            User.sharedModel.favoriteWorkouts.insertAlpha(workout!)
-            User.sharedModel.favoriteWorkoutKeys.append(workout!.name)
-            FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).childByAppendingPath("favoriteWorkoutKeys").setValue(User.sharedModel.favoriteWorkoutKeys)
-            NSUserDefaults.standardUserDefaults().setObject(User.sharedModel.dict(), forKey: "userData")
+            Workout.sharedFavorites.insertAlpha(workout!)
+            var favoriteWorkouts = [String]()
+            for workout in Workout.sharedFavorites {
+                favoriteWorkouts.append(workout.name)
+            }
+            NSUserDefaults.standardUserDefaults().setObject(favoriteWorkouts, forKey: "favoriteWorkoutKeys")
             NSUserDefaults.standardUserDefaults().synchronize()
             starButton.fillColor = UIColor.goldColor()
             workout!.favorite = true

@@ -43,6 +43,7 @@ class AllVideosViewController: UITableViewController, IndicatorInfoProvider, UIS
     let searchBar = UISearchBar()
     
     // variables
+    var favoriteVideoKeys = NSUserDefaults.standardUserDefaults().objectForKey("favoriteVideoKeys") as? [String]
     var videos = [Video]()
     var filteredVideos = [Video]()
     var unfilledStarButton: UIBarButtonItem?
@@ -74,16 +75,16 @@ class AllVideosViewController: UITableViewController, IndicatorInfoProvider, UIS
         FirebaseManager.sharedRootRef.childByAppendingPath("videos").childByAppendingPath("public").observeEventType(.ChildAdded, withBlock: { snapshot in
             let video = Video(id: snapshot.key, data: snapshot.value as! [String : AnyObject])
             video.free = true
-            if User.sharedModel.favoriteVideoKeys.contains(video.id) {
-                if !User.sharedModel.favoriteVideos.contains(video) {
-                    User.sharedModel.favoriteVideos.append(video)
+            if let keys = self.favoriteVideoKeys {
+                if keys.contains(video.title) {
+                    Video.sharedFavorites.append(video)
                 }
             }
             
             Alamofire.request(.GET, "http://img.youtube.com/vi/\(video.id)/mqdefault.jpg").responseImage(completionHandler: { response in
                 if let image = response.result.value {
                     video.image = image
-                    self.videos.insert(video, atIndex: 0)
+                    self.videos.append(video)
                     self.reloadTableView()
                     self.stopProgressHud()
                 }
@@ -95,9 +96,9 @@ class AllVideosViewController: UITableViewController, IndicatorInfoProvider, UIS
         FirebaseManager.sharedRootRef.childByAppendingPath("videos").childByAppendingPath("private").observeEventType(.ChildAdded, withBlock: { snapshot in
             let video = Video(id: snapshot.key, data: snapshot.value as! [String:AnyObject])
             video.free = false
-            if User.sharedModel.favoriteVideoKeys.contains(video.id) {
-                if !User.sharedModel.favoriteVideos.contains(video) {
-                    User.sharedModel.favoriteVideos.append(video)
+            if let keys = self.favoriteVideoKeys {
+                if keys.contains(video.title) {
+                    Video.sharedFavorites.append(video)
                 }
             }
             
@@ -113,7 +114,7 @@ class AllVideosViewController: UITableViewController, IndicatorInfoProvider, UIS
     }
     
     private func filterContentForSearchText(searchText: String) {
-        filteredVideos = (favorites ? User.sharedModel.favoriteVideos : videos).filter { video in
+        filteredVideos = (favorites ? Video.sharedFavorites : videos).filter { video in
             return video.title.lowercaseString.containsString(searchText.lowercaseString)
         }
         
@@ -147,13 +148,18 @@ class AllVideosViewController: UITableViewController, IndicatorInfoProvider, UIS
         filterContentForSearchText(searchText)
     }
     
-    // uiviewcontroller
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    private func setupNav() {
         navigationController?.navigationBar.tintColor = UIColor.blackColor()
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
         
+        unfilledStarButton = UIBarButtonItem(image: UIImage(named: "star_unfilled"), style: .Plain, target: self, action: #selector(tappedUnfilledStar))
+        unfilledStarButton?.tintColor = UIColor.goldColor()
+        filledStarButton = UIBarButtonItem(image: UIImage(named: "star_filled"), style: .Plain, target: self, action: #selector(tappedFilledStar))
+        filledStarButton?.tintColor = UIColor.goldColor()
+        navigationItem.rightBarButtonItem = unfilledStarButton
+    }
+    
+    private func setupSearchBar() {
         searchBar.barTintColor = UIColor.whiteColor()
         searchBar.tintColor = UIColor.blackColor()
         searchBar.layer.borderWidth = 0.0
@@ -162,21 +168,24 @@ class AllVideosViewController: UITableViewController, IndicatorInfoProvider, UIS
         searchBar.returnKeyType = .Done
         searchBar.delegate = self
         searchBar.enablesReturnKeyAutomatically = false
-        
+    }
+    
+    private func setupTableView() {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 274
         tableView.tableFooterView = UIView(frame: CGRect.zero)
+    }
+    
+    // uiviewcontroller
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        unfilledStarButton = UIBarButtonItem(image: UIImage(named: "star_unfilled"), style: .Plain, target: self, action: #selector(tappedUnfilledStar))
-        unfilledStarButton?.tintColor = UIColor.goldColor()
-        filledStarButton = UIBarButtonItem(image: UIImage(named: "star_filled"), style: .Plain, target: self, action: #selector(tappedFilledStar))
-        filledStarButton?.tintColor = UIColor.goldColor()
-        navigationItem.rightBarButtonItem = unfilledStarButton
+        setupNav()
+        setupSearchBar()
 
-        videos = [Video]()
         startProgressHud()
         loadPublic()
-        loadPrivate()
+//        loadPrivate()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -206,11 +215,11 @@ class AllVideosViewController: UITableViewController, IndicatorInfoProvider, UIS
             return filteredVideos.count
         }
         
-        return favorites ? User.sharedModel.favoriteVideos.count : videos.count
+        return favorites ? Video.sharedFavorites.count : videos.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let video = searchBar.isFirstResponder() && searchBar.text != "" ? filteredVideos[indexPath.row] : (favorites ? User.sharedModel.favoriteVideos[indexPath.row] : videos[indexPath.row])
+        let video = searchBar.isFirstResponder() && searchBar.text != "" ? filteredVideos[indexPath.row] : (favorites ? Video.sharedFavorites[indexPath.row] : videos[indexPath.row])
         
         let reuseID = video.free || User.sharedModel.premium ? "videoCell" : "videoOverlayCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(reuseID, forIndexPath: indexPath)

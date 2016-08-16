@@ -23,26 +23,30 @@ class VideoCell: UITableViewCell {
     
     // method
     func setStarFill() {
-        starButton.fillColor = User.sharedModel.favoriteVideoKeys.contains(video!.id) ? UIColor.goldColor() : UIColor.clearColor()
+        starButton.fillColor = Video.sharedFavorites.contains(video!) ? UIColor.goldColor() : UIColor.clearColor()
         starButton.config()
     }
     
     // actions
     @IBAction func tappedStar(sender: AnyObject) {
         let starButton = sender as! IndexedStarButton
-        if User.sharedModel.favoriteVideoKeys.contains(video!.id) {
-            User.sharedModel.favoriteVideos.removeAtIndex(User.sharedModel.favoriteVideos.indexOf(video!)!)
-            User.sharedModel.favoriteVideoKeys.removeAtIndex(User.sharedModel.favoriteVideoKeys.indexOf(video!.id)!)
-            FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).childByAppendingPath("favoriteVideoKeys").setValue(User.sharedModel.favoriteVideoKeys)
-            NSUserDefaults.standardUserDefaults().setObject(User.sharedModel.dict(), forKey: "userData")
+        if Video.sharedFavorites.contains(video!) {
+            Video.sharedFavorites.removeAtIndex(Video.sharedFavorites.indexOf(video!)!)
+            var videoKeys = [String]()
+            for video in Video.sharedFavorites {
+                videoKeys.append(video.title)
+            }
+            NSUserDefaults.standardUserDefaults().setObject(videoKeys, forKey: "favoriteVideoKeys")
             NSUserDefaults.standardUserDefaults().synchronize()
             starButton.fillColor = UIColor.clearColor()
             video!.favorite = false
         } else {
-            User.sharedModel.favoriteVideos.append(video!)
-            User.sharedModel.favoriteVideoKeys.append(video!.id)
-            FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).childByAppendingPath("favoriteVideoKeys").setValue(User.sharedModel.favoriteVideoKeys)
-            NSUserDefaults.standardUserDefaults().setObject(User.sharedModel.dict(), forKey: "userData")
+            Video.sharedFavorites.append(video!)
+            var videoKeys = [String]()
+            for video in Video.sharedFavorites {
+                videoKeys.append(video.title)
+            }
+            NSUserDefaults.standardUserDefaults().setObject(videoKeys, forKey: "favoriteVideoKeys")
             NSUserDefaults.standardUserDefaults().synchronize()
             starButton.fillColor = UIColor.goldColor()
             video!.favorite = true
@@ -83,7 +87,7 @@ class VideoOverlayCell: UITableViewCell {
     
     // methods
     func setStarFill() {
-        starButton.fillColor = User.sharedModel.favoriteVideoKeys.contains(video!.id) ? UIColor.goldColor() : UIColor.clearColor()
+        starButton.fillColor = Video.sharedFavorites.contains(video!) ? UIColor.goldColor() : UIColor.clearColor()
         starButton.config()
     }
     

@@ -10,7 +10,7 @@ import UIKit
 import StoreKit
 import MBProgressHUD
 
-extension GoPremiumViewController: SKProductsRequestDelegate, SKPaymentTransactionObserver {
+extension GoPremiumViewController: SKProductsRequestDelegate {
     func productsRequest(request: SKProductsRequest, didReceiveResponse response: SKProductsResponse) {
         stopProgressHud()
         if response.products.count > 0 {
@@ -25,17 +25,23 @@ extension GoPremiumViewController: SKProductsRequestDelegate, SKPaymentTransacti
         stopProgressHud()
         errorAlert("Something went wrong, please try again later.")
     }
-    
+}
+
+extension GoPremiumViewController: SKRequestDelegate {
+    func requestDidFinish(request: SKRequest) {
+        print(request)
+    }
+}
+
+extension GoPremiumViewController: SKPaymentTransactionObserver {
     func paymentQueue(queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        print(transactions)
         let transaction = transactions[0]
         if transaction.payment.productIdentifier == "monthly" && transaction.transactionState == .Purchased {
             if transaction.error != nil {
                 errorAlert("Something went wrong, please try again later.")
             } else {
                 User.sharedModel.premium = true
-                FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).setValue(User.sharedModel.dict())
-                NSUserDefaults.standardUserDefaults().setObject(User.sharedModel.dict(), forKey: "userData")
-                NSUserDefaults.standardUserDefaults().synchronize()
                 dismissViewControllerAnimated(true, completion: nil)
             }
         }
@@ -62,6 +68,14 @@ class GoPremiumViewController: UIViewController {
         let request = SKProductsRequest(productIdentifiers: productID)
         request.delegate = self
         request.start()
+    }
+    
+    @IBAction func tappedRecover(sender: AnyObject) {
+//        let request = SKReceiptRefreshRequest()
+//        request.delegate = self
+//        request.start()
+        SKPaymentQueue.defaultQueue().addTransactionObserver(self)
+        SKPaymentQueue.defaultQueue().restoreCompletedTransactions()
     }
     
     // methods

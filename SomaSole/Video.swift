@@ -9,6 +9,8 @@
 import UIKit
 
 class Video: NSObject {
+    
+    static var sharedFavorites = [Video]()
 
     var id = ""
     var title = ""
