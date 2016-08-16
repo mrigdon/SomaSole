@@ -32,34 +32,62 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func validateReceipt(environment: ReceiptEnvironment = .Production) {
         let receiptURL = NSBundle.mainBundle().appStoreReceiptURL
-        let receipt = NSData(contentsOfURL: receiptURL!)
-        let requestContents = [
-            "receipt-data": receipt!.base64EncodedStringWithOptions([]),
-            "password": "5e6e3b769b504bc9bb175786fe7a6114"
-        ]
-        let requestData = try! NSJSONSerialization.dataWithJSONObject(requestContents, options: [])
-        let storeURL = NSURL(string: environment.rawValue)
-        let request = NSMutableURLRequest(URL: storeURL!)
-        request.HTTPMethod = "POST"
-        request.HTTPBody = requestData
-        let (params, _) = Alamofire.ParameterEncoding.URL.encode(request, parameters: nil)
-        Alamofire.request(params).responseJSON { response in
-            let data = try! NSJSONSerialization.JSONObjectWithData(response.data!, options: NSJSONReadingOptions.AllowFragments)
-            let json = JSON(data)
-            let status = ReceiptStatus(rawValue: json["status"].intValue)
-            
-            if status == .Valid {
-                let expiresTime = json["receipt"]["in_app"][0]["expires_date_ms"].doubleValue / 1000
-                let currentTime = NSDate().timeIntervalSince1970
-                let premium = currentTime < expiresTime
-                if User.sharedModel.premium != premium {
-                    User.sharedModel.premium = premium
-                    User.sharedModel.save()
+        if let receiptURL = receiptURL {
+            let receipt = NSData(contentsOfURL: receiptURL)
+            if let receipt = receipt {
+                let requestContents = [
+                    "receipt-data": receipt.base64EncodedStringWithOptions([]),
+                    "password": "5e6e3b769b504bc9bb175786fe7a6114"
+                ]
+                let requestData = try! NSJSONSerialization.dataWithJSONObject(requestContents, options: [])
+                let storeURL = NSURL(string: environment.rawValue)
+                let request = NSMutableURLRequest(URL: storeURL!)
+                request.HTTPMethod = "POST"
+                request.HTTPBody = requestData
+                let (params, _) = Alamofire.ParameterEncoding.URL.encode(request, parameters: nil)
+                Alamofire.request(params).responseJSON { response in
+                    let data = try! NSJSONSerialization.JSONObjectWithData(response.data!, options: NSJSONReadingOptions.AllowFragments)
+                    let json = JSON(data)
+                    let status = ReceiptStatus(rawValue: json["status"].intValue)
+                    
+                    if status == .Valid {
+                        var expiresTime: Double = 0
+                        for inApp in json["receipt"]["in_app"].arrayValue {
+                            print(inApp["expires_date_pst"])
+                            if inApp["expires_time_ms"].doubleValue / 1000 > expiresTime {
+                                expiresTime = inApp["expires_time_ms"].doubleValue / 1000
+                            }
+                        }
+                        let currentTime = NSDate().timeIntervalSince1970
+                        let premium = currentTime < expiresTime
+                        print(premium)
+                        User.sharedModel.premium = premium
+                    } else if status == .Sandbox {
+                        self.validateReceipt(.Sandbox)
+                    }
                 }
-            } else if status == .Sandbox {
-                self.validateReceipt(.Sandbox)
+            } else {
+                User.sharedModel.premium = false
             }
+        } else {
+            User.sharedModel.premium = false
         }
+    }
+    
+    private func setupAWS() {
+        let credentialsProvider = AWSCognitoCredentialsProvider(
+            regionType:.USEast1,
+            identityPoolId:"us-east-1:d3bf8475-a252-4c2f-af5f-8a40d942ac30"
+        )
+        let configuration = AWSServiceConfiguration(
+            region:.USWest1,
+            credentialsProvider:credentialsProvider
+        )
+        AWSServiceManager.defaultServiceManager().defaultServiceConfiguration = configuration
+    }
+    
+    private func setupIQManager() {
+        IQKeyboardManager.sharedManager().enable = true
     }
     
     override init() {
@@ -71,21 +99,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Initialize the Amazon Cognito credentials provider
-        let credentialsProvider = AWSCognitoCredentialsProvider(
-            regionType:.USEast1,
-            identityPoolId:"us-east-1:d3bf8475-a252-4c2f-af5f-8a40d942ac30"
-        )
-        let configuration = AWSServiceConfiguration(
-            region:.USWest1,
-            credentialsProvider:credentialsProvider
-        )
-        AWSServiceManager.defaultServiceManager().defaultServiceConfiguration = configuration
-        
-        // iqmanager
-        IQKeyboardManager.sharedManager().enable = true
-        
-        // validate receipt
+        setupAWS()
+        setupIQManager()
         validateReceipt()
     
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
