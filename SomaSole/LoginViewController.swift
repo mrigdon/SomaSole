@@ -9,7 +9,6 @@
 import UIKit
 import Firebase
 import MBProgressHUD
-import FBSDKLoginKit
 import TextFieldEffects
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
@@ -25,7 +24,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     // outlets
     @IBOutlet weak var emailField: KaedeTextField!
     @IBOutlet weak var passField: KaedeTextField!
-    @IBOutlet weak var fbLoginButton: FBSDKButton!
     @IBOutlet weak var logoImageView: UIImageView!
     
     // methods
@@ -86,55 +84,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     // actions
-    @IBAction func tappedFacebookLogin(sender: AnyObject) {
-        let loginManager = FBSDKLoginManager()
-        let permissions = ["public_profile", "email"]
-        loginManager.logInWithReadPermissions(permissions, fromViewController: self, handler: { fbResult, fbError in
-            if fbError != nil {
-                // error in login
-                print("fbError: \(fbError.code)")
-            } else if fbResult.isCancelled {
-                // cancelled login
-                print("cancelled facebook login")
-            } else {
-                // fb logged in
-                self.startProgressHud()
-                let accessToken = FBSDKAccessToken.currentAccessToken().tokenString
-                FirebaseManager.sharedRootRef.authWithOAuthProvider("facebook", token: accessToken, withCompletionBlock: { error, authData in
-                    if error != nil {
-                        self.handleFirebaseError(error)
-                    } else {
-                        // firebase logged in
-                        FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(authData.uid).observeSingleEventOfType(.Value, withBlock: { snapshot in
-                            if !(snapshot.value is NSNull) {
-                                User.sharedModel = User(uid: snapshot.key, data: snapshot.value as! [String:AnyObject])
-                                NSUserDefaults.standardUserDefaults().setObject(User.sharedModel.dict(), forKey: "userData")
-                                NSUserDefaults.standardUserDefaults().setObject(User.sharedModel.uid, forKey: "uid")
-                                NSUserDefaults.standardUserDefaults().synchronize()
-                                self.performSegueWithIdentifier("toMain", sender: self)
-                            } else {
-                                let fields = ["fields": "email,first_name,last_name,birthday,gender,picture.type(large)"]
-                                let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: fields)
-                                graphRequest.startWithCompletionHandler({ connection, result, error in
-                                    if error == nil {
-                                        // success
-                                        User.sharedModel.uid = authData.uid
-                                        let userData = result as! [String:AnyObject]
-                                        self.createUserFromFacebook(userData)
-                                    }
-                                    else {
-                                        // error
-                                        print(error)
-                                    }
-                                })
-                            }
-                        })
-                    }
-                })
-            }
-        })
-    }
-    
     @IBAction func tappedLogin(sender: AnyObject) {
         // return if any fields are empty
         if emailField.text?.characters.count == 0 || passField.text?.characters.count == 0 {

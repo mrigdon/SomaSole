@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FBSDKShareKit
 
 class FinishedWorkoutViewController: UIViewController {
     
@@ -20,7 +19,6 @@ class FinishedWorkoutViewController: UIViewController {
     // outlets
     @IBOutlet weak var workoutImageView: UIImageView!
     @IBOutlet weak var workoutImageViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var shareButton: FBSDKShareButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()

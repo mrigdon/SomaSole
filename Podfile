@@ -22,10 +22,6 @@ target 'SomaSole' do
     pod 'youtube-ios-player-helper', '~> 0.1.4'
     pod 'EPShapes'
     
-    pod 'FBSDKCoreKit'
-    pod 'FBSDKShareKit'
-    pod 'FBSDKLoginKit'
-    
     pod 'Alamofire', '~> 3.4'
     pod 'Toucan'
     pod 'Masonry'
