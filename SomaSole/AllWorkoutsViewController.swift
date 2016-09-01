@@ -11,7 +11,6 @@ import MBProgressHUD
 import TagListView
 import Firebase
 import EPShapes
-import XLPagerTabStrip
 
 extension Array where Element: Workout {
     mutating func insertAlpha(workout: Element) {
@@ -31,7 +30,7 @@ extension Array where Element: Workout {
     }
 }
 
-class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate, IndicatorInfoProvider {
+class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate {
     
     // constants
     let filterCellSize: CGFloat = 44
@@ -139,10 +138,6 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate, Ind
     }
     
     // delegates
-    func indicatorInfoForPagerTabStrip(pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return "All Workouts"
-    }
-    
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }

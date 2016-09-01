@@ -5,7 +5,6 @@ use_frameworks!
 
 target 'SomaSole' do
     
-    pod 'XLPagerTabStrip', '~> 5.0.0'
     pod 'Firebase', '>= 2.5.1'
     pod 'TextFieldEffects'
     pod 'IQKeyboardManagerSwift'
@@ -21,7 +20,6 @@ target 'SomaSole' do
     pod 'RealmSwift'
     pod 'youtube-ios-player-helper', '~> 0.1.4'
     pod 'EPShapes'
-    
     pod 'Alamofire', '~> 3.4'
     pod 'Toucan'
     pod 'Masonry'

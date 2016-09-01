@@ -9,7 +9,6 @@
 import UIKit
 import youtube_ios_player_helper
 import Firebase
-import XLPagerTabStrip
 import Masonry
 import AlamofireImage
 import Alamofire
@@ -37,7 +36,7 @@ extension Array where Element: Video {
     }
 }
 
-class AllVideosViewController: UITableViewController, IndicatorInfoProvider, UISearchBarDelegate {
+class AllVideosViewController: UITableViewController, UISearchBarDelegate {
     
     // constants
     let searchBar = UISearchBar()
@@ -136,10 +135,6 @@ class AllVideosViewController: UITableViewController, IndicatorInfoProvider, UIS
     }
     
     // delegates
-    func indicatorInfoForPagerTabStrip(pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return "All Videos"
-    }
-    
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
