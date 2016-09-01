@@ -143,9 +143,9 @@ class News2ViewController: UIViewController {
     
     private func loadFeatured() {
         startProgressHud()
-        FirebaseManager.sharedRootRef.childByAppendingPath("featured").observeSingleEventOfType(.Value, withBlock: { snapshot in
+        FirebaseManager.sharedRootRef.child("featured").observeSingleEventOfType(.Value, withBlock: { snapshot in
             self.stopProgressHud()
-            let featured = JSON(snapshot.value)
+            let featured = JSON(snapshot.value!)
             self.addArticles(featured["articles"])
             self.addVideos(featured["videos"])
             self.addWorkout(featured["workout"])

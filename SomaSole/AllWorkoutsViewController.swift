@@ -88,7 +88,7 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate {
     }
     
     private func loadPublicWorkouts() {
-        FirebaseManager.sharedRootRef.childByAppendingPath("workouts/public").observeEventType(.ChildAdded, withBlock: { snapshot in
+        FirebaseManager.sharedRootRef.child("workouts/public").observeEventType(.ChildAdded, withBlock: { snapshot in
             // load workouts
             let workout = Workout(name: snapshot.key, data: snapshot.value as! [String : AnyObject])
             workout.free = true
@@ -106,7 +106,7 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate {
     }
     
     private func loadPrivateWorkouts() {
-        FirebaseManager.sharedRootRef.childByAppendingPath("workouts/private").observeEventType(.ChildAdded, withBlock: { snapshot in
+        FirebaseManager.sharedRootRef.child("workouts/private").observeEventType(.ChildAdded, withBlock: { snapshot in
             // load workouts
             let workout = Workout(name: snapshot.key, data: snapshot.value as! [String : AnyObject])
             workout.free = false

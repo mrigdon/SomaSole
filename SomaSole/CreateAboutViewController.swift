@@ -12,9 +12,6 @@ import Firebase
 
 class CreateAboutViewController: UIViewController {
     
-    let firebaseURL = "https://somasole.firebaseio.com"
-    var firebase: Firebase?
-    
     var alertController: UIAlertController?
     
     var selectedActivities: [Int] = []
@@ -67,27 +64,27 @@ class CreateAboutViewController: UIViewController {
     }
     
     private func handleFirebaseError(error: NSError) {
-        switch error.code {
-            
-        case FAuthenticationError.EmailTaken.rawValue:
-            self.errorAlert("There is already an account with this email.")
-            break
-        case FAuthenticationError.NetworkError.rawValue:
-            self.errorAlert("There is a problem with the network, please try again in a few moments.")
-            break
-        case FAuthenticationError.InvalidEmail.rawValue:
-            self.errorAlert("The email you entered is invalid.")
-            break
-        case FAuthenticationError.UserDoesNotExist.rawValue:
-            self.errorAlert("There is no registered account with that email.")
-            break
-        case FAuthenticationError.InvalidPassword.rawValue:
-            self.errorAlert("The password you entered is incorrect.")
-            break
-        default:
-            break
-            
-        }
+//        switch error.code {
+//            
+//        case FAuthenticationError.EmailTaken.rawValue:
+//            self.errorAlert("There is already an account with this email.")
+//            break
+//        case FAuthenticationError.NetworkError.rawValue:
+//            self.errorAlert("There is a problem with the network, please try again in a few moments.")
+//            break
+//        case FAuthenticationError.InvalidEmail.rawValue:
+//            self.errorAlert("The email you entered is invalid.")
+//            break
+//        case FAuthenticationError.UserDoesNotExist.rawValue:
+//            self.errorAlert("There is no registered account with that email.")
+//            break
+//        case FAuthenticationError.InvalidPassword.rawValue:
+//            self.errorAlert("The password you entered is incorrect.")
+//            break
+//        default:
+//            break
+//            
+//        }
     }
     
     override func viewDidLoad() {
@@ -122,9 +119,6 @@ class CreateAboutViewController: UIViewController {
         powerPill.goal = .Power
         toningPill.goal = .Toning
         weightLossPill.goal = .WeightLoss
-        
-        // init firebase
-        firebase = Firebase(url: firebaseURL)
         
         // init alert controller
         alertController = UIAlertController(title: "Error", message: "Error", preferredStyle: .Alert)
@@ -184,7 +178,7 @@ class CreateAboutViewController: UIViewController {
             if User.sharedModel.facebook {
                 rootVC.acceptClosure = {
                     self.startProgressHud()
-                    FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).setValue(User.sharedModel.dict())
+                    FirebaseManager.sharedRootRef.child("users").child(User.sharedModel.uid).setValue(User.sharedModel.dict())
                     NSUserDefaults.standardUserDefaults().setObject(User.sharedModel.dict(), forKey: "userData")
                     NSUserDefaults.standardUserDefaults().setObject(User.sharedModel.uid, forKey: "uid")
                     NSUserDefaults.standardUserDefaults().synchronize()
@@ -194,15 +188,15 @@ class CreateAboutViewController: UIViewController {
             } else {
                 rootVC.acceptClosure = {
                     self.startProgressHud()
-                    FirebaseManager.sharedRootRef.createUser(User.sharedModel.email, password: User.sharedModel.password, withValueCompletionBlock: { error, result in
+                    FIRAuth.auth()!.createUserWithEmail(User.sharedModel.email, password: User.sharedModel.password, completion: { result, error in
                         // stop progress
                         self.stopProgressHud()
                         if let error = error {
                             self.successfullyCreatedFirebaseUser = false
                             self.handleFirebaseError(error)
                         } else {
-                            User.sharedModel.uid = result["uid"] as! String
-                            FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).setValue(User.sharedModel.dict())
+                            User.sharedModel.uid = result!.uid
+                            FirebaseManager.sharedRootRef.child("users").child(User.sharedModel.uid).setValue(User.sharedModel.dict())
                             NSUserDefaults.standardUserDefaults().setObject(User.sharedModel.dict(), forKey: "userData")
                             NSUserDefaults.standardUserDefaults().setObject(User.sharedModel.uid, forKey: "uid")
                             NSUserDefaults.standardUserDefaults().synchronize()

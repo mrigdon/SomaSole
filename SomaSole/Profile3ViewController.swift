@@ -234,27 +234,27 @@ class Profile3ViewController: UITableViewController {
     }
     
     private func handleFirebaseError(error: NSError) {
-        switch error.code {
-            
-        case FAuthenticationError.EmailTaken.rawValue:
-            self.errorAlert("There is already an account with this email.")
-            break
-        case FAuthenticationError.NetworkError.rawValue:
-            self.errorAlert("There is a problem with the network, please try again in a few moments.")
-            break
-        case FAuthenticationError.InvalidEmail.rawValue:
-            self.errorAlert("The email you entered is invalid.")
-            break
-        case FAuthenticationError.UserDoesNotExist.rawValue:
-            self.errorAlert("There is no registered account with that email.")
-            break
-        case FAuthenticationError.InvalidPassword.rawValue:
-            self.errorAlert("The password you entered is incorrect.")
-            break
-        default:
-            break
-            
-        }
+//        switch error.code {
+//            
+//        case FAuthenticationError.EmailTaken.rawValue:
+//            self.errorAlert("There is already an account with this email.")
+//            break
+//        case FAuthenticationError.NetworkError.rawValue:
+//            self.errorAlert("There is a problem with the network, please try again in a few moments.")
+//            break
+//        case FAuthenticationError.InvalidEmail.rawValue:
+//            self.errorAlert("The email you entered is invalid.")
+//            break
+//        case FAuthenticationError.UserDoesNotExist.rawValue:
+//            self.errorAlert("There is no registered account with that email.")
+//            break
+//        case FAuthenticationError.InvalidPassword.rawValue:
+//            self.errorAlert("The password you entered is incorrect.")
+//            break
+//        default:
+//            break
+//            
+//        }
     }
     
     private func allFieldsValid() -> Bool {
@@ -292,27 +292,27 @@ class Profile3ViewController: UITableViewController {
     
     // actions
     @IBAction func tappedSave(sender: AnyObject) {
-        let oldData = User.sharedModel.dict()
-        
-        User.sharedModel.firstName = textFields[TextFieldIndex.FirstName.hashValue].text!
-        User.sharedModel.lastName = textFields[TextFieldIndex.LastName.hashValue].text!
-        User.sharedModel.height = textFields[TextFieldIndex.Height.hashValue].text!.heightValue
-        User.sharedModel.weight = textFields[TextFieldIndex.Weight.hashValue].text!.weightValue
-        User.sharedModel.dateOfBirth = textFields[TextFieldIndex.DOB.hashValue].text!.dateOfBirthValue
-        User.sharedModel.male = textFields[TextFieldIndex.Gender.hashValue].text!.maleValue
-        
-        startProgressHud()
-        FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).setValue(User.sharedModel.dict(), withCompletionBlock: { error, firebase in
-            self.stopProgressHud()
-            if error != nil {
-                User.sharedModel = User(uid: User.sharedModel.uid, data: oldData)
-                self.handleFirebaseError(error)
-            } else {
-                NSUserDefaults.standardUserDefaults().setObject(User.sharedModel.dict(), forKey: "userData")
-                NSUserDefaults.standardUserDefaults().synchronize()
-                self.successAlert("Your info has been updated")
-            }
-        })
+//        let oldData = User.sharedModel.dict()
+//        
+//        User.sharedModel.firstName = textFields[TextFieldIndex.FirstName.hashValue].text!
+//        User.sharedModel.lastName = textFields[TextFieldIndex.LastName.hashValue].text!
+//        User.sharedModel.height = textFields[TextFieldIndex.Height.hashValue].text!.heightValue
+//        User.sharedModel.weight = textFields[TextFieldIndex.Weight.hashValue].text!.weightValue
+//        User.sharedModel.dateOfBirth = textFields[TextFieldIndex.DOB.hashValue].text!.dateOfBirthValue
+//        User.sharedModel.male = textFields[TextFieldIndex.Gender.hashValue].text!.maleValue
+//        
+//        startProgressHud()
+//        FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).setValue(User.sharedModel.dict(), withCompletionBlock: { error, firebase in
+//            self.stopProgressHud()
+//            if error != nil {
+//                User.sharedModel = User(uid: User.sharedModel.uid, data: oldData)
+//                self.handleFirebaseError(error)
+//            } else {
+//                NSUserDefaults.standardUserDefaults().setObject(User.sharedModel.dict(), forKey: "userData")
+//                NSUserDefaults.standardUserDefaults().synchronize()
+//                self.successAlert("Your info has been updated")
+//            }
+//        })
     }
     
     // uiviewcontroller
@@ -336,19 +336,19 @@ class Profile3ViewController: UITableViewController {
             self.alertController!.dismissViewControllerAnimated(true, completion: nil)
         })
         confirmAction = UIAlertAction(title: "Yes, Delete it", style: .Destructive, handler: { action in
-            self.startProgressHud()
-            FirebaseManager.sharedRootRef.removeUser(User.sharedModel.email, password: self.password, withCompletionBlock: { error in
-                if let error = error {
-                    self.handleFirebaseError(error)
-                } else {
-                    FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).removeValue()
-                    NSUserDefaults.standardUserDefaults().setObject(nil, forKey: "userData")
-                    NSUserDefaults.standardUserDefaults().synchronize()
-                    User.sharedModel = User()
-                    self.stopProgressHud()
-                    self.performSegueWithIdentifier("deleteSegue", sender: self)
-                }
-            })
+//            self.startProgressHud()
+//            FirebaseManager.sharedRootRef.removeUser(User.sharedModel.email, password: self.password, withCompletionBlock: { error in
+//                if let error = error {
+//                    self.handleFirebaseError(error)
+//                } else {
+//                    FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).removeValue()
+//                    NSUserDefaults.standardUserDefaults().setObject(nil, forKey: "userData")
+//                    NSUserDefaults.standardUserDefaults().synchronize()
+//                    User.sharedModel = User()
+//                    self.stopProgressHud()
+//                    self.performSegueWithIdentifier("deleteSegue", sender: self)
+//                }
+//            })
         })
         confirmAction.enabled = false
         cancelController.addAction(nevermindAction)
@@ -475,7 +475,7 @@ class Profile3ViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "logoutSegue" {
-            FirebaseManager.sharedRootRef.unauth()
+//            FirebaseManager.sharedRootRef.unauth()
             User.sharedModel = User()
             NSUserDefaults.standardUserDefaults().setObject(nil, forKey: "userData")
             NSUserDefaults.standardUserDefaults().setObject(nil, forKey: "uid")

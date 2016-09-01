@@ -171,6 +171,7 @@
 		621708D71D459E7800944715 /* X-Walk (Right).gif in Resources */ = {isa = PBXBuildFile; fileRef = 621708381D459E7800944715 /* X-Walk (Right).gif */; };
 		621708D81D459E7800944715 /* Y-Curl.gif in Resources */ = {isa = PBXBuildFile; fileRef = 621708391D459E7800944715 /* Y-Curl.gif */; };
 		621708D91D459E7800944715 /* Y-Raise.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6217083A1D459E7800944715 /* Y-Raise.gif */; };
+		621CC7151D77E6F800CD6CFA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 621CC7141D77E6F800CD6CFA /* GoogleService-Info.plist */; };
 		621D22AD1CB2DC3E00FE7581 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621D22AC1CB2DC3E00FE7581 /* AppDelegate.swift */; };
 		621D22B41CB2DC3F00FE7581 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 621D22B21CB2DC3F00FE7581 /* Main.storyboard */; };
 		621D22B61CB2DC3F00FE7581 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 621D22B51CB2DC3F00FE7581 /* Assets.xcassets */; };
@@ -405,6 +406,7 @@
 		621708381D459E7800944715 /* X-Walk (Right).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "X-Walk (Right).gif"; sourceTree = "<group>"; };
 		621708391D459E7800944715 /* Y-Curl.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Y-Curl.gif"; sourceTree = "<group>"; };
 		6217083A1D459E7800944715 /* Y-Raise.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Y-Raise.gif"; sourceTree = "<group>"; };
+		621CC7141D77E6F800CD6CFA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		621D22A91CB2DC3E00FE7581 /* SomaSole.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SomaSole.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		621D22AC1CB2DC3E00FE7581 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		621D22B31CB2DC3F00FE7581 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -518,6 +520,7 @@
 		621D22A01CB2DC3E00FE7581 = {
 			isa = PBXGroup;
 			children = (
+				621CC7141D77E6F800CD6CFA /* GoogleService-Info.plist */,
 				621D22DC1CB2DC7C00FE7581 /* Podfile */,
 				621D22AB1CB2DC3E00FE7581 /* SomaSole */,
 				621D22C21CB2DC3F00FE7581 /* SomaSoleTests */,
@@ -1092,6 +1095,7 @@
 				621708C51D459E7800944715 /* Standing Side Stretch (Right Side).gif in Resources */,
 				621708A11D459E7800944715 /* Russian Twists.gif in Resources */,
 				621708D51D459E7800944715 /* X-Jack.gif in Resources */,
+				621CC7151D77E6F800CD6CFA /* GoogleService-Info.plist in Resources */,
 				621708551D459E7800944715 /* Delt Row.gif in Resources */,
 				6217086A1D459E7800944715 /* Hip Extension - Knee Up (Left Leg).gif in Resources */,
 				621708601D459E7800944715 /* Glute Kick-Back (Right Leg).gif in Resources */,

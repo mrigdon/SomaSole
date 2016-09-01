@@ -79,8 +79,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         super.init()
         
         // enable firebase offine capabilities
-        Firebase.defaultConfig().persistenceEnabled = true
-        Firebase(url: "http://somasole.firebaseio.com").keepSynced(true)
+        FIRApp.configure()
+        FIRDatabase.database().persistenceEnabled = true
+        FirebaseManager.sharedRootRef.keepSynced(true)
     }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {

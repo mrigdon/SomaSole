@@ -60,27 +60,27 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func handleFirebaseError(error: NSError) {
-        switch error.code {
-            
-        case FAuthenticationError.EmailTaken.rawValue:
-            self.errorAlert("There is already an account with this email.")
-            break
-        case FAuthenticationError.NetworkError.rawValue:
-            self.errorAlert("There is a problem with the network, please try again in a few moments.")
-            break
-        case FAuthenticationError.InvalidEmail.rawValue:
-            self.errorAlert("The email you entered is invalid.")
-            break
-        case FAuthenticationError.UserDoesNotExist.rawValue:
-            self.errorAlert("There is no registered account with that email.")
-            break
-        case FAuthenticationError.InvalidPassword.rawValue:
-            self.errorAlert("The password you entered is incorrect.")
-            break
-        default:
-            break
-            
-        }
+//        switch error.code {
+//            
+//        case FAuthenticationError.EmailTaken.rawValue:
+//            self.errorAlert("There is already an account with this email.")
+//            break
+//        case FAuthenticationError.NetworkError.rawValue:
+//            self.errorAlert("There is a problem with the network, please try again in a few moments.")
+//            break
+//        case FAuthenticationError.InvalidEmail.rawValue:
+//            self.errorAlert("The email you entered is invalid.")
+//            break
+//        case FAuthenticationError.UserDoesNotExist.rawValue:
+//            self.errorAlert("There is no registered account with that email.")
+//            break
+//        case FAuthenticationError.InvalidPassword.rawValue:
+//            self.errorAlert("The password you entered is incorrect.")
+//            break
+//        default:
+//            break
+//            
+//        }
     }
     
     // actions
@@ -94,12 +94,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         // start progress hud
         MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         
-        FirebaseManager.sharedRootRef.authUser(emailField.text, password: passField.text, withCompletionBlock: { error, authData in
+        FIRAuth.auth()!.signInWithEmail(emailField.text!, password: passField.text!, completion: { authData, error in
             self.stopProgressHud()
             if let error = error {
                 self.handleFirebaseError(error)
             } else {
-                FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(authData.uid).observeSingleEventOfType(.Value, withBlock: { snapshot in
+                FirebaseManager.sharedRootRef.child("users").child(authData!.uid).observeSingleEventOfType(.Value, withBlock: { snapshot in
                     User.sharedModel = User(uid: snapshot.key, data: snapshot.value as! [String:AnyObject])
                     NSUserDefaults.standardUserDefaults().setObject(User.sharedModel.dict(), forKey: "userData")
                     NSUserDefaults.standardUserDefaults().setObject(User.sharedModel.uid, forKey: "uid")

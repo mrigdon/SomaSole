@@ -138,7 +138,7 @@ class User: NSObject {
     }
     
     func save() {
-        FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(uid)
+        FirebaseManager.sharedRootRef.child("users").child(uid)
             .setValue(dict())
         NSUserDefaults.standardUserDefaults().setObject(dict(), forKey: "userData")
         NSUserDefaults.standardUserDefaults().synchronize()

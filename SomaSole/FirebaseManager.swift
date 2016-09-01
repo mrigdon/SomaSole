@@ -11,6 +11,6 @@ import Firebase
 
 class FirebaseManager: NSObject {
 
-    static var sharedRootRef = Firebase(url: "http://somasole.firebaseio.com")
+    static var sharedRootRef = FIRDatabase.database().reference()
     
 }

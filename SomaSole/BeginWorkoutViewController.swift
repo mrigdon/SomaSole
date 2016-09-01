@@ -52,9 +52,9 @@ class BeginWorkoutViewController: UIViewController {
             circuit.setup.image = UIImage(named: "setup\(circuit.setup.imageIndex)\(length)")
             
             for movement in circuit.movements {
-                FirebaseManager.sharedRootRef.childByAppendingPath("movements").childByAppendingPath(String(movement.index)).observeEventType(.Value, withBlock: { snapshot in
-                    movement.title = snapshot.value["title"] as! String
-                    movement.movementDescription = snapshot.value["description"] as? String
+                FirebaseManager.sharedRootRef.child("movements").child(String(movement.index)).observeEventType(.Value, withBlock: { snapshot in
+                    movement.title = snapshot.value!["title"] as! String
+                    movement.movementDescription = snapshot.value!["description"] as? String
                     let url = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("\(movement.title).gif", ofType: nil)!)
                     movement.gif = NSData(contentsOfURL: url)
                     self.movementIndex += 1

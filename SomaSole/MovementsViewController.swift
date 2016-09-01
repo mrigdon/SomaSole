@@ -15,7 +15,6 @@ class MovementsViewController: UICollectionViewController, UICollectionViewDeleg
     // constants
     private let reuseIdentifier = "cell"
     private let screenSizeWithMargins = UIScreen.mainScreen().bounds.width - 32
-    private let firebase = Firebase(url: "http://somasole.firebaseio.com")
     private let lightBlueColor: UIColor = UIColor(red: 0.568627451, green: 0.7333333333, blue: 0.968627451, alpha: 1.0)
     private let searchController = UISearchController(searchResultsController: nil)
     
@@ -55,7 +54,7 @@ class MovementsViewController: UICollectionViewController, UICollectionViewDeleg
     
     private func loadMovements() {
         startProgressHud()
-        FirebaseManager.sharedRootRef.childByAppendingPath("movements").observeEventType(.ChildAdded, withBlock: { snapshot in
+        FirebaseManager.sharedRootRef.child("movements").observeEventType(.ChildAdded, withBlock: { snapshot in
             self.stopProgressHud()
             let movement = Movement(index: Int(snapshot.key)!, data: snapshot.value as! [String:String])
             movement.image = UIImage(named: movement.title)

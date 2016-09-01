@@ -40,27 +40,27 @@ class ChangePasswordViewController: UITableViewController {
     }
     
     private func handleFirebaseError(error: NSError) {
-        switch error.code {
-            
-        case FAuthenticationError.EmailTaken.rawValue:
-            self.errorAlert("There is already an account with this email.")
-            break
-        case FAuthenticationError.NetworkError.rawValue:
-            self.errorAlert("There is a problem with the network, please try again in a few moments.")
-            break
-        case FAuthenticationError.InvalidEmail.rawValue:
-            self.errorAlert("The email you entered is invalid.")
-            break
-        case FAuthenticationError.UserDoesNotExist.rawValue:
-            self.errorAlert("There is no registered account with that email.")
-            break
-        case FAuthenticationError.InvalidPassword.rawValue:
-            self.errorAlert("The password you entered is incorrect.")
-            break
-        default:
-            break
-            
-        }
+//        switch error.code {
+//            
+//        case FAuthenticationError.EmailTaken.rawValue:
+//            self.errorAlert("There is already an account with this email.")
+//            break
+//        case FAuthenticationError.NetworkError.rawValue:
+//            self.errorAlert("There is a problem with the network, please try again in a few moments.")
+//            break
+//        case FAuthenticationError.InvalidEmail.rawValue:
+//            self.errorAlert("The email you entered is invalid.")
+//            break
+//        case FAuthenticationError.UserDoesNotExist.rawValue:
+//            self.errorAlert("There is no registered account with that email.")
+//            break
+//        case FAuthenticationError.InvalidPassword.rawValue:
+//            self.errorAlert("The password you entered is incorrect.")
+//            break
+//        default:
+//            break
+//            
+//        }
     }
     
     private func stopProgressHud() {
@@ -87,39 +87,39 @@ class ChangePasswordViewController: UITableViewController {
     
     // actions
     @IBAction func tappedSave(sender: AnyObject) {
-        startProgressHud()
-        if email {
-            FirebaseManager.sharedRootRef.changeEmailForUser(User.sharedModel.email, password: textFields[2].text, toNewEmail: textFields[1].text, withCompletionBlock: { error in
-                self.stopProgressHud()
-                if let error = error {
-                    self.textFields[1].text = ""
-                    self.textFields[2].text = ""
-                    self.handleFirebaseError(error)
-                } else {
-                    User.sharedModel.email = self.textFields[1].text!
-                    self.textFields[0].text = User.sharedModel.email
-                    self.textFields[1].text = ""
-                    self.textFields[2].text = ""
-                    FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).childByAppendingPath("email").setValue(User.sharedModel.email)
-                    NSUserDefaults.standardUserDefaults().setObject(User.sharedModel.dict(), forKey: "userData")
-                    NSUserDefaults.standardUserDefaults().synchronize()
-                    self.successAlert("Successfully changed email.")
-                }
-            })
-        } else {
-            FirebaseManager.sharedRootRef.changePasswordForUser(User.sharedModel.email, fromOld: textFields[0].text, toNew: textFields[1].text, withCompletionBlock: { error in
-                self.stopProgressHud()
-                for textField in self.textFields {
-                    textField.text = ""
-                }
-                
-                if let error = error {
-                    self.handleFirebaseError(error)
-                } else {
-                    self.successAlert("Successfully changed password.")
-                }
-            })
-        }
+//        startProgressHud()
+//        if email {
+//            FirebaseManager.sharedRootRef.changeEmailForUser(User.sharedModel.email, password: textFields[2].text, toNewEmail: textFields[1].text, withCompletionBlock: { error in
+//                self.stopProgressHud()
+//                if let error = error {
+//                    self.textFields[1].text = ""
+//                    self.textFields[2].text = ""
+//                    self.handleFirebaseError(error)
+//                } else {
+//                    User.sharedModel.email = self.textFields[1].text!
+//                    self.textFields[0].text = User.sharedModel.email
+//                    self.textFields[1].text = ""
+//                    self.textFields[2].text = ""
+//                    FirebaseManager.sharedRootRef.childByAppendingPath("users").childByAppendingPath(User.sharedModel.uid).childByAppendingPath("email").setValue(User.sharedModel.email)
+//                    NSUserDefaults.standardUserDefaults().setObject(User.sharedModel.dict(), forKey: "userData")
+//                    NSUserDefaults.standardUserDefaults().synchronize()
+//                    self.successAlert("Successfully changed email.")
+//                }
+//            })
+//        } else {
+//            FirebaseManager.sharedRootRef.changePasswordForUser(User.sharedModel.email, fromOld: textFields[0].text, toNew: textFields[1].text, withCompletionBlock: { error in
+//                self.stopProgressHud()
+//                for textField in self.textFields {
+//                    textField.text = ""
+//                }
+//                
+//                if let error = error {
+//                    self.handleFirebaseError(error)
+//                } else {
+//                    self.successAlert("Successfully changed password.")
+//                }
+//            })
+//        }
     }
     
     override func viewDidLoad() {

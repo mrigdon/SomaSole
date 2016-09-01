@@ -71,7 +71,7 @@ class AllVideosViewController: UITableViewController, UISearchBarDelegate {
     }
     
     private func loadPublic() {
-        FirebaseManager.sharedRootRef.childByAppendingPath("videos").childByAppendingPath("public").observeEventType(.ChildAdded, withBlock: { snapshot in
+        FirebaseManager.sharedRootRef.child("videos/public").observeEventType(.ChildAdded, withBlock: { snapshot in
             let video = Video(id: snapshot.key, data: snapshot.value as! [String : AnyObject])
             video.free = true
             if let keys = self.favoriteVideoKeys {
@@ -92,7 +92,7 @@ class AllVideosViewController: UITableViewController, UISearchBarDelegate {
     }
     
     private func loadPrivate() {
-        FirebaseManager.sharedRootRef.childByAppendingPath("videos").childByAppendingPath("private").observeEventType(.ChildAdded, withBlock: { snapshot in
+        FirebaseManager.sharedRootRef.child("videos/private").observeEventType(.ChildAdded, withBlock: { snapshot in
             let video = Video(id: snapshot.key, data: snapshot.value as! [String:AnyObject])
             video.free = false
             if let keys = self.favoriteVideoKeys {
