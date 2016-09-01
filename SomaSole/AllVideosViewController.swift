@@ -182,6 +182,7 @@ class AllVideosViewController: UITableViewController, IndicatorInfoProvider, UIS
         
         setupNav()
         setupSearchBar()
+        setupTableView()
 
         startProgressHud()
         loadPublic()
