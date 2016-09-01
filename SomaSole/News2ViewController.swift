@@ -51,6 +51,12 @@ class News2ViewController: UIViewController {
     @IBOutlet var videoThumbnailViews: [VideoThumbnailView]!
     
     // methods
+    private func ui(block: () -> Void) {
+        dispatch_async(dispatch_get_main_queue()) {
+            block()
+        }
+    }
+    
     @objc private func tappedArticle() {
         performSegueWithIdentifier("articleSegue", sender: self)
     }
@@ -134,11 +140,17 @@ class News2ViewController: UIViewController {
     
     private func addWorkout(json: JSON) {
         workout = Workout(name: json["index"].stringValue, data: json["data"].dictionaryObject!)
-        workoutImageView.image = workout!.image
-        workoutImageView.workout = workout
-        let tap = UITapGestureRecognizer(target: self, action: #selector(tappedWorkout(_:)))
-        workoutImageView.userInteractionEnabled = true
-        workoutImageView.addGestureRecognizer(tap)
+        if let workout = workout {
+            workout.loadImage {
+                self.ui {
+                    self.workoutImageView.image = workout.image
+                }
+                self.workoutImageView.workout = workout
+                let tap = UITapGestureRecognizer(target: self, action: #selector(self.tappedWorkout(_:)))
+                self.workoutImageView.userInteractionEnabled = true
+                self.workoutImageView.addGestureRecognizer(tap)
+            }
+        }
     }
     
     private func loadFeatured() {
@@ -148,7 +160,7 @@ class News2ViewController: UIViewController {
             let featured = JSON(snapshot.value!)
             self.addArticles(featured["articles"])
             self.addVideos(featured["videos"])
-            self.addWorkout(featured["workout"])
+            self.addWorkout(featured["workout_new"])
         })
     }
     

@@ -87,8 +87,26 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate {
         self.reloadTableView()
     }
     
+//    private func loadPublicWorkouts() {
+//        FirebaseManager.sharedRootRef.child("workouts/public").observeEventType(.ChildAdded, withBlock: { snapshot in
+//            // load workouts
+//            let workout = Workout(name: snapshot.key, data: snapshot.value as! [String : AnyObject])
+//            workout.free = true
+//            self.workouts.append(workout)
+//            if let keys = self.favoriteWorkoutKeys {
+//                if keys.contains(workout.name) {
+//                    Workout.sharedFavorites.append(workout)
+//                }
+//            }
+//            
+//            self.stopProgressHud()
+//            self.reloadTableView()
+//        })
+//        
+//    }
+    
     private func loadPublicWorkouts() {
-        FirebaseManager.sharedRootRef.child("workouts/public").observeEventType(.ChildAdded, withBlock: { snapshot in
+        FirebaseManager.sharedRootRef.child("workouts_new/public").observeEventType(.ChildAdded, withBlock: { snapshot in
             // load workouts
             let workout = Workout(name: snapshot.key, data: snapshot.value as! [String : AnyObject])
             workout.free = true
@@ -99,8 +117,10 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate {
                 }
             }
             
-            self.stopProgressHud()
-            self.reloadTableView()
+            workout.loadImage {
+                self.stopProgressHud()
+                self.reloadTableView()
+            }
         })
         
     }

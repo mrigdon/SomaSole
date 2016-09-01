@@ -8,7 +8,7 @@
 
 import UIKit
 import Firebase
-import RealmSwift
+import SwiftString
 
 enum WorkoutTag: Int {
     case UpperBody, Core, LowerBody, TotalBody
@@ -54,12 +54,14 @@ class Workout: NSObject {
     
     static var sharedFavorites = [Workout]()
     
-    var image: UIImage
+    let imageDimensions: Int64 = 1 * 1300 * 670
+    
+    var image = UIImage()
     var name: String
     var time: Int
     var intensity: Int
     var workoutDescription: String
-    var circuits: [Circuit] = []
+    var circuits = [Circuit]()
     var tags = [WorkoutTag]()
     var numMovements = 0
     var favorite = false
@@ -70,11 +72,6 @@ class Workout: NSObject {
         self.time = data["time"] as! Int
         self.intensity = data["intensity"] as! Int
         self.workoutDescription = data["description"] as! String
-        
-        // init image
-        let base64String = data["image"] as! String
-        let decodedData = NSData(base64EncodedString: base64String, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters)
-        self.image = UIImage(data: decodedData!)!
         
         // init circuits
         let circuitsData = data["circuits"] as! [[String:AnyObject]]
@@ -89,6 +86,22 @@ class Workout: NSObject {
         for tagData in tagsData {
             self.tags.append(WorkoutTag(rawValue: tagData)!)
         }
+    }
+    
+    func loadImage(completion: () -> Void) {
+        let file = name.stringByReplacingOccurrencesOfString(" ", withString: "") + ".jpg"
+        let imageRef = FirebaseManager.sharedStorage.child("workouts").child(file)
+        imageRef.dataWithMaxSize(imageDimensions, completion: { data, error in
+            if error != nil {
+                // TODO: handle error
+                print(error)
+            } else if let data = data {
+                if let image = UIImage(data: data) {
+                    self.image = image
+                    completion()
+                }
+            }
+        })
     }
     
 }
