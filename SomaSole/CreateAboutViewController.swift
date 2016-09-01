@@ -188,7 +188,6 @@ class CreateAboutViewController: UIViewController {
                     NSUserDefaults.standardUserDefaults().setObject(User.sharedModel.dict(), forKey: "userData")
                     NSUserDefaults.standardUserDefaults().setObject(User.sharedModel.uid, forKey: "uid")
                     NSUserDefaults.standardUserDefaults().synchronize()
-                    User.sharedModel.uploadProfileImage()
                     self.stopProgressHud()
                     self.performSegueWithIdentifier("toMain", sender: self)
                 }
@@ -207,7 +206,6 @@ class CreateAboutViewController: UIViewController {
                             NSUserDefaults.standardUserDefaults().setObject(User.sharedModel.dict(), forKey: "userData")
                             NSUserDefaults.standardUserDefaults().setObject(User.sharedModel.uid, forKey: "uid")
                             NSUserDefaults.standardUserDefaults().synchronize()
-                            User.sharedModel.uploadProfileImage()
                             self.performSegueWithIdentifier("toMain", sender: self)
                         }
                     })

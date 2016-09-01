@@ -9,8 +9,6 @@
 import UIKit
 import IQKeyboardManagerSwift
 import Firebase
-import AWSCognito
-import AWSS3
 import SwiftyJSON
 import Alamofire
 import AVFoundation
@@ -73,18 +71,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    private func setupAWS() {
-        let credentialsProvider = AWSCognitoCredentialsProvider(
-            regionType:.USEast1,
-            identityPoolId:"us-east-1:d3bf8475-a252-4c2f-af5f-8a40d942ac30"
-        )
-        let configuration = AWSServiceConfiguration(
-            region:.USWest1,
-            credentialsProvider:credentialsProvider
-        )
-        AWSServiceManager.defaultServiceManager().defaultServiceConfiguration = configuration
-    }
-    
     private func setupIQManager() {
         IQKeyboardManager.sharedManager().enable = true
     }
@@ -99,7 +85,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
-        setupAWS()
         setupIQManager()
     
         return true

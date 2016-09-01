@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AWSS3
 import EPShapes
 import Firebase
 

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AWSS3
 import MBProgressHUD
 import FLAnimatedImage
 
@@ -44,21 +43,6 @@ class MovementDetailViewController: UIViewController {
         })
     }
     
-    func loadGif() {
-        // if not nil
-//        if let gif = self.movement!.gif {
-//            self.imageView.animateWithImageData(gif)
-//            self.stopProgressHud()
-//            return
-//        }
-//        
-//        // fetch first time
-//        movement!.loadGif({
-//            self.imageView.animateWithImageData(self.movement!.gif!)
-//            self.stopProgressHud()
-//        })
-    }
-    
     // uiviewcontroller
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,15 +76,5 @@ class MovementDetailViewController: UIViewController {
         imageView.stopAnimating()
         super.viewWillDisappear(animated)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

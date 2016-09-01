@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AWSS3
 import Firebase
 import RealmSwift
 
@@ -47,46 +46,6 @@ class Circuit: NSObject {
         }
         
         self.setup = Setup(data: data["setup"] as! [String:Int])
-    }
-    
-    func loadSetupImage(completion: () -> Void) {
-        // first try from realm
-        let realm = try! Realm()
-        let length = setup.long ? "long" : "short"
-        let realmImage = realm.objects(ROImage).filter("title = 'setup\(setup.imageIndex)\(length)'")
-        
-        // get from s3 if not in realm, then add to realm
-        if realmImage.count != 0 {
-            setup.image = UIImage(data: realmImage[0].data)
-            completion()
-        } else {
-            let transferManager = AWSS3TransferManager.defaultS3TransferManager()
-            let downloadFileString = "setup\(setup.imageIndex)\(length).jpg"
-            let downloadingFileURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).URLByAppendingPathComponent("downloaded-" + downloadFileString)
-            let downloadRequest: AWSS3TransferManagerDownloadRequest = AWSS3TransferManagerDownloadRequest()
-            downloadRequest.bucket = "somasole/setups"
-            downloadRequest.key = downloadFileString
-            downloadRequest.downloadingFileURL = downloadingFileURL
-            
-            transferManager.download(downloadRequest).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { task -> AnyObject? in
-                
-                if task.result != nil {
-                    let downloadData = NSData(contentsOfURL: downloadingFileURL)
-                    self.setup.image = UIImage(data: downloadData!)
-                    completion()
-                    
-                    // cache to realm
-                    let realmImage = ROImage()
-                    realmImage.title = "setup\(self.setup.imageIndex)\(length)"
-                    realmImage.data = downloadData!
-                    try! realm.write {
-                        realm.add(realmImage)
-                    }
-                }
-                
-                return nil
-            })
-        }
     }
     
 }
@@ -132,32 +91,4 @@ class Workout: NSObject {
         }
     }
     
-    func loadImage(reloadTableView: () -> Void) {
-        let transferManager = AWSS3TransferManager.defaultS3TransferManager()
-        let downloadFileString = self.name + ".jpg"
-        let downloadingFileURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).URLByAppendingPathComponent("downloaded-" + downloadFileString)
-        let downloadRequest: AWSS3TransferManagerDownloadRequest = AWSS3TransferManagerDownloadRequest()
-        downloadRequest.bucket = "somasole/workouts"
-        downloadRequest.key = downloadFileString
-        downloadRequest.downloadingFileURL = downloadingFileURL
-        
-        transferManager.download(downloadRequest).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { task -> AnyObject? in
-            
-            if task.result != nil {
-                let data = NSData(contentsOfURL: downloadingFileURL)
-                self.image =  UIImage(data: data!)!
-                reloadTableView()
-            }
-            
-            return nil
-        })
-    }
-    
-    func printAll() {
-        print("index: \(index)")
-        print("name: \(name)")
-        print("time: \(time)")
-        print("intensity: \(intensity)")
-        print("description: \(workoutDescription)")
-    }
 }
