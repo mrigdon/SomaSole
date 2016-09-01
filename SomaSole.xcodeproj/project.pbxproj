@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2964BECF70D5E766CDDF32FF /* Pods_SomaSole.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10769821E015672B332BE0A5 /* Pods_SomaSole.framework */; };
+		0419AC687494511C285B337C /* Pods_SomaSole.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E5437EF51DAC368371EA165 /* Pods_SomaSole.framework */; };
+		128C3D4F80DCB0D44F5B7DCB /* Pods_SomaSoleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34125316FA5F17CCD7C5CC82 /* Pods_SomaSoleUITests.framework */; };
 		6201ABC71CF9EEC10099B18D /* AllVideosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6201ABC61CF9EEC10099B18D /* AllVideosViewController.swift */; };
 		6215F3091CC9704C00E2A995 /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6215F3081CC9704C00E2A995 /* TagCell.swift */; };
 		6215F30B1CC9805900E2A995 /* WorkoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6215F30A1CC9805900E2A995 /* WorkoutCell.swift */; };
@@ -216,6 +217,7 @@
 		62F7ED781CF80DBF002A2C47 /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F7ED771CF80DBF002A2C47 /* ArticleViewController.swift */; };
 		62FE88041CE69BD700A9BB15 /* FinishedWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FE88031CE69BD700A9BB15 /* FinishedWorkoutViewController.swift */; };
 		62FE88071CE6AC0800A9BB15 /* MovementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FE88061CE6AC0800A9BB15 /* MovementsViewController.swift */; };
+		ADCA167E548C2BF0C33A1C8D /* Pods_SomaSoleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D8075297598C5D5BAEDA4F9 /* Pods_SomaSoleTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -236,8 +238,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		10769821E015672B332BE0A5 /* Pods_SomaSole.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SomaSole.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		442FE767159F91E46B63C384 /* Pods-SomaSole.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SomaSole.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SomaSole/Pods-SomaSole.debug.xcconfig"; sourceTree = "<group>"; };
+		1554E3D417E2CA3F27489E0E /* Pods-SomaSoleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SomaSoleUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SomaSoleUITests/Pods-SomaSoleUITests.release.xcconfig"; sourceTree = "<group>"; };
+		2817F0759D43C33CC8F1561B /* Pods-SomaSole.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SomaSole.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SomaSole/Pods-SomaSole.debug.xcconfig"; sourceTree = "<group>"; };
+		34125316FA5F17CCD7C5CC82 /* Pods_SomaSoleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SomaSoleUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A22AF1F29D59DDF3DAE5914 /* Pods-SomaSoleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SomaSoleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SomaSoleTests/Pods-SomaSoleTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4E5437EF51DAC368371EA165 /* Pods_SomaSole.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SomaSole.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6201ABC61CF9EEC10099B18D /* AllVideosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllVideosViewController.swift; sourceTree = "<group>"; };
 		6215F3081CC9704C00E2A995 /* TagCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
 		6215F30A1CC9805900E2A995 /* WorkoutCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutCell.swift; sourceTree = "<group>"; };
@@ -453,7 +458,10 @@
 		62F7ED771CF80DBF002A2C47 /* ArticleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
 		62FE88031CE69BD700A9BB15 /* FinishedWorkoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinishedWorkoutViewController.swift; sourceTree = "<group>"; };
 		62FE88061CE6AC0800A9BB15 /* MovementsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementsViewController.swift; sourceTree = "<group>"; };
-		6DFBD11EA5E8CEC480F43C0B /* Pods-SomaSole.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SomaSole.release.xcconfig"; path = "Pods/Target Support Files/Pods-SomaSole/Pods-SomaSole.release.xcconfig"; sourceTree = "<group>"; };
+		6D8075297598C5D5BAEDA4F9 /* Pods_SomaSoleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SomaSoleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E64284B8BD77EE846E33FDE /* Pods-SomaSoleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SomaSoleUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SomaSoleUITests/Pods-SomaSoleUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		8C77BD087C626EC740C0A822 /* Pods-SomaSole.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SomaSole.release.xcconfig"; path = "Pods/Target Support Files/Pods-SomaSole/Pods-SomaSole.release.xcconfig"; sourceTree = "<group>"; };
+		9327EA9EE190F60F51C5FA60 /* Pods-SomaSoleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SomaSoleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SomaSoleTests/Pods-SomaSoleTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -461,8 +469,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2964BECF70D5E766CDDF32FF /* Pods_SomaSole.framework in Frameworks */,
 				62B4AAA61D4C2A6300DD1273 /* StoreKit.framework in Frameworks */,
+				0419AC687494511C285B337C /* Pods_SomaSole.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,6 +478,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADCA167E548C2BF0C33A1C8D /* Pods_SomaSoleTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,17 +486,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				128C3D4F80DCB0D44F5B7DCB /* Pods_SomaSoleUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		13C10297EEBEF1EB32EF22E9 /* Pods */ = {
+		04E20524128C16F76D68D863 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				442FE767159F91E46B63C384 /* Pods-SomaSole.debug.xcconfig */,
-				6DFBD11EA5E8CEC480F43C0B /* Pods-SomaSole.release.xcconfig */,
+				2817F0759D43C33CC8F1561B /* Pods-SomaSole.debug.xcconfig */,
+				8C77BD087C626EC740C0A822 /* Pods-SomaSole.release.xcconfig */,
+				3A22AF1F29D59DDF3DAE5914 /* Pods-SomaSoleTests.debug.xcconfig */,
+				9327EA9EE190F60F51C5FA60 /* Pods-SomaSoleTests.release.xcconfig */,
+				7E64284B8BD77EE846E33FDE /* Pods-SomaSoleUITests.debug.xcconfig */,
+				1554E3D417E2CA3F27489E0E /* Pods-SomaSoleUITests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -509,8 +523,8 @@
 				621D22C21CB2DC3F00FE7581 /* SomaSoleTests */,
 				621D22CD1CB2DC3F00FE7581 /* SomaSoleUITests */,
 				621D22AA1CB2DC3E00FE7581 /* Products */,
-				13C10297EEBEF1EB32EF22E9 /* Pods */,
 				9E5172BD2F5AD716C409A3BF /* Frameworks */,
+				04E20524128C16F76D68D863 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -830,7 +844,9 @@
 			isa = PBXGroup;
 			children = (
 				62B4AAA51D4C2A6300DD1273 /* StoreKit.framework */,
-				10769821E015672B332BE0A5 /* Pods_SomaSole.framework */,
+				4E5437EF51DAC368371EA165 /* Pods_SomaSole.framework */,
+				6D8075297598C5D5BAEDA4F9 /* Pods_SomaSoleTests.framework */,
+				34125316FA5F17CCD7C5CC82 /* Pods_SomaSoleUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -842,12 +858,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 621D22D31CB2DC3F00FE7581 /* Build configuration list for PBXNativeTarget "SomaSole" */;
 			buildPhases = (
-				9003D7BCF386D9BCF1AE4A29 /* Check Pods Manifest.lock */,
+				E44F18FA8199AF334F07C41A /* [CP] Check Pods Manifest.lock */,
 				621D22A51CB2DC3E00FE7581 /* Sources */,
 				621D22A61CB2DC3E00FE7581 /* Frameworks */,
 				621D22A71CB2DC3E00FE7581 /* Resources */,
-				8BB12ADCEFBB4472939E71A5 /* Embed Pods Frameworks */,
-				CEB6C797C665E0097DE3EE6B /* Copy Pods Resources */,
+				5E671008172493F5BACFDAB1 /* [CP] Embed Pods Frameworks */,
+				D253E68BE25F0ADFB4B00C8E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -862,9 +878,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 621D22D61CB2DC3F00FE7581 /* Build configuration list for PBXNativeTarget "SomaSoleTests" */;
 			buildPhases = (
+				F60CB5ED5AA4AD1305864F44 /* [CP] Check Pods Manifest.lock */,
 				621D22BB1CB2DC3F00FE7581 /* Sources */,
 				621D22BC1CB2DC3F00FE7581 /* Frameworks */,
 				621D22BD1CB2DC3F00FE7581 /* Resources */,
+				DB3C06E3E2A92DD3DBD85C00 /* [CP] Embed Pods Frameworks */,
+				4C06457F3C8382F1BDBE4867 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -880,9 +899,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 621D22D91CB2DC3F00FE7581 /* Build configuration list for PBXNativeTarget "SomaSoleUITests" */;
 			buildPhases = (
+				C48C590F21A0FAAC7EA9A95C /* [CP] Check Pods Manifest.lock */,
 				621D22C61CB2DC3F00FE7581 /* Sources */,
 				621D22C71CB2DC3F00FE7581 /* Frameworks */,
 				621D22C81CB2DC3F00FE7581 /* Resources */,
+				1A4D2E2DD80649642D7E6078 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1133,14 +1154,44 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		8BB12ADCEFBB4472939E71A5 /* Embed Pods Frameworks */ = {
+		1A4D2E2DD80649642D7E6078 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SomaSoleUITests/Pods-SomaSoleUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4C06457F3C8382F1BDBE4867 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SomaSoleTests/Pods-SomaSoleTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5E671008172493F5BACFDAB1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1148,14 +1199,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SomaSole/Pods-SomaSole-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9003D7BCF386D9BCF1AE4A29 /* Check Pods Manifest.lock */ = {
+		C48C590F21A0FAAC7EA9A95C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1163,19 +1214,64 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		CEB6C797C665E0097DE3EE6B /* Copy Pods Resources */ = {
+		D253E68BE25F0ADFB4B00C8E /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SomaSole/Pods-SomaSole-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DB3C06E3E2A92DD3DBD85C00 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SomaSoleTests/Pods-SomaSoleTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E44F18FA8199AF334F07C41A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F60CB5ED5AA4AD1305864F44 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1366,7 +1462,7 @@
 		};
 		621D22D41CB2DC3F00FE7581 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 442FE767159F91E46B63C384 /* Pods-SomaSole.debug.xcconfig */;
+			baseConfigurationReference = 2817F0759D43C33CC8F1561B /* Pods-SomaSole.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1386,7 +1482,7 @@
 		};
 		621D22D51CB2DC3F00FE7581 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6DFBD11EA5E8CEC480F43C0B /* Pods-SomaSole.release.xcconfig */;
+			baseConfigurationReference = 8C77BD087C626EC740C0A822 /* Pods-SomaSole.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1405,6 +1501,7 @@
 		};
 		621D22D71CB2DC3F00FE7581 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3A22AF1F29D59DDF3DAE5914 /* Pods-SomaSoleTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = SomaSoleTests/Info.plist;
@@ -1417,6 +1514,7 @@
 		};
 		621D22D81CB2DC3F00FE7581 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9327EA9EE190F60F51C5FA60 /* Pods-SomaSoleTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = SomaSoleTests/Info.plist;
@@ -1429,6 +1527,7 @@
 		};
 		621D22DA1CB2DC3F00FE7581 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7E64284B8BD77EE846E33FDE /* Pods-SomaSoleUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = SomaSoleUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1441,6 +1540,7 @@
 		};
 		621D22DB1CB2DC3F00FE7581 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1554E3D417E2CA3F27489E0E /* Pods-SomaSoleUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = SomaSoleUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

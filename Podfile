@@ -12,16 +12,20 @@ target 'SomaSole' do
     pod 'MBProgressHUD', '~> 0.9.2'
     pod 'ALCameraViewController'
     pod 'TagListView', '~> 1.0'
+    
     pod 'AWSCore'
     pod 'AWSS3'
     pod 'AWSCognito'
+    
     pod 'KASlideShow'
     pod 'RealmSwift'
     pod 'youtube-ios-player-helper', '~> 0.1.4'
     pod 'EPShapes'
+    
     pod 'FBSDKCoreKit'
     pod 'FBSDKShareKit'
     pod 'FBSDKLoginKit'
+    
     pod 'Alamofire', '~> 3.4'
     pod 'Toucan'
     pod 'Masonry'

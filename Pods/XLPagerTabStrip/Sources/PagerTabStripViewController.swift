@@ -54,7 +54,7 @@ public protocol PagerTabStripDataSource: class {
 public class PagerTabStripViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet lazy public var containerView: UIScrollView! = { [unowned self] in
-        let containerView = UIScrollView(frame: CGRectMake(0, self.containerView.layer.bounds.origin.y, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds)))
+        let containerView = UIScrollView(frame: CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds)))
         containerView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
         return containerView
     }()
@@ -135,12 +135,12 @@ public class PagerTabStripViewController: UIViewController, UIScrollViewDelegate
             tmpViewControllers[currentIndex] = fromChildVC
             tmpViewControllers[fromIndex] = currentChildVC
             pagerTabStripChildViewControllersForScrolling = tmpViewControllers
-            containerView.setContentOffset(CGPointMake(pageOffsetForChildIndex(index: fromIndex), self.containerView.layer.bounds.origin.y), animated: false)
+            containerView.setContentOffset(CGPointMake(pageOffsetForChildIndex(index: fromIndex), 0), animated: false)
             (navigationController?.view ?? view).userInteractionEnabled = false
-            containerView.setContentOffset(CGPointMake(pageOffsetForChildIndex(index: index), self.containerView.layer.bounds.origin.y), animated: true)
+            containerView.setContentOffset(CGPointMake(pageOffsetForChildIndex(index: index), 0), animated: true)
         }
         else {
-            containerView.setContentOffset(CGPointMake(pageOffsetForChildIndex(index: index), self.containerView.layer.bounds.origin.y), animated: animated)
+            containerView.setContentOffset(CGPointMake(pageOffsetForChildIndex(index: index), 0), animated: animated)
         }
     }
     
@@ -215,13 +215,13 @@ public class PagerTabStripViewController: UIViewController, UIScrollViewDelegate
             let pageOffsetForChild = pageOffsetForChildIndex(index: index)
             if fabs(containerView.contentOffset.x - pageOffsetForChild) < CGRectGetWidth(containerView.bounds) {
                 if let _ = childController.parentViewController {
-                    childController.view.frame = CGRectMake(offsetForChildIndex(index), self.containerView.layer.bounds.origin.y, CGRectGetWidth(view.bounds), CGRectGetHeight(containerView.bounds))
+                    childController.view.frame = CGRectMake(offsetForChildIndex(index), 0, CGRectGetWidth(view.bounds), CGRectGetHeight(containerView.bounds))
                     childController.view.autoresizingMask = [.FlexibleHeight, .FlexibleWidth]
                 }
                 else {
                     addChildViewController(childController)
                     childController.beginAppearanceTransition(true, animated: false)
-                    childController.view.frame = CGRectMake(offsetForChildIndex(index), self.containerView.layer.bounds.origin.y, CGRectGetWidth(view.bounds), CGRectGetHeight(containerView.bounds))
+                    childController.view.frame = CGRectMake(offsetForChildIndex(index), 0, CGRectGetWidth(view.bounds), CGRectGetHeight(containerView.bounds))
                     childController.view.autoresizingMask = [.FlexibleHeight, .FlexibleWidth]
                     containerView.addSubview(childController.view)
                     childController.didMoveToParentViewController(self)

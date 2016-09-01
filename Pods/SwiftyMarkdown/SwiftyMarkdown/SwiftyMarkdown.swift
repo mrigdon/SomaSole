@@ -18,8 +18,7 @@ public protocol FontProperties {
 
 /**
 A struct defining the styles that can be applied to the parsed Markdown. The `fontName` property is optional, and if it's not set then the `fontName` property of the Body style will be applied.
-The optional 'fontSize' property can be used to specify a fixed font size, instead of the default dynamic font size.
- 
+
 If that is not set, then the system default will be used.
 */
 public struct BasicStyles : FontProperties {
