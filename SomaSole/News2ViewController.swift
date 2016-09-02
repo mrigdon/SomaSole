@@ -45,8 +45,8 @@ class News2ViewController: UIViewController {
     // outlets
     @IBOutlet weak var slideshow: KASlideShow!
     @IBOutlet weak var pageControl: UIPageControl!
-    @IBOutlet weak var workoutImageView: QuickStartImageView!
-    @IBOutlet weak var workoutImageViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var workoutView: QuickStartView!
+    @IBOutlet weak var workoutViewHeight: NSLayoutConstraint!
     @IBOutlet weak var slideshowHeight: NSLayoutConstraint!
     @IBOutlet var videoThumbnailViews: [VideoThumbnailView]!
     
@@ -73,14 +73,23 @@ class News2ViewController: UIViewController {
         }
     }
     
-    func startProgressHud() {
+    private func startProgressHud() {
         MBProgressHUD.showHUDAddedTo(self.view, animated: true)
     }
     
-    func stopProgressHud() {
+    private func stopProgressHud() {
         dispatch_async(dispatch_get_main_queue(), {
             MBProgressHUD.hideHUDForView(self.view, animated: true)
         })
+    }
+    
+    private func setupNavbar() {
+        self.navigationController?.navigationBar.titleTextAttributes = [
+            NSForegroundColorAttributeName: UIColor.blackColor(),
+            NSFontAttributeName: UIFont(name: "AvenirNext-UltraLight", size: 24)!
+        ]
+        navigationController?.navigationBar.tintColor = UIColor.blackColor()
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
     }
     
     private func setupSlideshow() {
@@ -92,6 +101,7 @@ class News2ViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(tappedArticle))
         slideshow.addGestureRecognizer(tap)
         slideshow.delegate = self
+        NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: #selector(nextSlide), userInfo: nil, repeats: true)
     }
     
     private func setupPageControl() {
@@ -100,7 +110,8 @@ class News2ViewController: UIViewController {
     }
     
     private func setupWorkout() {
-        workoutImageViewHeight.constant = (screenWidth - 16) * workoutRatio
+        workoutViewHeight.constant = (screenWidth - 16) * workoutRatio
+        workoutView.subview = WorkoutPlaceholderView()
     }
     
     private func setupVideos() {
@@ -142,13 +153,13 @@ class News2ViewController: UIViewController {
         workout = Workout(name: json["index"].stringValue, data: json["data"].dictionaryObject!)
         if let workout = workout {
             workout.loadImage {
-                self.ui {
-                    self.workoutImageView.image = workout.image
-                }
-                self.workoutImageView.workout = workout
+                let workoutImageView = QuickStartImageView(image: workout.image)
+                workoutImageView.image = workout.image
+                workoutImageView.workout = workout
                 let tap = UITapGestureRecognizer(target: self, action: #selector(self.tappedWorkout(_:)))
-                self.workoutImageView.userInteractionEnabled = true
-                self.workoutImageView.addGestureRecognizer(tap)
+                workoutImageView.userInteractionEnabled = true
+                workoutImageView.addGestureRecognizer(tap)
+                self.workoutView.subview = workoutImageView
             }
         }
     }
@@ -170,27 +181,18 @@ class News2ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // nav bar setup
-        self.navigationController?.navigationBar.titleTextAttributes = [
-            NSForegroundColorAttributeName: UIColor.blackColor(),
-            NSFontAttributeName: UIFont(name: "AvenirNext-UltraLight", size: 24)!
-        ]
-        navigationController?.navigationBar.tintColor = UIColor.blackColor()
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
         
-        // add'l setup
+        setupNavbar()
         setupSlideshow()
         setupPageControl()
         setupWorkout()
         setupVideos()
+        
         loadFeatured()
-        NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: #selector(nextSlide), userInfo: nil, repeats: true)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

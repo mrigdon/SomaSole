@@ -9,7 +9,6 @@
 import UIKit
 import youtube_ios_player_helper
 import Firebase
-import Masonry
 import AlamofireImage
 import Alamofire
 import MBProgressHUD

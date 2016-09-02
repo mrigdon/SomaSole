@@ -21,7 +21,6 @@ target 'SomaSole' do
     pod 'EPShapes'
     pod 'Alamofire', '~> 3.4'
     pod 'Toucan'
-    pod 'Masonry'
     pod 'SwiftyMarkdown'
     pod 'SwiftyJSON'
     pod 'SwiftString'
@@ -29,6 +28,8 @@ target 'SomaSole' do
     pod 'KDCircularProgress'
     pod 'MZTimerLabel'
     pod 'FLAnimatedImage', '~> 1.0'
+    pod 'Shimmer'
+    pod 'SnapKit'
 
 end
 

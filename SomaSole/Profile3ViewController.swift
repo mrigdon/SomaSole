@@ -10,10 +10,10 @@ import UIKit
 import MBProgressHUD
 import Firebase
 import Toucan
-import Masonry
 import SwiftString
 import Alamofire
 import ALCameraViewController
+import SnapKit
 
 extension Float {
     var heightString: String {
@@ -371,8 +371,8 @@ class Profile3ViewController: UITableViewController {
         profileImageView.userInteractionEnabled = true
         profileImageView.addGestureRecognizer(tap)
         tableHeaderView.addSubview(profileImageView)
-        profileImageView.mas_makeConstraints { make in
-            make.center.equalTo()(tableHeaderView)
+        profileImageView.snp_makeConstraints { make in
+            make.center.equalTo(tableHeaderView)
         }
         tableView.tableHeaderView = tableHeaderView
     }

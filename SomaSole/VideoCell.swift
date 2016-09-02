@@ -8,7 +8,7 @@
 
 import UIKit
 import youtube_ios_player_helper
-import Masonry
+import SnapKit
 
 class VideoCell: UITableViewCell {
     
@@ -95,20 +95,20 @@ class VideoOverlayCell: UITableViewCell {
         dispatch_async(dispatch_get_main_queue(), {
             // overlay view
             self.addSubview(self.overlayView)
-            self.overlayView.mas_makeConstraints { make in
-                make.top.equalTo()(self.mas_top)
-                make.right.equalTo()(self.mas_right)
-                make.bottom.equalTo()(self.mas_bottom)
-                make.left.equalTo()(self.mas_left)
+            self.overlayView.snp_makeConstraints { make in
+                make.top.equalTo(self.snp_top)
+                make.right.equalTo(self.snp_right)
+                make.bottom.equalTo(self.snp_bottom)
+                make.left.equalTo(self.snp_left)
             }
             self.bringSubviewToFront(self.overlayView)
             
             // circle view
             self.addSubview(self.circleView)
-            self.circleView.mas_makeConstraints { make in
-                make.center.equalTo()(self)
-                make.width.equalTo()(100)
-                make.height.equalTo()(100)
+            self.circleView.snp_makeConstraints { make in
+                make.center.equalTo(self)
+                make.width.equalTo(100)
+                make.height.equalTo(100)
             }
             self.bringSubviewToFront(self.circleView)
         })
@@ -130,10 +130,10 @@ class VideoOverlayCell: UITableViewCell {
         circleView.backgroundColor = UIColor.whiteColor()
         circleView.layer.cornerRadius = 50
         circleView.addSubview(lockImageView)
-        lockImageView.mas_makeConstraints { make in
-            make.center.equalTo()(self.circleView)
-            make.center.height().equalTo()(60)
-            make.center.width().equalTo()(60)
+        lockImageView.snp_makeConstraints { make in
+            make.center.equalTo(self.circleView)
+            make.center.height.equalTo(60)
+            make.center.width.equalTo(60)
         }
         setPurchaseOverlay()
     }

@@ -9,6 +9,7 @@
 import UIKit
 import EPShapes
 import Firebase
+import SnapKit
 
 extension UIColor {
     static func goldColor() -> UIColor {
@@ -94,20 +95,20 @@ class WorkoutOverlayCell: UITableViewCell {
         dispatch_async(dispatch_get_main_queue(), {
             // overlay view
             self.addSubview(self.overlayView)
-            self.overlayView.mas_makeConstraints { make in
-                make.top.equalTo()(self.mas_top)
-                make.right.equalTo()(self.mas_right)
-                make.bottom.equalTo()(self.mas_bottom)
-                make.left.equalTo()(self.mas_left)
+            self.overlayView.snp_makeConstraints { make in
+                make.top.equalTo(self)
+                make.right.equalTo(self)
+                make.bottom.equalTo(self)
+                make.left.equalTo(self)
             }
             self.bringSubviewToFront(self.overlayView)
             
             // circle view
             self.addSubview(self.circleView)
-            self.circleView.mas_makeConstraints { make in
-                make.center.equalTo()(self)
-                make.width.equalTo()(100)
-                make.height.equalTo()(100)
+            self.circleView.snp_makeConstraints { make in
+                make.center.equalTo(self)
+                make.width.equalTo(100)
+                make.height.equalTo(100)
             }
             self.bringSubviewToFront(self.circleView)
         })
@@ -120,10 +121,10 @@ class WorkoutOverlayCell: UITableViewCell {
         circleView.backgroundColor = UIColor.whiteColor()
         circleView.layer.cornerRadius = 50
         circleView.addSubview(lockImageView)
-        lockImageView.mas_makeConstraints { make in
-            make.center.equalTo()(self.circleView)
-            make.height.equalTo()(60)
-            make.width.equalTo()(60)
+        lockImageView.snp_makeConstraints { make in
+            make.center.equalTo(self.circleView)
+            make.height.equalTo(60)
+            make.width.equalTo(60)
         }
         setPurchaseOverlay()
     }
