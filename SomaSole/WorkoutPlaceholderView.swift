@@ -12,6 +12,9 @@ import SnapKit
 
 class WorkoutPlaceholderView: UIView {
     
+    private let backgroundColorRatio: CGFloat = 220/255
+    private let contentViewColorRatio: CGFloat = 170/255
+    
     private let shimmer = FBShimmeringView()
     private let dimension = 50
     private let shimmeringSpeed: CGFloat = 25
@@ -20,15 +23,20 @@ class WorkoutPlaceholderView: UIView {
     
     init() {
         super.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-        self.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1.0)
-        self.addSubview(shimmer)
+        
+        backgroundColor = UIColor(red: backgroundColorRatio, green: backgroundColorRatio, blue: backgroundColorRatio, alpha: 1.0)
+        addSubview(shimmer)
         shimmer.snp_makeConstraints(closure: { make in
             make.height.equalTo(dimension)
             make.width.equalTo(dimension)
             make.center.equalTo(self)
         })
+        
         let image = UIImage(named: "exercise")
         let imageView = UIImageView(image: image)
+        imageView.image = imageView.image!.imageWithRenderingMode(.AlwaysTemplate)
+        imageView.tintColor = UIColor(red: contentViewColorRatio, green: contentViewColorRatio, blue: contentViewColorRatio, alpha: 1.0)
+        
         shimmer.contentView = imageView
         shimmer.shimmering = shimmering
         shimmer.shimmeringSpeed = shimmeringSpeed
