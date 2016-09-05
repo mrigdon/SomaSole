@@ -180,6 +180,8 @@
 		621D22CF1CB2DC3F00FE7581 /* SomaSoleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621D22CE1CB2DC3F00FE7581 /* SomaSoleUITests.swift */; };
 		621D22DD1CB2DC7C00FE7581 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 621D22DC1CB2DC7C00FE7581 /* Podfile */; };
 		621DA9641D15FE2E002DF0AF /* Profile3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621DA9631D15FE2E002DF0AF /* Profile3ViewController.swift */; };
+		6220673F1D7DFFD700B82113 /* bells.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6220673E1D7DFFD700B82113 /* bells.wav */; };
+		622067411D7DFFFF00B82113 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622067401D7DFFFF00B82113 /* SoundManager.swift */; };
 		622441B51D790060002F454B /* WorkoutPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622441B41D790060002F454B /* WorkoutPlaceholderView.swift */; };
 		622878211D41CA5800D23E5C /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622878201D41CA5800D23E5C /* TermsViewController.swift */; };
 		6229FF821CEA518400838B68 /* MovementDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6229FF811CEA518400838B68 /* MovementDetailViewController.swift */; };
@@ -422,6 +424,8 @@
 		621D22D01CB2DC3F00FE7581 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		621D22DC1CB2DC7C00FE7581 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		621DA9631D15FE2E002DF0AF /* Profile3ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile3ViewController.swift; sourceTree = "<group>"; };
+		6220673E1D7DFFD700B82113 /* bells.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bells.wav; sourceTree = "<group>"; };
+		622067401D7DFFFF00B82113 /* SoundManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		622441B41D790060002F454B /* WorkoutPlaceholderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutPlaceholderView.swift; sourceTree = "<group>"; };
 		622878201D41CA5800D23E5C /* TermsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		6229FF811CEA518400838B68 /* MovementDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementDetailViewController.swift; sourceTree = "<group>"; };
@@ -546,6 +550,7 @@
 		621D22AB1CB2DC3E00FE7581 /* SomaSole */ = {
 			isa = PBXGroup;
 			children = (
+				6220673D1D7DFFBC00B82113 /* Sounds */,
 				626FBED01D2C650C005B592B /* GIF */,
 				627A5B371CC1B58C0081BBFE /* UI */,
 				626063911CBAC4CB00B1AF3C /* Models */,
@@ -591,6 +596,14 @@
 				62A8DF181D1F1EA40024D4B3 /* ChangePasswordViewController.swift */,
 			);
 			name = Profile;
+			sourceTree = "<group>";
+		};
+		6220673D1D7DFFBC00B82113 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				6220673E1D7DFFD700B82113 /* bells.wav */,
+			);
+			name = Sounds;
 			sourceTree = "<group>";
 		};
 		623DECDD1CF692A700EA1736 /* News */ = {
@@ -811,6 +824,7 @@
 				62915B841D2C155C0012A274 /* VideoThumbnailView.swift */,
 				6215F30A1CC9805900E2A995 /* WorkoutCell.swift */,
 				622441B41D790060002F454B /* WorkoutPlaceholderView.swift */,
+				622067401D7DFFFF00B82113 /* SoundManager.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -992,6 +1006,7 @@
 				621708B71D459E7800944715 /* Squat Side Punch.gif in Resources */,
 				621708D91D459E7800944715 /* Y-Raise.gif in Resources */,
 				6217087D1D459E7800944715 /* Lift and Twist (Left Side).gif in Resources */,
+				6220673F1D7DFFD700B82113 /* bells.wav in Resources */,
 				621708A71D459E7800944715 /* Seated Low Row.gif in Resources */,
 				621708611D459E7800944715 /* Glute Kick-Up (Left Leg).gif in Resources */,
 				621708B41D459E7800944715 /* Split Squat (Right Leg Up).gif in Resources */,
@@ -1297,6 +1312,7 @@
 				626063931CBAC4EF00B1AF3C /* User.swift in Sources */,
 				62BBCED31D18E09700E01DE9 /* News2ViewController.swift in Sources */,
 				624DBB781D2DF86B0066ECB8 /* CustomPaceViewController.swift in Sources */,
+				622067411D7DFFFF00B82113 /* SoundManager.swift in Sources */,
 				62FE88071CE6AC0800A9BB15 /* MovementsViewController.swift in Sources */,
 				624A94E81CB7463E00A8D21A /* LoginViewController.swift in Sources */,
 				62F07E161D111A9B0028D45D /* OverlayView.swift in Sources */,

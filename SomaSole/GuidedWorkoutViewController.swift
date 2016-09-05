@@ -104,6 +104,7 @@ class GuidedWorkoutViewController: UIViewController {
                         self.progressView.setColors(UIColor.progressGrayColor(), UIColor.progressGrayColor(), UIColor.progressGrayColor())
                         self.progressView.trackColor = UIColor.clearColor()
                         self.progressView.angle = 0
+                        SoundManager.sharedManager.playSound(named: "bells")
                         self.beginMovementInSet(circuitIndex, setIndex: setIndex, movementIndex: movementIndex + 1, completedSet: completedSet)
                     })
                 }
@@ -195,7 +196,6 @@ class GuidedWorkoutViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
