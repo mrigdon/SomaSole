@@ -557,7 +557,7 @@
 				627A5B371CC1B58C0081BBFE /* UI */,
 				626063911CBAC4CB00B1AF3C /* Models */,
 				6201ABC81CF9EECA0099B18D /* Videos */,
-				623DECDD1CF692A700EA1736 /* News */,
+				623DECDD1CF692A700EA1736 /* Featured */,
 				62FE88051CE6ABE300A9BB15 /* Movements */,
 				628DB7391CBDE4680048F09C /* Workouts */,
 				621D22EF1CB2F65D00FE7581 /* Profile */,
@@ -608,13 +608,13 @@
 			name = Sounds;
 			sourceTree = "<group>";
 		};
-		623DECDD1CF692A700EA1736 /* News */ = {
+		623DECDD1CF692A700EA1736 /* Featured */ = {
 			isa = PBXGroup;
 			children = (
 				62F7ED771CF80DBF002A2C47 /* ArticleViewController.swift */,
 				62BBCED21D18E09700E01DE9 /* News2ViewController.swift */,
 			);
-			name = News;
+			name = Featured;
 			sourceTree = "<group>";
 		};
 		626063911CBAC4CB00B1AF3C /* Models */ = {

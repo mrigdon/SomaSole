@@ -9,7 +9,6 @@
 import UIKit
 import KASlideShow
 import youtube_ios_player_helper
-import MBProgressHUD
 import Firebase
 import SwiftyJSON
 import Alamofire
@@ -41,14 +40,14 @@ class News2ViewController: UIViewController {
     var setupsLoaded = false
     var movementsLoaded = false
     var selectedVideo: Video?
+    var slideshow = KASlideShow()
+    var pageControl = UIPageControl()
 
     // outlets
-    @IBOutlet weak var slideshow: KASlideShow!
-    @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var slideshowView: QuickStartView!
     @IBOutlet weak var workoutView: QuickStartView!
     @IBOutlet weak var workoutViewHeight: NSLayoutConstraint!
     @IBOutlet weak var slideshowHeight: NSLayoutConstraint!
-//    @IBOutlet var videoThumbnailViews: [VideoThumbnailView]!
     @IBOutlet var videoThumbnailViews: [QuickStartView]!
     
     // methods
@@ -74,16 +73,6 @@ class News2ViewController: UIViewController {
         }
     }
     
-    private func startProgressHud() {
-        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-    }
-    
-    private func stopProgressHud() {
-        dispatch_async(dispatch_get_main_queue(), {
-            MBProgressHUD.hideHUDForView(self.view, animated: true)
-        })
-    }
-    
     private func setupNavbar() {
         self.navigationController?.navigationBar.titleTextAttributes = [
             NSForegroundColorAttributeName: UIColor.blackColor(),
@@ -94,6 +83,10 @@ class News2ViewController: UIViewController {
     }
     
     private func setupSlideshow() {
+        let placeholder = WorkoutPlaceholderView()
+        slideshowView.delegate = placeholder
+        slideshowView.subview = placeholder
+        
         slideshowHeight.constant = screenWidth * slideshowRatio
         slideshow.transitionDuration = 1
         slideshow.transitionType = .Slide
@@ -118,8 +111,6 @@ class News2ViewController: UIViewController {
     }
     
     private func setupVideos() {
-//        videoThumbnailViews[0].labelBackgroundView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
-//        videoThumbnailViews[1].labelBackgroundView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
         for view in videoThumbnailViews {
             let placeholder = WorkoutPlaceholderView()
             view.delegate = placeholder
@@ -133,6 +124,12 @@ class News2ViewController: UIViewController {
             articles.append(article)
             slideshow.addImage(article.textImage)
             pageControl.numberOfPages = articles.count
+            slideshowView.subview = slideshow
+            slideshowView.addSubview(pageControl)
+            pageControl.snp_makeConstraints(closure: { make in
+                make.bottom.equalTo(slideshowView)
+                make.centerX.equalTo(slideshowView)
+            })
         }
     }
     
@@ -172,9 +169,7 @@ class News2ViewController: UIViewController {
     }
     
     private func loadFeatured() {
-        startProgressHud()
         FirebaseManager.sharedRootRef.child("featured").observeSingleEventOfType(.Value, withBlock: { snapshot in
-            self.stopProgressHud()
             let featured = JSON(snapshot.value!)
             self.addArticles(featured["articles"])
             self.addVideos(featured["videos"])

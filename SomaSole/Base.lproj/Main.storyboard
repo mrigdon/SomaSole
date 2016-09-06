@@ -3125,20 +3125,6 @@ This ToU, including the documents referenced in this ToU, constitutes the entire
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="llt-gs-beU" customClass="KASlideShow">
-                                <rect key="frame" x="0.0" y="64" width="600" height="192"/>
-                                <subviews>
-                                    <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="0An-8B-Hhz">
-                                        <rect key="frame" x="281" y="147" width="39" height="37"/>
-                                    </pageControl>
-                                </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="0An-8B-Hhz" secondAttribute="bottom" constant="8" id="7AV-Yb-tdD"/>
-                                    <constraint firstAttribute="height" constant="192" id="Jct-h2-nLm"/>
-                                    <constraint firstItem="0An-8B-Hhz" firstAttribute="centerX" secondItem="llt-gs-beU" secondAttribute="centerX" id="hyf-vE-q4A"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wd2-7t-rbX" customClass="QuickStartView" customModule="SomaSole" customModuleProvider="target">
                                 <rect key="frame" x="8" y="393" width="584" height="150"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -3154,23 +3140,30 @@ This ToU, including the documents referenced in this ToU, constitutes the entire
                                 <rect key="frame" x="304" y="264" width="288" height="121"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Oi-1N-qwf" customClass="QuickStartView" customModule="SomaSole" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="600" height="192"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="192" id="bi1-2t-O0i"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="w3P-01-0ba" firstAttribute="top" secondItem="6Oi-1N-qwf" secondAttribute="bottom" constant="8" id="2Ek-Gj-pEf"/>
                             <constraint firstItem="w3P-01-0ba" firstAttribute="leading" secondItem="5hl-eA-slZ" secondAttribute="trailing" constant="8" id="97A-z8-1G6"/>
-                            <constraint firstItem="llt-gs-beU" firstAttribute="leading" secondItem="YhK-ux-0bc" secondAttribute="leading" id="CTB-On-C9Y"/>
+                            <constraint firstItem="6Oi-1N-qwf" firstAttribute="leading" secondItem="YhK-ux-0bc" secondAttribute="leading" id="A3j-mD-fAY"/>
                             <constraint firstItem="w3P-01-0ba" firstAttribute="width" secondItem="5hl-eA-slZ" secondAttribute="width" id="Hjc-du-I6b"/>
                             <constraint firstAttribute="trailing" secondItem="wd2-7t-rbX" secondAttribute="trailing" constant="8" id="NAy-ZU-8Ml"/>
                             <constraint firstItem="z1B-ff-0Kw" firstAttribute="top" secondItem="wd2-7t-rbX" secondAttribute="bottom" constant="8" id="Srd-Um-34K"/>
                             <constraint firstItem="wd2-7t-rbX" firstAttribute="leading" secondItem="YhK-ux-0bc" secondAttribute="leading" constant="8" id="XRQ-Oj-Xg2"/>
                             <constraint firstItem="wd2-7t-rbX" firstAttribute="top" secondItem="w3P-01-0ba" secondAttribute="bottom" constant="8" id="ZuB-IW-aAg"/>
-                            <constraint firstItem="w3P-01-0ba" firstAttribute="top" secondItem="llt-gs-beU" secondAttribute="bottom" constant="8" id="bI7-Z3-hBh"/>
                             <constraint firstAttribute="trailing" secondItem="w3P-01-0ba" secondAttribute="trailing" constant="8" id="cc7-2O-kjM"/>
+                            <constraint firstItem="6Oi-1N-qwf" firstAttribute="top" secondItem="Lc9-G7-pD7" secondAttribute="bottom" id="eSq-4R-igL"/>
                             <constraint firstItem="wd2-7t-rbX" firstAttribute="top" secondItem="5hl-eA-slZ" secondAttribute="bottom" constant="8" id="gZ2-Qy-l71"/>
                             <constraint firstItem="5hl-eA-slZ" firstAttribute="leading" secondItem="YhK-ux-0bc" secondAttribute="leading" constant="8" id="gjk-4T-7c3"/>
-                            <constraint firstItem="llt-gs-beU" firstAttribute="top" secondItem="Lc9-G7-pD7" secondAttribute="bottom" id="jrr-RJ-qoP"/>
-                            <constraint firstItem="5hl-eA-slZ" firstAttribute="top" secondItem="llt-gs-beU" secondAttribute="bottom" constant="8" id="tse-7c-ZEw"/>
-                            <constraint firstAttribute="trailing" secondItem="llt-gs-beU" secondAttribute="trailing" id="wRC-1b-wdk"/>
+                            <constraint firstItem="5hl-eA-slZ" firstAttribute="top" secondItem="6Oi-1N-qwf" secondAttribute="bottom" constant="8" id="kTg-p7-xgj"/>
+                            <constraint firstAttribute="trailing" secondItem="6Oi-1N-qwf" secondAttribute="trailing" id="vTQ-g5-blb"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="VKS-TY-yds">
@@ -3193,9 +3186,8 @@ This ToU, including the documents referenced in this ToU, constitutes the entire
                         </view>
                     </navigationItem>
                     <connections>
-                        <outlet property="pageControl" destination="0An-8B-Hhz" id="r1Z-bj-RCv"/>
-                        <outlet property="slideshow" destination="llt-gs-beU" id="Rof-3r-PSR"/>
-                        <outlet property="slideshowHeight" destination="Jct-h2-nLm" id="iOQ-UD-dzo"/>
+                        <outlet property="slideshowHeight" destination="bi1-2t-O0i" id="36W-HI-duh"/>
+                        <outlet property="slideshowView" destination="6Oi-1N-qwf" id="dAb-in-J3Z"/>
                         <outlet property="workoutView" destination="wd2-7t-rbX" id="Ws9-0d-nVJ"/>
                         <outlet property="workoutViewHeight" destination="0R9-oa-3CV" id="pmg-hH-iwj"/>
                         <outletCollection property="videoThumbnailViews" destination="5hl-eA-slZ" collectionClass="NSMutableArray" id="Vu9-LM-E1f"/>
