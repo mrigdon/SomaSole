@@ -122,14 +122,16 @@ class News2ViewController: UIViewController {
         for (key, data) in json {
             let article = Article(date: key, data: data.dictionaryObject as! [String:String])
             articles.append(article)
-            slideshow.addImage(article.textImage)
-            pageControl.numberOfPages = articles.count
-            slideshowView.subview = slideshow
-            slideshowView.addSubview(pageControl)
-            pageControl.snp_makeConstraints(closure: { make in
-                make.bottom.equalTo(slideshowView)
-                make.centerX.equalTo(slideshowView)
-            })
+            article.loadTextImage {
+                self.slideshow.addImage(article.textImage)
+                self.pageControl.numberOfPages = self.articles.count
+                self.slideshowView.subview = self.slideshow
+                self.slideshowView.addSubview(self.pageControl)
+                self.pageControl.snp_makeConstraints(closure: { make in
+                    make.bottom.equalTo(self.slideshowView)
+                    make.centerX.equalTo(self.slideshowView)
+                })
+            }
         }
     }
     
@@ -169,11 +171,11 @@ class News2ViewController: UIViewController {
     }
     
     private func loadFeatured() {
-        FirebaseManager.sharedRootRef.child("featured").observeSingleEventOfType(.Value, withBlock: { snapshot in
+        FirebaseManager.sharedRootRef.child("featured_new").observeSingleEventOfType(.Value, withBlock: { snapshot in
             let featured = JSON(snapshot.value!)
             self.addArticles(featured["articles"])
+            self.addWorkout(featured["workout"])
             self.addVideos(featured["videos"])
-            self.addWorkout(featured["workout_new"])
         })
     }
     
