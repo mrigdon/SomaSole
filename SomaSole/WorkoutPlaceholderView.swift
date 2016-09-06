@@ -11,8 +11,8 @@ import Shimmer
 import SnapKit
 
 extension WorkoutPlaceholderView: QuickStartViewDelegate {
-    func didAddToView(withFrame frame: CGRect) {
-        let height = 0.3 * frame.height
+    func didAddToView(view: UIView) {
+        let height = 0.3 * view.frame.height
         addSubview(shimmer)
         shimmer.snp_makeConstraints(closure: { make in
             make.height.equalTo(height)

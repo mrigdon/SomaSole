@@ -9,7 +9,7 @@
 import UIKit
 
 protocol QuickStartViewDelegate {
-    func didAddToView(withFrame frame: CGRect)
+    func didAddToView(view: UIView)
 }
 
 class QuickStartView: UIView {
@@ -32,7 +32,7 @@ class QuickStartView: UIView {
                 make.right.equalTo(self)
                 make.bottom.equalTo(self)
             })
-            delegate?.didAddToView(withFrame: frame)
+            delegate?.didAddToView(self)
         }
     }
     
