@@ -201,6 +201,7 @@
 		626FC0041D2C8950005B592B /* GuidedWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626FC0031D2C8950005B592B /* GuidedWorkoutViewController.swift */; };
 		62780C691D0BA87300198441 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62780C681D0BA87300198441 /* ProfileCell.swift */; };
 		627BC9E91CCE8B68008C8647 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627BC9E81CCE8B68008C8647 /* Workout.swift */; };
+		627DEB661D7F8C1000CFA848 /* DataImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627DEB651D7F8C1000CFA848 /* DataImageView.swift */; };
 		62915B851D2C155C0012A274 /* VideoThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62915B841D2C155C0012A274 /* VideoThumbnailView.swift */; };
 		62926A951CBC33F200960F94 /* CreateLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62926A941CBC33F200960F94 /* CreateLoginViewController.swift */; };
 		62A776151D7F4032009875F1 /* FeaturedVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A776141D7F4032009875F1 /* FeaturedVideoView.swift */; };
@@ -447,6 +448,7 @@
 		626FC0031D2C8950005B592B /* GuidedWorkoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuidedWorkoutViewController.swift; sourceTree = "<group>"; };
 		62780C681D0BA87300198441 /* ProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		627BC9E81CCE8B68008C8647 /* Workout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
+		627DEB651D7F8C1000CFA848 /* DataImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataImageView.swift; sourceTree = "<group>"; };
 		62915B841D2C155C0012A274 /* VideoThumbnailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoThumbnailView.swift; sourceTree = "<group>"; };
 		62926A941CBC33F200960F94 /* CreateLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateLoginViewController.swift; sourceTree = "<group>"; };
 		62A776141D7F4032009875F1 /* FeaturedVideoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturedVideoView.swift; sourceTree = "<group>"; };
@@ -828,6 +830,7 @@
 				622441B41D790060002F454B /* WorkoutPlaceholderView.swift */,
 				622067401D7DFFFF00B82113 /* SoundManager.swift */,
 				62A776141D7F4032009875F1 /* FeaturedVideoView.swift */,
+				627DEB651D7F8C1000CFA848 /* DataImageView.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -1340,6 +1343,7 @@
 				62A8DF191D1F1EA40024D4B3 /* ChangePasswordViewController.swift in Sources */,
 				6215F3091CC9704C00E2A995 /* TagCell.swift in Sources */,
 				62CF96471D126F7800DDC38A /* GoPremiumViewController.swift in Sources */,
+				627DEB661D7F8C1000CFA848 /* DataImageView.swift in Sources */,
 				62C8413E1CC6F5D700468726 /* FilterViewController.swift in Sources */,
 				62D4298B1CEDA5DB009F157A /* Movement.swift in Sources */,
 				6215F30B1CC9805900E2A995 /* WorkoutCell.swift in Sources */,

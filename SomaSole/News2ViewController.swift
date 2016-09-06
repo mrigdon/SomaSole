@@ -42,6 +42,7 @@ class News2ViewController: UIViewController {
     var selectedVideo: Video?
     var slideshow = KASlideShow()
     var pageControl = UIPageControl()
+    var firstArticleImage = true
 
     // outlets
     @IBOutlet weak var slideshowView: QuickStartView!
@@ -95,7 +96,6 @@ class News2ViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(tappedArticle))
         slideshow.addGestureRecognizer(tap)
         slideshow.delegate = self
-        NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: #selector(nextSlide), userInfo: nil, repeats: true)
     }
     
     private func setupPageControl() {
@@ -121,16 +121,20 @@ class News2ViewController: UIViewController {
     private func addArticles(json: JSON) {
         for (key, data) in json {
             let article = Article(date: key, data: data.dictionaryObject as! [String:String])
-            articles.append(article)
             article.loadTextImage {
                 self.slideshow.addImage(article.textImage)
+                self.articles.append(article)
                 self.pageControl.numberOfPages = self.articles.count
-                self.slideshowView.subview = self.slideshow
-                self.slideshowView.addSubview(self.pageControl)
-                self.pageControl.snp_makeConstraints(closure: { make in
-                    make.bottom.equalTo(self.slideshowView)
-                    make.centerX.equalTo(self.slideshowView)
-                })
+                if self.firstArticleImage {
+                    self.firstArticleImage = false
+                    self.slideshowView.subview = self.slideshow
+                    self.slideshowView.addSubview(self.pageControl)
+                    self.pageControl.snp_makeConstraints(closure: { make in
+                        make.bottom.equalTo(self.slideshowView)
+                        make.centerX.equalTo(self.slideshowView)
+                    })
+                    NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: #selector(self.nextSlide), userInfo: nil, repeats: true)
+                }
             }
         }
     }
@@ -202,7 +206,7 @@ class News2ViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "articleSegue" {
             let destVC = segue.destinationViewController as! ArticleViewController
-            destVC.article = articles[pageControl.currentPage]
+            destVC.article = articles[Int(slideshow.currentIndex)]
         } else if segue.identifier == "workoutSegue" {
             let destVC = segue.destinationViewController as! UINavigationController
             let rootVC = destVC.viewControllers.first as! BeginWorkoutViewController
