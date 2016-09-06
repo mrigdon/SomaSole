@@ -203,9 +203,10 @@
 		627BC9E91CCE8B68008C8647 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627BC9E81CCE8B68008C8647 /* Workout.swift */; };
 		62915B851D2C155C0012A274 /* VideoThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62915B841D2C155C0012A274 /* VideoThumbnailView.swift */; };
 		62926A951CBC33F200960F94 /* CreateLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62926A941CBC33F200960F94 /* CreateLoginViewController.swift */; };
+		62A776151D7F4032009875F1 /* FeaturedVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A776141D7F4032009875F1 /* FeaturedVideoView.swift */; };
 		62A8DF151D1F1E170024D4B3 /* PasswordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A8DF141D1F1E170024D4B3 /* PasswordCell.swift */; };
 		62A8DF191D1F1EA40024D4B3 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A8DF181D1F1EA40024D4B3 /* ChangePasswordViewController.swift */; };
-		62AB9B801CFE8B32005498F8 /* QuickStartImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AB9B7F1CFE8B32005498F8 /* QuickStartImageView.swift */; };
+		62AB9B801CFE8B32005498F8 /* QuickStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AB9B7F1CFE8B32005498F8 /* QuickStartView.swift */; };
 		62B1AB931CC1D6F3007069E5 /* AllWorkoutsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B1AB921CC1D6F3007069E5 /* AllWorkoutsViewController.swift */; };
 		62B4AAA61D4C2A6300DD1273 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62B4AAA51D4C2A6300DD1273 /* StoreKit.framework */; };
 		62BBCED31D18E09700E01DE9 /* News2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BBCED21D18E09700E01DE9 /* News2ViewController.swift */; };
@@ -448,9 +449,10 @@
 		627BC9E81CCE8B68008C8647 /* Workout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
 		62915B841D2C155C0012A274 /* VideoThumbnailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoThumbnailView.swift; sourceTree = "<group>"; };
 		62926A941CBC33F200960F94 /* CreateLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateLoginViewController.swift; sourceTree = "<group>"; };
+		62A776141D7F4032009875F1 /* FeaturedVideoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturedVideoView.swift; sourceTree = "<group>"; };
 		62A8DF141D1F1E170024D4B3 /* PasswordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordCell.swift; sourceTree = "<group>"; };
 		62A8DF181D1F1EA40024D4B3 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
-		62AB9B7F1CFE8B32005498F8 /* QuickStartImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickStartImageView.swift; sourceTree = "<group>"; };
+		62AB9B7F1CFE8B32005498F8 /* QuickStartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickStartView.swift; sourceTree = "<group>"; };
 		62B1AB921CC1D6F3007069E5 /* AllWorkoutsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllWorkoutsViewController.swift; sourceTree = "<group>"; };
 		62B4AAA51D4C2A6300DD1273 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		62BBCED21D18E09700E01DE9 /* News2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = News2ViewController.swift; sourceTree = "<group>"; };
@@ -818,13 +820,14 @@
 				62A8DF141D1F1E170024D4B3 /* PasswordCell.swift */,
 				626063971CBB01E500B1AF3C /* PillButton.swift */,
 				62780C681D0BA87300198441 /* ProfileCell.swift */,
-				62AB9B7F1CFE8B32005498F8 /* QuickStartImageView.swift */,
+				62AB9B7F1CFE8B32005498F8 /* QuickStartView.swift */,
 				6215F3081CC9704C00E2A995 /* TagCell.swift */,
 				6235212C1CFA130A00B3F1BF /* VideoCell.swift */,
 				62915B841D2C155C0012A274 /* VideoThumbnailView.swift */,
 				6215F30A1CC9805900E2A995 /* WorkoutCell.swift */,
 				622441B41D790060002F454B /* WorkoutPlaceholderView.swift */,
 				622067401D7DFFFF00B82113 /* SoundManager.swift */,
+				62A776141D7F4032009875F1 /* FeaturedVideoView.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -1319,7 +1322,7 @@
 				62C18E9E1D235D0B00C05798 /* PlayVideoViewController.swift in Sources */,
 				626063951CBAEDEF00B1AF3C /* CreateBasicsViewController.swift in Sources */,
 				62CCEEA51CEC16BB00CC0D37 /* FirebaseManager.swift in Sources */,
-				62AB9B801CFE8B32005498F8 /* QuickStartImageView.swift in Sources */,
+				62AB9B801CFE8B32005498F8 /* QuickStartView.swift in Sources */,
 				62F7ED781CF80DBF002A2C47 /* ArticleViewController.swift in Sources */,
 				6235212D1CFA130A00B3F1BF /* VideoCell.swift in Sources */,
 				626FBECF1D2C5014005B592B /* LabelCell.swift in Sources */,
@@ -1327,6 +1330,7 @@
 				62780C691D0BA87300198441 /* ProfileCell.swift in Sources */,
 				626D2CF41D1A4F8C00812ED0 /* ROImage.swift in Sources */,
 				62B1AB931CC1D6F3007069E5 /* AllWorkoutsViewController.swift in Sources */,
+				62A776151D7F4032009875F1 /* FeaturedVideoView.swift in Sources */,
 				6248AE2C1CF9510C000A2DC9 /* Article.swift in Sources */,
 				6260639A1CBB3E5900B1AF3C /* CreateAboutViewController.swift in Sources */,
 				6201ABC71CF9EEC10099B18D /* AllVideosViewController.swift in Sources */,

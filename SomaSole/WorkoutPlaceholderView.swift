@@ -10,6 +10,18 @@ import UIKit
 import Shimmer
 import SnapKit
 
+extension WorkoutPlaceholderView: QuickStartViewDelegate {
+    func didAddToView(withFrame frame: CGRect) {
+        let height = 0.3 * frame.height
+        addSubview(shimmer)
+        shimmer.snp_makeConstraints(closure: { make in
+            make.height.equalTo(height)
+            make.width.equalTo(height)
+            make.center.equalTo(self)
+        })
+    }
+}
+
 class WorkoutPlaceholderView: UIView {
     
     private let backgroundColorRatio: CGFloat = 220/255
@@ -25,12 +37,6 @@ class WorkoutPlaceholderView: UIView {
         super.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         
         backgroundColor = UIColor(red: backgroundColorRatio, green: backgroundColorRatio, blue: backgroundColorRatio, alpha: 1.0)
-        addSubview(shimmer)
-        shimmer.snp_makeConstraints(closure: { make in
-            make.height.equalTo(dimension)
-            make.width.equalTo(dimension)
-            make.center.equalTo(self)
-        })
         
         let image = UIImage(named: "exercise")
         let imageView = UIImageView(image: image)

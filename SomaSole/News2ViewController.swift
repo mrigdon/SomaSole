@@ -48,7 +48,8 @@ class News2ViewController: UIViewController {
     @IBOutlet weak var workoutView: QuickStartView!
     @IBOutlet weak var workoutViewHeight: NSLayoutConstraint!
     @IBOutlet weak var slideshowHeight: NSLayoutConstraint!
-    @IBOutlet var videoThumbnailViews: [VideoThumbnailView]!
+//    @IBOutlet var videoThumbnailViews: [VideoThumbnailView]!
+    @IBOutlet var videoThumbnailViews: [QuickStartView]!
     
     // methods
     private func ui(block: () -> Void) {
@@ -111,12 +112,19 @@ class News2ViewController: UIViewController {
     
     private func setupWorkout() {
         workoutViewHeight.constant = (screenWidth - 16) * workoutRatio
-        workoutView.subview = WorkoutPlaceholderView()
+        let placeholder = WorkoutPlaceholderView()
+        workoutView.delegate = placeholder
+        workoutView.subview = placeholder
     }
     
     private func setupVideos() {
-        videoThumbnailViews[0].labelBackgroundView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
-        videoThumbnailViews[1].labelBackgroundView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
+//        videoThumbnailViews[0].labelBackgroundView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
+//        videoThumbnailViews[1].labelBackgroundView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
+        for view in videoThumbnailViews {
+            let placeholder = WorkoutPlaceholderView()
+            view.delegate = placeholder
+            view.subview = placeholder
+        }
     }
     
     private func addArticles(json: JSON) {
@@ -135,9 +143,8 @@ class News2ViewController: UIViewController {
                 if let image = response.result.value {
                     video.image = image
                     let videoThumbnailView = self.videoThumbnailViews[self.videos.count]
-                    videoThumbnailView.thumbnailView.image = video.image
-                    videoThumbnailView.titleLabel.text = video.title
-                    videoThumbnailView.index = self.videos.count
+                    let videoView = FeaturedVideoView(image: video.image, title: video.title, frame: videoThumbnailView.frame, index: self.videos.count)
+                    videoThumbnailView.subview = videoView
                     
                     let tap = UITapGestureRecognizer(target: self, action: #selector(self.tappedVideoThumbnail(_:)))
                     videoThumbnailView.userInteractionEnabled = true
