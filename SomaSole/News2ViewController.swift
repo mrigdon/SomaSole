@@ -46,10 +46,10 @@ class News2ViewController: UIViewController {
 
     // outlets
     @IBOutlet weak var slideshowView: ContainerView!
-    @IBOutlet weak var workoutView: ContainerView!
+    @IBOutlet weak var workoutView: WorkoutContainerView!
     @IBOutlet weak var workoutViewHeight: NSLayoutConstraint!
     @IBOutlet weak var slideshowHeight: NSLayoutConstraint!
-    @IBOutlet var videoThumbnailViews: [ContainerView]!
+    @IBOutlet var videoThumbnailViews: [VideoContainerView]!
     
     // methods
     private func ui(block: () -> Void) {
@@ -67,7 +67,9 @@ class News2ViewController: UIViewController {
     }
     
     @objc private func tappedVideoThumbnail(tap: UITapGestureRecognizer) {
-        print(tap.view)
+        let containerView = tap.view as! VideoContainerView
+        selectedVideo = containerView.video
+        performSegueWithIdentifier("videoSegue", sender: self)
 //        let videoThumbnailView = tap.view as! VideoThumbnailView
 //        selectedVideo = self.videos[videoThumbnailView.index]
 //        if selectedVideo != nil {
@@ -149,6 +151,7 @@ class News2ViewController: UIViewController {
                     let videoThumbnailView = self.videoThumbnailViews[self.videos.count]
                     let videoView = FeaturedVideoView(image: video.image, title: video.title, frame: videoThumbnailView.frame, index: self.videos.count)
                     videoThumbnailView.subview = videoView
+                    videoThumbnailView.video = video
                     
                     let tap = UITapGestureRecognizer(target: self, action: #selector(self.tappedVideoThumbnail(_:)))
                     videoThumbnailView.userInteractionEnabled = true
@@ -164,9 +167,9 @@ class News2ViewController: UIViewController {
         workout = Workout(name: json["index"].stringValue, data: json["data"].dictionaryObject!)
         if let workout = workout {
             workout.loadImage {
-                let workoutImageView = QuickStartImageView(image: workout.image)
+                let workoutImageView = UIImageView(image: workout.image)
                 workoutImageView.image = workout.image
-                workoutImageView.workout = workout
+                self.workoutView.workout = workout
                 let tap = UITapGestureRecognizer(target: self, action: #selector(self.tappedWorkout(_:)))
                 workoutImageView.userInteractionEnabled = true
                 workoutImageView.addGestureRecognizer(tap)

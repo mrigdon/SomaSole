@@ -15,7 +15,6 @@ protocol ContainerViewDelegate {
 class ContainerView: UIView {
     
     var delegate: ContainerViewDelegate?
-    var workout: Workout?
     var subview: UIView? {
         get {
             return subviews.count == 0 ? nil : subviews[0]
@@ -38,7 +37,13 @@ class ContainerView: UIView {
     
 }
 
-class QuickStartImageView: UIImageView {
+class VideoContainerView: ContainerView {
+    
+    var video: Video?
+    
+}
+
+class WorkoutContainerView: ContainerView {
     
     var workout: Workout?
     
