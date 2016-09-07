@@ -272,7 +272,7 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate {
             }
             cell.selectionStyle = .None
             
-            let cellView = QuickStartView()
+            let cellView = ContainerView()
             cell.contentView.addSubview(cellView)
             cellView.snp_makeConstraints(closure: { make in
                 make.top.equalTo(cell.contentView)

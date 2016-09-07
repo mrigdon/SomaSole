@@ -1,5 +1,5 @@
 //
-//  WorkoutPlaceholderView.swift
+//  PlaceholderView.swift
 //  SomaSole
 //
 //  Created by Matthew Rigdon on 9/1/16.
@@ -10,7 +10,7 @@ import UIKit
 import Shimmer
 import SnapKit
 
-extension WorkoutPlaceholderView: QuickStartViewDelegate {
+extension PlaceholderView: ContainerViewDelegate {
     func didAddToView(view: UIView) {
         let height = 0.3 * view.frame.height
         addSubview(shimmer)
@@ -22,7 +22,7 @@ extension WorkoutPlaceholderView: QuickStartViewDelegate {
     }
 }
 
-class WorkoutPlaceholderView: UIView {
+class PlaceholderView: UIView {
     
     private let backgroundColorRatio: CGFloat = 220/255
     private let contentViewColorRatio: CGFloat = 170/255
@@ -55,7 +55,7 @@ class WorkoutPlaceholderView: UIView {
 
 }
 
-class WorkoutCellPlaceholderView: WorkoutPlaceholderView {
+class WorkoutCellPlaceholderView: PlaceholderView {
     
     var size: CGFloat = 0
     

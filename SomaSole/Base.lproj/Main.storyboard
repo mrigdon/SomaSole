@@ -3125,22 +3125,22 @@ This ToU, including the documents referenced in this ToU, constitutes the entire
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wd2-7t-rbX" customClass="QuickStartView" customModule="SomaSole" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wd2-7t-rbX" customClass="ContainerView" customModule="SomaSole" customModuleProvider="target">
                                 <rect key="frame" x="8" y="393" width="584" height="150"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="0R9-oa-3CV"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5hl-eA-slZ" customClass="QuickStartView" customModule="SomaSole" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5hl-eA-slZ" customClass="ContainerView" customModule="SomaSole" customModuleProvider="target">
                                 <rect key="frame" x="8" y="264" width="288" height="121"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w3P-01-0ba" customClass="QuickStartView" customModule="SomaSole" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w3P-01-0ba" customClass="ContainerView" customModule="SomaSole" customModuleProvider="target">
                                 <rect key="frame" x="304" y="264" width="288" height="121"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Oi-1N-qwf" customClass="QuickStartView" customModule="SomaSole" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Oi-1N-qwf" customClass="ContainerView" customModule="SomaSole" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="600" height="192"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>

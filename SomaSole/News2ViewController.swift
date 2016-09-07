@@ -45,11 +45,11 @@ class News2ViewController: UIViewController {
     var firstArticleImage = true
 
     // outlets
-    @IBOutlet weak var slideshowView: QuickStartView!
-    @IBOutlet weak var workoutView: QuickStartView!
+    @IBOutlet weak var slideshowView: ContainerView!
+    @IBOutlet weak var workoutView: ContainerView!
     @IBOutlet weak var workoutViewHeight: NSLayoutConstraint!
     @IBOutlet weak var slideshowHeight: NSLayoutConstraint!
-    @IBOutlet var videoThumbnailViews: [QuickStartView]!
+    @IBOutlet var videoThumbnailViews: [ContainerView]!
     
     // methods
     private func ui(block: () -> Void) {
@@ -67,11 +67,12 @@ class News2ViewController: UIViewController {
     }
     
     @objc private func tappedVideoThumbnail(tap: UITapGestureRecognizer) {
-        let videoThumbnailView = tap.view as! VideoThumbnailView
-        selectedVideo = self.videos[videoThumbnailView.index]
-        if selectedVideo != nil {
-            performSegueWithIdentifier("videoSegue", sender: self)
-        }
+        print(tap.view)
+//        let videoThumbnailView = tap.view as! VideoThumbnailView
+//        selectedVideo = self.videos[videoThumbnailView.index]
+//        if selectedVideo != nil {
+//            performSegueWithIdentifier("videoSegue", sender: self)
+//        }
     }
     
     private func setupNavbar() {
@@ -84,7 +85,7 @@ class News2ViewController: UIViewController {
     }
     
     private func setupSlideshow() {
-        let placeholder = WorkoutPlaceholderView()
+        let placeholder = PlaceholderView()
         slideshowView.delegate = placeholder
         slideshowView.subview = placeholder
         
@@ -105,14 +106,14 @@ class News2ViewController: UIViewController {
     
     private func setupWorkout() {
         workoutViewHeight.constant = (screenWidth - 16) * workoutRatio
-        let placeholder = WorkoutPlaceholderView()
+        let placeholder = PlaceholderView()
         workoutView.delegate = placeholder
         workoutView.subview = placeholder
     }
     
     private func setupVideos() {
         for view in videoThumbnailViews {
-            let placeholder = WorkoutPlaceholderView()
+            let placeholder = PlaceholderView()
             view.delegate = placeholder
             view.subview = placeholder
         }

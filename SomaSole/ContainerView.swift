@@ -1,5 +1,5 @@
 //
-//  QuickStartView.swift
+//  ContainerView.swift
 //  SomaSole
 //
 //  Created by Matthew Rigdon on 5/31/16.
@@ -8,13 +8,13 @@
 
 import UIKit
 
-protocol QuickStartViewDelegate {
+protocol ContainerViewDelegate {
     func didAddToView(view: UIView)
 }
 
-class QuickStartView: UIView {
+class ContainerView: UIView {
     
-    var delegate: QuickStartViewDelegate?
+    var delegate: ContainerViewDelegate?
     var workout: Workout?
     var subview: UIView? {
         get {
