@@ -70,11 +70,6 @@ class News2ViewController: UIViewController {
         let containerView = tap.view as! VideoContainerView
         selectedVideo = containerView.video
         performSegueWithIdentifier("videoSegue", sender: self)
-//        let videoThumbnailView = tap.view as! VideoThumbnailView
-//        selectedVideo = self.videos[videoThumbnailView.index]
-//        if selectedVideo != nil {
-//            performSegueWithIdentifier("videoSegue", sender: self)
-//        }
     }
     
     private func setupNavbar() {
