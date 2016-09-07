@@ -54,6 +54,14 @@ class GuidedWorkoutViewController: UIViewController {
         gifVisible = !gifVisible
     }
     
+    @IBAction func swipedRight(sender: AnyObject) {
+        
+    }
+    
+    @IBAction func swipedLeft(sender: AnyObject) {
+        
+    }
+    
     // methods
     private func ui (task: () -> Void) {
         dispatch_async(dispatch_get_main_queue(), {

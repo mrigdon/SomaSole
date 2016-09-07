@@ -1817,6 +1817,7 @@ This ToU, including the documents referenced in this ToU, constitutes the entire
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="7XH-7I-FGy" firstAttribute="top" secondItem="2tc-xa-4ZH" secondAttribute="bottom" constant="21" id="EaC-Tz-Owl"/>
                             <constraint firstItem="A1R-mB-eGQ" firstAttribute="top" secondItem="rck-f8-Jz5" secondAttribute="bottom" constant="20" id="Erh-jh-Hyx"/>
@@ -1831,6 +1832,10 @@ This ToU, including the documents referenced in this ToU, constitutes the entire
                             <constraint firstItem="vxj-KH-Aba" firstAttribute="centerX" secondItem="Y5g-U1-dGH" secondAttribute="centerX" id="fG7-Zt-Jiw"/>
                             <constraint firstItem="tIV-Yc-lUb" firstAttribute="centerY" secondItem="Y5g-U1-dGH" secondAttribute="centerY" id="zLs-q1-bIl"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="mOD-Bn-TKV" appends="YES" id="sxx-LH-rON"/>
+                            <outletCollection property="gestureRecognizers" destination="woY-0R-uTQ" appends="YES" id="K6x-LT-Mze"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="bwK-xe-C2q">
                         <nil key="title"/>
@@ -1871,6 +1876,16 @@ This ToU, including the documents referenced in this ToU, constitutes the entire
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZnR-qW-QsP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="mOD-Bn-TKV">
+                    <connections>
+                        <action selector="swipedRight:" destination="7TA-kN-cqw" id="rOP-3A-wMJ"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="woY-0R-uTQ">
+                    <connections>
+                        <action selector="swipedLeft:" destination="7TA-kN-cqw" id="I9y-63-et3"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3849" y="-1447"/>
         </scene>
@@ -3499,14 +3514,14 @@ This ToU, including the documents referenced in this ToU, constitutes the entire
         <image name="videos" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="X0W-T2-P7W"/>
-        <segue reference="0aP-Cp-rF3"/>
         <segue reference="yH4-Va-FID"/>
         <segue reference="AYP-Ub-T6L"/>
-        <segue reference="L1j-8U-f84"/>
+        <segue reference="0aP-Cp-rF3"/>
+        <segue reference="X0W-T2-P7W"/>
+        <segue reference="NgW-Cd-xhq"/>
         <segue reference="0ZQ-sa-92A"/>
         <segue reference="nuW-4e-9Zq"/>
-        <segue reference="4eL-kw-GYP"/>
-        <segue reference="NgW-Cd-xhq"/>
+        <segue reference="L1j-8U-f84"/>
+        <segue reference="oKK-Ue-uAs"/>
     </inferredMetricsTieBreakers>
 </document>
