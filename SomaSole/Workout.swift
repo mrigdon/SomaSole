@@ -56,7 +56,7 @@ class Workout: NSObject {
     
     let imageDimensions: Int64 = 1 * 1300 * 670
     
-    var image = UIImage()
+    var image: UIImage?
     var name: String
     var time: Int
     var intensity: Int

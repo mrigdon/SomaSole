@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import MBProgressHUD
 import TagListView
 import Firebase
 import EPShapes
@@ -47,16 +46,6 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate {
     var favorites = false
     
     // methods
-    func startProgressHud() {
-        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-    }
-    
-    func stopProgressHud() {
-        dispatch_async(dispatch_get_main_queue(), {
-            MBProgressHUD.hideHUDForView(self.view, animated: true)
-        })
-    }
-    
     func reloadTableView() {
         dispatch_async(dispatch_get_main_queue(), {
             self.tableView.reloadData()
@@ -118,7 +107,6 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate {
             }
             
             workout.loadImage {
-                self.stopProgressHud()
                 self.reloadTableView()
             }
         })
@@ -137,7 +125,6 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate {
                 }
             }
             
-            self.stopProgressHud()
             self.reloadTableView()
         })
         
@@ -213,7 +200,6 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate {
         setupBarButtons()
         
         // begin load of all workouts
-        startProgressHud()
         loadPublicWorkouts()
 //        loadPrivateWorkouts()
     }
@@ -268,12 +254,15 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellType, forIndexPath: indexPath)
         
         if selectedFilters.count > 0 && indexPath.row == 0 {
+            // tags cell
             (cell as! TagCell).addFilters(selectedFilters)
             self.tableView.rowHeight = UITableViewAutomaticDimension
             self.tableView.estimatedRowHeight = workoutCellSize
         } else if indexPath.row == 0 {
+            // filter button cell
             self.tableView.rowHeight = filterCellSize
         } else {
+            // workout cell
             self.tableView.rowHeight = workoutCellSize
             let workoutIndex = indexPath.row - 1 // -1 for the filter cell
             let workout = (searchBar.isFirstResponder() && searchBar.text != "") || selectedFilters.count > 0 ? filteredWorkouts[workoutIndex] : favorites ? Workout.sharedFavorites[workoutIndex] : workouts[workoutIndex]
@@ -282,7 +271,24 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate {
                 (cell as! WorkoutCell).setStarFill()
             }
             cell.selectionStyle = .None
-            cell.backgroundView = UIImageView(image: workout.image)
+            
+            let cellView = QuickStartView()
+            cell.contentView.addSubview(cellView)
+            cellView.snp_makeConstraints(closure: { make in
+                make.top.equalTo(cell.contentView)
+                make.left.equalTo(cell.contentView)
+                make.right.equalTo(cell.contentView)
+                make.bottom.equalTo(cell.contentView)
+            })
+            if let image = workout.image {
+                cellView.delegate = nil
+                cellView.subview = UIImageView(image: image)
+            } else {
+                let placeholder = WorkoutCellPlaceholderView()
+                placeholder.size = workoutCellSize
+                cellView.delegate = placeholder
+                cellView.subview = placeholder
+            }
         }
 
         return cell

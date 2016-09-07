@@ -54,3 +54,19 @@ class WorkoutPlaceholderView: UIView {
     }
 
 }
+
+class WorkoutCellPlaceholderView: WorkoutPlaceholderView {
+    
+    var size: CGFloat = 0
+    
+    override func didAddToView(view: UIView) {
+        let height = 0.3 * size
+        addSubview(shimmer)
+        shimmer.snp_makeConstraints(closure: { make in
+            make.height.equalTo(height)
+            make.width.equalTo(height)
+            make.center.equalTo(self)
+        })
+    }
+    
+}
