@@ -217,19 +217,14 @@ class AllVideosViewController: UITableViewController, UISearchBarDelegate {
         let video = searchBar.isFirstResponder() && searchBar.text != "" ? filteredVideos[indexPath.row] : (favorites ? Video.sharedFavorites[indexPath.row] : videos[indexPath.row])
         
         let reuseID = video.free || User.sharedModel.premium ? "videoCell" : "videoOverlayCell"
-//        let cell = tableView.dequeueReusableCellWithIdentifier(reuseID, forIndexPath: indexPath)
-        let cell = tableView.dequeueReusableCellWithIdentifier("newVideoCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier(reuseID, forIndexPath: indexPath)
         
         if video.free || User.sharedModel.premium {
-//            (cell as! VideoCell).video = video
-//            (cell as! VideoCell).titleLabel.text = video.title
-//            (cell as! VideoCell).videoImageView.image = video.image
-//            (cell as! VideoCell).titleLabel.sizeToFit()
-//            (cell as! VideoCell).setStarFill()
-            let videoView = VideoCellView()
-            videoView.label.text = video.title
-            videoView.imageView.image = video.image
-            cell.contentView.addSubviewWithConstraints(videoView, height: nil, width: nil, top: 0, left: 0, right: 0, bottom: 0)
+            (cell as! VideoCell).video = video
+            (cell as! VideoCell).titleLabel.text = video.title
+            (cell as! VideoCell).videoImageView.image = video.image
+            (cell as! VideoCell).titleLabel.sizeToFit()
+            (cell as! VideoCell).setStarFill()
         } else {
             (cell as! VideoOverlayCell).video = video
             (cell as! VideoOverlayCell).titleLabel.text = video.title

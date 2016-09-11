@@ -819,24 +819,24 @@
 		627A5B371CC1B58C0081BBFE /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				62AB9B7F1CFE8B32005498F8 /* ContainerView.swift */,
+				627DEB651D7F8C1000CFA848 /* DataImageView.swift */,
+				62A776141D7F4032009875F1 /* FeaturedVideoView.swift */,
+				62F307A41D85CF5C00B9C1C6 /* IndexedStarButton.swift */,
 				626FBECE1D2C5014005B592B /* LabelCell.swift */,
 				62D640E91CD8424800D05124 /* MovementCell.swift */,
 				6263BBD21CE79A2600CF383A /* MovementDescriptionCell.swift */,
 				62F07E151D111A9B0028D45D /* OverlayView.swift */,
 				62A8DF141D1F1E170024D4B3 /* PasswordCell.swift */,
 				626063971CBB01E500B1AF3C /* PillButton.swift */,
+				622441B41D790060002F454B /* PlaceholderView.swift */,
 				62780C681D0BA87300198441 /* ProfileCell.swift */,
-				62AB9B7F1CFE8B32005498F8 /* ContainerView.swift */,
+				622067401D7DFFFF00B82113 /* SoundManager.swift */,
 				6215F3081CC9704C00E2A995 /* TagCell.swift */,
 				6235212C1CFA130A00B3F1BF /* VideoCell.swift */,
+				62F307A61D85D75700B9C1C6 /* VideoCellView.swift */,
 				62915B841D2C155C0012A274 /* VideoThumbnailView.swift */,
 				6215F30A1CC9805900E2A995 /* WorkoutCell.swift */,
-				622441B41D790060002F454B /* PlaceholderView.swift */,
-				622067401D7DFFFF00B82113 /* SoundManager.swift */,
-				62A776141D7F4032009875F1 /* FeaturedVideoView.swift */,
-				627DEB651D7F8C1000CFA848 /* DataImageView.swift */,
-				62F307A41D85CF5C00B9C1C6 /* IndexedStarButton.swift */,
-				62F307A61D85D75700B9C1C6 /* VideoCellView.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
