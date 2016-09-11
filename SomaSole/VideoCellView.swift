@@ -11,18 +11,16 @@ import EPShapes
 
 class VideoCellView: UIView {
     
-    var star = StarButton()
+    var star = UIButton()
     var label = UILabel()
     var imageView = UIImageView()
 
     init() {
         super.init(frame: CGRectZero)
         
-        star.strokeColor = UIColor.blueColor()
-        star.extrusionPercent = 50
+        star.setImage(UIImage(named: "star_unfilled"), forState: .Normal)
         addSubviewWithConstraints(star, height: 30, width: 30, top: 8, left: nil, right: 8, bottom: nil)
         
-//        addSubviewWithConstraints(label, height: nil, width: nil, top: 8, left: 8, right: 8, bottom: nil)
         addSubview(label)
         label.snp_makeConstraints(closure: { make in
             make.top.equalTo(self).offset(8)
@@ -32,7 +30,7 @@ class VideoCellView: UIView {
         
         addSubview(imageView)
         imageView.snp_makeConstraints(closure: { make in
-            make.top.equalTo(label.snp_bottom).offset(8)
+            make.top.equalTo(label.snp_bottom).offset(12)
             make.left.equalTo(self.snp_leftMargin)
             make.right.equalTo(self.snp_rightMargin)
             make.bottom.equalTo(self).offset(-10)

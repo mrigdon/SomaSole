@@ -27,6 +27,31 @@ extension Array where Element: Workout {
         
         self.append(workout)
     }
+    
+    var names: [String] {
+        var favoriteWorkouts = [String]()
+        for workout in Workout.sharedFavorites {
+            favoriteWorkouts.append(workout.name)
+        }
+        return favoriteWorkouts
+    }
+}
+
+extension AllWorkoutsViewController: IndexedStarDelegate {
+    func didTapStar<T>(star: IndexedStar<T>) {
+        let workout = star.data as! Workout
+        
+        if star.active {
+            workout.favorite = true
+            Workout.sharedFavorites.insertAlpha(workout)
+        } else {
+            workout.favorite = false
+            Workout.sharedFavorites.removeAtIndex(Workout.sharedFavorites.indexOf(workout)!)
+        }
+        
+        NSUserDefaults.standardUserDefaults().setObject(Workout.sharedFavorites.names, forKey: "favoriteWorkoutKeys")
+        NSUserDefaults.standardUserDefaults().synchronize()
+    }
 }
 
 class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate {
@@ -76,24 +101,6 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate {
         self.reloadTableView()
     }
     
-//    private func loadPublicWorkouts() {
-//        FirebaseManager.sharedRootRef.child("workouts/public").observeEventType(.ChildAdded, withBlock: { snapshot in
-//            // load workouts
-//            let workout = Workout(name: snapshot.key, data: snapshot.value as! [String : AnyObject])
-//            workout.free = true
-//            self.workouts.append(workout)
-//            if let keys = self.favoriteWorkoutKeys {
-//                if keys.contains(workout.name) {
-//                    Workout.sharedFavorites.append(workout)
-//                }
-//            }
-//            
-//            self.stopProgressHud()
-//            self.reloadTableView()
-//        })
-//        
-//    }
-    
     private func loadPublicWorkouts() {
         FirebaseManager.sharedRootRef.child("workouts_new/public").observeEventType(.ChildAdded, withBlock: { snapshot in
             // load workouts
@@ -103,6 +110,7 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate {
             if let keys = self.favoriteWorkoutKeys {
                 if keys.contains(workout.name) {
                     Workout.sharedFavorites.append(workout)
+                    workout.favorite = true
                 }
             }
             
@@ -273,17 +281,14 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate {
             cell.selectionStyle = .None
             
             let cellView = ContainerView()
-            cell.contentView.addSubview(cellView)
-            cellView.snp_makeConstraints(closure: { make in
-                make.top.equalTo(cell.contentView)
-                make.left.equalTo(cell.contentView)
-                make.right.equalTo(cell.contentView)
-                make.bottom.equalTo(cell.contentView)
-            })
+            cell.contentView.addSubviewWithConstraints(cellView, height: nil, width: nil, top: 0, left: 0, right: 0, bottom: 0)
             if let image = workout.image {
                 cellView.delegate = nil
                 cellView.subview = UIImageView(image: image)
-//                cellView.addSubviewWithConstraints(IndexedStarButton(), height: 30, width: 30, top: 8, left: nil, right: 8, bottom: nil)
+                let star = IndexedStar<Workout>(active: workout.favorite)
+                star.delegate = self
+                star.data = workout
+                cellView.addSubviewWithConstraints(star, height: 30, width: 30, top: 8, left: nil, right: 8, bottom: nil)
             } else {
                 let placeholder = WorkoutCellPlaceholderView()
                 placeholder.size = workoutCellSize
