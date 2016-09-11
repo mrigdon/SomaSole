@@ -35,6 +35,26 @@ class ContainerView: UIView {
         }
     }
     
+    func addSubviewWithConstraints(view: UIView, height: Int, width: Int, top: Int?, left: Int?, right: Int?, bottom: Int?) {
+        self.addSubview(view)
+        view.snp_makeConstraints(closure: { make in
+            make.height.equalTo(height)
+            make.width.equalTo(width)
+            if let top = top {
+                make.top.equalTo(self).offset(top)
+            }
+            if let left = left {
+                make.left.equalTo(self).offset(left)
+            }
+            if let right = right {
+                make.right.equalTo(self).offset(-right)
+            }
+            if let bottom = bottom {
+                make.bottom.equalTo(self).offset(-bottom)
+            }
+        })
+    }
+    
 }
 
 class VideoContainerView: ContainerView {

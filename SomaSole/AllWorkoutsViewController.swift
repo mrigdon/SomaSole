@@ -283,6 +283,7 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate {
             if let image = workout.image {
                 cellView.delegate = nil
                 cellView.subview = UIImageView(image: image)
+//                cellView.addSubviewWithConstraints(IndexedStarButton(), height: 30, width: 30, top: 8, left: nil, right: 8, bottom: nil)
             } else {
                 let placeholder = WorkoutCellPlaceholderView()
                 placeholder.size = workoutCellSize

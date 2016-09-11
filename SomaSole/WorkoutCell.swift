@@ -17,12 +17,6 @@ extension UIColor {
     }
 }
 
-class IndexedStarButton: StarButton {
-    
-    var index: Int?
-    
-}
-
 class WorkoutCell: UITableViewCell {
     
     // constants
