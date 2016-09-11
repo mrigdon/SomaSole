@@ -2924,7 +2924,7 @@ This ToU, including the documents referenced in this ToU, constitutes the entire
             <objects>
                 <tableViewController storyboardIdentifier="AllVideosViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="GfY-7K-kDV" customClass="AllVideosViewController" customModule="SomaSole" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="278" sectionHeaderHeight="28" sectionFooterHeight="28" id="avj-Or-FQ9">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -3096,6 +3096,14 @@ This ToU, including the documents referenced in this ToU, constitutes the entire
                                     <segue destination="8Im-MZ-Qjf" kind="presentation" identifier="premiumSegue" id="Em9-oI-XgO"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="newVideoCell" rowHeight="70" id="YRy-Sn-h7g">
+                                <rect key="frame" x="0.0" y="648" width="600" height="70"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YRy-Sn-h7g" id="FxO-sm-zLy">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="69.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="GfY-7K-kDV" id="psJ-T2-ge8"/>
@@ -3122,7 +3130,7 @@ This ToU, including the documents referenced in this ToU, constitutes the entire
                         </view>
                     </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="600" height="600"/>
+                    <size key="freeformSize" width="600" height="800"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ske-YT-meE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -3241,7 +3249,7 @@ This ToU, including the documents referenced in this ToU, constitutes the entire
                         <viewControllerLayoutGuide type="bottom" id="Hox-lF-m83"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Rfk-hT-VRW">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NAME:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XIa-7l-NJM">
@@ -3298,7 +3306,7 @@ This ToU, including the documents referenced in this ToU, constitutes the entire
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Label" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1xY-Ha-dh5">
-                                <rect key="frame" x="20" y="381" width="560" height="162"/>
+                                <rect key="frame" x="20" y="381" width="560" height="362"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>

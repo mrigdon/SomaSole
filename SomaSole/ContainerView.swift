@@ -8,6 +8,32 @@
 
 import UIKit
 
+extension UIView {
+    func addSubviewWithConstraints(view: UIView, height: Int?, width: Int?, top: Int?, left: Int?, right: Int?, bottom: Int?) {
+        self.addSubview(view)
+        view.snp_makeConstraints(closure: { make in
+            if let height = height {
+                make.height.equalTo(height)
+            }
+            if let width = width {
+                make.width.equalTo(width)
+            }
+            if let top = top {
+                make.top.equalTo(self).offset(top)
+            }
+            if let left = left {
+                make.left.equalTo(self).offset(left)
+            }
+            if let right = right {
+                make.right.equalTo(self).offset(-right)
+            }
+            if let bottom = bottom {
+                make.bottom.equalTo(self).offset(-bottom)
+            }
+        })
+    }
+}
+
 protocol ContainerViewDelegate {
     func didAddToView(view: UIView)
 }
@@ -33,26 +59,6 @@ class ContainerView: UIView {
             })
             delegate?.didAddToView(self)
         }
-    }
-    
-    func addSubviewWithConstraints(view: UIView, height: Int, width: Int, top: Int?, left: Int?, right: Int?, bottom: Int?) {
-        self.addSubview(view)
-        view.snp_makeConstraints(closure: { make in
-            make.height.equalTo(height)
-            make.width.equalTo(width)
-            if let top = top {
-                make.top.equalTo(self).offset(top)
-            }
-            if let left = left {
-                make.left.equalTo(self).offset(left)
-            }
-            if let right = right {
-                make.right.equalTo(self).offset(-right)
-            }
-            if let bottom = bottom {
-                make.bottom.equalTo(self).offset(-bottom)
-            }
-        })
     }
     
 }
