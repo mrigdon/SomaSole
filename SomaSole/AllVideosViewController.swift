@@ -33,6 +33,31 @@ extension Array where Element: Video {
         
         self.append(video)
     }
+    
+    var titles: [String] {
+        var titles = [String]()
+        for video in self {
+            titles.append(video.title)
+        }
+        return titles
+    }
+}
+
+extension AllVideosViewController: IndexedStarDelegate {
+    func didTapStar<T>(star: IndexedStar<T>) {
+        let video = star.data as! Video
+        
+        if star.active {
+            video.favorite = true
+            Video.sharedFavorites.append(video)
+        } else {
+            video.favorite = false
+            Video.sharedFavorites.removeAtIndex(Video.sharedFavorites.indexOf(video)!)
+        }
+        
+        NSUserDefaults.standardUserDefaults().setObject(Video.sharedFavorites.titles, forKey: "favoriteVideoKeys")
+        NSUserDefaults.standardUserDefaults().synchronize()
+    }
 }
 
 class AllVideosViewController: UITableViewController, UISearchBarDelegate {
@@ -76,6 +101,7 @@ class AllVideosViewController: UITableViewController, UISearchBarDelegate {
             if let keys = self.favoriteVideoKeys {
                 if keys.contains(video.title) {
                     Video.sharedFavorites.append(video)
+                    video.favorite = true
                 }
             }
             
@@ -180,7 +206,6 @@ class AllVideosViewController: UITableViewController, UISearchBarDelegate {
 
         startProgressHud()
         loadPublic()
-//        loadPrivate()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -216,21 +241,15 @@ class AllVideosViewController: UITableViewController, UISearchBarDelegate {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let video = searchBar.isFirstResponder() && searchBar.text != "" ? filteredVideos[indexPath.row] : (favorites ? Video.sharedFavorites[indexPath.row] : videos[indexPath.row])
         
-        let reuseID = video.free || User.sharedModel.premium ? "videoCell" : "videoOverlayCell"
+        let reuseID = video.free || User.sharedModel.premium ? "newVideoCell" : "videoOverlayCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(reuseID, forIndexPath: indexPath)
-//        let cell = tableView.dequeueReusableCellWithIdentifier("newVideoCell", forIndexPath: indexPath)
         
         if video.free || User.sharedModel.premium {
-            (cell as! VideoCell).video = video
-            (cell as! VideoCell).titleLabel.text = video.title
-            (cell as! VideoCell).videoImageView.image = video.image
-            (cell as! VideoCell).titleLabel.sizeToFit()
-            (cell as! VideoCell).setStarFill()
-//            let videoView = VideoCellView()
-//            videoView.label.text = video.title
-//            videoView.imageView.image = video.image
-//            cell.contentView.addSubviewWithConstraints(videoView, height: nil, width: nil, top: 0, left: 0, right: 0, bottom: 0)
-            
+            cell.contentView.clearSubviews()
+            let videoView = VideoCellView()
+            videoView.video = video
+            videoView.star.delegate = self
+            (cell as! NewVideoCell).videoView = videoView
         } else {
             (cell as! VideoOverlayCell).video = video
             (cell as! VideoOverlayCell).titleLabel.text = video.title
@@ -247,6 +266,9 @@ class AllVideosViewController: UITableViewController, UISearchBarDelegate {
             let cell = tableView.cellForRowAtIndexPath(tableView.indexPathForSelectedRow!) as! VideoCell
             let video = cell.video
             (segue.destinationViewController as! PlayVideoViewController).video = video
+        } else if segue.identifier == "newVideoSegue" {
+            let cell = tableView.cellForRowAtIndexPath(tableView.indexPathForSelectedRow!) as! NewVideoCell
+            (segue.destinationViewController as! PlayVideoViewController).video = cell.videoView?.video
         }
     }
 

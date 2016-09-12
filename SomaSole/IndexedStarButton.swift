@@ -37,8 +37,12 @@ class IndexedStar<T>: UIButton {
     
     var data: T?
     var delegate: IndexedStarDelegate?
+    var active = false {
+        didSet {
+            setImage(active ? filled : unfilled, forState: .Normal)
+        }
+    }
     
-    private(set) var active = false
     private var unfilled = UIImage(named: "star_unfilled")?.imageWithRenderingMode(.AlwaysTemplate)
     private var filled = UIImage(named: "star_filled")?.imageWithRenderingMode(.AlwaysTemplate)
     
@@ -55,6 +59,15 @@ class IndexedStar<T>: UIButton {
         
         tintColor = UIColor.goldColor()
         setImage(active ? filled : unfilled, forState: .Normal)
+        
+        addTarget(self, action: #selector(tapped), forControlEvents: .TouchUpInside)
+    }
+    
+    init() {
+        super.init(frame: CGRectZero)
+        
+        tintColor = UIColor.goldColor()
+        setImage(unfilled, forState: .Normal)
         
         addTarget(self, action: #selector(tapped), forControlEvents: .TouchUpInside)
     }

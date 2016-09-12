@@ -3092,13 +3092,16 @@ This ToU, including the documents referenced in this ToU, constitutes the entire
                                     <segue destination="8Im-MZ-Qjf" kind="presentation" identifier="premiumSegue" id="Em9-oI-XgO"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="newVideoCell" rowHeight="70" id="YRy-Sn-h7g">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="newVideoCell" rowHeight="70" id="YRy-Sn-h7g" customClass="NewVideoCell" customModule="SomaSole" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="648" width="600" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YRy-Sn-h7g" id="FxO-sm-zLy">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="69.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="0dZ-hV-uXw" kind="show" identifier="newVideoSegue" id="oLl-as-Kwj"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -3363,7 +3366,7 @@ This ToU, including the documents referenced in this ToU, constitutes the entire
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fxb-Av-f8m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3849" y="759"/>
+            <point key="canvasLocation" x="3849" y="100"/>
         </scene>
         <!--Custom Pace View Controller-->
         <scene sceneID="HyK-hc-W1E">
@@ -3523,9 +3526,9 @@ This ToU, including the documents referenced in this ToU, constitutes the entire
         <segue reference="0aP-Cp-rF3"/>
         <segue reference="X0W-T2-P7W"/>
         <segue reference="nuW-4e-9Zq"/>
-        <segue reference="0ZQ-sa-92A"/>
         <segue reference="L1j-8U-f84"/>
         <segue reference="oKK-Ue-uAs"/>
-        <segue reference="NgW-Cd-xhq"/>
+        <segue reference="Em9-oI-XgO"/>
+        <segue reference="oLl-as-Kwj"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -188,6 +188,7 @@
 		6235212B1CFA00E500B3F1BF /* ROGif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6235212A1CFA00E500B3F1BF /* ROGif.swift */; };
 		6235212D1CFA130A00B3F1BF /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6235212C1CFA130A00B3F1BF /* VideoCell.swift */; };
 		62411C721D871E9E00604B18 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62411C711D871E9E00604B18 /* Extensions.swift */; };
+		62411C741D872B0300604B18 /* NewVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62411C731D872B0300604B18 /* NewVideoCell.swift */; };
 		6248AE2C1CF9510C000A2DC9 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6248AE2B1CF9510C000A2DC9 /* Article.swift */; };
 		624A94E81CB7463E00A8D21A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624A94E71CB7463E00A8D21A /* LoginViewController.swift */; };
 		624DBB781D2DF86B0066ECB8 /* CustomPaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624DBB771D2DF86B0066ECB8 /* CustomPaceViewController.swift */; };
@@ -438,6 +439,7 @@
 		6235212A1CFA00E500B3F1BF /* ROGif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ROGif.swift; sourceTree = "<group>"; };
 		6235212C1CFA130A00B3F1BF /* VideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
 		62411C711D871E9E00604B18 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		62411C731D872B0300604B18 /* NewVideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewVideoCell.swift; sourceTree = "<group>"; };
 		6248AE2B1CF9510C000A2DC9 /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		624A94E71CB7463E00A8D21A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		624DBB771D2DF86B0066ECB8 /* CustomPaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPaceViewController.swift; sourceTree = "<group>"; };
@@ -840,6 +842,7 @@
 				62F307A61D85D75700B9C1C6 /* VideoCellView.swift */,
 				62915B841D2C155C0012A274 /* VideoThumbnailView.swift */,
 				6215F30A1CC9805900E2A995 /* WorkoutCell.swift */,
+				62411C731D872B0300604B18 /* NewVideoCell.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -1336,6 +1339,7 @@
 				62CCEEA51CEC16BB00CC0D37 /* FirebaseManager.swift in Sources */,
 				62AB9B801CFE8B32005498F8 /* ContainerView.swift in Sources */,
 				62F7ED781CF80DBF002A2C47 /* ArticleViewController.swift in Sources */,
+				62411C741D872B0300604B18 /* NewVideoCell.swift in Sources */,
 				6235212D1CFA130A00B3F1BF /* VideoCell.swift in Sources */,
 				626FBECF1D2C5014005B592B /* LabelCell.swift in Sources */,
 				622878211D41CA5800D23E5C /* TermsViewController.swift in Sources */,
