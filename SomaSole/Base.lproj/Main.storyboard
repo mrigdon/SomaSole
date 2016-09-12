@@ -2300,9 +2300,6 @@ This ToU, including the documents referenced in this ToU, constitutes the entire
                                                     <color key="value" red="1" green="0.84313725490000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="tappedStar:" destination="K9d-Aq-k4r" eventType="touchUpInside" id="5E0-Vt-zsS"/>
-                                            </connections>
                                         </view>
                                     </subviews>
                                     <constraints>
@@ -2311,7 +2308,6 @@ This ToU, including the documents referenced in this ToU, constitutes the entire
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="starButton" destination="Kyt-kj-5db" id="BUC-5i-sa3"/>
                                     <segue destination="Bso-lf-aka" kind="show" identifier="workoutSegue" id="L1j-8U-f84"/>
                                 </connections>
                             </tableViewCell>
@@ -3522,14 +3518,14 @@ This ToU, including the documents referenced in this ToU, constitutes the entire
         <image name="videos" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="X0W-T2-P7W"/>
-        <segue reference="0aP-Cp-rF3"/>
-        <segue reference="yH4-Va-FID"/>
         <segue reference="AYP-Ub-T6L"/>
-        <segue reference="Em9-oI-XgO"/>
-        <segue reference="NgW-Cd-xhq"/>
-        <segue reference="L1j-8U-f84"/>
+        <segue reference="yH4-Va-FID"/>
+        <segue reference="0aP-Cp-rF3"/>
+        <segue reference="X0W-T2-P7W"/>
         <segue reference="nuW-4e-9Zq"/>
+        <segue reference="0ZQ-sa-92A"/>
+        <segue reference="L1j-8U-f84"/>
         <segue reference="oKK-Ue-uAs"/>
+        <segue reference="NgW-Cd-xhq"/>
     </inferredMetricsTieBreakers>
 </document>

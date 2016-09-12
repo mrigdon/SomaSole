@@ -19,57 +19,14 @@ extension UIColor {
 
 class WorkoutCell: UITableViewCell {
     
-    // constants
-    let workoutCellSize: CGFloat = 0.51575 * UIScreen.mainScreen().bounds.width
-    
-    // variables
     var workout: Workout?
-    
-    // outlets
-    @IBOutlet weak var starButton: IndexedStarButton!
-    
-    // methods
-    func setStarFill() {
-        starButton.fillColor = Workout.sharedFavorites.contains(workout!) ? UIColor.goldColor() : UIColor.clearColor()
-        starButton.config()
-    }
-    
-    // action
-    @IBAction func tappedStar(sender: AnyObject) {
-        let starButton = sender as! IndexedStarButton
-        if Workout.sharedFavorites.contains(workout!) {
-            Workout.sharedFavorites.removeAtIndex(Workout.sharedFavorites.indexOf(workout!)!)
-            var favoriteWorkouts = [String]()
-            for workout in Workout.sharedFavorites {
-                favoriteWorkouts.append(workout.name)
-            }
-            NSUserDefaults.standardUserDefaults().setObject(favoriteWorkouts, forKey: "favoriteWorkoutKeys")
-            NSUserDefaults.standardUserDefaults().synchronize()
-            starButton.fillColor = UIColor.clearColor()
-            workout!.favorite = false
-        } else {
-            Workout.sharedFavorites.insertAlpha(workout!)
-            var favoriteWorkouts = [String]()
-            for workout in Workout.sharedFavorites {
-                favoriteWorkouts.append(workout.name)
-            }
-            NSUserDefaults.standardUserDefaults().setObject(favoriteWorkouts, forKey: "favoriteWorkoutKeys")
-            NSUserDefaults.standardUserDefaults().synchronize()
-            starButton.fillColor = UIColor.goldColor()
-            workout!.favorite = true
-        }
-        starButton.config()
-    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }

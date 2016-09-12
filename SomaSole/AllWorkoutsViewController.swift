@@ -113,6 +113,7 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate {
                     workout.favorite = true
                 }
             }
+            self.reloadTableView()
             
             workout.loadImage {
                 self.reloadTableView()
@@ -276,9 +277,10 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate {
             let workout = (searchBar.isFirstResponder() && searchBar.text != "") || selectedFilters.count > 0 ? filteredWorkouts[workoutIndex] : favorites ? Workout.sharedFavorites[workoutIndex] : workouts[workoutIndex]
             if workout.free || User.sharedModel.premium {
                 (cell as! WorkoutCell).workout = workout
-                (cell as! WorkoutCell).setStarFill()
             }
+            
             cell.selectionStyle = .None
+            cell.contentView.clearSubviews()
             
             let cellView = ContainerView()
             cell.contentView.addSubviewWithConstraints(cellView, height: nil, width: nil, top: 0, left: 0, right: 0, bottom: 0)

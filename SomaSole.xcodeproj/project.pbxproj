@@ -187,6 +187,7 @@
 		6229FF821CEA518400838B68 /* MovementDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6229FF811CEA518400838B68 /* MovementDetailViewController.swift */; };
 		6235212B1CFA00E500B3F1BF /* ROGif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6235212A1CFA00E500B3F1BF /* ROGif.swift */; };
 		6235212D1CFA130A00B3F1BF /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6235212C1CFA130A00B3F1BF /* VideoCell.swift */; };
+		62411C721D871E9E00604B18 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62411C711D871E9E00604B18 /* Extensions.swift */; };
 		6248AE2C1CF9510C000A2DC9 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6248AE2B1CF9510C000A2DC9 /* Article.swift */; };
 		624A94E81CB7463E00A8D21A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624A94E71CB7463E00A8D21A /* LoginViewController.swift */; };
 		624DBB781D2DF86B0066ECB8 /* CustomPaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624DBB771D2DF86B0066ECB8 /* CustomPaceViewController.swift */; };
@@ -436,6 +437,7 @@
 		622F6E0D1D541A2600397F90 /* SomaSole-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SomaSole-Bridging-Header.h"; sourceTree = "<group>"; };
 		6235212A1CFA00E500B3F1BF /* ROGif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ROGif.swift; sourceTree = "<group>"; };
 		6235212C1CFA130A00B3F1BF /* VideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
+		62411C711D871E9E00604B18 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		6248AE2B1CF9510C000A2DC9 /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		624A94E71CB7463E00A8D21A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		624DBB771D2DF86B0066ECB8 /* CustomPaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPaceViewController.swift; sourceTree = "<group>"; };
@@ -570,6 +572,7 @@
 				626063961CBAEE0000B1AF3C /* Login */,
 				62CF96451D126EF000DDC38A /* Payments */,
 				621D22AC1CB2DC3E00FE7581 /* AppDelegate.swift */,
+				62411C711D871E9E00604B18 /* Extensions.swift */,
 				622F6E0D1D541A2600397F90 /* SomaSole-Bridging-Header.h */,
 				621D22B21CB2DC3F00FE7581 /* Main.storyboard */,
 				621D22B51CB2DC3F00FE7581 /* Assets.xcassets */,
@@ -1363,6 +1366,7 @@
 				62D640E41CD8136600D05124 /* BeginWorkoutViewController.swift in Sources */,
 				62915B851D2C155C0012A274 /* VideoThumbnailView.swift in Sources */,
 				62F307A51D85CF5C00B9C1C6 /* IndexedStarButton.swift in Sources */,
+				62411C721D871E9E00604B18 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
