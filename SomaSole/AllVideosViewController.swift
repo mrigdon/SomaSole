@@ -254,6 +254,7 @@ class AllVideosViewController: UITableViewController, UISearchBarDelegate {
                 videoView.video = video
                 videoView.star.delegate = self
                 (cell as! NewVideoCell).video = video
+                containerView.delegate = nil
                 containerView.subview = videoView
             } else {
                 tableView.rowHeight = videoCellSize
