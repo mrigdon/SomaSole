@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import AlamofireImage
 
 class Video: NSObject {
     
@@ -18,7 +20,7 @@ class Video: NSObject {
     var videoDescription = ""
     var favorite = false
     var free = false
-    var image = UIImage()
+    var image: UIImage?
     
     init(id: String, data: [String:AnyObject]) {
         super.init()
@@ -26,5 +28,14 @@ class Video: NSObject {
         self.title = data["title"] as! String
         self.time = data["time"] as! Int
         self.videoDescription = data["description"] as! String
+    }
+    
+    func loadImage(completion: () -> Void) {
+        Alamofire.request(.GET, "http://img.youtube.com/vi/\(id)/mqdefault.jpg").responseImage(completionHandler: { response in
+            if let image = response.result.value {
+                self.image = image
+                completion()
+            }
+        })
     }
 }

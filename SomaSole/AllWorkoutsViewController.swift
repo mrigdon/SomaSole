@@ -10,6 +10,7 @@ import UIKit
 import TagListView
 import Firebase
 import EPShapes
+import MBProgressHUD
 
 extension Array where Element: Workout {
     mutating func insertAlpha(workout: Element) {
@@ -77,6 +78,16 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate {
         })
     }
     
+    private func startProgressHud() {
+        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+    }
+    
+    private func stopProgressHud() {
+        dispatch_async(dispatch_get_main_queue(), {
+            MBProgressHUD.hideHUDForView(self.view, animated: true)
+        })
+    }
+    
     func filterContent(searchText: String) {
         // filter for tags
         var tagFilteredWorkouts = selectedFilters.count > 0 ? [Workout]() : favorites ? Workout.sharedFavorites : workouts
@@ -113,6 +124,7 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate {
                     workout.favorite = true
                 }
             }
+            self.stopProgressHud()
             self.reloadTableView()
             
             workout.loadImage {
@@ -209,8 +221,8 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate {
         setupBarButtons()
         
         // begin load of all workouts
+        startProgressHud()
         loadPublicWorkouts()
-//        loadPrivateWorkouts()
     }
     
     override func viewDidAppear(animated: Bool) {

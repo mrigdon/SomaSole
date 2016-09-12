@@ -64,6 +64,7 @@ class AllVideosViewController: UITableViewController, UISearchBarDelegate {
     
     // constants
     let searchBar = UISearchBar()
+    let videoCellSize: CGFloat = 250
     
     // variables
     var favoriteVideoKeys = NSUserDefaults.standardUserDefaults().objectForKey("favoriteVideoKeys") as? [String]
@@ -98,21 +99,19 @@ class AllVideosViewController: UITableViewController, UISearchBarDelegate {
         FirebaseManager.sharedRootRef.child("videos/public").observeEventType(.ChildAdded, withBlock: { snapshot in
             let video = Video(id: snapshot.key, data: snapshot.value as! [String : AnyObject])
             video.free = true
+            self.videos.append(video)
             if let keys = self.favoriteVideoKeys {
                 if keys.contains(video.title) {
                     Video.sharedFavorites.append(video)
                     video.favorite = true
                 }
             }
+            self.stopProgressHud()
+            self.reloadTableView()
             
-            Alamofire.request(.GET, "http://img.youtube.com/vi/\(video.id)/mqdefault.jpg").responseImage(completionHandler: { response in
-                if let image = response.result.value {
-                    video.image = image
-                    self.videos.append(video)
-                    self.reloadTableView()
-                    self.stopProgressHud()
-                }
-            })
+            video.loadImage {
+                self.reloadTableView()
+            }
         })
     }
     
@@ -192,7 +191,7 @@ class AllVideosViewController: UITableViewController, UISearchBarDelegate {
     
     private func setupTableView() {
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 274
+        tableView.estimatedRowHeight = videoCellSize
         tableView.tableFooterView = UIView(frame: CGRect.zero)
     }
     
@@ -246,10 +245,23 @@ class AllVideosViewController: UITableViewController, UISearchBarDelegate {
         
         if video.free || User.sharedModel.premium {
             cell.contentView.clearSubviews()
-            let videoView = VideoCellView()
-            videoView.video = video
-            videoView.star.delegate = self
-            (cell as! NewVideoCell).videoView = videoView
+            let containerView = ContainerView()
+            cell.contentView.addSubviewWithConstraints(containerView, height: nil, width: nil, top: 0, left: 0, right: 0, bottom: 0)
+            if video.image != nil {
+                tableView.rowHeight = UITableViewAutomaticDimension
+                tableView.estimatedRowHeight = videoCellSize
+                let videoView = VideoCellView()
+                videoView.video = video
+                videoView.star.delegate = self
+                (cell as! NewVideoCell).video = video
+                containerView.subview = videoView
+            } else {
+                tableView.rowHeight = videoCellSize
+                let placeholder = VideoCellPlaceholderView()
+                placeholder.size = videoCellSize
+                containerView.delegate = placeholder
+                containerView.subview = placeholder
+            }
         } else {
             (cell as! VideoOverlayCell).video = video
             (cell as! VideoOverlayCell).titleLabel.text = video.title
@@ -261,6 +273,17 @@ class AllVideosViewController: UITableViewController, UISearchBarDelegate {
         return cell
     }
     
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+        if identifier == "newVideoSegue" {
+            let indexPath = tableView.indexPathForSelectedRow
+            let cell = tableView.cellForRowAtIndexPath(indexPath!) as! NewVideoCell
+            
+            return cell.video != nil
+        }
+        
+        return true
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "videoSegue" {
             let cell = tableView.cellForRowAtIndexPath(tableView.indexPathForSelectedRow!) as! VideoCell
@@ -268,7 +291,7 @@ class AllVideosViewController: UITableViewController, UISearchBarDelegate {
             (segue.destinationViewController as! PlayVideoViewController).video = video
         } else if segue.identifier == "newVideoSegue" {
             let cell = tableView.cellForRowAtIndexPath(tableView.indexPathForSelectedRow!) as! NewVideoCell
-            (segue.destinationViewController as! PlayVideoViewController).video = cell.videoView?.video
+            (segue.destinationViewController as! PlayVideoViewController).video = cell.video
         }
     }
 

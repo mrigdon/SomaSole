@@ -9,13 +9,7 @@
 import UIKit
 
 class NewVideoCell: UITableViewCell {
-
-    var videoView: VideoCellView? {
-        didSet {
-            if let videoView = videoView {
-                contentView.addSubviewWithConstraints(videoView, height: nil, width: nil, top: 0, left: 0, right: 0, bottom: 0)
-            }
-        }
-    }
+    
+    var video: Video?
 
 }

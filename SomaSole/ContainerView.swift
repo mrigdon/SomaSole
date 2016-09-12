@@ -42,22 +42,19 @@ class ContainerView: UIView {
     
     var delegate: ContainerViewDelegate?
     var subview: UIView? {
-        get {
-            return subviews.count == 0 ? nil : subviews[0]
-        }
-        set(view) {
-            for v in subviews {
-                v.removeFromSuperview()
-            }
+        didSet {
+            clearSubviews()
             
-            self.addSubview(view!)
-            view!.snp_makeConstraints(closure: { make in
-                make.top.equalTo(self)
-                make.left.equalTo(self)
-                make.right.equalTo(self)
-                make.bottom.equalTo(self)
-            })
-            delegate?.didAddToView(self)
+            if let subview = subview {
+                self.addSubview(subview)
+                subview.snp_makeConstraints(closure: { make in
+                    make.top.equalTo(self)
+                    make.left.equalTo(self)
+                    make.right.equalTo(self)
+                    make.bottom.equalTo(self)
+                })
+                delegate?.didAddToView(self)
+            }
         }
     }
     

@@ -144,7 +144,7 @@ class News2ViewController: UIViewController {
                 if let image = response.result.value {
                     video.image = image
                     let videoThumbnailView = self.videoThumbnailViews[self.videos.count]
-                    let videoView = FeaturedVideoView(image: video.image, title: video.title, frame: videoThumbnailView.frame, index: self.videos.count)
+                    let videoView = FeaturedVideoView(image: image, title: video.title, frame: videoThumbnailView.frame, index: self.videos.count)
                     videoThumbnailView.subview = videoView
                     videoThumbnailView.video = video
                     
