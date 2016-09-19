@@ -38,6 +38,8 @@ extension KDCircularProgress {
 
 class GuidedWorkoutViewController: UIViewController {
     
+    private let setupTime: Double = 15
+    
     // variables
     var workout: Workout?
     var gifVisible = true
@@ -109,13 +111,12 @@ class GuidedWorkoutViewController: UIViewController {
         startMovement()
     }
     
-    private func startMovement() {
+    private func startMovement(time: Double? = nil) {
         ui {
             self.progressView.animateToAngle(360, duration: 3, completion: { finished in
                 self.progressView.running()
-                let time: Double = 3// movementIndex == 0 ? 15 : Double(movement!.time!)
                 self.ui {
-                    self.progressView.animateToAngle(360, duration: time, completion: { finished in
+                    self.progressView.animateToAngle(360, duration: time ?? 15, completion: { finished in
                         self.progressView.loading()
                         SoundManager.sharedManager.playSound(named: "bells")
                         self.next()
@@ -188,7 +189,7 @@ class GuidedWorkoutViewController: UIViewController {
         tipTextView.text = movementCounter == 0 ? "" : movement!.movementDescription
         
         // 6. start movement
-        startMovement()
+        startMovement(movementCounter == 0 ? nil : Double(movement!.time!))
     }
     
     private func previous() {
