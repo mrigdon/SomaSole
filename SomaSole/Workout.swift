@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import SwiftString
+import Kingfisher
 
 enum WorkoutTag: Int {
     case UpperBody, Core, LowerBody, TotalBody
@@ -90,18 +91,28 @@ class Workout: NSObject {
     
     func loadImage(completion: () -> Void) {
         let file = name.stringByReplacingOccurrencesOfString(" ", withString: "") + ".jpg"
-        let imageRef = FirebaseManager.sharedStorage.child("workouts").child(file)
-        imageRef.dataWithMaxSize(imageDimensions, completion: { data, error in
-            if error != nil {
-                // TODO: handle error
-                print(error)
-            } else if let data = data {
-                if let image = UIImage(data: data) {
-                    self.image = image
-                    completion()
-                }
+        
+        // first check in cache, if not there, get from firebase
+        ImageCache.defaultCache.retrieveImageForKey(file, options: nil) { image, type in
+            if let image = image {
+                self.image = image
+                completion()
+            } else {
+                let imageRef = FirebaseManager.sharedStorage.child("workouts").child(file)
+                imageRef.dataWithMaxSize(self.imageDimensions, completion: { data, error in
+                    if error != nil {
+                        // TODO: handle error
+                        print(error)
+                    } else if let data = data {
+                        if let image = UIImage(data: data) {
+                            self.image = image
+                            completion()
+                            ImageCache.defaultCache.storeImage(image, forKey: file)
+                        }
+                    }
+                })
             }
-        })
+        }
     }
     
 }

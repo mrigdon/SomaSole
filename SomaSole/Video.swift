@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import AlamofireImage
+import Kingfisher
 
 class Video: NSObject {
     
@@ -31,11 +32,22 @@ class Video: NSObject {
     }
     
     func loadImage(completion: () -> Void) {
-        Alamofire.request(.GET, "http://img.youtube.com/vi/\(id)/mqdefault.jpg").responseImage(completionHandler: { response in
-            if let image = response.result.value {
+        let url = "http://img.youtube.com/vi/\(id)/mqdefault.jpg"
+        
+        // first check in cache, if not there get from youtube
+        ImageCache.defaultCache.retrieveImageForKey(url, options: nil) { image, type in
+            if let image = image {
                 self.image = image
                 completion()
+            } else {
+                Alamofire.request(.GET, url).responseImage { response in
+                    if let image = response.result.value {
+                        self.image = image
+                        completion()
+                        ImageCache.defaultCache.storeImage(image, forKey: url)
+                    }
+                }
             }
-        })
+        }
     }
 }

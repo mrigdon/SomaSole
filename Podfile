@@ -30,6 +30,7 @@ target 'SomaSole' do
     pod 'FLAnimatedImage', '~> 1.0'
     pod 'Shimmer'
     pod 'SnapKit'
+    pod 'Kingfisher', '~> 2.6.0'
 
 end
 

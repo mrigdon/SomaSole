@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class Article: NSObject {
     
@@ -64,34 +65,56 @@ class Article: NSObject {
     
     func loadTextImage(completion: () -> Void) {
         let file = headline + ".jpg"
-        let imageRef = FirebaseManager.sharedStorage.child("articles/text").child(file)
-        imageRef.dataWithMaxSize(textImageDimensions, completion: { data, error in
-            if error != nil {
-                // TODO: handle error
-                print(error)
-            } else if let data = data {
-                if let image = UIImage(data: data) {
-                    self.textImage = image
-                    completion()
+        let key = "text_\(file)"
+        
+        // first check in cache, if not there, retrieve from firebase
+        ImageCache.defaultCache.retrieveImageForKey(key, options: nil) { image, type in
+            if let image = image {
+                self.textImage = image
+                completion()
+            } else {
+                let imageRef = FirebaseManager.sharedStorage.child("articles/text").child(file)
+                imageRef.dataWithMaxSize(self.textImageDimensions) { data, error in
+                    if error != nil {
+                        // TODO: handle error
+                        print(error)
+                    } else if let data = data {
+                        if let image = UIImage(data: data) {
+                            self.textImage = image
+                            completion()
+                            ImageCache.defaultCache.storeImage(image, forKey: key)
+                        }
+                    }
                 }
             }
-        })
+        }
     }
     
     func loadPlainImage(completion: () -> Void) {
         let file = headline + ".jpg"
-        let imageRef = FirebaseManager.sharedStorage.child("articles/plain").child(file)
-        imageRef.dataWithMaxSize(plainImageDimensions, completion: { data, error in
-            if error != nil {
-                // TODO: handle error
-                print(error)
-            } else if let data = data {
-                if let image = UIImage(data: data) {
-                    self.plainImage = image
-                    completion()
+        let key = "plain_\(file)"
+        
+        // first check in cache, if not there, get from firebase
+        ImageCache.defaultCache.retrieveImageForKey(key, options: nil) { image, type in
+            if let image = image {
+                self.plainImage = image
+                completion()
+            } else {
+                let imageRef = FirebaseManager.sharedStorage.child("articles/plain").child(file)
+                imageRef.dataWithMaxSize(self.plainImageDimensions) { data, error in
+                    if error != nil {
+                        // TODO: handle error
+                        print(error)
+                    } else if let data = data {
+                        if let image = UIImage(data: data) {
+                            self.plainImage = image
+                            completion()
+                            ImageCache.defaultCache.storeImage(image, forKey: key)
+                        }
+                    }
                 }
             }
-        })
+        }
     }
     
 }
