@@ -22,6 +22,7 @@ class Video: NSObject {
     var favorite = false
     var free = false
     var image: UIImage?
+    var date = NSDate()
     
     init(id: String, data: [String:AnyObject]) {
         super.init()
@@ -29,6 +30,16 @@ class Video: NSObject {
         self.title = data["title"] as! String
         self.time = data["time"] as! Int
         self.videoDescription = data["description"] as! String
+        
+        // parse date
+        if let dateString = data["date"] as? String {
+            let formatter = NSDateFormatter()
+            formatter.dateStyle = .LongStyle
+            formatter.timeStyle = .LongStyle
+            if let date = formatter.dateFromString(dateString) {
+                self.date = date
+            }
+        }
     }
     
     func loadImage(completion: () -> Void) {

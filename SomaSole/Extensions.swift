@@ -15,3 +15,22 @@ extension UIView {
         }
     }
 }
+
+extension Array where Element: Video {
+    mutating func addByDate(video: Video) {
+        var added = false
+        
+        for (index, item) in self.enumerate() {
+            let otherDate = item as Video
+            if video.date.laterDate(otherDate.date) == video.date {
+                self.insert(video as! Element, atIndex: index)
+                added = true
+                break
+            }
+        }
+        
+        if !added {
+           append(video as! Element)
+        }
+    }
+}

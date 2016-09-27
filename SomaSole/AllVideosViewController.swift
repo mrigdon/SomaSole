@@ -99,7 +99,7 @@ class AllVideosViewController: UITableViewController, UISearchBarDelegate {
         FirebaseManager.sharedRootRef.child("videos/public").observeEventType(.ChildAdded, withBlock: { snapshot in
             let video = Video(id: snapshot.key, data: snapshot.value as! [String : AnyObject])
             video.free = true
-            self.videos.append(video)
+            self.videos.addByDate(video)
             if let keys = self.favoriteVideoKeys {
                 if keys.contains(video.title) {
                     Video.sharedFavorites.append(video)
