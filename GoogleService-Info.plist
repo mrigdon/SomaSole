@@ -7,21 +7,21 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>392198045097-65j29rpl9b2jdea5nrmpvu9d2uk648l2.apps.googleusercontent.com</string>
+	<string>1080954769816-46d68go2scsuhdfuujl99opohi7pthuh.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.392198045097-65j29rpl9b2jdea5nrmpvu9d2uk648l2</string>
+	<string>com.googleusercontent.apps.1080954769816-46d68go2scsuhdfuujl99opohi7pthuh</string>
 	<key>API_KEY</key>
-	<string>AIzaSyDA9pL2bWPiVzHTG5B__Bn9cg3AaAlXLBg</string>
+	<string>AIzaSyAJlKS-4zKBhvl14AvlEPklJ1A3gh6QF78</string>
 	<key>GCM_SENDER_ID</key>
-	<string>392198045097</string>
+	<string>1080954769816</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.somasole.SomaSoleApp</string>
 	<key>PROJECT_ID</key>
-	<string>project-7570309397895349159</string>
+	<string>somasole2</string>
 	<key>STORAGE_BUCKET</key>
-	<string>project-7570309397895349159.appspot.com</string>
+	<string>somasole2.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true/>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -33,8 +33,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:392198045097:ios:871e5d3a89da6168</string>
+	<string>1:1080954769816:ios:871e5d3a89da6168</string>
 	<key>DATABASE_URL</key>
-	<string>https://somasole.firebaseio.com</string>
+	<string>https://somasole2.firebaseio.com</string>
 </dict>
 </plist>
