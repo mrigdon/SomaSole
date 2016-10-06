@@ -171,7 +171,6 @@
 		621708D71D459E7800944715 /* X-Walk (Right).gif in Resources */ = {isa = PBXBuildFile; fileRef = 621708381D459E7800944715 /* X-Walk (Right).gif */; };
 		621708D81D459E7800944715 /* Y-Curl.gif in Resources */ = {isa = PBXBuildFile; fileRef = 621708391D459E7800944715 /* Y-Curl.gif */; };
 		621708D91D459E7800944715 /* Y-Raise.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6217083A1D459E7800944715 /* Y-Raise.gif */; };
-		621CC7151D77E6F800CD6CFA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 621CC7141D77E6F800CD6CFA /* GoogleService-Info.plist */; };
 		621D22AD1CB2DC3E00FE7581 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621D22AC1CB2DC3E00FE7581 /* AppDelegate.swift */; };
 		621D22B41CB2DC3F00FE7581 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 621D22B21CB2DC3F00FE7581 /* Main.storyboard */; };
 		621D22B61CB2DC3F00FE7581 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 621D22B51CB2DC3F00FE7581 /* Assets.xcassets */; };
@@ -183,6 +182,7 @@
 		6220673F1D7DFFD700B82113 /* bells.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6220673E1D7DFFD700B82113 /* bells.wav */; };
 		622067411D7DFFFF00B82113 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622067401D7DFFFF00B82113 /* SoundManager.swift */; };
 		622441B51D790060002F454B /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622441B41D790060002F454B /* PlaceholderView.swift */; };
+		622562C61DA7047400515BBD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 622562C51DA7047400515BBD /* GoogleService-Info.plist */; };
 		622878211D41CA5800D23E5C /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622878201D41CA5800D23E5C /* TermsViewController.swift */; };
 		6229FF821CEA518400838B68 /* MovementDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6229FF811CEA518400838B68 /* MovementDetailViewController.swift */; };
 		6235212B1CFA00E500B3F1BF /* ROGif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6235212A1CFA00E500B3F1BF /* ROGif.swift */; };
@@ -415,7 +415,6 @@
 		621708381D459E7800944715 /* X-Walk (Right).gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "X-Walk (Right).gif"; sourceTree = "<group>"; };
 		621708391D459E7800944715 /* Y-Curl.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Y-Curl.gif"; sourceTree = "<group>"; };
 		6217083A1D459E7800944715 /* Y-Raise.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Y-Raise.gif"; sourceTree = "<group>"; };
-		621CC7141D77E6F800CD6CFA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		621D22A91CB2DC3E00FE7581 /* SomaSole.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SomaSole.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		621D22AC1CB2DC3E00FE7581 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		621D22B31CB2DC3F00FE7581 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -433,6 +432,7 @@
 		6220673E1D7DFFD700B82113 /* bells.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bells.wav; sourceTree = "<group>"; };
 		622067401D7DFFFF00B82113 /* SoundManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		622441B41D790060002F454B /* PlaceholderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderView.swift; sourceTree = "<group>"; };
+		622562C51DA7047400515BBD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		622878201D41CA5800D23E5C /* TermsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		6229FF811CEA518400838B68 /* MovementDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementDetailViewController.swift; sourceTree = "<group>"; };
 		622F6E0D1D541A2600397F90 /* SomaSole-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SomaSole-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -538,7 +538,7 @@
 		621D22A01CB2DC3E00FE7581 = {
 			isa = PBXGroup;
 			children = (
-				621CC7141D77E6F800CD6CFA /* GoogleService-Info.plist */,
+				622562C51DA7047400515BBD /* GoogleService-Info.plist */,
 				621D22DC1CB2DC7C00FE7581 /* Podfile */,
 				621D22AB1CB2DC3E00FE7581 /* SomaSole */,
 				621D22C21CB2DC3F00FE7581 /* SomaSoleTests */,
@@ -1116,6 +1116,7 @@
 				621708951D459E7800944715 /* Punch.gif in Resources */,
 				6217086F1D459E7800944715 /* Hip Rotation (Right).gif in Resources */,
 				621708C41D459E7800944715 /* Standing Side Stretch (Left Side).gif in Resources */,
+				622562C61DA7047400515BBD /* GoogleService-Info.plist in Resources */,
 				621708AE1D459E7800944715 /* Side Plank Hold (Left Side).gif in Resources */,
 				6217085E1D459E7800944715 /* Front Squat.gif in Resources */,
 				6217085A1D459E7800944715 /* Forward Lunge (Right Leg).gif in Resources */,
@@ -1131,7 +1132,6 @@
 				621708C51D459E7800944715 /* Standing Side Stretch (Right Side).gif in Resources */,
 				621708A11D459E7800944715 /* Russian Twists.gif in Resources */,
 				621708D51D459E7800944715 /* X-Jack.gif in Resources */,
-				621CC7151D77E6F800CD6CFA /* GoogleService-Info.plist in Resources */,
 				621708551D459E7800944715 /* Delt Row.gif in Resources */,
 				6217086A1D459E7800944715 /* Hip Extension - Knee Up (Left Leg).gif in Resources */,
 				621708601D459E7800944715 /* Glute Kick-Back (Right Leg).gif in Resources */,

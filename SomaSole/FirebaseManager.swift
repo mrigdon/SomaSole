@@ -12,6 +12,6 @@ import Firebase
 class FirebaseManager: NSObject {
 
     static var sharedRootRef = FIRDatabase.database().reference()
-    static var sharedStorage = FIRStorage.storage().referenceForURL("gs://project-7570309397895349159.appspot.com")
+    static var sharedStorage = FIRStorage.storage().referenceForURL("gs://somasole2.appspot.com")
     
 }

@@ -171,7 +171,9 @@ class News2ViewController: UIViewController {
     }
     
     private func loadFeatured() {
-        FirebaseManager.sharedRootRef.child("featured_new").observeSingleEventOfType(.Value, withBlock: { snapshot in
+        print("here1: \(NSDate())")
+        FirebaseManager.sharedRootRef.child("featured").observeSingleEventOfType(.Value, withBlock: { snapshot in
+            print("here2: \(NSDate())")
             let featured = JSON(snapshot.value!)
             self.addArticles(featured["articles"])
             self.addWorkout(featured["workout"])
