@@ -113,8 +113,8 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate {
     }
     
     private func loadPublicWorkouts() {
+        startProgressHud()
         FirebaseManager.sharedRootRef.child("workouts/public").observeEventType(.ChildAdded, withBlock: { snapshot in
-            // load workouts
             let workout = Workout(name: snapshot.key, data: snapshot.value as! [String : AnyObject])
             workout.free = true
             self.workouts.append(workout)
@@ -163,6 +163,18 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate {
         navigationItem.rightBarButtonItem = unfilledStarButton
         favorites = false
         reloadTableView()
+    }
+    
+    private func cellTypeForIndexPath(indexPath: NSIndexPath) -> String {
+        return selectedFilters.count > 0 && indexPath.row == 0 ? "tagCell" : indexPath.row == 0 ? "filterCell" : "workoutCell"
+    }
+    
+    private func workoutForCell(cellType: String, at index: Int) -> Workout? {
+        if cellType == "workoutCell" {
+            return searchBar.isFirstResponder() && searchBar.text != "" ? filteredWorkouts[index] : (favorites ? Workout.sharedFavorites[index] : workouts[index])
+        }
+        
+        return nil
     }
     
     // delegates
@@ -221,7 +233,6 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate {
         setupBarButtons()
         
         // begin load of all workouts
-        startProgressHud()
         loadPublicWorkouts()
     }
     
@@ -257,43 +268,33 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cellType = ""
-        var workout: Workout?
-        if selectedFilters.count > 0 && indexPath.row == 0 {
-            cellType = "tagCell"
-        } else if indexPath.row == 0 {
-            cellType = "filterCell"
-        } else {
-            let workoutIndex = indexPath.row - 1 // -1 for the filter cell
-            workout = searchBar.isFirstResponder() && searchBar.text != "" ? filteredWorkouts[workoutIndex] : (favorites ? Workout.sharedFavorites[workoutIndex] : workouts[workoutIndex])
-            if workout!.free || User.sharedModel.premium {
-                cellType = "workoutCell"
-            } else {
-                cellType = "workoutOverlayCell"
-            }
-        }
+        let cellType = cellTypeForIndexPath(indexPath)
         let cell = tableView.dequeueReusableCellWithIdentifier(cellType, forIndexPath: indexPath)
         
-        if selectedFilters.count > 0 && indexPath.row == 0 {
-            // tags cell
+        if cellType == "tagCell" {
             (cell as! TagCell).addFilters(selectedFilters)
             self.tableView.rowHeight = UITableViewAutomaticDimension
             self.tableView.estimatedRowHeight = workoutCellSize
-        } else if indexPath.row == 0 {
-            // filter button cell
+        } else if cellType == "filterCell" {
             self.tableView.rowHeight = filterCellSize
         } else {
-            // workout cell
+            // set workout cell size
             self.tableView.rowHeight = workoutCellSize
+            
+            // get workout
             let workoutIndex = indexPath.row - 1 // -1 for the filter cell
             let workout = (searchBar.isFirstResponder() && searchBar.text != "") || selectedFilters.count > 0 ? filteredWorkouts[workoutIndex] : favorites ? Workout.sharedFavorites[workoutIndex] : workouts[workoutIndex]
             if workout.free || User.sharedModel.premium {
                 (cell as! WorkoutCell).workout = workout
             }
             
+            // better ui for touch
             cell.selectionStyle = .None
+            
+            // clear subviews
             cell.contentView.clearSubviews()
             
+            // add container view
             let cellView = ContainerView()
             cell.contentView.addSubviewWithConstraints(cellView, height: nil, width: nil, top: 0, left: 0, right: 0, bottom: 0)
             if let image = workout.image {
