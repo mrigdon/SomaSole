@@ -70,7 +70,6 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate {
     var unfilledStarButton: UIBarButtonItem?
     var filledStarButton: UIBarButtonItem?
     var favorites = false
-    var loaded = false
     
     // methods
     func reloadTableView() {
@@ -114,8 +113,8 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate {
     }
     
     private func loadPublicWorkouts() {
+        startProgressHud()
         FirebaseManager.sharedRootRef.child("workouts/public").observeEventType(.ChildAdded, withBlock: { snapshot in
-            self.loaded = true
             let workout = Workout(name: snapshot.key, data: snapshot.value as! [String : AnyObject])
             workout.free = true
             self.workouts.append(workout)
@@ -125,6 +124,8 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate {
                     workout.favorite = true
                 }
             }
+            self.stopProgressHud()
+            self.reloadTableView()
             
             workout.loadImage {
                 self.reloadTableView()
@@ -259,77 +260,59 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if loaded {
-            if (searchBar.isFirstResponder() && searchBar.text != "") || selectedFilters.count > 0 {
-                return filteredWorkouts.count + 1
-            }
-            
-            return favorites ? Workout.sharedFavorites.count + 1 : workouts.count + 1 // plus one for the filter cell
-        } else {
-            return 3
+        if (searchBar.isFirstResponder() && searchBar.text != "") || selectedFilters.count > 0 {
+            return filteredWorkouts.count + 1
         }
+        
+        return favorites ? Workout.sharedFavorites.count + 1 : workouts.count + 1 // plus one for the filter cell
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if loaded {
-            let cellType = cellTypeForIndexPath(indexPath)
-            let cell = tableView.dequeueReusableCellWithIdentifier(cellType, forIndexPath: indexPath)
+        let cellType = cellTypeForIndexPath(indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellType, forIndexPath: indexPath)
+        
+        if cellType == "tagCell" {
+            (cell as! TagCell).addFilters(selectedFilters)
+            self.tableView.rowHeight = UITableViewAutomaticDimension
+            self.tableView.estimatedRowHeight = workoutCellSize
+        } else if cellType == "filterCell" {
+            self.tableView.rowHeight = filterCellSize
+        } else {
+            // set workout cell size
+            self.tableView.rowHeight = workoutCellSize
             
-            if cellType == "tagCell" {
-                (cell as! TagCell).addFilters(selectedFilters)
-                self.tableView.rowHeight = UITableViewAutomaticDimension
-                self.tableView.estimatedRowHeight = workoutCellSize
-            } else if cellType == "filterCell" {
-                self.tableView.rowHeight = filterCellSize
-            } else {
-                // set workout cell size
-                self.tableView.rowHeight = workoutCellSize
-                
-                // get workout
-                let workoutIndex = indexPath.row - 1 // -1 for the filter cell
-                let workout = (searchBar.isFirstResponder() && searchBar.text != "") || selectedFilters.count > 0 ? filteredWorkouts[workoutIndex] : favorites ? Workout.sharedFavorites[workoutIndex] : workouts[workoutIndex]
-                if workout.free || User.sharedModel.premium {
-                    (cell as! WorkoutCell).workout = workout
-                }
-                
-                // better ui for touch
-                cell.selectionStyle = .None
-                
-                // clear subviews
-                cell.contentView.clearSubviews()
-                
-                // add container view
-                let cellView = ContainerView()
-                cell.contentView.addSubviewWithConstraints(cellView, height: nil, width: nil, top: 0, left: 0, right: 0, bottom: 0)
-                if let image = workout.image {
-                    cellView.delegate = nil
-                    cellView.subview = UIImageView(image: image)
-                    let star = IndexedStar<Workout>(active: workout.favorite)
-                    star.delegate = self
-                    star.data = workout
-                    cellView.addSubviewWithConstraints(star, height: 30, width: 30, top: 8, left: nil, right: 8, bottom: nil)
-                } else {
-                    let placeholder = WorkoutCellPlaceholderView()
-                    placeholder.size = workoutCellSize
-                    cellView.delegate = placeholder
-                    cellView.subview = placeholder
-                }
+            // get workout
+            let workoutIndex = indexPath.row - 1 // -1 for the filter cell
+            let workout = (searchBar.isFirstResponder() && searchBar.text != "") || selectedFilters.count > 0 ? filteredWorkouts[workoutIndex] : favorites ? Workout.sharedFavorites[workoutIndex] : workouts[workoutIndex]
+            if workout.free || User.sharedModel.premium {
+                (cell as! WorkoutCell).workout = workout
             }
             
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCellWithIdentifier("dummyCell", forIndexPath: indexPath)
+            // better ui for touch
+            cell.selectionStyle = .None
             
-            tableView.rowHeight = workoutCellSize
+            // clear subviews
+            cell.contentView.clearSubviews()
+            
+            // add container view
             let cellView = ContainerView()
             cell.contentView.addSubviewWithConstraints(cellView, height: nil, width: nil, top: 0, left: 0, right: 0, bottom: 0)
-            let placeholder = WorkoutCellPlaceholderView()
-            placeholder.size = workoutCellSize
-            cellView.delegate = placeholder
-            cellView.subview = placeholder
-            
-            return cell
+            if let image = workout.image {
+                cellView.delegate = nil
+                cellView.subview = UIImageView(image: image)
+                let star = IndexedStar<Workout>(active: workout.favorite)
+                star.delegate = self
+                star.data = workout
+                cellView.addSubviewWithConstraints(star, height: 30, width: 30, top: 8, left: nil, right: 8, bottom: nil)
+            } else {
+                let placeholder = WorkoutCellPlaceholderView()
+                placeholder.size = workoutCellSize
+                cellView.delegate = placeholder
+                cellView.subview = placeholder
+            }
         }
+
+        return cell
     }
     
     // MARK: - Navigation

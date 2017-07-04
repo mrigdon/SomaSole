@@ -2414,14 +2414,6 @@ This ToU, including the documents referenced in this ToU, constitutes the entire
                                     <segue destination="m1W-cq-3dU" kind="show" identifier="tagListSegue" id="nuW-4e-9Zq"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="dummyCell" rowHeight="51" id="gcb-7X-zjW">
-                                <rect key="frame" x="0.0" y="485" width="600" height="51"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gcb-7X-zjW" id="Nll-01-O5R">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="50.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="o5K-lZ-HRw" id="Pgz-SH-lCN"/>
@@ -3111,14 +3103,6 @@ This ToU, including the documents referenced in this ToU, constitutes the entire
                                     <segue destination="0dZ-hV-uXw" kind="show" identifier="newVideoSegue" id="oLl-as-Kwj"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="dummyCell" rowHeight="70" id="0f4-7X-dKE" customClass="NewVideoCell" customModule="SomaSole" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="718" width="600" height="70"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0f4-7X-dKE" id="ECU-WU-Hxg">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="69.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="GfY-7K-kDV" id="psJ-T2-ge8"/>
@@ -3541,10 +3525,10 @@ This ToU, including the documents referenced in this ToU, constitutes the entire
         <segue reference="0aP-Cp-rF3"/>
         <segue reference="yH4-Va-FID"/>
         <segue reference="AYP-Ub-T6L"/>
-        <segue reference="nuW-4e-9Zq"/>
-        <segue reference="L1j-8U-f84"/>
-        <segue reference="oKK-Ue-uAs"/>
-        <segue reference="Em9-oI-XgO"/>
         <segue reference="oLl-as-Kwj"/>
+        <segue reference="0ZQ-sa-92A"/>
+        <segue reference="L1j-8U-f84"/>
+        <segue reference="nuW-4e-9Zq"/>
+        <segue reference="oKK-Ue-uAs"/>
     </inferredMetricsTieBreakers>
 </document>
