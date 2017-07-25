@@ -15,11 +15,13 @@ class Article: NSObject {
     let plainImageDimensions: Int64 = 1 * 1400 * 1400
 
     var author = ""
-    var date: NSDate
+    var date: NSDate!
     var textImage = UIImage()
     var plainImage = UIImage()
     var headline = ""
     var body = ""
+    var textImageURL = ""
+    var plainImageURL = ""
     
     init(date: String, data: [String:String]) {
         author = data["author"]!
@@ -30,6 +32,15 @@ class Article: NSObject {
         formatter.dateStyle = .MediumStyle
         formatter.timeStyle = .FullStyle
         self.date = formatter.dateFromString(date)!
+    }
+    
+    init(data: [String : String]) {
+        author = data["author"]!
+        headline = data["headline"]!
+        body = data["body"]!
+        textImageURL = data["text_image_url"]!
+        plainImageURL = data["plain_image_url"]!
+        date = NSDate()
     }
     
     func loadImages(completion: () -> Void) {
@@ -64,28 +75,18 @@ class Article: NSObject {
     }
     
     func loadTextImage(completion: () -> Void) {
-        let file = headline + ".jpg"
-        let key = "text_\(file)"
-        
-        // first check in cache, if not there, retrieve from firebase
-        ImageCache.defaultCache.retrieveImageForKey(key, options: nil) { image, type in
+        // first check in cache, if not there, retrieve from s3
+        ImageCache.defaultCache.retrieveImageForKey(textImageURL, options: nil) { image, type in
             if let image = image {
                 self.textImage = image
                 completion()
             } else {
-                let imageRef = FirebaseManager.sharedStorage.child("articles/text").child(file)
-                imageRef.dataWithMaxSize(self.textImageDimensions) { data, error in
-                    if error != nil {
-                        // TODO: handle error
-                        print(error)
-                    } else if let data = data {
-                        if let image = UIImage(data: data) {
-                            self.textImage = image
-                            completion()
-                            ImageCache.defaultCache.storeImage(image, forKey: key)
-                        }
-                    }
-                }
+                let url = NSURL(string: self.textImageURL)
+                ImageDownloader.defaultDownloader.downloadImageWithURL(url!, progressBlock: nil, completionHandler: { (image, error, url, data) in
+                    self.textImage = image!
+                    completion()
+                    ImageCache.defaultCache.storeImage(image!, forKey: self.textImageURL)
+                })
             }
         }
     }

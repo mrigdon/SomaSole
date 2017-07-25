@@ -214,6 +214,7 @@
 		62B4AAA61D4C2A6300DD1273 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62B4AAA51D4C2A6300DD1273 /* StoreKit.framework */; };
 		62BBCED31D18E09700E01DE9 /* News2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BBCED21D18E09700E01DE9 /* News2ViewController.swift */; };
 		62C18E9E1D235D0B00C05798 /* PlayVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C18E9D1D235D0B00C05798 /* PlayVideoViewController.swift */; };
+		62C5C58F1F26F58A0048A187 /* Backend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C5C58E1F26F58A0048A187 /* Backend.swift */; };
 		62C8413E1CC6F5D700468726 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C8413D1CC6F5D700468726 /* FilterViewController.swift */; };
 		62CCEEA51CEC16BB00CC0D37 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CCEEA41CEC16BB00CC0D37 /* FirebaseManager.swift */; };
 		62CF96471D126F7800DDC38A /* GoPremiumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CF96461D126F7800DDC38A /* GoPremiumViewController.swift */; };
@@ -465,6 +466,7 @@
 		62B4AAA51D4C2A6300DD1273 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		62BBCED21D18E09700E01DE9 /* News2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = News2ViewController.swift; sourceTree = "<group>"; };
 		62C18E9D1D235D0B00C05798 /* PlayVideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayVideoViewController.swift; sourceTree = "<group>"; };
+		62C5C58E1F26F58A0048A187 /* Backend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Backend.swift; sourceTree = "<group>"; };
 		62C8413D1CC6F5D700468726 /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		62CCEEA41CEC16BB00CC0D37 /* FirebaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		62CF96461D126F7800DDC38A /* GoPremiumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoPremiumViewController.swift; sourceTree = "<group>"; };
@@ -639,6 +641,7 @@
 				6235212A1CFA00E500B3F1BF /* ROGif.swift */,
 				6259FCAD1D0388D800DF09D4 /* Video.swift */,
 				626D2CF31D1A4F8C00812ED0 /* ROImage.swift */,
+				62C5C58E1F26F58A0048A187 /* Backend.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1359,6 +1362,7 @@
 				62CF96471D126F7800DDC38A /* GoPremiumViewController.swift in Sources */,
 				627DEB661D7F8C1000CFA848 /* DataImageView.swift in Sources */,
 				62C8413E1CC6F5D700468726 /* FilterViewController.swift in Sources */,
+				62C5C58F1F26F58A0048A187 /* Backend.swift in Sources */,
 				62D4298B1CEDA5DB009F157A /* Movement.swift in Sources */,
 				6215F30B1CC9805900E2A995 /* WorkoutCell.swift in Sources */,
 				621DA9641D15FE2E002DF0AF /* Profile3ViewController.swift in Sources */,

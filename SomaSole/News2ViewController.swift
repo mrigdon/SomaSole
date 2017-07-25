@@ -116,9 +116,8 @@ class News2ViewController: UIViewController {
         }
     }
     
-    private func addArticles(json: JSON) {
-        for (key, data) in json {
-            let article = Article(date: key, data: data.dictionaryObject as! [String:String])
+    private func addArticles(articles: [Article]) {
+        for article in articles {
             article.loadTextImage {
                 self.slideshow.addImage(article.textImage)
                 self.articles.append(article)
@@ -171,12 +170,9 @@ class News2ViewController: UIViewController {
     }
     
     private func loadFeatured() {
-        FirebaseManager.sharedRootRef.child("featured").observeSingleEventOfType(.Value, withBlock: { snapshot in
-            let featured = JSON(snapshot.value!)
-            self.addArticles(featured["articles"])
-            self.addWorkout(featured["workout"])
-            self.addVideos(featured["videos"])
-        })
+        Backend.shared.getFeatured { featured in
+            self.addArticles(featured!.articles)
+        }
     }
     
     @objc private func nextSlide() {
