@@ -21,8 +21,8 @@ class Setup: NSObject {
     var image: UIImage?
     var long: Bool
     
-    init(data: [String:Int]) {
-        imageIndex = data["index"]!
+    init(data: [String : Int]) {
+        imageIndex = data["legacy_index"]!
         long = Bool(data["length"]!)
     }
 }
@@ -35,18 +35,10 @@ class Circuit: NSObject {
     var setup: Setup
     
     init(data: [String:AnyObject]) {
-        self.numSets = data["sets"] as! Int
-        self.currentSet = 1
-        
-        let movementsData = data["movements"] as! [[String:Int]]
-        for movementData in movementsData {
-            let indexWithPrefix = movementData.first!.0 as NSString
-            let index = Int(indexWithPrefix.substringFromIndex(1))!
-            let movement = Movement(index: index, time: movementData.first!.1)
-            movements.append(movement)
-        }
-        
-        self.setup = Setup(data: data["setup"] as! [String:Int])
+        numSets = data["sets"] as! Int
+        currentSet = 1
+        movements = (data["movements"] as! [[String : AnyObject]]).map { Movement(data: $0) }
+        setup = Setup(data: data["setup"] as! [String : Int])
     }
     
 }
@@ -58,10 +50,10 @@ class Workout: NSObject {
     let imageDimensions: Int64 = 1 * 1300 * 670
     
     var image: UIImage?
-    var name: String
-    var time: Int
-    var intensity: Int
-    var workoutDescription: String
+    var name = ""
+    var time = 0
+    var intensity = 0
+    var workoutDescription = ""
     var circuits = [Circuit]()
     var tags = [WorkoutTag]()
     var numMovements = 0
@@ -87,6 +79,15 @@ class Workout: NSObject {
         for tagData in tagsData {
             self.tags.append(WorkoutTag(rawValue: tagData)!)
         }
+    }
+    
+    init(data: [String : AnyObject]) {
+        name = data["name"] as! String
+        time = data["time"] as! Int
+        intensity = data["intensity"] as! Int
+        workoutDescription = data["description"] as! String
+        circuits = (data["circuits"] as! [[String : AnyObject]]).map { Circuit(data: $0) }
+        numMovements = circuits.count
     }
     
     func loadImage(completion: () -> Void) {

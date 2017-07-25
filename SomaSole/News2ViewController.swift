@@ -154,9 +154,9 @@ class News2ViewController: UIViewController {
         }
     }
     
-    private func addWorkout(json: JSON) {
-        workout = Workout(name: json["index"].stringValue, data: json["data"].dictionaryObject!)
-        if let workout = workout {
+    private func addWorkout(workout: Workout) {
+        self.workout = workout
+        if let workout = self.workout {
             workout.loadImage {
                 let workoutImageView = UIImageView(image: workout.image)
                 workoutImageView.image = workout.image
@@ -172,6 +172,7 @@ class News2ViewController: UIViewController {
     private func loadFeatured() {
         Backend.shared.getFeatured { featured in
             self.addArticles(featured!.articles)
+            self.addWorkout(featured!.workout)
         }
     }
     

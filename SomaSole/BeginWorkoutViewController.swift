@@ -46,24 +46,24 @@ class BeginWorkoutViewController: UIViewController {
     }
     
     func loadMovements() {
-        startProgressHud()
-        for circuit in workout!.circuits {
-            let length = circuit.setup.long ? "long" : "short"
-            circuit.setup.image = UIImage(named: "setup\(circuit.setup.imageIndex)\(length)")
-            
-            for movement in circuit.movements {
-                FirebaseManager.sharedRootRef.child("movements").child(String(movement.index)).observeEventType(.Value, withBlock: { snapshot in
-                    movement.title = snapshot.value!["title"] as! String
-                    movement.movementDescription = snapshot.value!["description"] as? String
-                    let url = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("\(movement.title).gif", ofType: nil)!)
-                    movement.gif = NSData(contentsOfURL: url)
-                    self.movementIndex += 1
-                    if self.movementIndex == self.workout!.numMovements {
-                        self.stopProgressHud()
-                    }
-                })
-            }
-        }
+//        startProgressHud()
+//        for circuit in workout!.circuits {
+//            let length = circuit.setup.long ? "long" : "short"
+//            circuit.setup.image = UIImage(named: "setup\(circuit.setup.imageIndex)\(length)")
+//            
+//            for movement in circuit.movements {
+//                FirebaseManager.sharedRootRef.child("movements").child(String(movement.index)).observeEventType(.Value, withBlock: { snapshot in
+//                    movement.title = snapshot.value!["title"] as! String
+//                    movement.movementDescription = snapshot.value!["description"] as? String
+//                    let url = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("\(movement.title).gif", ofType: nil)!)
+//                    movement.gif = NSData(contentsOfURL: url)
+//                    self.movementIndex += 1
+//                    if self.movementIndex == self.workout!.numMovements {
+//                        self.stopProgressHud()
+//                    }
+//                })
+//            }
+//        }
     }
     
     // uiviewcontroller

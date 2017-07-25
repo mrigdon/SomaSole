@@ -14,7 +14,7 @@ class Movement: NSObject {
     static var sharedMovements = [Movement]()
     
     var title: String = ""
-    var index: Int
+    var index: Int?
     var image: UIImage?
     var gif: NSData?
     var time: Int?
@@ -30,6 +30,12 @@ class Movement: NSObject {
         self.index = index
         self.title = data["title"]!
         self.movementDescription = data["description"]!
+    }
+    
+    init(data: [String : AnyObject]) {
+        time = data["time"] as? Int
+        title = data["title"] as! String
+        movementDescription = data["description"] as? String
     }
     
     func decodeImage(imageString: String) {
