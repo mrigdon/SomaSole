@@ -96,23 +96,25 @@ class AllVideosViewController: UITableViewController, UISearchBarDelegate {
     }
     
     private func loadPublic() {
-        FirebaseManager.sharedRootRef.child("videos/public").observeEventType(.ChildAdded, withBlock: { snapshot in
-            let video = Video(id: snapshot.key, data: snapshot.value as! [String : AnyObject])
-            video.free = true
-            self.videos.addByDate(video)
-            if let keys = self.favoriteVideoKeys {
-                if keys.contains(video.title) {
-                    Video.sharedFavorites.append(video)
-                    video.favorite = true
+        Backend.shared.getVideos { videos in
+            self.videos = videos!
+            
+            for video in self.videos {
+                if let keys = self.favoriteVideoKeys {
+                    if keys.contains(video.title) {
+                        Video.sharedFavorites.append(video)
+                        video.favorite = true
+                    }
+                }
+                
+                video.loadImage {
+                    self.reloadTableView()
                 }
             }
+            
             self.stopProgressHud()
             self.reloadTableView()
-            
-            video.loadImage {
-                self.reloadTableView()
-            }
-        })
+        }
     }
     
     private func loadPrivate() {

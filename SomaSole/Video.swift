@@ -20,7 +20,7 @@ class Video: NSObject {
     var time = 0
     var videoDescription = ""
     var favorite = false
-    var free = false
+    var free = true
     var image: UIImage?
     var date = NSDate()
     
@@ -40,6 +40,19 @@ class Video: NSObject {
                 self.date = date
             }
         }
+    }
+    
+    init(data: [String : AnyObject]) {
+        super.init()
+        self.id = data["youtube_id"] as! String
+        self.title = data["title"] as! String
+        self.time = data["duration"] as! Int
+        self.videoDescription = data["description"] as! String
+        
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = .MediumStyle
+        formatter.timeStyle = .ShortStyle
+        date = formatter.dateFromString(data["created_at_pretty"] as! String)!
     }
     
     func loadImage(completion: () -> Void) {

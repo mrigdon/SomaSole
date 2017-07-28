@@ -33,6 +33,7 @@ class Backend: NSObject {
                 var featured = Featured()
                 featured.articles = (json["articles"] as! [[String : String]]).map { Article(data: $0) }
                 featured.workout = Workout(data: json["workout"] as! [String : AnyObject])
+                featured.videos = (json["videos"] as! [[String : AnyObject]]).map { Video(data: $0) }
                 
                 completion(featured)
             } else {
@@ -45,6 +46,16 @@ class Backend: NSObject {
         Alamofire.request(.GET, url("/workouts.json")).responseJSON { response in
             if let json = response.result.value {
                 completion((json["workouts"] as! [[String : AnyObject]]).map { Workout(data: $0) })
+            } else {
+                completion(nil)
+            }
+        }
+    }
+    
+    func getVideos(completion: ([Video]?) -> Void) {
+        Alamofire.request(.GET, url("/videos.json")).responseJSON { response in
+            if let json = response.result.value {
+                completion((json["videos"] as! [[String : AnyObject]]).map { Video(data: $0) })
             } else {
                 completion(nil)
             }

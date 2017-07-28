@@ -136,9 +136,8 @@ class News2ViewController: UIViewController {
         }
     }
     
-    private func addVideos(json: JSON) {
-        for (key, data) in json {
-            let video = Video(id: key, data: data.dictionaryObject!)
+    private func addVideos(videos: [Video]) {
+        for video in videos {
             video.loadImage {
                 let videoThumbnailView = self.videoThumbnailViews[self.videos.count]
                 let videoView = FeaturedVideoView(image: video.image!, title: video.title, frame: videoThumbnailView.frame, index: self.videos.count)
@@ -172,6 +171,7 @@ class News2ViewController: UIViewController {
     private func loadFeatured() {
         Backend.shared.getFeatured { featured in
             self.addArticles(featured!.articles)
+            self.addVideos(featured!.videos)
             self.addWorkout(featured!.workout)
         }
     }
