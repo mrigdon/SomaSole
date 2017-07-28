@@ -58,7 +58,8 @@ class Workout: NSObject {
     var tags = [WorkoutTag]()
     var numMovements = 0
     var favorite = false
-    var free = false
+    var free = true
+    var imageURL = ""
     
     init(name: String, data: [String:AnyObject]) {
         self.name = name
@@ -86,31 +87,23 @@ class Workout: NSObject {
         time = data["time"] as! Int
         intensity = data["intensity"] as! Int
         workoutDescription = data["description"] as! String
+        imageURL = data["image_url"] as! String
         circuits = (data["circuits"] as! [[String : AnyObject]]).map { Circuit(data: $0) }
         numMovements = circuits.count
     }
     
     func loadImage(completion: () -> Void) {
-        let file = name.stringByReplacingOccurrencesOfString(" ", withString: "") + ".jpg"
-        
-        // first check in cache, if not there, get from firebase
-        ImageCache.defaultCache.retrieveImageForKey(file, options: nil) { image, type in
+        // first check in cache, if not there, retrieve from s3
+        ImageCache.defaultCache.retrieveImageForKey(imageURL, options: nil) { image, type in
             if let image = image {
                 self.image = image
                 completion()
             } else {
-                let imageRef = FirebaseManager.sharedStorage.child("workouts").child(file)
-                imageRef.dataWithMaxSize(self.imageDimensions, completion: { data, error in
-                    if error != nil {
-                        // TODO: handle error
-                        print(error)
-                    } else if let data = data {
-                        if let image = UIImage(data: data) {
-                            self.image = image
-                            completion()
-                            ImageCache.defaultCache.storeImage(image, forKey: file)
-                        }
-                    }
+                let url = NSURL(string: self.imageURL)
+                ImageDownloader.defaultDownloader.downloadImageWithURL(url!, progressBlock: nil, completionHandler: { (image, error, url, data) in
+                    self.image = image!
+                    completion()
+                    ImageCache.defaultCache.storeImage(image!, forKey: self.imageURL)
                 })
             }
         }

@@ -41,6 +41,16 @@ class Backend: NSObject {
         }
     }
     
+    func getWorkouts(completion: ([Workout]?) -> Void) {
+        Alamofire.request(.GET, url("/workouts.json")).responseJSON { response in
+            if let json = response.result.value {
+                completion((json["workouts"] as! [[String : AnyObject]]).map { Workout(data: $0) })
+            } else {
+                completion(nil)
+            }
+        }
+    }
+    
     // MARK: - Private methods
     
     private func url(string: String) -> String {

@@ -114,24 +114,25 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate {
     
     private func loadPublicWorkouts() {
         startProgressHud()
-        FirebaseManager.sharedRootRef.child("workouts/public").observeEventType(.ChildAdded, withBlock: { snapshot in
-            let workout = Workout(name: snapshot.key, data: snapshot.value as! [String : AnyObject])
-            workout.free = true
-            self.workouts.append(workout)
-            if let keys = self.favoriteWorkoutKeys {
-                if keys.contains(workout.name) {
-                    Workout.sharedFavorites.append(workout)
-                    workout.favorite = true
+        Backend.shared.getWorkouts { workouts in
+            self.workouts = workouts!
+            
+            for workout in self.workouts {
+                if let keys = self.favoriteWorkoutKeys {
+                    if keys.contains(workout.name) {
+                        Workout.sharedFavorites.append(workout)
+                        workout.favorite = true
+                    }
+                }
+                
+                workout.loadImage {
+                    self.reloadTableView()
                 }
             }
+            
             self.stopProgressHud()
             self.reloadTableView()
-            
-            workout.loadImage {
-                self.reloadTableView()
-            }
-        })
-        
+        }
     }
     
     private func loadPrivateWorkouts() {
