@@ -65,11 +65,11 @@ class CustomPaceViewController: UIViewController {
         currentCircuit = workout?.circuits[0]
         movementLabel.text = "Setup"
         
-        let mdText = SwiftyMarkdown(string: "**Circuit:** \(circuitCounter+1)/\(workout!.circuits.count)   **Set:** \(setCounter+1)/\(currentCircuit!.numSets)   **Movement:** \(movementCounter)/\(currentCircuit!.movements.count)")
+        let mdText = SwiftyMarkdown(string: "**Circuit:** \(circuitCounter+1)/\(workout!.circuits.count)   **Set:** \(setCounter+1)/\(currentCircuit!.sets)   **Movement:** \(movementCounter)/\(currentCircuit!.movements.count)")
         setLabel.attributedText = mdText.attributedString()
         
         ui {
-            self.gifView.image = UIImage(data: UIImageJPEGRepresentation(self.currentCircuit!.setup.image!, 1.0)!)
+            self.gifView.image = UIImage(data: UIImageJPEGRepresentation(self.currentCircuit!.setup.image, 1.0)!)
         }
     }
     
@@ -77,7 +77,7 @@ class CustomPaceViewController: UIViewController {
         movementCounter += 1
         if movementCounter == currentCircuit!.movements.count + 1 { // +1 for the setup
             setCounter += 1
-            if setCounter == currentCircuit!.numSets {
+            if setCounter == currentCircuit!.sets {
                 circuitCounter += 1
                 setCounter = 0
             }
@@ -94,10 +94,10 @@ class CustomPaceViewController: UIViewController {
         let movement: Movement? = movementCounter == 0 ? nil : currentCircuit!.movements[movementCounter - 1] // -1 for the setup
         movementLabel.text = movementCounter == 0 ? (setCounter == 0 ? "Setup" : "Rest") : movement!.title
         
-        let mdText = SwiftyMarkdown(string: "**Circuit:** \(circuitCounter+1)/\(workout!.circuits.count)   **Set:** \(setCounter+1)/\(currentCircuit!.numSets)   **Movement:** \(movementCounter)/\(currentCircuit!.movements.count)")
+        let mdText = SwiftyMarkdown(string: "**Circuit:** \(circuitCounter+1)/\(workout!.circuits.count)   **Set:** \(setCounter+1)/\(currentCircuit!.sets)   **Movement:** \(movementCounter)/\(currentCircuit!.movements.count)")
         setLabel.attributedText = mdText.attributedString()
         
-        let imageData = movementCounter == 0 ? (setCounter == 0 ? UIImageJPEGRepresentation(currentCircuit!.setup.image!, 1.0) : NSData(contentsOfURL: NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("Rest.gif", ofType: nil)!))) : movement!.gif
+        let imageData = movementCounter == 0 ? (setCounter == 0 ? UIImageJPEGRepresentation(currentCircuit!.setup.image, 1.0) : NSData(contentsOfURL: NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("Rest.gif", ofType: nil)!))) : movement!.gif
         if movementCounter == 0 {
             ui {
                 self.gifView.image = UIImage(data: imageData!)
@@ -107,7 +107,7 @@ class CustomPaceViewController: UIViewController {
                 self.gifView.animatedImage = FLAnimatedImage(animatedGIFData: imageData!)
             }
         }
-        tipTextView.text = movementCounter == 0 ? "" : movement!.movementDescription
+        tipTextView.text = movementCounter == 0 ? "" : movement!.deskription
     }
     
     private func previous() {
@@ -120,7 +120,7 @@ class CustomPaceViewController: UIViewController {
             setCounter -= 1
             if setCounter == -1 {
                 circuitCounter -= 1
-                setCounter = workout!.circuits[circuitCounter].numSets - 1
+                setCounter = workout!.circuits[circuitCounter].sets - 1
             }
             movementCounter = workout!.circuits[circuitCounter].movements.count
         }
@@ -129,10 +129,10 @@ class CustomPaceViewController: UIViewController {
         let movement: Movement? = movementCounter == 0 ? nil : currentCircuit!.movements[movementCounter - 1]
         movementLabel.text = movementCounter == 0 ? (setCounter == 0 ? "Setup" : "Rest") : movement!.title
         
-        let mdText = SwiftyMarkdown(string: "**Circuit:** \(circuitCounter+1)/\(workout!.circuits.count)   **Set:** \(setCounter+1)/\(currentCircuit!.numSets)   **Movement:** \(movementCounter)/\(currentCircuit!.movements.count)")
+        let mdText = SwiftyMarkdown(string: "**Circuit:** \(circuitCounter+1)/\(workout!.circuits.count)   **Set:** \(setCounter+1)/\(currentCircuit!.sets)   **Movement:** \(movementCounter)/\(currentCircuit!.movements.count)")
         setLabel.attributedText = mdText.attributedString()
         
-        let imageData = movementCounter == 0 ? (setCounter == 0 ? UIImageJPEGRepresentation(currentCircuit!.setup.image!, 1.0) : NSData(contentsOfURL: NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("Rest.gif", ofType: nil)!))) : movement!.gif
+        let imageData = movementCounter == 0 ? (setCounter == 0 ? UIImageJPEGRepresentation(currentCircuit!.setup.image, 1.0) : NSData(contentsOfURL: NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("Rest.gif", ofType: nil)!))) : movement!.gif
         if movementCounter == 0 {
             ui {
                 self.gifView.image = UIImage(data: imageData!)
@@ -142,7 +142,7 @@ class CustomPaceViewController: UIViewController {
                 self.gifView.animatedImage = FLAnimatedImage(animatedGIFData: imageData!)
             }
         }
-        tipTextView.text = movementCounter == 0 ? "" : movement!.movementDescription
+        tipTextView.text = movementCounter == 0 ? "" : movement!.deskription
     }
     
     override func viewDidLoad() {

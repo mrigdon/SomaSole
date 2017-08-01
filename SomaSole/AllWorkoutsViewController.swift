@@ -135,23 +135,6 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate {
         }
     }
     
-    private func loadPrivateWorkouts() {
-        FirebaseManager.sharedRootRef.child("workouts/private").observeEventType(.ChildAdded, withBlock: { snapshot in
-            // load workouts
-            let workout = Workout(name: snapshot.key, data: snapshot.value as! [String : AnyObject])
-            workout.free = false
-            self.workouts.append(workout)
-            if let keys = self.favoriteWorkoutKeys {
-                if keys.contains(workout.name) {
-                    Workout.sharedFavorites.append(workout)
-                }
-            }
-            
-            self.reloadTableView()
-        })
-        
-    }
-    
     @objc private func tappedUnfilledStar() {
         // switch to favorites
         navigationItem.rightBarButtonItem = filledStarButton
@@ -285,9 +268,7 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate {
             // get workout
             let workoutIndex = indexPath.row - 1 // -1 for the filter cell
             let workout = (searchBar.isFirstResponder() && searchBar.text != "") || selectedFilters.count > 0 ? filteredWorkouts[workoutIndex] : favorites ? Workout.sharedFavorites[workoutIndex] : workouts[workoutIndex]
-            if workout.free || User.sharedModel.premium {
-                (cell as! WorkoutCell).workout = workout
-            }
+            (cell as! WorkoutCell).workout = workout
             
             // better ui for touch
             cell.selectionStyle = .None

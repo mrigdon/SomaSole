@@ -58,7 +58,6 @@ class MovementsViewController: UICollectionViewController, UICollectionViewDeleg
         let json = try! NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as! [[String : AnyObject]]
         for movementData in json {
             let movement = Movement(data: movementData)
-            movement.image = UIImage(named: movement.title)
             if movement.title != "Rest" {
                 self.movements.append(movement)
             }
@@ -92,12 +91,6 @@ class MovementsViewController: UICollectionViewController, UICollectionViewDeleg
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        
-        for m in movements {
-            if m.gif != nil {
-                m.gif = nil
-            }
-        }
     }
     
     // delegates

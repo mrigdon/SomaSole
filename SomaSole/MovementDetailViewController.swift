@@ -48,7 +48,7 @@ class MovementDetailViewController: UIViewController {
         super.viewDidLoad()
 
         self.titleLabel.text = movement!.title
-        self.descriptionLabel.text = movement!.movementDescription
+        self.descriptionLabel.text = movement!.deskription
         self.descriptionLabel.editable = true
         self.descriptionLabel.font = descriptionFont
         self.descriptionLabel.textAlignment = .Center

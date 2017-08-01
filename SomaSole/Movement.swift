@@ -2,45 +2,48 @@
 //  Movement.swift
 //  SomaSole
 //
-//  Created by Matthew Rigdon on 5/19/16.
-//  Copyright © 2016 SomaSole. All rights reserved.
+//  Created by Matthew Rigdon on 7/31/17.
+//  Copyright © 2017 SomaSole. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import RealmSwift
 
-class Movement: NSObject {
+class Movement: Object {
     
-    static var sharedMovements = [Movement]()
+    // MARK: - Object properties
     
-    var title: String = ""
-    var index: Int?
-    var image: UIImage?
-    var gif: NSData?
-    var time: Int?
-    var movementDescription: String?
-    var finished = false
+    dynamic var time = 0
+    dynamic var deskription = ""
+    dynamic var title = ""
     
-    init(index: Int, time: Int) {
-        self.index = index
-        self.time = time
+    // MARK: - Ignored properties
+    
+    dynamic var finished = false
+    
+    dynamic var image: UIImage {
+        return UIImage(named: title)!
     }
     
-    init(index: Int, data: [String:String]) {
-        self.index = index
-        self.title = data["title"]!
-        self.movementDescription = data["description"]!
+    dynamic var gif: NSData {
+        let url = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("\(title).gif", ofType: nil)!)
+        return NSData(contentsOfURL: url)!
     }
     
-    init(data: [String : AnyObject]) {
-        time = data["time"] as? Int
+    // MARK: - Initializers
+    
+    convenience init(data: [String : AnyObject]) {
+        self.init()
+        
+        time = data["time"] as? Int ?? 0
         title = data["title"] as! String
-        movementDescription = data["description"] as? String
+        deskription = data["description"] as? String ?? ""
     }
     
-    func decodeImage(imageString: String) {
-        let decodedData = NSData(base64EncodedString: imageString, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters)
-        image = UIImage(data: decodedData!)
+    // MARK: - Overridden methods
+    
+    override static func ignoredProperties() -> [String] {
+        return ["image", "gif", "finished"]
     }
     
 }

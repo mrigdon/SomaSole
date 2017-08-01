@@ -81,7 +81,7 @@ class BeginWorkoutViewController: UIViewController {
         self.descriptionLabel.editable = true
         self.descriptionLabel.font = UIFont(name: "HelveticaNeue", size: 17)
         self.descriptionLabel.editable = false
-        self.descriptionLabel.text = self.workout!.workoutDescription
+        self.descriptionLabel.text = self.workout!.deskription
         
         self.loadMovements()
     }
