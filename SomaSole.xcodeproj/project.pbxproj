@@ -214,6 +214,7 @@
 		62B4AAA61D4C2A6300DD1273 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62B4AAA51D4C2A6300DD1273 /* StoreKit.framework */; };
 		62BBCED31D18E09700E01DE9 /* News2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BBCED21D18E09700E01DE9 /* News2ViewController.swift */; };
 		62C18E9E1D235D0B00C05798 /* PlayVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C18E9D1D235D0B00C05798 /* PlayVideoViewController.swift */; };
+		62C210891F3043A2009D5647 /* movements.json in Resources */ = {isa = PBXBuildFile; fileRef = 62C210881F3043A2009D5647 /* movements.json */; };
 		62C5C58F1F26F58A0048A187 /* Backend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C5C58E1F26F58A0048A187 /* Backend.swift */; };
 		62C8413E1CC6F5D700468726 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C8413D1CC6F5D700468726 /* FilterViewController.swift */; };
 		62CCEEA51CEC16BB00CC0D37 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CCEEA41CEC16BB00CC0D37 /* FirebaseManager.swift */; };
@@ -466,6 +467,7 @@
 		62B4AAA51D4C2A6300DD1273 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		62BBCED21D18E09700E01DE9 /* News2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = News2ViewController.swift; sourceTree = "<group>"; };
 		62C18E9D1D235D0B00C05798 /* PlayVideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayVideoViewController.swift; sourceTree = "<group>"; };
+		62C210881F3043A2009D5647 /* movements.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = movements.json; sourceTree = "<group>"; };
 		62C5C58E1F26F58A0048A187 /* Backend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Backend.swift; sourceTree = "<group>"; };
 		62C8413D1CC6F5D700468726 /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		62CCEEA41CEC16BB00CC0D37 /* FirebaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
@@ -564,6 +566,7 @@
 		621D22AB1CB2DC3E00FE7581 /* SomaSole */ = {
 			isa = PBXGroup;
 			children = (
+				62C210881F3043A2009D5647 /* movements.json */,
 				6220673D1D7DFFBC00B82113 /* Sounds */,
 				626FBED01D2C650C005B592B /* GIF */,
 				627A5B371CC1B58C0081BBFE /* UI */,
@@ -1172,6 +1175,7 @@
 				621708651D459E7800944715 /* Groin Stretch (Right Leg).gif in Resources */,
 				621708731D459E7800944715 /* Iron Cross.gif in Resources */,
 				6217089E1D459E7800944715 /* Reverse Lunge (Left Leg).gif in Resources */,
+				62C210891F3043A2009D5647 /* movements.json in Resources */,
 				621708D31D459E7800944715 /* V-Up.gif in Resources */,
 				6217084A1D459E7800944715 /* Big Circle (Clockwise).gif in Resources */,
 				6217084D1D459E7800944715 /* Burpee.gif in Resources */,
