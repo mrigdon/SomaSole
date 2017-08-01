@@ -52,19 +52,6 @@ class MovementsViewController: UICollectionViewController, UICollectionViewDeleg
         self.reloadCollectionView()
     }
     
-//    private func loadMovements() {
-//        startProgressHud()
-//        FirebaseManager.sharedRootRef.child("movements").observeEventType(.ChildAdded, withBlock: { snapshot in
-//            self.stopProgressHud()
-//            let movement = Movement(index: Int(snapshot.key)!, data: snapshot.value as! [String:String])
-//            movement.image = UIImage(named: movement.title)
-//            if movement.title != "Rest" {
-//                self.movements.append(movement)
-//            }
-//            self.reloadCollectionView()
-//        })
-//    }
-    
     private func loadMovements() {
         let path = NSBundle.mainBundle().pathForResource("movements", ofType: "json")
         let data = try! NSData(contentsOfFile: path!, options: .DataReadingMappedIfSafe)
