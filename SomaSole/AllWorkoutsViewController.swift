@@ -115,7 +115,7 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate {
     private func loadPublicWorkouts() {
         startProgressHud()
         Backend.shared.getWorkouts { workouts in
-            self.workouts = workouts!
+            self.workouts = workouts
             
             for workout in self.workouts {
                 if let keys = self.favoriteWorkoutKeys {

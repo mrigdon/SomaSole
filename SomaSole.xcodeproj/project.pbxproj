@@ -189,10 +189,8 @@
 		6235212D1CFA130A00B3F1BF /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6235212C1CFA130A00B3F1BF /* VideoCell.swift */; };
 		62411C721D871E9E00604B18 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62411C711D871E9E00604B18 /* Extensions.swift */; };
 		62411C741D872B0300604B18 /* NewVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62411C731D872B0300604B18 /* NewVideoCell.swift */; };
-		6248AE2C1CF9510C000A2DC9 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6248AE2B1CF9510C000A2DC9 /* Article.swift */; };
 		624A94E81CB7463E00A8D21A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624A94E71CB7463E00A8D21A /* LoginViewController.swift */; };
 		624DBB781D2DF86B0066ECB8 /* CustomPaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624DBB771D2DF86B0066ECB8 /* CustomPaceViewController.swift */; };
-		6259FCAE1D0388D800DF09D4 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6259FCAD1D0388D800DF09D4 /* Video.swift */; };
 		626063931CBAC4EF00B1AF3C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626063921CBAC4EF00B1AF3C /* User.swift */; };
 		626063951CBAEDEF00B1AF3C /* CreateBasicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626063941CBAEDEF00B1AF3C /* CreateBasicsViewController.swift */; };
 		626063981CBB01E500B1AF3C /* PillButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626063971CBB01E500B1AF3C /* PillButton.swift */; };
@@ -215,6 +213,9 @@
 		62BBCED31D18E09700E01DE9 /* News2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BBCED21D18E09700E01DE9 /* News2ViewController.swift */; };
 		62C18E9E1D235D0B00C05798 /* PlayVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C18E9D1D235D0B00C05798 /* PlayVideoViewController.swift */; };
 		62C210891F3043A2009D5647 /* movements.json in Resources */ = {isa = PBXBuildFile; fileRef = 62C210881F3043A2009D5647 /* movements.json */; };
+		62C2108B1F30471A009D5647 /* Podfile.lock in Resources */ = {isa = PBXBuildFile; fileRef = 62C2108A1F30471A009D5647 /* Podfile.lock */; };
+		62C2108D1F3047F0009D5647 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2108C1F3047EF009D5647 /* Article.swift */; };
+		62C2108F1F304A7C009D5647 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2108E1F304A7C009D5647 /* Video.swift */; };
 		62C5C58F1F26F58A0048A187 /* Backend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C5C58E1F26F58A0048A187 /* Backend.swift */; };
 		62C8413E1CC6F5D700468726 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C8413D1CC6F5D700468726 /* FilterViewController.swift */; };
 		62CCEEA51CEC16BB00CC0D37 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CCEEA41CEC16BB00CC0D37 /* FirebaseManager.swift */; };
@@ -442,10 +443,8 @@
 		6235212C1CFA130A00B3F1BF /* VideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
 		62411C711D871E9E00604B18 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		62411C731D872B0300604B18 /* NewVideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewVideoCell.swift; sourceTree = "<group>"; };
-		6248AE2B1CF9510C000A2DC9 /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		624A94E71CB7463E00A8D21A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		624DBB771D2DF86B0066ECB8 /* CustomPaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPaceViewController.swift; sourceTree = "<group>"; };
-		6259FCAD1D0388D800DF09D4 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		626063921CBAC4EF00B1AF3C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		626063941CBAEDEF00B1AF3C /* CreateBasicsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateBasicsViewController.swift; sourceTree = "<group>"; };
 		626063971CBB01E500B1AF3C /* PillButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PillButton.swift; sourceTree = "<group>"; };
@@ -468,6 +467,9 @@
 		62BBCED21D18E09700E01DE9 /* News2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = News2ViewController.swift; sourceTree = "<group>"; };
 		62C18E9D1D235D0B00C05798 /* PlayVideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayVideoViewController.swift; sourceTree = "<group>"; };
 		62C210881F3043A2009D5647 /* movements.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = movements.json; sourceTree = "<group>"; };
+		62C2108A1F30471A009D5647 /* Podfile.lock */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile.lock; sourceTree = "<group>"; };
+		62C2108C1F3047EF009D5647 /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
+		62C2108E1F304A7C009D5647 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		62C5C58E1F26F58A0048A187 /* Backend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Backend.swift; sourceTree = "<group>"; };
 		62C8413D1CC6F5D700468726 /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		62CCEEA41CEC16BB00CC0D37 /* FirebaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
@@ -542,6 +544,7 @@
 		621D22A01CB2DC3E00FE7581 = {
 			isa = PBXGroup;
 			children = (
+				62C2108A1F30471A009D5647 /* Podfile.lock */,
 				622562C51DA7047400515BBD /* GoogleService-Info.plist */,
 				621D22DC1CB2DC7C00FE7581 /* Podfile */,
 				621D22AB1CB2DC3E00FE7581 /* SomaSole */,
@@ -640,11 +643,11 @@
 				627BC9E81CCE8B68008C8647 /* Workout.swift */,
 				62CCEEA41CEC16BB00CC0D37 /* FirebaseManager.swift */,
 				62D4298A1CEDA5DB009F157A /* Movement.swift */,
-				6248AE2B1CF9510C000A2DC9 /* Article.swift */,
 				6235212A1CFA00E500B3F1BF /* ROGif.swift */,
-				6259FCAD1D0388D800DF09D4 /* Video.swift */,
+				62C2108E1F304A7C009D5647 /* Video.swift */,
 				626D2CF31D1A4F8C00812ED0 /* ROImage.swift */,
 				62C5C58E1F26F58A0048A187 /* Backend.swift */,
+				62C2108C1F3047EF009D5647 /* Article.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1109,6 +1112,7 @@
 				621D22DD1CB2DC7C00FE7581 /* Podfile in Resources */,
 				621708BF1D459E7800944715 /* Standing Kick-Out (Right Arm).gif in Resources */,
 				621708881D459E7800944715 /* Opposite Plank Reach (Left Arm).gif in Resources */,
+				62C2108B1F30471A009D5647 /* Podfile.lock in Resources */,
 				621708D01D459E7800944715 /* Tricep Stretch (Right Arm).gif in Resources */,
 				6217089A1D459E7800944715 /* Rear Deltoid Stretch (Right Arm).gif in Resources */,
 				621708CB1D459E7800944715 /* Swing Jump.gif in Resources */,
@@ -1328,6 +1332,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62C2108D1F3047F0009D5647 /* Article.swift in Sources */,
 				62A8DF151D1F1E170024D4B3 /* PasswordCell.swift in Sources */,
 				62D640E61CD82C4200D05124 /* CountdownViewController.swift in Sources */,
 				626063981CBB01E500B1AF3C /* PillButton.swift in Sources */,
@@ -1336,6 +1341,7 @@
 				6235212B1CFA00E500B3F1BF /* ROGif.swift in Sources */,
 				626063931CBAC4EF00B1AF3C /* User.swift in Sources */,
 				62BBCED31D18E09700E01DE9 /* News2ViewController.swift in Sources */,
+				62C2108F1F304A7C009D5647 /* Video.swift in Sources */,
 				624DBB781D2DF86B0066ECB8 /* CustomPaceViewController.swift in Sources */,
 				622067411D7DFFFF00B82113 /* SoundManager.swift in Sources */,
 				62FE88071CE6AC0800A9BB15 /* MovementsViewController.swift in Sources */,
@@ -1354,7 +1360,6 @@
 				626D2CF41D1A4F8C00812ED0 /* ROImage.swift in Sources */,
 				62B1AB931CC1D6F3007069E5 /* AllWorkoutsViewController.swift in Sources */,
 				62A776151D7F4032009875F1 /* FeaturedVideoView.swift in Sources */,
-				6248AE2C1CF9510C000A2DC9 /* Article.swift in Sources */,
 				6260639A1CBB3E5900B1AF3C /* CreateAboutViewController.swift in Sources */,
 				6201ABC71CF9EEC10099B18D /* AllVideosViewController.swift in Sources */,
 				62D640EA1CD8424800D05124 /* MovementCell.swift in Sources */,
@@ -1370,7 +1375,6 @@
 				62D4298B1CEDA5DB009F157A /* Movement.swift in Sources */,
 				6215F30B1CC9805900E2A995 /* WorkoutCell.swift in Sources */,
 				621DA9641D15FE2E002DF0AF /* Profile3ViewController.swift in Sources */,
-				6259FCAE1D0388D800DF09D4 /* Video.swift in Sources */,
 				627BC9E91CCE8B68008C8647 /* Workout.swift in Sources */,
 				62926A951CBC33F200960F94 /* CreateLoginViewController.swift in Sources */,
 				6229FF821CEA518400838B68 /* MovementDetailViewController.swift in Sources */,

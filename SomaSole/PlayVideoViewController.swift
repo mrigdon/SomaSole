@@ -33,15 +33,15 @@ class PlayVideoViewController: UIViewController {
                 "showinfo": 0,
                 "rel": 0
             ]
-            playerView.loadWithVideoId(video.id, playerVars: playerVars)
+            playerView.loadWithVideoId(video.youtubeID, playerVars: playerVars)
             nameLabel.text = video.title
             nameLabel.numberOfLines = 0
             nameLabel.sizeToFit()
-            timeLabel.text = "\(video.time) minutes"
+            timeLabel.text = "\(video.duration) minutes"
             descriptionLabel.editable = true
             descriptionLabel.font = UIFont(name: "HelveticaNeue", size: 17)
             descriptionLabel.editable = false
-            descriptionLabel.text = video.videoDescription
+            descriptionLabel.text = video.deskription
         }
     }
     

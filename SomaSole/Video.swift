@@ -2,52 +2,41 @@
 //  Video.swift
 //  SomaSole
 //
-//  Created by Matthew Rigdon on 6/4/16.
-//  Copyright © 2016 SomaSole. All rights reserved.
+//  Created by Matthew Rigdon on 7/31/17.
+//  Copyright © 2017 SomaSole. All rights reserved.
 //
 
-import UIKit
-import Alamofire
-import AlamofireImage
+import Foundation
+import RealmSwift
 import Kingfisher
+import Alamofire
 
-class Video: NSObject {
+class Video: Object {
     
     static var sharedFavorites = [Video]()
-
-    var id = ""
-    var title = ""
-    var time = 0
-    var videoDescription = ""
-    var favorite = false
-    var free = true
-    var image: UIImage?
-    var date = NSDate()
     
-    init(id: String, data: [String:AnyObject]) {
-        super.init()
-        self.id = id
-        self.title = data["title"] as! String
-        self.time = data["time"] as! Int
-        self.videoDescription = data["description"] as! String
+    // MARK: - Object properties
+    
+    dynamic var youtubeID = ""
+    dynamic var deskription = ""
+    dynamic var duration = 0
+    dynamic var title = ""
+    dynamic var date = NSDate()
+    
+    // MARK: - Ignored properties
+    
+    dynamic var image: UIImage?
+    dynamic var favorite = false
+    
+    // MARK: - Initializers
+    
+    convenience init(data: [String : AnyObject]) {
+        self.init()
         
-        // parse date
-        if let dateString = data["date"] as? String {
-            let formatter = NSDateFormatter()
-            formatter.dateStyle = .LongStyle
-            formatter.timeStyle = .LongStyle
-            if let date = formatter.dateFromString(dateString) {
-                self.date = date
-            }
-        }
-    }
-    
-    init(data: [String : AnyObject]) {
-        super.init()
-        self.id = data["youtube_id"] as! String
+        self.youtubeID = data["youtube_id"] as! String
         self.title = data["title"] as! String
-        self.time = data["duration"] as! Int
-        self.videoDescription = data["description"] as! String
+        self.duration = data["duration"] as! Int
+        self.deskription = data["description"] as! String
         
         let formatter = NSDateFormatter()
         formatter.dateStyle = .MediumStyle
@@ -55,8 +44,16 @@ class Video: NSObject {
         date = formatter.dateFromString(data["created_at_pretty"] as! String)!
     }
     
+    // MARK: - Overridden methods
+    
+    override static func ignoredProperties() -> [String] {
+        return ["image", "favorite"]
+    }
+    
+    // MARK: - Methods
+    
     func loadImage(completion: () -> Void) {
-        let url = "http://img.youtube.com/vi/\(id)/mqdefault.jpg"
+        let url = "http://img.youtube.com/vi/\(youtubeID)/mqdefault.jpg"
         
         // first check in cache, if not there get from youtube
         ImageCache.defaultCache.retrieveImageForKey(url, options: nil) { image, type in
@@ -74,4 +71,5 @@ class Video: NSObject {
             }
         }
     }
+    
 }

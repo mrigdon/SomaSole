@@ -27,7 +27,7 @@ class Backend: NSObject {
     
     // MARK: - Public methods
     
-    func getFeatured(completion: (Featured?) -> Void) {
+    func getFeatured(completion: (Featured) -> Void) {
         Alamofire.request(.GET, url("/featured.json")).responseJSON { response in
             if let json = response.result.value {
                 var featured = Featured()
@@ -37,27 +37,27 @@ class Backend: NSObject {
                 
                 completion(featured)
             } else {
-                completion(nil)
+                completion(Featured())
             }
         }
     }
     
-    func getWorkouts(completion: ([Workout]?) -> Void) {
+    func getWorkouts(completion: ([Workout]) -> Void) {
         Alamofire.request(.GET, url("/workouts.json")).responseJSON { response in
             if let json = response.result.value {
                 completion((json["workouts"] as! [[String : AnyObject]]).map { Workout(data: $0) })
             } else {
-                completion(nil)
+                completion([Workout]())
             }
         }
     }
     
-    func getVideos(completion: ([Video]?) -> Void) {
+    func getVideos(completion: ([Video]) -> Void) {
         Alamofire.request(.GET, url("/videos.json")).responseJSON { response in
             if let json = response.result.value {
                 completion((json["videos"] as! [[String : AnyObject]]).map { Video(data: $0) })
             } else {
-                completion(nil)
+                completion([Video]())
             }
         }
     }

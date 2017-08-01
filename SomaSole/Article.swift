@@ -2,25 +2,35 @@
 //  Article.swift
 //  SomaSole
 //
-//  Created by Matthew Rigdon on 5/27/16.
-//  Copyright © 2016 SomaSole. All rights reserved.
+//  Created by Matthew Rigdon on 7/31/17.
+//  Copyright © 2017 SomaSole. All rights reserved.
 //
 
-import UIKit
+import Foundation
+import RealmSwift
 import Kingfisher
 
-class Article: NSObject {
-
-    var author = ""
-    var date = NSDate()
-    var textImage = UIImage()
-    var plainImage = UIImage()
-    var headline = ""
-    var body = ""
-    var textImageURL = ""
-    var plainImageURL = ""
+class Article: Object {
     
-    init(data: [String : String]) {
+    // MARK: - Object properties
+    
+    dynamic var author = ""
+    dynamic var headline = ""
+    dynamic var body = ""
+    dynamic var date = NSDate()
+    dynamic var textImageURL = ""
+    dynamic var plainImageURL = ""
+    
+    // MARK: - Ignored properties
+    
+    dynamic var textImage = UIImage()
+    dynamic var plainImage = UIImage()
+    
+    // MARK: - Initializers
+    
+    convenience init(data: [String : String]) {
+        self.init()
+        
         author = data["author"]!
         headline = data["headline"]!
         body = data["body"]!
@@ -32,6 +42,14 @@ class Article: NSObject {
         formatter.timeStyle = .ShortStyle
         date = formatter.dateFromString(data["created_at_pretty"]!)!
     }
+    
+    // MARK: - Overridden methods
+    
+    override static func ignoredProperties() -> [String] {
+        return ["textImage", "plainImage"]
+    }
+    
+    // MARK: - Methods
     
     func loadTextImage(completion: () -> Void) {
         // first check in cache, if not there, retrieve from s3

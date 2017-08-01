@@ -52,12 +52,6 @@ class News2ViewController: UIViewController {
     @IBOutlet var videoThumbnailViews: [VideoContainerView]!
     
     // methods
-    private func ui(block: () -> Void) {
-        dispatch_async(dispatch_get_main_queue()) {
-            block()
-        }
-    }
-    
     @objc private func tappedArticle() {
         performSegueWithIdentifier("articleSegue", sender: self)
     }
@@ -170,9 +164,9 @@ class News2ViewController: UIViewController {
     
     private func loadFeatured() {
         Backend.shared.getFeatured { featured in
-            self.addArticles(featured!.articles)
-            self.addVideos(featured!.videos)
-            self.addWorkout(featured!.workout)
+            self.addArticles(featured.articles)
+            self.addVideos(featured.videos)
+            self.addWorkout(featured.workout)
         }
     }
     

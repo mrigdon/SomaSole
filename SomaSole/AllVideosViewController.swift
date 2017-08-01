@@ -15,25 +15,6 @@ import MBProgressHUD
 import StoreKit
 
 extension Array where Element: Video {
-    mutating func appendAfterPublic(video: Element) {
-        if self.count == 0 {
-            self.append(video)
-            return
-        }
-        
-        for (index, item) in self.enumerate() {
-            if !item.free {
-                if index + 1 < self.count {
-                    self.insert(video, atIndex: index + 1)
-                    return
-                }
-                break
-            }
-        }
-        
-        self.append(video)
-    }
-    
     var titles: [String] {
         var titles = [String]()
         for video in self {
@@ -97,7 +78,7 @@ class AllVideosViewController: UITableViewController, UISearchBarDelegate {
     
     private func loadPublic() {
         Backend.shared.getVideos { videos in
-            self.videos = videos!
+            self.videos = videos
             
             for video in self.videos {
                 if let keys = self.favoriteVideoKeys {
@@ -115,27 +96,6 @@ class AllVideosViewController: UITableViewController, UISearchBarDelegate {
             self.stopProgressHud()
             self.reloadTableView()
         }
-    }
-    
-    private func loadPrivate() {
-        FirebaseManager.sharedRootRef.child("videos/private").observeEventType(.ChildAdded, withBlock: { snapshot in
-            let video = Video(id: snapshot.key, data: snapshot.value as! [String:AnyObject])
-            video.free = false
-            if let keys = self.favoriteVideoKeys {
-                if keys.contains(video.title) {
-                    Video.sharedFavorites.append(video)
-                }
-            }
-            
-            Alamofire.request(.GET, "http://img.youtube.com/vi/\(video.id)/0.jpg").responseImage(completionHandler: { response in
-                if let image = response.result.value {
-                    video.image = image
-                    self.videos.append(video)
-                    self.reloadTableView()
-                    self.stopProgressHud()
-                }
-            })
-        })
     }
     
     private func filterContentForSearchText(searchText: String) {
@@ -242,35 +202,29 @@ class AllVideosViewController: UITableViewController, UISearchBarDelegate {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let video = searchBar.isFirstResponder() && searchBar.text != "" ? filteredVideos[indexPath.row] : (favorites ? Video.sharedFavorites[indexPath.row] : videos[indexPath.row])
         
-        let reuseID = video.free || User.sharedModel.premium ? "newVideoCell" : "videoOverlayCell"
+        let reuseID = "newVideoCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(reuseID, forIndexPath: indexPath)
         
-        if video.free || User.sharedModel.premium {
-            cell.contentView.clearSubviews()
-            let containerView = ContainerView()
-            cell.contentView.addSubviewWithConstraints(containerView, height: nil, width: nil, top: 0, left: 0, right: 0, bottom: 0)
-            if video.image != nil {
-                tableView.rowHeight = UITableViewAutomaticDimension
-                tableView.estimatedRowHeight = videoCellSize
-                let videoView = VideoCellView()
-                videoView.video = video
-                videoView.star.delegate = self
-                (cell as! NewVideoCell).video = video
-                containerView.delegate = nil
-                containerView.subview = videoView
-            } else {
-                tableView.rowHeight = videoCellSize
-                let placeholder = VideoCellPlaceholderView()
-                placeholder.size = videoCellSize
-                containerView.delegate = placeholder
-                containerView.subview = placeholder
-            }
+        cell.contentView.clearSubviews()
+        let containerView = ContainerView()
+        cell.contentView.addSubviewWithConstraints(containerView, height: nil, width: nil, top: 0, left: 0, right: 0, bottom: 0)
+        if video.image != nil {
+            tableView.rowHeight = UITableViewAutomaticDimension
+            tableView.estimatedRowHeight = videoCellSize
+            let videoView = VideoCellView()
+            videoView.video = video
+            videoView.star.delegate = self
+            (cell as! NewVideoCell).video = video
+            containerView.delegate = nil
+            containerView.subview = videoView
         } else {
-            (cell as! VideoOverlayCell).video = video
-            (cell as! VideoOverlayCell).titleLabel.text = video.title
-            (cell as! VideoOverlayCell).videoImageView.image = video.image
-            (cell as! VideoOverlayCell).titleLabel.sizeToFit()
+            tableView.rowHeight = videoCellSize
+            let placeholder = VideoCellPlaceholderView()
+            placeholder.size = videoCellSize
+            containerView.delegate = placeholder
+            containerView.subview = placeholder
         }
+        
         cell.selectionStyle = .None
 
         return cell
