@@ -58,7 +58,7 @@ class Workout: Object {
     
     func loadImage(completion: () -> Void) {
         // first check in cache, if not there, retrieve from s3
-        ImageCache.defaultCache.retrieveImageForKey(imageURL, options: nil) { image, type in
+        ImageCache.defaultCache.retrieveImageForKey(name, options: nil) { image, type in
             if let image = image {
                 self.image = image
                 completion()
@@ -66,8 +66,8 @@ class Workout: Object {
                 let url = NSURL(string: self.imageURL)
                 ImageDownloader.defaultDownloader.downloadImageWithURL(url!, progressBlock: nil, completionHandler: { (image, error, url, data) in
                     self.image = image!
+                    ImageCache.defaultCache.storeImage(image!, forKey: self.name)
                     completion()
-                    ImageCache.defaultCache.storeImage(image!, forKey: self.imageURL)
                 })
             }
         }

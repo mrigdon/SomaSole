@@ -26,6 +26,14 @@ class Article: Object {
     dynamic var textImage = UIImage()
     dynamic var plainImage = UIImage()
     
+    var textImageKey: String {
+        return "text-\(headline)"
+    }
+    
+    var plainImageKey: String {
+        return "plain-\(headline)"
+    }
+    
     // MARK: - Initializers
     
     convenience init(data: [String : String]) {
@@ -53,7 +61,7 @@ class Article: Object {
     
     func loadTextImage(completion: () -> Void) {
         // first check in cache, if not there, retrieve from s3
-        ImageCache.defaultCache.retrieveImageForKey(textImageURL, options: nil) { image, type in
+        ImageCache.defaultCache.retrieveImageForKey(textImageKey, options: nil) { image, type in
             if let image = image {
                 self.textImage = image
                 completion()
@@ -61,8 +69,8 @@ class Article: Object {
                 let url = NSURL(string: self.textImageURL)
                 ImageDownloader.defaultDownloader.downloadImageWithURL(url!, progressBlock: nil, completionHandler: { (image, error, url, data) in
                     self.textImage = image!
+                    ImageCache.defaultCache.storeImage(image!, forKey: self.textImageKey)
                     completion()
-                    ImageCache.defaultCache.storeImage(image!, forKey: self.textImageURL)
                 })
             }
         }
@@ -70,7 +78,7 @@ class Article: Object {
     
     func loadPlainImage(completion: () -> Void) {
         // first check in cache, if not there, retrieve from s3
-        ImageCache.defaultCache.retrieveImageForKey(plainImageURL, options: nil) { image, type in
+        ImageCache.defaultCache.retrieveImageForKey(plainImageKey, options: nil) { image, type in
             if let image = image {
                 self.plainImage = image
                 completion()
@@ -78,8 +86,8 @@ class Article: Object {
                 let url = NSURL(string: self.plainImageURL)
                 ImageDownloader.defaultDownloader.downloadImageWithURL(url!, progressBlock: nil, completionHandler: { (image, error, url, data) in
                     self.plainImage = image!
+                    ImageCache.defaultCache.storeImage(image!, forKey: self.plainImageKey)
                     completion()
-                    ImageCache.defaultCache.storeImage(image!, forKey: self.plainImageURL)
                 })
             }
         }

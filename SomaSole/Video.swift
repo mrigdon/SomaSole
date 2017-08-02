@@ -56,7 +56,7 @@ class Video: Object {
         let url = "http://img.youtube.com/vi/\(youtubeID)/mqdefault.jpg"
         
         // first check in cache, if not there get from youtube
-        ImageCache.defaultCache.retrieveImageForKey(url, options: nil) { image, type in
+        ImageCache.defaultCache.retrieveImageForKey(title, options: nil) { image, type in
             if let image = image {
                 self.image = image
                 completion()
@@ -64,8 +64,8 @@ class Video: Object {
                 Alamofire.request(.GET, url).responseImage { response in
                     if let image = response.result.value {
                         self.image = image
+                        ImageCache.defaultCache.storeImage(image, forKey: self.title)
                         completion()
-                        ImageCache.defaultCache.storeImage(image, forKey: url)
                     }
                 }
             }

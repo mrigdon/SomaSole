@@ -12,7 +12,7 @@ import Alamofire
 struct Featured {
     var articles = [Article]()
     var videos = [Video]()
-    var workout: Workout!
+    var workout = Workout()
 }
 
 class Backend: NSObject {
