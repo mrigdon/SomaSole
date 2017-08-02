@@ -15,11 +15,11 @@ class Circuit: Object {
     
     dynamic var sets = 0
     dynamic var setup: Setup!
+    var movements = List<Movement>()
     
     // MARK: - Ignored properties
     
     dynamic var currentSet = 1
-    dynamic var movements = [Movement]()
     
     // MARK: - Initializers
     
@@ -27,14 +27,16 @@ class Circuit: Object {
         self.init()
         
         sets = data["sets"] as! Int
-        movements = (data["movements"] as! [[String : AnyObject]]).map { Movement(data: $0) }
         setup = Setup(data: data["setup"] as! [String : Int])
+        for movement in data["movements"] as! [[String : AnyObject]] {
+            movements.append(Movement(data: movement))
+        }
     }
     
     // MARK: - Overridden methods
     
     override static func ignoredProperties() -> [String] {
-        return ["currentSet", "movements"]
+        return ["currentSet"]
     }
     
 }

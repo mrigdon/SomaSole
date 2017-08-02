@@ -54,7 +54,7 @@ class Article: Object {
     // MARK: - Overridden methods
     
     override static func ignoredProperties() -> [String] {
-        return ["textImage", "plainImage"]
+        return ["textImage", "plainImage", "textImageKey", "plainImageKey"]
     }
     
     // MARK: - Methods

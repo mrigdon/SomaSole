@@ -25,14 +25,14 @@ class Workout: Object {
     dynamic var intensity = 0
     dynamic var deskription = ""
     dynamic var imageURL = ""
+    var circuits = List<Circuit>()
+    var tags = [WorkoutTag]()
     
     // MARK: - Ignored properties
     
     dynamic var numMovements = 0
     dynamic var image: UIImage?
     dynamic var favorite = false
-    dynamic var circuits = [Circuit]()
-    var tags = [WorkoutTag]()
     
     // MARK: - Initializers
     
@@ -44,14 +44,16 @@ class Workout: Object {
         intensity = data["intensity"] as! Int
         deskription = data["description"] as! String
         imageURL = data["image_url"] as! String
-        circuits = (data["circuits"] as! [[String : AnyObject]]).map { Circuit(data: $0) }
         numMovements = circuits.count
+        for circuit in data["circuits"] as! [[String : AnyObject]] {
+            circuits.append(Circuit(data: circuit))
+        }
     }
     
     // MARK: - Overridden methods
     
     override static func ignoredProperties() -> [String] {
-        return ["numMovements", "image", "favorite", "circuits", "movements"]
+        return ["numMovements", "image", "favorite", "tags"]
     }
     
     // MARK: - Methods
