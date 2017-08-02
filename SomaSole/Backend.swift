@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import RealmSwift
 
 struct Featured {
     var articles = [Article]()
@@ -23,7 +24,7 @@ class Backend: NSObject {
     
     // MARK: - Private properties
     
-    private let baseURL = "http://localhost:3000/api/v1/"
+    private let baseURL = "https://somasole-backend.herokuapp.com/api/v1/"
     
     // MARK: - Public methods
     
@@ -43,11 +44,16 @@ class Backend: NSObject {
     }
     
     func getWorkouts(completion: ([Workout]) -> Void) {
-        Alamofire.request(.GET, endpoint("workouts")).responseJSON { response in
-            if let json = response.result.value {
-                completion((json["workouts"] as! [[String : AnyObject]]).map { Workout(data: $0) })
-            } else {
-                completion([Workout]())
+        let realm = try! Realm()
+        
+        let workouts = realm.objects(Workout.self)
+        
+        if workouts.count > 0 {
+            completion(workouts.map { $0 })
+            getWorkoutsRemote(nil)
+        } else {
+            getWorkoutsRemote { workouts in
+                completion(workouts)
             }
         }
     }
@@ -66,6 +72,26 @@ class Backend: NSObject {
     
     private func endpoint(string: String) -> String {
         return "\(baseURL)\(string).json"
+    }
+    
+    private func getWorkoutsRemote(completion: (([Workout]) -> Void)?) {
+        let realm = try! Realm()
+        
+        Alamofire.request(.GET, endpoint("workouts")).responseJSON { response in
+            if let json = response.result.value {
+                var workouts = [Workout]()
+                for workout in json["workouts"] as! [[String : AnyObject]] {
+                    let workout = Workout(data: workout)
+                    workouts.append(workout)
+                    try! realm.write {
+                        realm.add(workout)
+                    }
+                }
+                completion?(workouts)
+            } else {
+                completion?([Workout]())
+            }
+        }
     }
 
 }

@@ -191,6 +191,7 @@
 		62411C741D872B0300604B18 /* NewVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62411C731D872B0300604B18 /* NewVideoCell.swift */; };
 		624A94E81CB7463E00A8D21A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624A94E71CB7463E00A8D21A /* LoginViewController.swift */; };
 		624DB9EA1F3190E900E86FBD /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624DB9E91F3190E900E86FBD /* Tag.swift */; };
+		624DB9EC1F31969B00E86FBD /* Threading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624DB9EB1F31969B00E86FBD /* Threading.swift */; };
 		624DBB781D2DF86B0066ECB8 /* CustomPaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624DBB771D2DF86B0066ECB8 /* CustomPaceViewController.swift */; };
 		626063931CBAC4EF00B1AF3C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626063921CBAC4EF00B1AF3C /* User.swift */; };
 		626063951CBAEDEF00B1AF3C /* CreateBasicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626063941CBAEDEF00B1AF3C /* CreateBasicsViewController.swift */; };
@@ -448,6 +449,7 @@
 		62411C731D872B0300604B18 /* NewVideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewVideoCell.swift; sourceTree = "<group>"; };
 		624A94E71CB7463E00A8D21A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		624DB9E91F3190E900E86FBD /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		624DB9EB1F31969B00E86FBD /* Threading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Threading.swift; sourceTree = "<group>"; };
 		624DBB771D2DF86B0066ECB8 /* CustomPaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPaceViewController.swift; sourceTree = "<group>"; };
 		626063921CBAC4EF00B1AF3C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		626063941CBAEDEF00B1AF3C /* CreateBasicsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateBasicsViewController.swift; sourceTree = "<group>"; };
@@ -657,6 +659,7 @@
 				62C5C58E1F26F58A0048A187 /* Backend.swift */,
 				62C2108C1F3047EF009D5647 /* Article.swift */,
 				624DB9E91F3190E900E86FBD /* Tag.swift */,
+				624DB9EB1F31969B00E86FBD /* Threading.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1366,6 +1369,7 @@
 				62F7ED781CF80DBF002A2C47 /* ArticleViewController.swift in Sources */,
 				62411C741D872B0300604B18 /* NewVideoCell.swift in Sources */,
 				624DB9EA1F3190E900E86FBD /* Tag.swift in Sources */,
+				624DB9EC1F31969B00E86FBD /* Threading.swift in Sources */,
 				6235212D1CFA130A00B3F1BF /* VideoCell.swift in Sources */,
 				626FBECF1D2C5014005B592B /* LabelCell.swift in Sources */,
 				622878211D41CA5800D23E5C /* TermsViewController.swift in Sources */,
