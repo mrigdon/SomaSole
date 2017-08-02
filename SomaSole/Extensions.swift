@@ -34,3 +34,9 @@ extension Array where Element: Video {
         }
     }
 }
+
+extension Int {
+    var workoutTag: WorkoutTag {
+        return WorkoutTag(rawValue: self)!
+    }
+}

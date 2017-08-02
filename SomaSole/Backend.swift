@@ -23,7 +23,7 @@ class Backend: NSObject {
     
     // MARK: - Private properties
     
-    private let baseURL = "https://somasole-backend.herokuapp.com/api/v1/"
+    private let baseURL = "http://localhost:3000/api/v1/"
     
     // MARK: - Public methods
     

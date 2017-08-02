@@ -93,7 +93,7 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate {
         var tagFilteredWorkouts = selectedFilters.count > 0 ? [Workout]() : favorites ? Workout.sharedFavorites : workouts
         for workout in favorites ? Workout.sharedFavorites : workouts {
             for filter in selectedFilters {
-                if workout.tags.contains(filter) {
+                if workout.tags.map({ $0.tag.workoutTag }).contains(filter) {
                     tagFilteredWorkouts.insertAlpha(workout)
                     break
                 }

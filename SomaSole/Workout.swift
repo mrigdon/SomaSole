@@ -10,10 +10,6 @@ import Foundation
 import RealmSwift
 import Kingfisher
 
-enum WorkoutTag: Int {
-    case UpperBody, Core, LowerBody, TotalBody
-}
-
 class Workout: Object {
     
     static var sharedFavorites = [Workout]()
@@ -26,7 +22,7 @@ class Workout: Object {
     dynamic var deskription = ""
     dynamic var imageURL = ""
     var circuits = List<Circuit>()
-    var tags = [WorkoutTag]()
+    var tags = List<Tag>()
     
     // MARK: - Ignored properties
     
@@ -48,12 +44,15 @@ class Workout: Object {
         for circuit in data["circuits"] as! [[String : AnyObject]] {
             circuits.append(Circuit(data: circuit))
         }
+        for tag in data["tags"] as! [[String : String]] {
+            tags.append(Tag(data: tag))
+        }
     }
     
     // MARK: - Overridden methods
     
     override static func ignoredProperties() -> [String] {
-        return ["numMovements", "image", "favorite", "tags"]
+        return ["numMovements", "image", "favorite"]
     }
     
     // MARK: - Methods
