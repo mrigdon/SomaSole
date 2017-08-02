@@ -23,12 +23,12 @@ class Backend: NSObject {
     
     // MARK: - Private properties
     
-    private let baseURL = "https://somasole-backend.herokuapp.com/api/v1"
+    private let baseURL = "https://somasole-backend.herokuapp.com/api/v1/"
     
     // MARK: - Public methods
     
     func getFeatured(completion: (Featured) -> Void) {
-        Alamofire.request(.GET, url("/featured.json")).responseJSON { response in
+        Alamofire.request(.GET, endpoint("featured")).responseJSON { response in
             if let json = response.result.value {
                 var featured = Featured()
                 featured.articles = (json["articles"] as! [[String : String]]).map { Article(data: $0) }
@@ -43,7 +43,7 @@ class Backend: NSObject {
     }
     
     func getWorkouts(completion: ([Workout]) -> Void) {
-        Alamofire.request(.GET, url("/workouts.json")).responseJSON { response in
+        Alamofire.request(.GET, endpoint("workouts")).responseJSON { response in
             if let json = response.result.value {
                 completion((json["workouts"] as! [[String : AnyObject]]).map { Workout(data: $0) })
             } else {
@@ -53,7 +53,7 @@ class Backend: NSObject {
     }
     
     func getVideos(completion: ([Video]) -> Void) {
-        Alamofire.request(.GET, url("/videos.json")).responseJSON { response in
+        Alamofire.request(.GET, endpoint("videos")).responseJSON { response in
             if let json = response.result.value {
                 completion((json["videos"] as! [[String : AnyObject]]).map { Video(data: $0) })
             } else {
@@ -64,8 +64,8 @@ class Backend: NSObject {
     
     // MARK: - Private methods
     
-    private func url(string: String) -> String {
-        return "\(baseURL)\(string)"
+    private func endpoint(string: String) -> String {
+        return "\(baseURL)\(string).json"
     }
 
 }
