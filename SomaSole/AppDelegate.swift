@@ -18,59 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    enum ReceiptStatus: Int {
-        case Valid = 0
-        case Sandbox = 21007
-    }
-    
-    enum ReceiptEnvironment: String {
-        case Production = "https://buy.itunes.apple.com/verifyReceipt"
-        case Sandbox = "https://sandbox.itunes.apple.com/verifyReceipt"
-    }
-    
-    private func validateReceipt(environment: ReceiptEnvironment = .Production) {
-        let receiptURL = NSBundle.mainBundle().appStoreReceiptURL
-        if let receiptURL = receiptURL {
-            let receipt = NSData(contentsOfURL: receiptURL)
-            if let receipt = receipt {
-                let requestContents = [
-                    "receipt-data": receipt.base64EncodedStringWithOptions([]),
-                    "password": "5e6e3b769b504bc9bb175786fe7a6114"
-                ]
-                let requestData = try! NSJSONSerialization.dataWithJSONObject(requestContents, options: [])
-                let storeURL = NSURL(string: environment.rawValue)
-                let request = NSMutableURLRequest(URL: storeURL!)
-                request.HTTPMethod = "POST"
-                request.HTTPBody = requestData
-                let (params, _) = Alamofire.ParameterEncoding.URL.encode(request, parameters: nil)
-                Alamofire.request(params).responseJSON { response in
-                    let data = try! NSJSONSerialization.JSONObjectWithData(response.data!, options: NSJSONReadingOptions.AllowFragments)
-                    let json = JSON(data)
-                    let status = ReceiptStatus(rawValue: json["status"].intValue)
-                    
-                    if status == .Valid {
-                        var expiresTime: Double = 0
-                        for inApp in json["receipt"]["in_app"].arrayValue {
-                            if inApp["expires_date_ms"].doubleValue / 1000 > expiresTime {
-                                print(inApp["expires_date_pst"])
-                                expiresTime = inApp["expires_date_ms"].doubleValue / 1000
-                            }
-                        }
-                        let currentTime = NSDate().timeIntervalSince1970
-                        let premium = currentTime < expiresTime
-                        User.sharedModel.premium = premium
-                    } else if status == .Sandbox {
-                        self.validateReceipt(.Sandbox)
-                    }
-                }
-            } else {
-                User.sharedModel.premium = false
-            }
-        } else {
-            User.sharedModel.premium = false
-        }
-    }
-    
     private func setupIQManager() {
         IQKeyboardManager.sharedManager().enable = true
     }

@@ -21,6 +21,7 @@ class Workout: Object {
     dynamic var intensity = 0
     dynamic var deskription = ""
     dynamic var imageURL = ""
+    dynamic var featured = false
     var circuits = List<Circuit>()
     var tags = List<Tag>()
     
@@ -40,6 +41,7 @@ class Workout: Object {
         intensity = data["intensity"] as! Int
         deskription = data["description"] as! String
         imageURL = data["image_url"] as! String
+        featured = data["featured"] as! Bool
         numMovements = circuits.count
         for circuit in data["circuits"] as! [[String : AnyObject]] {
             circuits.append(Circuit(data: circuit))
@@ -66,8 +68,10 @@ class Workout: Object {
             } else {
                 let url = NSURL(string: self.imageURL)
                 ImageDownloader.defaultDownloader.downloadImageWithURL(url!, progressBlock: nil, completionHandler: { (image, error, url, data) in
-                    self.image = image!
-                    ImageCache.defaultCache.storeImage(image!, forKey: self.name)
+                    if let image = image {
+                        self.image = image
+                        ImageCache.defaultCache.storeImage(image, forKey: self.name)
+                    }
                     completion()
                 })
             }

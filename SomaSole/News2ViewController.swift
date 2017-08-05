@@ -147,7 +147,7 @@ class News2ViewController: UIViewController {
         }
     }
     
-    private func addWorkout(workout: Workout) {
+    private func addWorkout(workout: Workout?) {
         self.workout = workout
         if let workout = self.workout {
             workout.loadImage {
@@ -164,8 +164,8 @@ class News2ViewController: UIViewController {
     
     private func loadFeatured() {
         Backend.shared.getFeatured { featured in
-            self.addArticles(featured.articles)
-            self.addVideos(featured.videos)
+            self.addArticles(featured.articles.map { $0 })
+            self.addVideos(featured.videos.map { $0 })
             self.addWorkout(featured.workout)
         }
     }

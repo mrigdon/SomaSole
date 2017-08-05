@@ -22,6 +22,7 @@ class Video: Object {
     dynamic var duration = 0
     dynamic var title = ""
     dynamic var date = NSDate()
+    dynamic var featured = false
     
     // MARK: - Ignored properties
     
@@ -37,6 +38,7 @@ class Video: Object {
         self.title = data["title"] as! String
         self.duration = data["duration"] as! Int
         self.deskription = data["description"] as! String
+        self.featured = data["featured"] as! Bool
         
         let formatter = NSDateFormatter()
         formatter.dateStyle = .MediumStyle
