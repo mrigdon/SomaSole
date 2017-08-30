@@ -21,15 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func setupIQManager() {
         IQKeyboardManager.sharedManager().enable = true
     }
-    
-    override init() {
-        super.init()
-        
-        // enable firebase offine capabilities
-        FIRApp.configure()
-        FIRDatabase.database().persistenceEnabled = true
-        FirebaseManager.sharedRootRef.keepSynced(true)
-    }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
