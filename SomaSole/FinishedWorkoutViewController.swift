@@ -11,7 +11,7 @@ import UIKit
 class FinishedWorkoutViewController: UIViewController {
     
     // constants
-    let workoutCellSize: CGFloat = 0.51575 * UIScreen.mainScreen().bounds.width
+    let workoutCellSize: CGFloat = 0.51575 * UIScreen.main.bounds.width
     
     // variables
     var workout: Workout!
@@ -33,12 +33,12 @@ class FinishedWorkoutViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let destVC = segue.destinationViewController as! UITabBarController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destVC = segue.destination as! UITabBarController
         destVC.selectedIndex = 1
     }
 

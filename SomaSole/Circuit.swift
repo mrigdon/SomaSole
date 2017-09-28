@@ -7,19 +7,21 @@
 //
 
 import Foundation
-import RealmSwift
+//import RealmSwift
 
-class Circuit: Object {
-    
+//class Circuit: Object {
+class Circuit: NSObject {
+
     // MARK: - Object properties
     
-    dynamic var sets = 0
-    dynamic var setup: Setup!
-    var movements = List<Movement>()
+    @objc dynamic var sets = 0
+    @objc dynamic var setup: Setup!
+//    var movements = List<Movement>()
+    var movements = [Movement]()
     
     // MARK: - Ignored properties
     
-    dynamic var currentSet = 1
+    @objc dynamic var currentSet = 1
     
     // MARK: - Initializers
     
@@ -35,8 +37,8 @@ class Circuit: Object {
     
     // MARK: - Overridden methods
     
-    override static func ignoredProperties() -> [String] {
-        return ["currentSet"]
-    }
+//    override static func ignoredProperties() -> [String] {
+//        return ["currentSet"]
+//    }
     
 }

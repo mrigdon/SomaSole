@@ -7,31 +7,31 @@
 //
 
 import UIKit
-import Shimmer
-import SnapKit
+//import Shimmer
+//import SnapKit
 
 extension PlaceholderView: ContainerViewDelegate {
-    func didAddToView(view: UIView) {
+    @objc func didAddToView(_ view: UIView) {
         let height = 0.3 * view.frame.height
-        addSubview(shimmer)
-        shimmer.snp_makeConstraints(closure: { make in
-            make.height.equalTo(height)
-            make.width.equalTo(height)
-            make.center.equalTo(self)
-        })
+//        addSubview(shimmer)
+//        shimmer.snp_makeConstraints(closure: { make in
+//            make.height.equalTo(height)
+//            make.width.equalTo(height)
+//            make.center.equalTo(self)
+//        })
     }
 }
 
 class PlaceholderView: UIView {
     
-    private let backgroundColorRatio: CGFloat = 220/255
-    private let contentViewColorRatio: CGFloat = 170/255
+    fileprivate let backgroundColorRatio: CGFloat = 220/255
+    fileprivate let contentViewColorRatio: CGFloat = 170/255
     
-    private let shimmer = FBShimmeringView()
-    private let dimension = 50
-    private let shimmeringSpeed: CGFloat = 25
-    private let shimmeringPauseDuration = 0.005
-    private let shimmering = true
+//    private let shimmer = FBShimmeringView()
+    fileprivate let dimension = 50
+    fileprivate let shimmeringSpeed: CGFloat = 25
+    fileprivate let shimmeringPauseDuration = 0.005
+    fileprivate let shimmering = true
     
     init() {
         super.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
@@ -40,13 +40,13 @@ class PlaceholderView: UIView {
         
         let image = UIImage(named: "exercise")
         let imageView = UIImageView(image: image)
-        imageView.image = imageView.image!.imageWithRenderingMode(.AlwaysTemplate)
+        imageView.image = imageView.image!.withRenderingMode(.alwaysTemplate)
         imageView.tintColor = UIColor(red: contentViewColorRatio, green: contentViewColorRatio, blue: contentViewColorRatio, alpha: 1.0)
         
-        shimmer.contentView = imageView
-        shimmer.shimmering = shimmering
-        shimmer.shimmeringSpeed = shimmeringSpeed
-        shimmer.shimmeringPauseDuration = shimmeringPauseDuration
+//        shimmer.contentView = imageView
+//        shimmer.shimmering = shimmering
+//        shimmer.shimmeringSpeed = shimmeringSpeed
+//        shimmer.shimmeringPauseDuration = shimmeringPauseDuration
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -59,14 +59,14 @@ class WorkoutCellPlaceholderView: PlaceholderView {
     
     var size: CGFloat = 0
     
-    override func didAddToView(view: UIView) {
+    override func didAddToView(_ view: UIView) {
         let height = 0.3 * size
-        addSubview(shimmer)
-        shimmer.snp_makeConstraints(closure: { make in
-            make.height.equalTo(height)
-            make.width.equalTo(height)
-            make.center.equalTo(self)
-        })
+//        addSubview(shimmer)
+//        shimmer.snp_makeConstraints(closure: { make in
+//            make.height.equalTo(height)
+//            make.width.equalTo(height)
+//            make.center.equalTo(self)
+//        })
     }
     
 }
@@ -75,14 +75,14 @@ class VideoCellPlaceholderView: PlaceholderView {
     
     var size: CGFloat = 0
     
-    override func didAddToView(view: UIView) {
+    override func didAddToView(_ view: UIView) {
         let height = 0.3 * size
-        addSubview(shimmer)
-        shimmer.snp_makeConstraints(closure: { make in
-            make.height.equalTo(height)
-            make.width.equalTo(height)
-            make.center.equalTo(self)
-        })
+//        addSubview(shimmer)
+//        shimmer.snp_makeConstraints(closure: { make in
+//            make.height.equalTo(height)
+//            make.width.equalTo(height)
+//            make.center.equalTo(self)
+//        })
     }
     
 }

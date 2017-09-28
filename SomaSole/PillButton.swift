@@ -28,8 +28,8 @@ class PillButton: UIButton {
         self.layer.cornerRadius = 5
     }
     
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        super.touchesEnded(touches, withEvent: event)
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
         if !selectedByUser {
             self.backgroundColor = blueColor
             selectedByUser = true

@@ -10,7 +10,7 @@ import UIKit
 
 class FilterViewController: UIViewController {
     
-    var addFilterClosure: ((filter: WorkoutTag, adding: Bool) -> Void)?
+    var addFilterClosure: ((_ filter: WorkoutTag, _ adding: Bool) -> Void)?
     var selectedFilters = [WorkoutTag]()
 
     @IBOutlet weak var upperBodyPill: PillButton!
@@ -18,38 +18,38 @@ class FilterViewController: UIViewController {
     @IBOutlet weak var corePill: PillButton!
     @IBOutlet weak var totalBodyPill: PillButton!
     
-    @IBAction func tappedFilterButton(sender: AnyObject) {
+    @IBAction func tappedFilterButton(_ sender: AnyObject) {
         let filterButton = sender as! PillButton
         
         let adding = !filterButton.selectedByUser
         
-        addFilterClosure!(filter: filterButton.workoutTag!, adding: adding)
+        addFilterClosure!(filterButton.workoutTag!, adding)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // customize nav bar
-        self.navigationController?.navigationBar.tintColor = UIColor.blackColor()
+        self.navigationController?.navigationBar.tintColor = UIColor.black
         
         // set workout tag for each pill
-        upperBodyPill.workoutTag = .UpperBody
-        lowerBodyPill.workoutTag = .LowerBody
-        corePill.workoutTag = .Core
-        totalBodyPill.workoutTag = .TotalBody
+        upperBodyPill.workoutTag = .upperBody
+        lowerBodyPill.workoutTag = .lowerBody
+        corePill.workoutTag = .core
+        totalBodyPill.workoutTag = .totalBody
         
         // associate filter titles with their pill
         let filterPillDict = [
-            WorkoutTag.UpperBody: upperBodyPill,
-            WorkoutTag.LowerBody: lowerBodyPill,
-            WorkoutTag.Core: corePill,
-            WorkoutTag.TotalBody: totalBodyPill,
+            WorkoutTag.upperBody: upperBodyPill,
+            WorkoutTag.lowerBody: lowerBodyPill,
+            WorkoutTag.core: corePill,
+            WorkoutTag.totalBody: totalBodyPill,
         ]
         
         // set selected pills
         for filter in self.selectedFilters {
             let selectedPill = filterPillDict[filter]
-            selectedPill!.setSelected()
+            selectedPill!?.setSelected()
         }
     }
 

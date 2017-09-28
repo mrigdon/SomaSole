@@ -14,9 +14,9 @@ class SoundManager: NSObject {
     static let sharedManager = SoundManager()
     
     func playSound(named name: String) {
-        if let soundURL = NSBundle.mainBundle().URLForResource(name, withExtension: "wav") {
+        if let soundURL = Bundle.main.url(forResource: name, withExtension: "wav") {
             var sound: SystemSoundID = 0
-            AudioServicesCreateSystemSoundID(soundURL, &sound)
+            AudioServicesCreateSystemSoundID(soundURL as CFURL, &sound)
             AudioServicesPlaySystemSound(sound)
         }
     }

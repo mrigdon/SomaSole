@@ -7,12 +7,12 @@
 //
 
 import UIKit
-import MBProgressHUD
+//import MBProgressHUD
 
 class BeginWorkoutViewController: UIViewController {
     
     // constants
-    let workoutImageHeight: CGFloat = 0.51575 * UIScreen.mainScreen().bounds.width
+    let workoutImageHeight: CGFloat = 0.51575 * UIScreen.main.bounds.width
     
     // variables
     var workout: Workout?
@@ -30,17 +30,17 @@ class BeginWorkoutViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UITextView!
     
     // methods
-    func dismiss() {
-        dismissViewControllerAnimated(true, completion: nil)
+    @objc func dismissVC() {
+        self.dismiss(animated: true, completion: nil)
     }
     
     func startProgressHud() {
-        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+//        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
     }
     
     func stopProgressHud() {
-        dispatch_async(dispatch_get_main_queue(), {
-            MBProgressHUD.hideHUDForView(self.view, animated: true)
+        DispatchQueue.main.async(execute: {
+//            MBProgressHUD.hideHUDForView(self.view, animated: true)
         })
     }
     
@@ -70,16 +70,16 @@ class BeginWorkoutViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.navigationController?.navigationBar.tintColor = UIColor.blackColor()
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+        self.navigationController?.navigationBar.tintColor = UIColor.black
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         self.workoutImageViewHeight.constant = self.workoutImageHeight
         self.workoutImageView.image = workout!.image
         self.nameLabel.text = self.workout!.name
         self.timeLabel.text = "\(Int(self.workout!.time / 60)) minutes"
         self.intensityLabel.text = "\(self.workout!.intensity)"
-        self.descriptionLabel.editable = true
+        self.descriptionLabel.isEditable = true
         self.descriptionLabel.font = UIFont(name: "HelveticaNeue", size: 17)
-        self.descriptionLabel.editable = false
+        self.descriptionLabel.isEditable = false
         self.descriptionLabel.text = self.workout!.deskription
         
         self.loadMovements()
@@ -87,7 +87,7 @@ class BeginWorkoutViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        self.descriptionLabel.setContentOffset(CGPointZero, animated: false)
+        self.descriptionLabel.setContentOffset(CGPoint.zero, animated: false)
     }
 
     override func didReceiveMemoryWarning() {
@@ -95,9 +95,9 @@ class BeginWorkoutViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
-        let destVC = segue.destinationViewController as! CountdownViewController
+        let destVC = segue.destination as! CountdownViewController
         
         // Pass the selected object to the new view controller.
         destVC.workout = self.workout

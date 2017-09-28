@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import TagListView
+//import TagListView
 
 class TagCell: UITableViewCell {
     
@@ -16,20 +16,20 @@ class TagCell: UITableViewCell {
     let borderWidth = 1
     let textSize = 14
     let filterTitles = [
-        WorkoutTag.UpperBody: "Upper Body",
-        WorkoutTag.LowerBody: "Lower Body",
-        WorkoutTag.Core: "Core",
-        WorkoutTag.TotalBody: "Total Body"
+        WorkoutTag.upperBody: "Upper Body",
+        WorkoutTag.lowerBody: "Lower Body",
+        WorkoutTag.core: "Core",
+        WorkoutTag.totalBody: "Total Body"
     ]
 
-    @IBOutlet weak var tagListView: TagListView!
+//    @IBOutlet weak var tagListView: TagListView!
     
-    func addFilters(filters: [WorkoutTag]) {
-        tagListView.removeAllTags()
-        
-        for filter in filters {
-            self.tagListView.addTag(filterTitles[filter]!)
-        }
+    func addFilters(_ filters: [WorkoutTag]) {
+//        tagListView.removeAllTags()
+//        
+//        for filter in filters {
+//            self.tagListView.addTag(filterTitles[filter]!)
+//        }
     }
     
     override func awakeFromNib() {
@@ -37,10 +37,10 @@ class TagCell: UITableViewCell {
         // Initialization code
         
         // tag list view customization
-        tagListView.textFont = UIFont.systemFontOfSize(14)
+//        tagListView.textFont = UIFont.systemFontOfSize(14)
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

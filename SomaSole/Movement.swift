@@ -6,28 +6,29 @@
 //  Copyright © 2017 SomaSole. All rights reserved.
 //
 
-import Foundation
-import RealmSwift
+import UIKit
+//import RealmSwift
 
-class Movement: Object {
-    
+//class Movement: Object {
+class Movement: NSObject {
+
     // MARK: - Object properties
     
-    dynamic var time = 0
-    dynamic var deskription = ""
-    dynamic var title = ""
+    @objc dynamic var time = 0
+    @objc dynamic var deskription = ""
+    @objc dynamic var title = ""
     
     // MARK: - Ignored properties
     
-    dynamic var finished = false
+    @objc dynamic var finished = false
     
-    dynamic var image: UIImage {
+    @objc dynamic var image: UIImage {
         return UIImage(named: title)!
     }
     
-    dynamic var gif: NSData {
-        let url = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("\(title).gif", ofType: nil)!)
-        return NSData(contentsOfURL: url)!
+    @objc dynamic var gif: Data {
+        let url = URL(fileURLWithPath: Bundle.main.path(forResource: "\(title).gif", ofType: nil)!)
+        return (try! Data(contentsOf: url))
     }
     
     // MARK: - Initializers
@@ -42,8 +43,8 @@ class Movement: Object {
     
     // MARK: - Overridden methods
     
-    override static func ignoredProperties() -> [String] {
-        return ["image", "gif", "finished"]
-    }
+//    override static func ignoredProperties() -> [String] {
+//        return ["image", "gif", "finished"]
+//    }
     
 }

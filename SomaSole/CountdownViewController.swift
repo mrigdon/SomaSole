@@ -11,7 +11,7 @@ import UIKit
 class CountdownViewController: UIViewController {
 
     // constants
-    let workoutImageHeight: CGFloat = 0.51575 * UIScreen.mainScreen().bounds.width
+    let workoutImageHeight: CGFloat = 0.51575 * UIScreen.main.bounds.width
     
     // variables
     var workout: Workout?
@@ -25,23 +25,23 @@ class CountdownViewController: UIViewController {
     @IBOutlet weak var countdownLabel: UILabel!
     
     // methods
-    private func beginWorkout() {
+    fileprivate func beginWorkout() {
         self.countdownStarted = false
         self.timer = 3
         self.countdownLabel.text = "3"
         self.countdownLabel.alpha = 0
         let segueID = customPace ? "customSegue" : "guidedSegue"
-        self.performSegueWithIdentifier(segueID, sender: self)
+        self.performSegue(withIdentifier: segueID, sender: self)
     }
     
-    private func beginCountdown() {
+    fileprivate func beginCountdown() {
         countdownLabel.alpha = 1
-        UIView.animateWithDuration(0.5, animations: {
+        UIView.animate(withDuration: 0.5, animations: {
                 self.countdownLabel.alpha = 0
             }, completion: { finished in
                 self.timer -= 1
                 self.countdownLabel.text = "\(self.timer)"
-                UIView.animateWithDuration(0.5, animations: {
+                UIView.animate(withDuration: 0.5, animations: {
                         self.countdownLabel.alpha = 1
                     }, completion: { finished in
                         if self.timer > 0 {
@@ -56,7 +56,7 @@ class CountdownViewController: UIViewController {
     }
     
     // actions
-    @IBAction func tappedStart(sender: AnyObject) {
+    @IBAction func tappedStart(_ sender: AnyObject) {
         if !countdownStarted {
             countdownStarted = true
             customPace = false
@@ -64,7 +64,7 @@ class CountdownViewController: UIViewController {
         }
     }
     
-    @IBAction func tappedGoAtYourOwnPace(sender: AnyObject) {
+    @IBAction func tappedGoAtYourOwnPace(_ sender: AnyObject) {
         if !countdownStarted {
             countdownStarted = true
             customPace = true
@@ -82,7 +82,7 @@ class CountdownViewController: UIViewController {
         countdownLabel.alpha = 0
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         countdownLabel.alpha = 0
     }
 
@@ -92,8 +92,8 @@ class CountdownViewController: UIViewController {
     }
     
     // navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let rootVC = segue.destinationViewController as! UINavigationController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let rootVC = segue.destination as! UINavigationController
         if segue.identifier == "guidedSegue" {
             (rootVC.viewControllers.first as! GuidedWorkoutViewController).workout = workout
         } else {

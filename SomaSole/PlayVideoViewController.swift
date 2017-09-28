@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import youtube_ios_player_helper
+//import youtube_ios_player_helper
 
 class PlayVideoViewController: UIViewController {
     
@@ -15,13 +15,13 @@ class PlayVideoViewController: UIViewController {
     var video: Video?
 
     // outlets
-    @IBOutlet weak var playerView: YTPlayerView!
+//    @IBOutlet weak var playerView: YTPlayerView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UITextView!
     
-    func dismiss() {
-        dismissViewControllerAnimated(true, completion: nil)
+    @objc func dismissVC() {
+        self.dismiss(animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -33,21 +33,21 @@ class PlayVideoViewController: UIViewController {
                 "showinfo": 0,
                 "rel": 0
             ]
-            playerView.loadWithVideoId(video.youtubeID, playerVars: playerVars)
+//            playerView.loadWithVideoId(video.youtubeID, playerVars: playerVars)
             nameLabel.text = video.title
             nameLabel.numberOfLines = 0
             nameLabel.sizeToFit()
             timeLabel.text = "\(video.duration) minutes"
-            descriptionLabel.editable = true
+            descriptionLabel.isEditable = true
             descriptionLabel.font = UIFont(name: "HelveticaNeue", size: 17)
-            descriptionLabel.editable = false
+            descriptionLabel.isEditable = false
             descriptionLabel.text = video.deskription
         }
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        self.descriptionLabel.setContentOffset(CGPointZero, animated: false)
+        self.descriptionLabel.setContentOffset(CGPoint.zero, animated: false)
     }
 
     override func didReceiveMemoryWarning() {

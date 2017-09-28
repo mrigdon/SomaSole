@@ -193,7 +193,6 @@
 		62A776151D7F4032009875F1 /* FeaturedVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A776141D7F4032009875F1 /* FeaturedVideoView.swift */; };
 		62AB9B801CFE8B32005498F8 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AB9B7F1CFE8B32005498F8 /* ContainerView.swift */; };
 		62B1AB931CC1D6F3007069E5 /* AllWorkoutsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B1AB921CC1D6F3007069E5 /* AllWorkoutsViewController.swift */; };
-		62B4AAA61D4C2A6300DD1273 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62B4AAA51D4C2A6300DD1273 /* StoreKit.framework */; };
 		62BBCED31D18E09700E01DE9 /* News2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BBCED21D18E09700E01DE9 /* News2ViewController.swift */; };
 		62C18E9E1D235D0B00C05798 /* PlayVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C18E9D1D235D0B00C05798 /* PlayVideoViewController.swift */; };
 		62C210891F3043A2009D5647 /* movements.json in Resources */ = {isa = PBXBuildFile; fileRef = 62C210881F3043A2009D5647 /* movements.json */; };
@@ -463,7 +462,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				62B4AAA61D4C2A6300DD1273 /* StoreKit.framework in Frameworks */,
 				0419AC687494511C285B337C /* Pods_SomaSole.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -904,20 +902,24 @@
 					621D22A81CB2DC3E00FE7581 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = U4YGTQJS9C;
+						LastSwiftMigration = 0900;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
 					621D22BE1CB2DC3F00FE7581 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = L58EF955F5;
+						LastSwiftMigration = 0900;
 						TestTargetID = 621D22A81CB2DC3E00FE7581;
 					};
 					621D22C91CB2DC3F00FE7581 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = L58EF955F5;
+						LastSwiftMigration = 0900;
 						TestTargetID = 621D22A81CB2DC3E00FE7581;
 					};
 				};
@@ -1456,15 +1458,19 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = L58EF955F5;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = U4YGTQJS9C;
 				INFOPLIST_FILE = SomaSole/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.somasole.SomaSoleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SomaSole/SomaSole-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1477,14 +1483,18 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = L58EF955F5;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = U4YGTQJS9C;
 				INFOPLIST_FILE = SomaSole/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.somasole.SomaSoleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SomaSole/SomaSole-Bridging-Header.h";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -1498,6 +1508,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.SomaSole.SomaSoleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SomaSole.app/SomaSole";
 			};
 			name = Debug;
@@ -1511,6 +1523,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.SomaSole.SomaSoleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SomaSole.app/SomaSole";
 			};
 			name = Release;
@@ -1523,6 +1537,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.SomaSole.SomaSoleUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = SomaSole;
 				USES_XCTRUNNER = YES;
 			};
@@ -1536,6 +1552,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.SomaSole.SomaSoleUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = SomaSole;
 				USES_XCTRUNNER = YES;
 			};

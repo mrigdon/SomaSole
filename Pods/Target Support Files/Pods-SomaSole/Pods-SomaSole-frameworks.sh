@@ -87,43 +87,6 @@ strip_invalid_archs() {
   fi
 }
 
-
-if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "$BUILT_PRODUCTS_DIR/Alamofire/Alamofire.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/EPShapes/EPShapes.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/FLAnimatedImage/FLAnimatedImage.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/KASlideShow/KASlideShow.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/KDCircularProgress/KDCircularProgress.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/Kingfisher/Kingfisher.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/MBProgressHUD/MBProgressHUD.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/MZTimerLabel/MZTimerLabel.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/Realm/Realm.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/RealmSwift/RealmSwift.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/Shimmer/Shimmer.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/SnapKit/SnapKit.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/SwiftyMarkdown/SwiftyMarkdown.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/TagListView/TagListView.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/youtube-ios-player-helper/youtube_ios_player_helper.framework"
-fi
-if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "$BUILT_PRODUCTS_DIR/Alamofire/Alamofire.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/EPShapes/EPShapes.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/FLAnimatedImage/FLAnimatedImage.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/KASlideShow/KASlideShow.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/KDCircularProgress/KDCircularProgress.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/Kingfisher/Kingfisher.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/MBProgressHUD/MBProgressHUD.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/MZTimerLabel/MZTimerLabel.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/Realm/Realm.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/RealmSwift/RealmSwift.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/Shimmer/Shimmer.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/SnapKit/SnapKit.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/SwiftyMarkdown/SwiftyMarkdown.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/TagListView/TagListView.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/youtube-ios-player-helper/youtube_ios_player_helper.framework"
-fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait
 fi

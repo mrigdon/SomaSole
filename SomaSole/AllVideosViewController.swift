@@ -7,10 +7,10 @@
 //
 
 import UIKit
-import youtube_ios_player_helper
-import Alamofire
-import MBProgressHUD
-import StoreKit
+//import youtube_ios_player_helper
+//import Alamofire
+//import MBProgressHUD
+//import StoreKit
 
 extension Array where Element: Video {
     var titles: [String] {
@@ -22,22 +22,22 @@ extension Array where Element: Video {
     }
 }
 
-extension AllVideosViewController: IndexedStarDelegate {
-    func didTapStar<T>(star: IndexedStar<T>) {
-        let video = star.data as! Video
-        
-        if star.active {
-            video.favorite = true
-            Video.sharedFavorites.append(video)
-        } else {
-            video.favorite = false
-            Video.sharedFavorites.removeAtIndex(Video.sharedFavorites.indexOf(video)!)
-        }
-        
-        NSUserDefaults.standardUserDefaults().setObject(Video.sharedFavorites.titles, forKey: "favoriteVideoKeys")
-        NSUserDefaults.standardUserDefaults().synchronize()
-    }
-}
+//extension AllVideosViewController: IndexedStarDelegate {
+//    func didTapStar<T>(star: IndexedStar<T>) {
+//        let video = star.data as! Video
+//        
+//        if star.active {
+//            video.favorite = true
+//            Video.sharedFavorites.append(video)
+//        } else {
+//            video.favorite = false
+//            Video.sharedFavorites.removeAtIndex(Video.sharedFavorites.indexOf(video)!)
+//        }
+//        
+//        NSUserDefaults.standardUserDefaults().setObject(Video.sharedFavorites.titles, forKey: "favoriteVideoKeys")
+//        NSUserDefaults.standardUserDefaults().synchronize()
+//    }
+//}
 
 class AllVideosViewController: UITableViewController, UISearchBarDelegate {
     
@@ -46,7 +46,7 @@ class AllVideosViewController: UITableViewController, UISearchBarDelegate {
     let videoCellSize: CGFloat = 250
     
     // variables
-    var favoriteVideoKeys = NSUserDefaults.standardUserDefaults().objectForKey("favoriteVideoKeys") as? [String]
+    var favoriteVideoKeys = UserDefaults.standard.object(forKey: "favoriteVideoKeys") as? [String]
     var videos = [Video]()
     var filteredVideos = [Video]()
     var unfilledStarButton: UIBarButtonItem?
@@ -54,27 +54,27 @@ class AllVideosViewController: UITableViewController, UISearchBarDelegate {
     var favorites = false
     
     // methods
-    private func startProgressHud() {
-        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+    fileprivate func startProgressHud() {
+//        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
     }
     
-    private func stopProgressHud() {
-        dispatch_async(dispatch_get_main_queue(), {
-            MBProgressHUD.hideHUDForView(self.view, animated: true)
+    fileprivate func stopProgressHud() {
+        DispatchQueue.main.async(execute: {
+//            MBProgressHUD.hideHUDForView(self.view, animated: true)
         })
     }
     
-    @objc private func tappedOverlay() {
-        performSegueWithIdentifier("paymentSegue", sender: self)
+    @objc fileprivate func tappedOverlay() {
+        performSegue(withIdentifier: "paymentSegue", sender: self)
     }
     
-    private func reloadTableView() {
-        dispatch_async(dispatch_get_main_queue(), {
+    fileprivate func reloadTableView() {
+        DispatchQueue.main.async(execute: {
             self.tableView.reloadData()
         })
     }
     
-    private func loadPublic() {
+    fileprivate func loadPublic() {
         Backend.shared.getVideos { videos in
             self.videos = videos
             
@@ -96,22 +96,22 @@ class AllVideosViewController: UITableViewController, UISearchBarDelegate {
         }
     }
     
-    private func filterContentForSearchText(searchText: String) {
+    fileprivate func filterContentForSearchText(_ searchText: String) {
         filteredVideos = (favorites ? Video.sharedFavorites : videos).filter { video in
-            return video.title.lowercaseString.containsString(searchText.lowercaseString)
+            return video.title.lowercased().contains(searchText.lowercased())
         }
         
         reloadTableView()
     }
     
-    @objc private func tappedUnfilledStar() {
+    @objc fileprivate func tappedUnfilledStar() {
         // switch to favorites
         navigationItem.rightBarButtonItem = filledStarButton
         favorites = true
         reloadTableView()
     }
     
-    @objc private func tappedFilledStar() {
+    @objc fileprivate func tappedFilledStar() {
         // switch to non-favorites
         navigationItem.rightBarButtonItem = unfilledStarButton
         favorites = false
@@ -119,37 +119,37 @@ class AllVideosViewController: UITableViewController, UISearchBarDelegate {
     }
     
     // delegates
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
     
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filterContentForSearchText(searchText)
     }
     
-    private func setupNav() {
-        navigationController?.navigationBar.tintColor = UIColor.blackColor()
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+    fileprivate func setupNav() {
+        navigationController?.navigationBar.tintColor = UIColor.black
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
-        unfilledStarButton = UIBarButtonItem(image: UIImage(named: "star_unfilled"), style: .Plain, target: self, action: #selector(tappedUnfilledStar))
+        unfilledStarButton = UIBarButtonItem(image: UIImage(named: "star_unfilled"), style: .plain, target: self, action: #selector(tappedUnfilledStar))
         unfilledStarButton?.tintColor = UIColor.goldColor()
-        filledStarButton = UIBarButtonItem(image: UIImage(named: "star_filled"), style: .Plain, target: self, action: #selector(tappedFilledStar))
+        filledStarButton = UIBarButtonItem(image: UIImage(named: "star_filled"), style: .plain, target: self, action: #selector(tappedFilledStar))
         filledStarButton?.tintColor = UIColor.goldColor()
         navigationItem.rightBarButtonItem = unfilledStarButton
     }
     
-    private func setupSearchBar() {
-        searchBar.barTintColor = UIColor.whiteColor()
-        searchBar.tintColor = UIColor.blackColor()
+    fileprivate func setupSearchBar() {
+        searchBar.barTintColor = UIColor.white
+        searchBar.tintColor = UIColor.black
         searchBar.layer.borderWidth = 0.0
-        searchBar.layer.borderColor = UIColor.whiteColor().CGColor
+        searchBar.layer.borderColor = UIColor.white.cgColor
         searchBar.placeholder = "Search"
-        searchBar.returnKeyType = .Done
+        searchBar.returnKeyType = .done
         searchBar.delegate = self
         searchBar.enablesReturnKeyAutomatically = false
     }
     
-    private func setupTableView() {
+    fileprivate func setupTableView() {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = videoCellSize
         tableView.tableFooterView = UIView(frame: CGRect.zero)
@@ -167,7 +167,7 @@ class AllVideosViewController: UITableViewController, UISearchBarDelegate {
         loadPublic()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         reloadTableView()
     }
 
@@ -177,31 +177,31 @@ class AllVideosViewController: UITableViewController, UISearchBarDelegate {
 
     // MARK: - Table view data source
     
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 45
     }
     
-    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return searchBar
     }
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchBar.isFirstResponder() && searchBar.text != "" {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searchBar.isFirstResponder && searchBar.text != "" {
             return filteredVideos.count
         }
         
         return favorites ? Video.sharedFavorites.count : videos.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let video = searchBar.isFirstResponder() && searchBar.text != "" ? filteredVideos[indexPath.row] : (favorites ? Video.sharedFavorites[indexPath.row] : videos[indexPath.row])
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let video = searchBar.isFirstResponder && searchBar.text != "" ? filteredVideos[indexPath.row] : (favorites ? Video.sharedFavorites[indexPath.row] : videos[indexPath.row])
         
         let reuseID = "newVideoCell"
-        let cell = tableView.dequeueReusableCellWithIdentifier(reuseID, forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseID, for: indexPath)
         
         cell.contentView.clearSubviews()
         let containerView = ContainerView()
@@ -211,7 +211,7 @@ class AllVideosViewController: UITableViewController, UISearchBarDelegate {
             tableView.estimatedRowHeight = videoCellSize
             let videoView = VideoCellView()
             videoView.video = video
-            videoView.star.delegate = self
+//            videoView.star.delegate = self
             (cell as! NewVideoCell).video = video
             containerView.delegate = nil
             containerView.subview = videoView
@@ -223,15 +223,15 @@ class AllVideosViewController: UITableViewController, UISearchBarDelegate {
             containerView.subview = placeholder
         }
         
-        cell.selectionStyle = .None
+        cell.selectionStyle = .none
 
         return cell
     }
     
-    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if identifier == "newVideoSegue" {
             let indexPath = tableView.indexPathForSelectedRow
-            let cell = tableView.cellForRowAtIndexPath(indexPath!) as! NewVideoCell
+            let cell = tableView.cellForRow(at: indexPath!) as! NewVideoCell
             
             return cell.video != nil
         }
@@ -239,10 +239,10 @@ class AllVideosViewController: UITableViewController, UISearchBarDelegate {
         return true
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "newVideoSegue" {
-            let cell = tableView.cellForRowAtIndexPath(tableView.indexPathForSelectedRow!) as! NewVideoCell
-            (segue.destinationViewController as! PlayVideoViewController).video = cell.video
+            let cell = tableView.cellForRow(at: tableView.indexPathForSelectedRow!) as! NewVideoCell
+            (segue.destination as! PlayVideoViewController).video = cell.video
         }
     }
 

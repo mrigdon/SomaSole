@@ -6,19 +6,20 @@
 //  Copyright © 2017 SomaSole. All rights reserved.
 //
 
-import Foundation
-import RealmSwift
+import UIKit
+//import RealmSwift
 
-class Setup: Object {
-    
+//class Setup: Object {
+class Setup: NSObject {
+
     // MARK: - Object properties
     
-    dynamic var imageIndex = 0
-    dynamic var long = false
+    @objc dynamic var imageIndex = 0
+    @objc dynamic var long = false
     
     // MARK: - Ignored properties
     
-    dynamic var image: UIImage {
+    @objc dynamic var image: UIImage {
         return UIImage(named: "setup\(imageIndex)\(long ? "long" : "short")")!
     }
     
@@ -28,13 +29,13 @@ class Setup: Object {
         self.init()
         
         imageIndex = data["legacy_index"]!
-        long = Bool(data["length"]!)
+        long = data["length"]! == 1
     }
     
     // MARK: - Overridden methods
     
-    override static func ignoredProperties() -> [String] {
-        return ["image"]
-    }
+//    override static func ignoredProperties() -> [String] {
+//        return ["image"]
+//    }
     
 }

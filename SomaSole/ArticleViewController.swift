@@ -7,12 +7,12 @@
 //
 
 import UIKit
-import SwiftyMarkdown
+//import SwiftyMarkdown
 
 class ArticleViewController: UIViewController {
     
     // constants
-    let screenWidth = UIScreen.mainScreen().bounds.width
+    let screenWidth = UIScreen.main.bounds.width
     
     // variables
     var article: Article?
@@ -27,16 +27,16 @@ class ArticleViewController: UIViewController {
     @IBOutlet weak var bodyView: UITextView!
     
     // methods
-    private func setupImageView() {
+    fileprivate func setupImageView() {
         imageViewHeight.constant = screenWidth
         article!.loadPlainImage {
             self.imageView.image = self.article!.plainImage
         }
     }
     
-    private func setupHeadline() {
+    fileprivate func setupHeadline() {
         headlineLabel.numberOfLines = 0
-        headlineLabel.lineBreakMode = .ByWordWrapping
+        headlineLabel.lineBreakMode = .byWordWrapping
         
         let font = UIFont(name: "GillSans-Light", size: 36)
         headlineLabel.font = font
@@ -45,35 +45,35 @@ class ArticleViewController: UIViewController {
         headlineLabel.sizeToFit()
     }
     
-    private func setupAuthor() {
+    fileprivate func setupAuthor() {
         let font = UIFont(name: "HelveticaNeue-Medium", size: 12)
         authorLabel.font = font
         authorLabel.text = "by \(article!.author)"
         authorLabel.sizeToFit()
     }
     
-    private func setupTime() {
+    fileprivate func setupTime() {
         let font = UIFont(name: "HelveticaNeue", size: 12)
         timeLabel.font = font
         
-        let formatter = NSDateFormatter()
-        formatter.dateStyle = .MediumStyle
-        formatter.timeStyle = .FullStyle
-        let dateString = formatter.stringFromDate(article!.date)
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .full
+        let dateString = formatter.string(from: article!.date as Date)
         
         timeLabel.text = dateString
         timeLabel.sizeToFit()
     }
     
-    private func setupBody() {
-        bodyView.editable = true
+    fileprivate func setupBody() {
+        bodyView.isEditable = true
         
-        let mdText = SwiftyMarkdown(string: article!.body)
-        mdText.body.fontName = "Georgia"
-        mdText.body.fontSize = 20
-        bodyView.attributedText = mdText.attributedString()
+//        let mdText = SwiftyMarkdown(string: article!.body)
+//        mdText.body.fontName = "Georgia"
+//        mdText.body.fontSize = 20
+//        bodyView.attributedText = mdText.attributedString()
         
-        bodyView.editable = false
+        bodyView.isEditable = false
     }
     
     override func viewDidLoad() {

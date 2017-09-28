@@ -17,13 +17,13 @@ extension UIView {
 }
 
 extension Array where Element: Video {
-    mutating func addByDate(video: Video) {
+    mutating func addByDate(_ video: Video) {
         var added = false
         
-        for (index, item) in self.enumerate() {
+        for (index, item) in self.enumerated() {
             let otherDate = item as Video
-            if video.date.laterDate(otherDate.date) == video.date {
-                self.insert(video as! Element, atIndex: index)
+            if (video.date as NSDate).laterDate(otherDate.date as Date) == video.date as Date {
+                self.insert(video as! Element, at: index)
                 added = true
                 break
             }

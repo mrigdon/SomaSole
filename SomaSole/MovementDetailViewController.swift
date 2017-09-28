@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import MBProgressHUD
-import FLAnimatedImage
+//import MBProgressHUD
+//import FLAnimatedImage
 
 class MovementDetailViewController: UIViewController {
     
@@ -17,28 +17,28 @@ class MovementDetailViewController: UIViewController {
     
     // variables
     var movement: Movement?
-    var url = NSURL()
-    var data = NSData()
-    var image = FLAnimatedImage()
+    var url: URL?
+    var data = Data()
+//    var image = FLAnimatedImage()
 
     // outlets
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var imageView: FLAnimatedImageView!
+//    @IBOutlet weak var imageView: FLAnimatedImageView!
     @IBOutlet weak var descriptionLabel: UITextView!
     
     // methods
     func startProgressHud() {
-        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+//        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
     }
     
     func stopProgressHud() {
-        dispatch_async(dispatch_get_main_queue(), {
-            MBProgressHUD.hideHUDForView(self.view, animated: true)
+        DispatchQueue.main.async(execute: {
+//            MBProgressHUD.hideHUDForView(self.view, animated: true)
         })
     }
     
-    private func ui(closure: () -> Void) {
-        dispatch_async(dispatch_get_main_queue(), {
+    fileprivate func ui(_ closure: @escaping () -> Void) {
+        DispatchQueue.main.async(execute: {
             closure()
         })
     }
@@ -49,20 +49,22 @@ class MovementDetailViewController: UIViewController {
 
         self.titleLabel.text = movement!.title
         self.descriptionLabel.text = movement!.deskription
-        self.descriptionLabel.editable = true
+        self.descriptionLabel.isEditable = true
         self.descriptionLabel.font = descriptionFont
-        self.descriptionLabel.textAlignment = .Center
-        self.descriptionLabel.editable = false
-        navigationController!.navigationBar.tintColor = UIColor.blackColor()
+        self.descriptionLabel.textAlignment = .center
+        self.descriptionLabel.isEditable = false
+        navigationController!.navigationBar.tintColor = UIColor.black
         startProgressHud()
     }
     
-    override func viewDidAppear(animated: Bool) {
-        url = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("\(movement!.title).gif", ofType: nil)!)
-        data = NSData(contentsOfURL: self.url)!
-        image = FLAnimatedImage(animatedGIFData: data)
-        ui {
-            self.imageView.animatedImage = self.image
+    override func viewDidAppear(_ animated: Bool) {
+        url = URL(fileURLWithPath: Bundle.main.path(forResource: "\(movement!.title).gif", ofType: nil)!)
+        if let url = url {
+            data = try! Data(contentsOf: url)
+            //        image = FLAnimatedImage(animatedGIFData: data)
+            ui {
+                //            self.imageView.animatedImage = self.image
+            }
         }
         stopProgressHud()
     }
@@ -72,8 +74,8 @@ class MovementDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillDisappear(animated: Bool) {
-        imageView.stopAnimating()
+    override func viewWillDisappear(_ animated: Bool) {
+//        imageView.stopAnimating()
         super.viewWillDisappear(animated)
     }
 

@@ -7,24 +7,24 @@
 //
 
 import UIKit
-import KASlideShow
-import youtube_ios_player_helper
-import Alamofire
+//import KASlideShow
+//import youtube_ios_player_helper
+//import Alamofire
 
-extension News2ViewController: KASlideShowDelegate {
-    func kaSlideShowDidShowNext(slideShow: KASlideShow!) {
-        pageControl.currentPage = Int(slideshow.currentIndex)
-    }
-    
-    func kaSlideShowDidShowPrevious(slideShow: KASlideShow!) {
-        pageControl.currentPage = Int(slideshow.currentIndex)
-    }
-}
+//extension News2ViewController: KASlideShowDelegate {
+//    func kaSlideShowDidShowNext(slideShow: KASlideShow!) {
+//        pageControl.currentPage = Int(slideshow.currentIndex)
+//    }
+//    
+//    func kaSlideShowDidShowPrevious(slideShow: KASlideShow!) {
+//        pageControl.currentPage = Int(slideshow.currentIndex)
+//    }
+//}
 
 class News2ViewController: UIViewController {
     
     // constants
-    let screenWidth = UIScreen.mainScreen().bounds.width
+    let screenWidth = UIScreen.main.bounds.width
     let slideshowRatio: CGFloat = 0.6323529412
     let workoutRatio: CGFloat = 0.51575
     
@@ -37,7 +37,7 @@ class News2ViewController: UIViewController {
     var setupsLoaded = false
     var movementsLoaded = false
     var selectedVideo: Video?
-    var slideshow = KASlideShow()
+//    var slideshow = KASlideShow()
     var pageControl = UIPageControl()
     var firstArticleImage = true
 
@@ -49,57 +49,57 @@ class News2ViewController: UIViewController {
     @IBOutlet var videoThumbnailViews: [VideoContainerView]!
     
     // methods
-    @objc private func tappedArticle() {
-        performSegueWithIdentifier("articleSegue", sender: self)
+    @objc fileprivate func tappedArticle() {
+        performSegue(withIdentifier: "articleSegue", sender: self)
     }
     
-    @objc private func tappedWorkout(tap: AnyObject) {
-        performSegueWithIdentifier("workoutSegue", sender: self)
+    @objc fileprivate func tappedWorkout(_ tap: AnyObject) {
+        performSegue(withIdentifier: "workoutSegue", sender: self)
     }
     
-    @objc private func tappedVideoThumbnail(tap: UITapGestureRecognizer) {
+    @objc fileprivate func tappedVideoThumbnail(_ tap: UITapGestureRecognizer) {
         let containerView = tap.view as! VideoContainerView
         selectedVideo = containerView.video
-        performSegueWithIdentifier("videoSegue", sender: self)
+        performSegue(withIdentifier: "videoSegue", sender: self)
     }
     
-    private func setupNavbar() {
+    fileprivate func setupNavbar() {
         self.navigationController?.navigationBar.titleTextAttributes = [
-            NSForegroundColorAttributeName: UIColor.blackColor(),
-            NSFontAttributeName: UIFont(name: "AvenirNext-UltraLight", size: 24)!
+            NSAttributedStringKey.foregroundColor: UIColor.black,
+            NSAttributedStringKey.font: UIFont(name: "AvenirNext-UltraLight", size: 24)!
         ]
-        navigationController?.navigationBar.tintColor = UIColor.blackColor()
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+        navigationController?.navigationBar.tintColor = UIColor.black
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
-    private func setupSlideshow() {
+    fileprivate func setupSlideshow() {
         let placeholder = PlaceholderView()
         slideshowView.delegate = placeholder
         slideshowView.subview = placeholder
         
         slideshowHeight.constant = screenWidth * slideshowRatio
-        slideshow.transitionDuration = 1
-        slideshow.transitionType = .Slide
-        slideshow.imagesContentMode = .ScaleAspectFill
-        slideshow.addGesture(.Swipe)
-        let tap = UITapGestureRecognizer(target: self, action: #selector(tappedArticle))
-        slideshow.addGestureRecognizer(tap)
-        slideshow.delegate = self
+//        slideshow.transitionDuration = 1
+//        slideshow.transitionType = .Slide
+//        slideshow.imagesContentMode = .ScaleAspectFill
+//        slideshow.addGesture(.Swipe)
+//        let tap = UITapGestureRecognizer(target: self, action: #selector(tappedArticle))
+//        slideshow.addGestureRecognizer(tap)
+//        slideshow.delegate = self
     }
     
-    private func setupPageControl() {
+    fileprivate func setupPageControl() {
         pageControl.currentPage = 0
         pageControl.layer.zPosition = 1
     }
     
-    private func setupWorkout() {
+    fileprivate func setupWorkout() {
         workoutViewHeight.constant = (screenWidth - 16) * workoutRatio
         let placeholder = PlaceholderView()
         workoutView.delegate = placeholder
         workoutView.subview = placeholder
     }
     
-    private func setupVideos() {
+    fileprivate func setupVideos() {
         for view in videoThumbnailViews {
             let placeholder = PlaceholderView()
             view.delegate = placeholder
@@ -107,27 +107,27 @@ class News2ViewController: UIViewController {
         }
     }
     
-    private func addArticles(articles: [Article]) {
+    fileprivate func addArticles(_ articles: [Article]) {
         for article in articles {
             article.loadTextImage {
-                self.slideshow.addImage(article.textImage)
+//                self.slideshow.addImage(article.textImage)
                 self.articles.append(article)
                 self.pageControl.numberOfPages = self.articles.count
                 if self.firstArticleImage {
                     self.firstArticleImage = false
-                    self.slideshowView.subview = self.slideshow
-                    self.slideshowView.addSubview(self.pageControl)
-                    self.pageControl.snp_makeConstraints(closure: { make in
-                        make.bottom.equalTo(self.slideshowView)
-                        make.centerX.equalTo(self.slideshowView)
-                    })
-                    NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: #selector(self.nextSlide), userInfo: nil, repeats: true)
+//                    self.slideshowView.subview = self.slideshow
+//                    self.slideshowView.addSubview(self.pageControl)
+//                    self.pageControl.snp_makeConstraints(closure: { make in
+//                        make.bottom.equalTo(self.slideshowView)
+//                        make.centerX.equalTo(self.slideshowView)
+//                    })
+                    Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.nextSlide), userInfo: nil, repeats: true)
                 }
             }
         }
     }
     
-    private func addVideos(videos: [Video]) {
+    fileprivate func addVideos(_ videos: [Video]) {
         for video in videos {
             video.loadImage {
                 let videoThumbnailView = self.videoThumbnailViews[self.videos.count]
@@ -136,7 +136,7 @@ class News2ViewController: UIViewController {
                 videoThumbnailView.video = video
                 
                 let tap = UITapGestureRecognizer(target: self, action: #selector(self.tappedVideoThumbnail(_:)))
-                videoThumbnailView.userInteractionEnabled = true
+                videoThumbnailView.isUserInteractionEnabled = true
                 videoThumbnailView.addGestureRecognizer(tap)
                 
                 self.videos.append(video)
@@ -144,7 +144,7 @@ class News2ViewController: UIViewController {
         }
     }
     
-    private func addWorkout(workout: Workout?) {
+    fileprivate func addWorkout(_ workout: Workout?) {
         self.workout = workout
         if let workout = self.workout {
             workout.loadImage {
@@ -152,14 +152,14 @@ class News2ViewController: UIViewController {
                 workoutImageView.image = workout.image
                 self.workoutView.workout = workout
                 let tap = UITapGestureRecognizer(target: self, action: #selector(self.tappedWorkout(_:)))
-                workoutImageView.userInteractionEnabled = true
+                workoutImageView.isUserInteractionEnabled = true
                 workoutImageView.addGestureRecognizer(tap)
                 self.workoutView.subview = workoutImageView
             }
         }
     }
     
-    private func loadFeatured() {
+    fileprivate func loadFeatured() {
         Backend.shared.getFeatured { featured in
             self.addArticles(featured.articles.map { $0 })
             self.addVideos(featured.videos.map { $0 })
@@ -167,8 +167,8 @@ class News2ViewController: UIViewController {
         }
     }
     
-    @objc private func nextSlide() {
-        slideshow.next()
+    @objc fileprivate func nextSlide() {
+//        slideshow.next()
     }
     
     override func viewDidLoad() {
@@ -187,20 +187,20 @@ class News2ViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "articleSegue" {
-            let destVC = segue.destinationViewController as! ArticleViewController
-            destVC.article = articles[Int(slideshow.currentIndex)]
+            let destVC = segue.destination as! ArticleViewController
+//            destVC.article = articles[Int(slideshow.currentIndex)]
         } else if segue.identifier == "workoutSegue" {
-            let destVC = segue.destinationViewController as! UINavigationController
+            let destVC = segue.destination as! UINavigationController
             let rootVC = destVC.viewControllers.first as! BeginWorkoutViewController
             rootVC.workout = workout
-            rootVC.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Stop, target: rootVC, action: #selector(BeginWorkoutViewController.dismiss))
+            rootVC.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop, target: rootVC, action: #selector(BeginWorkoutViewController.dismissVC))
         } else if segue.identifier == "videoSegue" {
-            let destVC = segue.destinationViewController as! UINavigationController
+            let destVC = segue.destination as! UINavigationController
             let rootVC = destVC.viewControllers.first as! PlayVideoViewController
             rootVC.video = selectedVideo
-            rootVC.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Stop, target: rootVC, action: #selector(PlayVideoViewController.dismiss))
+            rootVC.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop, target: rootVC, action: #selector(PlayVideoViewController.dismissVC))
         }
     }
 

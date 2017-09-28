@@ -7,20 +7,20 @@
 //
 
 import UIKit
-import TagListView
-import EPShapes
-import MBProgressHUD
+//import TagListView
+//import EPShapes
+//import MBProgressHUD
 
 extension Array where Element: Workout {
-    mutating func insertAlpha(workout: Element) {
+    mutating func insertAlpha(_ workout: Element) {
         if self.count == 0 {
             self.append(workout)
             return
         }
         
-        for (index, item) in self.enumerate() {
-            if workout.name.localizedCompare(item.name) == .OrderedAscending {
-                self.insert(workout, atIndex: index)
+        for (index, item) in self.enumerated() {
+            if workout.name.localizedCompare(item.name) == .orderedAscending {
+                self.insert(workout, at: index)
                 return
             }
         }
@@ -37,33 +37,33 @@ extension Array where Element: Workout {
     }
 }
 
-extension AllWorkoutsViewController: IndexedStarDelegate {
-    func didTapStar<T>(star: IndexedStar<T>) {
-        let workout = star.data as! Workout
-        
-        if star.active {
-            workout.favorite = true
-            Workout.sharedFavorites.insertAlpha(workout)
-        } else {
-            workout.favorite = false
-            Workout.sharedFavorites.removeAtIndex(Workout.sharedFavorites.indexOf(workout)!)
-        }
-        
-        NSUserDefaults.standardUserDefaults().setObject(Workout.sharedFavorites.names, forKey: "favoriteWorkoutKeys")
-        NSUserDefaults.standardUserDefaults().synchronize()
-    }
-}
+//extension AllWorkoutsViewController: IndexedStarDelegate {
+//    func didTapStar<T>(star: IndexedStar<T>) {
+//        let workout = star.data as! Workout
+//        
+//        if star.active {
+//            workout.favorite = true
+//            Workout.sharedFavorites.insertAlpha(workout)
+//        } else {
+//            workout.favorite = false
+//            Workout.sharedFavorites.removeAtIndex(Workout.sharedFavorites.indexOf(workout)!)
+//        }
+//        
+//        NSUserDefaults.standardUserDefaults().setObject(Workout.sharedFavorites.names, forKey: "favoriteWorkoutKeys")
+//        NSUserDefaults.standardUserDefaults().synchronize()
+//    }
+//}
 
 class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate {
     
     // constants
     let filterCellSize: CGFloat = 44
-    let workoutCellSize: CGFloat = 0.51575 * UIScreen.mainScreen().bounds.width
+    let workoutCellSize: CGFloat = 0.51575 * UIScreen.main.bounds.width
     let searchBar = UISearchBar()
     
     // variables
     var workouts = [Workout]()
-    var favoriteWorkoutKeys = NSUserDefaults.standardUserDefaults().objectForKey("favoriteWorkoutKeys") as? [String]
+    var favoriteWorkoutKeys = UserDefaults.standard.object(forKey: "favoriteWorkoutKeys") as? [String]
     var filteredWorkouts = [Workout]()
     var selectedFilters = [WorkoutTag]()
     var unfilledStarButton: UIBarButtonItem?
@@ -72,22 +72,22 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate {
     
     // methods
     func reloadTableView() {
-        dispatch_async(dispatch_get_main_queue(), {
+        DispatchQueue.main.async(execute: {
             self.tableView.reloadData()
         })
     }
     
-    private func startProgressHud() {
-        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+    fileprivate func startProgressHud() {
+//        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
     }
     
-    private func stopProgressHud() {
-        dispatch_async(dispatch_get_main_queue(), {
-            MBProgressHUD.hideHUDForView(self.view, animated: true)
+    fileprivate func stopProgressHud() {
+        DispatchQueue.main.async(execute: {
+//            MBProgressHUD.hideHUDForView(self.view, animated: true)
         })
     }
     
-    func filterContent(searchText: String) {
+    func filterContent(_ searchText: String) {
         // filter for tags
         var tagFilteredWorkouts = selectedFilters.count > 0 ? [Workout]() : favorites ? Workout.sharedFavorites : workouts
         for workout in favorites ? Workout.sharedFavorites : workouts {
@@ -102,7 +102,7 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate {
         // filter for search text
         if searchText != "" {
             filteredWorkouts = tagFilteredWorkouts.filter { workout in
-                return workout.name.lowercaseString.containsString(searchText.lowercaseString)
+                return workout.name.lowercased().contains(searchText.lowercased())
             }
         } else {
             filteredWorkouts = tagFilteredWorkouts
@@ -111,7 +111,7 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate {
         self.reloadTableView()
     }
     
-    private func loadPublicWorkouts() {
+    fileprivate func loadPublicWorkouts() {
         startProgressHud()
         Backend.shared.getWorkouts { workouts in
             self.workouts = workouts
@@ -134,70 +134,70 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate {
         }
     }
     
-    @objc private func tappedUnfilledStar() {
+    @objc fileprivate func tappedUnfilledStar() {
         // switch to favorites
         navigationItem.rightBarButtonItem = filledStarButton
         favorites = true
         reloadTableView()
     }
     
-    @objc private func tappedFilledStar() {
+    @objc fileprivate func tappedFilledStar() {
         // switch to non-favorites
         navigationItem.rightBarButtonItem = unfilledStarButton
         favorites = false
         reloadTableView()
     }
     
-    private func cellTypeForIndexPath(indexPath: NSIndexPath) -> String {
+    fileprivate func cellTypeForIndexPath(_ indexPath: IndexPath) -> String {
         return selectedFilters.count > 0 && indexPath.row == 0 ? "tagCell" : indexPath.row == 0 ? "filterCell" : "workoutCell"
     }
     
-    private func workoutForCell(cellType: String, at index: Int) -> Workout? {
+    fileprivate func workoutForCell(_ cellType: String, at index: Int) -> Workout? {
         if cellType == "workoutCell" {
-            return searchBar.isFirstResponder() && searchBar.text != "" ? filteredWorkouts[index] : (favorites ? Workout.sharedFavorites[index] : workouts[index])
+            return searchBar.isFirstResponder && searchBar.text != "" ? filteredWorkouts[index] : (favorites ? Workout.sharedFavorites[index] : workouts[index])
         }
         
         return nil
     }
     
     // delegates
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
     
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filterContent(searchText)
     }
     
-    private func setupNavigationController() {
+    fileprivate func setupNavigationController() {
         self.navigationController?.navigationBar.titleTextAttributes = [
-            NSForegroundColorAttributeName: UIColor.blackColor(),
-            NSFontAttributeName: UIFont(name: "AvenirNext-UltraLight", size: 24)!
+            NSAttributedStringKey.foregroundColor: UIColor.black,
+            NSAttributedStringKey.font: UIFont(name: "AvenirNext-UltraLight", size: 24)!
         ]
-        navigationController?.navigationBar.tintColor = UIColor.blackColor()
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+        navigationController?.navigationBar.tintColor = UIColor.black
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
-    private func setupSearchBar() {
-        searchBar.barTintColor = UIColor.whiteColor()
-        searchBar.tintColor = UIColor.blackColor()
+    fileprivate func setupSearchBar() {
+        searchBar.barTintColor = UIColor.white
+        searchBar.tintColor = UIColor.black
         searchBar.layer.borderWidth = 0.0
-        searchBar.layer.borderColor = UIColor.whiteColor().CGColor
+        searchBar.layer.borderColor = UIColor.white.cgColor
         searchBar.placeholder = "Search"
-        searchBar.returnKeyType = .Done
+        searchBar.returnKeyType = .done
         searchBar.delegate = self
         searchBar.enablesReturnKeyAutomatically = false
     }
     
-    private func setupBarButtons() {
-        unfilledStarButton = UIBarButtonItem(image: UIImage(named: "star_unfilled"), style: .Plain, target: self, action: #selector(tappedUnfilledStar))
+    fileprivate func setupBarButtons() {
+        unfilledStarButton = UIBarButtonItem(image: UIImage(named: "star_unfilled"), style: .plain, target: self, action: #selector(tappedUnfilledStar))
         unfilledStarButton?.tintColor = UIColor.goldColor()
-        filledStarButton = UIBarButtonItem(image: UIImage(named: "star_filled"), style: .Plain, target: self, action: #selector(tappedFilledStar))
+        filledStarButton = UIBarButtonItem(image: UIImage(named: "star_filled"), style: .plain, target: self, action: #selector(tappedFilledStar))
         filledStarButton?.tintColor = UIColor.goldColor()
         navigationItem.rightBarButtonItem = unfilledStarButton
     }
     
-    private func setupTableView() {
+    fileprivate func setupTableView() {
         // no extra cells
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         
@@ -219,7 +219,7 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate {
         loadPublicWorkouts()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         reloadTableView()
     }
 
@@ -230,29 +230,29 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate {
 
     // MARK: - Table view data source
     
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 45
     }
     
-    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return searchBar
     }
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (searchBar.isFirstResponder() && searchBar.text != "") || selectedFilters.count > 0 {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if (searchBar.isFirstResponder && searchBar.text != "") || selectedFilters.count > 0 {
             return filteredWorkouts.count + 1
         }
         
         return favorites ? Workout.sharedFavorites.count + 1 : workouts.count + 1 // plus one for the filter cell
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellType = cellTypeForIndexPath(indexPath)
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellType, forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellType, for: indexPath)
         
         if cellType == "tagCell" {
             (cell as! TagCell).addFilters(selectedFilters)
@@ -266,11 +266,11 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate {
             
             // get workout
             let workoutIndex = indexPath.row - 1 // -1 for the filter cell
-            let workout = (searchBar.isFirstResponder() && searchBar.text != "") || selectedFilters.count > 0 ? filteredWorkouts[workoutIndex] : favorites ? Workout.sharedFavorites[workoutIndex] : workouts[workoutIndex]
+            let workout = (searchBar.isFirstResponder && searchBar.text != "") || selectedFilters.count > 0 ? filteredWorkouts[workoutIndex] : favorites ? Workout.sharedFavorites[workoutIndex] : workouts[workoutIndex]
             (cell as! WorkoutCell).workout = workout
             
             // better ui for touch
-            cell.selectionStyle = .None
+            cell.selectionStyle = .none
             
             // clear subviews
             cell.contentView.clearSubviews()
@@ -281,10 +281,10 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate {
             if let image = workout.image {
                 cellView.delegate = nil
                 cellView.subview = UIImageView(image: image)
-                let star = IndexedStar<Workout>(active: workout.favorite)
-                star.delegate = self
-                star.data = workout
-                cellView.addSubviewWithConstraints(star, height: 30, width: 30, top: 8, left: nil, right: 8, bottom: nil)
+//                let star = IndexedStar<Workout>(active: workout.favorite)
+//                star.delegate = self
+//                star.data = workout
+//                cellView.addSubviewWithConstraints(star, height: 30, width: 30, top: 8, left: nil, right: 8, bottom: nil)
             } else {
                 let placeholder = WorkoutCellPlaceholderView()
                 placeholder.size = workoutCellSize
@@ -299,14 +299,14 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate {
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "workoutSegue" {
-            let beginVC = segue.destinationViewController as! BeginWorkoutViewController
-            let cell = tableView.cellForRowAtIndexPath(tableView.indexPathForSelectedRow!) as! WorkoutCell
+            let beginVC = segue.destination as! BeginWorkoutViewController
+            let cell = tableView.cellForRow(at: tableView.indexPathForSelectedRow!) as! WorkoutCell
             beginVC.workout = cell.workout
         } else if segue.identifier == "tagListSegue" || segue.identifier == "filterSegue" {
             // Get the new view controller using segue.destinationViewController.
-            let filterVC = segue.destinationViewController as! FilterViewController
+            let filterVC = segue.destination as! FilterViewController
             
             // Pass the selected object to the new view controller.
             filterVC.selectedFilters = self.selectedFilters
@@ -314,8 +314,8 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate {
                 if adding {
                     self.selectedFilters.append(filter)
                 } else {
-                    let index = self.selectedFilters.indexOf(filter)
-                    self.selectedFilters.removeAtIndex(index!)
+                    let index = self.selectedFilters.index(of: filter)
+                    self.selectedFilters.remove(at: index!)
                 }
                 self.filterContent("")
             }
