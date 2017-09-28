@@ -15,8 +15,6 @@ class PillButton: UIButton {
     var blueColor = UIColor(red: 0, green: 0, blue: 1, alpha: 0.5)
     
     var selectedByUser: Bool = false
-    var activity: Activity?
-    var goal: Goal?
     var workoutTag: WorkoutTag?
     
     override init(frame: CGRect) {

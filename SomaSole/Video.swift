@@ -9,7 +9,6 @@
 import Foundation
 import RealmSwift
 import Kingfisher
-import Alamofire
 
 class Video: Object {
     
@@ -63,8 +62,8 @@ class Video: Object {
                 self.image = image
                 completion()
             } else {
-                Alamofire.request(.GET, url).responseImage { response in
-                    if let image = response.result.value {
+                ImageDownloader.defaultDownloader.downloadImageWithURL(NSURL(string: url)!, progressBlock: nil) { downloader in
+                    if let image = downloader.image {
                         self.image = image
                         ImageCache.defaultCache.storeImage(image, forKey: self.title)
                         completion()

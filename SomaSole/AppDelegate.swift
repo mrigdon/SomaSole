@@ -8,22 +8,16 @@
 
 import UIKit
 import IQKeyboardManagerSwift
-import SwiftyJSON
-import Alamofire
 import AVFoundation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    
-    private func setupIQManager() {
-        IQKeyboardManager.sharedManager().enable = true
-    }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
-        setupIQManager()
+        IQKeyboardManager.sharedManager().enable = true
     
         return true
     }

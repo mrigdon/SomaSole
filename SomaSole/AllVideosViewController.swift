@@ -8,7 +8,6 @@
 
 import UIKit
 import youtube_ios_player_helper
-import AlamofireImage
 import Alamofire
 import MBProgressHUD
 import StoreKit
@@ -241,11 +240,7 @@ class AllVideosViewController: UITableViewController, UISearchBarDelegate {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "videoSegue" {
-            let cell = tableView.cellForRowAtIndexPath(tableView.indexPathForSelectedRow!) as! VideoCell
-            let video = cell.video
-            (segue.destinationViewController as! PlayVideoViewController).video = video
-        } else if segue.identifier == "newVideoSegue" {
+        if segue.identifier == "newVideoSegue" {
             let cell = tableView.cellForRowAtIndexPath(tableView.indexPathForSelectedRow!) as! NewVideoCell
             (segue.destinationViewController as! PlayVideoViewController).video = cell.video
         }

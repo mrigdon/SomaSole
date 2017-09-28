@@ -1,8 +1,5 @@
 PODS:
-  - Alamofire (3.4.0)
-  - AlamofireImage (2.4.0):
-    - Alamofire (~> 3.3)
-  - ALCameraViewController (1.1.9)
+  - Alamofire (3.5.1)
   - EPShapes (1.0.0)
   - FLAnimatedImage (1.0.12)
   - IQKeyboardManagerSwift (4.0.1)
@@ -18,18 +15,12 @@ PODS:
     - Realm (= 1.0.0)
   - Shimmer (1.0.2)
   - SnapKit (0.22.0)
-  - SwiftString (0.5)
-  - SwiftyJSON (2.3.2)
   - SwiftyMarkdown (0.2.3)
   - TagListView (1.0.0)
-  - TextFieldEffects (1.2.0)
-  - Toucan (0.5.0)
   - youtube-ios-player-helper (0.1.6)
 
 DEPENDENCIES:
   - Alamofire (~> 3.4)
-  - AlamofireImage (~> 2.0)
-  - ALCameraViewController
   - EPShapes
   - FLAnimatedImage (~> 1.0)
   - IQKeyboardManagerSwift
@@ -41,18 +32,12 @@ DEPENDENCIES:
   - RealmSwift
   - Shimmer
   - SnapKit
-  - SwiftString
-  - SwiftyJSON
   - SwiftyMarkdown
   - TagListView (~> 1.0)
-  - TextFieldEffects
-  - Toucan
   - youtube-ios-player-helper (~> 0.1.4)
 
 SPEC CHECKSUMS:
-  Alamofire: c19a627cefd6a95f840401c49ab1f124e07f54ee
-  AlamofireImage: 87408b652e0f5ae5fe364035f15aea8b9b24c77e
-  ALCameraViewController: f171ffb7e84d211277a0f97823a2bda7418dc573
+  Alamofire: 0dfba1184a543e2aa160f4e39cac4e8aba48d223
   EPShapes: 981666a2fe8bcee8464fec729e8729b0bf1b751a
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
   IQKeyboardManagerSwift: e92246955e21dad73ad9dc89b80adb134d8bb395
@@ -65,14 +50,10 @@ SPEC CHECKSUMS:
   RealmSwift: 3229306d020d96f83b335f87a0dcbf2cef0e6a2b
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
   SnapKit: 0dd2fd157330f1ea11fd84da13e6be8a7a22bae0
-  SwiftString: ec9c31c55b2aa147a1154f5f5f8483dc71e3165f
-  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   SwiftyMarkdown: 62920e177bbd441f2e4427e164e1674b1be46b39
   TagListView: 6bf4bded034c4c90b1e90d8cd3d8e1d852dba0a8
-  TextFieldEffects: bc4fd3bd557321bd61a0762f3f50965477a36f62
-  Toucan: 0519c341148252ae114c5a657d2a85bb9ada9e40
   youtube-ios-player-helper: 21ab92db027c7ff86cb17a3843a3f6eafc8158d2
 
-PODFILE CHECKSUM: 88f713bca1acbdebc7b7812dc285ab76dc8490e4
+PODFILE CHECKSUM: 8975c69cf266393e147b3eed1851c7af71370450
 
 COCOAPODS: 1.2.0

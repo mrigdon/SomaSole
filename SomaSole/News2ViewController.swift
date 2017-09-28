@@ -9,9 +9,7 @@
 import UIKit
 import KASlideShow
 import youtube_ios_player_helper
-import SwiftyJSON
 import Alamofire
-import AlamofireImage
 
 extension News2ViewController: KASlideShowDelegate {
     func kaSlideShowDidShowNext(slideShow: KASlideShow!) {
