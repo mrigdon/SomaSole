@@ -1,6 +1,0 @@
-framework module Pods_SomaSole {
-  umbrella header "Pods-SomaSole-umbrella.h"
-
-  export *
-  module * { export * }
-}

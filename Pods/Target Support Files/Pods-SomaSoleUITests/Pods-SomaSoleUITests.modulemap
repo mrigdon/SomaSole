@@ -1,6 +1,0 @@
-framework module Pods_SomaSoleUITests {
-  umbrella header "Pods-SomaSoleUITests-umbrella.h"
-
-  export *
-  module * { export * }
-}
