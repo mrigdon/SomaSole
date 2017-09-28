@@ -1,10 +1,11 @@
-# Uncomment this line to define a global platform for your project
-# platform :ios, '8.0'
-# Uncomment this line if you're using Swift
-use_frameworks!
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
 
 target 'SomaSole' do
-    
+  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for SomaSole
 #    pod 'IQKeyboardManagerSwift'
 #    pod 'MBProgressHUD', '~> 0.9.2'
 #    pod 'TagListView', '~> 1.0'
@@ -19,15 +20,16 @@ target 'SomaSole' do
 #    pod 'FLAnimatedImage', '~> 1.0'
 #    pod 'Shimmer'
 #    pod 'SnapKit'
-#    pod 'Kingfisher', '~> 2.6.0'
+    pod 'Kingfisher', '~> 4.0'
+
+  target 'SomaSoleTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'SomaSoleUITests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
 
 end
-
-target 'SomaSoleTests' do
-
-end
-
-target 'SomaSoleUITests' do
-
-end
-
