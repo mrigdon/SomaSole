@@ -8,7 +8,7 @@
 
 import UIKit
 //import RealmSwift
-//import Kingfisher
+import Kingfisher
 
 //class Article: Object {
 class Article: NSObject {
@@ -60,38 +60,40 @@ class Article: NSObject {
     
     // MARK: - Methods
     
-    func loadTextImage(_ completion: () -> Void) {
+    func loadTextImage(_ completion: @escaping () -> Void) {
         // first check in cache, if not there, retrieve from s3
-//        ImageCache.defaultCache.retrieveImageForKey(textImageKey, options: nil) { image, type in
-//            if let image = image {
-//                self.textImage = image
-//                completion()
-//            } else {
-//                let url = NSURL(string: self.textImageURL)
-//                ImageDownloader.defaultDownloader.downloadImageWithURL(url!, progressBlock: nil, completionHandler: { (image, error, url, data) in
-//                    self.textImage = image!
-//                    ImageCache.defaultCache.storeImage(image!, forKey: self.textImageKey)
-//                    completion()
-//                })
-//            }
-//        }
+        ImageCache.default.retrieveImage(forKey: textImageKey, options: nil) { (image, type) in
+            if let image = image {
+                self.textImage = image
+                completion()
+            } else {
+                ImageDownloader.default.downloadImage(with: URL(string: self.textImageURL)!, retrieveImageTask: nil, options: nil, progressBlock: nil) { (image, error, url, data) in
+                    if let image = image {
+                        self.textImage = image
+                        ImageCache.default.store(image, forKey: self.textImageKey)
+                        completion()
+                    }
+                }
+            }
+        }
     }
     
-    func loadPlainImage(_ completion: () -> Void) {
+    func loadPlainImage(_ completion: @escaping () -> Void) {
         // first check in cache, if not there, retrieve from s3
-//        ImageCache.defaultCache.retrieveImageForKey(plainImageKey, options: nil) { image, type in
-//            if let image = image {
-//                self.plainImage = image
-//                completion()
-//            } else {
-//                let url = NSURL(string: self.plainImageURL)
-//                ImageDownloader.defaultDownloader.downloadImageWithURL(url!, progressBlock: nil, completionHandler: { (image, error, url, data) in
-//                    self.plainImage = image!
-//                    ImageCache.defaultCache.storeImage(image!, forKey: self.plainImageKey)
-//                    completion()
-//                })
-//            }
-//        }
+        ImageCache.default.retrieveImage(forKey: plainImageKey, options: nil) { (image, type) in
+            if let image = image {
+                self.plainImage = image
+                completion()
+            } else {
+                ImageDownloader.default.downloadImage(with: URL(string: self.plainImageURL)!, retrieveImageTask: nil, options: nil, progressBlock: nil) { (image, error, url, data) in
+                    if let image = image {
+                        self.plainImage = image
+                        ImageCache.default.store(image, forKey: self.plainImageKey)
+                        completion()
+                    }
+                }
+            }
+        }
     }
     
 }

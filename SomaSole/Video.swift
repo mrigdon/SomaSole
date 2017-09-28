@@ -8,7 +8,7 @@
 
 import UIKit
 //import RealmSwift
-//import Kingfisher
+import Kingfisher
 
 //class Video: Object {
 class Video: NSObject {
@@ -54,24 +54,22 @@ class Video: NSObject {
     
     // MARK: - Methods
     
-    func loadImage(_ completion: () -> Void) {
+    func loadImage(_ completion: @escaping () -> Void) {
         let url = "http://img.youtube.com/vi/\(youtubeID)/mqdefault.jpg"
-        
-        // first check in cache, if not there get from youtube
-//        ImageCache.defaultCache.retrieveImageForKey(title, options: nil) { image, type in
-//            if let image = image {
-//                self.image = image
-//                completion()
-//            } else {
-//                ImageDownloader.defaultDownloader.downloadImageWithURL(NSURL(string: url)!, progressBlock: nil) { downloader in
-//                    if let image = downloader.image {
-//                        self.image = image
-//                        ImageCache.defaultCache.storeImage(image, forKey: self.title)
-//                        completion()
-//                    }
-//                }
-//            }
-//        }
+        ImageCache.default.retrieveImage(forKey: title, options: nil) { (image, type) in
+            if let image = image {
+                self.image = image
+                completion()
+            } else {
+                ImageDownloader.default.downloadImage(with: URL(string: url)!, retrieveImageTask: nil, options: nil, progressBlock: nil) { (image, error, url, data) in
+                    if let image = image {
+                        self.image = image
+                        ImageCache.default.store(image, forKey: self.title)
+                        completion()
+                    }
+                }
+            }
+        }
     }
     
 }

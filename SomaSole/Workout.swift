@@ -8,7 +8,7 @@
 
 import UIKit
 //import RealmSwift
-//import Kingfisher
+import Kingfisher
 
 //class Workout: Object {
 class Workout: NSObject {
@@ -62,23 +62,23 @@ class Workout: NSObject {
     
     // MARK: - Methods
     
-    func loadImage(_ completion: () -> Void) {
+    func loadImage(_ completion: @escaping () -> Void) {
         // first check in cache, if not there, retrieve from s3
-//        ImageCache.defaultCache.retrieveImageForKey(name, options: nil) { image, type in
-//            if let image = image {
-//                self.image = image
-//                completion()
-//            } else {
-//                let url = NSURL(string: self.imageURL)
-//                ImageDownloader.defaultDownloader.downloadImageWithURL(url!, progressBlock: nil, completionHandler: { (image, error, url, data) in
-//                    if let image = image {
-//                        self.image = image
-//                        ImageCache.defaultCache.storeImage(image, forKey: self.name)
-//                    }
-//                    completion()
-//                })
-//            }
-//        }
+        ImageCache.default.retrieveImage(forKey: name, options: nil) { image, type in
+            if let image = image {
+                self.image = image
+                completion()
+            } else {
+                let url = URL(string: self.imageURL)
+                ImageDownloader.default.downloadImage(with: url!, retrieveImageTask: nil, options: nil, progressBlock: nil) { (image, error, url, data) in
+                    if let image = image {
+                        self.image = image
+                        ImageCache.default.store(image, forKey: self.name)
+                    }
+                    completion()
+                }
+            }
+        }
     }
     
 }
