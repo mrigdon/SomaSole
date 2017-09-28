@@ -8,7 +8,6 @@
 
 import UIKit
 import TagListView
-import Firebase
 import EPShapes
 import MBProgressHUD
 

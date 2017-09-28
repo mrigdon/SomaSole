@@ -8,7 +8,6 @@
 
 import UIKit
 import EPShapes
-import Firebase
 import SnapKit
 
 extension UIColor {

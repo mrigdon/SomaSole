@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Firebase
 import MBProgressHUD
 
 class MovementsViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate {

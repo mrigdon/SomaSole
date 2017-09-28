@@ -94,7 +94,6 @@ class User: NSObject {
         self.height = data["height"] as! Float
         self.weight = data["weight"] as! Float
         self.male = data["male"] as! Bool
-        self.dateOfBirth = (data["dateOfBirth"] as! String).dateOfBirthValue
         self.facebook = data["facebook"] as! Bool
         self.premium = data["premium"] as! Bool
         self.stripeID = data["stripeID"] as! String
@@ -123,7 +122,6 @@ class User: NSObject {
             "height": height,
             "weight": weight,
             "male": male,
-            "dateOfBirth": dateOfBirth.simpleString,
             "facebook": facebook,
             "premium": premium,
             "stripeID": stripeID,
@@ -135,13 +133,6 @@ class User: NSObject {
         ]
         
         return data
-    }
-    
-    func save() {
-        FirebaseManager.sharedRootRef.child("users").child(uid)
-            .setValue(dict())
-        NSUserDefaults.standardUserDefaults().setObject(dict(), forKey: "userData")
-        NSUserDefaults.standardUserDefaults().synchronize()
     }
 
 }

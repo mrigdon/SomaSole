@@ -9,7 +9,6 @@
 import UIKit
 import KASlideShow
 import youtube_ios_player_helper
-import Firebase
 import SwiftyJSON
 import Alamofire
 import AlamofireImage

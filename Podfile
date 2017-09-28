@@ -5,11 +5,6 @@ use_frameworks!
 
 target 'SomaSole' do
     
-    pod 'Firebase/Core'
-    pod 'Firebase/Database'
-    pod 'Firebase/Auth'
-    pod 'Firebase/Storage'
-    
     pod 'TextFieldEffects'
     pod 'IQKeyboardManagerSwift'
     pod 'MBProgressHUD', '~> 0.9.2'
