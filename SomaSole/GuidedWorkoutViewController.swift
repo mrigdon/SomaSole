@@ -7,10 +7,10 @@
 //
 
 import UIKit
-//import KDCircularProgress
-//import FLAnimatedImage
-//import MZTimerLabel
-//import SwiftyMarkdown
+import KDCircularProgress
+import FLAnimatedImage
+import MZTimerLabel
+import SwiftyMarkdown
 
 extension UIColor {
     static func progressGrayColor() -> UIColor {
@@ -20,21 +20,21 @@ extension UIColor {
     static func somasoleColor() -> UIColor { return UIColor(red: 65/255, green: 182/255, blue: 230/255, alpha: 1.0) }
 }
 
-//extension KDCircularProgress {
-//    func running() {
-//        clockwise = true
-//        trackColor = UIColor.progressGrayColor()
-//        angle = 0
-//        setColors(UIColor.somasoleColor(), UIColor.somasoleColor(), UIColor.somasoleColor())
-//    }
-//    
-//    func loading() {
-//        clockwise = false
-//        setColors(UIColor.progressGrayColor(), UIColor.progressGrayColor(), UIColor.progressGrayColor())
-//        trackColor = UIColor.clearColor()
-//        angle = 0
-//    }
-//}
+extension KDCircularProgress {
+    func running() {
+        clockwise = true
+        trackColor = UIColor.progressGrayColor()
+        angle = 0
+        set(colors: UIColor.somasoleColor(), UIColor.somasoleColor(), UIColor.somasoleColor())
+    }
+    
+    func loading() {
+        clockwise = false
+        set(colors: UIColor.progressGrayColor(), UIColor.progressGrayColor(), UIColor.progressGrayColor())
+        trackColor = .clear
+        angle = 0
+    }
+}
 
 class GuidedWorkoutViewController: UIViewController {
     
@@ -45,7 +45,7 @@ class GuidedWorkoutViewController: UIViewController {
     var gifVisible = true
     var playButton = UIBarButtonItem()
     var pauseButton = UIBarButtonItem()
-//    var timer = MZTimerLabel()
+    var timer = MZTimerLabel()
     
     fileprivate var movementCounter = 0
     fileprivate var setCounter = 0
@@ -54,25 +54,25 @@ class GuidedWorkoutViewController: UIViewController {
 
     // outlets
     @IBOutlet weak var movementLabel: UILabel!
-//    @IBOutlet weak var progressView: KDCircularProgress!
-//    @IBOutlet weak var gifView: FLAnimatedImageView!
+    @IBOutlet weak var progressView: KDCircularProgress!
+    @IBOutlet weak var gifView: FLAnimatedImageView!
     @IBOutlet weak var infoButton: UIButton!
-//    @IBOutlet weak var timeLabel: MZTimerLabel!
+    @IBOutlet weak var timeLabel: MZTimerLabel!
     @IBOutlet weak var setLabel: UILabel!
     @IBOutlet weak var tipTextView: UITextView!
     
     // actions
     @IBAction func tappedX(_ sender: AnyObject) {
         DispatchQueue.main.async(execute: { [unowned self] in
-//            self.gifView.stopAnimating()
-//            self.progressView.pauseAnimation()
-//            self.timer.pause()
+            self.gifView.stopAnimating()
+            self.progressView.pauseAnimation()
+            self.timer.pause()
             self.dismiss(animated: true, completion: nil)
         })
     }
     
     @IBAction func tappedInfo(_ sender: AnyObject) {
-//        gifView.alpha = gifVisible ? 0 : 1
+        gifView.alpha = gifVisible ? 0 : 1
         tipTextView.alpha = gifVisible ? 1 : 0
         gifVisible = !gifVisible
     }
@@ -96,54 +96,54 @@ class GuidedWorkoutViewController: UIViewController {
         currentCircuit = workout?.circuits[0]
         movementLabel.text = "Setup"
         
-//        let mdText = SwiftyMarkdown(string: "**Circuit:** \(circuitCounter+1)/\(workout!.circuits.count)   **Set:** \(setCounter+1)/\(currentCircuit!.sets)   **Movement:** \(movementCounter)/\(currentCircuit!.movements.count)")
-//        setLabel.attributedText = mdText.attributedString()
-//        
-//        ui {
-//            self.gifView.image = UIImage(data: UIImageJPEGRepresentation(self.currentCircuit!.setup.image, 1.0)!)
-//        }
-//        
-//        timer = MZTimerLabel(label: timeLabel, andTimerType: MZTimerLabelTypeTimer)
-//        timer.setCountDownTime(Double(workout!.time))
-//        timer.timeFormat = "mm:ss"
-//        timer.start()
+        let mdText = SwiftyMarkdown(string: "**Circuit:** \(circuitCounter+1)/\(workout!.circuits.count)   **Set:** \(setCounter+1)/\(currentCircuit!.sets)   **Movement:** \(movementCounter)/\(currentCircuit!.movements.count)")
+        setLabel.attributedText = mdText.attributedString()
+
+        ui {
+            self.gifView.image = UIImage(data: UIImageJPEGRepresentation(self.currentCircuit!.setup.image, 1.0)!)
+        }
+        
+        timer = MZTimerLabel(label: timeLabel, andTimerType: MZTimerLabelTypeTimer)
+        timer.setCountDownTime(Double(workout!.time))
+        timer.timeFormat = "mm:ss"
+        timer.start()
         
         startMovement()
     }
     
     fileprivate func startMovement(_ time: Double? = nil) {
         ui {
-//            self.progressView.animateToAngle(360, duration: 3, completion: { finished in
-//                self.progressView.running()
-//                self.ui {
-//                    self.progressView.animateToAngle(360, duration: time ?? 15, completion: { finished in
-//                        self.progressView.loading()
-//                        SoundManager.sharedManager.playSound(named: "bells")
-//                        self.next()
-//                    })
-//                }
-//            })
+            self.progressView.animate(toAngle: 360, duration: 3) { finished in
+                self.progressView.running()
+                self.ui {
+                    self.progressView.animate(toAngle: 360, duration: time ?? 15) { finished in
+                        self.progressView.loading()
+                        SoundManager.sharedManager.playSound(named: "bells")
+                        self.next()
+                    }
+                }
+            }
         }
     }
     
     @objc fileprivate func play() {
-//        let pausedTime = progressView.layer.timeOffset
-//        progressView.layer.speed = 1.0
-//        progressView.layer.timeOffset = 0.0
-//        progressView.layer.beginTime = 0.0
-//        let timeSincePause = progressView.layer.convertTime(CACurrentMediaTime(), fromLayer: nil) - pausedTime
-//        progressView.layer.beginTime = timeSincePause
-//        gifView.startAnimating()
-//        timer.start()
+        let pausedTime = progressView.layer.timeOffset
+        progressView.layer.speed = 1.0
+        progressView.layer.timeOffset = 0.0
+        progressView.layer.beginTime = 0.0
+        let timeSincePause = progressView.layer.convertTime(CACurrentMediaTime(), from: nil) - pausedTime
+        progressView.layer.beginTime = timeSincePause
+        gifView.startAnimating()
+        timer.start()
         navigationItem.rightBarButtonItem = pauseButton
     }
     
     @objc fileprivate func pause() {
-//        let pausedTime = progressView.layer.convertTime(CACurrentMediaTime(), fromLayer: nil)
-//        progressView.layer.speed = 0
-//        progressView.layer.timeOffset = pausedTime
-//        gifView.stopAnimating()
-//        timer.pause()
+        let pausedTime = progressView.layer.convertTime(CACurrentMediaTime(), from: nil)
+        progressView.layer.speed = 0
+        progressView.layer.timeOffset = pausedTime
+        gifView.stopAnimating()
+        timer.pause()
         navigationItem.rightBarButtonItem = playButton
     }
     
@@ -172,18 +172,18 @@ class GuidedWorkoutViewController: UIViewController {
         movementLabel.text = movementCounter == 0 ? (setCounter == 0 ? "Setup" : "Rest") : movement!.title
         
         // 4. set set label
-//        let mdText = SwiftyMarkdown(string: "**Circuit:** \(circuitCounter+1)/\(workout!.circuits.count)   **Set:** \(setCounter+1)/\(currentCircuit!.sets)   **Movement:** \(movementCounter)/\(currentCircuit!.movements.count)")
-//        setLabel.attributedText = mdText.attributedString()
+        let mdText = SwiftyMarkdown(string: "**Circuit:** \(circuitCounter+1)/\(workout!.circuits.count)   **Set:** \(setCounter+1)/\(currentCircuit!.sets)   **Movement:** \(movementCounter)/\(currentCircuit!.movements.count)")
+        setLabel.attributedText = mdText.attributedString()
         
         // 5. start gifView and set tip label
         let imageData = movementCounter == 0 ? (setCounter == 0 ? UIImageJPEGRepresentation(currentCircuit!.setup.image, 1.0) : (try? Data(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "Rest.gif", ofType: nil)!)))) : movement!.gif
         if movementCounter == 0 {
             ui {
-//                self.gifView.image = UIImage(data: imageData!)
+                self.gifView.image = UIImage(data: imageData!)
             }
         } else {
             ui {
-//                self.gifView.animatedImage = FLAnimatedImage(animatedGIFData: imageData!)
+                self.gifView.animatedImage = FLAnimatedImage(animatedGIFData: imageData!)
             }
         }
         tipTextView.text = movementCounter == 0 ? "" : movement!.deskription
@@ -211,17 +211,17 @@ class GuidedWorkoutViewController: UIViewController {
         let movement: Movement? = movementCounter == 0 ? nil : currentCircuit!.movements[movementCounter - 1]
         movementLabel.text = movementCounter == 0 ? (setCounter == 0 ? "Setup" : "Rest") : movement!.title
         
-//        let mdText = SwiftyMarkdown(string: "**Circuit:** \(circuitCounter+1)/\(workout!.circuits.count)   **Set:** \(setCounter+1)/\(currentCircuit!.sets)   **Movement:** \(movementCounter)/\(currentCircuit!.movements.count)")
-//        setLabel.attributedText = mdText.attributedString()
+        let mdText = SwiftyMarkdown(string: "**Circuit:** \(circuitCounter+1)/\(workout!.circuits.count)   **Set:** \(setCounter+1)/\(currentCircuit!.sets)   **Movement:** \(movementCounter)/\(currentCircuit!.movements.count)")
+        setLabel.attributedText = mdText.attributedString()
         
         let imageData = movementCounter == 0 ? (setCounter == 0 ? UIImageJPEGRepresentation(currentCircuit!.setup.image, 1.0) : (try? Data(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "Rest.gif", ofType: nil)!)))) : movement!.gif
         if movementCounter == 0 {
             ui {
-//                self.gifView.image = UIImage(data: imageData!)
+                self.gifView.image = UIImage(data: imageData!)
             }
         } else {
             ui {
-//                self.gifView.animatedImage = FLAnimatedImage(animatedGIFData: imageData!)
+                self.gifView.animatedImage = FLAnimatedImage(animatedGIFData: imageData!)
             }
         }
         tipTextView.text = movementCounter == 0 ? "" : movement!.deskription

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-//import FLAnimatedImage
+import FLAnimatedImage
 
 class MovementDetailViewController: UIViewController {
     
@@ -18,11 +18,11 @@ class MovementDetailViewController: UIViewController {
     var movement: Movement?
     var url: URL?
     var data = Data()
-//    var image = FLAnimatedImage()
+    var image = FLAnimatedImage()
 
     // outlets
     @IBOutlet weak var titleLabel: UILabel!
-//    @IBOutlet weak var imageView: FLAnimatedImageView!
+    @IBOutlet weak var imageView: FLAnimatedImageView!
     @IBOutlet weak var descriptionLabel: UITextView!
     
     // methods
@@ -50,21 +50,16 @@ class MovementDetailViewController: UIViewController {
         url = URL(fileURLWithPath: Bundle.main.path(forResource: "\(movement!.title).gif", ofType: nil)!)
         if let url = url {
             data = try! Data(contentsOf: url)
-            //        image = FLAnimatedImage(animatedGIFData: data)
+            image = FLAnimatedImage(animatedGIFData: data)
             ui {
-                //            self.imageView.animatedImage = self.image
+                self.imageView.animatedImage = self.image
             }
         }
         stopProgressHud()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     override func viewWillDisappear(_ animated: Bool) {
-//        imageView.stopAnimating()
+        imageView.stopAnimating()
         super.viewWillDisappear(animated)
     }
 

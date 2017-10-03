@@ -7,16 +7,16 @@
 //
 
 import UIKit
-//import MZTimerLabel
-//import FLAnimatedImage
-//import SwiftyMarkdown
+import MZTimerLabel
+import FLAnimatedImage
+import SwiftyMarkdown
 
 class CustomPaceViewController: UIViewController {
 
     // variables
     var workout: Workout?
     var gifVisible = true
-//    var timer = MZTimerLabel()
+    var timer = MZTimerLabel()
     var currentCircuit: Circuit?
     var movementCounter = 0
     var setCounter = 0
@@ -24,7 +24,7 @@ class CustomPaceViewController: UIViewController {
     
     // outlets
     @IBOutlet weak var movementLabel: UILabel!
-//    @IBOutlet weak var gifView: FLAnimatedImageView!
+    @IBOutlet weak var gifView: FLAnimatedImageView!
     @IBOutlet weak var infoButton: UIButton!
     @IBOutlet weak var setLabel: UILabel!
     @IBOutlet weak var tipTextView: UITextView!
@@ -34,14 +34,14 @@ class CustomPaceViewController: UIViewController {
     // actions
     @IBAction func tappedX(_ sender: AnyObject) {
         DispatchQueue.main.async(execute: { [unowned self] in
-//            self.gifView.stopAnimating()
-//            self.timer.pause()
+            self.gifView.stopAnimating()
+            self.timer.pause()
             self.dismiss(animated: true, completion: nil)
         })
     }
     
     @IBAction func tappedInfo(_ sender: AnyObject) {
-//        gifView.alpha = gifVisible ? 0 : 1
+        gifView.alpha = gifVisible ? 0 : 1
         tipTextView.alpha = gifVisible ? 1 : 0
         gifVisible = !gifVisible
     }
@@ -65,11 +65,11 @@ class CustomPaceViewController: UIViewController {
         currentCircuit = workout?.circuits[0]
         movementLabel.text = "Setup"
         
-//        let mdText = SwiftyMarkdown(string: "**Circuit:** \(circuitCounter+1)/\(workout!.circuits.count)   **Set:** \(setCounter+1)/\(currentCircuit!.sets)   **Movement:** \(movementCounter)/\(currentCircuit!.movements.count)")
-//        setLabel.attributedText = mdText.attributedString()
+        let mdText = SwiftyMarkdown(string: "**Circuit:** \(circuitCounter+1)/\(workout!.circuits.count)   **Set:** \(setCounter+1)/\(currentCircuit!.sets)   **Movement:** \(movementCounter)/\(currentCircuit!.movements.count)")
+        setLabel.attributedText = mdText.attributedString()
         
         ui {
-//            self.gifView.image = UIImage(data: UIImageJPEGRepresentation(self.currentCircuit!.setup.image, 1.0)!)
+            self.gifView.image = UIImage(data: UIImageJPEGRepresentation(self.currentCircuit!.setup.image, 1.0)!)
         }
     }
     
@@ -94,17 +94,17 @@ class CustomPaceViewController: UIViewController {
         let movement: Movement? = movementCounter == 0 ? nil : currentCircuit!.movements[movementCounter - 1] // -1 for the setup
         movementLabel.text = movementCounter == 0 ? (setCounter == 0 ? "Setup" : "Rest") : movement!.title
         
-//        let mdText = SwiftyMarkdown(string: "**Circuit:** \(circuitCounter+1)/\(workout!.circuits.count)   **Set:** \(setCounter+1)/\(currentCircuit!.sets)   **Movement:** \(movementCounter)/\(currentCircuit!.movements.count)")
-//        setLabel.attributedText = mdText.attributedString()
+        let mdText = SwiftyMarkdown(string: "**Circuit:** \(circuitCounter+1)/\(workout!.circuits.count)   **Set:** \(setCounter+1)/\(currentCircuit!.sets)   **Movement:** \(movementCounter)/\(currentCircuit!.movements.count)")
+        setLabel.attributedText = mdText.attributedString()
         
         let imageData = movementCounter == 0 ? (setCounter == 0 ? UIImageJPEGRepresentation(currentCircuit!.setup.image, 1.0) : (try? Data(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "Rest.gif", ofType: nil)!)))) : movement!.gif
         if movementCounter == 0 {
             ui {
-//                self.gifView.image = UIImage(data: imageData!)
+                self.gifView.image = UIImage(data: imageData!)
             }
         } else {
             ui {
-//                self.gifView.animatedImage = FLAnimatedImage(animatedGIFData: imageData!)
+                self.gifView.animatedImage = FLAnimatedImage(animatedGIFData: imageData!)
             }
         }
         tipTextView.text = movementCounter == 0 ? "" : movement!.deskription
@@ -129,17 +129,17 @@ class CustomPaceViewController: UIViewController {
         let movement: Movement? = movementCounter == 0 ? nil : currentCircuit!.movements[movementCounter - 1]
         movementLabel.text = movementCounter == 0 ? (setCounter == 0 ? "Setup" : "Rest") : movement!.title
         
-//        let mdText = SwiftyMarkdown(string: "**Circuit:** \(circuitCounter+1)/\(workout!.circuits.count)   **Set:** \(setCounter+1)/\(currentCircuit!.sets)   **Movement:** \(movementCounter)/\(currentCircuit!.movements.count)")
-//        setLabel.attributedText = mdText.attributedString()
+        let mdText = SwiftyMarkdown(string: "**Circuit:** \(circuitCounter+1)/\(workout!.circuits.count)   **Set:** \(setCounter+1)/\(currentCircuit!.sets)   **Movement:** \(movementCounter)/\(currentCircuit!.movements.count)")
+        setLabel.attributedText = mdText.attributedString()
         
         let imageData = movementCounter == 0 ? (setCounter == 0 ? UIImageJPEGRepresentation(currentCircuit!.setup.image, 1.0) : (try? Data(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "Rest.gif", ofType: nil)!)))) : movement!.gif
         if movementCounter == 0 {
             ui {
-//                self.gifView.image = UIImage(data: imageData!)
+                self.gifView.image = UIImage(data: imageData!)
             }
         } else {
             ui {
-//                self.gifView.animatedImage = FLAnimatedImage(animatedGIFData: imageData!)
+                self.gifView.animatedImage = FLAnimatedImage(animatedGIFData: imageData!)
             }
         }
         tipTextView.text = movementCounter == 0 ? "" : movement!.deskription
@@ -176,11 +176,6 @@ class CustomPaceViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tipTextView.setContentOffset(CGPoint.zero, animated: false)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
