@@ -7,7 +7,7 @@
 //
 
 import UIKit
-//import youtube_ios_player_helper
+import youtube_ios_player_helper
 
 class PlayVideoViewController: UIViewController {
     
@@ -15,7 +15,7 @@ class PlayVideoViewController: UIViewController {
     var video: Video?
 
     // outlets
-//    @IBOutlet weak var playerView: YTPlayerView!
+    @IBOutlet weak var playerView: YTPlayerView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UITextView!
@@ -33,7 +33,7 @@ class PlayVideoViewController: UIViewController {
                 "showinfo": 0,
                 "rel": 0
             ]
-//            playerView.loadWithVideoId(video.youtubeID, playerVars: playerVars)
+            playerView.load(withVideoId: video.youtubeID, playerVars: playerVars)
             nameLabel.text = video.title
             nameLabel.numberOfLines = 0
             nameLabel.sizeToFit()
@@ -49,21 +49,5 @@ class PlayVideoViewController: UIViewController {
         super.viewDidLayoutSubviews()
         self.descriptionLabel.setContentOffset(CGPoint.zero, animated: false)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

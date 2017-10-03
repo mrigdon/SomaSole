@@ -7,18 +7,18 @@
 //
 
 import UIKit
-//import KASlideShow
-//import youtube_ios_player_helper
+import SnapKit
+import KASlideShow
 
-//extension News2ViewController: KASlideShowDelegate {
-//    func kaSlideShowDidShowNext(slideShow: KASlideShow!) {
-//        pageControl.currentPage = Int(slideshow.currentIndex)
-//    }
-//    
-//    func kaSlideShowDidShowPrevious(slideShow: KASlideShow!) {
-//        pageControl.currentPage = Int(slideshow.currentIndex)
-//    }
-//}
+extension News2ViewController: KASlideShowDelegate {
+    func slideShowDidShowNext(_ slideShow: KASlideShow!) {
+        pageControl.currentPage = Int(slideshow.currentIndex)
+    }
+    
+    func slideShowDidShowPrevious(_ slideShow: KASlideShow!) {
+        pageControl.currentPage = Int(slideshow.currentIndex)
+    }
+}
 
 class News2ViewController: UIViewController {
     
@@ -36,7 +36,7 @@ class News2ViewController: UIViewController {
     var setupsLoaded = false
     var movementsLoaded = false
     var selectedVideo: Video?
-//    var slideshow = KASlideShow()
+    var slideshow = KASlideShow()
     var pageControl = UIPageControl()
     var firstArticleImage = true
 
@@ -77,13 +77,13 @@ class News2ViewController: UIViewController {
         slideshowView.subview = placeholder
         
         slideshowHeight.constant = screenWidth * slideshowRatio
-//        slideshow.transitionDuration = 1
-//        slideshow.transitionType = .Slide
-//        slideshow.imagesContentMode = .ScaleAspectFill
-//        slideshow.addGesture(.Swipe)
-//        let tap = UITapGestureRecognizer(target: self, action: #selector(tappedArticle))
-//        slideshow.addGestureRecognizer(tap)
-//        slideshow.delegate = self
+        slideshow.transitionDuration = 1
+        slideshow.transitionType = .slideHorizontal
+        slideshow.imagesContentMode = .scaleAspectFill
+        slideshow.add(.swipe)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tappedArticle))
+        slideshow.addGestureRecognizer(tap)
+        slideshow.delegate = self
     }
     
     fileprivate func setupPageControl() {
@@ -110,16 +110,17 @@ class News2ViewController: UIViewController {
         for article in articles {
             article.loadTextImage {
 //                self.slideshow.addImage(article.textImage)
+                self.slideshow.addSubview(UIImageView(image: article.textImage))
                 self.articles.append(article)
                 self.pageControl.numberOfPages = self.articles.count
                 if self.firstArticleImage {
                     self.firstArticleImage = false
-//                    self.slideshowView.subview = self.slideshow
-//                    self.slideshowView.addSubview(self.pageControl)
-//                    self.pageControl.snp_makeConstraints(closure: { make in
-//                        make.bottom.equalTo(self.slideshowView)
-//                        make.centerX.equalTo(self.slideshowView)
-//                    })
+                    self.slideshowView.subview = self.slideshow
+                    self.slideshowView.addSubview(self.pageControl)
+                    self.pageControl.snp.makeConstraints { make in
+                        make.bottom.equalTo(self.slideshowView)
+                        make.centerX.equalTo(self.slideshowView)
+                    }
                     Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.nextSlide), userInfo: nil, repeats: true)
                 }
             }
@@ -167,7 +168,7 @@ class News2ViewController: UIViewController {
     }
     
     @objc fileprivate func nextSlide() {
-//        slideshow.next()
+        slideshow.next()
     }
     
     override func viewDidLoad() {
@@ -189,7 +190,7 @@ class News2ViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "articleSegue" {
             let destVC = segue.destination as! ArticleViewController
-//            destVC.article = articles[Int(slideshow.currentIndex)]
+            destVC.article = articles[Int(slideshow.currentIndex)]
         } else if segue.identifier == "workoutSegue" {
             let destVC = segue.destination as! UINavigationController
             let rootVC = destVC.viewControllers.first as! BeginWorkoutViewController
