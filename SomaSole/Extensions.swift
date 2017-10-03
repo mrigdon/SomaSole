@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 extension UIView {
     func clearSubviews() {
@@ -43,4 +44,16 @@ extension Int {
 
 extension DateFormatter {
     static let somasoleDateFormat = "MMM dd yyyy, h:mm a"
+}
+
+extension UIViewController {
+    func startProgressHud() {
+        MBProgressHUD.showAdded(to: view, animated: true)
+    }
+    
+    func stopProgressHud() {
+        DispatchQueue.main.async(execute: {
+            MBProgressHUD.hide(for: self.view, animated: true)
+        })
+    }
 }

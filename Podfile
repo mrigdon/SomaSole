@@ -6,8 +6,7 @@ target 'SomaSole' do
   use_frameworks!
 
   # Pods for SomaSole
-#    pod 'IQKeyboardManagerSwift'
-#    pod 'MBProgressHUD', '~> 0.9.2'
+    pod 'MBProgressHUD', '~> 1.0.0'
 #    pod 'TagListView', '~> 1.0'
 #    pod 'KASlideShow'
     pod 'RealmSwift', '~> 2.10'
@@ -19,7 +18,7 @@ target 'SomaSole' do
 #    pod 'MZTimerLabel'
 #    pod 'FLAnimatedImage', '~> 1.0'
 #    pod 'Shimmer'
-#    pod 'SnapKit'
+    pod 'SnapKit', '~> 4.0'
     pod 'Kingfisher', '~> 4.0'
 
   target 'SomaSoleTests' do

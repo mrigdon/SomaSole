@@ -7,7 +7,6 @@
 //
 
 import UIKit
-//import MBProgressHUD
 
 class BeginWorkoutViewController: UIViewController {
     
@@ -32,16 +31,6 @@ class BeginWorkoutViewController: UIViewController {
     // methods
     @objc func dismissVC() {
         self.dismiss(animated: true, completion: nil)
-    }
-    
-    func startProgressHud() {
-//        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-    }
-    
-    func stopProgressHud() {
-        DispatchQueue.main.async(execute: {
-//            MBProgressHUD.hideHUDForView(self.view, animated: true)
-        })
     }
     
     func loadMovements() {

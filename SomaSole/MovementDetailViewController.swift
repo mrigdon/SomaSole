@@ -7,7 +7,6 @@
 //
 
 import UIKit
-//import MBProgressHUD
 //import FLAnimatedImage
 
 class MovementDetailViewController: UIViewController {
@@ -27,16 +26,6 @@ class MovementDetailViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UITextView!
     
     // methods
-    func startProgressHud() {
-//        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-    }
-    
-    func stopProgressHud() {
-        DispatchQueue.main.async(execute: {
-//            MBProgressHUD.hideHUDForView(self.view, animated: true)
-        })
-    }
-    
     fileprivate func ui(_ closure: @escaping () -> Void) {
         DispatchQueue.main.async(execute: {
             closure()

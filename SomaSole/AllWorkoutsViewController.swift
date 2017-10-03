@@ -9,7 +9,6 @@
 import UIKit
 //import TagListView
 //import EPShapes
-//import MBProgressHUD
 
 extension Array where Element: Workout {
     mutating func insertAlpha(_ workout: Element) {
@@ -74,16 +73,6 @@ class AllWorkoutsViewController: UITableViewController, UISearchBarDelegate {
     func reloadTableView() {
         DispatchQueue.main.async(execute: {
             self.tableView.reloadData()
-        })
-    }
-    
-    fileprivate func startProgressHud() {
-//        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-    }
-    
-    fileprivate func stopProgressHud() {
-        DispatchQueue.main.async(execute: {
-//            MBProgressHUD.hideHUDForView(self.view, animated: true)
         })
     }
     

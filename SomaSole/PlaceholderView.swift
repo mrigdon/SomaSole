@@ -8,17 +8,17 @@
 
 import UIKit
 //import Shimmer
-//import SnapKit
+import SnapKit
 
 extension PlaceholderView: ContainerViewDelegate {
     @objc func didAddToView(_ view: UIView) {
         let height = 0.3 * view.frame.height
 //        addSubview(shimmer)
-//        shimmer.snp_makeConstraints(closure: { make in
+//        shimmer.snp.makeConstraints { make in
 //            make.height.equalTo(height)
 //            make.width.equalTo(height)
 //            make.center.equalTo(self)
-//        })
+//        }
     }
 }
 
@@ -62,11 +62,11 @@ class WorkoutCellPlaceholderView: PlaceholderView {
     override func didAddToView(_ view: UIView) {
         let height = 0.3 * size
 //        addSubview(shimmer)
-//        shimmer.snp_makeConstraints(closure: { make in
+//        shimmer.snp.makeConstraints { make in
 //            make.height.equalTo(height)
 //            make.width.equalTo(height)
 //            make.center.equalTo(self)
-//        })
+//        }
     }
     
 }
@@ -78,11 +78,11 @@ class VideoCellPlaceholderView: PlaceholderView {
     override func didAddToView(_ view: UIView) {
         let height = 0.3 * size
 //        addSubview(shimmer)
-//        shimmer.snp_makeConstraints(closure: { make in
+//        shimmer.snp.makeConstraints { make in
 //            make.height.equalTo(height)
 //            make.width.equalTo(height)
 //            make.center.equalTo(self)
-//        })
+//        }
     }
     
 }

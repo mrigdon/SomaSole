@@ -7,7 +7,6 @@
 //
 
 import UIKit
-//import MBProgressHUD
 
 class MovementsViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate {
     
@@ -23,16 +22,6 @@ class MovementsViewController: UICollectionViewController, UICollectionViewDeleg
     var gifStrings = [(String, String)]()
     
     // methods
-    fileprivate func startProgressHud() {
-//        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-    }
-    
-    fileprivate func stopProgressHud() {
-        DispatchQueue.main.async(execute: {
-//            MBProgressHUD.hideHUDForView(self.view, animated: true)
-        })
-    }
-    
     fileprivate func photoForMovement(_ movement: Movement) -> UIImage? {
         return UIImage(named: "profile")!
     }

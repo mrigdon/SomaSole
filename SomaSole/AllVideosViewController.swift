@@ -8,7 +8,6 @@
 
 import UIKit
 //import youtube_ios_player_helper
-//import MBProgressHUD
 //import StoreKit
 
 extension Array where Element: Video {
@@ -53,16 +52,6 @@ class AllVideosViewController: UITableViewController, UISearchBarDelegate {
     var favorites = false
     
     // methods
-    fileprivate func startProgressHud() {
-//        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-    }
-    
-    fileprivate func stopProgressHud() {
-        DispatchQueue.main.async(execute: {
-//            MBProgressHUD.hideHUDForView(self.view, animated: true)
-        })
-    }
-    
     @objc fileprivate func tappedOverlay() {
         performSegue(withIdentifier: "paymentSegue", sender: self)
     }
