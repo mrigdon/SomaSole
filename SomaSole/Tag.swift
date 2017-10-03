@@ -7,14 +7,13 @@
 //
 
 import Foundation
-//import RealmSwift
+import RealmSwift
 
 enum WorkoutTag: Int {
     case upperBody, core, lowerBody, totalBody
 }
 
-//class Tag: Object {
-class Tag: NSObject {
+class Tag: Object {
 
     @objc dynamic var tag = 0
     

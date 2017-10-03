@@ -7,11 +7,10 @@
 //
 
 import UIKit
-//import RealmSwift
+import RealmSwift
 import Kingfisher
 
-//class Video: Object {
-class Video: NSObject {
+class Video: Object {
 
     static var sharedFavorites = [Video]()
     
@@ -41,16 +40,15 @@ class Video: NSObject {
         self.featured = data["featured"] as! Bool
         
         let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .short
+        formatter.dateFormat = DateFormatter.somasoleDateFormat
         date = formatter.date(from: data["created_at_pretty"] as! String)!
     }
     
     // MARK: - Overridden methods
     
-//    override static func ignoredProperties() -> [String] {
-//        return ["image", "favorite"]
-//    }
+    override static func ignoredProperties() -> [String] {
+        return ["image", "favorite"]
+    }
     
     // MARK: - Methods
     

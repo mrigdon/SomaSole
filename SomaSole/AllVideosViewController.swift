@@ -8,7 +8,6 @@
 
 import UIKit
 //import youtube_ios_player_helper
-//import Alamofire
 //import MBProgressHUD
 //import StoreKit
 

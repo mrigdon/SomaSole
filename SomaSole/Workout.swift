@@ -7,11 +7,10 @@
 //
 
 import UIKit
-//import RealmSwift
+import RealmSwift
 import Kingfisher
 
-//class Workout: Object {
-class Workout: NSObject {
+class Workout: Object {
 
     static var sharedFavorites = [Workout]()
     
@@ -23,10 +22,8 @@ class Workout: NSObject {
     @objc dynamic var deskription = ""
     @objc dynamic var imageURL = ""
     @objc dynamic var featured = false
-//    var circuits = List<Circuit>()
-    var circuits = [Circuit]()
-//    var tags = List<Tag>()
-    var tags = [Tag]()
+    var circuits = List<Circuit>()
+    var tags = List<Tag>()
     
     // MARK: - Ignored properties
     
@@ -56,9 +53,9 @@ class Workout: NSObject {
     
     // MARK: - Overridden methods
     
-//    override static func ignoredProperties() -> [String] {
-//        return ["numMovements", "image", "favorite"]
-//    }
+    override static func ignoredProperties() -> [String] {
+        return ["numMovements", "image", "favorite"]
+    }
     
     // MARK: - Methods
     

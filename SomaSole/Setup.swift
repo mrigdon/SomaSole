@@ -7,10 +7,9 @@
 //
 
 import UIKit
-//import RealmSwift
+import RealmSwift
 
-//class Setup: Object {
-class Setup: NSObject {
+class Setup: Object {
 
     // MARK: - Object properties
     
@@ -34,8 +33,8 @@ class Setup: NSObject {
     
     // MARK: - Overridden methods
     
-//    override static func ignoredProperties() -> [String] {
-//        return ["image"]
-//    }
+    override static func ignoredProperties() -> [String] {
+        return ["image"]
+    }
     
 }

@@ -40,3 +40,7 @@ extension Int {
         return WorkoutTag(rawValue: self)!
     }
 }
+
+extension DateFormatter {
+    static let somasoleDateFormat = "MMM dd yyyy, h:mm a"
+}

@@ -7,15 +7,12 @@
 //
 
 import Foundation
-//import RealmSwift
+import RealmSwift
 
-//class Featured: Object {
-class Featured: NSObject {
+class Featured: Object {
 
-//    var articles = List<Article>()
-    var articles = [Article]()
-//    var videos = List<Video>()
-    var videos = [Video]()
+    var articles = List<Article>()
+    var videos = List<Video>()
     @objc dynamic var workout: Workout?
     
 }

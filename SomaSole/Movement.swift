@@ -7,10 +7,9 @@
 //
 
 import UIKit
-//import RealmSwift
+import RealmSwift
 
-//class Movement: Object {
-class Movement: NSObject {
+class Movement: Object {
 
     // MARK: - Object properties
     
@@ -43,8 +42,8 @@ class Movement: NSObject {
     
     // MARK: - Overridden methods
     
-//    override static func ignoredProperties() -> [String] {
-//        return ["image", "gif", "finished"]
-//    }
+    override static func ignoredProperties() -> [String] {
+        return ["image", "gif", "finished"]
+    }
     
 }

@@ -7,11 +7,10 @@
 //
 
 import UIKit
-//import RealmSwift
+import RealmSwift
 import Kingfisher
 
-//class Article: Object {
-class Article: NSObject {
+class Article: Object {
 
     // MARK: - Object properties
     
@@ -47,16 +46,15 @@ class Article: NSObject {
         plainImageURL = data["plain_image_url"]!
         
         let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .short
+        formatter.dateFormat = DateFormatter.somasoleDateFormat
         date = formatter.date(from: data["created_at_pretty"]!)!
     }
     
     // MARK: - Overridden methods
     
-//    override static func ignoredProperties() -> [String] {
-//        return ["textImage", "plainImage", "textImageKey", "plainImageKey"]
-//    }
+    override static func ignoredProperties() -> [String] {
+        return ["textImage", "plainImage", "textImageKey", "plainImageKey"]
+    }
     
     // MARK: - Methods
     
