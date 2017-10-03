@@ -7,7 +7,7 @@
 //
 
 import UIKit
-//import TagListView
+import TagListView
 
 class TagCell: UITableViewCell {
     
@@ -22,28 +22,19 @@ class TagCell: UITableViewCell {
         WorkoutTag.totalBody: "Total Body"
     ]
 
-//    @IBOutlet weak var tagListView: TagListView!
+    @IBOutlet weak var tagListView: TagListView!
     
     func addFilters(_ filters: [WorkoutTag]) {
-//        tagListView.removeAllTags()
-//        
-//        for filter in filters {
-//            self.tagListView.addTag(filterTitles[filter]!)
-//        }
+        tagListView.removeAllTags()
+        
+        for filter in filters {
+            self.tagListView.addTag(filterTitles[filter]!)
+        }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        
-        // tag list view customization
-//        tagListView.textFont = UIFont.systemFontOfSize(14)
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        tagListView.textFont = UIFont.systemFont(ofSize: 14)
     }
 
 }

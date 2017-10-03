@@ -17,6 +17,32 @@ extension UIView {
     }
 }
 
+extension Array where Element: Workout {
+    mutating func insertAlpha(_ workout: Element) {
+        if self.count == 0 {
+            self.append(workout)
+            return
+        }
+        
+        for (index, item) in self.enumerated() {
+            if workout.name.localizedCompare(item.name) == .orderedAscending {
+                self.insert(workout, at: index)
+                return
+            }
+        }
+        
+        self.append(workout)
+    }
+    
+    var names: [String] {
+        var favoriteWorkouts = [String]()
+        for workout in Workout.sharedFavorites {
+            favoriteWorkouts.append(workout.name)
+        }
+        return favoriteWorkouts
+    }
+}
+
 extension Array where Element: Video {
     mutating func addByDate(_ video: Video) {
         var added = false
