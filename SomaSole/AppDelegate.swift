@@ -7,8 +7,7 @@
 //
 
 import UIKit
-//import IQKeyboardManagerSwift
-//import AVFoundation
+import AVFoundation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,8 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-//        try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
-//        IQKeyboardManager.sharedManager().enable = true
+        try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
     
         return true
     }

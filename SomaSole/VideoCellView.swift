@@ -38,21 +38,21 @@ class VideoCellView: UIView {
         label.numberOfLines = 0
         label.sizeToFit()
         addSubview(label)
-//        label.snp_makeConstraints(closure: { make in
-//            make.top.equalTo(self).offset(8)
-//            make.left.equalTo(self).offset(8)
-//            make.right.equalTo(star.snp_left).offset(8)
-//        })
+        label.snp.makeConstraints { make in
+            make.top.equalTo(self).offset(8)
+            make.left.equalTo(self).offset(8)
+//            make.right.equalTo(star.snp.left).offset(8)
+        }
         
         // image
         addSubview(imageView)
-//        imageView.snp_makeConstraints(closure: { make in
-//            make.top.equalTo(label.snp_bottom).offset(16)
-//            make.left.equalTo(self.snp_leftMargin)
-//            make.right.equalTo(self.snp_rightMargin)
-//            make.bottom.equalTo(self).offset(-32)
-//            make.height.equalTo((UIScreen.mainScreen().bounds.width - 16) * (9/16))
-//        })
+        imageView.snp.makeConstraints { make in
+            make.top.equalTo(label.snp.bottom).offset(16)
+            make.left.equalTo(self.snp.leftMargin)
+            make.right.equalTo(self.snp.rightMargin)
+            make.bottom.equalTo(self).offset(-32)
+            make.height.equalTo((UIScreen.main.bounds.width - 16) * (9/16))
+        }
         
         // play button
         play.image = UIImage(named: "play")

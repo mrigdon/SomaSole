@@ -33,27 +33,6 @@ class BeginWorkoutViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    func loadMovements() {
-//        startProgressHud()
-//        for circuit in workout!.circuits {
-//            let length = circuit.setup.long ? "long" : "short"
-//            circuit.setup.image = UIImage(named: "setup\(circuit.setup.imageIndex)\(length)")
-//            
-//            for movement in circuit.movements {
-//                FirebaseManager.sharedRootRef.child("movements").child(String(movement.index)).observeEventType(.Value, withBlock: { snapshot in
-//                    movement.title = snapshot.value!["title"] as! String
-//                    movement.movementDescription = snapshot.value!["description"] as? String
-//                    let url = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("\(movement.title).gif", ofType: nil)!)
-//                    movement.gif = NSData(contentsOfURL: url)
-//                    self.movementIndex += 1
-//                    if self.movementIndex == self.workout!.numMovements {
-//                        self.stopProgressHud()
-//                    }
-//                })
-//            }
-//        }
-    }
-    
     // uiviewcontroller
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,8 +49,6 @@ class BeginWorkoutViewController: UIViewController {
         self.descriptionLabel.font = UIFont(name: "HelveticaNeue", size: 17)
         self.descriptionLabel.isEditable = false
         self.descriptionLabel.text = self.workout!.deskription
-        
-        self.loadMovements()
     }
     
     override func viewDidLayoutSubviews() {

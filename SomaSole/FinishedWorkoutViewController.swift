@@ -27,11 +27,6 @@ class FinishedWorkoutViewController: UIViewController {
         workoutImageViewHeight.constant = workoutCellSize
         self.workoutImageView.image = self.workout!.image
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return .lightContent
@@ -41,15 +36,5 @@ class FinishedWorkoutViewController: UIViewController {
         let destVC = segue.destination as! UITabBarController
         destVC.selectedIndex = 1
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

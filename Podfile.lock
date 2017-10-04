@@ -1,8 +1,7 @@
 PODS:
   - Alamofire (4.5.1)
   - FLAnimatedImage (1.0.12)
-  - KASlideShow (3.0.0):
-    - SDWebImage (~> 3.8)
+  - KASlideShow (2.2)
   - KDCircularProgress (1.5.2)
   - Kingfisher (4.0.1)
   - MBProgressHUD (1.0.0)
@@ -12,9 +11,6 @@ PODS:
   - Realm/Headers (2.10.1)
   - RealmSwift (2.10.1):
     - Realm (= 2.10.1)
-  - SDWebImage (3.8.2):
-    - SDWebImage/Core (= 3.8.2)
-  - SDWebImage/Core (3.8.2)
   - Shimmer (1.0.2)
   - SnapKit (4.0.0)
   - SwiftyMarkdown (0.5.0)
@@ -24,7 +20,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 4.5)
   - FLAnimatedImage
-  - KASlideShow
+  - KASlideShow (~> 2.2.0)
   - KDCircularProgress (from `https://github.com/kaandedeoglu/KDCircularProgress.git`)
   - Kingfisher (~> 4.0)
   - MBProgressHUD (~> 1.0.0)
@@ -58,20 +54,19 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
-  KASlideShow: d737c734ee603ed4fc7de09876d5193192e74ee4
+  KASlideShow: 380f5ecee5f14370c9435ecedccee5b35fb69c5f
   KDCircularProgress: 12f677b2deb02409ab48c6cae1898d146b8ad549
   Kingfisher: b771785e9461ed4b8686d40e7145f9e58100cb24
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MZTimerLabel: cd9bfb9304540ef2a9e163384fca9c978f0dbf83
   Realm: fc7a317a5c2c9ba91f5f235ede4e2ea76e9eba0c
   RealmSwift: 505ed6c15942a2e76f5cfa78a8667cfa997ee75b
-  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SwiftyMarkdown: 1443d644bf94d596c457f83d669bd7f1b338ba4e
   TagListView: 61637757a45eb6ec0281b29b00ac38c38f3ab73a
   youtube-ios-player-helper: 21ab92db027c7ff86cb17a3843a3f6eafc8158d2
 
-PODFILE CHECKSUM: 3be9cb14d6e616b735fb9f00277a6047f330b49b
+PODFILE CHECKSUM: a4e32e5ad97ce74a3081ef556d0bd46d223ef4c7
 
 COCOAPODS: 1.3.1

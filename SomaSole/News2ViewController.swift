@@ -11,11 +11,11 @@ import SnapKit
 import KASlideShow
 
 extension News2ViewController: KASlideShowDelegate {
-    func slideShowDidShowNext(_ slideShow: KASlideShow!) {
+    @objc(kaSlideShowDidShowNext:) func kaSlideShowDidShowNext(_ slideShow: KASlideShow!) {
         pageControl.currentPage = Int(slideshow.currentIndex)
     }
     
-    func slideShowDidShowPrevious(_ slideShow: KASlideShow!) {
+    @objc(kaSlideShowDidShowPrevious:) func kaSlideShowDidShowPrevious(_ slideShow: KASlideShow!) {
         pageControl.currentPage = Int(slideshow.currentIndex)
     }
 }
@@ -78,7 +78,7 @@ class News2ViewController: UIViewController {
         
         slideshowHeight.constant = screenWidth * slideshowRatio
         slideshow.transitionDuration = 1
-        slideshow.transitionType = .slideHorizontal
+        slideshow.transitionType = .slide
         slideshow.imagesContentMode = .scaleAspectFill
         slideshow.add(.swipe)
         let tap = UITapGestureRecognizer(target: self, action: #selector(tappedArticle))
@@ -109,8 +109,8 @@ class News2ViewController: UIViewController {
     fileprivate func addArticles(_ articles: [Article]) {
         for article in articles {
             article.loadTextImage {
-//                self.slideshow.addImage(article.textImage)
-                self.slideshow.addSubview(UIImageView(image: article.textImage))
+                self.slideshow.addImage(article.textImage)
+//                self.slideshow.addSubview(UIImageView(image: article.textImage))
                 self.articles.append(article)
                 self.pageControl.numberOfPages = self.articles.count
                 if self.firstArticleImage {

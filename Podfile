@@ -8,7 +8,7 @@ target 'SomaSole' do
   # Pods for SomaSole
     pod 'MBProgressHUD', '~> 1.0.0'
     pod 'TagListView', :git => 'https://github.com/ElaWorkshop/TagListView.git'
-    pod 'KASlideShow'
+    pod 'KASlideShow', '~> 2.2.0'
     pod 'RealmSwift', '~> 2.10'
     pod 'youtube-ios-player-helper', '~> 0.1.4'
 #    pod 'EPShapes'

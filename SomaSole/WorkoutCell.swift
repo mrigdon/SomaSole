@@ -7,7 +7,6 @@
 //
 
 import UIKit
-//import EPShapes
 
 extension UIColor {
     static func goldColor() -> UIColor {
