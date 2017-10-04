@@ -1213,19 +1213,6 @@
             </objects>
             <point key="canvasLocation" x="750" y="759"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="gGz-SG-ZEB">
-            <objects>
-                <navigationController id="8Im-MZ-Qjf" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iTT-Aa-jtj">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cEm-Hq-Xvu" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2299" y="0.0"/>
-        </scene>
         <!--All Videos View Controller-->
         <scene sceneID="sHe-9I-0a5">
             <objects>
