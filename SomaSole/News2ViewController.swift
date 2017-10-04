@@ -110,7 +110,6 @@ class News2ViewController: UIViewController {
         for article in articles {
             article.loadTextImage {
                 self.slideshow.addImage(article.textImage)
-//                self.slideshow.addSubview(UIImageView(image: article.textImage))
                 self.articles.append(article)
                 self.pageControl.numberOfPages = self.articles.count
                 if self.firstArticleImage {
